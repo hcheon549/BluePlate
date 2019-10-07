@@ -1,0 +1,23 @@
+
+.greeting-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.treats-and-map {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+@media (max-width: $media2) {
+  .treats-and-map {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    width: 100%;
+  }
+  .greeting-container {
+    width: 100%;
+  }
+}

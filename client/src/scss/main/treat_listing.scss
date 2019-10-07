@@ -1,0 +1,266 @@
+.treat-listing {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  font-family: 'Lato', sans-serif;
+  margin: 10px;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  :hover {
+    transform: scale3d(1.05, 1.05, 1.05);
+    transition-duration: 0.1s;
+    cursor: pointer;
+    .hidden-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: absolute;
+      background: rgba(255, 255, 255, 0.75);
+    }
+    .reserve-btn {
+      display: block;
+    }
+    .select-time {
+      display: block;
+    }
+  }
+}
+
+.treat-box {
+  box-sizing: border-box;
+  margin: 10px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0px;
+  min-height: 0px;
+  :hover {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (min-width: $media0) {
+  .treat-listing {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: $media2) {
+  .treat-listing {
+    width: auto;
+  }
+}
+
+@media (min-width: $media2) {
+  .treat-listing-map-collapse {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: $media2_5) {
+  .treat-listing {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .treat-listing-map-collapse {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: $media4) {
+  .treat-listing {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .treat-listing-map-collapse {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.treat-box-title {
+  height: 30px;
+  width: 100%;
+  background-color: $main;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  li {
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.treat-box-description {
+  width: 90%;
+  margin: 10px 15px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.tbd-item {
+  margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.treat-name {
+  color: $main;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.shop-name {
+  color: $dark-gray-tb;
+}
+
+.shop-address {
+  color: $light-gray;
+}
+
+.hidden-description {
+  display: none;
+  letter-spacing: 1px;
+  color: $darkest-gray;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+}
+
+.hidden-treat-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hidden-treat-desc {}
+
+.treat-errors {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  color: $darkest-gray;
+  letter-spacing: 0.5px;
+}
+
+.treat-errors-list li {
+  list-style: disc;
+  padding: 0 40px;
+}
+
+.treat-errors-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 40px;
+}
+
+.treat-errors-sorry {
+  margin: 20px 0px;
+}
+
+.treat-errors-try {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: $main;
+}
+
+.treat-errors-reset {
+  margin: 20px 0px;
+  border: none;
+  background: white;
+  padding: 8px 10px;
+  border: 1px solid $light-gray;
+  color: $main;
+  font-weight: bold;
+}
+
+.treat-errors-reset:hover {
+  background: $accent;
+  color: white;
+}
+
+//////////////////////////////////////
+#favorite-button {
+  border: none;
+  background: none;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 5px;
+  top: 2.5px;
+  z-index: 2;
+}
+
+//////////////////////////////////////
+// .select-time-wrap {
+//   border: 5px solid $main;
+//   position: absolute;
+// }
+.select-time {
+  display: none;
+  color: $accent;
+  background: white;
+  position: absolute;
+  padding-left: 10px;
+  border: none;
+  z-index: 3;
+  bottom: 75px;
+  height: 35px;
+  width: 80%;
+  right: 10%;
+  left: 10%;
+  appearance: none;
+  border: 1px solid $gray;
+}
+
+// .select-time:hover {
+//   border: none;
+//   appearance: none;
+// }
+.reserve-btn {
+  display: none;
+  color: white;
+  background: $accent;
+  position: absolute;
+  border: none;
+  z-index: 3;
+  bottom: 25px;
+  height: 40px;
+  width: 80%;
+  right: 10%;
+  left: 10%;
+  text-align: center;
+}
+
+.time-selected {}
+
+.time-selected:hover {
+  background-color: $accent-light;
+}
+
+.time-not-selected {}
+
+.time-not-selected:hover {
+  cursor: not-allowed;
+}

@@ -1,0 +1,23 @@
+
+.main-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  top: 60px;
+}
+
+.main-body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 800px) {
+  .main-page {
+    width: auto;
+  }
+
+  .main-body {
+    width: auto;
+  }
+}

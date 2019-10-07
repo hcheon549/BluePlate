@@ -1,0 +1,226 @@
+.login-page {
+  // background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url("login_page/login_bg.jpeg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("https://res.cloudinary.com/mwojick/image/upload/v1528409283/TreatPal/photo-1494390248081-4e521a5940db.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-bottom: 0px;
+  height: 100%;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+
+  font-family: "Lato", sans-serif;
+}
+
+.login-form-main {
+  min-width: 10vw;
+  width: 550px;
+}
+
+.login-form-container {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background-color: white;
+  // max-width: 40%;
+  // max-width: 30vw;
+  // width: 50%;
+  height: 100%;
+  padding: 70px 70px;
+}
+
+.login-welcome {
+  font-size: 25px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  color: $main;
+  margin-bottom: 10px;
+}
+.login-to-account {
+  font-size: 18px;
+  font-weight: lighter;
+  color: $gray;
+  margin-bottom: 40px;
+}
+
+.login-form-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-errors {
+  position: absolute;
+  width: 100%;
+  bottom: 210px;
+  color: red;
+}
+
+.signup-errors {
+  color: red;
+  letter-spacing: 0px;
+}
+
+.label-err {
+  display: flex;
+  flex-direction: row;
+}
+
+.session-error {
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.login-errors {
+  ul {
+    margin-bottom: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-label {
+  display: flex;
+  flex-direction: column;
+  color: $dark-gray;
+  width: 90%;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+
+  input {
+    color: black;
+    margin-top: 10px;
+    height: 30px;
+    outline: 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: $gray;
+    border-width: 1px;
+    padding-left: 10px;
+  }
+
+  select {
+    margin-top: 10px;
+    padding: 7px;
+    // border-radius: 5px;
+  }
+}
+
+.login-label select:hover {
+  cursor: pointer;
+}
+
+.login-label input:focus {
+  border-color: $main;
+}
+
+.session-submit {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+
+  // border-top: 5px solid black;
+  // border-top-right-radius: 10px;
+  // border-top-left-radius: 10px;
+
+  border-radius: 5px;
+
+  // width: 440px;
+  // max-width: 30vw;
+  width: 90%;
+
+  height: 50px;
+
+  margin: 10px;
+  padding: 10px;
+
+  border: none;
+  color: white;
+  background-color: $main;
+
+  div {
+    letter-spacing: 2px;
+  }
+}
+
+.session-submit:hover {
+  background-color: $accent;
+}
+
+.login-donthave {
+  font-size: 18px;
+  margin-top: 10px;
+  color: $gray;
+}
+
+.other-link {
+  font-size: 18px;
+  margin-top: 5px;
+  color: $accent;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    cursor: pointer;
+  }
+
+  :hover {
+    text-decoration: underline;
+  }
+}
+
+.sign-up-separator {
+  height: 25px;
+  margin: 0 0.75em;
+  border-left: 1px solid $gray;
+  border-right: 1px solid $gray;
+}
+
+@media (max-width: 800px) {
+  .login-page {
+    background-image: none;
+  }
+  .login-label {
+    min-width: calc(80vw);
+  }
+  .session-submit {
+    min-width: calc(80vw);
+  }
+  .login-donthave {
+  }
+  .login-to-account {
+  }
+  .login-form-container {
+    padding: 0;
+    text-align: center;
+  }
+  .login-welcome {
+    width: 60%;
+  }
+}

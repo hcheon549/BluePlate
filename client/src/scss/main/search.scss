@@ -1,0 +1,106 @@
+
+.search-component {
+  background: $lightest-gray;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  left: 0px;
+
+  div {
+    margin: 0px 10px;
+    display: flex;
+  }
+}
+
+.search-city {
+  width: auto;
+  select {
+    cursor: pointer;
+    background-color: white;
+    padding: 7px;
+    text-transform: uppercase;
+    color: $accent;
+    font-size: 16px;
+    width: 100%;
+  }
+
+}
+
+.search-form {
+  width: 30%;
+  min-width: 210px;
+  input {
+    width: 100%;
+    border: none;
+    padding: 7px;
+    border: 1px solid $gray;
+  }
+  form {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+}
+
+
+.search-form input:focus {
+  border: 1px solid $accent;
+}
+
+.search-fav-toggle  {
+  width: auto;
+  // min-width: 85px;
+  button {
+    overflow: hidden;
+    width: 100%;
+    border: none;
+    padding: 7px;
+    border: 1px solid $gray;
+    background-color: white;
+    color: $dark-gray;
+  }
+
+}
+
+.button-fav button {
+  background-color: $accent;
+  color: white;
+}
+
+.button-unfav button {
+
+}
+
+.search-icon {
+
+  position: absolute;
+  padding: 10px;
+  right: 0px;
+  bottom: -2px;
+  height: 20px;
+  width: 20px;
+}
+
+@media (max-width: $media2) {
+  .search-component {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    div {
+      margin: 0;
+      margin-bottom: 10px;
+      width: 85%;
+      display: flex;
+    }
+  }
+
+  .search-city {
+    select {
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,247 @@
+.reservations-container {
+  display: flex;
+  flex-direction: row;
+  height: 240px;
+  font-family: $main-font-family;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: 20px;
+  color: $darkest-gray;
+
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+
+}
+
+.reservations-component {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.res-items {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.res-resed-cont {
+  display: flex;
+}
+
+.res-resed, .res-nonresed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // max-width: 300px;
+  width: 20vw;
+  height: 240px;
+  position: relative;
+  margin: 0 10px;
+  border: 1px solid $light-gray;
+}
+
+.treat-you-had {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  position: absolute;
+
+  width: 80%;
+  height: 100%;
+  top: 15px;
+  // margin-bottom: auto;
+  // margin-top: auto;
+
+}
+
+.resed-img {
+  height: 210px;
+  max-width: 100%;
+  opacity: 0.3;
+  object-fit: cover;
+
+}
+.resed-img-today {
+  height: 210px;
+  max-width: 100%;
+  filter: brightness(70%);
+  object-fit: cover;
+}
+
+
+.day-of-week {
+  padding: 5px 0px;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  background: $main;
+}
+
+
+/////////
+
+
+
+.resed-today-desc {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: white;
+  bottom: 10px;
+  z-index: 5;
+
+  height: 100%;
+  width: 100%;
+
+}
+
+.resed-today-desc1 {
+  font-weight: 400;
+  font-size: 16px;
+}
+.resed-today-desc2 {
+  font-weight: bold;
+  font-size: 18px;
+
+}
+.resed-today-desc3 {
+  font-weight: lighter;
+  font-size: 14px;
+
+}
+
+.update-res {
+  width: 100%;
+  border: none;
+  background: $main;
+  border-bottom: 2px solid white;
+  text-align-last:center;
+  position: absolute;
+  z-index: 5;
+  bottom: 25px;
+  left: 0px;
+  color: white;
+
+  padding: 3px 0;
+}
+.update-res:hover {
+  cursor: pointer;
+
+}
+
+.cancel-reservation {
+  width: 100%;
+  border: none;
+  background: $main;
+  position: absolute;
+  z-index: 5;
+  bottom: 0px;
+  left: 0px;
+  color: white;
+
+  cursor: pointer;
+
+  padding: 3px 0;
+}
+
+.res-savings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid $light-gray;
+  max-width: 340px;
+  height: 242px;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 10px;
+  padding: 15px 20px;
+
+}
+.sav-holy {
+  color: $main;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.sav-num {
+  font-size: 20px;
+  color: $accent;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.resed-today {
+  width: 20vw;
+  max-width: 100%;
+}
+
+
+.not-resed-today {
+  width: 20vw;
+  max-width: 100%;
+
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+}
+.res-nonresed {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.no-treat-this-day {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+
+@media (max-width: $media3) {
+  .hidden-res {
+    display: none;
+  }
+  .res-items {
+    // margin: 0px;
+  }
+  .reservations-container {
+    // margin: 0px;
+  }
+  .res-savings {
+    // box-sizing: border-box;
+    // height: 182px;
+    // padding: 15px 10px;
+    width: 50vw;
+    max-width: 100%;
+  }
+  .res-resed {
+    // height: 180px;
+  }
+  .resed-today {
+    // max-width: 220px;
+    width: 40vw;
+    max-width: 100%;
+  }
+
+  .not-resed-today {
+    width: 40vw;
+    max-width: 100%;
+  }
+
+  .res-resed {
+    width: 40vw;
+    max-width: 100%;
+  }
+  .no-treat-this-day {
+    // margin-top: 40px;
+
+  }
+
+}
