@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import NavLoginContainer from "../components/nav/nav_login_container";
-import MenuContainer from "../components/nav/menu_container";
+import NavLogin from "../components/nav/nav_login";
+import Menu from "../components/nav/menu";
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
   <Route
@@ -31,9 +31,9 @@ const Nav = ({ path, loggedIn, exact }) => (
     exact={exact}
     render={props => {
       return !loggedIn ? (
-        <NavLoginContainer {...props} />
+        <NavLogin {...props} />
       ) : (
-        <MenuContainer {...props} />
+        <Menu {...props} />
       );
     }}
   />

@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-// import Favorite from '../../img/menu_icons/favorite.png'
+import { logout } from '../../actions/session_actions';
 
 class Menu extends React.Component {
   constructor(props) {
@@ -101,4 +103,15 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+const mapStateToProps = (state) => {
+  return {
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(logout())
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu));

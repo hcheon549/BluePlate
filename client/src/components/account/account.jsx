@@ -1,20 +1,24 @@
 import React from "react";
 // import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { updateUser } from '../../actions/user_actions';
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
 
     let name = this.props.currentUser.name || "";
-    let companyName = this.props.currentUser.companyName || "";
-    let imageUrl = this.props.currentUser.imageUrl || "";
+    let fname = this.props.currentUser.fname || "";
+    let lname = this.props.currentUser.lname || "";
 
     this.state = {
       id: this.props.currentUser.id,
       name: name,
       email: this.props.currentUser.email,
-      companyName: companyName,
-      imageUrl: imageUrl
+      fname: fname,
+      lname: lname
     };
   }
 
@@ -67,17 +71,6 @@ class Account extends React.Component {
         </div>
 
         <div className="account-bottom">
-          <div className="account-image">
-            <strong>YOUR PHOTO:</strong>
-            <img alt="" src={currentUser.imageUrl} />
-            <input
-              type="text"
-              placeholder="Input Photo URL"
-              disabled={this.state.email === "demo" ? true : false}
-              value={this.state.imageUrl}
-              onChange={this.update("imageUrl")}
-            />
-          </div>
 
           <div className="account-text">
             <div className="account-name">
@@ -101,16 +94,6 @@ class Account extends React.Component {
               />
             </div>
 
-            <div className="account-company">
-              <strong>COMPANY NAME:</strong>
-              <input
-                type="text"
-                disabled={this.state.email === "demo" ? true : false}
-                value={this.state.companyName}
-                onChange={this.update("companyName")}
-              />
-            </div>
-
             <button
               className="acc-update"
               onClick={() => this.props.updateUser(this.state)}
@@ -124,4 +107,20 @@ class Account extends React.Component {
   }
 }
 
-export default Account;
+const msp = ({entities:
+  {users, meals, shops, schools, favorites, reservations},
+  session, errors, ui}) => {
+
+ return {
+    currentUser: users[session.id],
+    errors: errors.users
+  };
+};
+
+const mdp = (dispatch) => {
+ return {
+   updateUser: (user) => dispatch(updateUser(user))
+ };
+};
+
+export default withRouter(connect(msp, mdp)(Account));

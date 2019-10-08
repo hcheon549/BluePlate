@@ -1,5 +1,9 @@
 import React from "react";
-// import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+
+import { signup, clearErrors, demo } from '../../actions/session_actions';
+import { fetchSchools } from '../../actions/school_actions';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -145,4 +149,23 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+const mapStateToProps = (state) => {
+  return {
+    schools: Object.values(state.entities.schools),
+    errors: state.errors.session,
+    formType: 'SIGN UP',
+    navLink: <Link to="/login">Log In!</Link>,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    processForm: (user) => dispatch(signup(user)),
+    demo: () => dispatch(demo()),
+    fetchSchools: () => dispatch(fetchSchools()),
+    clearErrors: () => dispatch(clearErrors())
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SignupForm));

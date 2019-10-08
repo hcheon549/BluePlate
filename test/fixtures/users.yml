@@ -8,7 +8,6 @@
 #  meals_left      :integer          default(20), not null
 #  enrolled_school  :string           default("San Francisco"), not null
 #  company_name    :string
-#  image_url       :string
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
@@ -22,15 +21,19 @@ one:
   name: MyString
   meals_left: 1
   company_name: MyString
-  image_url: MyString
   password_digest: MyString
   session_token: MyString
+  fname: MyString
+  lname: MyString
+  school_id: 1
 
 two:
   email: MyString
   name: MyString
   meals_left: 1
   company_name: MyString
-  image_url: MyString
   password_digest: MyString
   session_token: MyString
+  fname: MyString
+  lname: MyString
+  school_id: 1

@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch } from "react-router-dom";
-import GreetingContainer from "./greeting/greeting_container";
-import AccountContainer from "./account/account_container";
-import FavoritesContainer from "./account/favorites_container";
-import HistoryContainer from "./account/history_container";
-import LoginFormContainer from "./session_form/login_form_container";
-import SignupFormContainer from "./session_form/signup_form_container";
+import Greeting from "./greeting/greeting";
+import Account from "./account/account";
+import Favorites from "./account/favorites";
+import History from "./account/history";
+import LoginForm from "./session_form/login_form";
+import SignupForm from "./session_form/signup_form";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Nav from "./nav/nav";
 import Footer from "./footer/footer";
@@ -42,15 +42,15 @@ class App extends React.Component {
           <div className="main-body">
             <main className="main-page">
               <Switch>
-                <AuthRoute path="/login" component={LoginFormContainer} />
-                <AuthRoute path="/signup" component={SignupFormContainer} />
-                <ProtectedRoute path="/account" component={AccountContainer} />
+                <AuthRoute path="/login" component={LoginForm} />
+                <AuthRoute path="/signup" component={SignupForm} />
+                <ProtectedRoute path="/account" component={Account} />
                 <ProtectedRoute
                   path="/favorites"
-                  component={FavoritesContainer}
+                  component={Favorites}
                 />
-                <ProtectedRoute path="/history" component={HistoryContainer} />
-                <ProtectedRoute path="/" component={GreetingContainer} />
+                <ProtectedRoute path="/history" component={History} />
+                <ProtectedRoute path="/" component={Greeting} />
               </Switch>
             </main>
 

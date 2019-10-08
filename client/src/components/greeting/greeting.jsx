@@ -1,9 +1,17 @@
 import React from "react";
-// import { Link, Redirect } from 'react-router-dom';
-import MealIndexContainer from "../meal_listing/meal_index_container";
-import SearchContainer from "../search/search_container";
-import MealMapContainer from "../map/meal_map_container";
-import ReservationsContainer from "../reservations/reservations_container";
+
+import { connect } from 'react-redux';
+import { fetchMeals } from '../../actions/meal_actions';
+import { fetchSchools } from '../../actions/school_actions';
+import { fetchFavorites } from '../../actions/favorite_actions';
+import { resetFilter } from '../../actions/filter_actions';
+import { fetchReservations } from '../../actions/reservation_actions';
+import { withRouter } from 'react-router-dom';
+
+import MealIndex from "../meal_listing/meal_index";
+import Search from "../search/search";
+import MealMap from "../map/meal_map";
+import Reservations from "../reservations/reservations";
 import LoadingIcon from "./loading_icon";
 
 class Greeting extends React.Component {
@@ -65,15 +73,15 @@ class Greeting extends React.Component {
     return (
       <div className="greeting-container">
         <div className="reservations-container">
-          <ReservationsContainer />
+          <Reservations />
         </div>
 
         <div className="search-container">
-          <SearchContainer />
+          <Search />
         </div>
 
         <div className="meals-and-map">
-          <MealIndexContainer />
+          <MealIndex />
 
           <div
             ref="coll"
@@ -85,7 +93,7 @@ class Greeting extends React.Component {
             <div ref="arrowRight" className="arrow arrow-right" />
           </div>
           <div className="map-container">
-            <MealMapContainer />
+            <MealMap />
           </div>
         </div>
       </div>
@@ -93,4 +101,21 @@ class Greeting extends React.Component {
   }
 }
 
-export default Greeting;
+const msp = (state) => {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    loading: state.ui.loading.fetchLoading
+  };
+};
+
+const mdp = (dispatch) => {
+  return {
+    fetchMeals: (school) => dispatch(fetchMeals(school)),
+    fetchSchools: () => dispatch(fetchSchools()),
+    fetchFavorites: () => dispatch(fetchFavorites()),
+    fetchReservations: () => dispatch(fetchReservations()),
+    resetFilter: () => dispatch(resetFilter())
+  };
+};
+
+export default withRouter(connect(msp, mdp)(Greeting));

@@ -18,8 +18,9 @@ ActiveRecord::Base.transaction do
       password: 123456,
       enrolled_school: 'Rutgers University–New Brunswick',
       meals_left: 15,
-      image_url: "https://res.cloudinary.com/mwojick/image/upload/v1532323181/TreatPal/bobross.jpg",
-      company_name: "The Joy of Painting"
+      fname: 'Eric',
+      lname: 'Cheon',
+      school_id: 1
     },
   ]
 

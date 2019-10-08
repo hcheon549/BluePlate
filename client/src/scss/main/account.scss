@@ -101,18 +101,6 @@
   margin-bottom: 50px;
 }
 
-.account-image img {
-  border-radius: 50%;
-  margin: 20px 0 10px;
-}
-
-.account-image {
-  margin-right: 70px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .account-text {
   display: flex;
   flex-direction: column;
@@ -127,12 +115,6 @@
   flex-direction: column;
   margin-bottom: 20px;
 }
-.account-company {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
 .acc-update {
   color: white;
   background: $accent;
@@ -153,8 +135,5 @@
 @media (max-width: $media1) {
   .account-bottom {
     flex-direction: column;
-  }
-  .account-image {
-    margin: 10px 0 40px;
   }
 }

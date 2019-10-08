@@ -1,5 +1,14 @@
 import React from "react";
 // import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { fetchMeals } from '../../actions/meal_actions';
+import { fetchFavorites } from '../../actions/favorite_actions';
+import { fetchReservations } from '../../actions/reservation_actions';
+import { getFavIds, getSchoolReservations } from '../../util/selectors';
+
+
 
 class History extends React.Component {
   componentDidMount() {
@@ -74,4 +83,32 @@ class History extends React.Component {
   }
 }
 
-export default History;
+const msp = ({entities:
+  {users, meals, shops, schools, favorites, reservations},
+  session, errors, ui}) => {
+
+  let schoolReses = getSchoolReservations(reservations, meals, false);
+  schoolReses = schoolReses.sort((a,b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  let favIds = getFavIds(favorites);
+
+ return {
+    currentUser: users[session.id],
+    meals: meals,
+    favIds: favIds,
+    schoolReses: schoolReses,
+    shops: shops
+  };
+};
+
+const mdp = (dispatch) => {
+ return {
+   fetchMeals: (school) => dispatch(fetchMeals(school)),
+   fetchFavorites: () => dispatch(fetchFavorites()),
+   fetchReservations: () => dispatch(fetchReservations())
+ };
+};
+
+export default withRouter(connect(msp, mdp)(History));

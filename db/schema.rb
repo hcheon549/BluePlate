@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_045019) do
+ActiveRecord::Schema.define(version: 2019_10_08_155550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2019_10_08_045019) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_meals_on_shop_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "type"
+    t.integer "meals", null: false
+    t.float "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -71,13 +80,14 @@ ActiveRecord::Schema.define(version: 2019_10_08_045019) do
     t.string "name"
     t.integer "meals_left", default: 20, null: false
     t.string "enrolled_school", default: "San Francisco", null: false
-    t.string "company_name"
-    t.string "image_url"
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "membership_type"
+    t.string "fname", default: "Eric", null: false
+    t.string "lname", default: "Cheon", null: false
+    t.integer "school_id", default: 1, null: false
+    t.integer "plan_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
