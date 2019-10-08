@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { signup, clearErrors, demo } from '../../actions/session_actions';
-import { fetchCities } from '../../actions/city_actions';
+import { fetchSchools } from '../../actions/school_actions';
 import SignupForm from './signup_form';
 
 const mapStateToProps = (state) => {
   return {
-    cities: Object.values(state.entities.cities),
+    schools: Object.values(state.entities.schools),
     errors: state.errors.session,
     formType: 'SIGN UP',
     navLink: <Link to="/login">Log In!</Link>,
@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(signup(user)),
     demo: () => dispatch(demo()),
-    fetchCities: () => dispatch(fetchCities()),
+    fetchSchools: () => dispatch(fetchSchools()),
     clearErrors: () => dispatch(clearErrors())
   };
 };

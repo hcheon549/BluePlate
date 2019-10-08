@@ -5,14 +5,14 @@ import {
   updateReservation,
   deleteReservation
 } from '../../actions/reservation_actions';
-import { getCityReservations, getPastFive } from '../../util/selectors';
+import { getSchoolReservations, getPastFive } from '../../util/selectors';
 import { changeFilter } from '../../actions/filter_actions';
 
 const msp = ({entities: {users, mealRes, shopRes, reservations}, session}) => {
 
 
-  let cityReservations = getCityReservations(reservations, mealRes, true);
-  cityReservations = cityReservations.sort((a,b) => {
+  let schoolReservations = getSchoolReservations(reservations, mealRes, true);
+  schoolReservations = schoolReservations.sort((a,b) => {
     return new Date(b.date) - new Date(a.date);
   });
 
@@ -21,8 +21,8 @@ const msp = ({entities: {users, mealRes, shopRes, reservations}, session}) => {
   //get the reservations for the past 5 days
   //(including tomorrow) if there are any. if not, put blank.
 
-  if (cityReservations.length !== 0) {
-    pastFive = getPastFive(cityReservations);
+  if (schoolReservations.length !== 0) {
+    pastFive = getPastFive(schoolReservations);
   }
 
 

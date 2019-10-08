@@ -6,7 +6,7 @@
 #  email           :string           not null
 #  name            :string
 #  meals_left      :integer          default(20), not null
-#  preferred_city  :string           default("San Francisco"), not null
+#  enrolled_school  :string           default("San Francisco"), not null
 #  company_name    :string
 #  image_url       :string
 #  password_digest :string           not null

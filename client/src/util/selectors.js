@@ -1,16 +1,16 @@
-export const getPreferredCity = (session, users, cities) => {
+export const getEnrolledSchool = (session, users, schools) => {
   let currentUser = users[session.id];
 
-  let preferredCity = Object.values(cities).filter(
-    city => currentUser.preferredCity === city.name
+  let enrolledSchool = Object.values(schools).filter(
+    school => currentUser.enrolledSchool === school.name
   );
 
-  preferredCity = preferredCity[Object.keys(preferredCity)[0]] || {
+  enrolledSchool = enrolledSchool[Object.keys(enrolledSchool)[0]] || {
     latitude: 37.789232,
     longitude: -122.409499
   };
 
-  return preferredCity;
+  return enrolledSchool;
 };
 
 export const getFavIds = favorites => {
@@ -50,25 +50,25 @@ export const mapShopIdToMeal = meals => {
   return mealHash;
 };
 
-export const getCityReservations = (reservations, meals, sel) => {
+export const getSchoolReservations = (reservations, meals, sel) => {
   let mealIds = [];
   Object.values(meals).forEach(tr => {
     mealIds.push(tr.id);
   });
 
-  let cityReses = [];
+  let schoolReses = [];
   Object.values(reservations).forEach(res => {
     if (mealIds.includes(res.mealId)) {
-      cityReses.push(res);
+      schoolReses.push(res);
     }
   });
 
   if (sel) {
-    while (cityReses.length < 5) {
-      cityReses.push([]);
+    while (schoolReses.length < 5) {
+      schoolReses.push([]);
     }
   }
-  return cityReses;
+  return schoolReses;
 };
 
 const addDays = function(date, days) {

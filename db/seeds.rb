@@ -16,7 +16,7 @@ ActiveRecord::Base.transaction do
       email: 'demo',
       name: "Bob Ross",
       password: 123456,
-      preferred_city: 'Rutgers University–New Brunswick',
+      enrolled_school: 'Rutgers University–New Brunswick',
       meals_left: 15,
       image_url: "https://res.cloudinary.com/mwojick/image/upload/v1532323181/TreatPal/bobross.jpg",
       company_name: "The Joy of Painting"
@@ -30,9 +30,9 @@ ActiveRecord::Base.transaction do
 end
 
 ActiveRecord::Base.transaction do
-  City.destroy_all
+  School.destroy_all
 
-  cities = [
+  schools = [
     {
       name: "Rutgers University–New Brunswick",
       latitude: 40.498080,
@@ -40,10 +40,10 @@ ActiveRecord::Base.transaction do
     }
   ]
 
-  cities.each do |city|
-    City.create!(city)
+  schools.each do |school|
+    School.create!(school)
   end
-  puts "Colleges created"
+  puts "Schools created"
 end
 
 # Example reverse geocode
@@ -56,7 +56,7 @@ ActiveRecord::Base.transaction do
   key = "AIzaSyCdt5y8QHtz0FgnzgMLAc4-rfVPXz48B-8"
   count = 0
 
-  cities = City.all
+  schools = School.all
 
   shops = [
     {
@@ -64,85 +64,85 @@ ActiveRecord::Base.transaction do
       address: "49 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.498080,
       longitude: -74.448920,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     }, {
       name: "KBG Korean BBQ & Grill",
       address: "6 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.498080,
       longitude: -74.448920,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     }, {
       name: "Noodle Gourmet",
       address: "43 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.497950,
       longitude: -74.448530,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     }, {
       name: "Krispy Pizza",
       address: "50 College Ave, New Brunswick, NJ 08901",
       latitude: 40.499540,
       longitude: -74.448630,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     }, {
       name: "Jersey Mike's Subs",
       address: "44 College Ave, New Brunswick, NJ 08901",
       latitude: 40.499290,
       longitude: -74.448380,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     }, {
       name: "Nirvanis Indian Kitchen",
       address: "68 Easton Ave, New Brunswick, NJ 08901",
       latitude: 40.497910,
       longitude: -74.449700,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "Olive Branch",
       address: "37 Bartlett St, New Brunswick, NJ 08901",
       latitude: 40.501350,
       longitude: -74.452830,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "Zookini Pizza & Restaurant",
       address: "60 Sicard St, New Brunswick, NJ 08901",
       latitude: 40.502708,
       longitude: -74.454468,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "Kelly's Korner",
       address: "75 Morrell St, New Brunswick, NJ 08901",
       latitude: 40.501000,
       longitude: -74.455060,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "Daniel's Pizzeria",
       address: "204 Easton Ave, New Brunswick, NJ 08901",
       latitude: 40.500340,
       longitude: -74.456000,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "Seed Burger",
       address: "176 Easton Ave New Brunswick, NJ 08901",
       latitude: 40.499930,
       longitude: -74.454930,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "Thai Noodle",
       address: "174 Easton Ave, New Brunswick, NJ 08901",
       latitude: 40.499780,
       longitude: -74.454630,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "Wings Over Rutgers",
       address: "152 Easton Ave, New Brunswick, NJ 08901",
       latitude: 40.499460,
       longitude: -74.453740,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     },{
       name: "The Original Pizza City",
       address: "145 Easton Ave, New Brunswick, NJ 08901",
       latitude: 40.499810,
       longitude: -74.453430,
-      city_id: cities[0][:id],
+      school_id: schools[0][:id],
     }
   ]
 
@@ -212,10 +212,10 @@ end
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
   demo = User.find_by(email: 'demo')
-  cities = City.all
+  schools = School.all
 
-  cities.each do |city|
-    meals = city.meals
+  schools.each do |school|
+    meals = school.meals
     times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
 
     date = Date.today + 1

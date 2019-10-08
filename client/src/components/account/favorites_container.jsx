@@ -9,7 +9,7 @@ import {
     } from '../../util/selectors';
 
 const msp = ({entities:
-  {users, meals, shops, cities, favorites},
+  {users, meals, shops, schools, favorites},
   session, errors, ui}) => {
 
   let favs = getFavorites(favorites);
@@ -24,7 +24,7 @@ const msp = ({entities:
 
 const mdp = (dispatch) => {
  return {
-   fetchMeals: (city) => dispatch(fetchMeals(city)),
+   fetchMeals: (school) => dispatch(fetchMeals(school)),
    fetchFavorites: () => dispatch(fetchFavorites())
  };
 };

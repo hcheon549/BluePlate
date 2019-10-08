@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :meals, only: [:index]
     get 'meals/search', to: 'meals#search'
 
-    resources :cities, only: [:index]
+    resources :schools, only: [:index]
     resources :favorites, only: [:index, :create, :destroy]
     resources :reservations, only: [:index, :create, :update, :destroy]
   end

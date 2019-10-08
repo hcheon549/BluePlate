@@ -9,8 +9,8 @@ import LoadingIcon from "./loading_icon";
 class Greeting extends React.Component {
   componentDidMount() {
     this.props
-      .fetchCities()
-      .then(this.props.fetchMeals(this.props.currentUser.preferredCity))
+      .fetchSchools()
+      .then(this.props.fetchMeals(this.props.currentUser.enrolledSchool))
       .then(this.props.fetchFavorites())
       .then(this.props.fetchReservations())
       .then(this.props.resetFilter());
@@ -21,11 +21,11 @@ class Greeting extends React.Component {
       this.props.history.push("/");
     }
     if (
-      nextProps.currentUser.preferredCity !==
-      this.props.currentUser.preferredCity
+      nextProps.currentUser.enrolledSchool !==
+      this.props.currentUser.enrolledSchool
     ) {
       this.props
-        .fetchMeals(nextProps.currentUser.preferredCity)
+        .fetchMeals(nextProps.currentUser.enrolledSchool)
         .then(this.props.resetFilter());
     }
   }

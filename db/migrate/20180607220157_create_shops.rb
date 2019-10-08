@@ -5,10 +5,10 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.string :address
       t.float :latitude, null: false
       t.float :longitude, null: false
-      t.integer :city_id, null: false
+      t.integer :school_id, null: false
 
       t.timestamps
     end
-    add_index :shops, :city_id
+    add_index :shops, :school_id
   end
 end

@@ -7,13 +7,13 @@ class SignupForm extends React.Component {
     this.state = {
       email: "",
       password: "",
-      preferredCity: ""
+      enrolledSchool: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchCities();
+    this.props.fetchSchools();
   }
 
   componentWillUnmount() {
@@ -36,7 +36,7 @@ class SignupForm extends React.Component {
   render() {
     let emailError;
     let pwError;
-    let cityError;
+    let schoolError;
 
     this.props.errors.map((error, i) => {
       if (error.toLowerCase().includes("email")) {
@@ -51,8 +51,8 @@ class SignupForm extends React.Component {
             {error}
           </div>
         );
-      } else if (error.toLowerCase().includes("city")) {
-        cityError = (
+      } else if (error.toLowerCase().includes("school")) {
+        schoolError = (
           <div className="signup-errors" key={`error-${i}`}>
             {error}
           </div>
@@ -102,21 +102,21 @@ class SignupForm extends React.Component {
                 <label className="login-label">
                   <ul className="label-err">
                     <li>LOCATION:</li>
-                    <li className="session-error">{cityError}</li>
+                    <li className="session-error">{schoolError}</li>
                   </ul>
                   <select
-                    value={this.state.preferredCity}
-                    onChange={this.update("preferredCity")}
+                    value={this.state.enrolledSchool}
+                    onChange={this.update("enrolledSchool")}
                     autoComplete="foo"
                   >
                     <option hidden value={null}>
                       -- Please Select --
                     </option>
 
-                    {this.props.cities.map(city => {
+                    {this.props.schools.map(school => {
                       return (
-                        <option key={city.id} value={city.name}>
-                          {city.name}
+                        <option key={school.id} value={school.name}>
+                          {school.name}
                         </option>
                       );
                     })}

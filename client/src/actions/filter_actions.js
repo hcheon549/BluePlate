@@ -26,14 +26,14 @@ export const changeFilter = (filter, value) => {
   };
 };
 
-export const updateFilter = (city, search, filter, bounds) =>
+export const updateFilter = (school, search, filter, bounds) =>
   (dispatch) => {
 
     dispatch(changeFilter(filter, bounds));
 
     return searchMeals({
       bounds: bounds,
-      city: city,
+      school: school,
       search: search
     })(dispatch);
   };

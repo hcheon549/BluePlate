@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchMeals } from '../../actions/meal_actions';
-import { fetchCities } from '../../actions/city_actions';
+import { fetchSchools } from '../../actions/school_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
 import { resetFilter } from '../../actions/filter_actions';
 import { fetchReservations } from '../../actions/reservation_actions';
@@ -16,8 +16,8 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return {
-    fetchMeals: (city) => dispatch(fetchMeals(city)),
-    fetchCities: () => dispatch(fetchCities()),
+    fetchMeals: (school) => dispatch(fetchMeals(school)),
+    fetchSchools: () => dispatch(fetchSchools()),
     fetchFavorites: () => dispatch(fetchFavorites()),
     fetchReservations: () => dispatch(fetchReservations()),
     resetFilter: () => dispatch(resetFilter())

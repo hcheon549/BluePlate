@@ -8,7 +8,7 @@ export const signup = user => {
       user: {
         email: user.email,
         password: user.password,
-        preferred_city: user.preferredCity
+        enrolled_school: user.enrolledSchool
       }
     }
   });

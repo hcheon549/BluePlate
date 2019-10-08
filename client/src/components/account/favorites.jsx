@@ -3,7 +3,7 @@ import React from "react";
 
 class Favorites extends React.Component {
   componentDidMount() {
-    this.props.fetchMeals(this.props.currentUser.preferredCity);
+    this.props.fetchMeals(this.props.currentUser.enrolledSchool);
     this.props.fetchFavorites();
   }
 

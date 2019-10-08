@@ -1000,9 +1000,9 @@ button {
     margin: 0px 10px;
     display: flex; }
 
-.search-city {
+.search-school {
   width: auto; }
-  .search-city select {
+  .search-school select {
     cursor: pointer;
     background-color: white;
     padding: 7px;
@@ -1060,7 +1060,7 @@ button {
       margin-bottom: 10px;
       width: 85%;
       display: flex; }
-  .search-city select {
+  .search-school select {
     margin-top: 10px;
     width: 100%; } }
 

@@ -3,15 +3,15 @@ import React from "react";
 
 class History extends React.Component {
   componentDidMount() {
-    this.props.fetchMeals(this.props.currentUser.preferredCity);
+    this.props.fetchMeals(this.props.currentUser.enrolledSchool);
     this.props.fetchFavorites();
     this.props.fetchReservations();
   }
 
   render() {
-    let { meals, shops, cityReses, favIds } = this.props;
+    let { meals, shops, schoolReses, favIds } = this.props;
 
-    if (cityReses.length === 0) {
+    if (schoolReses.length === 0) {
       return (
         <div className="favorites-page">
           <div className="favorites-container">
@@ -29,7 +29,7 @@ class History extends React.Component {
           <div className="history-title">MY HISTORY</div>
 
           <div className="favorites-list">
-            {cityReses.map(res => {
+            {schoolReses.map(res => {
               return (
                 <div key={res.id} className="res-item">
                   <div className="reserv-image">

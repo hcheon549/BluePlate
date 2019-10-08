@@ -10,7 +10,7 @@ export const updateUser = user => {
         password: user.password,
         name: user.name,
         meals_left: user.mealsLeft,
-        preferred_city: user.preferredCity,
+        enrolled_school: user.enrolledSchool,
         company_name: user.companyName,
         image_url: user.imageUrl
       }

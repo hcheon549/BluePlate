@@ -6,15 +6,15 @@ import { withRouter } from 'react-router-dom';
 import History from './history';
 import {
    getFavIds,
-   getCityReservations
+   getSchoolReservations
     } from '../../util/selectors';
 
 const msp = ({entities:
-  {users, meals, shops, cities, favorites, reservations},
+  {users, meals, shops, schools, favorites, reservations},
   session, errors, ui}) => {
 
-  let cityReses = getCityReservations(reservations, meals, false);
-  cityReses = cityReses.sort((a,b) => {
+  let schoolReses = getSchoolReservations(reservations, meals, false);
+  schoolReses = schoolReses.sort((a,b) => {
     return new Date(b.date) - new Date(a.date);
   });
 
@@ -24,14 +24,14 @@ const msp = ({entities:
     currentUser: users[session.id],
     meals: meals,
     favIds: favIds,
-    cityReses: cityReses,
+    schoolReses: schoolReses,
     shops: shops
   };
 };
 
 const mdp = (dispatch) => {
  return {
-   fetchMeals: (city) => dispatch(fetchMeals(city)),
+   fetchMeals: (school) => dispatch(fetchMeals(school)),
    fetchFavorites: () => dispatch(fetchFavorites()),
    fetchReservations: () => dispatch(fetchReservations())
  };

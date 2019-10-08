@@ -5,7 +5,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: this.props.currentUser.preferredCity,
+      school: this.props.currentUser.enrolledSchool,
       search: this.props.search
     };
 
@@ -20,9 +20,9 @@ class Search extends React.Component {
     }
   }
 
-  updatePreferredCity(e) {
+  updateEnrolledSchool(e) {
     let newUser = Object.assign({}, this.props.currentUser);
-    newUser.preferredCity = e.currentTarget.value;
+    newUser.enrolledSchool = e.currentTarget.value;
     this.props.updateUser(newUser);
   }
 
@@ -71,15 +71,15 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-component">
-        <div className="search-city">
+        <div className="search-school">
           <select
-            value={this.state.city}
-            onChange={e => this.updatePreferredCity(e)}
+            value={this.state.school}
+            onChange={e => this.updateEnrolledSchool(e)}
           >
-            {this.props.cities.map(city => {
+            {this.props.schools.map(school => {
               return (
-                <option key={city.id} value={city.name}>
-                  {city.name}
+                <option key={school.id} value={school.name}>
+                  {school.name}
                 </option>
               );
             })}
