@@ -8,46 +8,226 @@
 
 require 'open-uri'
 
-# from https://stackoverflow.com/questions/43195899/how-to-generate-random-coordinates-within-a-circle-with-specified-radius
+ActiveRecord::Base.transaction do
+  User.destroy_all
 
-User.destroy_all
-users = [
-  {
-    email: 'demo',
-    name: "Bob Ross",
-    password: 123456,
-    preferred_city: 'New York',
-    treats_left: 15,
-    image_url: "https://res.cloudinary.com/mwojick/image/upload/v1532323181/TreatPal/bobross.jpg",
-    company_name: "The Joy of Painting"
-  }
-]
+  users = [
+    {
+      email: 'demo',
+      name: "Bob Ross",
+      password: 123456,
+      preferred_city: 'Rutgers University–New Brunswick',
+      treats_left: 15,
+      image_url: "https://res.cloudinary.com/mwojick/image/upload/v1532323181/TreatPal/bobross.jpg",
+      company_name: "The Joy of Painting"
+    },
+  ]
 
-users.each do |user|
-  User.create!(user)
+  users.each do |user|
+    User.create!(user)
+  end
+  puts "Users created"
 end
 
-City.destroy_all
+ActiveRecord::Base.transaction do
+  City.destroy_all
 
-cities = [
-  {
-    name: "New York",
-    latitude: 40.750617,
-    longitude: -73.989161
-  },
-]
+  cities = [
+    {
+      name: "Rutgers University–New Brunswick",
+      latitude: 40.498080,
+      longitude: -74.448920
+    }
+  ]
 
-cities.each do |city|
-  City.create!(city)
+  cities.each do |city|
+    City.create!(city)
+  end
+  puts "Colleges created"
 end
 
-Shop.destroy_all
+# Example reverse geocode
+# https://maps.googleapis.com/maps/api/geocode/json?latlng=34.019022,-118.257957&key=AIzaSyCdt5y8QHtz0FgnzgMLAc4-rfVPXz48B-8
 
-shops = []
+ActiveRecord::Base.transaction do
+  Shop.destroy_all
 
-shops.each_with_index do |shop, i|
-  Shop.create!(shop)
+  # API key for reverse geocoding
+  key = "AIzaSyCdt5y8QHtz0FgnzgMLAc4-rfVPXz48B-8"
+  count = 0
+
+  cities = City.all
+
+  shops = [
+    {
+      name: "Stuff Yer Face",
+      address: "49 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.498080,
+      longitude: -74.448920,
+      city_id: cities[0][:id],
+    }, {
+      name: "KBG Korean BBQ & Grill",
+      address: "6 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.498080,
+      longitude: -74.448920,
+      city_id: cities[0][:id],
+    }, {
+      name: "Noodle Gourmet",
+      address: "43 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.497950,
+      longitude: -74.448530,
+      city_id: cities[0][:id],
+    }, {
+      name: "Krispy Pizza",
+      address: "50 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.499540,
+      longitude: -74.448630,
+      city_id: cities[0][:id],
+    }, {
+      name: "Jersey Mike's Subs",
+      address: "44 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.499290,
+      longitude: -74.448380,
+      city_id: cities[0][:id],
+    }, {
+      name: "Nirvanis Indian Kitchen",
+      address: "68 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.497910,
+      longitude: -74.449700,
+      city_id: cities[0][:id],
+    },{
+      name: "Olive Branch",
+      address: "37 Bartlett St, New Brunswick, NJ 08901",
+      latitude: 40.501350,
+      longitude: -74.452830,
+      city_id: cities[0][:id],
+    },{
+      name: "Zookini Pizza & Restaurant",
+      address: "60 Sicard St, New Brunswick, NJ 08901",
+      latitude: 40.502708,
+      longitude: -74.454468,
+      city_id: cities[0][:id],
+    },{
+      name: "Kelly's Korner",
+      address: "75 Morrell St, New Brunswick, NJ 08901",
+      latitude: 40.501000,
+      longitude: -74.455060,
+      city_id: cities[0][:id],
+    },{
+      name: "Daniel's Pizzeria",
+      address: "204 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500340,
+      longitude: -74.456000,
+      city_id: cities[0][:id],
+    },{
+      name: "Seed Burger",
+      address: "176 Easton Ave New Brunswick, NJ 08901",
+      latitude: 40.499930,
+      longitude: -74.454930,
+      city_id: cities[0][:id],
+    },{
+      name: "Thai Noodle",
+      address: "174 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499780,
+      longitude: -74.454630,
+      city_id: cities[0][:id],
+    },{
+      name: "Wings Over Rutgers",
+      address: "152 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499460,
+      longitude: -74.453740,
+      city_id: cities[0][:id],
+    },{
+      name: "The Original Pizza City",
+      address: "145 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499810,
+      longitude: -74.453430,
+      city_id: cities[0][:id],
+    }
+  ]
+
+
+  shops.each_with_index do |shop, i|
+    Shop.create!(shop)
+  end
+  puts "Shops created"
 end
 
+# https://source.unsplash.com/collection/8746283/480x480/?sig=1/
 
-Favorite.destroy_all
+ActiveRecord::Base.transaction do
+  Treat.destroy_all
+
+  imageWidth = 480
+  imageHeight = 480
+  collectionID = 8746283
+  treats = []
+
+  shops = Shop.all
+
+  (shops.length).times do |i|
+    name = Faker::Food.dish
+
+    description = ''
+    4.times do |j|
+      description += Faker::Food.ingredient + ", "
+    end
+    description += Faker::Food.ingredient
+
+    price = rand(3.0..8.0).round(2)
+
+    randomNumber = rand(1..200)
+    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{randomNumber}"
+
+    shop_id = shops[i].id
+
+    treats << {
+      name: name,
+      description: description,
+      price: price,
+      image_url: image_url,
+      shop_id: shop_id
+    }
+  end
+
+  treats.each do |treat|
+    Treat.create!(treat)
+  end
+  puts "Treats created"
+end
+
+ActiveRecord::Base.transaction do
+  Favorite.destroy_all
+  demo = User.find_by(email: 'demo')
+  shops = Shop.all
+
+  shops.each do |s|
+    if (rand(1..10) < 4)
+      Favorite.create!({shop_id: s.id, user_id: demo.id})
+    end
+  end
+  puts "Favorites created"
+end
+
+ActiveRecord::Base.transaction do
+  Reservation.destroy_all
+  demo = User.find_by(email: 'demo')
+  cities = City.all
+
+  cities.each do |city|
+    treats = city.treats
+    times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
+
+    date = Date.today + 1
+    20.times do |t|
+
+      if (rand(1..10) < 7)
+        treat_id = treats.sample.id
+        time = (date.to_s + " " + times.sample).to_time
+        Reservation.create!({treat_id: treat_id, user_id: demo.id, time: time, date: date})
+      end
+      date = date - 1
+    end
+  end
+  puts "Reservations created"
+end
