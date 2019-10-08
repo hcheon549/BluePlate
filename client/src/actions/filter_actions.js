@@ -1,6 +1,6 @@
 import {
-  searchTreats
-} from './treat_actions';
+  searchMeals
+} from './meal_actions';
 
 export const UPDATE_FILTER = "UPDATE_FILTER";
 export const RESET_FILTER = "RESET_FILTER";
@@ -31,7 +31,7 @@ export const updateFilter = (city, search, filter, bounds) =>
 
     dispatch(changeFilter(filter, bounds));
 
-    return searchTreats({
+    return searchMeals({
       bounds: bounds,
       city: city,
       search: search

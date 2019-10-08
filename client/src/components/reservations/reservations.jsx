@@ -35,12 +35,12 @@ class Reservations extends React.Component {
   updateRes(e) {
     let newRes = Object.assign({}, this.props.reservations[0]);
     newRes.time = e.currentTarget.value;
-    newRes.treatId = this.props.reservations[0].treatId;
+    newRes.mealId = this.props.reservations[0].mealId;
     this.props.updateReservation(newRes);
   }
 
   render() {
-    let { reservations, treats, shops } = this.props;
+    let { reservations, meals, shops } = this.props;
 
     let mins = new Date(Date.parse(this.state.resTime)).getMinutes();
     let hrs = new Date(Date.parse(this.state.resTime)).getHours();
@@ -73,7 +73,7 @@ class Reservations extends React.Component {
     reservations.forEach(res => {
       if (res.length === 0) {
       } else {
-        savings = savings + treats[res.treatId].price - 3;
+        savings = savings + meals[res.mealId].price - 3;
       }
     });
 
@@ -88,8 +88,8 @@ class Reservations extends React.Component {
                 return (
                   <div key={id} className="res-nonresed hidden-res">
                     <div className="day-of-week">{fiveDays[id]}</div>
-                    <div className="no-treat-this-day">
-                      You didn't have a treat on this day.
+                    <div className="no-meal-this-day">
+                      You didn't have a meal on this day.
                     </div>
                   </div>
                 );
@@ -99,13 +99,13 @@ class Reservations extends React.Component {
                     <div className="day-of-week">{fiveDays[id]}</div>
 
                     <img
-                      src={treats[res.treatId].imageUrl}
+                      src={meals[res.mealId].imageUrl}
                       className="resed-img"
                       alt=""
                     />
 
-                    <div className="treat-you-had">
-                      You had {shops[treats[res.treatId].shopId].name} on{" "}
+                    <div className="meal-you-had">
+                      You had {shops[meals[res.mealId].shopId].name} on{" "}
                       {fiveDays[id]}
                     </div>
                   </div>
@@ -123,7 +123,7 @@ class Reservations extends React.Component {
                   return (
                     <div key={id} className="not-resed-today">
                       <div className="day-of-week">{fiveDays.slice(-1)[0]}</div>
-                      <div className="no-treat-this-day">
+                      <div className="no-meal-this-day">
                         Try something new today!
                       </div>
                     </div>
@@ -135,19 +135,19 @@ class Reservations extends React.Component {
 
                       <ul className="resed-today-desc">
                         <li className="resed-today-desc1">
-                          {treats[res.treatId].name}
+                          {meals[res.mealId].name}
                         </li>
                         <li className="resed-today-desc2">
-                          {shops[treats[res.treatId].shopId].name}
+                          {shops[meals[res.mealId].shopId].name}
                         </li>
                         <li className="resed-today-desc3">
-                          {shops[treats[res.treatId].shopId].address}
+                          {shops[meals[res.mealId].shopId].address}
                         </li>
                       </ul>
 
                       <img
                         className="resed-img-today"
-                        src={treats[res.treatId].imageUrl}
+                        src={meals[res.mealId].imageUrl}
                         alt=""
                       />
 
@@ -177,7 +177,7 @@ class Reservations extends React.Component {
               })}
           </div>
           <div className="res-savings">
-            <li className="sav-holy">Holy shit!</li>
+            <li className="sav-holy">Holy cow!</li>
             <li className="sav-est">You'll be saving an estimated</li>
             <li className="sav-num">${savings.toFixed(2)}</li>
             <li className="sav-week">on meals this week!</li>

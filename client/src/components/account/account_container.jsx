@@ -5,7 +5,7 @@ import { updateUser } from '../../actions/user_actions';
 
 
 const msp = ({entities:
-  {users, treats, shops, cities, favorites, reservations},
+  {users, meals, shops, cities, favorites, reservations},
   session, errors, ui}) => {
 
  return {

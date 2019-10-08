@@ -319,13 +319,13 @@ button {
   display: flex;
   flex-direction: column; }
 
-.treats-and-map {
+.meals-and-map {
   display: flex;
   flex-direction: row;
   position: relative; }
 
 @media (max-width: 800px) {
-  .treats-and-map {
+  .meals-and-map {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
@@ -846,7 +846,7 @@ button {
   margin: 0 10px;
   border: 1px solid #c0bcbb; }
 
-.treat-you-had {
+.meal-you-had {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -966,7 +966,7 @@ button {
   display: flex;
   flex-direction: column; }
 
-.no-treat-this-day {
+.no-meal-this-day {
   margin-top: auto;
   margin-bottom: auto;
   margin-right: 20px;
@@ -1226,7 +1226,7 @@ button {
   .login-welcome {
     width: 60%; } }
 
-.treat-listing {
+.meal-listing {
   display: grid;
   grid-template-columns: 1fr;
   position: relative;
@@ -1236,22 +1236,22 @@ button {
   height: 100%;
   transform: translateZ(0);
   -webkit-transform: translateZ(0); }
-  .treat-listing :hover {
+  .meal-listing :hover {
     transform: scale3d(1.05, 1.05, 1.05);
     transition-duration: 0.1s;
     cursor: pointer; }
-    .treat-listing :hover .hidden-description {
+    .meal-listing :hover .hidden-description {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       position: absolute;
       background: rgba(255, 255, 255, 0.75); }
-    .treat-listing :hover .reserve-btn {
+    .meal-listing :hover .reserve-btn {
       display: block; }
-    .treat-listing :hover .select-time {
+    .meal-listing :hover .select-time {
       display: block; }
 
-.treat-box {
+.meal-box {
   box-sizing: border-box;
   margin: 10px;
   position: relative;
@@ -1262,35 +1262,35 @@ button {
   align-items: flex-start;
   min-width: 0px;
   min-height: 0px; }
-  .treat-box :hover {
+  .meal-box :hover {
     transform: none;
     opacity: 1; }
 
 @media (min-width: 500px) {
-  .treat-listing {
+  .meal-listing {
     grid-template-columns: repeat(2, 1fr); } }
 
 @media (max-width: 800px) {
-  .treat-listing {
+  .meal-listing {
     width: auto; } }
 
 @media (min-width: 800px) {
-  .treat-listing-map-collapse {
+  .meal-listing-map-collapse {
     grid-template-columns: repeat(3, 1fr); } }
 
 @media (min-width: 1000px) {
-  .treat-listing {
+  .meal-listing {
     grid-template-columns: repeat(3, 1fr); }
-  .treat-listing-map-collapse {
+  .meal-listing-map-collapse {
     grid-template-columns: repeat(4, 1fr); } }
 
 @media (min-width: 1400px) {
-  .treat-listing {
+  .meal-listing {
     grid-template-columns: repeat(4, 1fr); }
-  .treat-listing-map-collapse {
+  .meal-listing-map-collapse {
     grid-template-columns: repeat(5, 1fr); } }
 
-.treat-box-title {
+.meal-box-title {
   height: 30px;
   width: 100%;
   background-color: #204399;
@@ -1299,13 +1299,13 @@ button {
   font-weight: bold;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px; }
-  .treat-box-title li {
+  .meal-box-title li {
     letter-spacing: 1px;
     display: flex;
     align-items: center;
     justify-content: center; }
 
-.treat-box-description {
+.meal-box-description {
   width: 90%;
   margin: 10px 15px 10px;
   display: flex;
@@ -1318,7 +1318,7 @@ button {
   white-space: nowrap;
   text-overflow: ellipsis; }
 
-.treat-name {
+.meal-name {
   color: #204399;
   font-weight: bold;
   font-size: 18px; }
@@ -1344,11 +1344,11 @@ button {
     margin-right: 10%;
     margin-left: 10%; }
 
-.hidden-treat-name {
+.hidden-meal-name {
   font-weight: bold;
   margin-bottom: 10px; }
 
-.treat-errors {
+.meal-errors {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1358,26 +1358,26 @@ button {
   color: #272727;
   letter-spacing: 0.5px; }
 
-.treat-errors-list li {
+.meal-errors-list li {
   list-style: disc;
   padding: 0 40px; }
 
-.treat-errors-text {
+.meal-errors-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0px 40px; }
 
-.treat-errors-sorry {
+.meal-errors-sorry {
   margin: 20px 0px; }
 
-.treat-errors-try {
+.meal-errors-try {
   margin-bottom: 20px;
   font-size: 20px;
   color: #204399; }
 
-.treat-errors-reset {
+.meal-errors-reset {
   margin: 20px 0px;
   border: none;
   background: white;
@@ -1386,7 +1386,7 @@ button {
   color: #204399;
   font-weight: bold; }
 
-.treat-errors-reset:hover {
+.meal-errors-reset:hover {
   background: #430098;
   color: white; }
 

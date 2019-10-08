@@ -1,17 +1,17 @@
 import {
-  RECEIVE_ALL_TREATS,
-  RECEIVE_SEARCH_TREATS,
-  RECEIVE_TREAT_ERRORS
-} from '../actions/treat_actions';
+  RECEIVE_ALL_MEALS,
+  RECEIVE_SEARCH_MEALS,
+  RECEIVE_MEAL_ERRORS
+} from '../actions/meal_actions';
 
 const shopReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
-    case RECEIVE_ALL_TREATS:
+    case RECEIVE_ALL_MEALS:
       return action.payload.shops;
-    case RECEIVE_SEARCH_TREATS:
+    case RECEIVE_SEARCH_MEALS:
       return action.payload.shops;
-    case RECEIVE_TREAT_ERRORS:
+    case RECEIVE_MEAL_ERRORS:
       return [];
     default:
       return oldState;

@@ -4,7 +4,7 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  user_id    :integer          not null
-#  treat_id   :integer          not null
+#  meal_id   :integer          not null
 #  date       :date             not null
 #  time       :time             not null
 #  datetime   :datetime
@@ -16,5 +16,5 @@ class Reservation < ApplicationRecord
   validates :date, :time, presence: true
 
   belongs_to :user
-  belongs_to :treat
+  belongs_to :meal
 end

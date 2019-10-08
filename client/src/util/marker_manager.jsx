@@ -29,7 +29,7 @@ export default class MarkerManager {
     });
   }
 
-  updateMarkers(shops, treats) {
+  updateMarkers(shops, meals) {
     const shopsObj = {};
 
     shops.forEach(shop => {
@@ -38,21 +38,21 @@ export default class MarkerManager {
 
     shops
       .filter(shop => !this.markers[shop.id])
-      .forEach(newShop => this.createMarker(newShop, treats[newShop.id]));
+      .forEach(newShop => this.createMarker(newShop, meals[newShop.id]));
 
     Object.keys(this.markers)
       .filter(shopId => !shopsObj[shopId])
       .forEach(shopId => this.removeMarker(this.markers[shopId]));
   }
 
-  createMarker(shop, treat, animate = null) {
+  createMarker(shop, meal, animate = null) {
     let contentString = `<div class="info-window">
 
-        <img class="info-win-img" src="${treat.imageUrl}"/>
+        <img class="info-win-img" src="${meal.imageUrl}"/>
       
         <div class="info-win-desc">
           <div class="info-win-name">
-            ${treat.name.toUpperCase()}
+            ${meal.name.toUpperCase()}
           </div >
           <div class="info-win-name">
             ${shop.name.toUpperCase()}
@@ -88,7 +88,7 @@ export default class MarkerManager {
       this.resButton = document.getElementById("map-reserve");
 
       this.reserveFunction = () => {
-        this.modal(treat, shop);
+        this.modal(meal, shop);
       };
 
       this.resButton.addEventListener("click", this.reserveFunction);
@@ -123,16 +123,16 @@ export default class MarkerManager {
     }
   }
 
-  // drop(shops, treats) {
+  // drop(shops, meals) {
   //   this.clearMarkers();
   //   for (let i = 0; i < shops.length; i++) {
-  //     this.addMarkerWithTimeout(shops[i], treats[shops[i].id], i * 25);
+  //     this.addMarkerWithTimeout(shops[i], meals[shops[i].id], i * 25);
   //   }
   // }
 
-  // addMarkerWithTimeout(shop, treat, timeout) {
+  // addMarkerWithTimeout(shop, meal, timeout) {
   //   window.setTimeout(() => {
-  //     this.createMarker(shop, treat, google.maps.Animation.DROP)
+  //     this.createMarker(shop, meal, google.maps.Animation.DROP)
 
   //   }, timeout);
   // }

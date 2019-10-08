@@ -24,7 +24,7 @@ class ReservationModal extends React.Component {
   };
 
   render() {
-    let { closeModal, shop, treat } = this.props;
+    let { closeModal, shop, meal } = this.props;
     let { seltime } = this.state;
 
     return (
@@ -32,16 +32,16 @@ class ReservationModal extends React.Component {
         className="reserve-modal animated fadeInDown"
         onClick={e => e.stopPropagation()}
       >
-        <img className="res-modal-img" src={treat.imageUrl} alt="" />
+        <img className="res-modal-img" src={meal.imageUrl} alt="" />
         <div className="res-modal-right">
           <div className="modal-top">
-            <div>{treat.name.toUpperCase()}</div>
+            <div>{meal.name.toUpperCase()}</div>
             <div onClick={closeModal} className="res-modal-x">
               &times;
             </div>
           </div>
 
-          <div className="modal-desc">{treat.description}</div>
+          <div className="modal-desc">{meal.description}</div>
           <div className="modal-shop">{shop.name}</div>
           <div className="modal-loc">{shop.address}</div>
 
@@ -84,7 +84,7 @@ class ReservationModal extends React.Component {
 
 const msp = (state, ownProps) => {
   return {
-    treat: ownProps.treat,
+    meal: ownProps.meal,
     shop: ownProps.shop,
     currentUser: state.entities.users[state.session.id],
     resToday: state.ui.filters.restoday

@@ -33,32 +33,32 @@ export const getFavorites = favorites => {
   return favs;
 };
 
-export const getFavTreats = (treats, favs) => {
-  return treats.filter(treat => favs[treat.shopId]);
+export const getFavMeals = (meals, favs) => {
+  return meals.filter(meal => favs[meal.shopId]);
 };
 
 export const getFavShops = (shops, favs) => {
   return shops.filter(shop => favs[shop.id]);
 };
 
-export const mapShopIdToTreat = treats => {
-  let treatHash = {};
+export const mapShopIdToMeal = meals => {
+  let mealHash = {};
 
-  treats.forEach(treat => {
-    treatHash[treat.shopId] = treat;
+  meals.forEach(meal => {
+    mealHash[meal.shopId] = meal;
   });
-  return treatHash;
+  return mealHash;
 };
 
-export const getCityReservations = (reservations, treats, sel) => {
-  let treatIds = [];
-  Object.values(treats).forEach(tr => {
-    treatIds.push(tr.id);
+export const getCityReservations = (reservations, meals, sel) => {
+  let mealIds = [];
+  Object.values(meals).forEach(tr => {
+    mealIds.push(tr.id);
   });
 
   let cityReses = [];
   Object.values(reservations).forEach(res => {
-    if (treatIds.includes(res.treatId)) {
+    if (mealIds.includes(res.mealId)) {
       cityReses.push(res);
     }
   });

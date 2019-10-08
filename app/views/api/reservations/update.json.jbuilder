@@ -1,2 +1,2 @@
 
-json.res @reservation, :id, :user_id, :treat_id, :date, :time
+json.res @reservation, :id, :user_id, :meal_id, :date, :time

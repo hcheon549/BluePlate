@@ -8,10 +8,10 @@ import {
 import { getCityReservations, getPastFive } from '../../util/selectors';
 import { changeFilter } from '../../actions/filter_actions';
 
-const msp = ({entities: {users, treatRes, shopRes, reservations}, session}) => {
+const msp = ({entities: {users, mealRes, shopRes, reservations}, session}) => {
 
 
-  let cityReservations = getCityReservations(reservations, treatRes, true);
+  let cityReservations = getCityReservations(reservations, mealRes, true);
   cityReservations = cityReservations.sort((a,b) => {
     return new Date(b.date) - new Date(a.date);
   });
@@ -37,7 +37,7 @@ const msp = ({entities: {users, treatRes, shopRes, reservations}, session}) => {
   return {
     currentUser: users[session.id],
     reservations: pastFive,
-    treats: treatRes,
+    meals: mealRes,
     shops: shopRes,
     resTime: resTime
   };

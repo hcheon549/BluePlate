@@ -1,8 +1,8 @@
 import React from "react";
 // import { Link, Redirect } from 'react-router-dom';
-import TreatIndexContainer from "../treat_listing/treat_index_container";
+import MealIndexContainer from "../meal_listing/meal_index_container";
 import SearchContainer from "../search/search_container";
-import TreatMapContainer from "../map/treat_map_container";
+import MealMapContainer from "../map/meal_map_container";
 import ReservationsContainer from "../reservations/reservations_container";
 import LoadingIcon from "./loading_icon";
 
@@ -10,7 +10,7 @@ class Greeting extends React.Component {
   componentDidMount() {
     this.props
       .fetchCities()
-      .then(this.props.fetchTreats(this.props.currentUser.preferredCity))
+      .then(this.props.fetchMeals(this.props.currentUser.preferredCity))
       .then(this.props.fetchFavorites())
       .then(this.props.fetchReservations())
       .then(this.props.resetFilter());
@@ -25,7 +25,7 @@ class Greeting extends React.Component {
       this.props.currentUser.preferredCity
     ) {
       this.props
-        .fetchTreats(nextProps.currentUser.preferredCity)
+        .fetchMeals(nextProps.currentUser.preferredCity)
         .then(this.props.resetFilter());
     }
   }
@@ -34,15 +34,15 @@ class Greeting extends React.Component {
     let arrowR = this.refs.arrowRight;
     let arrowL = this.refs.arrowLeft;
     let map = document.getElementById("map");
-    let treatListing = document.getElementsByClassName("treat-listing")[0];
+    let mealListing = document.getElementsByClassName("meal-listing")[0];
 
     if (map.style.minWidth !== "0px") {
       map.classList.toggle("map-transition");
       map.style.minWidth = "0px";
       arrowL.style.display = "block";
       arrowR.style.display = "none";
-      if (treatListing) {
-        treatListing.classList.toggle("treat-listing-map-collapse");
+      if (mealListing) {
+        mealListing.classList.toggle("meal-listing-map-collapse");
       }
     } else {
       setTimeout(() => {
@@ -51,8 +51,8 @@ class Greeting extends React.Component {
       map.style.minWidth = "33vw";
       arrowL.style.display = "none";
       arrowR.style.display = "block";
-      if (treatListing) {
-        treatListing.classList.toggle("treat-listing-map-collapse");
+      if (mealListing) {
+        mealListing.classList.toggle("meal-listing-map-collapse");
       }
     }
   }
@@ -72,8 +72,8 @@ class Greeting extends React.Component {
           <SearchContainer />
         </div>
 
-        <div className="treats-and-map">
-          <TreatIndexContainer />
+        <div className="meals-and-map">
+          <MealIndexContainer />
 
           <div
             ref="coll"
@@ -85,7 +85,7 @@ class Greeting extends React.Component {
             <div ref="arrowRight" className="arrow arrow-right" />
           </div>
           <div className="map-container">
-            <TreatMapContainer />
+            <MealMapContainer />
           </div>
         </div>
       </div>

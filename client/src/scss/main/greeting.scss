@@ -4,14 +4,14 @@
   flex-direction: column;
 }
 
-.treats-and-map {
+.meals-and-map {
   display: flex;
   flex-direction: row;
   position: relative;
 }
 
 @media (max-width: $media2) {
-  .treats-and-map {
+  .meals-and-map {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;

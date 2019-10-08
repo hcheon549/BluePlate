@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchTreats } from '../../actions/treat_actions';
+import { fetchMeals } from '../../actions/meal_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
 import { fetchReservations } from '../../actions/reservation_actions';
 import { withRouter } from 'react-router-dom';
@@ -10,10 +10,10 @@ import {
     } from '../../util/selectors';
 
 const msp = ({entities:
-  {users, treats, shops, cities, favorites, reservations},
+  {users, meals, shops, cities, favorites, reservations},
   session, errors, ui}) => {
 
-  let cityReses = getCityReservations(reservations, treats, false);
+  let cityReses = getCityReservations(reservations, meals, false);
   cityReses = cityReses.sort((a,b) => {
     return new Date(b.date) - new Date(a.date);
   });
@@ -22,7 +22,7 @@ const msp = ({entities:
 
  return {
     currentUser: users[session.id],
-    treats: treats,
+    meals: meals,
     favIds: favIds,
     cityReses: cityReses,
     shops: shops
@@ -31,7 +31,7 @@ const msp = ({entities:
 
 const mdp = (dispatch) => {
  return {
-   fetchTreats: (city) => dispatch(fetchTreats(city)),
+   fetchMeals: (city) => dispatch(fetchMeals(city)),
    fetchFavorites: () => dispatch(fetchFavorites()),
    fetchReservations: () => dispatch(fetchReservations())
  };

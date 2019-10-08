@@ -35,7 +35,7 @@ class Search extends React.Component {
     this.props.changeFilter("search", this.state.search);
 
     let search = Object.assign({}, this.state, { bounds: this.props.bounds });
-    this.props.searchTreats(search);
+    this.props.searchMeals(search);
   }
 
   handleChange(e) {
@@ -45,7 +45,7 @@ class Search extends React.Component {
       this.props.changeFilter("search", this.state.search);
 
       let search = Object.assign({}, this.state, { bounds: this.props.bounds });
-      this.props.searchTreats(search);
+      this.props.searchMeals(search);
     });
   }
 
@@ -55,7 +55,7 @@ class Search extends React.Component {
     this.setState({ search: val }, () => {
       debounce(() => {
         let search = Object.assign({}, this.state);
-        this.props.searchTreats(search);
+        this.props.searchMeals(search);
       }, 2000)();
     });
   }
@@ -92,7 +92,7 @@ class Search extends React.Component {
               type="text"
               value={this.state.search}
               onChange={this.handleChange}
-              placeholder="Search by treat or shop"
+              placeholder="Search by meal or shop"
             />
 
             <img

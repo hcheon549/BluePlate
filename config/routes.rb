@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     get 'session/user', to: 'sessions#user'
 
-    resources :treats, only: [:index]
-    get 'treats/search', to: 'treats#search'
+    resources :meals, only: [:index]
+    get 'meals/search', to: 'meals#search'
 
     resources :cities, only: [:index]
     resources :favorites, only: [:index, :create, :destroy]

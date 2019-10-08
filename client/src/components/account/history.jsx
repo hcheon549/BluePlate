@@ -3,13 +3,13 @@ import React from "react";
 
 class History extends React.Component {
   componentDidMount() {
-    this.props.fetchTreats(this.props.currentUser.preferredCity);
+    this.props.fetchMeals(this.props.currentUser.preferredCity);
     this.props.fetchFavorites();
     this.props.fetchReservations();
   }
 
   render() {
-    let { treats, shops, cityReses, favIds } = this.props;
+    let { meals, shops, cityReses, favIds } = this.props;
 
     if (cityReses.length === 0) {
       return (
@@ -33,20 +33,20 @@ class History extends React.Component {
               return (
                 <div key={res.id} className="res-item">
                   <div className="reserv-image">
-                    <img alt="" src={treats[res.treatId].imageUrl} />
+                    <img alt="" src={meals[res.mealId].imageUrl} />
                   </div>
 
                   <div className="reserv-text">
                     <div className="res-title-icon">
                       <div className="res-title">
-                        {treats[res.treatId].name}
+                        {meals[res.mealId].name}
                       </div>
 
                       <div className="fav-icon">
                         <img
                           alt=""
                           src={
-                            favIds[treats[res.treatId].shopId]
+                            favIds[meals[res.mealId].shopId]
                               ? "https://res.cloudinary.com/mwojick/image/upload/v1528825174/TreatPal/icons/favorited.png"
                               : ""
                           }
@@ -55,11 +55,11 @@ class History extends React.Component {
                     </div>
 
                     <div className="res-shopname">
-                      {shops[treats[res.treatId].shopId].name}
+                      {shops[meals[res.mealId].shopId].name}
                     </div>
 
                     <div className="fav-address">
-                      {shops[treats[res.treatId].shopId].address}
+                      {shops[meals[res.mealId].shopId].address}
                     </div>
 
                     <div className="res-date">{res.date}</div>

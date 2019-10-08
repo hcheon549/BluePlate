@@ -1,11 +1,11 @@
 
 import {
-  RECEIVE_ALL_TREATS,
-  RECEIVE_SEARCH_TREATS,
-  RECEIVE_TREAT_ERRORS,
-  START_LOADING_ALL_TREATS,
-  START_LOADING_SEARCH_TREATS
-} from '../actions/treat_actions';
+  RECEIVE_ALL_MEALS,
+  RECEIVE_SEARCH_MEALS,
+  RECEIVE_MEAL_ERRORS,
+  START_LOADING_ALL_MEALS,
+  START_LOADING_SEARCH_MEALS
+} from '../actions/meal_actions';
 
 const initialState = {
   fetchLoading: false,
@@ -15,16 +15,16 @@ const initialState = {
 const loadingReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_ALL_TREATS:
+    case RECEIVE_ALL_MEALS:
       return Object.assign({}, state, { fetchLoading: false });
-    case RECEIVE_SEARCH_TREATS:
+    case RECEIVE_SEARCH_MEALS:
       return Object.assign({}, state, { searchLoading: false });
-    case RECEIVE_TREAT_ERRORS:
+    case RECEIVE_MEAL_ERRORS:
       return Object.assign({}, state,
         {fetchLoading: false, searchLoading: false });
-    case START_LOADING_ALL_TREATS:
+    case START_LOADING_ALL_MEALS:
       return Object.assign({}, state, { fetchLoading: true });
-    case START_LOADING_SEARCH_TREATS:
+    case START_LOADING_SEARCH_MEALS:
       return Object.assign({}, state, { searchLoading: true });
     default:
       return state;

@@ -14,8 +14,8 @@ class Api::ReservationsController < ApplicationController
 
   def create
 
-    if current_user.treats_left < 1
-      render json: ["No treats left!"], status: 422
+    if current_user.meals_left < 1
+      render json: ["No Meals left!"], status: 422
     else
 
       if params[:reservation][:date]
@@ -28,13 +28,13 @@ class Api::ReservationsController < ApplicationController
 
       @reservation = Reservation.new(
         user_id: params[:reservation][:user_id],
-        treat_id: params[:reservation][:treat_id],
+        meal_id: params[:reservation][:meal_id],
         time: time,
         date: date
         )
 
       if @reservation.save
-        current_user.update_attributes(treats_left: current_user.treats_left - 1)
+        current_user.update_attributes(meals_left: current_user.meals_left - 1)
         @user = current_user
         render :show
       else
@@ -58,7 +58,7 @@ class Api::ReservationsController < ApplicationController
 
     if @reservation.update_attributes(
       user_id: params[:reservation][:user_id],
-      treat_id: params[:reservation][:treat_id],
+      meal_id: params[:reservation][:meal_id],
       time: time,
       date: date
       )
@@ -73,7 +73,7 @@ class Api::ReservationsController < ApplicationController
   def destroy
     @reservation = current_user.reservations.find(params[:id])
     @reservation.destroy
-    current_user.update_attributes(treats_left: current_user.treats_left + 1)
+    current_user.update_attributes(meals_left: current_user.meals_left + 1)
     @user = current_user
     render :show
   end
@@ -81,7 +81,7 @@ class Api::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :treat_id, :time, :date)
+    params.require(:reservation).permit(:user_id, :meal_id, :time, :date)
   end
 
 end

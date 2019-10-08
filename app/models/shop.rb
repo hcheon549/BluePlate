@@ -15,7 +15,7 @@
 class Shop < ApplicationRecord
   validates :name, :latitude, :longitude, presence: true
 
-  has_many :treats
+  has_many :meals
   has_many :favorites
   belongs_to :city
 

@@ -3,12 +3,12 @@ import React from "react";
 
 class Favorites extends React.Component {
   componentDidMount() {
-    this.props.fetchTreats(this.props.currentUser.preferredCity);
+    this.props.fetchMeals(this.props.currentUser.preferredCity);
     this.props.fetchFavorites();
   }
 
   render() {
-    let { treats, shops } = this.props;
+    let { meals, shops } = this.props;
 
     return (
       <div className="favorites-page">
@@ -16,11 +16,11 @@ class Favorites extends React.Component {
           <div className="favorites-title">MY FAVORITE SHOPS</div>
 
           <div className="favorites-list">
-            {treats.map(treat => {
+            {meals.map(meal => {
               return (
-                <div key={treat.id} className="favorite-item">
+                <div key={meal.id} className="favorite-item">
                   <div className="fav-title-icon">
-                    <div className="fav-title">{shops[treat.shopId].name}</div>
+                    <div className="fav-title">{shops[meal.shopId].name}</div>
 
                     <div className="fav-icon">
                       <img
@@ -31,7 +31,7 @@ class Favorites extends React.Component {
                   </div>
 
                   <div className="fav-address">
-                    {shops[treat.shopId].address}
+                    {shops[meal.shopId].address}
                   </div>
                 </div>
               );

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_13_053746) do
+ActiveRecord::Schema.define(version: 2019_10_08_021603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,15 +32,26 @@ ActiveRecord::Schema.define(version: 2018_06_13_053746) do
     t.index ["user_id", "shop_id"], name: "index_favorites_on_user_id_and_shop_id", unique: true
   end
 
+  create_table "meals", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.float "price", null: false
+    t.string "image_url", null: false
+    t.integer "shop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_meals_on_shop_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "treat_id", null: false
+    t.integer "meal_id", null: false
     t.date "date", null: false
     t.time "time", null: false
     t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["treat_id"], name: "index_reservations_on_treat_id"
+    t.index ["meal_id"], name: "index_reservations_on_meal_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -55,21 +66,10 @@ ActiveRecord::Schema.define(version: 2018_06_13_053746) do
     t.index ["city_id"], name: "index_shops_on_city_id"
   end
 
-  create_table "treats", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "description", null: false
-    t.float "price", null: false
-    t.string "image_url", null: false
-    t.integer "shop_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_treats_on_shop_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "name"
-    t.integer "treats_left", default: 20, null: false
+    t.integer "meals_left", default: 20, null: false
     t.string "preferred_city", default: "San Francisco", null: false
     t.string "company_name"
     t.string "image_url"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_053746) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "membership_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end

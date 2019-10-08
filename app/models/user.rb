@@ -5,7 +5,7 @@
 #  id              :bigint(8)        not null, primary key
 #  email           :string           not null
 #  name            :string
-#  treats_left     :integer          default(20), not null
+#  meals_left     :integer          default(20), not null
 #  preferred_city  :string           default("San Francisco"), not null
 #  company_name    :string
 #  image_url       :string
@@ -17,7 +17,7 @@
 
 class User < ApplicationRecord
   validates :email, :session_token, presence: true, uniqueness: true
-  validates :treats_left, :preferred_city, :password_digest, presence: true
+  validates :meals_left, :preferred_city, :password_digest, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
   before_validation :ensure_session_token

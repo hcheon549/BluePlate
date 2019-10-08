@@ -25,12 +25,12 @@ class Account extends React.Component {
   render() {
     let { currentUser, errors } = this.props;
 
-    let treatType = [];
+    let mealType = [];
     for (let i = 0; i < 20; i++) {
-      if (i < currentUser.treatsLeft) {
-        treatType.unshift(false);
+      if (i < currentUser.mealsLeft) {
+        mealType.unshift(false);
       } else {
-        treatType.unshift(true);
+        mealType.unshift(true);
       }
     }
 
@@ -39,14 +39,14 @@ class Account extends React.Component {
         <div className="account-top">
           <div className="account-hi">Hi {currentUser.name}!</div>
           <div className="account-plan">
-            You are currently on the <span>20 TREAT PLAN.</span>
+            You are currently on the <span>20 MEAL PLAN.</span>
           </div>
           <div className="account-cycle">
-            You have <span>{currentUser.treatsLeft} MORE TREATS</span> left in
+            You have <span>{currentUser.mealsLeft} MORE MEALS</span> left in
             your cycle.
           </div>
           <div className="account-icons">
-            {treatType.map((type, idx) => {
+            {mealType.map((type, idx) => {
               return (
                 <img
                   key={idx}

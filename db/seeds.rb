@@ -17,7 +17,7 @@ ActiveRecord::Base.transaction do
       name: "Bob Ross",
       password: 123456,
       preferred_city: 'Rutgers University–New Brunswick',
-      treats_left: 15,
+      meals_left: 15,
       image_url: "https://res.cloudinary.com/mwojick/image/upload/v1532323181/TreatPal/bobross.jpg",
       company_name: "The Joy of Painting"
     },
@@ -156,12 +156,12 @@ end
 # https://source.unsplash.com/collection/8746283/480x480/?sig=1/
 
 ActiveRecord::Base.transaction do
-  Treat.destroy_all
+  Meal.destroy_all
 
   imageWidth = 480
   imageHeight = 480
   collectionID = 8746283
-  treats = []
+  meals = []
 
   shops = Shop.all
 
@@ -181,7 +181,7 @@ ActiveRecord::Base.transaction do
 
     shop_id = shops[i].id
 
-    treats << {
+    meals << {
       name: name,
       description: description,
       price: price,
@@ -190,10 +190,10 @@ ActiveRecord::Base.transaction do
     }
   end
 
-  treats.each do |treat|
-    Treat.create!(treat)
+  meals.each do |meal|
+    Meal.create!(meal)
   end
-  puts "Treats created"
+  puts "Meals created"
 end
 
 ActiveRecord::Base.transaction do
@@ -215,16 +215,16 @@ ActiveRecord::Base.transaction do
   cities = City.all
 
   cities.each do |city|
-    treats = city.treats
+    meals = city.meals
     times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
 
     date = Date.today + 1
     20.times do |t|
 
       if (rand(1..10) < 7)
-        treat_id = treats.sample.id
+        meal_id = meals.sample.id
         time = (date.to_s + " " + times.sample).to_time
-        Reservation.create!({treat_id: treat_id, user_id: demo.id, time: time, date: date})
+        Reservation.create!({meal_id: meal_id, user_id: demo.id, time: time, date: date})
       end
       date = date - 1
     end
