@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_155550) do
+ActiveRecord::Schema.define(version: 2019_10_09_020017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_10_08_155550) do
     t.integer "shop_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_number_ordered", default: 0, null: false
     t.index ["shop_id"], name: "index_meals_on_shop_id"
   end
 
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_10_08_155550) do
     t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "pickup_status", default: false, null: false
     t.index ["meal_id"], name: "index_reservations_on_meal_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
@@ -69,17 +71,15 @@ ActiveRecord::Schema.define(version: 2019_10_08_155550) do
     t.string "address"
     t.float "latitude", null: false
     t.float "longitude", null: false
-    t.integer "school_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_shops_on_school_id"
+    t.integer "school_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "name"
     t.integer "meals_left", default: 20, null: false
-    t.string "enrolled_school", default: "San Francisco", null: false
+    t.string "enrolled_school", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.datetime "created_at", null: false

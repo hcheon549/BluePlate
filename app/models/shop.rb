@@ -7,17 +7,15 @@
 #  address    :string
 #  latitude   :float            not null
 #  longitude  :float            not null
-#  school_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Shop < ApplicationRecord
-  validates :name, :latitude, :longitude, presence: true
+  validates :name, :latitude, :longitude, :school_id, presence: true
 
   has_many :meals
   has_many :favorites
-  belongs_to :school
 
   def self.in_bounds(bounds)
     self.where("latitude < ?", bounds["northEast"]["lat"])

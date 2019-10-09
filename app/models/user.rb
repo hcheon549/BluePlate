@@ -4,26 +4,31 @@
 #
 #  id              :bigint(8)        not null, primary key
 #  email           :string           not null
-#  name            :string
-#  meals_left     :integer          default(20), not null
-#  enrolled_school  :string           default("San Francisco"), not null
-#  company_name    :string
+#  meals_left      :integer          default(20), not null
+#  enrolled_school :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  fname           :string           default("Eric"), not null
+#  lname           :string           default("Cheon"), not null
+#  school_id       :integer          default(1), not null
+#  plan_id         :integer
 #
 
 class User < ApplicationRecord
   validates :email, :session_token, presence: true, uniqueness: true
-  validates :meals_left, :enrolled_school, :password_digest, presence: true
+  validates :fname, :lname, :meals_left, :enrolled_school, :school_id, :password_digest, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
   before_validation :ensure_session_token
-  attr_reader :password
 
   has_many :favorites
   has_many :reservations
+  has_one :plan
+  has_one :school
+
+  attr_reader :password
 
   def password=(password)
     @password = password

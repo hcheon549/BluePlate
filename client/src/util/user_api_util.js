@@ -8,12 +8,11 @@ export const updateUser = user => {
       user: {
         email: user.email,
         password: user.password,
-        name: user.name,
         meals_left: user.mealsLeft,
-        enrolled_school: user.enrolledSchool,
         fname: user.fname,
         lname: user.lname,
-        school_id: user.schoolId
+        // school_id: user.schoolId,
+        enrolled_school: user.enrolledSchool,
       }
     }
   });

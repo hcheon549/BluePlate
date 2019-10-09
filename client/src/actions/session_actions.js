@@ -72,7 +72,7 @@ export const clearErrors = () => {
 };
 
 let demoUser = {
-  email: "demo",
+  email: "demo@blueplate.io",
   password: 123456
 };
 

@@ -7,7 +7,6 @@
 #  address    :string
 #  latitude   :float            not null
 #  longitude  :float            not null
-#  school_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -19,11 +18,9 @@ one:
   address: MyString
   latitude: 1.5
   longitude: 1.5
-  school_id: 1
 
 two:
   name: MyString
   address: MyString
   latitude: 1.5
   longitude: 1.5
-  school_id: 1

@@ -8,17 +8,11 @@ import { updateUser } from '../../actions/user_actions';
 class Account extends React.Component {
   constructor(props) {
     super(props);
-
-    let name = this.props.currentUser.name || "";
-    let fname = this.props.currentUser.fname || "";
-    let lname = this.props.currentUser.lname || "";
-
     this.state = {
       id: this.props.currentUser.id,
-      name: name,
       email: this.props.currentUser.email,
-      fname: fname,
-      lname: lname
+      fname: this.props.currentUser.fname || "",
+      lname: this.props.currentUser.lname || "",
     };
   }
 
@@ -41,7 +35,7 @@ class Account extends React.Component {
     return (
       <div className="account-page">
         <div className="account-top">
-          <div className="account-hi">Hi {currentUser.name}!</div>
+          <div className="account-hi">Hi {currentUser.fname}!</div>
           <div className="account-plan">
             You are currently on the <span>20 MEAL PLAN.</span>
           </div>
@@ -74,12 +68,22 @@ class Account extends React.Component {
 
           <div className="account-text">
             <div className="account-name">
-              <strong>NAME:</strong>
+              <strong>FIRST NAME:</strong>
               <input
                 type="text"
                 disabled={this.state.email === "demo" ? true : false}
-                value={this.state.name}
-                onChange={this.update("name")}
+                value={this.state.fname}
+                onChange={this.update("fname")}
+              />
+            </div>
+
+            <div className="account-name">
+              <strong>LAST NAME:</strong>
+              <input
+                type="text"
+                disabled={this.state.email === "demo" ? true : false}
+                value={this.state.lname}
+                onChange={this.update("lname")}
               />
             </div>
 

@@ -13,14 +13,13 @@ ActiveRecord::Base.transaction do
 
   users = [
     {
-      email: 'demo',
-      name: "Bob Ross",
+      email: 'demo@blueplate.io',
       password: 123456,
-      enrolled_school: 'Rutgers University–New Brunswick',
-      meals_left: 15,
       fname: 'Eric',
       lname: 'Cheon',
-      school_id: 1
+      school_id: 1,
+      enrolled_school: 'Rutgers University–New Brunswick',
+      meals_left: 15
     },
   ]
 
@@ -52,10 +51,6 @@ end
 
 ActiveRecord::Base.transaction do
   Shop.destroy_all
-
-  # API key for reverse geocoding
-  key = "AIzaSyCdt5y8QHtz0FgnzgMLAc4-rfVPXz48B-8"
-  count = 0
 
   schools = School.all
 
@@ -199,7 +194,7 @@ end
 
 ActiveRecord::Base.transaction do
   Favorite.destroy_all
-  demo = User.find_by(email: 'demo')
+  demo = User.find_by(email: 'demo@blueplate.io')
   shops = Shop.all
 
   shops.each do |s|
@@ -212,23 +207,20 @@ end
 
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
-  demo = User.find_by(email: 'demo')
-  schools = School.all
+  demo = User.find_by(email: 'demo@blueplate.io')
+  meals = Meal.all
 
-  schools.each do |school|
-    meals = school.meals
-    times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
+  times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
+  date = Date.today + 1
 
-    date = Date.today + 1
-    20.times do |t|
-
-      if (rand(1..10) < 7)
-        meal_id = meals.sample.id
-        time = (date.to_s + " " + times.sample).to_time
-        Reservation.create!({meal_id: meal_id, user_id: demo.id, time: time, date: date})
-      end
-      date = date - 1
+  20.times do |t|
+    if (rand(1..10) < 7)
+      meal_id = meals.sample.id
+      time = (date.to_s + " " + times.sample).to_time
+      Reservation.create!({meal_id: meal_id, user_id: demo.id, time: time, date: date})
     end
+    date = date - 1
   end
+
   puts "Reservations created"
 end

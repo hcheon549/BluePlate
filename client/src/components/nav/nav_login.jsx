@@ -8,7 +8,7 @@ class NavLogin extends React.Component {
   render() {
     return (
       <div className="nav-login">
-        {this.props.logInSignUp}
+        {this.props.authAction}
 
         <div className="demo-button" onClick={() => this.props.demo()}>
           DEMO
@@ -19,17 +19,8 @@ class NavLogin extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-
-  let logInSignUp;
-  if (ownProps.location.pathname === '/signup') {
-    logInSignUp = <Link to='/login'>LOG IN</Link>;
-  } else {
-    logInSignUp = <Link to='/signup'>SIGN UP</Link>;
-  }
-
-  return {
-    logInSignUp: logInSignUp
-  };
+  let authAction = ownProps.location.pathname === '/signup' ? <Link to='/login'>LOG IN</Link> : <Link to='/signup'>SIGN UP</Link>;
+  return { authAction };
 };
 
 const mapDispatchToProps = (dispatch) => {

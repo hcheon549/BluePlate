@@ -7,7 +7,6 @@
 #  address    :string
 #  latitude   :float            not null
 #  longitude  :float            not null
-#  school_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
