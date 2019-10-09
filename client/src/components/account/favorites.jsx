@@ -10,13 +10,11 @@ import { deleteFavorite } from '../../actions/favorite_actions';
 
 class Favorites extends React.Component {
   componentDidMount() {
-    this.props.fetchMeals(this.props.currentUser.enrolledSchool);
     this.props.fetchFavorites();
   }
 
   render() {
-    let { meals, shops, favShops, favIds } = this.props;
-    console.log(this.props)
+    let { favShops, favIds, deleteFavorite } = this.props;
 
     return (
       <div className="favorites-page">
@@ -31,7 +29,7 @@ class Favorites extends React.Component {
                     <div className="fav-title">{favShop.name}</div>
 
                     <div className="fav-remove">
-                      <span className="remove" onClick={()=>this.props.deleteFavorite(favIds[favShop.id])}>Remove</span>
+                      <span className="remove" onClick={()=>deleteFavorite(favIds[favShop.id])}>Remove</span>
                     </div>
                   </div>
 
@@ -48,27 +46,25 @@ class Favorites extends React.Component {
   }
 }
 
-const mapStateToProps = ({entities:
-  {users, meals, shops, schools, favorites},
-  session, errors, ui}) => {
+const mapStateToProps = (
+  { entities: {users, meals, shops, schools, favorites},
+    session,
+    errors,
+    ui}
+  ) => {
+    let favs = getFavorites(favorites);
+    let shopsFavs = getFavShops(Object.values(shops), favs, true);
+    let favIds = getFavIds(favorites)
 
-  let favs = getFavorites(favorites);
-  let mealsFavs = getFavMeals(Object.values(meals), favs, true);
-  let shopsFavs = getFavShops(Object.values(shops), favs, true);
-  let favIds = getFavIds(favorites)
-
- return {
-    currentUser: users[session.id],
-    meals: mealsFavs,
-    shops,
-    favShops: shopsFavs,
-    favIds,
-  };
+  return {
+      currentUser: users[session.id],
+      favShops: shopsFavs,
+      favIds,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
  return {
-   fetchMeals: (school) => dispatch(fetchMeals(school)),
    fetchFavorites: () => dispatch(fetchFavorites()),
    deleteFavorite: (id) => dispatch(deleteFavorite(id)),
  };
