@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 import { fetchMeals } from '../../actions/meal_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
-import { getFavorites, getFavMeals } from '../../util/selectors';
+import { getFavorites, getFavMeals, getFavShops, getFavIds } from '../../util/selectors';
+import { deleteFavorite } from '../../actions/favorite_actions';
 
 class Favorites extends React.Component {
   componentDidMount() {
@@ -14,7 +15,8 @@ class Favorites extends React.Component {
   }
 
   render() {
-    let { meals, shops } = this.props;
+    let { meals, shops, favShops, favIds } = this.props;
+    console.log(this.props)
 
     return (
       <div className="favorites-page">
@@ -22,22 +24,19 @@ class Favorites extends React.Component {
           <div className="favorites-title">MY FAVORITE SHOPS</div>
 
           <div className="favorites-list">
-            {meals.map(meal => {
+            {favShops.map(favShop => {
               return (
-                <div key={meal.id} className="favorite-item">
-                  <div className="fav-title-icon">
-                    <div className="fav-title">{shops[meal.shopId].name}</div>
+                <div key={favShop.id} className="favorite-item">
+                  <div className="fav-title-remove">
+                    <div className="fav-title">{favShop.name}</div>
 
-                    <div className="fav-icon">
-                      <img
-                        src="https://res.cloudinary.com/mwojick/image/upload/v1528825174/TreatPal/icons/favorited.png"
-                        alt=""
-                      />
+                    <div className="fav-remove">
+                      <span className="remove" onClick={()=>this.props.deleteFavorite(favIds[favShop.id])}>Remove</span>
                     </div>
                   </div>
 
                   <div className="fav-address">
-                    {shops[meal.shopId].address}
+                    {favShop.address}
                   </div>
                 </div>
               );
@@ -49,25 +48,30 @@ class Favorites extends React.Component {
   }
 }
 
-const msp = ({entities:
+const mapStateToProps = ({entities:
   {users, meals, shops, schools, favorites},
   session, errors, ui}) => {
 
   let favs = getFavorites(favorites);
   let mealsFavs = getFavMeals(Object.values(meals), favs, true);
+  let shopsFavs = getFavShops(Object.values(shops), favs, true);
+  let favIds = getFavIds(favorites)
 
  return {
     currentUser: users[session.id],
     meals: mealsFavs,
-    shops: shops
+    shops,
+    favShops: shopsFavs,
+    favIds,
   };
 };
 
-const mdp = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
  return {
    fetchMeals: (school) => dispatch(fetchMeals(school)),
-   fetchFavorites: () => dispatch(fetchFavorites())
+   fetchFavorites: () => dispatch(fetchFavorites()),
+   deleteFavorite: (id) => dispatch(deleteFavorite(id)),
  };
 };
 
-export default withRouter(connect(msp, mdp)(Favorites));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Favorites));
