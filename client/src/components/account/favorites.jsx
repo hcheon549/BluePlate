@@ -3,9 +3,8 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { fetchMeals } from '../../actions/meal_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
-import { getFavorites, getFavMeals, getFavShops, getFavIds } from '../../util/selectors';
+import { getFavorites, getFavShops, getFavIds } from '../../util/selectors';
 import { deleteFavorite } from '../../actions/favorite_actions';
 
 class Favorites extends React.Component {
