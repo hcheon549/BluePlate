@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch } from "react-router-dom";
-import Greeting from "./greeting/greeting";
+import MyMeal from "./greeting/MyMeal";
 import Account from "./account/account";
 import Favorites from "./account/favorites";
 import History from "./account/history";
@@ -38,26 +38,20 @@ class App extends React.Component {
           <header>
             <Nav />
           </header>
-
-          <div className="main-body">
-            <main className="main-page">
-              <Switch>
-                <AuthRoute path="/login" component={LoginForm} />
-                <AuthRoute path="/signup" component={SignupForm} />
-                <ProtectedRoute path="/account" component={Account} />
-                <ProtectedRoute
-                  path="/favorites"
-                  component={Favorites}
-                />
-                <ProtectedRoute path="/history" component={History} />
-                <ProtectedRoute path="/" component={Greeting} />
-              </Switch>
-            </main>
-
-            <footer>
-              <Footer />
-            </footer>
-          </div>
+          <main className="main-page">
+            <Switch>
+              <AuthRoute path="/login" component={LoginForm} />
+              <AuthRoute path="/signup" component={SignupForm} />
+              {/* <Route exact path="/" component={MyMeal} /> */}
+              <ProtectedRoute path="/account" component={Account} />
+              <ProtectedRoute path="/favorites" component={Favorites} />
+              <ProtectedRoute path="/history" component={History} />
+              <ProtectedRoute path="/" component={MyMeal} />
+            </Switch>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
         </div>
       );
     }

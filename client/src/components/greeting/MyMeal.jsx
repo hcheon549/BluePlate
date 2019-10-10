@@ -14,7 +14,7 @@ import MealMap from "../map/meal_map";
 import Reservations from "../reservations/reservations";
 import LoadingIcon from "./loading_icon";
 
-class Greeting extends React.Component {
+class MyMeal extends React.Component {
   componentDidMount() {
     this.props
       .fetchSchools()
@@ -118,4 +118,4 @@ const mdp = (dispatch) => {
   };
 };
 
-export default withRouter(connect(msp, mdp)(Greeting));
+export default withRouter(connect(msp, mdp)(MyMeal));
