@@ -1,20 +1,23 @@
 import React from "react";
-import { Switch } from "react-router-dom";
-import MyMeal from "./greeting/MyMeal";
+import { Route, Redirect, withRouter, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import { getCurrentUser } from "../actions/session_actions";
+
+import Modal from "./modal/modal";
+
+import MyMeal from "./meal/MyMeal";
 import Account from "./account/account";
 import Favorites from "./account/favorites";
 import History from "./account/history";
 import LoginForm from "./session_form/login_form";
 import SignupForm from "./session_form/signup_form";
-import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Nav from "./nav/nav";
 import Footer from "./footer/footer";
-import Modal from "./modal/modal";
+import Landing from "./landing/Landing";
 
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { getCurrentUser } from "../actions/session_actions";
-import LoadingIcon from "./greeting/loading_icon";
+import LoadingIcon from "./meal/loading_icon";
 
 class App extends React.Component {
   // bootstrap user
@@ -38,17 +41,24 @@ class App extends React.Component {
           <header>
             <Nav />
           </header>
+
           <main className="main-page">
             <Switch>
+              {/* Landing Page */}
+              <Route exact path="/" component={Landing} />
+
+              {/* Auth Pages */}
               <AuthRoute path="/login" component={LoginForm} />
               <AuthRoute path="/signup" component={SignupForm} />
-              {/* <Route exact path="/" component={MyMeal} /> */}
+
+              {/* Content Pages */}
               <ProtectedRoute path="/account" component={Account} />
               <ProtectedRoute path="/favorites" component={Favorites} />
               <ProtectedRoute path="/history" component={History} />
-              <ProtectedRoute path="/" component={MyMeal} />
+              <ProtectedRoute path="/my-meals" component={MyMeal} />
             </Switch>
           </main>
+
           <footer>
             <Footer />
           </footer>

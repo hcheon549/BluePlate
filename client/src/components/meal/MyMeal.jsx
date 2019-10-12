@@ -25,8 +25,8 @@ class MyMeal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.location.pathname !== "/") {
-      this.props.history.push("/");
+    if (nextProps.location.pathname !== "/my-meals") {
+      this.props.history.push("/my-meals");
     }
     if (
       nextProps.currentUser.enrolledSchool !==
