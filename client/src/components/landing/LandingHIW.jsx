@@ -8,13 +8,13 @@ const LandingHIW = () => {
       </h4>
       <div className="main-info">
         <div className="column1">
-          <img className="choose-icon icon" src={'https://static.bookofthemonth.com/landing/exp24/Icon_WellKnown.svg'} />
+          <img className="choose-icon icon" src={"https://static.bookofthemonth.com/landing/exp24/Icon_WellKnown.svg"} alt={"well-known"}/>
           <h4 className="column-text">Choose</h4>
           <p className="column-text">Whether it's your favorite, the closest, or the new place you've wanted to try.</p>
         </div>
         <br/>
         <div className="column2">
-          <img className="showup-icon icon" src={'https://static.bookofthemonth.com/landing/exp24/Icons_Series.svg'}/>
+          <img className="showup-icon icon" src={'https://static.bookofthemonth.com/landing/exp24/Icons_Series.svg'} alt={"well-known"}/>
           <h4 className="column-text">Pick up</h4>
           <p className="column-text">
             Skip the line, the wait, and the hassle. Just pick up and go on.
@@ -22,7 +22,7 @@ const LandingHIW = () => {
         </div>
         <br/>
         <div className="column3">
-          <img className="drink-icon icon" src={'https://static.bookofthemonth.com/landing/exp24/Icon_Happy.svg'}/>
+          <img className="drink-icon icon" src={'https://static.bookofthemonth.com/landing/exp24/Icon_Happy.svg'} alt={"well-known"}/>
           <h4 className="column-text">Eat Well, Save Money</h4>
           <p className="column-text">You can still eat well within your budget without cooking.</p>
         </div>

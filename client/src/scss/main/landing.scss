@@ -1,0 +1,23 @@
+// ===========
+// Landing Page
+// ===========
+
+.visitor{
+  section.landingHeader{
+    position: relative;
+    height: calc(100vh - 60px);
+    background: url('https://blueplate-development.s3.amazonaws.com/landing.jpg') no-repeat center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    .landingCapture{
+      position: absolute;
+      top: 25%;
+      left: 15px;
+      background: white;
+      padding: 50px 50px 30px;
+      border-radius: 3px;
+    }
+  }
+}

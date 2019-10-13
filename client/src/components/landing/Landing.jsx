@@ -9,22 +9,20 @@ import { withRouter, Link } from 'react-router-dom';
 // import CityDropdownContainer from '../search/city_dropdown_container';
 // import SpotlightCarousel from './spotlight_content_container';
 
+import LandingHeader from './LandingHeader'
 import LandingHIW from './LandingHIW';
 
 class Landing extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: ''
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    
   }
 
-  componentDidMount() {
+  // componentDidMount() {
     // this.props.fetchAllCities();
     // let cityId = this.props.currentCityId;
     // this.props.fetchDeals(cityId);
-  }
+  // }
 
   // componentDidUpdate(prevProps) {
     // if (prevProps.currentCityId !== this.props.currentCityId) {
@@ -33,43 +31,12 @@ class Landing extends React.Component {
     // }
   // }
 
-  update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value });
-  }
-
-  handleSubmit(e) {
-    this.props.history.push("/my-meals");
-  }
-
+  
   render(){
-    const inviteForm = (
-      <form className="invite-form">
-        <input type="text"
-          placeholder="your email"
-          value={this.state.email}
-          onChange={this.update('email')}/>
-        <div>
-          <input type="text" placeholder="zip code"/>
-          <Link to="/signup">
-            <button type="submit" onClick={this.handleSubmit}>Browse Meals</button>
-          </Link>
-        </div>
-      </form>
-    );
 
     return(
-      // SEPARATE THIS COMPONENT
-      <div className="login-page">
-        <section className="main-content-invite">
-          <div className="invite">
-            <h2>MEAL FOR LESS THAN $6</h2>
-            <h3>FIND OUT THE RESTAURANTS IN YOUR CAMPUS.</h3>
-            {inviteForm}
-          </div>
-        </section>
-
-        {/* SEPERATE THIS COMPONENT */}
-
+      <div className="visitor">
+        <LandingHeader />
         <LandingHIW />
 
         {/* <div className="robot-info">

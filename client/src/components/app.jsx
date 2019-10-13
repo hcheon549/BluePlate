@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect, withRouter, Switch } from "react-router-dom";
+import { Route, withRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
@@ -20,7 +20,6 @@ import Landing from "./landing/Landing";
 import LoadingIcon from "./meal/loading_icon";
 
 class App extends React.Component {
-  // bootstrap user
   componentDidMount() {
     this.props.getCurrentUser();
   }
@@ -80,9 +79,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
