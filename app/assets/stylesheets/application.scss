@@ -13,3 +13,8 @@
  *= require project.scss
  *= require_self
  */
+
+ @import "variables";
+ @import "reset";
+ 
+@import "./main/master";

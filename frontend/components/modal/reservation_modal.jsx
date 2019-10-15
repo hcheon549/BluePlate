@@ -12,11 +12,15 @@ import {
 import { times, timeVals } from "../../util/time_vars";
 
 class ReservationModal extends React.Component {
-  state = {
-    seltime: ""
-  };
+  constructor(){
+    super(props)
+    this.state = {
+      seltime: "",
+    };
+    this.update = this.update.bind(this);
+  }
 
-  update = type => {
+  update(type) {
     return e =>
       this.setState({
         [type]: e.currentTarget.value
