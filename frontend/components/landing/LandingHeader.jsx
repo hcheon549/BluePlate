@@ -15,7 +15,7 @@ class LandingHeader extends React.Component {
   }
 
   render() {
-    let header = 'MEAL FOR LESS THAN MILLIONS OF PESOS',
+    let header = 'MEAL FOR LESS THAN $6',
         subHeader = 'FIND OUT THE RESTAURANTS IN YOUR CAMPUS.',
         buttonText = 'Browse Meal';
 

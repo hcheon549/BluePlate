@@ -41,7 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'redis', '~> 3.3.5'
 
 group :development, :test do
-
+  gem 'faker'
   gem 'factory_bot_rails'
 
   gem 'better_errors'

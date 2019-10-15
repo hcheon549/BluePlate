@@ -1,22 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import configureStore from './store/store';
+import Root from './components/root';
 
+document.addEventListener("DOMContentLoaded", () =>{
+  let store;
+ 
+  if (window.currentUser) {
+    const { currentUser } = window;
+    const { id } = currentUser;
+    const preloadedState = { 
+      entities: {
+        users: {
+          [id]: currentUser
+        }
+      },
+      session: { id }
+      };
+    store = configureStore(preloadedState);
 
-import configureStore from "./store/store";
-import Root from "./components/root";
+    delete window.currentUser;
 
-let store;
-store = configureStore();
+  } else {
+    store = configureStore();
+  }
 
-const render = () => {
-  debugger
-  ReactDOM.render(<Root store={store} />, document.getElementById("root"));
-};
-
-render();
-
-if (module.hot) {
-  module.hot.accept("./components/root", () => {
-    render();
-  });
-}
+  const root = document.getElementById("root");
+  ReactDOM.render(<Root store={store} />, root)
+})
