@@ -36,11 +36,11 @@ class LandingMap extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {
-  return
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingMap);
