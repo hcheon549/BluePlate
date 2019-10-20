@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import SchoolDropdown from './SchoolDropdown'
+
 class LandingMap extends React.Component {
   constructor(props){
     super(props);
@@ -15,13 +17,13 @@ class LandingMap extends React.Component {
             <h4>Find out the restaurants</h4>
           </div>
 
-          <div className="map-location">
+          {/* <div className="map-location">
             <p>I'm in: </p>
             <br/>
-            <div className="city-selector">
-              {/* <CityDropdownContainer /> */}
+            <div className="campus-selector">
+              <SchoolDropdown />
             </div>
-          </div>
+          </div> */}
 
           <div className="map">
             {/* <MapContainer /> */}
