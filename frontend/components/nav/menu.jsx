@@ -29,21 +29,15 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <div className="nav-menu">
-        <div className="nav-menu-button" onClick={() => this.toggleClass()}>
+      <ul className="navLogin">
+        <li className="nav-menu-button" onClick={() => this.toggleClass()}>
           <img
             className="hamburger"
-            src="https://res.cloudinary.com/mwojick/image/upload/v1528584292/TreatPal/icons/hamburger.png"
+            src="https://blueplate-development.s3.amazonaws.com/elements/hamburger.svg"
             alt=""
           />
           MENU
-          <ul
-            className={
-              this.state.active
-                ? "dropdown-active animated fadeIn"
-                : "dropdown animated"
-            }
-          >
+          <ul className={this.state.active ? "dropdown-active animated fadeIn" : "dropdown animated" }>
             <li onClick={() => this.props.history.push("/my-meals")}>
               <div>
                 <img
@@ -94,11 +88,11 @@ class Menu extends React.Component {
               </div>
             </li>
           </ul>
-        </div>
-        <div className="login-link">
+        </li>
+        <li className="login-link">
           <div onClick={this.handleLogout}>LOGOUT</div>
-        </div>
-      </div>
+        </li>
+      </ul>
     );
   }
 }
