@@ -111,20 +111,18 @@
 
   input {
     color: black;
+    font-size: 16px;
     margin-top: 3px;
+    padding-left: 15px;
     height: 40px;
     outline: 0px;
+    border: 1px solid $gray;
     border-radius: 5px;
-    border-style: solid;
-    border-color: $gray;
-    border-width: 1px;
-    padding-left: 10px;
   }
 
   select {
     margin-top: 10px;
     padding: 7px;
-    // border-radius: 5px;
   }
 }
 

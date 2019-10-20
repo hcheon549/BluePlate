@@ -84,8 +84,9 @@ class LoginForm extends React.Component {
               </div>
             </form>
             <div className="login-donthave">
-              Don't have a BluePlate account? <Link to="/signup" className="blueLink">Sign Up!</Link>
+              Don't have a BluePlate account?
             </div>
+            <Link to="/signup" className="blueLink">Sign Up!</Link>
           </div>
         </div>
       </div>
