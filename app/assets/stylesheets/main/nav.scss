@@ -42,6 +42,10 @@
       border: 1px solid $siteColor;
       border-radius: 3px;
       padding: 8px 20px;
+      transition: 0.3s;
+    }
+    .signup-button:hover{
+      background-color: $lightest-gray;
     }
   }
   li:hover{

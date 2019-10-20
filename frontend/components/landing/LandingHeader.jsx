@@ -17,14 +17,14 @@ class LandingHeader extends React.Component {
   }
 
   render() {
-    let header = 'MEAL FOR LESS THAN $6',
+    let header = 'MEALPLAN FOR LESS THAN $6 PER MEAL',
         subHeader = 'FIND OUT THE RESTAURANTS IN YOUR CAMPUS.',
         buttonText = 'Browse Meal';
 
     return (
       <section className="landingHeader">
         <div className="landingCapture">
-          <h3>{header}</h3>
+          <h3>MEALPLAN FOR LESS THAN<br/> $6 PER MEAL</h3>
           <p>{subHeader}</p>
           <Link to="/signup">
             <button className='orange' type="submit">{buttonText}</button>
