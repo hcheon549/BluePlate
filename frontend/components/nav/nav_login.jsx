@@ -7,26 +7,29 @@ import { login, demo } from '../../actions/session_actions';
 class NavLogin extends React.Component {
   render() {
     return (
-      <div className="nav-login">
-        {this.props.authAction}
-
-        <div className="demo-button" onClick={() => this.props.demo()}>
-          DEMO
-        </div>
-      </div>
+      <ul className="navLogin">
+        <li key='signup'>
+          <div className="signup-button">
+            <Link to='/signup'>GET STARTED</Link>
+          </div>
+        </li>
+        <li key='login'>
+          <Link to='/login'>LOG IN</Link>
+        </li>
+      </ul>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let authAction = ownProps.location.pathname === '/signup' ? <Link to='/login'>LOG IN</Link> : <Link to='/signup'>SIGN UP</Link>;
-  return { authAction };
+  return { 
+    pathname: ownProps.location.pathname 
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (user) => dispatch(login(user)),
-    demo: () => dispatch(demo())
   };
 };
 

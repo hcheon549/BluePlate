@@ -1,0 +1,167 @@
+@import '../variables.scss';
+
+
+/*==================================
+Basic Text Styles
+==================================*/
+html, body{
+  font-family: $main-font-family;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-rendering: geometricprecision;
+  -webkit-font-smoothing: antialiased
+}
+
+// ======= Headers =======
+
+h1, .h1{
+  font-family: $main-font-family;
+  font-size: 100px;
+  line-height: 107px;
+  letter-spacing: -3px;
+  color: $black;
+  // font-weight: bold;
+  em{ 
+    font-style: italic;
+  }
+  strong, b, .bold{ 
+    font-weight: bold;
+  }
+}
+h2, .h2{
+  font-family: $main-font-family;
+  font-size: 52px;
+  line-height: 60px;
+  letter-spacing: -1.19px;
+  color: $black;
+  // font-weight: bold;
+  em{ 
+    font-style: italic;
+  }
+  strong, b, .bold{ 
+    font-weight: bold; 
+  }
+}
+h3, .h3{
+  font-family: $main-font-family;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: -1.1px;
+  margin-bottom: 40px;
+  color: $black;
+  em{ 
+    font-style: italic;
+  }
+}
+h4, .h4{
+  font-family: $main-font-family;
+  font-size: 28px;
+  line-height: 32px;
+  em, &.em{ 
+    font-style: italic;
+  }
+}
+h5, .h5{
+  font-family: $main-font-family;
+  font-size: 18px;
+  line-height: 28px;
+  color: $black;
+}
+h6,  .h6{
+  font-family: $main-font-family;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  color: $black;
+}
+
+// ======= Body Copy =======
+p, .p{
+  color: $black;
+  font-family: $main-font-family;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-bottom: 20px;
+  em{ 
+    font-style: italic; 
+  }
+  &.last{margin-bottom: 0;}
+  &:last-of-type{margin-bottom: 0;}
+  &.-alt{color:$grayDark;}
+}
+
+// ======= Elements =======
+
+.error {
+  background: #EF2929;
+  border-radius: 3px;
+  padding: 8px 8px;
+  margin: 12px 0 20px;
+  color: $white!important;
+  text-align: center!important;
+  font-size: 12px!important;
+  line-height: 14px;
+  font-family: $main-font-family!important;
+  p {
+    font-family: $main-font-family!important;
+    font-size: 12px!important;
+    line-height: 14px;
+    color: $white!important;
+    text-align: center!important;
+    margin: 0;
+    padding: 0 !important;
+  }
+  a {color: $white;}
+}
+
+
+strong{font-family: $main-font-family;}
+nav, .nav, .navSecondary, .mobileNav{
+  font-family: $main-font-family;
+  font-size: 14px;
+}
+
+nav li, nav a, .nav a{ color: $black; }
+
+.smallText{
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+  &.-error{ color: red; }
+}
+.miniText{
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+  &.-error{ color: red; }
+}
+
+
+// ===================
+// for mobile
+// ===================
+
+@media screen and (max-width: 480px){
+  h1,.h1{
+    font-size: 52px;
+    letter-spacing: -1.19px;
+    line-height: 54px;
+  }
+  h2,.h2{
+    font-size: 36px;
+    letter-spacing: -1.1px;
+    line-height: 42px;
+  }
+  h4, .h4{
+    font-size: 24px;
+    line-height: 28px;
+  }
+  p{
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+}

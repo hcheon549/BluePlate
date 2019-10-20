@@ -1,10 +1,26 @@
-$main-font-family: 'Lato',
-sans-serif;
-$main: #204399; //Blueplate Blue
-$accent: #430098; //purple
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/* **************************
+  FONT
+// **************************/
+$main-font-family: 'Nunito Sans', sans-serif;
+
+
+
+/* **************************
+  COLOR DEFINITION
+// **************************/
+
+$main: #0f346c; //Blueplate Blue
+$accent: #204399; //BOTM Blue
 $accent-light: #7d1aff;
+
+$siteColorDark: #111e3f;
+$siteColor: #0f346c;
+$secondarySiteColor: #204399;
+
+
 $light-blue: #57c6e8;
-$black: #010101;
 $lightest-gray: #DBDADA;
 $light-gray: #c0bcbb;
 $gray: #A2A2A2;
@@ -13,6 +29,28 @@ $dark-gray2: #646464;
 $dark-gray-tb: #6f6b6b;
 $darkest-gray: #272727;
 $gray-menu: #504d4c;
+$black: #222222;
+$grayDark: #777777;
+$grayMed: #e8e8e8;
+$grayLight: #F6F7F8;
+$white: #ffffff;
+$red: #d8302e;
+$orange: #f26226;
+$darkOrange: #e7581d;
+
+/* **************************
+  CONTENT SIZE
+// **************************/
+$site-width: 1224px;
+$content-wide: 960px;
+$content-regular: 715px;
+$content-narrow: 480px;
+$content-micro: 295px;
+
+
+/* **************************
+  MEDIA SIZE
+// **************************/
 $media0: 500px;
 $media1: 600px;
 $media2: 800px;

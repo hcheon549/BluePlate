@@ -2,51 +2,50 @@
 // Navigation
 // ===========
 
-.nav-main {
+.shadow{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   position: fixed;
   width: 100%;
-  height: 60px;
   z-index: 10;
+  background-color: white;
+}
 
+.nav-main {
+  width: 100%;
+  height: 60px;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
-
-  background-color: white;
-
   display: flex;
   color: $main;
   justify-content: space-between;
-
-  font-family: sans-serif;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 .nav-main strong {
   font-weight: bold;
 }
-.nav-logo {
+.navLogo {
   font-size: 25px;
-  margin-top: 15px;
-  margin-left: 20px;
+  margin: auto 40px;
   letter-spacing: 1px;
 }
 
 //nav login
-.nav-login {
+.navLogin {
   display: flex;
   align-items: center;
   height: 100%;
   letter-spacing: 0.5px;
   font-weight: bold;
-
-  div {
-    cursor: pointer;
-    margin-right: 20px;
-    padding: 10px 0px;
+  margin-right: 20px;
+  li{
+    margin: 0 20px;
+    .signup-button{
+      border: 1px solid $siteColor;
+      border-radius: 3px;
+      padding: 8px 20px;
+    }
   }
-
-  a {
-    margin-right: 20px;
-    padding: 10px 0px;
+  li:hover{
+    cursor: pointer;
   }
 }
 

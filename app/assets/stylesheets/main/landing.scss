@@ -6,18 +6,28 @@
   section.landingHeader{
     position: relative;
     height: calc(100vh - 60px);
-    background: url('https://blueplate-development.s3.amazonaws.com/landing.jpg') no-repeat center;
+    max-height: 650px;
+    background: url('https://blueplate-development.s3.amazonaws.com/landing.jpg') no-repeat center bottom;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     .landingCapture{
       position: absolute;
-      top: 25%;
-      left: 15px;
-      background: white;
-      padding: 50px 50px 30px;
-      border-radius: 3px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 555px;
+      h3{
+        color: $siteColor;
+        margin: 0 auto;
+      }
+      p{
+        max-width: 260px;
+        margin: 20px auto;
+        color: $darkest-gray;
+      }
     }
   }
 }

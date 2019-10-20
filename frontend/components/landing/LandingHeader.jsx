@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 import EmailCaptureForm from '../element/EmailCaptureForm'
 
@@ -22,14 +24,12 @@ class LandingHeader extends React.Component {
     return (
       <section className="landingHeader">
         <div className="landingCapture">
-          <h2>{header}</h2>
-          <h3>{subHeader}</h3>
-          <EmailCaptureForm
-            buttonType={'primary'}
-            buttonText={buttonText}
-            nextAction={this.nextAction}
-          />
-          </div>
+          <h3>{header}</h3>
+          <p>{subHeader}</p>
+          <Link to="/signup">
+            <button className='orange' type="submit">{buttonText}</button>
+          </Link>
+        </div>
       </section>
     )
   }

@@ -1,0 +1,299 @@
+@import '../variables.scss';
+
+// ===========
+// Buttons
+// ===========
+
+
+button,
+.button {
+  // @include transition((color 0.4s ease-in-out, 
+  //                     border-color 0.4s ease-in-out, 
+  //                     background-color 0.4s ease-in-out, 
+  //                     opacity 0.4s ease-in-out));
+  cursor: pointer;
+  border: 1px solid $secondarySiteColor;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  font-family: $main-font-family;
+  background-image: none; // Fix for firefox mobile imposed gradient
+  //height: auto;
+  width: 160px;
+  color: $white;
+  background-color: $secondarySiteColor;
+  &:hover{ background-color: darken( $secondarySiteColor, 8% ); }
+  &.inverted{ 
+    color: $white;
+    border-color: rgba(255,255,255, .4);
+    background-color: transparent; 
+    &:hover{  border-color: $white;}
+    &.-solid{
+      color: $siteColor;
+      background-color: $white;
+    }
+  }
+  &.-small{
+    white-space: nowrap;
+    width: 115px;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 9px 10px
+  }
+  &.-fullWidth{ width: 100%; max-width: 100%;}
+  &.-flexible{ 
+    width: auto; 
+    max-width: 100%;
+    padding: 14px 30px;
+  }
+  &:focus { outline: none;}
+  svg{
+    vertical-align: top;
+    margin-right: 10px;
+  }
+}
+
+// *** PRIMARY ***
+
+a.button.primary,
+button.primary{
+  color: $white;
+  background-color: $secondarySiteColor;
+  border-color: $secondarySiteColor;
+  &:hover{
+    color: $white;
+    border-color: $secondarySiteColor;
+    background-color: darken($secondarySiteColor, 4%);
+  }
+  &.-disabled{
+    cursor: default;
+    color: $black;
+    background-color: $grayMed;
+    border-color: $grayMed;
+    &:hover{
+      color: $black;
+      background-color: $grayMed;
+      border-color: $grayMed;
+    }
+  }
+  &.-alert{
+    background-color: $red;
+    border-color: $red;
+    color: $white;
+    //width: auto;
+  }
+
+  &.-pending{
+    cursor: default;
+     position: relative;
+    //  &::before {
+    //  @extend %spinit;  
+    //   border: solid 3px rgba($black, 45%);
+    //   border-bottom-color: $white;
+    // }
+  }
+}
+
+// *** SECONDARY ***
+
+a.button.secondary,
+button.secondary,
+.button.secondary {
+  color: $secondarySiteColor;//
+  background-color: transparent;
+  border-color: $secondarySiteColor;
+  &:hover{ 
+    border-color: darken( $secondarySiteColor, 8% );
+    color: darken( $secondarySiteColor, 8% );
+  }
+  &.-disabled{
+    cursor: default;
+    color: $grayMed;
+    background-color: $white;
+    border-color: $grayMed;
+    &:hover{
+      color: $grayMed;
+      background-color: $white;
+      border-color: $grayMed;
+    }
+  }
+  &.-alert{
+    background-color: $white;
+    border-color: $red;
+    color: $red;
+    //width: auto;
+  }
+  // &.-pending{
+  //   cursor: default;
+  //    position: relative;
+  //   &::before {
+  //     @extend %spinit;
+  //   }   
+  // }
+}
+
+// *** PRIMARY ***
+
+a.button.orange,
+button.orange{
+  color: $white;
+  background-color: $orange;
+  border-color: $orange;
+  &:hover{
+    color: $white;
+    border-color: $darkOrange;
+    background-color: $darkOrange;
+  }
+  &.-disabled{
+    cursor: default;
+    color: $black;
+    background-color: $grayMed;
+    border-color: $grayMed;
+    &:hover{
+      color: $black;
+      background-color: $grayMed;
+      border-color: $grayMed;
+    }
+  }
+  &.-alert{
+    background-color: $red;
+    border-color: $red;
+    color: $white;
+    //width: auto;
+  }
+
+  &.-pending{
+    cursor: default;
+     position: relative;
+    //  &::before {
+    //  @extend %spinit;  
+    //   border: solid 3px rgba($black, 45%);
+    //   border-bottom-color: $white;
+    // }
+  }
+}
+
+// *** DEFAULT DISABLED ***
+
+button.disabled, .button.disabled{
+  cursor: default;
+  background-color: $white;
+  color: $grayDark;
+  border-color: $grayMed;
+   &:hover{
+    background-color: $white;
+    color: $grayDark;
+    border-color: $grayDark;
+    }
+}
+
+
+
+a.button{ line-height: 18px; }
+  .iconButton{
+    border: 1px solid #e2e2e2;
+    background-color: $white;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    padding-top: 16px;
+    z-index: 1;
+    cursor: pointer;
+    // @include box-shadow(1px 2px 7px 1px rgba(68,68,68,0.1));
+    .arrow{
+      //padding-left: 0;
+      line-height: 0;
+      svg{
+        width: 19px;
+        height: auto;
+       }
+      &.disabled polygon{ fill: $grayMed }
+    }
+  }
+
+
+// *** Button wrappers ***
+
+.enrollActionWrapper{
+  // @include flexbox();
+  // @include flex-align(center);
+  justify-content: space-between;
+  // border-top: $defaultBorder;
+  padding-top: 20px;
+  margin: 30px auto 40px;
+  &.singleAction{
+    display: block;
+    text-align: right;
+  }
+  &.-fullWidthButtons{
+    border-top: none;
+    padding-top: 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    button{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  a{ color: $black;}
+}
+
+.confirmationActions{
+  // margin-top: 20px;
+  button, .button{
+    &:first-of-type{ margin-right: 10px; }
+    &.show{ display: inline-block; }
+  }
+}
+
+.stackedButtons{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  max-width: 300px;
+  button, .button{
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    padding: 12px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .confirmationActions{
+    button, .button{ 
+      width: 100%;
+      max-width: 100%;
+      margin: 0 0 10px 0;
+      &.-flexible{ 
+      width: 100%;
+      max-width: 100%;
+      margin: 0 0 10px 0;
+      }
+    }
+
+  }
+}
+
+
+// **************
+// track overrides
+// ***************
+.YA, .Nonfiction{
+  button, .button{
+      &.inverted{ 
+      color: $secondarySiteColor;
+      border-color: lighten( $secondarySiteColor, 10% );
+      background-color: transparent; 
+      &:hover{  border-color: $secondarySiteColor;}
+      &.-solid{
+        color: $siteColor;
+        background-color: $white;
+      }
+    }
+  }
+}
