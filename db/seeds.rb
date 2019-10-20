@@ -37,6 +37,11 @@ ActiveRecord::Base.transaction do
       name: "Rutgers University–New Brunswick",
       latitude: 40.498080,
       longitude: -74.448920
+    },
+    {
+      name: "Pennsylvania State University–University Park",
+      latitude: 40.792650,
+      longitude: -77.859082
     }
   ]
 

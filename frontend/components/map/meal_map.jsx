@@ -24,8 +24,8 @@ class MealMap extends React.Component {
 
     this.mapOptions = {
       center: {
-        lat: this.props.enrolledSchool.latitude,
-        lng: this.props.enrolledSchool.longitude
+        lat: (this.props.landing && this.props.schools.length != 0) ? this.props.schools[0].latitude : this.props.enrolledSchool.latitude,
+        lng: (this.props.landing && this.props.schools.length != 0) ? this.props.schools[0].longitude : this.props.enrolledSchool.longitude,
       },
       zoom: 15,
       clickableIcons: false,
@@ -57,7 +57,7 @@ class MealMap extends React.Component {
   // fix for when enrolledSchool is not available on tab reopen
   componentWillReceiveProps(nextProps) {
     if (
-      nextProps.enrolledSchool.latitude !== this.props.enrolledSchool.latitude
+      !this.props.landing && (nextProps.enrolledSchool.latitude !== this.props.enrolledSchool.latitude)
     ) {
       let latLng = new google.maps.LatLng(
         nextProps.enrolledSchool.latitude,
@@ -72,9 +72,14 @@ class MealMap extends React.Component {
     this.MarkerManager.highlightMarker(this.props.marker);
 
     if (this.props.center) {
-      let latLng = new google.maps.LatLng(
-        this.props.enrolledSchool.latitude,
-        this.props.enrolledSchool.longitude
+      let latLng = (this.props.landing && this.props.schools.length != 0) ? 
+        new google.maps.LatLng(
+          this.props.schools[0].latitude,
+          this.props.schools[0].longitude
+        )
+      : new google.maps.LatLng(
+          this.props.enrolledSchool.latitude,
+          this.props.enrolledSchool.longitude
       );
 
       this.map.setCenter(latLng);
@@ -92,16 +97,17 @@ class MealMap extends React.Component {
     //handle edge case where bounds are sometimes not defined on refresh
     if (mapBounds) {
       window.scrollTo(0, 280);
-
+      
       const { north, south, east, west } = mapBounds.toJSON();
-
       const bounds = {
         northEast: { lat: north, lng: east },
         southWest: { lat: south, lng: west }
       };
+      
+      const name = (this.props.landing && this.props.schools.length != 0) ? this.props.schools[0].name : this.props.enrolledSchool.name
 
       this.props.updateFilter(
-        this.props.enrolledSchool.name,
+        name,
         this.props.search,
         "bounds",
         bounds
@@ -115,6 +121,10 @@ class MealMap extends React.Component {
   }
 
   render() {
+    if (this.props.landing && this.props.schools.length == 0){
+      return <div></div>;
+    }
+
     return (
       <div className="map-resize">
         <div id="map" ref="map" />

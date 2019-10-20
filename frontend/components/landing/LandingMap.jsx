@@ -2,14 +2,35 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import SchoolDropdown from './SchoolDropdown'
+import { fetchSchools } from '../../actions/school_actions';
+import { fetchMeals } from '../../actions/meal_actions';
+
+import SchoolDropdown from './SchoolDropdown';
+import MealMap from '../map/meal_map';
 
 class LandingMap extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      school: null
+    }
+    this.update = this.update.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchSchools()
+      .then(this.props.fetchMeals(this.props.schools[0]))
+  }
+
+  update(e){
+    this.setState({
+      school: e.target.value
+    })
   }
 
   render(){
+    let { schools } = this.props
+    
     return (
       <section className="landingMap">
         <div className="content -siteWidth">
@@ -17,16 +38,20 @@ class LandingMap extends React.Component {
             <h4>Find out the restaurants</h4>
           </div>
 
-          {/* <div className="map-location">
+          <div className="mapSelector">
             <p>I'm in: </p>
-            <br/>
-            <div className="campus-selector">
-              <SchoolDropdown />
+            <div className="school-selector">
+              <SchoolDropdown
+                schools={schools}
+                nextAction={this.update}
+              />
             </div>
-          </div> */}
+          </div>
 
           <div className="map">
-            {/* <MapContainer /> */}
+            {/* <MealMap
+              schools={schools}
+              landing={true} /> */}
           </div>
 
         </div>
@@ -35,12 +60,17 @@ class LandingMap extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {}
-}
+const mapStateToProps = state => {
+  return {
+    schools: Object.values(state.entities.schools),
+  };
+};
 
-function mapDispatchToProps(dispatch) {
-  return {}
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchSchools: () => dispatch(fetchSchools()),
+    fetchMeals: (school) => dispatch(fetchMeals(school)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingMap);
