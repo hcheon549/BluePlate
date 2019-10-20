@@ -83,13 +83,8 @@ class LoginForm extends React.Component {
                 </button>
               </div>
             </form>
-            <div className="login-donthave">Don't have a BluePlate account?</div>
-            <div className="other-link">
-              <li>{this.props.navLink}</li>
-              <li className="sign-up-separator" />
-              <li>
-                <div onClick={() => this.props.demo()}>Demo!</div>
-              </li>
+            <div className="login-donthave">
+              Don't have a BluePlate account? <Link to="/signup" className="blueLink">Sign Up!</Link>
             </div>
           </div>
         </div>
@@ -102,7 +97,6 @@ const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
     formType: 'LOG IN',
-    navLink: <Link to="/signup">Sign Up!</Link>,
   };
 };
 
