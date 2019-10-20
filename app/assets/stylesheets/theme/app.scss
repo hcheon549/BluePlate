@@ -13,6 +13,10 @@
 section{
   width: 100%;
   text-align: left;
+  .sectionHeader{
+    margin-top: 40px;
+    text-align: center;
+  }
 }
 
 .nowrap{ white-space: nowrap; }

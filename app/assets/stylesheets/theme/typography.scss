@@ -48,8 +48,8 @@ h3, .h3{
   font-size: 36px;
   line-height: 42px;
   letter-spacing: -1.1px;
-  margin-bottom: 40px;
-  color: $black;
+  margin: 0px auto 40px;
+  color: $siteColor;
   em{ 
     font-style: italic;
   }
@@ -58,6 +58,7 @@ h4, .h4{
   font-family: $main-font-family;
   font-size: 28px;
   line-height: 32px;
+  color: $darkest-gray;
   em, &.em{ 
     font-style: italic;
   }
@@ -78,7 +79,7 @@ h6,  .h6{
 
 // ======= Body Copy =======
 p, .p{
-  color: $black;
+  color: $darkest-gray;
   font-family: $main-font-family;
   font-size: 18px;
   letter-spacing: 0;
