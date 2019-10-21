@@ -1,11 +1,11 @@
 class Api::MealsController < ApplicationController
   def index
     @school = School.find_by(name: params[:school])
-
+    
     if @school
 
       @meals = @school.meals
-
+      debugger
       @shops = params[:bounds] ? Shop.in_bounds(bounds) : @school.shops
       shop_ids = @shops.map { |s| s.id }
 
