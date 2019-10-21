@@ -5,7 +5,7 @@ class Api::MealsController < ApplicationController
     if @school
 
       @meals = @school.meals
-      debugger
+
       @shops = params[:bounds] ? Shop.in_bounds(bounds) : @school.shops
       shop_ids = @shops.map { |s| s.id }
 

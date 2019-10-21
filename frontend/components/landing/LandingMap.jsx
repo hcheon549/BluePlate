@@ -22,7 +22,7 @@ class LandingMap extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (prevProps.schools !== this.props.schools){
+    if (!prevState.school && (prevProps.schools !== this.props.schools)){
       this.setState({
         school: this.props.schools[0].name
       })
@@ -30,15 +30,15 @@ class LandingMap extends React.Component {
   }
 
   update(e){
+    this.props.fetchMeals(e.target.value)
     this.setState({
       school: e.target.value
     })
-    this.props.fetchMeals(e.target.value)
   }
 
   render(){
     let { schools } = this.props
-    console.log(this.state.school);
+
     return (
       <section className="landingMap">
         <div className="content -siteWidth">
@@ -57,10 +57,10 @@ class LandingMap extends React.Component {
           </div>
 
           <div className="map">
-            {/* <MealMap
+            {this.state.school && <MealMap
               landing={true}
-              schoolId={parseInt(this.state.schoolId)}
-              /> */}
+              school={this.state.school}
+              />}
           </div>
 
         </div>

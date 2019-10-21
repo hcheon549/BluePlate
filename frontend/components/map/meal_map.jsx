@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { updateFilter, changeFilter } from '../../actions/filter_actions';
 import { getEnrolledSchool } from '../../util/selectors';
 import { openModal } from '../../actions/modal_actions';
-import { getFavorites, getFavMeals, getFavShops, mapShopIdToMeal } from '../../util/selectors';
+import { getFavorites, getFavMeals, getFavShops, mapShopIdToMeal, getCurrentSchool } from '../../util/selectors';
 
 import MarkerManager from "../../util/marker_manager";
 
@@ -51,7 +51,7 @@ class MealMap extends React.Component {
     // this.MarkerManager.drop(this.props.shops, this.props.meals);
     this.MarkerManager.updateMarkers(this.props.shops, this.props.meals);
 
-    this.registerListeners();
+    if (!this.props.landing){this.registerListeners();}
   }
 
   // fix for when enrolledSchool is not available on tab reopen
@@ -128,17 +128,18 @@ const msp = ({ entities: { users, meals, shops, favorites, schools }, session, u
   let isFav = ui.filters.favorite;
   let shopVals = Object.values(shops);
   let mealVals = Object.values(meals);
+  let currentSchool = session.id ? getEnrolledSchool(session, users, schools) : getCurrentSchool(shopVals, schools);
 
   if (isFav) {
     let favs = getFavorites(favorites);
     shopVals = getFavShops(shopVals, favs);
     mealVals = getFavMeals(mealVals, favs);
   }
-
+  
   return {
     meals: mapShopIdToMeal(mealVals),
     shops: shopVals,
-    enrolledSchool: getEnrolledSchool(session, users, schools),
+    enrolledSchool: currentSchool,
     center: ui.filters.center,
     search: ui.filters.search,
     marker: ui.filters.marker

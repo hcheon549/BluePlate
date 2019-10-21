@@ -13,6 +13,15 @@ export const getEnrolledSchool = (session, users, schools) => {
   return enrolledSchool;
 };
 
+export const getCurrentSchool = (shops, schools) => {
+  let currentSchool =  shops.length == 0 ? {
+    latitude: 37.789232,
+    longitude: -122.409499
+  } : schools[shops[0].schoolId]
+
+  return currentSchool;
+}
+
 export const getFavIds = favorites => {
   let favArr = Object.values(favorites);
   let favs = {};
