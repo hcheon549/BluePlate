@@ -8,6 +8,7 @@ import { fetchMeals } from '../../actions/meal_actions';
 import LandingHeader from './LandingHeader'
 import LandingHIW from './LandingHIW';
 import LandingMap from './LandingMap';
+import LandingPlan from './LandingPlan';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class Landing extends React.Component {
         <LandingHeader />
         <LandingHIW />
         <LandingMap {...this.props} />
+        <LandingPlan />
     </div>
     );
   }
