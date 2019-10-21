@@ -19,7 +19,7 @@ class SchoolDropdown extends React.Component{
     }
 
     return(
-        <select id="dropdown-button" onChange={nextAction}>
+        <select className="schoolDropdown" id="dropdown-button" onChange={nextAction}>
           {this.markDropdown()}
         </select>
     );
