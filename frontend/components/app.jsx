@@ -47,8 +47,8 @@ class App extends React.Component {
               <Route exact path="/" component={Landing} />
 
               {/* Auth Pages */}
-              <AuthRoute path="/login" component={LoginForm} />
-              <AuthRoute path="/signup" component={SignupForm} />
+              <AuthRoute path="/users/login" component={LoginForm} />
+              <Route exact path="/users/signup" component={SignupForm} />
 
               {/* Content Pages */}
               <ProtectedRoute path="/account" component={Account} />

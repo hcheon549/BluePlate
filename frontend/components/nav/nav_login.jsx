@@ -10,11 +10,11 @@ class NavLogin extends React.Component {
       <ul className="navLogin">
         <li key='signup'>
           <div className="signup-button">
-            <Link to='/signup'>GET STARTED</Link>
+            <Link to='/users/signup'>GET STARTED</Link>
           </div>
         </li>
         <li key='login'>
-          <Link to='/login'>LOG IN</Link>
+          <Link to='/users/login'>LOG IN</Link>
         </li>
       </ul>
     );

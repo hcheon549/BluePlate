@@ -7,6 +7,7 @@ const Nav = () => (
     <div className="nav-main content -siteWidth">
       <div className="navLogo">
         <Link to="/">
+          <img src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
           <span><strong>BLUE</strong>PLATE</span>
         </Link>
       </div>

@@ -26,6 +26,14 @@
   font-size: 25px;
   margin: auto 40px;
   letter-spacing: 1px;
+  a{
+    display: flex;
+    align-items: center;
+    img{ 
+      width: 35px;
+      margin-right: 5px;
+    }
+  }
 }
 
 //nav login

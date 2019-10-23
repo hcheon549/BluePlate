@@ -5,6 +5,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { signup, clearErrors, demo } from '../../actions/session_actions';
 import { fetchSchools } from '../../actions/school_actions';
 
+import HowItWorks from '../landing/LandingHIW';
+
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -68,70 +70,76 @@ class SignupForm extends React.Component {
     return (
       <div className="login-page">
         <div className="login-form-main">
-          <div className="login-form-container animated fadeInUp">
-            <div className="login-welcome">MEAL LESS THAN $6</div>
+          <div className="login-form-container">
+            <div className="login-welcome">Your Mealplan now costs less than $6 per meal.</div>
+            <div className="login-to-account">Create an account to get started</div>
 
-            <div className="login-to-account">Sign up to BluePlate</div>
-
-            <form onSubmit={this.handleSubmit} className="login-form-box">
-              <div className="login-form">
-                <label className="login-label">
-                  <ul className="label-err">
-                    <li>EMAIL ADDRESS:</li>
-                    <li className="session-error">{emailError}</li>
-                  </ul>
-                  <input
-                    type="text"
-                    autoComplete="email"
-                    value={this.state.email}
-                    onChange={this.update("email")}
-                    className="login-input"
-                  />
-                </label>
-
-                <label className="login-label">
-                  <ul className="label-err">
-                    <li>PASSWORD:</li>
-                    <li className="session-error">{pwError}</li>
-                  </ul>
-                  <input
-                    type="password"
-                    autoComplete="current-password"
-                    value={this.state.password}
-                    onChange={this.update("password")}
-                    className="login-input"
-                  />
-                </label>
-
-                <label className="login-label">
-                  <ul className="label-err">
-                    <li>LOCATION:</li>
-                    <li className="session-error">{schoolError}</li>
-                  </ul>
-                  <select
-                    value={this.state.enrolledSchool}
-                    onChange={this.update("enrolledSchool")}
-                    autoComplete="foo"
-                  >
-                    <option hidden value={null}>
-                      -- Please Select --
-                    </option>
-
-                    {this.props.schools.map(school => {
-                      return (
-                        <option key={school.id} value={school.name}>
-                          {school.name}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </label>
-
-                <button className="session-submit" type="submit">
-                  <div>{this.props.formType}</div>
-                </button>
+            <div className="partitions">
+              <div className="signupPartition">
+                <HowItWorks authPage={true}/>
               </div>
-            </form>
+              <div className="signupPartition">
+                <form onSubmit={this.handleSubmit} className="login-form-box">
+                  <div className="login-form">
+                    <label className="login-label">
+                      <ul className="label-err">
+                        <li>EMAIL ADDRESS:</li>
+                        <li className="session-error">{emailError}</li>
+                      </ul>
+                      <input
+                        type="text"
+                        autoComplete="email"
+                        value={this.state.email}
+                        onChange={this.update("email")}
+                        className="login-input"
+                      />
+                    </label>
+
+                    <label className="login-label">
+                      <ul className="label-err">
+                        <li>PASSWORD:</li>
+                        <li className="session-error">{pwError}</li>
+                      </ul>
+                      <input
+                        type="password"
+                        autoComplete="current-password"
+                        value={this.state.password}
+                        onChange={this.update("password")}
+                        className="login-input"
+                      />
+                    </label>
+
+                    <label className="login-label">
+                      <ul className="label-err">
+                        <li>LOCATION:</li>
+                        <li className="session-error">{schoolError}</li>
+                      </ul>
+                      <select
+                        value={this.state.enrolledSchool}
+                        onChange={this.update("enrolledSchool")}
+                        autoComplete="foo"
+                      >
+                        <option hidden value={null}>
+                          -- Please Select --
+                        </option>
+
+                        {this.props.schools.map(school => {
+                          return (
+                            <option key={school.id} value={school.name}>
+                              {school.name}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </label>
+
+                    <button className="session-submit" type="submit">
+                      <div>{this.props.formType}</div>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
             <div className="login-donthave">
               Already have a BluePlate account?
             </div>
@@ -147,7 +155,7 @@ const mapStateToProps = (state) => {
   return {
     schools: Object.values(state.entities.schools),
     errors: state.errors.session,
-    formType: 'SIGN UP',
+    formType: 'Continue',
   };
 };
 
