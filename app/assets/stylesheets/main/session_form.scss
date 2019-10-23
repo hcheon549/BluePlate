@@ -30,6 +30,9 @@
         color: $dark-gray;
       }
     }
+    &.loginForm{
+      max-width: 450px;
+    }    
   }
   .sectionHeader{
     margin: 0 0 20px;;
@@ -66,6 +69,9 @@
 
 }
 
+.loginForm{
+  max-width: 450px;
+}
 
 .login-welcome {
   font-size: 25px;

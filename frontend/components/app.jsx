@@ -12,7 +12,7 @@ import Account from "./account/account";
 import Favorites from "./account/favorites";
 import History from "./account/history";
 import LoginForm from "./session_form/login_form";
-import SignupForm from "./session_form/signup_form";
+import SignUpPage from "./session_form/SignUpPage";
 import Nav from "./nav/nav";
 import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
@@ -48,7 +48,7 @@ class App extends React.Component {
 
               {/* Auth Pages */}
               <AuthRoute path="/users/login" component={LoginForm} />
-              <Route exact path="/users/signup" component={SignupForm} />
+              <Route exact path="/users/signup" component={SignUpPage} />
 
               {/* Content Pages */}
               <ProtectedRoute path="/account" component={Account} />

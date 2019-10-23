@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { signup, clearErrors, demo } from '../../actions/session_actions';
+import { signup, clearErrors, login } from '../../actions/session_actions';
 import { fetchSchools } from '../../actions/school_actions';
 
 
@@ -16,6 +16,7 @@ class AuthForm extends React.Component{
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.assembleSchoolChoices = this.assembleSchoolChoices.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidMount() {
@@ -37,9 +38,16 @@ class AuthForm extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    // const user = Object.assign({}, this.state);
-    // this.props.processForm(user);
-    console.log('HERE----------')
+    const user = Object.assign({}, this.state);
+
+    switch (this.props.formType){
+      case 'Login':
+        this.props.processLogIn(user);
+        break;
+      case 'Sign-Up':
+      default:
+        this.props.processJoinForm(user);
+    }
   }
 
   assembleSchoolChoices(){
@@ -52,37 +60,50 @@ class AuthForm extends React.Component{
     })
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render(){
     let { formType, buttonText, errors, schools } = this.props;
     let emailError;
     let pwError;
     let schoolError;
 
-    errors.map((error, i) => {
-      if (error.toLowerCase().includes("email")) {
-        emailError = (
-          <div className="signup-errors" key={`error-${i}`}>
-            {error}
-          </div>
-        );
-      } else if (error.toLowerCase().includes("password")) {
-        pwError = (
-          <div className="signup-errors" key={`error-${i}`}>
-            {error}
-          </div>
-        );
-      } else if (error.toLowerCase().includes("school")) {
-        schoolError = (
-          <div className="signup-errors" key={`error-${i}`}>
-            {error}
-          </div>
-        );
-      }
-      return null;
-    });
+    if (formType == 'Sign-Up') {
+      errors.map((error, i) => {
+        if (error.toLowerCase().includes("email")) {
+          emailError = (
+            <div className="signup-errors" key={`error-${i}`}>
+              {error}
+            </div>
+          );
+        } else if (error.toLowerCase().includes("password")) {
+          pwError = (
+            <div className="signup-errors" key={`error-${i}`}>
+              {error}
+            </div>
+          );
+        } else if (error.toLowerCase().includes("school")) {
+          schoolError = (
+            <div className="signup-errors" key={`error-${i}`}>
+              {error}
+            </div>
+          );
+        }
+        return null;
+      });
+    }
 
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
+        {formType == 'Login' && <div className="login-errors">{this.renderErrors()}</div>}
         <div className="login-form">
           <label className="login-label">
             <ul className="label-err">
@@ -149,8 +170,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (user) => dispatch(signup(user)),
-    demo: () => dispatch(demo()),
+    processJoinForm: (user) => dispatch(signup(user)),
+    processLogIn: (user) => dispatch(login(user)),
     fetchSchools: () => dispatch(fetchSchools()),
     clearErrors: () => dispatch(clearErrors())
   };

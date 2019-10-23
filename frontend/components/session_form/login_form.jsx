@@ -4,55 +4,23 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { login, clearErrors, demo } from '../../actions/session_actions';
 
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: ""
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+import AuthForm from '../element/AuthForm';
 
-  componentWillUnmount() {
-    this.props.clearErrors();
-  }
+class LoginPage extends React.Component {
 
-  update(type) {
-    return e =>
-      this.setState({
-        [type]: e.currentTarget.value
-      });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user);
-  }
-
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
-        ))}
-      </ul>
-    );
-  }
 
   render() {
     return (
       <div className="login-page">
         <div className="login-form-main">
-          <div className="login-form-container animated fadeInUp">
+          <div className="login-form-container loginForm animated fadeInUp">
             <div className="login-welcome">WELCOME BACK</div>
 
             <div className="login-to-account">
               Log in to your BluePlate account
             </div>
-
-            <form onSubmit={this.handleSubmit} className="login-form-box">
+            <AuthForm formType={'Login'} buttonText={'Log In'} />
+            {/* <form onSubmit={this.handleSubmit} className="login-form-box">
               <div className="login-errors">{this.renderErrors()}</div>
 
               <div className="login-form">
@@ -82,7 +50,7 @@ class LoginForm extends React.Component {
                   <div>{this.props.formType}</div>
                 </button>
               </div>
-            </form>
+            </form> */}
             <div className="login-donthave">
               Don't have a BluePlate account?
             </div>
@@ -94,19 +62,4 @@ class LoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ errors }) => {
-  return {
-    errors: errors.session,
-    formType: 'LOG IN',
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    processForm: (user) => dispatch(login(user)),
-    demo: () => dispatch(demo()),
-    clearErrors: () => dispatch(clearErrors())
-  };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
+export default withRouter(LoginPage);
