@@ -32,7 +32,7 @@ const LandingHIW = (props) => {
             <img className="choose-icon icon" src={"https://blueplate-development.s3.amazonaws.com/elements/choose.svg"} alt={"well-known"}/>
             <div className="hiwContent">
               <h4 className="column-text">{subHead1}</h4>
-              <p className={"column-text " + props.authPage ? ' miniText' : ''}>{content1}</p>
+              <p className={"column-text " + ( props.authPage ? ' miniText' : '' )}>{content1}</p>
             </div>
           </div>
           <br/>
@@ -40,7 +40,7 @@ const LandingHIW = (props) => {
             <img className="showup-icon icon" src={'https://blueplate-development.s3.amazonaws.com/elements/pizza.svg'} alt={"well-known"}/>
             <div className="hiwContent">
               <h4 className="column-text">{subHead2}</h4>
-              <p className={"column-text " + props.authPage ? ' miniText' : ''}>{content2}</p>
+              <p className={"column-text " + ( props.authPage ? ' miniText' : '' )}>{content2}</p>
             </div>
           </div>
           <br/>
@@ -48,7 +48,7 @@ const LandingHIW = (props) => {
             <img className="drink-icon icon" src={'https://blueplate-development.s3.amazonaws.com/elements/smile.svg'} alt={"well-known"}/>
             <div className="hiwContent">
               <h4 className="column-text">{subHead3}</h4>
-              <p className={"column-text " + props.authPage ? ' miniText' : ''}>{content3}</p>
+              <p className={"column-text " + ( props.authPage ? ' miniText' : '' )}>{content3}</p>
             </div>
           </div>
         </div>
