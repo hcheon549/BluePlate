@@ -11,7 +11,7 @@ import MyMeal from "./meal/MyMeal";
 import Account from "./account/account";
 import Favorites from "./account/favorites";
 import History from "./account/history";
-import LoginForm from "./session_form/login_form";
+import LoginPage from "./session_form/LoginPage";
 import SignUpPage from "./session_form/SignUpPage";
 import Nav from "./nav/nav";
 import Footer from "./footer/footer";
@@ -47,7 +47,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing} />
 
               {/* Auth Pages */}
-              <AuthRoute path="/users/login" component={LoginForm} />
+              <AuthRoute path="/users/login" component={LoginPage} />
               <Route exact path="/users/signup" component={SignUpPage} />
 
               {/* Content Pages */}
