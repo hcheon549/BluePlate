@@ -51,6 +51,7 @@ class AuthForm extends React.Component{
       case 'Sign-Up':
       default:
         this.props.processJoinForm(user);
+        // Add promise here
         if (this.props.setStep){
           this.props.setStep('plan');
         }
