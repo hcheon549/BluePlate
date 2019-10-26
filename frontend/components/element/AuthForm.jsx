@@ -33,28 +33,28 @@ class AuthForm extends React.Component{
     this.props.clearErrors();
   }
 
-  update(type) {
-    return e =>
-      this.setState({
-        [type]: e.currentTarget.value
-      });
-  }
-
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    console.log(user)
+    if (this.props.formType == 'Login'){
+      this.props.processLogIn(user);
+    } else if (this.props.formType == 'Sign-Up'){
+      let res = await this.props.processJoinForm(user);
+      if (res.user && this.props.setStep){
+        this.props.setStep('plan');
+      }
+    }
+  }
 
-    switch (this.props.formType){
-      case 'Login':
-        this.props.processLogIn(user);
-        break;
-      case 'Sign-Up':
-      default:
-        this.props.processJoinForm(user);
-        // Add promise here
-        if (this.props.setStep){
-          this.props.setStep('plan');
-        }
+  update(type) {
+    return e => {
+      if (this.props.errors){
+        this.props.clearErrors();
+      }
+      this.setState({
+        [type]: e.currentTarget.value
+      }); 
     }
   }
 
@@ -111,7 +111,7 @@ class AuthForm extends React.Component{
 
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
-        {formType == 'Login' && <div className="login-errors">{this.renderErrors()}</div>}
+        {<div className="login-errors">{this.renderErrors()}</div>}
         <div className="login-form">
           <label className="login-label">
             <ul className="label-err">
