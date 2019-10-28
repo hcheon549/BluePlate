@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_020017) do
+ActiveRecord::Schema.define(version: 2019_10_27_205404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_10_09_020017) do
     t.float "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.date "duration", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -76,6 +78,15 @@ ActiveRecord::Schema.define(version: 2019_10_09_020017) do
     t.integer "school_id", null: false
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "plan_id", null: false
+    t.integer "meal_credit", null: false
+    t.date "subscription_start", null: false
+    t.date "subscription_end", null: false
+    t.index ["user_id", "plan_id"], name: "index_subscriptions_on_user_id_and_plan_id", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.integer "meals_left", default: 20, null: false
@@ -87,7 +98,6 @@ ActiveRecord::Schema.define(version: 2019_10_09_020017) do
     t.string "fname", default: "Eric", null: false
     t.string "lname", default: "Cheon", null: false
     t.integer "school_id", default: 1, null: false
-    t.integer "plan_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end

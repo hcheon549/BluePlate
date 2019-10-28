@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :reservations
-  has_one :plan
+  has_one :subscription
   has_one :school
 
   attr_reader :password

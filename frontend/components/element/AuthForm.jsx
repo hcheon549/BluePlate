@@ -69,6 +69,7 @@ class AuthForm extends React.Component{
   }
 
   renderErrors() {
+    debugger
     return (
       <ul>
         {this.props.errors.map((error, i) => (
@@ -111,7 +112,7 @@ class AuthForm extends React.Component{
 
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
-        {<div className="login-errors">{this.renderErrors()}</div>}
+        {formType == 'Login' && <div className="login-errors">{this.renderErrors()}</div>}
         <div className="login-form">
           <label className="login-label">
             <ul className="label-err">

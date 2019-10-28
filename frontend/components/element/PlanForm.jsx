@@ -35,7 +35,12 @@ class PlanForm extends React.Component{
     let { buttonText } = this.props;
 
     return(
-      <div>SELECT PLAN</div>
+      <div className="login-form-container">
+      <div className="login-welcome">Select your plan.</div>
+      <div className="login-to-account">Select a semester plan or a monthly plan. Your meals are served every day including holidays.</div>
+
+      
+      </div>
     )
   }
 }
