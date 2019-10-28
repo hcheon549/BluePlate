@@ -1,6 +1,7 @@
-class Api::UsersController < ApplicationController
+class Api::PlansController < ApplicationController
   def index
     @plans = Plan.all
+
     if @plans
       render :index
     else

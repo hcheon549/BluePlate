@@ -15,7 +15,7 @@ export const fetchPlans = plan => dispatch => {
 const receivePlans = plans => {
   return {
     type: RECEIVE_ALL_PLANS,
-    PLANS
+    plans
   };
 };
 

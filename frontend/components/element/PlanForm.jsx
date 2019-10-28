@@ -33,7 +33,7 @@ class PlanForm extends React.Component{
 
   render(){
     let { buttonText } = this.props;
-
+    debugger
     return(
       <div className="login-form-container">
       <div className="login-welcome">Select your plan.</div>

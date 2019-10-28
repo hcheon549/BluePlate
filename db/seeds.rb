@@ -54,29 +54,31 @@ end
 ActiveRecord::Base.transaction do
   Plan.destroy_all
 
+  today = Date.new
+
   plans = [
     {
       name: "14 Meals per week plan",
-      type: "semester"
-      meals: 210
-      price: 1257.00
-      description: "Let it take care of you without too much pressure"
-      duration: Date.new
+      plan_type: "semester",
+      meals: 210,
+      price: 1257.00,
+      description: "Let it take care of you without too much pressure",
+      duration: today
     },
     {
       name: "10 Meals per week plan",
-      type: "semester"
-      meals: 150
-      price: 973.00
-      description: "You get your freedom when it comes to your meal time."
-      duration: Date.new
+      plan_type: "semester",
+      meals: 150,
+      price: 973.00,
+      description: "You get your freedom when it comes to your meal time.",
+      duration: today
     }
   ]
 
   plans.each do |plan|
     Plan.create!(plan)
   end
-  puts "Schools created"
+  puts "Plans created"
 end
 
 
