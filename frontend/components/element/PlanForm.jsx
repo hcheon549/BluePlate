@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { signup, clearErrors, login } from '../../actions/session_actions';
-// import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
+import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
 
 
 class PlanForm extends React.Component{
@@ -15,9 +15,9 @@ class PlanForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchPlans(); //MOVE THIS TO SIGN UP PAGE
-  // }
+  componentDidMount() {
+    this.props.fetchPlans();
+  }
 
   update(type) {
     return e =>
@@ -47,7 +47,7 @@ class PlanForm extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    schools: Object.values(state.entities.schools),
+    plans: Object.values(state.entities.plans),
     errors: state.errors.session,
   };
 };
@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => {
   return {
     processJoinForm: (user) => dispatch(signup(user)),
     processLogIn: (user) => dispatch(login(user)),
-    fetchSchools: () => dispatch(fetchSchools()),
+    fetchPlans: () => dispatch(fetchPlans()),
     clearErrors: () => dispatch(clearErrors())
   };
 };

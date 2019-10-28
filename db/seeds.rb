@@ -51,6 +51,35 @@ ActiveRecord::Base.transaction do
   puts "Schools created"
 end
 
+ActiveRecord::Base.transaction do
+  Plan.destroy_all
+
+  plans = [
+    {
+      name: "14 Meals per week plan",
+      type: "semester"
+      meals: 210
+      price: 1257.00
+      description: "Let it take care of you without too much pressure"
+      duration: Date.new
+    },
+    {
+      name: "10 Meals per week plan",
+      type: "semester"
+      meals: 150
+      price: 973.00
+      description: "You get your freedom when it comes to your meal time."
+      duration: Date.new
+    }
+  ]
+
+  plans.each do |plan|
+    Plan.create!(plan)
+  end
+  puts "Schools created"
+end
+
+
 # Example reverse geocode
 # https://maps.googleapis.com/maps/api/geocode/json?latlng=34.019022,-118.257957&key=AIzaSyCdt5y8QHtz0FgnzgMLAc4-rfVPXz48B-8
 
