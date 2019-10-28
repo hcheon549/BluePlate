@@ -7,6 +7,7 @@ import favoriteReducer from './favorite_reducer';
 import reservationReducer from './reservation_reducer';
 import mealResReducer from './meal_res_reducer';
 import shopResReducer from './shop_res_reducer';
+import planReducer from './plans_reducer';
 
 const entitiesReducer = combineReducers({
   users: usersReducer,
@@ -15,6 +16,7 @@ const entitiesReducer = combineReducers({
   shops: shopReducer,
   shopRes: shopResReducer,
   schools: schoolReducer,
+  plans: planReducer,
   favorites: favoriteReducer,
   reservations: reservationReducer
 });
