@@ -145,7 +145,7 @@ class AuthForm extends React.Component{
           {(formType && formType == 'Sign-Up') && 
             <label className="login-label">
               <ul className="label-err">
-                <li>LOCATION:</li>
+                <li>CAMPUS:</li>
                 <li className="session-error">{schoolError}</li>
               </ul>
               <select
