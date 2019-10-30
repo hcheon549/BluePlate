@@ -13,6 +13,7 @@ class PlanForm extends React.Component{
       planType: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.buildPlans = this.buildPlans.bind(this);
   }
 
   componentDidMount() {
@@ -26,20 +27,35 @@ class PlanForm extends React.Component{
       });
   }
 
+  buildPlans(){
+    let { plans } = this.props
+    return plans.map(({id, name, meals, price}, idx) => {
+      let perMeal = Math.round(price / meals * 100) / 100
+      return (
+        <li key={idx}>
+          <h5>{name}</h5>
+          <p>${perMeal}/meal</p>
+          <button value={id} onClick={this.handleSubmit}>Choose this plan</button>
+        </li>
+      )
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log('Plan selected')
+    console.log('Plan selected', e.target.value)
   }
 
   render(){
-    let { buttonText } = this.props;
-    debugger
+    let { plans } = this.props;
     return(
       <div className="login-form-container">
       <div className="login-welcome">Select your plan.</div>
       <div className="login-to-account">Select a semester plan or a monthly plan. Your meals are served every day including holidays.</div>
-
-      
+      {plans &&
+        <ul>
+          {this.buildPlans()}
+        </ul>}
       </div>
     )
   }
