@@ -54,24 +54,24 @@ end
 ActiveRecord::Base.transaction do
   Plan.destroy_all
 
-  today = Date.new
-
   plans = [
     {
-      name: "14 Meals per week plan",
+      name: "12 Meals per week",
       plan_type: "semester",
-      meals: 210,
-      price: 1257.00,
-      description: "Let it take care of you without too much pressure",
-      duration: today
+      meals: 180,
+      price: 1078.20
     },
     {
-      name: "10 Meals per week plan",
+      name: "8 Meals per week",
       plan_type: "semester",
-      meals: 150,
-      price: 973.00,
-      description: "You get your freedom when it comes to your meal time.",
-      duration: today
+      meals: 120,
+      price: 778.80
+    },
+    {
+      name: "4 Meals per week",
+      plan_type: "semester",
+      meals: 60,
+      price: 419.40
     }
   ]
 
