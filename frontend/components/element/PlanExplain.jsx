@@ -16,7 +16,7 @@ const PlanExplain = () => (
     <h4>Details you need to know.</h4>
     <ul>
       {talkingPoints.map(point => (
-        <li className="smallText">{point}</li>
+        <li className="miniText">{point}</li>
       ))}
     </ul>
   </div>
