@@ -5,12 +5,14 @@ import { withRouter } from 'react-router-dom';
 import { signup, clearErrors, login } from '../../actions/session_actions';
 import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
 
+import PlanExplain from './PlanExplain';
 
 class PlanForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      planType: null
+      planType: null,
+      selectedPlan: null,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.buildPlans = this.buildPlans.bind(this);
@@ -20,22 +22,24 @@ class PlanForm extends React.Component{
     this.props.fetchPlans();
   }
 
-  update(type) {
-    return e =>
-      this.setState({
-        [type]: e.currentTarget.value
-      });
+  togglePlan(planName){
+    console.log("Plan: ", planName)
+    this.setState({
+      selectedPlan: planName,
+    })
   }
 
   buildPlans(){
-    let { plans } = this.props
+    let { plans } = this.props,
+        { selectedPlan } = this.state;
     return plans.map(({id, name, meals, price}, idx) => {
       let perMeal = Math.round(price / meals * 100) / 100
       return (
-        <li key={idx}>
-          <h5>{name}</h5>
-          <p>${perMeal}/meal</p>
-          <button value={id} onClick={this.handleSubmit}>Choose this plan</button>
+        <li className={(selectedPlan == name) ? 'active' : ''} key={id} onClick={this.togglePlan.bind(this, name)}>
+          <h5>Plan {idx+1}</h5>
+          <h4>{name}</h4>
+          <span className="smallText">per week</span>
+          <p><em>${perMeal} per meal</em></p>
         </li>
       )
     })
@@ -51,11 +55,16 @@ class PlanForm extends React.Component{
     return(
       <div className="login-form-container">
       <div className="login-welcome">Select your plan.</div>
-      <div className="login-to-account">Select a semester plan or a monthly plan. Your meals are served every day including holidays.</div>
-      {plans &&
-        <ul>
-          {this.buildPlans()}
-        </ul>}
+      <div className="login-to-account">Select this semester's BluePlate Plan.</div>
+
+        <div className="planForm">
+          {plans &&
+            <ul className="plans">
+              {this.buildPlans()}
+            </ul>}
+          <button className="primary -fullWidth" onClick={this.handleSubmit}>Next</button>
+        </div>
+        <PlanExplain />
       </div>
     )
   }

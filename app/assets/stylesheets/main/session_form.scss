@@ -32,7 +32,59 @@
     }
     &.loginForm{
       max-width: 450px;
-    }    
+    }
+    .planForm{
+      max-width: 500px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      .plans{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        li{
+          padding: 15px 0 25px 0;
+          width: 32%;
+          border: 1px solid $grayMed;
+          border-radius: 4px;
+          text-align: center;
+          cursor: pointer;
+          h5{
+            margin-top: 0;
+            margin-bottom: 0;
+            color: inherit;
+            font-weight: 200;
+          }
+          h4{
+            margin-top: 15px;
+            margin-bottom: 0;
+            color: inherit;
+            font-weight: 900;
+          }
+          p{
+            margin-top: 15px;
+            color: inherit;
+          }
+        }
+        li.active{
+          border-color: $orange;
+          color: $orange;
+        }
+      }
+    }
+    .PlanExplaination{
+      max-width: 500px;
+      margin: 0 auto;
+      ul {
+        text-align: left;
+        li{
+          color: $gray;
+          margin: 10px 0;
+          li::before {
+            content: "\2022";
+          }
+        }
+      }
+    }
   }
   .sectionHeader{
     margin: 0 0 20px;;

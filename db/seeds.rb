@@ -56,19 +56,19 @@ ActiveRecord::Base.transaction do
 
   plans = [
     {
-      name: "12 Meals per week",
+      name: "12 Meals",
       plan_type: "semester",
       meals: 180,
       price: 1078.20
     },
     {
-      name: "8 Meals per week",
+      name: "8 Meals",
       plan_type: "semester",
       meals: 120,
       price: 778.80
     },
     {
-      name: "4 Meals per week",
+      name: "4 Meals",
       plan_type: "semester",
       meals: 60,
       price: 419.40
