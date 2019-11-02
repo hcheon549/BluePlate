@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 import { signup, clearErrors, login } from '../../actions/session_actions';
 import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
-
-import PlanExplain from './PlanExplain';
 
 class PlanForm extends React.Component{
   constructor(props){
@@ -63,8 +62,8 @@ class PlanForm extends React.Component{
               {this.buildPlans()}
             </ul>}
           <button className="primary -fullWidth" onClick={this.handleSubmit}>Next</button>
+          <span className="miniText"><em>State and local taxes may apply.<br/>For more information about BluePlate plans, <Link to="/faq" target="_blank">click here</Link></em></span>
         </div>
-        <PlanExplain />
       </div>
     )
   }

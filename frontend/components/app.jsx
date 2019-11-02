@@ -16,6 +16,7 @@ import StepJoin from "./session_form/StepJoin";
 import Nav from "./nav/nav";
 import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
+import FAQLanding from './footer/FAQLanding'
 
 import LoadingIcon from "./meal/loading_icon";
 
@@ -45,7 +46,7 @@ class App extends React.Component {
             <Switch>
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
-
+              <Route path="/faq" component={FAQLanding} />
               {/* Auth Pages */}
               <AuthRoute path="/users/login" component={LoginPage} />
               <Route exact path="/users/signup" component={StepJoin} />

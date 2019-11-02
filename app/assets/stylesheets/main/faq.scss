@@ -1,0 +1,50 @@
+.FAQs{
+  margin: 50px auto;
+  .pageHeader{
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+  .faqsQuestionWrapper{
+    &:nth-last-of-type{margin-bottom: 60px;}
+    h4{ margin-bottom: 20px;}
+    ul{
+      .faqsQuestion{
+        color:  $grayDark;
+        font-size: 18px;
+        padding: 20px 0;
+        border-top: 1px solid $grayMed;
+        cursor: pointer; 
+        .questionHeader{ 
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .upDownPointer{margin-left: 12px;}
+
+        }
+        &:not(.selected){
+          .upDownPointer .pointerUp{display: none;}
+        }
+        &.selected{
+          span, div, p{color: $black;}
+          .upDownPointer .pointerDown{display: none;}
+        }
+        &.hidden { display: none; }
+        .faqsAnswer{
+          margin: 20px 0 0;
+          position: relative;
+          color: $grayDark;
+          text-align: left;
+          p, ul, ol{margin-bottom: 15px;}
+          p, li, span{ font-size: 16px;}
+          li{line-height: 1.5em;}
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px){
+  .FAQs .pageHeader{
+    padding-top: 20px;
+  }
+}
