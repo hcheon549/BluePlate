@@ -90,7 +90,6 @@ const FAQLanding = () => {
         answer={Answers[idx]}
       />
     );
-  debugger
   return(
     <section className="content FAQs">
       <div className="pageHeader">
