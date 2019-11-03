@@ -49,6 +49,7 @@ class PlanForm extends React.Component{
     e.preventDefault();
     const subscription = Object.assign({}, {plan_id: parseInt(this.state.selectedPlan)})
     let res = await this.props.processSubscription(subscription)
+    debugger
     if (res.user){
       this.props.setStep('billing')
     } else if (res.errors){

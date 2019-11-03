@@ -9,10 +9,10 @@ const subscriptionReducer = (oldState = {}, action) => {
   let newState = merge({}, oldState);
   switch (action.type) {
     case RECEIVE_SUBSCRIPTION:
-      newState[action.sub.id] = action.sub;
+      newState[action.subscription.id] = action.subscription;
       return newState;
     case REMOVE_SUBSCRIPTION:
-      delete newState[action.subId];
+      delete newState[action.subscription.id];
       return newState;
     default:
       return oldState;

@@ -1,13 +1,12 @@
 class Api::SubscriptionsController < ApplicationController
 
   def create
-    debugger
     @subscription = Subscription.new(subscription_params)
     @subscription.user_id = current_user.id
     @subscription.meal_credit = @subscription.plan.meals
     @subscription.subscription_start = Date.today
     @subscription.subscription_end = Date.new(2020, 5, 13)
-    debugger
+
     if @subscription.save
       render :show
     else

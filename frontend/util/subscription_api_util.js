@@ -3,10 +3,10 @@ import axios from "axios";
 export const createSubscription = subscription => {
   return axios({
     method: "POST",
-    url: `/api/subscription`,
+    url: `/api/subscriptions`,
     data: {
       subscription: {
-        plan_id: subscription.planId
+        plan_id: subscription.plan_id
       }
     }
   });
