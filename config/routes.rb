@@ -14,9 +14,7 @@ Rails.application.routes.draw do
     resources :plans, only: [:index]
     resources :favorites, only: [:index, :create, :destroy]
     resources :reservations, only: [:index, :create, :update, :destroy]
+    resources :subscription, only: [:create]
   end
 
-  # get '*path', to: "application#fallback_index_html", constraints: -> (request) do
-  #   !request.xhr? && request.format.html?
-  # end
 end

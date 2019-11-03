@@ -164,7 +164,7 @@ class AuthForm extends React.Component{
             </label>
           }
 
-          <button className={"session-submit" + (isPending ? " -pending" : "")} type="submit">
+          <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} type="submit">
             {!isPending && buttonText}
           </button>
         </div>

@@ -1,0 +1,1 @@
+json.extract! @subscription, :id, :user_id, :plan_id, :meal_credit, :subscription_start, :subscription_end

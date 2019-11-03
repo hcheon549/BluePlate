@@ -148,6 +148,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .login-errors {
@@ -186,13 +187,15 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding: 0 20px;
+  button{ margin-top: 10px; }
 }
 
 .login-label {
   display: flex;
   flex-direction: column;
   color: $dark-gray;
-  width: 90%;
+  width: 100%;
   margin-bottom: 20px;
   letter-spacing: 1px;
 
@@ -210,7 +213,7 @@
   select {
     margin-top: 3px;
     padding: 7px;
-    height: 26px;
+    height: 40px;
     font-size: 16px;
   }
 }
@@ -223,43 +226,43 @@
   border-color: $main;
 }
 
-.session-submit {
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
+// .session-submit {
+//   display: flex;
+//   justify-content: center;
+//   box-sizing: border-box;
 
-  // border-top: 5px solid black;
-  // border-top-right-radius: 10px;
-  // border-top-left-radius: 10px;
+//   // border-top: 5px solid black;
+//   // border-top-right-radius: 10px;
+//   // border-top-left-radius: 10px;
 
-  border-radius: 5px;
+//   border-radius: 5px;
 
-  // width: 440px;
-  // max-width: 30vw;
-  width: 90%;
+//   // width: 440px;
+//   // max-width: 30vw;
+//   width: 90%;
 
-  height: 50px;
+//   height: 50px;
 
-  margin: 10px;
-  padding: 10px;
+//   margin: 10px;
+//   padding: 10px;
 
-  border: none;
-  color: white;
-  background-color: $main;
+//   border: none;
+//   color: white;
+//   background-color: $main;
 
-  div {
-    letter-spacing: 2px;
-  }
-  &.-pending{
-    cursor: default;
-     position: relative;
-     &::before {
-     @extend %spinit;  
-      border: solid 3px rgba($black, 45%);
-      border-bottom-color: $white;
-    }
-  }
-}
+//   div {
+//     letter-spacing: 2px;
+//   }
+//   &.-pending{
+//     cursor: default;
+//      position: relative;
+//      &::before {
+//      @extend %spinit;  
+//       border: solid 3px rgba($black, 45%);
+//       border-bottom-color: $white;
+//     }
+//   }
+// }
 
 .session-submit:hover {
   background-color: $accent;

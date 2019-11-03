@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { signup, clearErrors, login } from '../../actions/session_actions';
 import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
+import { createSubscription } from "../../actions/subscription_actions";
 
 class PlanForm extends React.Component{
   constructor(props){
@@ -44,9 +45,15 @@ class PlanForm extends React.Component{
     })
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    console.log('Plan selected', e.target.value)
+    const subscription = Object.assign({}, {plan_id: parseInt(this.state.selectedPlan)})
+    let res = await this.props.processSubscription(subscription)
+    if (res.user){
+      this.props.setStep('billing')
+    } else if (res.errors){
+      console.log(errors)
+    }
   }
 
   render(){
@@ -78,9 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    processJoinForm: (user) => dispatch(signup(user)),
-    processLogIn: (user) => dispatch(login(user)),
-    fetchPlans: () => dispatch(fetchPlans()),
+    processSubscription: (plan_id) => dispatch(createSubscription(plan_id)),
     clearErrors: () => dispatch(clearErrors())
   };
 };
