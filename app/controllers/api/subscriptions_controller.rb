@@ -1,6 +1,7 @@
 class Api::SubscriptionsController < ApplicationController
 
   def create
+    debugger
     @subscription = Subscription.new(subscription_params)
     @subscription.user_id = current_user.id
     @subscription.meal_credit = @subscription.plan.meals
