@@ -22,10 +22,10 @@ class PlanForm extends React.Component{
     this.props.fetchPlans();
   }
 
-  togglePlan(planName){
-    console.log("Plan: ", planName)
+  togglePlan(planId){
+    console.log("Selected Plan Id: ", planId)
     this.setState({
-      selectedPlan: planName,
+      selectedPlan: planId,
     })
   }
 
@@ -35,7 +35,7 @@ class PlanForm extends React.Component{
     return plans.map(({id, name, meals, price}, idx) => {
       let perMeal = Math.round(price / meals * 100) / 100
       return (
-        <li className={(selectedPlan == name) ? 'active' : ''} key={id} onClick={this.togglePlan.bind(this, name)}>
+        <li className={(selectedPlan == id) ? 'active' : ''} key={idx} onClick={this.togglePlan.bind(this, id)}>
           <h5>Plan {idx+1}</h5>
           <h4>{name}</h4>
           <span className="smallText">per week</span>
@@ -48,7 +48,9 @@ class PlanForm extends React.Component{
   async handleSubmit(e) {
     e.preventDefault();
     const subscription = Object.assign({}, {plan_id: parseInt(this.state.selectedPlan)})
+    debugger
     let res = await this.props.processSubscription(subscription)
+    debugger
     if (res.user){
       this.props.setStep('billing')
     } else if (res.errors){
@@ -86,6 +88,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     processSubscription: (plan_id) => dispatch(createSubscription(plan_id)),
+    fetchPlans: () => dispatch(fetchPlans()),
     clearErrors: () => dispatch(clearErrors())
   };
 };

@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export const createSubscription = subscription => {
+  debugger
   return axios({
     method: "POST",
-    url: `/api/subscriptions`,
+    url: `/api/subscription`,
     data: {
       subscription: {
-        user_id: subscription.userId,
         plan_id: subscription.planId
       }
     }
