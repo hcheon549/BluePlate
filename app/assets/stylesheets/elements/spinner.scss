@@ -1,0 +1,60 @@
+@import '../variables.scss';
+
+@keyframes spinner {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+
+%spinit{
+  position: absolute;
+  border: solid 3px $siteColor;
+  border-bottom-color: $grayMed;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  top: 50%;
+  left: 50%;
+  animation: 1000ms linear infinite spinner;
+  transform: translate3d(-50%, -50%, 0);
+  transform-origin: center;
+  content: "";
+}
+
+.spinner{
+    position: relative;
+  &::before {
+      @extend %spinit;
+      height: 18px;
+      width: 18px;
+  }
+  &.xlarge{
+    &::before {
+      height: 42px;
+      width: 42px;
+    }
+  }
+  &.large{
+    &::before {
+      height: 28px;
+      width: 28px;
+    }
+  }
+  &.small{
+    &::before {
+      height: 12px;
+      width: 12px;
+      border-width: 2px;
+    }
+  }
+  &.left{
+    &::before {
+      top: 10px;
+      left: 10px;
+      transform: translate3d(0,0,0);
+    }
+  }
+}

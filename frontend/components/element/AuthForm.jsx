@@ -14,6 +14,7 @@ class AuthForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      isPending: false,
       email: "",
       password: "",
       enrolledSchool: ""
@@ -35,14 +36,16 @@ class AuthForm extends React.Component{
 
   async handleSubmit(e) {
     e.preventDefault();
+    this.setState({isPending: true})
     const user = Object.assign({}, this.state);
-    console.log(user)
     if (this.props.formType == 'Login'){
       this.props.processLogIn(user);
     } else if (this.props.formType == 'Sign-Up'){
       let res = await this.props.processJoinForm(user);
       if (res.user && this.props.setStep){
         this.props.setStep('plan');
+      } else if (res.errors){
+        this.setState({isPending: false})
       }
     }
   }
@@ -79,10 +82,11 @@ class AuthForm extends React.Component{
   }
 
   render(){
-    let { formType, buttonText, errors, schools } = this.props;
-    let emailError;
-    let pwError;
-    let schoolError;
+    let { formType, buttonText, errors, schools } = this.props,
+        { isPending } = this.state,
+          emailError,
+          pwError,
+          schoolError;
 
     if (formType == 'Sign-Up') {
       errors.map((error, i) => {
@@ -160,8 +164,8 @@ class AuthForm extends React.Component{
             </label>
           }
 
-          <button className="session-submit" type="submit">
-            <div>{buttonText}</div>
+          <button className={"session-submit" + (isPending ? " -pending" : "")} type="submit">
+            {!isPending && buttonText}
           </button>
         </div>
       </form>

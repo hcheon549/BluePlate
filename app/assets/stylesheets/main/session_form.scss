@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  min-height: calc(100vh - 60px);
+  // min-height: calc(100vh - 60px);
   padding: 50px 0;
 }
 
@@ -250,6 +250,15 @@
   div {
     letter-spacing: 2px;
   }
+  &.-pending{
+    cursor: default;
+     position: relative;
+     &::before {
+     @extend %spinit;  
+      border: solid 3px rgba($black, 45%);
+      border-bottom-color: $white;
+    }
+  }
 }
 
 .session-submit:hover {
@@ -298,10 +307,6 @@
   }
   .session-submit {
     min-width: calc(80vw);
-  }
-  .login-donthave {
-  }
-  .login-to-account {
   }
   .login-form-container {
     padding: 0;
