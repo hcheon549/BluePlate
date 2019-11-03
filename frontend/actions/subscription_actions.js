@@ -1,4 +1,4 @@
-import * as subscriptionApiUtil from "../util/_api_util";
+import * as subscriptionApiUtil from "../util/subscription_api_util";
 
 export const RECEIVE_SUBSCRIPTION = "RECEIVE_SUBSCRIPTION";
 export const REMOVE_SUBSCRIPTION = "REMOVE_SUBSCRIPTION";
@@ -13,12 +13,12 @@ export const createSubscription = subscription => dispatch => {
   );
 };
 
-// const receiveSubscription = subscription => {
-//   return {
-//     type: RECEIVE_SUBSCRIPTION,
-//     subscription
-//   };
-// };
+const receiveSubscription = subscription => {
+  return {
+    type: RECEIVE_SUBSCRIPTION,
+    subscription
+  };
+};
 
 const receiveErrors = errors => {
   return {
