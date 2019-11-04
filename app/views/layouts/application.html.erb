@@ -7,13 +7,15 @@
   <meta name="theme-color" content="#000000">
   <title>BluePlate</title>
 
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZhdkdzphYPV_HV0MjdkM_kXV8MDsCU-8&libraries=places" %>
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "https://js.stripe.com/v3/", "application" %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   
-  
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
+
   <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Poppins|Raleway|Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
