@@ -4,21 +4,23 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { login, demo } from '../../actions/session_actions';
 
-class NavLogin extends React.Component {
-  render() {
-    return (
-      <ul className="navLogin">
-        <li key='signup'>
-          <div className="signup-button">
-            <Link to='/users/signup'>GET STARTED</Link>
-          </div>
-        </li>
-        <li key='login'>
-          <Link to='/users/login'>LOG IN</Link>
-        </li>
-      </ul>
-    );
+const NavLogin = (props) => {
+  if (props.pathname == "/users/signup"){
+    return <div />
   }
+
+  return (
+    <ul className="navLogin">
+      <li key='signup'>
+        <div className="signup-button">
+          <Link to='/users/signup'>GET STARTED</Link>
+        </div>
+      </li>
+      <li key='login'>
+        <Link to='/users/login'>LOG IN</Link>
+      </li>
+    </ul>
+  );
 }
 
 const mapStateToProps = (state, ownProps) => {

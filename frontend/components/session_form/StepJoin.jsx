@@ -7,7 +7,6 @@ import { setStepJoinStep } from '../../actions/stepjoin_actions';
 import SignupForm from '../session_form/SignUpForm';
 import PlanForm from '../element/PlanForm';
 import BillingForm from '../element/BillingForm';
-import StepIndicator from '../element/StepIndicator';
 
 class StepJoin extends React.Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class StepJoin extends React.Component {
 
   render(){
     let content;
-    debugger
+
     switch(this.props.stepJoin){
       case 'plan':
         content = <PlanForm setStep={this.setStep} />
@@ -43,7 +42,6 @@ class StepJoin extends React.Component {
 
     return(
       <div className="login-page">
-        <StepIndicator activeStep={this.setState.step} />
         <div className="login-form-main">
           {content}
         </div>
@@ -53,7 +51,6 @@ class StepJoin extends React.Component {
 }
 
 const mapStateToProps = state => {
-  debugger
   return {
     schools: Object.values(state.entities.schools),
     stepJoin: state.ui.stepJoin || null

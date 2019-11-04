@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavRoute } from '../../util/route_util';
 
-const Nav = () => (
+import StepIndicator from '../element/StepIndicator';
+
+const Nav = ({location, stepJoin}) => (
   <div className="shadow">
     <div className="nav-main content -siteWidth">
       <div className="navLogo">
@@ -11,7 +14,7 @@ const Nav = () => (
           <span><strong>BLUE</strong>PLATE</span>
         </Link>
       </div>
-
+      {location === "/users/signup" && <StepIndicator activeStep={stepJoin}/>}
       <div className="nav-route">
         <NavRoute />
       </div>
@@ -19,4 +22,10 @@ const Nav = () => (
     </div>
 );
 
-export default Nav;
+const mapStateToProps = state => {
+  return {
+    stepJoin: state.ui.stepJoin || null
+  };
+};
+
+export default connect(mapStateToProps)(Nav);

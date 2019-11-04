@@ -39,7 +39,7 @@ class App extends React.Component {
           <Modal />
 
           <header>
-            <Nav />
+            <Nav location={this.props.location.pathname}/>
           </header>
 
           <main className="main-page">
