@@ -12,10 +12,11 @@
   li{
     margin: 0 5px;
     white-space: nowrap;
+    color: $grayDark;
   }
   .line{
     height: 1px;
-    background-color: $black;
+    background-color: $grayDark;
     width: 40px;
     margin: 0 auto;
   }
@@ -34,7 +35,8 @@
     }
   }
   li.-active{
-    color: $light-blue
+    color: $siteColor;
+    font-weight: 900;
   }
 
   @media screen and (max-width: 480px){
