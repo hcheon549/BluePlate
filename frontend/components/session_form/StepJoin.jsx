@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
 
 import { fetchSchools } from '../../actions/school_actions';
-import { fetchMeals } from '../../actions/meal_actions';
+import { setStepJoinStep } from '../../actions/stepjoin_actions';
 
 import SignupForm from '../session_form/SignUpForm';
 import PlanForm from '../element/PlanForm';
@@ -20,17 +19,17 @@ class StepJoin extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({step: 'account'})
+    this.props.setStepJoin('account')
   }
 
   setStep(nextForm) {
-    this.setState({step: nextForm})
+    this.props.setStepJoin(nextForm)
   }
 
   render(){
     let content;
 
-    switch(this.state.step){
+    switch(this.props.stepJoin){
       case 'plan':
         content = <PlanForm setStep={this.setStep} />
         break;
@@ -56,11 +55,13 @@ class StepJoin extends React.Component {
 const mapStateToProps = state => {
   return {
     schools: Object.values(state.entities.schools),
+    stepJoin: state.ui.stepJoin
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    setStepJoin: (step) => dispatch(setStepJoinStep(step)),
     fetchSchools: () => dispatch(fetchSchools()),
   };
 };

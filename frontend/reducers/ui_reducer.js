@@ -5,11 +5,13 @@ import {
 import loadingReducer from './loading_reducer';
 import filtersReducer from './filters_reducer';
 import modalReducer from './modal_reducer';
+import stepJoinReducer from './stepJoin_reducer';
 
 const uiReducer = combineReducers({
   loading: loadingReducer,
   filters: filtersReducer,
-  modal: modalReducer
+  modal: modalReducer,
+  stepJoin: stepJoinReducer
 });
 
 export default uiReducer;
