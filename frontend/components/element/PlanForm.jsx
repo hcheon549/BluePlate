@@ -23,7 +23,6 @@ class PlanForm extends React.Component{
   }
 
   togglePlan(planId){
-    console.log("Selected Plan Id: ", planId)
     this.setState({
       selectedPlan: planId,
     })
@@ -60,8 +59,8 @@ class PlanForm extends React.Component{
     let { plans } = this.props;
     return(
       <div className="login-form-container">
-      <div className="login-welcome">Select your plan.</div>
-      <div className="login-to-account">Select this semester's BluePlate Plan.</div>
+        <div className="login-welcome">Select your plan.</div>
+        <div className="login-to-account">Select this semester's BluePlate Plan.</div>
 
         <div className="planForm">
           {plans &&

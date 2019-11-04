@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom';
 
 import { clearErrors } from '../../actions/session_actions';
 
+// import { SubscriptionSummary } from '../element/SubscriptionSummary'
+
 
 class BillingForm extends React.Component{
   constructor(props){
@@ -60,53 +62,65 @@ class BillingForm extends React.Component{
 
   render(){
     return(
-      <form>
-        <fieldset className="billingForm">
-          <div className="fullWidth">
-            <label>Credit card no.</label>
-            <input
-              type="text"
-              autoComplete="credit_Card"
-              value={this.state.card_number}
-              onChange={this.update("card_number")}
-              className="login-input"
-            />
+      <div className="login-form-container">
+        <div className="login-welcome">One more step!</div>
+        <div className="login-to-account">Review your subscription summary, and enter billing information.</div>
+
+        <div className="partitions">
+          <div className="signupPartition">
+            {/* <SubscriptionSummary /> */}
+            <h2>Subscription Summary</h2>
           </div>
-          <div className="third left">
-            <label>CVV</label>
-            <input
-              type="text"
-              autoComplete="cvv"
-              value={this.state.card_code}
-              onChange={this.update("card_code")}
-              className="login-input"
-            />
-          </div>
-          <div className="third middle">
-            <label>Exp. (MM/YY)</label>
-            <input
-              type="text"
-              autoComplete="expiration"
-              value={this.state.expiration}
-              onChange={this.update("expiration")}
-              className="login-input"
-            />
-          </div>
-          <div className="third right">
-            <label>Zip</label>
-            <input
-              type="text"
-              autoComplete="zipCode"
-              value={this.state.zipCode}
-              onChange={this.update("zipCode")}
-              className="login-input"
-            />
-          </div>
-          <div className="confirmationActions center">
-            <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>;
-          </div>
-        </fieldset>
-    </form>
+          <div className="signupPartition">
+
+          <form>
+            <div className="fullWidth">
+              <label className="login-label">Credit card no.</label>
+              <input
+                type="text"
+                autoComplete="credit_Card"
+                value={this.state.card_number}
+                onChange={this.update("card_number")}
+                className="login-input"
+              />
+            </div>
+            <div className="third left">
+              <label className="login-label">CVV</label>
+              <input
+                type="text"
+                autoComplete="cvv"
+                value={this.state.card_code}
+                onChange={this.update("card_code")}
+                className="login-input"
+              />
+            </div>
+            <div className="third middle">
+              <label className="login-label">Exp. (MM/YY)</label>
+              <input
+                type="text"
+                autoComplete="expiration"
+                value={this.state.expiration}
+                onChange={this.update("expiration")}
+                className="login-input"
+              />
+            </div>
+            <div className="third right">
+              <label className="login-label">Zip</label>
+              <input
+                type="text"
+                autoComplete="zipCode"
+                value={this.state.zipCode}
+                onChange={this.update("zipCode")}
+                className="login-input"
+              />
+            </div>
+            <div className="confirmationActions center">
+              <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>;
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     )
   }
 }

@@ -7,7 +7,7 @@ import { fetchMeals } from '../../actions/meal_actions';
 
 import SignupForm from '../session_form/SignUpForm';
 import PlanForm from '../element/PlanForm';
-// import Billing from '../element/Billing';
+import BillingForm from '../element/BillingForm';
 
 class StepJoin extends React.Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class StepJoin extends React.Component {
       case 'plan':
         content = <PlanForm setStep={this.setStep} />
         break;
-      // case 'billing':
-      //   content = <PlanForm />
-      //  break;
+      case 'billing':
+        content = <BillingForm setStep={this.setStep} />
+       break;
       case 'account':
       default:
           content = <SignupForm setStep={this.setStep} />
