@@ -115,7 +115,7 @@ class BillingForm extends React.Component{
               />
             </div>
             <div className="confirmationActions center">
-              <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>;
+              <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>
             </div>
           </form>
         </div>
