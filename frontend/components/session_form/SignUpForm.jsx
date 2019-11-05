@@ -26,7 +26,7 @@ const SignupForm = ({ setStep }) => {
       <div className="login-donthave">
         Already have a BluePlate account?
       </div>
-      <Link to="/login" className="blueLink">Log In!</Link>
+      <Link to="/users/login" className="blueLink">Log In!</Link>
     </div>
   );
 }
