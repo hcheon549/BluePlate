@@ -15,9 +15,9 @@ const Nav = ({location, stepJoin}) => (
         </Link>
       </div>
       {location === "/users/signup" && <StepIndicator activeStep={stepJoin}/>}
-      <div className="nav-route">
+      {location !== "/users/signup" && <div className="nav-route">
         <NavRoute />
-      </div>
+      </div>}
     </div>
     </div>
 );
