@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 
 import { clearErrors } from '../../actions/session_actions';
 
-// import { SubscriptionSummary } from '../element/SubscriptionSummary'
+import SubscriptionSummary from './SubscriptionSummary'
 
 
 class BillingForm extends React.Component{
@@ -68,8 +68,7 @@ class BillingForm extends React.Component{
 
         <div className="partitions">
           <div className="signupPartition">
-            {/* <SubscriptionSummary /> */}
-            <h2>Subscription Summary</h2>
+            <SubscriptionSummary {...this.props}/>
           </div>
           <div className="signupPartition">
 
@@ -126,7 +125,10 @@ class BillingForm extends React.Component{
 }
 
 const mapStateToProps = (state) => {
+  const {entities: { users, subscription, plans }} = state;
   return {
+    currentUser: Object.values(users)[0],
+    currentPlan: plans[Object.values(subscription)[0].planId],
     errors: state.errors.session,
   };
 };

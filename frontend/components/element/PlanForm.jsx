@@ -11,6 +11,7 @@ class PlanForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      isPending: false,
       planType: null,
       selectedPlan: null,
     }
@@ -46,17 +47,24 @@ class PlanForm extends React.Component{
 
   async handleSubmit(e) {
     e.preventDefault();
+    this.setState({
+      isPending: true
+    })
     const subscription = Object.assign({}, {plan_id: parseInt(this.state.selectedPlan)})
     let res = await this.props.processSubscription(subscription)
     if (res.subscription){
       this.props.setStep('billing')
     } else if (res.errors){
+      this.setState({isPending: false})
       console.log(res.errors)
     }
   }
 
   render(){
-    let { plans } = this.props;
+    let { plans } = this.props,
+        { isPending } = this.state;
+    let buttonText = "Next";
+
     return(
       <div className="login-form-container">
         <div className="login-welcome">Select your plan.</div>
@@ -67,7 +75,7 @@ class PlanForm extends React.Component{
             <ul className="plans">
               {this.buildPlans()}
             </ul>}
-          <button className="primary -fullWidth" onClick={this.handleSubmit}>Next</button>
+          <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} onClick={this.handleSubmit}>{!isPending && buttonText}</button>
           <span className="miniText"><em>State and local taxes may apply.<br/>For more information about BluePlate plans, <Link to="/faq" target="_blank">click here</Link></em></span>
         </div>
       </div>

@@ -85,6 +85,16 @@ button.primary{
     color: $white;
     //width: auto;
   }
+  &.-pending{
+    cursor: default;
+     position: relative;
+     height: 48px;
+     &::before {
+     @extend %spinit;  
+      border: solid 3px rgba($black, 45%);
+      border-bottom-color: $white;
+    }
+  }
 }
 
 // *** SECONDARY ***
@@ -125,7 +135,7 @@ button.secondary,
   // }
 }
 
-// *** PRIMARY ***
+// *** Orange ***
 
 a.button.orange,
 button.orange{
@@ -158,12 +168,13 @@ button.orange{
 
   &.-pending{
     cursor: default;
-     position: relative;
-    //  &::before {
-    //  @extend %spinit;  
-    //   border: solid 3px rgba($black, 45%);
-    //   border-bottom-color: $white;
-    // }
+    position: relative;
+    height: 48px;
+    &::before {
+      @extend %spinit;  
+      border: solid 3px rgba($black, 45%);
+      border-bottom-color: $white;
+    }
   }
 }
 

@@ -10,11 +10,9 @@ import {
   REMOVE_RESERVATION
 } from '../actions/reservation_actions';
 
-import merge from 'lodash/merge';
-
 const usersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  let newState = merge({}, oldState);
+  let newState = {...oldState, ...{}};
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       newState[action.user.id] = action.user;

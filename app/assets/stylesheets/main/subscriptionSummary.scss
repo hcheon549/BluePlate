@@ -1,0 +1,46 @@
+.SubscriptionSummary{
+  background-color: #fafbfc;
+  border: 1px solid #e4e6eb;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+  .sectionHeader{
+    margin-bottom: 20px;
+    text-align: left;
+    h5{ 
+      color: $dark-gray2;
+      margin: 0;
+    }
+  }
+  .main-info{
+    text-align: left;
+    .infoSection{
+      margin-bottom: 20px;
+      overflow: hidden;
+      h4{ 
+        color: $dark-gray2;
+        margin: 0;
+        font-size: 14px;
+      }
+      p{
+        font-size: 13px;
+        margin: 0;
+        line-height: 1.5;
+      }
+    }
+    .row{
+      float: left;
+      &.-left{
+        width: 49%;
+      }
+      &.-right{
+        width: 49%
+      }
+    }
+  }
+  .divider{
+    margin: 25px 0;
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+  }
+}
