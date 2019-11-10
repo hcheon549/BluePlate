@@ -18,14 +18,19 @@
       margin-bottom: 20px;
       overflow: hidden;
       h4{ 
-        color: $dark-gray2;
+        color: $gray-menu;
         margin: 0;
         font-size: 14px;
       }
       p{
+        color: $dark-gray;
         font-size: 13px;
         margin: 0;
         line-height: 1.5;
+      }
+      &.-billing{
+        h4, p{ color: $black}
+        span{ font-weight: 900; }
       }
     }
     .row{

@@ -32,6 +32,18 @@ class BillingForm extends React.Component{
     this.props.clearErrors();
   }
 
+  calculatePayment(total){
+    let payment = Math.round((total / 3) * 100) / 100;
+    let payments = [];
+    while (total > 0){
+      let thisPayment = payment + (total <= 0.02 ? total : 0);
+      payments.push(thisPayment);
+      total -= thisPayment;
+      total = Math.round(total * 100) / 100;
+    }
+    return payments.map(payment => payment.toFixed(2));
+  }
+
   async handleSubmit(e) {
     e.preventDefault();
     this.setState({isPending: true})
@@ -68,7 +80,11 @@ class BillingForm extends React.Component{
 
         <div className="partitions">
           <div className="signupPartition">
-            <SubscriptionSummary {...this.props}/>
+            <SubscriptionSummary
+              currentUser={this.props.currentUser}
+              currentPlan={this.props.currentPlan}
+              calculatePayment={this.calculatePayment}
+            />
           </div>
           <div className="signupPartition">
 
