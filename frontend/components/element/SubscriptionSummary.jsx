@@ -48,7 +48,7 @@ const SubscriptionSummary = (props) => {
             <p>Week 10 - April 6</p>
           </div>
           <div className="row -right">
-            <p>$${payments[2]}</p>
+            <p>${payments[2]}</p>
           </div>
         </div>
         <div className="divider" />
