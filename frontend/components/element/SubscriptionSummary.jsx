@@ -3,14 +3,14 @@ import React from 'react'
 const SubscriptionSummary = (props) => {
   let { currentUser, currentPlan, calculatePayment } = props
   let payments = calculatePayment(currentPlan.price)
-  let tax = Math.round(parseFloat(payments[0]) * 6.625) / 100
-  let totalPayment = Math.round((parseFloat(payments[0]) + tax) * 100) / 100
+  let tax = Math.round(currentPlan.price * 6.625) / 100
+  let totalPayment = Math.round((currentPlan.price + tax) * 100) / 100
 
   return (
     <section className="SubscriptionSummary">
-      <div className="sectionHeader">
+      {/* <div className="sectionHeader">
         <h5>Your Plan Summary</h5>
-      </div>
+      </div> */}
       <div className="main-info">
         <div className="infoSection">
           <h4>Email</h4>
@@ -30,7 +30,7 @@ const SubscriptionSummary = (props) => {
             <p>May 13, 2020</p>
           </div>
         </div>
-        <div className="infoSection">
+        {/* <div className="infoSection">
           <h4>Payment Schedule</h4>
           <div className="row -left">
             <p>Today</p>
@@ -50,14 +50,14 @@ const SubscriptionSummary = (props) => {
           <div className="row -right">
             <p>${payments[2]}</p>
           </div>
-        </div>
+        </div> */}
         <div className="divider" />
         <div className="infoSection -billing">
           <div className="row -left">
             <p>Subtotal</p>
           </div>
           <div className="row -right">
-            <p>${payments[0]}</p>
+            <p>${currentPlan.price.toFixed(2)}</p>
           </div>
           <div className="row -left">
             <p>Est. tax</p>

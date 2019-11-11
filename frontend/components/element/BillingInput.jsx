@@ -206,10 +206,12 @@ const BillingStipeForm = injectStripe(connect(mapStateToProps, mapDispatchToProp
 
 export default class BillingInputStripe extends React.Component{
   render(){
-    <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
-      <Elements>
-        <BillingStipeForm />
-      </Elements>
-    </StripeProvider>
+    return(
+      <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
+        <Elements>
+          <BillingStipeForm />
+        </Elements>
+      </StripeProvider>
+    )
   } 
 }
