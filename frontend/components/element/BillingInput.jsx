@@ -38,6 +38,7 @@ class BillingInput extends React.Component{
           fontSize: '16px',
           color: '#222222',
           letterSpacing: '0.025em',
+          fontWeight: '200',
           '::placeholder': {
             color: '#A2A2A2',
           },
@@ -79,6 +80,8 @@ class BillingInput extends React.Component{
   updateError({error}) {
     if(error){
       this.setState({errorMessage: error.message})
+    } else {
+      this.setState({errorMessage: ''})
     }
   }
 
