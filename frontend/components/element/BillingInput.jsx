@@ -55,8 +55,9 @@ class BillingInput extends React.Component{
     this.setState({isPending: true})
     const payment_method = Object.assign({}, this.state);
     console.log(payment_method);
+    let {fname, lname, zipCode} = this.state;
     if (this.props.stripe) {
-      this.props.stripe.createToken()
+      this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
         .then(({token}) => console.log(token));
     } else {
       console.log("Stripe.js hasn't loaded yet.");
