@@ -7,10 +7,7 @@ import AuthForm from '../element/AuthForm';
 const SignupForm = ({ setStep }) => {
 
   return (
-    <div className="login-form-container">
-      <div className="login-welcome">Your Mealplan now costs less than $6 per meal.</div>
-      <div className="login-to-account">Create an account to get started</div>
-
+    <React.Fragment>
       <div className="partitions">
         <div className="signupPartition">
           <HowItWorks authPage={true}/>
@@ -27,7 +24,7 @@ const SignupForm = ({ setStep }) => {
         Already have a BluePlate account?
       </div>
       <Link to="/users/login" className="blueLink">Log In!</Link>
-    </div>
+    </React.Fragment>
   );
 }
 

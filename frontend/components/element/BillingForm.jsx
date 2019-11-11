@@ -31,10 +31,7 @@ class BillingForm extends React.Component{
 
   render(){
     return(
-      <div className="login-form-container">
-        <div className="login-welcome">One more step!</div>
-        <div className="login-to-account">Review your subscription summary, and enter billing information.</div>
-
+      <React.Fragment>
         <div className="partitions">
           <div className="signupPartition">
             <SubscriptionSummary
@@ -47,7 +44,7 @@ class BillingForm extends React.Component{
             <BillingInputStripe />
           </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }

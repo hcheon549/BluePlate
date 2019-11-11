@@ -7,6 +7,7 @@ import { setStepJoinStep } from '../../actions/stepjoin_actions';
 import SignupForm from '../session_form/SignUpForm';
 import PlanForm from '../element/PlanForm';
 import BillingForm from '../element/BillingForm';
+import SignupSectionHeader from '../element/SignupSectionHeader';
 
 class StepJoin extends React.Component {
   constructor(props) {
@@ -43,7 +44,10 @@ class StepJoin extends React.Component {
     return(
       <div className="login-page">
         <div className="login-form-main">
-          {content}
+          <div className="login-form-container">
+            <SignupSectionHeader form={this.props.stepJoin} />
+            {content}
+          </div>
         </div>
     </div>
     );
@@ -53,7 +57,7 @@ class StepJoin extends React.Component {
 const mapStateToProps = state => {
   return {
     schools: Object.values(state.entities.schools),
-    stepJoin: state.ui.stepJoin || null
+    stepJoin: state.ui.stepJoin || ''
   };
 };
 

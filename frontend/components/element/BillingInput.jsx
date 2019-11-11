@@ -48,21 +48,17 @@ class BillingInput extends React.Component{
       },
     };
   };
-  
 
   async handleSubmit(e) {
     e.preventDefault();
     this.setState({isPending: true})
-    const payment_method = Object.assign({}, this.state);
-    console.log(payment_method);
     let {fname, lname, zipCode} = this.state;
     if (this.props.stripe) {
-      this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
-        .then(({token}) => console.log(token));
+      let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
+      console.log(token);
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
-
   }
 
   update(type) {
@@ -86,7 +82,7 @@ class BillingInput extends React.Component{
 
   render(){
     return(
-      <>
+      <React.Fragment>
         <div className="sectionHeader" style={{marginBottom: '10px'}}>
           <h5 style={{margin: '10px 0'}}>Your Billing Information</h5>
         </div>
@@ -160,7 +156,7 @@ class BillingInput extends React.Component{
 
           <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>
         </form>
-      </>
+      </React.Fragment>
     )
   }
 }
