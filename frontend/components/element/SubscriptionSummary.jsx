@@ -8,9 +8,9 @@ const SubscriptionSummary = (props) => {
 
   return (
     <section className="SubscriptionSummary">
-      {/* <div className="sectionHeader">
+      <div className="sectionHeader">
         <h5>Your Plan Summary</h5>
-      </div> */}
+      </div>
       <div className="main-info">
         <div className="infoSection">
           <h4>Email</h4>
@@ -30,27 +30,6 @@ const SubscriptionSummary = (props) => {
             <p>May 13, 2020</p>
           </div>
         </div>
-        {/* <div className="infoSection">
-          <h4>Payment Schedule</h4>
-          <div className="row -left">
-            <p>Today</p>
-          </div>
-          <div className="row - right">
-            <p>${payments[0]}</p>
-          </div>
-          <div className="row -left">
-            <p>Week 5 - February 24</p>
-          </div>
-          <div className="row -right">
-            <p>${payments[1]}</p>
-          </div>
-          <div className="row -left">
-            <p>Week 10 - April 6</p>
-          </div>
-          <div className="row -right">
-            <p>${payments[2]}</p>
-          </div>
-        </div> */}
         <div className="divider" />
         <div className="infoSection -billing">
           <div className="row -left">

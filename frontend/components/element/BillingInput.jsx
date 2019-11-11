@@ -23,7 +23,6 @@ class BillingInput extends React.Component{
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
     this.updateError = this.updateError.bind(this);
   }
 
@@ -87,75 +86,81 @@ class BillingInput extends React.Component{
 
   render(){
     return(
-      <form className="billing-form-box" onSubmit={this.handleSubmit}>
-
-        <div className="billing-form -flex">
-          <div style={{marginRight: '10px'}}>
-            <label className="billing-label">First Name</label>
-            <input
-              type="text"
-              autoComplete="credit_Card"
-              value={this.state.fname}
-              onChange={this.update("fname")}
-              className="login-input"
-            />
-          </div>
-          <div style={{marginLeft: '10px'}}>
-            <label className="billing-label">Last Name</label>
-            <input
-              type="text"
-              autoComplete="credit_Card"
-              value={this.state.lname}
-              onChange={this.update("lname")}
-              className="login-input"
-            />
-          </div>
+      <>
+        <div className="sectionHeader" style={{marginBottom: '10px'}}>
+          <h5 style={{margin: '10px 0'}}>Your Billing Information</h5>
         </div>
 
-        <div className="billing-form">
-          <label className="billing-label">Credit card no.</label>
-          <CardNumberElement
-            {...this.createOptions()}
-            className="stripe-input"
-            onChange={this.updateError}
-          />
-        </div>
+        <form className="billing-form-box" onSubmit={this.handleSubmit}>
 
-        <div className="billing-form -flex">
-          <div style={{marginRight: '10px', width: '30%'}}>
-            <label className="billing-label">Exp. (MM/YY)</label>
-            <CardExpiryElement
+          <div className="billing-form -flex">
+            <div style={{marginRight: '10px'}}>
+              <label className="billing-label">First Name</label>
+              <input
+                type="text"
+                autoComplete="credit_Card"
+                value={this.state.fname}
+                onChange={this.update("fname")}
+                className="login-input"
+              />
+            </div>
+            <div style={{marginLeft: '10px'}}>
+              <label className="billing-label">Last Name</label>
+              <input
+                type="text"
+                autoComplete="credit_Card"
+                value={this.state.lname}
+                onChange={this.update("lname")}
+                className="login-input"
+              />
+            </div>
+          </div>
+
+          <div className="billing-form">
+            <label className="billing-label">Credit card no.</label>
+            <CardNumberElement
               {...this.createOptions()}
               className="stripe-input"
               onChange={this.updateError}
             />
           </div>
-          <div style={{marginRight: '10px', width: '40%'}}>
-            <label className="billing-label">CVC</label>
-            <CardCvcElement
-              {...this.createOptions()}
-              className="stripe-input"
-              onChange={this.updateError}
-            />
-          </div>
-          <div>
-            <label className="billing-label">Zip Code</label>
-            <input
-              type="text"
-              autoComplete="zipCode"
-              value={this.state.zipCode}
-              onChange={this.update("zipCode")}
-              className="login-input"
-            />
-          </div>
-        </div>
 
-        {this.state.errorMessage && <div className="error" role="alert">
-          {this.state.errorMessage}
-        </div>}
+          <div className="billing-form -flex">
+            <div style={{marginRight: '10px', width: '30%'}}>
+              <label className="billing-label">Exp. (MM/YY)</label>
+              <CardExpiryElement
+                {...this.createOptions()}
+                className="stripe-input"
+                onChange={this.updateError}
+              />
+            </div>
+            <div style={{marginRight: '10px', width: '40%'}}>
+              <label className="billing-label">CVC</label>
+              <CardCvcElement
+                {...this.createOptions()}
+                className="stripe-input"
+                onChange={this.updateError}
+              />
+            </div>
+            <div>
+              <label className="billing-label">Zip Code</label>
+              <input
+                type="text"
+                autoComplete="zipCode"
+                value={this.state.zipCode}
+                onChange={this.update("zipCode")}
+                className="login-input"
+              />
+            </div>
+          </div>
 
-        <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>
-      </form>
+          {this.state.errorMessage && <div className="error" role="alert">
+            {this.state.errorMessage}
+          </div>}
+
+          <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>
+        </form>
+      </>
     )
   }
 }
