@@ -1,13 +1,14 @@
 /*
-  AuthForm being used by the SignUpPage and Loginpage
+  BillingInput being used by the BillingForm
 */
 
 import React from "react";
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { injectStripe, StripeProvider, Elements,
+          CardNumberElement, CardExpiryElement, CardCvcElement
+        } from 'react-stripe-elements';
 
-import { signup, clearErrors, login } from '../../actions/session_actions';
-import { fetchSchools } from '../../actions/school_actions';
+import { clearErrors } from '../../actions/session_actions';
 
 
 class BillingInput extends React.Component{
@@ -15,21 +16,39 @@ class BillingInput extends React.Component{
     super(props)
     this.state = {
       isPending: false,
-      card_number: "",
-      card_code: "",
-      expiration: "",
       zipCode: "",
       fname: "",
-      lname: ""
+      lname: "",
+      errorMessage: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.updateError = this.updateError.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearErrors();
   }
+
+  createOptions() {
+    return {
+      style: {
+        base: {
+          fontSize: '16px',
+          color: '#222222',
+          letterSpacing: '0.025em',
+          '::placeholder': {
+            color: '#A2A2A2',
+          },
+        },
+        invalid: {
+          color: '#d8302e',
+        },
+      },
+    };
+  };
+  
 
   async handleSubmit(e) {
     e.preventDefault();
@@ -46,6 +65,12 @@ class BillingInput extends React.Component{
       this.setState({
         [type]: e.currentTarget.value
       }); 
+    }
+  }
+
+  updateError({error}) {
+    if(error){
+      this.setState({errorMessage: error.message})
     }
   }
 
@@ -98,38 +123,53 @@ class BillingInput extends React.Component{
 
         <div className="billing-form">
           <label className="billing-label">Credit card no.</label>
-          <input
+          {/* <input
             type="text"
             autoComplete="credit_Card"
             value={this.state.card_number}
             onChange={this.update("card_number")}
             className="login-input"
+          /> */}
+          <CardNumberElement
+            {...this.createOptions()}
+            className="stripe-input"
+            onChange={this.updateError}
           />
         </div>
 
         <div className="billing-form -flex">
           <div style={{marginRight: '10px', width: '30%'}}>
             <label className="billing-label">Exp. (MM/YY)</label>
-            <input
+            {/* <input
               type="text"
               autoComplete="expiration"
               value={this.state.expiration}
               onChange={this.update("expiration")}
               className="login-input"
+            /> */}
+            <CardExpiryElement
+              {...this.createOptions()}
+              className="stripe-input"
+              onChange={this.updateError}
             />
           </div>
           <div style={{marginRight: '10px', width: '40%'}}>
-            <label className="billing-label">CVV</label>
-            <input
+            <label className="billing-label">CVC</label>
+            {/* <input
               type="text"
               autoComplete="cvv"
               value={this.state.card_code}
               onChange={this.update("card_code")}
               className="login-input"
+            /> */}
+            <CardCvcElement
+              {...this.createOptions()}
+              className="stripe-input"
+              onChange={this.updateError}
             />
           </div>
           <div>
-            <label className="billing-label">Zip</label>
+            <label className="billing-label">Zip Code</label>
             <input
               type="text"
               autoComplete="zipCode"
@@ -139,6 +179,10 @@ class BillingInput extends React.Component{
             />
           </div>
         </div>
+
+        {this.state.errorMessage && <div className="error" role="alert">
+          {this.state.errorMessage}
+        </div>}
 
         <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>
       </form>
@@ -158,5 +202,14 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(BillingInput));
+const BillingStipeForm = injectStripe(connect(mapStateToProps, mapDispatchToProps)(BillingInput));
+
+export default class BillingInputStripe extends React.Component{
+  render(){
+    <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
+      <Elements>
+        <BillingStipeForm />
+      </Elements>
+    </StripeProvider>
+  } 
+}

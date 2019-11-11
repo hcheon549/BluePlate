@@ -5,11 +5,10 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import { clearErrors } from '../../actions/session_actions';
 
 import SubscriptionSummary from './SubscriptionSummary';
-import BillingInputForm from './BillingInput';
+import BillingInputStripe from './BillingInput';
 
 
 class BillingForm extends React.Component{
@@ -45,7 +44,7 @@ class BillingForm extends React.Component{
             />
           </div>
           <div className="signupPartition">
-            <BillingInputForm />
+            <BillingInputStripe />
           </div>
         </div>
       </div>
