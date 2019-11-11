@@ -55,6 +55,13 @@ class BillingInput extends React.Component{
     this.setState({isPending: true})
     const payment_method = Object.assign({}, this.state);
     console.log(payment_method);
+    if (this.props.stripe) {
+      this.props.stripe.createToken()
+        .then(({token}) => console.log(token));
+    } else {
+      console.log("Stripe.js hasn't loaded yet.");
+    }
+
   }
 
   update(type) {
@@ -123,13 +130,6 @@ class BillingInput extends React.Component{
 
         <div className="billing-form">
           <label className="billing-label">Credit card no.</label>
-          {/* <input
-            type="text"
-            autoComplete="credit_Card"
-            value={this.state.card_number}
-            onChange={this.update("card_number")}
-            className="login-input"
-          /> */}
           <CardNumberElement
             {...this.createOptions()}
             className="stripe-input"
@@ -140,13 +140,6 @@ class BillingInput extends React.Component{
         <div className="billing-form -flex">
           <div style={{marginRight: '10px', width: '30%'}}>
             <label className="billing-label">Exp. (MM/YY)</label>
-            {/* <input
-              type="text"
-              autoComplete="expiration"
-              value={this.state.expiration}
-              onChange={this.update("expiration")}
-              className="login-input"
-            /> */}
             <CardExpiryElement
               {...this.createOptions()}
               className="stripe-input"
@@ -155,13 +148,6 @@ class BillingInput extends React.Component{
           </div>
           <div style={{marginRight: '10px', width: '40%'}}>
             <label className="billing-label">CVC</label>
-            {/* <input
-              type="text"
-              autoComplete="cvv"
-              value={this.state.card_code}
-              onChange={this.update("card_code")}
-              className="login-input"
-            /> */}
             <CardCvcElement
               {...this.createOptions()}
               className="stripe-input"
