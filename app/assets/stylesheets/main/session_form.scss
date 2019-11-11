@@ -151,6 +151,30 @@
   box-sizing: border-box;
 }
 
+.billing-form-box{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  .billing-form{
+    margin-bottom: 20px;
+    width: 100%;
+    &.-flex{
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  button{ margin-top: 10px; }
+}
+
+.billing-label{
+  color: $darkest-gray;
+  letter-spacing: 1px;
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
 .login-errors {
   position: absolute;
   width: 100%;
@@ -194,28 +218,31 @@
 .login-label {
   display: flex;
   flex-direction: column;
-  color: $dark-gray;
+  color: $darkest-gray;
   width: 100%;
   margin-bottom: 20px;
   letter-spacing: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
 
-  input {
-    color: black;
-    font-size: 16px;
-    margin-top: 3px;
-    padding-left: 15px;
-    height: 40px;
-    outline: 0px;
-    border: 1px solid $gray;
-    border-radius: 5px;
-  }
+input {
+  color: black;
+  font-size: 16px;
+  margin-top: 3px;
+  padding-left: 15px;
+  height: 40px;
+  outline: 0px;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  width: 100%
+}
 
-  select {
-    margin-top: 3px;
-    padding: 7px;
-    height: 40px;
-    font-size: 16px;
-  }
+select {
+  margin-top: 3px;
+  padding: 7px;
+  height: 40px;
+  font-size: 16px;
 }
 
 .login-label select:hover {

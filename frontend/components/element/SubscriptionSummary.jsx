@@ -5,7 +5,7 @@ const SubscriptionSummary = (props) => {
   let payments = calculatePayment(currentPlan.price)
   let tax = Math.round(parseFloat(payments[0]) * 6.625) / 100
   let totalPayment = Math.round((parseFloat(payments[0]) + tax) * 100) / 100
-  debugger
+
   return (
     <section className="SubscriptionSummary">
       <div className="sectionHeader">
