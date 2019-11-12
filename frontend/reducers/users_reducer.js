@@ -10,6 +10,10 @@ import {
   REMOVE_RESERVATION
 } from '../actions/reservation_actions';
 
+import {
+  SET_POLICY
+} from '../util/charge_api_util';
+
 const usersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = {...oldState, ...{}};

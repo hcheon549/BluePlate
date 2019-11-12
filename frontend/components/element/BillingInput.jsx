@@ -54,22 +54,16 @@ class BillingInput extends React.Component{
     e.preventDefault();
     this.setState({isPending: true})
     let {fname, lname, zipCode} = this.state;
-    if (this.props.stripe) {
-      let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
-      if (token){
-        let charge = await this.props.createCharge({
-          stripeEmail: this.props.currentUser.email,
-          stripeToken: token.id,
-          customerId: this.props.currentUser.id,
-          customerName: token.card.name,
-          amount: this.props.currentPlan.price,
-          description: this.props.currentPlan.name,
-        })
-        debugger
-        console.log("SUCCESS ON BillingInput", charge)
-      }
-    } else {
-      console.log("Stripe.js hasn't loaded yet.");
+    let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
+    if (token){
+      let charge = await this.props.createCharge({
+        stripeEmail: this.props.currentUser.email,
+        stripeToken: token.id,
+        customerId: this.props.currentUser.id,
+        customerName: token.card.name,
+        amount: this.props.currentPlan.price,
+        description: this.props.currentPlan.name,
+      })
     }
   }
 

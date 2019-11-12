@@ -1,5 +1,8 @@
 import axios from "axios";
 
+export const SET_POLICY = "SET_POLICY";
+export const RECEIVE_CHARGE_ERRORS = 'RECEIVE_CHARGE_ERRORS';
+
 export const charge = chargeData => {
   return axios({
     method: "POST",
@@ -19,9 +22,25 @@ export const charge = chargeData => {
 
 export const createCharge = chargeData => dispatch => {
   return charge(chargeData).then(
-    data => {
-      return () => console.log('SUCCESS IN charge_api_util', data)
+    charge => {
+      return dispatch(setPolicy(charge.data))
     },
-    errors => console.log('FAILED in charge_api_util', errors)
+    errors => {
+      return dispatch(receiveChargeErrors(errors.response.data));
+    }
   )
+}
+
+const setPolicy = payload => {
+  return {
+    type: SET_POLICY,
+    payload
+  }
+}
+
+const receiveChargeErrors = errors => {
+  return {
+    type: RECEIVE_CHARGE_ERRORS,
+    errors
+  }
 }
