@@ -45,7 +45,10 @@ class AuthForm extends React.Component{
       if (res.user && this.props.setStep){
         this.props.setStep('plan');
       } else if (res.errors){
-        this.setState({isPending: false})
+        this.setState({
+          isPending: false,
+          errorMessage: res.errors
+        })
       }
     }
   }
@@ -53,12 +56,11 @@ class AuthForm extends React.Component{
   update(type, event) {
     let validationState = ["email", "password"];
     this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
-    if (this.props.errors) {
+    if (this.props.errors || this.state.errorMessage) {
       this.props.clearErrors();
+      this.setState({ errorMessage: null })
     }
-    this.setState({
-      [type]: this.state[type]
-    });
+    this.setState({ [type]: this.state[type] });
   }
 
   assembleSchoolChoices(){
@@ -73,9 +75,9 @@ class AuthForm extends React.Component{
 
   renderErrors() {
     return (
-      <ul className="formError">
-        {this.props.errors.map((error, i) => (
-          <li className="formError-list" key={`error-${i}`}>{error}</li>
+      <ul className="error" role="alert">
+        {this.state.errorMessage.map((error, i) => (
+          <li key={i}>{error}</li>
         ))}
       </ul>
     );
@@ -83,7 +85,7 @@ class AuthForm extends React.Component{
 
   render(){
     let { formType, buttonText, errors, schools } = this.props,
-        { isPending } = this.state,
+        { isPending } = this.state;
 
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -122,7 +124,8 @@ class AuthForm extends React.Component{
               </select>
             </label>
           }
-          {(errors && errors.length > 0) && this.renderErrors()}
+
+          {this.state.errorMessage && this.renderErrors()}
 
           <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} type="submit">
             {!isPending && buttonText}
