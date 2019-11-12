@@ -53,11 +53,12 @@ class BillingInput extends React.Component{
     e.preventDefault();
     this.setState({
       isPending: true
+
     })
 
     let {fname, lname, zipCode} = this.state;
     if (!fname || !lname || !zipCode){
-      let message = this.state.errorMessage.concat(['A field can not be blank']);
+      let message = this.state.errorMessage.concat(['A field cannot be blank']);
       this.setState({
         isPending: false,
         errorMessage: message
@@ -73,14 +74,16 @@ class BillingInput extends React.Component{
         description: this.props.currentPlan.name,
       })
 
-      if (charge){
-        //SUCCESS CHARGE LOGIC
-        console.log(charge)
-      } else{
-        //FAIL CHARGE LOGIC
+      if (charge.errors){
+        //FAILED CHARGE LOGIC
+        console.log(charge.errors)
         this.setState({
-          isPending: false
+          isPending: false,
+          errorMessage: this.state.errorMessage.concat(["Invalid card information."])
         })
+
+      } else {
+        //FAIL CHARGE LOGIC
         console.log(error)
       }
 
@@ -92,7 +95,7 @@ class BillingInput extends React.Component{
     validationState.includes(type) ? ( this.state[type] = event.target.value.replace(/\s+/g, '') ) : null;
     if (this.props.errors || this.state.errorMessage) {
       this.props.clearErrors();
-      this.setState({ errorMessage: null })
+      this.setState({ errorMessage: [] })
     }
     this.setState({
       [type]: this.state[type]
@@ -118,7 +121,7 @@ class BillingInput extends React.Component{
   }
 
   render(){
-    let { errorMessage } = this.state;
+    let { isPending, errorMessage } = this.state;
     let buttonText = 'Submit';
 
     return(
