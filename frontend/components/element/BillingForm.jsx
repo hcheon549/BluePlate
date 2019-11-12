@@ -41,7 +41,7 @@ class BillingForm extends React.Component{
             />
           </div>
           <div className="signupPartition">
-            <BillingInputStripe />
+            <BillingInputStripe {...this.props} />
           </div>
         </div>
       </React.Fragment>

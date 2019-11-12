@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:index, :create, :destroy]
     resources :reservations, only: [:index, :create, :update, :destroy]
     resources :subscriptions, only: [:create]
+    resources :charges
   end
 
 end

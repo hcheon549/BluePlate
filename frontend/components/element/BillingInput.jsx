@@ -9,6 +9,7 @@ import { injectStripe, StripeProvider, Elements,
         } from 'react-stripe-elements';
 
 import { clearErrors } from '../../actions/session_actions';
+import { createCharge } from '../../util/charge_api_util';
 
 
 class BillingInput extends React.Component{
@@ -55,7 +56,18 @@ class BillingInput extends React.Component{
     let {fname, lname, zipCode} = this.state;
     if (this.props.stripe) {
       let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
-      console.log(token);
+      if (token){
+        let charge = await this.props.createCharge({
+          stripeEmail: this.props.currentUser.email,
+          stripeToken: token.id,
+          customerId: this.props.currentUser.id,
+          customerName: token.card.name,
+          amount: this.props.currentPlan.price,
+          description: this.props.currentPlan.name,
+        })
+        debugger
+        console.log("SUCCESS ON BillingInput", charge)
+      }
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
@@ -169,18 +181,23 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearErrors: () => dispatch(clearErrors())
+    clearErrors: () => dispatch(clearErrors()),
+    createCharge: (data) => dispatch(createCharge(data))
   };
 };
 
 const BillingStipeForm = injectStripe(connect(mapStateToProps, mapDispatchToProps)(BillingInput));
 
 export default class BillingInputStripe extends React.Component{
+  constructor(props){
+    super(props)
+  }
+
   render(){
     return(
       <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
         <Elements>
-          <BillingStipeForm />
+          <BillingStipeForm {...this.props} />
         </Elements>
       </StripeProvider>
     )
