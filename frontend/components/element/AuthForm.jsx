@@ -50,15 +50,15 @@ class AuthForm extends React.Component{
     }
   }
 
-  update(type) {
-    return e => {
-      if (this.props.errors){
-        this.props.clearErrors();
-      }
-      this.setState({
-        [type]: e.currentTarget.value
-      }); 
+  update(type, event) {
+    let validationState = ["email", "password"];
+    this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
+    if (this.props.errors) {
+      this.props.clearErrors();
     }
+    this.setState({
+      [type]: this.state[type]
+    }); 
   }
 
   assembleSchoolChoices(){
@@ -126,7 +126,7 @@ class AuthForm extends React.Component{
               type="text"
               autoComplete="email"
               value={this.state.email}
-              onChange={this.update("email")}
+              onChange={this.update.bind(this, "email")}
               className="login-input"
             />
           </label>
@@ -140,7 +140,7 @@ class AuthForm extends React.Component{
               type="password"
               autoComplete="current-password"
               value={this.state.password}
-              onChange={this.update("password")}
+              onChange={this.update.bind(this, "password")}
               className="login-input"
             />
           </label>
@@ -153,7 +153,7 @@ class AuthForm extends React.Component{
               </ul>
               <select
                 value={this.state.enrolledSchool}
-                onChange={this.update("enrolledSchool")}
+                onChange={this.update.bind(this, "enrolledSchool")}
                 autoComplete="foo"
               >
                 <option hidden value={null}>
