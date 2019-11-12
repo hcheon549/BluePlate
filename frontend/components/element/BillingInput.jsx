@@ -20,7 +20,7 @@ class BillingInput extends React.Component{
       zipCode: "",
       fname: "",
       lname: "",
-      errorMessage: "",
+      errorMessage: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateError = this.updateError.bind(this);
@@ -51,10 +51,19 @@ class BillingInput extends React.Component{
 
   async handleSubmit(e) {
     e.preventDefault();
-    this.setState({isPending: true})
+    this.setState({
+      isPending: true
+    })
+
     let {fname, lname, zipCode} = this.state;
-    let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
-    if (token){
+    if (!fname || !lname || !zipCode){
+      let message = this.state.errorMessage.concat(['A field can not be blank']);
+      this.setState({
+        isPending: false,
+        errorMessage: message
+      })
+    } else {
+      let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
       let charge = await this.props.createCharge({
         stripeEmail: this.props.currentUser.email,
         stripeToken: token.id,
@@ -63,29 +72,55 @@ class BillingInput extends React.Component{
         amount: this.props.currentPlan.price,
         description: this.props.currentPlan.name,
       })
+
+      if (charge){
+        //SUCCESS CHARGE LOGIC
+        console.log(charge)
+      } else{
+        //FAIL CHARGE LOGIC
+        this.setState({
+          isPending: false
+        })
+        console.log(error)
+      }
+
     }
   }
 
   update(type, event) {
     let validationState = ["fname", "lname", "zipCode"];
     validationState.includes(type) ? ( this.state[type] = event.target.value.replace(/\s+/g, '') ) : null;
-    if (this.props.errors) {
+    if (this.props.errors || this.state.errorMessage) {
       this.props.clearErrors();
+      this.setState({ errorMessage: null })
     }
     this.setState({
       [type]: this.state[type]
-    }); 
+    });
   }
 
   updateError({error}) {
     if(error){
-      this.setState({errorMessage: error.message})
+      this.setState({errorMessage: this.state.errorMessage.concat(error.message)})
     } else {
-      this.setState({errorMessage: ''})
+      this.setState({errorMessage: []})
     }
   }
 
+  renderErrors() {
+    return (
+      <ul className="error" role="alert">
+        {this.state.errorMessage.map((error, i) => (
+          <li key={i}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render(){
+    let { errorMessage } = this.state;
+    let buttonText = 'Submit';
+
     return(
       <React.Fragment>
         <div className="sectionHeader" style={{marginBottom: '10px'}}>
@@ -155,11 +190,11 @@ class BillingInput extends React.Component{
             </div>
           </div>
 
-          {this.state.errorMessage && <div className="error" role="alert">
-            {this.state.errorMessage}
-          </div>}
+          {(errorMessage && errorMessage.length > 0) && this.renderErrors()}
 
-          <button className={"primary -fullWidth"} id="bt-submit" type="submit">Submit</button>
+          <button className={"primary -fullWidth"  + (isPending ? " -pending" : "")} id="bt-submit" type="submit">
+            {!isPending && buttonText}
+          </button>
         </form>
       </React.Fragment>
     )
