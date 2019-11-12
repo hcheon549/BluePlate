@@ -14,8 +14,6 @@ class Api::ChargesController < ApplicationController
       description: params[:chargeData][:description],
       currency: 'usd',
     })
-
-    debugger
   
     rescue Stripe::CardError => e
       render json: {message: 'Unsuccessful'}, status: 500
