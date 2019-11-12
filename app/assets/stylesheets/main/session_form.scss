@@ -175,12 +175,6 @@
   text-transform: uppercase;
 }
 
-.login-errors {
-  position: absolute;
-  width: 100%;
-  bottom: 210px;
-  color: red;
-}
 
 .signup-errors {
   color: red;
@@ -192,17 +186,14 @@
   flex-direction: row;
 }
 
-.session-error {
-  margin-left: 10px;
-  white-space: nowrap;
-}
-
-.login-errors {
-  ul {
-    margin-bottom: 10px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+.formError{
+  .formError-list {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: $red;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.5;
   }
 }
 
@@ -224,6 +215,7 @@
   letter-spacing: 1px;
   font-size: 12px;
   text-transform: uppercase;
+  text-align: left;
 }
 
 .stripe-input {

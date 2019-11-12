@@ -58,7 +58,7 @@ class AuthForm extends React.Component{
     }
     this.setState({
       [type]: this.state[type]
-    }); 
+    });
   }
 
   assembleSchoolChoices(){
@@ -73,9 +73,9 @@ class AuthForm extends React.Component{
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="formError">
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
+          <li className="formError-list" key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );
@@ -84,44 +84,11 @@ class AuthForm extends React.Component{
   render(){
     let { formType, buttonText, errors, schools } = this.props,
         { isPending } = this.state,
-          emailError,
-          pwError,
-          schoolError;
-
-    if (formType == 'Sign-Up') {
-      errors.map((error, i) => {
-        if (error.toLowerCase().includes("email")) {
-          emailError = (
-            <div className="signup-errors" key={`error-${i}`}>
-              {error}
-            </div>
-          );
-        } else if (error.toLowerCase().includes("password")) {
-          pwError = (
-            <div className="signup-errors" key={`error-${i}`}>
-              {error}
-            </div>
-          );
-        } else if (error.toLowerCase().includes("school")) {
-          schoolError = (
-            <div className="signup-errors" key={`error-${i}`}>
-              {error}
-            </div>
-          );
-        }
-        return null;
-      });
-    }
 
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
-        {formType == 'Login' && <div className="login-errors">{this.renderErrors()}</div>}
         <div className="login-form">
-          <label className="login-label">
-            <ul className="label-err">
-              <li>EMAIL ADDRESS:</li>
-              <li className="session-error">{emailError}</li>
-            </ul>
+          <label className="login-label">EMAIL ADDRESS:
             <input
               type="text"
               autoComplete="email"
@@ -131,11 +98,7 @@ class AuthForm extends React.Component{
             />
           </label>
 
-          <label className="login-label">
-            <ul className="label-err">
-              <li>PASSWORD:</li>
-              <li className="session-error">{pwError}</li>
-            </ul>
+          <label className="login-label">PASSWORD:
             <input
               type="password"
               autoComplete="current-password"
@@ -146,11 +109,7 @@ class AuthForm extends React.Component{
           </label>
 
           {(formType && formType == 'Sign-Up') && 
-            <label className="login-label">
-              <ul className="label-err">
-                <li>CAMPUS:</li>
-                <li className="session-error">{schoolError}</li>
-              </ul>
+            <label className="login-label">CAMPUS:
               <select
                 value={this.state.enrolledSchool}
                 onChange={this.update.bind(this, "enrolledSchool")}
@@ -163,6 +122,7 @@ class AuthForm extends React.Component{
               </select>
             </label>
           }
+          {(errors && errors.length > 0) && this.renderErrors()}
 
           <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} type="submit">
             {!isPending && buttonText}
