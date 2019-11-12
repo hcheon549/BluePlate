@@ -23,7 +23,6 @@ class BillingInput extends React.Component{
       errorMessage: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
     this.updateError = this.updateError.bind(this);
   }
 
@@ -67,15 +66,15 @@ class BillingInput extends React.Component{
     }
   }
 
-  update(type) {
-    return e => {
-      if (this.props.errors){
-        this.props.clearErrors();
-      }
-      this.setState({
-        [type]: e.currentTarget.value
-      }); 
+  update(type, event) {
+    let validationState = ["fname", "lname", "zipCode"];
+    validationState.includes(type) ? ( this.state[type] = event.target.value.replace(/\s+/g, '') ) : null;
+    if (this.props.errors) {
+      this.props.clearErrors();
     }
+    this.setState({
+      [type]: this.state[type]
+    }); 
   }
 
   updateError({error}) {
@@ -102,7 +101,7 @@ class BillingInput extends React.Component{
                 type="text"
                 autoComplete="credit_Card"
                 value={this.state.fname}
-                onChange={this.update("fname")}
+                onChange={this.update.bind(this, "fname")}
                 className="login-input"
               />
             </div>
@@ -112,7 +111,7 @@ class BillingInput extends React.Component{
                 type="text"
                 autoComplete="credit_Card"
                 value={this.state.lname}
-                onChange={this.update("lname")}
+                onChange={this.update.bind(this, "lname")}
                 className="login-input"
               />
             </div>
@@ -150,7 +149,7 @@ class BillingInput extends React.Component{
                 type="text"
                 autoComplete="zipCode"
                 value={this.state.zipCode}
-                onChange={this.update("zipCode")}
+                onChange={this.update.bind(this, "zipCode")}
                 className="login-input"
               />
             </div>
