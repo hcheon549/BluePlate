@@ -3,7 +3,7 @@ import ChangeEmailForm from './ChangeEmailForm';
 
 const SubscriptionSummary = (props) => {
   let { currentUser, currentPlan, calculatePayment, toggleUpdateForm, updateEmail,
-        updateUserEmail, errors, clearErrors } = props
+        updateUserEmail, setStep, errors, clearErrors } = props
   // let payments = calculatePayment(currentPlan.price)
   let tax = Math.round(currentPlan.price * 6.625) / 100
   let totalPayment = Math.round((currentPlan.price + tax) * 100) / 100
@@ -31,7 +31,7 @@ const SubscriptionSummary = (props) => {
           : <p>{currentUser.email}</p>}
         </div>
         <div className="infoSection">
-          <h4>Your Meal Plan</h4>
+          <h4>Your Meal Plan  -  <span className="link emailUpdate" onClick={()=> setStep('plan')}>Change</span></h4>
           <p>{currentPlan.name} per Week Plan - Total {currentPlan.meals} Meal credits</p>
         </div>
         <div className="infoSection">

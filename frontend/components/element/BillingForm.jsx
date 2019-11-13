@@ -45,14 +45,10 @@ class BillingForm extends React.Component{
         <div className="partitions">
           <div className="signupPartition">
             <SubscriptionSummary
-              currentUser={this.props.currentUser}
-              currentPlan={this.props.currentPlan}
+              {...this.props}
               calculatePayment={this.calculatePayment}
               toggleUpdateForm={this.toggleUpdateForm}
               updateEmail={this.state.updateEmail}
-              updateUserEmail={this.props.updateUserEmail}
-              errors={this.props.errors}
-              clearErrors={this.props.clearErrors}
             />
           </div>
           <div className="signupPartition">
