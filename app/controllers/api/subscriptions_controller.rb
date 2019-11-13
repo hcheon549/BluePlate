@@ -14,19 +14,19 @@ class Api::SubscriptionsController < ApplicationController
     end
   end
 
-  # def update
-  #   @subscription = current_user.subscription.find(params[:id])
+  def update
+    @subscription = Subscription.find(params[:id])
+    debugger
+    if @subscription.update_attributes(
+      plan_id: params[:plan_id]
+      )
+      @user = current_user
+      render :show
+    else
+      render json: @subscription.errors.full_messages, status: 422
+    end
 
-  #   if @reservation.update_attributes(
-  #     plan_id: params[:plan_id]
-  #     )
-  #     @user = current_user
-  #     render :show
-  #   else
-  #     render json: @reservation.errors.full_messages, status: 422
-  #   end
-
-  # end
+  end
 
   # def destroy
   #   @reservation = current_user.reservations.find(params[:id])

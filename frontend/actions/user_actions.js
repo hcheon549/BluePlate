@@ -12,8 +12,6 @@ export const updateUser = user => dispatch => {
   );
 };
 
-///////////////////////////////////////////////////
-
 export const updateUserEmail = userData => dispatch => {
   return userApiUtil.updateUserEmail(userData).then(
     usr => {
@@ -22,8 +20,6 @@ export const updateUserEmail = userData => dispatch => {
     errors => dispatch(receiveErrors(errors.response.data))
   )
 }
-
-///////////////////////////////////////////////////
 
 
 export const updateUserName = userData => dispatch => {
@@ -35,6 +31,8 @@ export const updateUserName = userData => dispatch => {
     errors => dispatch(receiveErrors(errors.response.data))
   )
 }
+
+///////////////////////////////////////////////////
 
 export const updateUserMeals = user => dispatch => {
   return userApiUtil.updateUserMeals(user).then(

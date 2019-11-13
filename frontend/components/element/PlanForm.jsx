@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { signup, clearErrors, login } from '../../actions/session_actions';
 import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
-import { createSubscription } from "../../actions/subscription_actions";
+import { createSubscription, updateSubscription } from "../../actions/subscription_actions";
 
 class PlanForm extends React.Component{
   constructor(props){
@@ -13,7 +13,8 @@ class PlanForm extends React.Component{
     this.state = {
       isPending: false,
       planType: null,
-      selectedPlan: null,
+      selectedPlan: this.props.currentPlan ? this.props.currentPlan.planId : null,
+      showError: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.buildPlans = this.buildPlans.bind(this);
@@ -25,6 +26,7 @@ class PlanForm extends React.Component{
 
   togglePlan(planId){
     this.setState({
+      showError: false,
       selectedPlan: planId,
     })
   }
@@ -47,23 +49,36 @@ class PlanForm extends React.Component{
 
   async handleSubmit(e) {
     e.preventDefault();
+    let res;
     this.setState({
       isPending: true
     })
     const subscription = Object.assign({}, {plan_id: parseInt(this.state.selectedPlan)})
-    let res = await this.props.processSubscription(subscription)
+    debugger
+    if (this.props.currentPlan){
+      res = await this.props.updateSubscription({
+        subscriptionId: this.props.currentPlan.id,
+        plan_id: this.props.currentplan.planId
+      })
+    } else {
+      res = await this.props.processSubscription(subscription)
+    }
     if (res.subscription){
       this.props.setStep('billing')
     } else if (res.errors){
-      this.setState({isPending: false})
       console.log(res.errors)
+      this.setState({
+        isPending: false,
+        showError: true
+      })
     }
   }
 
   render(){
     let { plans } = this.props,
-        { isPending } = this.state;
-    let buttonText = "Next";
+        { isPending, showError } = this.state,
+        buttonText = "Next",
+        error = showError ? (<div className="error" role="alert">You must select a plan.</div>) : null;
 
     return(
       <div className="planForm">
@@ -71,6 +86,7 @@ class PlanForm extends React.Component{
           <ul className="plans">
             {this.buildPlans()}
           </ul>}
+          {error}
         <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} onClick={this.handleSubmit}>{!isPending && buttonText}</button>
         <span className="miniText"><em>State and local taxes may apply.<br/>For more information about BluePlate plans, <Link to="/faq" target="_blank">click here</Link></em></span>
       </div>
@@ -79,15 +95,18 @@ class PlanForm extends React.Component{
 }
 
 const mapStateToProps = (state) => {
+  debugger
   return {
     plans: Object.values(state.entities.plans),
     errors: state.errors.session,
+    currentPlan: state.entities.subscription,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     processSubscription: (plan_id) => dispatch(createSubscription(plan_id)),
+    updateSubscription: (subscriptionData) => dispatch(updateSubscription(subscriptionData)),
     fetchPlans: () => dispatch(fetchPlans()),
     clearErrors: () => dispatch(clearErrors())
   };

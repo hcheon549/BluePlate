@@ -12,6 +12,19 @@ export const createSubscription = subscription => {
   });
 };
 
+export const updateSubscription = subscriptionData => {
+  debugger
+  return axios({
+    method: "PATCH",
+    url: `/api/subscriptions/${subscriptionData.subscriptionId}`,
+    data: {
+      subscription: {
+        plan_id: subscriptionData.plan_id
+      }
+    }
+  });
+};
+
 // export const fetchSubscriptions = () => {
 //   return axios({
 //     method: "GET",
