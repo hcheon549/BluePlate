@@ -25,7 +25,6 @@ export const updateUserEmail = userData => dispatch => {
 export const updateUserName = userData => dispatch => {
   return userApiUtil.updateUserName(userData).then(
     usr => {
-      debugger
       return dispatch(receiveUser(usr.data))
     },
     errors => dispatch(receiveErrors(errors.response.data))

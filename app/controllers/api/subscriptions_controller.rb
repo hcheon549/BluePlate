@@ -16,11 +16,11 @@ class Api::SubscriptionsController < ApplicationController
 
   def update
     @subscription = Subscription.find(params[:id])
-    debugger
+
     if @subscription.update_attributes(
-      plan_id: params[:plan_id]
+      plan_id: params[:subscription][:plan_id]
       )
-      @user = current_user
+      @subscription.meal_credit = @subscription.plan.meals
       render :show
     else
       render json: @subscription.errors.full_messages, status: 422

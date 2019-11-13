@@ -13,13 +13,13 @@ export const createSubscription = subscription => {
 };
 
 export const updateSubscription = subscriptionData => {
-  debugger
   return axios({
     method: "PATCH",
     url: `/api/subscriptions/${subscriptionData.subscriptionId}`,
     data: {
       subscription: {
-        plan_id: subscriptionData.plan_id
+        plan_id: subscriptionData.plan_id,
+        meals: subscriptionData.meals
       }
     }
   });

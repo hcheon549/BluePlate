@@ -30,7 +30,6 @@ export const updateUserEmail = userData => {
 };
 
 export const updateUserName = userData => {
-  debugger
   return axios({
     method: "PATCH",
     url: `api/users/${userData.userId}`,

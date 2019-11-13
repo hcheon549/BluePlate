@@ -14,7 +14,6 @@ export const createSubscription = subscription => dispatch => {
 };
 
 export const updateSubscription = subscriptionData => dispatch => {
-  debugger
   return subscriptionApiUtil.updateSubscription(subscriptionData).then(
     subscriptionS => {
       return dispatch(receiveSubscription(subscriptionS.data));

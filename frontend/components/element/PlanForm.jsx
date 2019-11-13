@@ -13,7 +13,7 @@ class PlanForm extends React.Component{
     this.state = {
       isPending: false,
       planType: null,
-      selectedPlan: this.props.currentSubscription ? this.props.currentSubscription.plan_id : null,
+      selectedPlan: this.props.currentSubscription ? this.props.currentSubscription.planId : null,
       showError: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,7 +34,7 @@ class PlanForm extends React.Component{
   buildPlans(){
     let { plans } = this.props,
         { selectedPlan } = this.state;
-    return plans.map(({id, name, meals, price}, idx) => {
+    return Object.values(plans).map(({id, name, meals, price}, idx) => {
       let perMeal = Math.round(price / meals * 100) / 100
       return (
         <li className={(selectedPlan == id) ? 'active' : ''} key={idx} onClick={this.togglePlan.bind(this, id)}>
@@ -53,11 +53,12 @@ class PlanForm extends React.Component{
     this.setState({
       isPending: true
     })
-    const subscription = Object.assign({}, {plan_id: parseInt(this.state.selectedPlan)})
+    const subscription = Object.assign({}, { plan_id: parseInt(this.state.selectedPlan) })
     if (this.props.currentSubscription){
       res = await this.props.updateSubscription({
         subscriptionId: this.props.currentSubscription.id,
-        plan_id: subscription.plan_id
+        plan_id: subscription.plan_id,
+        meals: subscription.meals
       })
     } else {
       res = await this.props.processSubscription(subscription)
@@ -93,11 +94,11 @@ class PlanForm extends React.Component{
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({entities, errors}) => {
   return {
-    plans: Object.values(state.entities.plans),
-    errors: state.errors.session,
-    currentSubscription: state.entities.subscription,
+    plans: entities.plans,
+    errors: errors.session,
+    currentSubscription: entities.subscription,
   };
 };
 
