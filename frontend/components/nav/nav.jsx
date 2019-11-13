@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavRoute } from '../../util/route_util';
 
-import StepIndicator from '../element/StepIndicator';
+import StepIndicator from './StepIndicator'
 
 const Nav = ({location, stepJoin}) => (
   <div className="shadow">

@@ -1,5 +1,5 @@
 import React from 'react'
-import ChangeEmailForm from './ChangeEmailForm';
+import ChangeEmailForm from '../element/ChangeEmailForm';
 
 const SubscriptionSummary = (props) => {
   let { currentUser, currentPlan, calculatePayment, toggleUpdateForm, updateEmail,

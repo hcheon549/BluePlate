@@ -5,9 +5,9 @@ import { fetchSchools } from '../../actions/school_actions';
 import { setStepJoinStep } from '../../actions/stepjoin_actions';
 
 import SignupForm from '../session_form/SignUpForm';
-import PlanForm from '../element/PlanForm';
-import BillingForm from '../element/BillingForm';
-import SignupSectionHeader from '../element/SignupSectionHeader';
+import PlanForm from './PlanForm';
+import BillingForm from './BillingForm';
+import SignupSectionHeader from './SignupSectionHeader';
 
 class StepJoin extends React.Component {
   constructor(props) {

@@ -12,7 +12,7 @@ import Account from "./account/account";
 import Favorites from "./account/favorites";
 import History from "./account/history";
 import LoginPage from "./session_form/LoginPage";
-import StepJoin from "./session_form/StepJoin";
+import StepJoin from "./stepJoin/StepJoin";
 import Nav from "./nav/nav";
 import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
