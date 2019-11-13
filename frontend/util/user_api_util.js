@@ -42,13 +42,13 @@ export const updateUserName = userData => {
   });
 };
 
-export const updateUserMeals = (userId, user) => {
+export const updateUserMeals = (userData) => {
   return axios({
     method: "PATCH",
-    url: `api/users/${user.id}`,
+    url: `api/users/${userData.id}`,
     data: {
       user: {
-        meal_left: user.id,
+        meals_left: userData.meals_left,
       }
     }
   });
