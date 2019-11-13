@@ -58,7 +58,7 @@ class AuthForm extends React.Component{
     this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
     if (this.props.errors || this.state.errorMessage) {
       this.props.clearErrors();
-      this.setState({ errorMessage: null })
+      this.setState({ errorMessage: [] })
     }
     this.setState({ [type]: this.state[type] });
   }
@@ -85,7 +85,7 @@ class AuthForm extends React.Component{
 
   render(){
     let { formType, buttonText, errors, schools } = this.props,
-        { isPending } = this.state;
+        { isPending, errorMessage } = this.state;
 
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -125,7 +125,7 @@ class AuthForm extends React.Component{
             </label>
           }
 
-          {this.state.errorMessage && this.renderErrors()}
+          {(errorMessage && errorMessage.length > 0) && this.renderErrors()}
 
           <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} type="submit">
             {!isPending && buttonText}

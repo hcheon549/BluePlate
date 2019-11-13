@@ -12,6 +12,39 @@ export const updateUser = user => dispatch => {
   );
 };
 
+///////////////////////////////////////////////////
+
+export const updateUserEmail = userData => dispatch => {
+  return userApiUtil.updateUserEmail(userData).then(
+    usr => {
+      return dispatch(receiveUser(usr.data))
+    },
+    errors => dispatch(receiveErros(errors.response.data))
+  )
+}
+
+///////////////////////////////////////////////////
+
+
+export const updateUserName = userData => dispatch => {
+  return userApiUtil.updateUserName(userData).then(
+    usr => {
+      debugger
+      return dispatch(receiveUser(usr.data))
+    },
+    errors => dispatch(receiveErros(errors.response.data))
+  )
+}
+
+export const updateUserMeals = user => dispatch => {
+  return userApiUtil.updateUserMeals(user).then(
+    usr => {
+      return dispatch(receiveUser(usr.data))
+    },
+    errors => dispatch(receiveErros(errors.response.data))
+  )
+}
+
 const receiveUser = user => {
   return {
     type: RECEIVE_USER,

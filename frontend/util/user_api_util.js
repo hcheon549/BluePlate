@@ -16,3 +16,41 @@ export const updateUser = user => {
     }
   });
 };
+
+export const updateUserEmail = userData => {
+  return axios({
+    method: "PATCH",
+    url: `api/users/${userData.userId}`,
+    data: {
+      user: {
+        email: userData.email,
+      }
+    }
+  });
+};
+
+export const updateUserName = userData => {
+  debugger
+  return axios({
+    method: "PATCH",
+    url: `api/users/${userData.userId}`,
+    data: {
+      user: {
+        fname: userData.fname,
+        lname: userData.lname
+      }
+    }
+  });
+};
+
+export const updateUserMeals = (userId, user) => {
+  return axios({
+    method: "PATCH",
+    url: `api/users/${user.id}`,
+    data: {
+      user: {
+        meal_left: user.id,
+      }
+    }
+  });
+};

@@ -16,6 +16,6 @@ class Api::ChargesController < ApplicationController
     })
   
     rescue Stripe::CardError => e
-      render json: {message: 'Unsuccessful'}, status: 500
+      render json: {message: 'Invalid card information.'}, status: 500
   end
 end

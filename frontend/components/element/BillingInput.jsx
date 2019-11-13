@@ -10,6 +10,7 @@ import { injectStripe, StripeProvider, Elements,
 
 import { clearErrors } from '../../actions/session_actions';
 import { createCharge } from '../../util/charge_api_util';
+import { updateUserName } from '../../actions/user_actions';
 
 
 class BillingInput extends React.Component{
@@ -24,6 +25,7 @@ class BillingInput extends React.Component{
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateError = this.updateError.bind(this);
+    this.updateUserName = this.updateUserName.bind(this);
   }
 
   componentWillUnmount() {
@@ -64,6 +66,7 @@ class BillingInput extends React.Component{
         errorMessage: message
       })
     } else {
+      let oUpdate = await this.updateUserName();
       let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
       let charge = await this.props.createCharge({
         stripeEmail: this.props.currentUser.email,
@@ -76,23 +79,32 @@ class BillingInput extends React.Component{
 
       if (charge.errors){
         //FAILED CHARGE LOGIC
-        console.log(charge.errors)
         this.setState({
           isPending: false,
-          errorMessage: this.state.errorMessage.concat(["Invalid card information."])
+          errorMessage: [charge.errors.message]
         })
-
       } else {
-        //FAIL CHARGE LOGIC
-        console.log(error)
+        console.log(charge)
+        this.setState({
+          isPending: false
+        })  
       }
-
     }
   }
 
+  async updateUserName(){
+    let userData = {
+      userId: this.props.currentUser.id,
+      fname: this.state.fname,
+      lname: this.state.lname
+    }
+    let oUpdate = await this.props.updateUserName(userData)
+    return oUpdate
+  }
+
   update(type, event) {
-    let validationState = ["fname", "lname", "zipCode"];
-    validationState.includes(type) ? ( this.state[type] = event.target.value.replace(/\s+/g, '') ) : null;
+    let validationState = ["zipCode"];
+    this.state[type] = validationState.includes(type) ? event.target.value.replace(/[^0-9]/g, '') : event.target.value;
     if (this.props.errors || this.state.errorMessage) {
       this.props.clearErrors();
       this.setState({ errorMessage: [] })
@@ -213,7 +225,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     clearErrors: () => dispatch(clearErrors()),
-    createCharge: (data) => dispatch(createCharge(data))
+    createCharge: (data) => dispatch(createCharge(data)),
+    updateUserName: (user) => dispatch(updateUserName(user))
   };
 };
 
