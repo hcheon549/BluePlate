@@ -64,7 +64,7 @@ const mapStateToProps = (state) => {
   const {entities: { users, subscription, plans }} = state;
   return {
     currentUser: Object.values(users)[0],
-    currentPlan: plans[Object.values(subscription)[0].planId],
+    currentPlan: plans[subscription.planId],
     errors: state.errors.session,
   };
 };

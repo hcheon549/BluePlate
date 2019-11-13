@@ -13,7 +13,7 @@ class PlanForm extends React.Component{
     this.state = {
       isPending: false,
       planType: null,
-      selectedPlan: this.props.currentPlan ? this.props.currentPlan.planId : null,
+      selectedPlan: this.props.currentSubscription ? this.props.currentSubscription.plan_id : null,
       showError: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,11 +54,10 @@ class PlanForm extends React.Component{
       isPending: true
     })
     const subscription = Object.assign({}, {plan_id: parseInt(this.state.selectedPlan)})
-    debugger
-    if (this.props.currentPlan){
+    if (this.props.currentSubscription){
       res = await this.props.updateSubscription({
-        subscriptionId: this.props.currentPlan.id,
-        plan_id: this.props.currentplan.planId
+        subscriptionId: this.props.currentSubscription.id,
+        plan_id: subscription.plan_id
       })
     } else {
       res = await this.props.processSubscription(subscription)
@@ -95,11 +94,10 @@ class PlanForm extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     plans: Object.values(state.entities.plans),
     errors: state.errors.session,
-    currentPlan: state.entities.subscription,
+    currentSubscription: state.entities.subscription,
   };
 };
 
