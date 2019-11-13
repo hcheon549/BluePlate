@@ -207,7 +207,7 @@ class BillingInput extends React.Component{
 
           {(errorMessage && errorMessage.length > 0) && this.renderErrors()}
 
-          <button className={"primary -fullWidth"  + (isPending ? " -pending" : "")} id="bt-submit" type="submit">
+          <button className={"primary -fullWidth"  + (isPending ? " -pending" : "")} id="bt-submit" type="submit" disabled={isPending} >
             {!isPending && buttonText}
           </button>
         </form>

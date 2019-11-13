@@ -6,6 +6,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { clearErrors } from '../../actions/session_actions';
+import { updateUserEmail } from '../../actions/user_actions';
 
 import SubscriptionSummary from './SubscriptionSummary';
 import BillingInputStripe from './BillingInput';
@@ -15,6 +16,15 @@ class BillingForm extends React.Component{
 
   constructor(props){
     super(props)
+    this.state = {
+      updateEmail: false,
+    }
+
+    this.toggleUpdateForm = this.toggleUpdateForm.bind(this);
+  }
+
+  toggleUpdateForm() {
+    this.setState({ updateEmail: !this.state.updateEmail })
   }
 
   calculatePayment(total){
@@ -38,6 +48,11 @@ class BillingForm extends React.Component{
               currentUser={this.props.currentUser}
               currentPlan={this.props.currentPlan}
               calculatePayment={this.calculatePayment}
+              toggleUpdateForm={this.toggleUpdateForm}
+              updateEmail={this.state.updateEmail}
+              updateUserEmail={this.props.updateUserEmail}
+              errors={this.props.errors}
+              clearErrors={this.props.clearErrors}
             />
           </div>
           <div className="signupPartition">
@@ -60,7 +75,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearErrors: () => dispatch(clearErrors())
+    clearErrors: () => dispatch(clearErrors()),
+    updateUserEmail: (userData) => dispatch(updateUserEmail(userData))
   };
 };
 

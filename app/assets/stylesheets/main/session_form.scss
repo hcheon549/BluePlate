@@ -257,43 +257,27 @@ select {
   border-color: $main;
 }
 
-// .session-submit {
-//   display: flex;
-//   justify-content: center;
-//   box-sizing: border-box;
+.emailUpdate{
+  color: $siteColor;
+}
+.emailUpdate:hover{
+  cursor: pointer;
+}
 
-//   // border-top: 5px solid black;
-//   // border-top-right-radius: 10px;
-//   // border-top-left-radius: 10px;
-
-//   border-radius: 5px;
-
-//   // width: 440px;
-//   // max-width: 30vw;
-//   width: 90%;
-
-//   height: 50px;
-
-//   margin: 10px;
-//   padding: 10px;
-
-//   border: none;
-//   color: white;
-//   background-color: $main;
-
-//   div {
-//     letter-spacing: 2px;
-//   }
-//   &.-pending{
-//     cursor: default;
-//      position: relative;
-//      &::before {
-//      @extend %spinit;  
-//       border: solid 3px rgba($black, 45%);
-//       border-bottom-color: $white;
-//     }
-//   }
-// }
+.updateEmail-form{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  .login-label{
+    margin-bottom: 0;
+    input{margin-top: 0;}
+  }
+  button.secondary{
+    margin-left: 20px;
+    padding: 0;
+    font-size: 16px;
+  }
+}
 
 .session-submit:hover {
   background-color: $accent;

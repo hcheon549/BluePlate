@@ -1,11 +1,17 @@
 import React from 'react'
+import ChangeEmailForm from './ChangeEmailForm';
 
 const SubscriptionSummary = (props) => {
-  let { currentUser, currentPlan, calculatePayment } = props
-  let payments = calculatePayment(currentPlan.price)
+  let { currentUser, currentPlan, calculatePayment, toggleUpdateForm, updateEmail,
+        updateUserEmail, errors, clearErrors } = props
+  // let payments = calculatePayment(currentPlan.price)
   let tax = Math.round(currentPlan.price * 6.625) / 100
   let totalPayment = Math.round((currentPlan.price + tax) * 100) / 100
+  let buttonText = updateEmail ? 'Cancel' : 'Change';
 
+  // updateEmail = true ?
+  // 1) buttonText = Cancel
+  // 2) Show ChangeEmailForm
   return (
     <section className="SubscriptionSummary">
       <div className="sectionHeader">
@@ -13,8 +19,16 @@ const SubscriptionSummary = (props) => {
       </div>
       <div className="main-info">
         <div className="infoSection">
-          <h4>Email</h4>
-          <p>{currentUser.email}</p>
+          <h4>Email  -  <span className="link emailUpdate" onClick={toggleUpdateForm}>{buttonText}</span></h4>
+          {updateEmail ? 
+            <ChangeEmailForm 
+              currentUser={currentUser}
+              updateUserEmail={updateUserEmail}
+              errors={errors}
+              clearErrors={clearErrors}
+              toggleUpdateForm={toggleUpdateForm}
+            /> 
+          : <p>{currentUser.email}</p>}
         </div>
         <div className="infoSection">
           <h4>Your Meal Plan</h4>

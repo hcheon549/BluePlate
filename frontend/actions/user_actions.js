@@ -19,7 +19,7 @@ export const updateUserEmail = userData => dispatch => {
     usr => {
       return dispatch(receiveUser(usr.data))
     },
-    errors => dispatch(receiveErros(errors.response.data))
+    errors => dispatch(receiveErrors(errors.response.data))
   )
 }
 
@@ -32,7 +32,7 @@ export const updateUserName = userData => dispatch => {
       debugger
       return dispatch(receiveUser(usr.data))
     },
-    errors => dispatch(receiveErros(errors.response.data))
+    errors => dispatch(receiveErrors(errors.response.data))
   )
 }
 
@@ -41,7 +41,7 @@ export const updateUserMeals = user => dispatch => {
     usr => {
       return dispatch(receiveUser(usr.data))
     },
-    errors => dispatch(receiveErros(errors.response.data))
+    errors => dispatch(receiveErrors(errors.response.data))
   )
 }
 

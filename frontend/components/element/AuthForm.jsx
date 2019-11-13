@@ -127,7 +127,7 @@ class AuthForm extends React.Component{
 
           {(errorMessage && errorMessage.length > 0) && this.renderErrors()}
 
-          <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} type="submit">
+          <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} type="submit" disabled={isPending} >
             {!isPending && buttonText}
           </button>
         </div>
