@@ -23,6 +23,7 @@ export const charge = chargeData => {
 export const createCharge = chargeData => dispatch => {
   return charge(chargeData).then(
     charge => {
+      debugger
       return dispatch(setPolicy(charge.data))
     },
     errors => {
@@ -34,7 +35,7 @@ export const createCharge = chargeData => dispatch => {
 const setPolicy = payload => {
   return {
     type: SET_POLICY,
-    payload
+    policyType: payload.policyType
   }
 }
 
