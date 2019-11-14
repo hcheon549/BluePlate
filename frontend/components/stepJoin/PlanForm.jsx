@@ -71,10 +71,6 @@ class PlanForm extends React.Component{
         subscription_id: res.subscription.id,
         policy_type: "Lead"
       })
-      .then(this.props.updateUserMeals({
-        id: this.props.currentUser.id,
-        meals_left: res.subscription.mealCredit
-      }))
       .then(this.props.setStep('billing'))
     } else if (res.errors){
       console.log(res.errors)
