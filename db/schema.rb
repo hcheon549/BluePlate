@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_032328) do
+ActiveRecord::Schema.define(version: 2019_11_14_035623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "account_summaries", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "subscription_id", null: false
+    t.integer "subscription_id"
     t.integer "policy_id", null: false
     t.integer "total_meal_credits"
     t.integer "meal_credits_left"

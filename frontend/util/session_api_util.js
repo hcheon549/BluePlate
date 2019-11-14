@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const signup = user => {
+export const createAccount = user => {
   return axios({
     method: "POST",
     url: `/api/users`,

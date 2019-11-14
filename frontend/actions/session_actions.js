@@ -6,7 +6,7 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
 export const signup = user => dispatch => {
-  return sessionApiUtil.signup(user).then(
+  return sessionApiUtil.createAccount(user).then(
     userS => {
       return dispatch(receiveCurrentUser(userS.data));
     },
@@ -15,6 +15,13 @@ export const signup = user => dispatch => {
     }
   );
 };
+
+export const createAccount = user => async dispatch => {
+  try{
+    const account = await sessionApiUtil.createAccount(user)
+    const 
+  }
+} 
 
 export const login = user => dispatch => {
   return sessionApiUtil.login(user).then(
