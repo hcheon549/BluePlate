@@ -67,7 +67,6 @@ class BillingInput extends React.Component{
         errorMessage: message
       })
     } else {
-      debugger
       let oUpdate = await this.updateUserName();
       debugger
       let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
@@ -80,7 +79,6 @@ class BillingInput extends React.Component{
         amount: this.props.currentPlan.price,
         description: this.props.currentPlan.name,
       })
-      debugger
       if (charge.errors){
         //FAILED CHARGE LOGIC
         this.setState({
@@ -103,15 +101,13 @@ class BillingInput extends React.Component{
   }
 
   async updateUserName(){
-    debugger
     let userData = {
       userId: this.props.currentUser.id,
       fname: this.state.fname,
       lname: this.state.lname
     }
-    debugger
     let oUpdate = await this.props.updateUserName(userData)
-    debugger
+
     return oUpdate
   }
 

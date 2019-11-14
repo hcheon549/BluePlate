@@ -66,12 +66,13 @@ class PlanForm extends React.Component{
       res = await this.props.processSubscription(subscription)
     }
     if (res.subscription){
-      this.props.updateAccountSummary({
+      let aUpdate = await this.props.updateAccountSummary({
         id: this.props.currentUser.summary_id,
         subscription_id: res.subscription.id,
         policy_type: "Lead"
       })
-      .then(this.props.setStep('billing'))
+      debugger
+      if (aUpdate.payload) {this.props.setStep('billing')}
     } else if (res.errors){
       console.log(res.errors)
       this.setState({
