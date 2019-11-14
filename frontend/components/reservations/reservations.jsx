@@ -194,7 +194,7 @@ class Reservations extends React.Component {
 }
 
 
-const msp = ({entities: {users, mealRes, shopRes, reservations}, session}) => {
+const msp = ({entities: {currentUser, mealRes, shopRes, reservations}, session}) => {
 
   let schoolReservations = getSchoolReservations(reservations, mealRes, true);
   schoolReservations = schoolReservations.sort((a,b) => {
@@ -217,7 +217,7 @@ const msp = ({entities: {users, mealRes, shopRes, reservations}, session}) => {
   }
 
   return {
-    currentUser: users[session.id],
+    currentUser,
     reservations: pastFive,
     meals: mealRes,
     shops: shopRes,

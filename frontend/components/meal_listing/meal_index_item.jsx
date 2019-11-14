@@ -121,7 +121,7 @@ const msp = (state, ownProps) => {
     shop: ownProps.shop,
     favorite: ownProps.favorite,
     favId: ownProps.favId,
-    currentUser: state.entities.users[state.session.id],
+    currentUser: state.entities.currentUser,
     resToday: state.ui.filters.restoday
   };
 };

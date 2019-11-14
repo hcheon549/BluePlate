@@ -103,7 +103,7 @@ class MyMeal extends React.Component {
 
 const msp = (state) => {
   return {
-    currentUser: state.entities.users[state.session.id],
+    currentUser: state.entities.currentUser,
     loading: state.ui.loading.fetchLoading
   };
 };

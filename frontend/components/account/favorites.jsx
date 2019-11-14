@@ -45,18 +45,12 @@ class Favorites extends React.Component {
   }
 }
 
-const mapStateToProps = (
-  { entities: {users, meals, shops, schools, favorites},
-    session,
-    errors,
-    ui}
-  ) => {
-    let favs = getFavorites(favorites);
-    let shopsFavs = getFavShops(Object.values(shops), favs, true);
-    let favIds = getFavIds(favorites)
-
+const mapStateToProps = ({ entities: {currentUser, shops, favorites}}) => {
+  let favs = getFavorites(favorites);
+  let shopsFavs = getFavShops(Object.values(shops), favs, true);
+  let favIds = getFavIds(favorites)
   return {
-      currentUser: users[session.id],
+      currentUser,
       favShops: shopsFavs,
       favIds,
     };

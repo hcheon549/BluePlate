@@ -125,7 +125,7 @@ class Search extends React.Component {
 
 const msp = (state) => {
   return {
-    currentUser: state.entities.users[state.session.id],
+    currentUser: state.entities.currentUser,
     schools: Object.values(state.entities.schools),
     bounds: state.ui.filters.bounds,
     favorite: state.ui.filters.favorite,

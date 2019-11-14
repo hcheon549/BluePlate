@@ -101,7 +101,7 @@ class PlanForm extends React.Component{
 
 const mapStateToProps = ({entities, errors}) => {
   return {
-    currentUser: Object.values(entities.users)[0],
+    currentUser: entities.currentUser,
     currentSubscription: entities.subscription,
     plans: entities.plans,
     errors: errors.session,

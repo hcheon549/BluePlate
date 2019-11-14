@@ -123,12 +123,12 @@ class MealMap extends React.Component {
   }
 }
 
-const msp = ({ entities: { users, meals, shops, favorites, schools }, session, ui }) => {
+const msp = ({ entities: { currentUser, meals, shops, favorites, schools }, session, ui }) => {
 
   let isFav = ui.filters.favorite;
   let shopVals = Object.values(shops);
   let mealVals = Object.values(meals);
-  let currentSchool = session.id ? getEnrolledSchool(session, users, schools) : getCurrentSchool(shopVals, schools);
+  let currentSchool = session.id ? getEnrolledSchool(session, currentUser, schools) : getCurrentSchool(shopVals, schools);
 
   if (isFav) {
     let favs = getFavorites(favorites);

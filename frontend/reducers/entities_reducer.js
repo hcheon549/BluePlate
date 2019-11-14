@@ -11,7 +11,7 @@ import planReducer from './plans_reducer';
 import subscriptionReducer from './subscription_reducer';
 
 const entitiesReducer = combineReducers({
-  users: usersReducer,
+  currentUser: usersReducer,
   meals: mealReducer,
   mealRes: mealResReducer,
   shops: shopReducer,

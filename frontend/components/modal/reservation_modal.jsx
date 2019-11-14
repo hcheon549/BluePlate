@@ -90,7 +90,7 @@ const msp = (state, ownProps) => {
   return {
     meal: ownProps.meal,
     shop: ownProps.shop,
-    currentUser: state.entities.users[state.session.id],
+    currentUser: state.entities.currentUser,
     resToday: state.ui.filters.restoday
   };
 };

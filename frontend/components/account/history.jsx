@@ -84,7 +84,7 @@ class History extends React.Component {
 }
 
 const msp = ({entities:
-  {users, meals, shops, schools, favorites, reservations},
+  {currentUser, meals, shops, schools, favorites, reservations},
   session, errors, ui}) => {
 
   let schoolReses = getSchoolReservations(reservations, meals, false);
@@ -95,7 +95,7 @@ const msp = ({entities:
   let favIds = getFavIds(favorites);
 
  return {
-    currentUser: users[session.id],
+    currentUser,
     meals: meals,
     favIds: favIds,
     schoolReses: schoolReses,

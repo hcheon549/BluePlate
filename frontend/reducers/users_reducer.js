@@ -14,24 +14,19 @@ import {
   SET_POLICY
 } from '../util/charge_api_util';
 
-const usersReducer = (oldState = {}, action) => {
-  Object.freeze(oldState);
-  let newState = {...oldState, ...{}};
+const usersReducer = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      newState[action.user.id] = action.user;
-      return newState;
+      return {...state, ...action.user};
     case RECEIVE_USER:
-      newState[action.user.id] = action.user;
-      return newState;
+      return {...state, ...action.user};
+    //refactor here//
     case RECEIVE_RESERVATION:
-      newState[action.user.id] = action.user;
-      return newState;
+      return {...state, ...action.user};;
     case REMOVE_RESERVATION:
-      newState[action.user.id] = action.user;
-      return newState;
+      return {...state, ...action.user};;
     default:
-      return oldState;
+      return state;
   }
 };
 

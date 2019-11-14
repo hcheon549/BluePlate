@@ -112,11 +112,11 @@ class Account extends React.Component {
 }
 
 const msp = ({entities:
-  {users, meals, shops, schools, favorites, reservations},
+  {currentUser, meals, shops, schools, favorites, reservations},
   session, errors, ui}) => {
 
  return {
-    currentUser: users[session.id],
+    currentUser: currentUser,
     errors: errors.users
   };
 };
