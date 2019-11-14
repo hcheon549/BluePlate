@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_021354) do
+ActiveRecord::Schema.define(version: 2019_11_14_032328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_summaries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "subscription_id", null: false
+    t.integer "policy_id", null: false
+    t.integer "total_meal_credits"
+    t.integer "meal_credits_left"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -91,6 +101,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_021354) do
     t.integer "meal_credit", null: false
     t.date "subscription_start", null: false
     t.date "subscription_end", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id", "plan_id"], name: "index_subscriptions_on_user_id_and_plan_id", unique: true
   end
 
