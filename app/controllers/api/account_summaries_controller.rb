@@ -17,7 +17,7 @@ class Api::AccountSummariesController < ApplicationController
     if @summary.update_attributes(
       policy_id: @policy_id || @summary.policy_type,
       subscription_id: params[:account_summary][:subscription_id] || @summary.subscription_id,
-      total_meal_credits: params[:account_summary][:total_meal_credit] || @summary.total_meal_credits,
+      total_meal_credits: params[:account_summary][:total_meal_credits] || @summary.total_meal_credits,
       meal_credits_left: params[:account_summary][:meal_credits_left] || @summary.meal_credits_left
       )
       render :show

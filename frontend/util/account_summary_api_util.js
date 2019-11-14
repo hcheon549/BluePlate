@@ -24,3 +24,17 @@ export const updateAccountSummary = (summaryData) => {
     }
   });
 };
+
+export const joinMembership = ({id, policy_type, total_meal_credits, meal_credits_left}) => {
+  return axios({
+    method: "PATCH",
+    url: `/api/account_summaries/${id}`,
+    data: {
+      account_summary: {
+        policy_type,
+        total_meal_credits,
+        meal_credits_left,
+      }
+    }
+  });
+};

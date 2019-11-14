@@ -25,6 +25,17 @@ export const updateAccountSummary = summaryData => dispatch => {
   );
 };
 
+export const joinMembership = summaryData => dispatch => {
+  return accountSummaryApiUtil.joinMembership(summaryData).then(
+    summaryS => {
+      return dispatch(setAccountSummary(summaryS.data, "Member"));
+    },
+    errors => {
+      return dispatch(receiveErrors(errors.response.data));
+    }
+  );
+};
+
 export const setAccountSummary = (data, policy_type) => {
   return {
     type: SET_POLICY_TYPE,
