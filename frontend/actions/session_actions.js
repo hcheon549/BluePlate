@@ -1,11 +1,13 @@
 import * as sessionApiUtil from "../util/session_api_util";
+import * as accountApiUtil from '../util/account_summary_api_util';
+
 import { changeFilter } from "./filter_actions";
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
-export const signup = user => dispatch => {
+export const createAccount = user => dispatch => {
   return sessionApiUtil.createAccount(user).then(
     userS => {
       return dispatch(receiveCurrentUser(userS.data));
@@ -15,13 +17,6 @@ export const signup = user => dispatch => {
     }
   );
 };
-
-export const createAccount = user => async dispatch => {
-  try{
-    const account = await sessionApiUtil.createAccount(user)
-    const 
-  }
-} 
 
 export const login = user => dispatch => {
   return sessionApiUtil.login(user).then(
@@ -78,32 +73,9 @@ export const clearErrors = () => {
   };
 };
 
-let demoUser = {
-  email: "demo@blueplate.io",
-  password: 123456
-};
-
-// export const typeWriter = (state, setState) => {
-//
-//   let speed = 50;
-//
-//   let keys = Object.keys(demoUser);
-//   let values = Object.values(demoUser).map((v)=>String(v));
-//
-//   for (let i = 0; i < keys.length; i++) {
-//     let word = '';
-//     for (let j = 0; j < values[i].length; j++) {
-//       word += values[i][j];
-//       state[keys[i]].setState({[keys[i]]: word});
-//       setTimeout(typeWriter(state, setState), speed);
-//     }
-//   }
-// };
-
-export const demo = () => {
-  return login(demoUser);
-};
-
-// export const demoLogin = (state, setState) {
-//
-// }
+export const setAccountSummary = (data, policy_type) => {
+  return {
+    type: SET_POLICY_TYPE,
+    payload: {...data, policy: policy_type}
+  }
+}

@@ -1,6 +1,7 @@
 import {
-  RECEIVE_CURRENT_USER
+  RECEIVE_CURRENT_USER,
 } from '../actions/session_actions';
+
 import {
   RECEIVE_USER
 } from '../actions/user_actions';
@@ -9,6 +10,10 @@ import {
   RECEIVE_RESERVATION,
   REMOVE_RESERVATION
 } from '../actions/reservation_actions';
+
+import {
+  SET_POLICY_TYPE
+} from '../actions/account_summary_actions';
 
 import {
   SET_POLICY
@@ -20,6 +25,16 @@ const usersReducer = (state = null, action) => {
       return {...state, ...action.user};
     case RECEIVE_USER:
       return {...state, ...action.user};
+    case SET_POLICY_TYPE:
+      let { id, policy, mealCreditsLeft, totalMealCredits } = action.payload
+      debugger
+      return {
+        ...state,
+        policy: policy,
+        summary_id: id,
+        meal_credits_left: mealCreditsLeft || null,
+        total_meal_credits: totalMealCredits || null
+      }
     //refactor here//
     case RECEIVE_RESERVATION:
       return {...state, ...action.user};;

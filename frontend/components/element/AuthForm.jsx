@@ -6,7 +6,8 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { signup, clearErrors, login } from '../../actions/session_actions';
+import { createAccount, clearErrors, login } from '../../actions/session_actions';
+import { createAccountSummary } from '../../actions/account_summary_actions'
 import { fetchSchools } from '../../actions/school_actions';
 
 
@@ -43,6 +44,7 @@ class AuthForm extends React.Component{
     } else if (this.props.formType == 'Sign-Up'){
       let res = await this.props.processJoinForm(user);
       if (res.user && this.props.setStep){
+        let summary = await this.props.createAccountSummary(res.user.id)
         this.props.setStep('plan');
       } else if (res.errors){
         this.setState({
@@ -145,8 +147,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    processJoinForm: (user) => dispatch(signup(user)),
+    processJoinForm: (user) => dispatch(createAccount(user)),
     processLogIn: (user) => dispatch(login(user)),
+    createAccountSummary: (userId) => dispatch(createAccountSummary(userId)),
     fetchSchools: () => dispatch(fetchSchools()),
     clearErrors: () => dispatch(clearErrors())
   };

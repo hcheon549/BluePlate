@@ -1,0 +1,1 @@
+json.extract! @summary, :id, :user_id, :subscription_id, :policy_id, :total_meal_credits, :meal_credits_left

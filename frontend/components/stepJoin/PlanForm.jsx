@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { signup, clearErrors, login } from '../../actions/session_actions';
 import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
 import { createSubscription, updateSubscription } from "../../actions/subscription_actions";
+import { updateAccountSummary } from '../../actions/account_summary_actions';
 import { updateUserMeals } from "../../actions/user_actions";
 
 class PlanForm extends React.Component{
@@ -65,10 +66,15 @@ class PlanForm extends React.Component{
       res = await this.props.processSubscription(subscription)
     }
     if (res.subscription){
-      this.props.updateUserMeals({
+      this.props.updateAccountSummary({
+        id: this.props.currentUser.summary_id,
+        subscription_id: res.subscription.id,
+        policy_type: "Lead"
+      })
+      .then(this.props.updateUserMeals({
         id: this.props.currentUser.id,
         meals_left: res.subscription.mealCredit
-      })
+      }))
       .then(this.props.setStep('billing'))
     } else if (res.errors){
       console.log(res.errors)
@@ -100,6 +106,7 @@ class PlanForm extends React.Component{
 }
 
 const mapStateToProps = ({entities, errors}) => {
+  debugger
   return {
     currentUser: entities.currentUser,
     currentSubscription: entities.subscription,
@@ -112,6 +119,7 @@ const mapDispatchToProps = dispatch => {
   return {
     processSubscription: (plan_id) => dispatch(createSubscription(plan_id)),
     updateSubscription: (subscriptionData) => dispatch(updateSubscription(subscriptionData)),
+    updateAccountSummary: (summaryData) => dispatch(updateAccountSummary(summaryData)),
     updateUserMeals: (userData) => dispatch(updateUserMeals(userData)),
     fetchPlans: () => dispatch(fetchPlans()),
     clearErrors: () => dispatch(clearErrors())

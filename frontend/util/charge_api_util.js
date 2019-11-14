@@ -23,7 +23,6 @@ export const charge = chargeData => {
 export const createCharge = chargeData => dispatch => {
   return charge(chargeData).then(
     charge => {
-      debugger
       return dispatch(setPolicy(charge.data))
     },
     errors => {
