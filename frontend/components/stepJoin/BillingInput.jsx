@@ -4,6 +4,8 @@
 
 import React from "react";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { injectStripe, StripeProvider, Elements,
           CardNumberElement, CardExpiryElement, CardCvcElement
         } from 'react-stripe-elements';
@@ -68,9 +70,7 @@ class BillingInput extends React.Component{
       })
     } else {
       let oUpdate = await this.updateUserName();
-      debugger
       let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
-      debugger
       let charge = await this.props.createCharge({
         stripeEmail: this.props.currentUser.email,
         stripeToken: token.id,
@@ -96,6 +96,7 @@ class BillingInput extends React.Component{
         .then(this.setState({
           isPending: false
         }))
+        .then(this.props.history.push("/my-meals"))
       }
     }
   }
@@ -240,7 +241,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const BillingStipeForm = injectStripe(connect(mapStateToProps, mapDispatchToProps)(BillingInput));
+const BillingStipeForm = injectStripe(withRouter(connect(mapStateToProps, mapDispatchToProps)(BillingInput)));
 
 export default class BillingInputStripe extends React.Component{
   constructor(props){

@@ -71,7 +71,6 @@ class PlanForm extends React.Component{
         subscription_id: res.subscription.id,
         policy_type: "Lead"
       })
-      debugger
       if (aUpdate.payload) {this.props.setStep('billing')}
     } else if (res.errors){
       console.log(res.errors)
