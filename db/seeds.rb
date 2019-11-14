@@ -13,7 +13,7 @@ ActiveRecord::Base.transaction do
 
   users = [
     {
-      email: 'demo@blueplate.io',
+      email: 'hcheon549@gmail.com',
       password: 123456,
       fname: 'Eric',
       lname: 'Cheon',
@@ -27,6 +27,44 @@ ActiveRecord::Base.transaction do
     User.create!(user)
   end
   puts "Users created"
+end
+
+ActiveRecord::Base.transaction do
+  Policy.destroy_all
+
+  policies = [
+    {
+      policy_id: 100,
+      name: "Credit",
+      description: 'Fully paid member',
+      policy_type: 'Member',
+    },{
+      policy_id: 200,
+      name: "Free",
+      description: 'Free gift',
+      policy_type: 'Member',
+    },{
+      policy_id: 500,
+      name: "Lead",
+      description: 'Signed up but haven\'t paid',
+      policy_type: 'Lead',
+    },{
+      policy_id: 700,
+      name: "Visitor",
+      description: 'Visitor',
+      policy_type: 'Visitor',
+    },{
+      policy_id: 400,
+      name: "Chargeback",
+      description: 'Chargeback',
+      policy_type: 'Ban',
+    },
+  ]
+
+  policies.each do |policy|
+    Policy.create!(policy)
+  end
+  puts "Policies created"
 end
 
 ActiveRecord::Base.transaction do
@@ -230,7 +268,7 @@ end
 
 ActiveRecord::Base.transaction do
   Favorite.destroy_all
-  demo = User.find_by(email: 'demo@blueplate.io')
+  demo = User.find_by(email: 'hcheon549@gmail.com')
   shops = Shop.all
 
   shops.each do |s|
@@ -243,7 +281,7 @@ end
 
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
-  demo = User.find_by(email: 'demo@blueplate.io')
+  demo = User.find_by(email: 'hcheon549@gmail.com')
   meals = Meal.all
 
   times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
