@@ -11,6 +11,7 @@ import { injectStripe, StripeProvider, Elements,
 import { clearErrors } from '../../actions/session_actions';
 import { createCharge } from '../../util/charge_api_util';
 import { updateUserName } from '../../actions/user_actions';
+import { updateAccountSummary } from '../../actions/account_summary_actions';
 
 
 class BillingInput extends React.Component{
@@ -85,9 +86,14 @@ class BillingInput extends React.Component{
         })
       } else {
         console.log(charge)
+        debugger
+        this.props.updateAccountSummary({
+          id: this.props.currentUser.summary_id,
+          policy_type: "Member"
+        })
         this.setState({
           isPending: false
-        })  
+        })
       }
     }
   }
@@ -224,6 +230,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateSubscription: (subscriptionData) => dispatch(updateSubscription(subscriptionData)),
     clearErrors: () => dispatch(clearErrors()),
     createCharge: (data) => dispatch(createCharge(data)),
     updateUserName: (user) => dispatch(updateUserName(user))

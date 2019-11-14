@@ -4,7 +4,6 @@
 #
 #  id              :bigint(8)        not null, primary key
 #  email           :string           not null
-#  meals_left      :integer          default(20), not null
 #  enrolled_school :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
