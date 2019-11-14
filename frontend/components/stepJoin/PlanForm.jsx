@@ -106,7 +106,6 @@ class PlanForm extends React.Component{
 }
 
 const mapStateToProps = ({entities, errors}) => {
-  debugger
   return {
     currentUser: entities.currentUser,
     currentSubscription: entities.subscription,

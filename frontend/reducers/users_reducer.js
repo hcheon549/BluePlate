@@ -27,7 +27,6 @@ const usersReducer = (state = null, action) => {
       return {...state, ...action.user};
     case SET_POLICY_TYPE:
       let { id, policy, mealCreditsLeft, totalMealCredits } = action.payload
-      debugger
       return {
         ...state,
         policy: policy,

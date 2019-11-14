@@ -13,7 +13,7 @@ class Api::AccountSummariesController < ApplicationController
   def update
     @summary = AccountSummary.find(params[:id])
     @policy_id = getPolicyId(params[:account_summary][:policy_type])
-    debugger
+
     if @summary.update_attributes(
       policy_id: @policy_id || @summary.policy_type,
       subscription_id: params[:account_summary][:subscription_id] || @summary.subscription_id,
