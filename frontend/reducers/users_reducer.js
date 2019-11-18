@@ -24,13 +24,11 @@ const usersReducer = (state = null, action) => {
     case RECEIVE_CURRENT_USER:
       return {...state, ...action.user};
     case RECEIVE_USER:
-      debugger
       return {...state, ...action.user};
     case SET_POLICY_TYPE:
-      let { id, policy, mealCreditsLeft, totalMealCredits } = action.payload
+      let { id, mealCreditsLeft, totalMealCredits } = action.payload
       return {
         ...state,
-        policy: policy,
         summary_id: id,
         meal_credits_left: mealCreditsLeft || null,
         total_meal_credits: totalMealCredits || null

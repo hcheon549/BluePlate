@@ -69,7 +69,7 @@ class BillingInput extends React.Component{
         errorMessage: message
       })
     } else {
-      let oUpdate = await this.updateUserName();
+      await this.updateUserName();
       let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
       let charge = await this.props.createCharge({
         stripeEmail: this.props.currentUser.email,
@@ -92,8 +92,7 @@ class BillingInput extends React.Component{
           total_meal_credits: this.props.currentPlan.meals,
           meal_credits_left: this.props.currentPlan.meals
         })
-        let user1 = await this.props.fetchUser(this.props.currentUser.id)
-        debugger
+        await this.props.fetchUser(this.props.currentUser.id)
         this.setState({isPending: false})
         this.props.history.push("/my-meals")
       }
