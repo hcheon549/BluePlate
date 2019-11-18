@@ -43,10 +43,13 @@ class AuthForm extends React.Component{
       this.props.processLogIn(user);
     } else if (this.props.formType == 'Sign-Up'){
       let res = await this.props.processJoinForm(user);
+      debugger
       if (res.user && this.props.setStep){
-        let summary = await this.props.createAccountSummary(res.user.id)
+        await this.props.createAccountSummary(res.user.id)
+        debugger
         this.props.setStep('plan');
       } else if (res.errors){
+        debugger
         this.setState({
           isPending: false,
           errorMessage: res.errors

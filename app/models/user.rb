@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many :reservations
   has_one :subscription
   has_one :school
+  has_one :account_summary
+  has_one :policy, through: :account_summary
 
   attr_reader :password
 
