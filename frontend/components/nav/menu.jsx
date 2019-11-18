@@ -31,6 +31,7 @@ class Menu extends React.Component {
   render() {
     let dropdownMenu = (
       <DropdownMenu
+        isMember={this.props.isMember}
         active={this.state.active}
         history={this.props.history}
         handleLogout={this.handleLogout.bind(this)}
