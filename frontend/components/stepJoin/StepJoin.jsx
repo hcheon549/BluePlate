@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchSchools } from '../../actions/school_actions';
 import { setStepJoinStep } from '../../actions/stepjoin_actions';
+import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
 
 import SignupForm from '../session_form/SignUpForm';
 import PlanForm from './PlanForm';
@@ -18,8 +19,16 @@ class StepJoin extends React.Component {
     this.setStep = this.setStep.bind(this);
   }
 
-  componentDidMount() {
-    this.props.setStepJoin('account')
+  async componentDidMount() {
+    await this.props.fetchPlans();
+    let policyType = this.props.currentUser ? this.props.currentUser.policyType : null
+    if (policyType == 'Visitor'){
+      this.props.setStepJoin('plan')
+    } else if (policyType == 'Lead'){
+      this.props.setStepJoin('billing')
+    } else {
+      this.props.setStepJoin('account')
+    }
   }
 
   setStep(nextForm) {
@@ -28,17 +37,14 @@ class StepJoin extends React.Component {
 
   render(){
     let content;
+    let policyType = this.props.currentUser ? this.props.currentUser.policyType : null
 
-    switch(this.props.stepJoin){
-      case 'plan':
-        content = <PlanForm setStep={this.setStep} />
-        break;
-      case 'billing':
-        content = <BillingForm setStep={this.setStep} />
-       break;
-      case 'account':
-      default:
-          content = <SignupForm setStep={this.setStep} />
+    if (this.props.stepJoin == 'plan' || policyType == 'Visitor'){
+      content = <PlanForm setStep={this.setStep} />
+    } else if ( this.props.stepJoin == 'billing' || policyType == 'Lead'){
+      content = <BillingForm setStep={this.setStep} />
+    } else {
+      content = <SignupForm setStep={this.setStep} />
     }
 
     return(
@@ -55,6 +61,7 @@ class StepJoin extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.entities.currentUser);
   return {
     currentUser: state.entities.currentUser,
     schools: Object.values(state.entities.schools),
@@ -66,6 +73,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setStepJoin: (step) => dispatch(setStepJoinStep(step)),
     fetchSchools: () => dispatch(fetchSchools()),
+    fetchPlans: () => dispatch(fetchPlans()),
   };
 };
 

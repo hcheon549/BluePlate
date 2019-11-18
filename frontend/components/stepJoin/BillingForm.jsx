@@ -62,9 +62,10 @@ class BillingForm extends React.Component{
 
 const mapStateToProps = (state) => {
   const {entities: { currentUser, subscription, plans }} = state;
+  debugger
   return {
     currentUser,
-    currentPlan: plans[subscription.planId],
+    currentPlan: subscription ? plans[subscription.planId] : null,
     errors: state.errors.session,
   };
 };

@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
-import { signup, clearErrors, login } from '../../actions/session_actions';
-import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
+import { clearErrors } from '../../actions/session_actions';
 import { createSubscription, updateSubscription } from "../../actions/subscription_actions";
 import { updateAccountSummary } from '../../actions/account_summary_actions';
 import { fetchUser, updateUserMeals } from "../../actions/user_actions";
@@ -20,10 +19,6 @@ class PlanForm extends React.Component{
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.buildPlans = this.buildPlans.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.fetchPlans();
   }
 
   togglePlan(planId){
@@ -120,7 +115,6 @@ const mapDispatchToProps = dispatch => {
     updateSubscription: (subscriptionData) => dispatch(updateSubscription(subscriptionData)),
     updateAccountSummary: (summaryData) => dispatch(updateAccountSummary(summaryData)),
     updateUserMeals: (userData) => dispatch(updateUserMeals(userData)),
-    fetchPlans: () => dispatch(fetchPlans()),
     clearErrors: () => dispatch(clearErrors())
   };
 };

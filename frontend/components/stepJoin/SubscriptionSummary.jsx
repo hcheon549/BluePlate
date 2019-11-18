@@ -5,6 +5,11 @@ const SubscriptionSummary = (props) => {
   let { currentUser, currentPlan, calculatePayment, toggleUpdateForm, updateEmail,
         updateUserEmail, setStep, errors, clearErrors } = props
   // let payments = calculatePayment(currentPlan.price)
+
+  if (!currentPlan){
+    return <div />
+  }
+  
   let tax = Math.round(currentPlan.price * 6.625) / 100
   let totalPayment = Math.round((currentPlan.price + tax) * 100) / 100
   let buttonText = updateEmail ? 'Cancel' : 'Change';
