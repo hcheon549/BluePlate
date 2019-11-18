@@ -12,7 +12,7 @@ import { injectStripe, StripeProvider, Elements,
 
 import { clearErrors } from '../../actions/session_actions';
 import { createCharge } from '../../util/charge_api_util';
-import { updateUserName } from '../../actions/user_actions';
+import { fetchUser, updateUserName } from '../../actions/user_actions';
 import { joinMembership } from '../../actions/account_summary_actions';
 
 
@@ -86,17 +86,16 @@ class BillingInput extends React.Component{
           errorMessage: [charge.errors.message]
         })
       } else {
-        console.log(charge)
-        this.props.joinMembership({
+        await this.props.joinMembership({
           id: this.props.currentUser.summary_id,
           policy_type: "Member",
           total_meal_credits: this.props.currentPlan.meals,
           meal_credits_left: this.props.currentPlan.meals
         })
-        .then(this.setState({
-          isPending: false
-        }))
-        .then(this.props.history.push("/my-meals"))
+        let user1 = await this.props.fetchUser(this.props.currentUser.id)
+        debugger
+        this.setState({isPending: false})
+        this.props.history.push("/my-meals")
       }
     }
   }
@@ -234,6 +233,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
     joinMembership: (subscriptionData) => dispatch(joinMembership(subscriptionData)),
     clearErrors: () => dispatch(clearErrors()),
     createCharge: (data) => dispatch(createCharge(data)),

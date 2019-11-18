@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export const getUser = userId => {
+  return axios({
+    method: "GET",
+    url: `api/users/${userId}`
+  })
+}
+
 export const updateUser = user => {
   return axios({
     method: "PATCH",

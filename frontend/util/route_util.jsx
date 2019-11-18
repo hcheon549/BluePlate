@@ -24,7 +24,7 @@ const Nav = ({ path, loggedIn, exact }) => (
 );
 
 const mapStateToProps = state => {
-  console.log(state.entities.currentUser)
+  console.log(state.entities)
   return { 
     loggedIn: Boolean(state.session.id),
   };

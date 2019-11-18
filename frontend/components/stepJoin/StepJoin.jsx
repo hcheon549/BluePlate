@@ -56,6 +56,7 @@ class StepJoin extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.entities.currentUser,
     schools: Object.values(state.entities.schools),
     stepJoin: state.ui.stepJoin || ''
   };

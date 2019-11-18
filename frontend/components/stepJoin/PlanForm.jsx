@@ -7,7 +7,7 @@ import { signup, clearErrors, login } from '../../actions/session_actions';
 import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
 import { createSubscription, updateSubscription } from "../../actions/subscription_actions";
 import { updateAccountSummary } from '../../actions/account_summary_actions';
-import { updateUserMeals } from "../../actions/user_actions";
+import { fetchUser, updateUserMeals } from "../../actions/user_actions";
 
 class PlanForm extends React.Component{
   constructor(props){
@@ -71,7 +71,10 @@ class PlanForm extends React.Component{
         subscription_id: res.subscription.id,
         policy_type: "Lead"
       })
-      if (aUpdate.payload) {this.props.setStep('billing')}
+      if (aUpdate.payload) {
+        await this.props.fetchUser(this.props.currentUser.id)
+        this.props.setStep('billing')
+      }
     } else if (res.errors){
       console.log(res.errors)
       this.setState({
@@ -112,6 +115,7 @@ const mapStateToProps = ({entities, errors}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
     processSubscription: (plan_id) => dispatch(createSubscription(plan_id)),
     updateSubscription: (subscriptionData) => dispatch(updateSubscription(subscriptionData)),
     updateAccountSummary: (summaryData) => dispatch(updateAccountSummary(summaryData)),

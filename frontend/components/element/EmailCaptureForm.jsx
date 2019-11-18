@@ -25,7 +25,6 @@ class EmailCapture extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('Capture Email here')
     this.props.nextAction();
   }
 
