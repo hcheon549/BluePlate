@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { logout } from '../../actions/session_actions';
+import DropdownMenu from "../element/DropdownMenu";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -28,66 +29,19 @@ class Menu extends React.Component {
   }
 
   render() {
+    let dropdownMenu = (
+      <DropdownMenu
+        active={this.state.active}
+        history={this.props.history}
+        handleLogout={this.handleLogout.bind(this)}
+      />
+    )
     return (
       <ul className="navLogin">
         <li className="nav-menu-button" onClick={() => this.toggleClass()}>
-          <img
-            className="hamburger"
-            src="https://blueplate-development.s3.amazonaws.com/elements/hamburger.svg"
-            alt=""
-          />
+          <img className="hamburger" src="https://blueplate-development.s3.amazonaws.com/elements/hamburger.svg" alt="" />
           MENU
-          <ul className={this.state.active ? "dropdown-active animated fadeIn" : "dropdown animated" }>
-            <li onClick={() => this.props.history.push("/my-meals")}>
-              <div>
-                <img
-                  src="https://res.cloudinary.com/mwojick/image/upload/v1528591565/TreatPal/icons/Moon-512.png"
-                  alt=""
-                />
-                Today's Meal
-              </div>
-            </li>
-
-            <li onClick={() => this.props.history.push("/account")}>
-              <div>
-                <img
-                  src="https://res.cloudinary.com/mwojick/image/upload/v1533677351/TreatPal/icons/profile2.png"
-                  alt=""
-                />
-                My Account
-              </div>
-            </li>
-
-            <li onClick={() => this.props.history.push("/favorites")}>
-              <div>
-                <img
-                  src="https://res.cloudinary.com/mwojick/image/upload/v1532988683/TreatPal/icons/favorite2.png"
-                  alt=""
-                />
-                Favorites
-              </div>
-            </li>
-
-            <li onClick={() => this.props.history.push("/history")}>
-              <div>
-                <img
-                  src="https://res.cloudinary.com/mwojick/image/upload/v1533677351/TreatPal/icons/history2.png"
-                  alt=""
-                />
-                History
-              </div>
-            </li>
-
-            <li onClick={this.handleLogout} className="menu-logout">
-              <div>
-                <img
-                  src="https://res.cloudinary.com/mwojick/image/upload/v1528590545/TreatPal/icons/logout.png"
-                  alt=""
-                />
-                Logout
-              </div>
-            </li>
-          </ul>
+          {dropdownMenu}
         </li>
         <li className="login-link">
           <div onClick={this.handleLogout}>LOGOUT</div>

@@ -10,16 +10,16 @@ const Auth = ({ component: Component, path, loggedIn, isVisitor, isLead, isMembe
   )}/>
 );
 
-const Protected = ({ component: Component, path, loggedIn, isVisitor, isLead, isMember, exact }) => (
+const Protected = ({ component: Component, path, isMember, exact }) => (
   <Route path={path} exact={exact} render={props => (
-    (!loggedIn || isVisitor) ? <Redirect to="/users/signup" /> : <Component {...props} />)
+    (!isMember) ? <Redirect to="/" /> : <Component {...props} />)
   }/>
 );
 
 //custom route for nav bar (display menu or login/signup button)
 const Nav = ({ path, loggedIn, isVisitor, isLead, isMember, exact }) => (
   <Route path={path} exact={exact} render={props => (
-    (!loggedIn || isVisitor) ? <NavLogin {...props} /> : <Menu {...props} />
+    (!loggedIn) ? <NavLogin {...props} /> : <Menu {...props} />
   )}/>
 );
 
