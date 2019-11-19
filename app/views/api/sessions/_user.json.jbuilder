@@ -1,4 +1,17 @@
-json.extract! user, :id, :email, :fname, :lname, :enrolled_school, :school_id
+json.extract! user, :id, :email, :fname, :lname, :school_id, :enrolled_school
+
 if user.policy
   json.extract! user.policy, :policy_type
+end
+
+if user.subscription
+  json.set! :subscription do
+    json.extract! user.subscription, :id, :plan_id, :meal_credit, :subscription_start, :subscription_end
+  end
+end
+
+if user.account_summary
+  json.set! :summary do
+    json.extract! user.account_summary, :id, :user_id, :subscription_id, :policy_id, :total_meal_credits, :meal_credits_left
+  end
 end

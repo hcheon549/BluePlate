@@ -41,7 +41,9 @@ class AuthForm extends React.Component{
     this.setState({isPending: true})
     const user = Object.assign({}, this.state);
     if (this.props.formType == 'Login'){
-      this.props.processLogIn(user);
+      let loggedinUser = await this.props.processLogIn(user);
+      let nextPath = loggedinUser.policy_type == 'Member' ? '/my-meals' : '/users/signup'
+      this.props.history.push(nextPath)
     } else if (this.props.formType == 'Sign-Up'){
       let res = await this.props.processJoinForm(user);
       if (res.user && this.props.setStep){
@@ -158,5 +160,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(AuthForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthForm));

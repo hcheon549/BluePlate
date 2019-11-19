@@ -87,7 +87,7 @@ class BillingInput extends React.Component{
         })
       } else {
         await this.props.joinMembership({
-          id: this.props.currentUser.summary_id,
+          id: this.props.currentUser.summary_id || this.props.currentUser.summary.id,
           policy_type: "Member",
           total_meal_credits: this.props.currentPlan.meals,
           meal_credits_left: this.props.currentPlan.meals
