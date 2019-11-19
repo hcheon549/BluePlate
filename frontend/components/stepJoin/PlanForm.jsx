@@ -61,11 +61,13 @@ class PlanForm extends React.Component{
       res = await this.props.processSubscription(subscription)
     }
     if (res.subscription){
+      debugger
       let aUpdate = await this.props.updateAccountSummary({
-        id: this.props.currentUser.summary_id,
+        id: this.props.currentUser.summary_id || this.props.currentUser.summary.id,
         subscription_id: res.subscription.id,
         policy_type: "Lead"
       })
+      debugger
       if (aUpdate.payload) {
         await this.props.fetchUser(this.props.currentUser.id)
         this.props.setStep('billing')
@@ -102,7 +104,7 @@ class PlanForm extends React.Component{
 const mapStateToProps = ({entities, errors}) => {
   return {
     currentUser: entities.currentUser,
-    currentSubscription: entities.subscription,
+    currentSubscription: entities.currentUser.subscription,
     plans: entities.plans,
     errors: errors.session,
   };
