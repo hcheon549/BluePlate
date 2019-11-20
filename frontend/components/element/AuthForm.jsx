@@ -19,7 +19,7 @@ class AuthForm extends React.Component{
       isPending: false,
       email: "",
       password: "",
-      enrolledSchool: ""
+      school_id: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.assembleSchoolChoices = this.assembleSchoolChoices.bind(this);
@@ -72,7 +72,7 @@ class AuthForm extends React.Component{
   assembleSchoolChoices(){
     return this.props.schools.map(school => {
       return (
-        <option key={school.id} value={school.name}>
+        <option key={school.id} value={school.id}>
           {school.name}
         </option>
       );
@@ -119,8 +119,8 @@ class AuthForm extends React.Component{
           {(formType && formType == 'Sign-Up') && 
             <label className="login-label">CAMPUS:
               <select
-                value={this.state.enrolledSchool}
-                onChange={this.update.bind(this, "enrolledSchool")}
+                value={this.state.school_id}
+                onChange={this.update.bind(this, "school_id")}
                 autoComplete="foo"
               >
                 <option hidden value={null}>

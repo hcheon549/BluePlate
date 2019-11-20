@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const createAccount = user => {
+  debugger
   return axios({
     method: "POST",
     url: `/api/users`,
@@ -8,7 +9,7 @@ export const createAccount = user => {
       user: {
         email: user.email,
         password: user.password,
-        enrolled_school: user.enrolledSchool
+        school_id: user.school_id
       }
     }
   });

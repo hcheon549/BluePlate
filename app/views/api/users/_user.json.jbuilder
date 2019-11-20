@@ -1,7 +1,13 @@
-json.extract! user, :id, :email, :fname, :lname, :school_id, :enrolled_school
+json.extract! user, :id, :email, :fname, :lname, :school_id
 
 if user.policy
   json.extract! user.policy, :policy_type
+end
+
+if user.school
+  json.set! :enrolled_school do
+    json.extract! user.school, :id, :name, :latitude, :longitude
+  end
 end
 
 if user.subscription

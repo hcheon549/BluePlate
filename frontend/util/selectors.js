@@ -1,6 +1,6 @@
 export const getEnrolledSchool = (session, currentUser, schools) => {
-  let enrolledSchool = Object.values(schools).filter(
-    school => currentUser.enrolledSchool === school.name
+  let enrolledSchool = Object.values(schools).filter(school => 
+    currentUser.schoolId === school.id
   );
 
   enrolledSchool = enrolledSchool[Object.keys(enrolledSchool)[0]] || {

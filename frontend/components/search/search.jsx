@@ -84,7 +84,7 @@ class Search extends React.Component {
           >
             {this.props.schools.map(school => {
               return (
-                <option key={school.id} value={school.name}>
+                <option key={school.id} value={school.id}>
                   {school.name}
                 </option>
               );

@@ -18,7 +18,7 @@ export const updateUser = user => {
         meals_left: user.mealsLeft,
         fname: user.fname,
         lname: user.lname,
-        enrolled_school: user.enrolledSchool,
+        school_id: user.school_id,
       }
     }
   });

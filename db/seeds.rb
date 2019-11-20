@@ -80,15 +80,13 @@ ActiveRecord::Base.transaction do
       password: 'ececec',
       fname: 'Eric',
       lname: 'Cheon',
-      school_id: rutgers.id,
-      enrolled_school: rutgers.name
+      school_id: rutgers.id
     },{
       email: 'penn@gmail.com',
       password: 'ececec',
       fname: 'Eric',
       lname: 'Cheon',
-      school_id: pennState.id,
-      enrolled_school: pennState.name
+      school_id: pennState.id
     },
   ]
 
