@@ -13,28 +13,16 @@ import LandingPlan from './LandingPlan';
 class Landing extends React.Component {
   constructor(props) {
     super(props);
-    
   }
-
-  componentDidMount() {
-    this.props.fetchSchools();
-  }
-
-  // componentDidUpdate(prevProps) {
-    // if (prevProps.currentCityId !== this.props.currentCityId) {
-    //   let cityId = this.props.currentCityId;
-    //   this.props.fetchDeals(cityId);
-    // }
-  // }
-
   
   render(){
+    let schoolEmpty = Object.keys(this.props.schools).length == 0
 
     return(
       <div className="visitor">
         <LandingHeader />
         <LandingHIW />
-        <LandingMap {...this.props} />
+        {!schoolEmpty && <LandingMap {...this.props} />}
         <LandingPlan />
     </div>
     );
@@ -43,14 +31,13 @@ class Landing extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    schools: Object.values(state.entities.schools),
+    schools: state.entities.schools,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchSchools: () => dispatch(fetchSchools()),
-    fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
   };
 };
 

@@ -8,7 +8,7 @@ class SchoolDropdown extends React.Component{
 
   markDropdown(){
     const { schools } = this.props;
-    return schools.map((school, idx) => <option className="schoolList" value={school.id} key={idx}>{school.name}</option>)
+    return Object.values(schools).map((school, idx) => <option className="schoolList" value={school.id} key={idx}>{school.name}</option>)
   }
 
   render() {

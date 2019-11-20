@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { getCurrentUser } from "../actions/session_actions";
+import { fetchSchools } from '../actions/school_actions';
 
 import Modal from "./modal/modal";
 
@@ -21,8 +22,9 @@ import FAQLanding from './footer/FAQLanding'
 import LoadingIcon from "./meal/loading_icon";
 
 class App extends React.Component {
-  componentDidMount() {
-    this.props.getCurrentUser();
+  async componentDidMount() {
+    await this.props.getCurrentUser();
+    await this.props.fetchSchools();
   }
 
   render() {
@@ -70,12 +72,14 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    schools: state.entities.schools,
     fetchedUser: state.ui.filters.fetchedUser
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchSchools: () => dispatch(fetchSchools()),
     getCurrentUser: () => dispatch(getCurrentUser())
   };
 };

@@ -12,30 +12,27 @@ class LandingMap extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      schoolId: null
+      schoolId: (Object.values(this.props.schools).length > 0 ? Object.values(this.props.schools)[0].id : null)
     }
     this.update = this.update.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (!prevState.school && (prevProps.schools !== this.props.schools)){
-      this.props.fetchMeals(this.props.schools[0].id)
-      this.setState({
-        schoolId: this.props.schools[0].id
-      })
+  componentDidMount(){
+    if (this.state.schoolId){
+      this.props.fetchMeals(this.state.schoolId)
     }
   }
 
-  update(e){
-    this.props.fetchMeals(e.target.value)
-      .then(this.setState({
-        school: e.target.value
-      }))
+  async update(e){
+    await this.props.fetchMeals(e.target.value)
+    this.setState({
+        schoolId: e.target.value
+      })
   }
 
   render(){
     let { schools } = this.props
-
+  
     return (
       <section className="landingMap">
         <div className="blueBackground" />
@@ -55,9 +52,9 @@ class LandingMap extends React.Component {
           </div>
 
           <div className="map">
-            {this.state.school && <MealMap
+            {this.state.schoolId && <MealMap
               landing={true}
-              school={this.state.school}
+              school={this.state.schoolId}
               />}
           </div>
 
@@ -68,9 +65,7 @@ class LandingMap extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    schools: Object.values(state.entities.schools),
-  };
+  return {}
 };
 
 const mapDispatchToProps = dispatch => {
