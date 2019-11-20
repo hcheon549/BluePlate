@@ -11,6 +11,7 @@ export const fetchMeals = schoolId => dispatch => {
   dispatch(startLoadingAllMeals());
   return mealApiUtil.fetchMeals(schoolId).then(
     payload => {
+      debugger
       return dispatch(receiveMeals(payload.data));
     },
     errors => dispatch(receiveErrors(errors.response.data))

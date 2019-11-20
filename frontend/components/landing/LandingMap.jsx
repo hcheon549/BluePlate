@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchSchools } from '../../actions/school_actions';
-import { fetchMeals } from '../../actions/meal_actions';
+import { fetchMenus } from '../../actions/menu_actions';
 
 import SchoolDropdown from './SchoolDropdown';
 import MealMap from '../map/meal_map';
@@ -19,12 +19,12 @@ class LandingMap extends React.Component {
 
   componentDidMount(){
     if (this.state.schoolId){
-      this.props.fetchMeals(this.state.schoolId)
+      this.props.fetchMenus(this.state.schoolId)
     }
   }
 
   async update(e){
-    await this.props.fetchMeals(e.target.value)
+    await this.props.fetchMenus(e.target.value)
     this.setState({
         schoolId: e.target.value
       })
@@ -71,7 +71,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchSchools: () => dispatch(fetchSchools()),
-    fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
+    fetchMenus: (schoolId) => dispatch(fetchMenus(schoolId)),
   };
 };
 

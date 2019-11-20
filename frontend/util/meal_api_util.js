@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchMeals = schoolId => {
+export const fetchMenus = schoolId => {
   return axios({
     method: "GET",
     url: `/api/meals`,

@@ -3,7 +3,7 @@ import debounce from "lodash/debounce";
 
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/user_actions';
-import { searchMeals } from '../../actions/meal_actions';
+import { searchMeals } from '../../actions/menu_actions';
 import { changeFilter } from '../../actions/filter_actions';
 import { withRouter } from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import usersReducer from './users_reducer';
-import mealReducer from './meal_reducer';
+import menuReducer from './menu_reducer';
 import shopReducer from './shop_reducer';
 import schoolReducer from './school_reducer';
 import favoriteReducer from './favorite_reducer';
@@ -12,7 +12,7 @@ import subscriptionReducer from './subscription_reducer';
 
 const entitiesReducer = combineReducers({
   currentUser: usersReducer,
-  meals: mealReducer,
+  menus: menuReducer,
   mealRes: mealResReducer,
   shops: shopReducer,
   shopRes: shopResReducer,

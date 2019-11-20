@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 
 import { fetchSchools } from '../../actions/school_actions';
-import { fetchMeals } from '../../actions/meal_actions';
 
 import LandingHeader from './LandingHeader'
 import LandingHIW from './LandingHIW';

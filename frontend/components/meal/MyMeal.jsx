@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from 'react-redux';
-import { fetchMeals } from '../../actions/meal_actions';
+import { fetchMenus } from '../../actions/menu_actions';
 import { fetchSchools } from '../../actions/school_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
 import { resetFilter } from '../../actions/filter_actions';
@@ -18,7 +18,7 @@ class MyMeal extends React.Component {
   componentDidMount() {
     this.props
       .fetchSchools()
-      .then(this.props.fetchMeals(this.props.currentUser.schoolId))
+      .then(this.props.fetchMenus(this.props.currentUser.schoolId))
       .then(this.props.fetchFavorites())
       .then(this.props.fetchReservations())
       .then(this.props.resetFilter());
@@ -33,7 +33,7 @@ class MyMeal extends React.Component {
       this.props.currentUser.schoolId
     ) {
       this.props
-        .fetchMeals(nextProps.currentUser.schoolId)
+        .fetchMenus(nextProps.currentUser.schoolId)
         .then(this.props.resetFilter());
     }
   }
@@ -110,7 +110,7 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return {
-    fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
+    fetchMenus: (schoolId) => dispatch(fetchMenus(schoolId)),
     fetchSchools: () => dispatch(fetchSchools()),
     fetchFavorites: () => dispatch(fetchFavorites()),
     fetchReservations: () => dispatch(fetchReservations()),

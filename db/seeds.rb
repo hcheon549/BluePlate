@@ -608,6 +608,21 @@ ActiveRecord::Base.transaction do
 end
 
 ActiveRecord::Base.transaction do
+  Menu.destroy_all
+
+  meals = Meal.all
+  today = Date.today
+  tomorrow = Date.today + 1
+
+  meals.each do |meal|
+    Menu.create!({meal_id: meal.id, offered_date: today})
+    Menu.create!({meal_id: meal.id, offered_date: tomorrow})
+  end
+
+  puts "Menu for TODAY and TOMORROW created"
+end
+
+ActiveRecord::Base.transaction do
   Favorite.destroy_all
   demo = User.find_by(email: 'penn@gmail.com')
   shops = Shop.all

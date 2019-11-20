@@ -1,17 +1,17 @@
 import {
-  RECEIVE_ALL_MEALS,
-  RECEIVE_SEARCH_MEALS,
-  RECEIVE_MEAL_ERRORS
-} from '../actions/meal_actions';
+  RECEIVE_ALL_MENUS,
+  RECEIVE_SEARCH_MENUS,
+  RECEIVE_MENU_ERRORS
+} from '../actions/menu_actions';
 
 const mealReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
-    case RECEIVE_ALL_MEALS:
+    case RECEIVE_ALL_MENUS:
       return action.payload.meals;
-    case RECEIVE_SEARCH_MEALS:
+    case RECEIVE_SEARCH_MENUS:
       return action.payload.meals;
-    case RECEIVE_MEAL_ERRORS:
+    case RECEIVE_MENU_ERRORS:
       return [];
     default:
       return oldState;

@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { fetchMeals } from '../../actions/meal_actions';
+import { fetchMenus } from '../../actions/menu_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
 import { fetchReservations } from '../../actions/reservation_actions';
 import { getFavIds, getSchoolReservations } from '../../util/selectors';
@@ -12,7 +12,7 @@ import { getFavIds, getSchoolReservations } from '../../util/selectors';
 
 class History extends React.Component {
   componentDidMount() {
-    this.props.fetchMeals(this.props.currentUser.schoolId);
+    this.props.fetchMenus(this.props.currentUser.schoolId);
     this.props.fetchFavorites();
     this.props.fetchReservations();
   }
@@ -105,7 +105,7 @@ const msp = ({entities:
 
 const mdp = (dispatch) => {
  return {
-   fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
+   fetchMenus: (schoolId) => dispatch(fetchMenus(schoolId)),
    fetchFavorites: () => dispatch(fetchFavorites()),
    fetchReservations: () => dispatch(fetchReservations())
  };
