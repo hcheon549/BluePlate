@@ -69,94 +69,6 @@ ActiveRecord::Base.transaction do
 end
 
 ActiveRecord::Base.transaction do
-  User.destroy_all
-
-  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
-
-  users = [
-    {
-      email: 'rutgers@gmail.com',
-      password: 'ececec',
-      fname: 'Eric',
-      lname: 'Cheon',
-      school_id: rutgers.id
-    },{
-      email: 'penn@gmail.com',
-      password: 'ececec',
-      fname: 'Eric',
-      lname: 'Cheon',
-      school_id: pennState.id
-    },
-  ]
-
-  users.each do |user|
-    User.create!(user)
-  end
-  puts "Users created"
-end
-
-ActiveRecord::Base.transaction do
-  Policy.destroy_all
-
-  policies = [
-    {
-      policy_id: 100,
-      name: "Credit",
-      description: 'Fully paid member',
-      policy_type: 'Member',
-    },{
-      policy_id: 200,
-      name: "Free",
-      description: 'Free gift',
-      policy_type: 'Member',
-    },{
-      policy_id: 500,
-      name: "Lead",
-      description: 'Signed up but haven\'t paid',
-      policy_type: 'Lead',
-    },{
-      policy_id: 700,
-      name: "Visitor",
-      description: 'Visitor',
-      policy_type: 'Visitor',
-    },{
-      policy_id: 400,
-      name: "Chargeback",
-      description: 'Chargeback',
-      policy_type: 'Ban',
-    },
-  ]
-
-  policies.each do |policy|
-    Policy.create!(policy)
-  end
-  puts "Policies created"
-end
-
-ActiveRecord::Base.transaction do
-  School.destroy_all
-
-  schools = [
-    {
-      name: "Rutgers University–New Brunswick",
-      latitude: 40.498080,
-      longitude: -74.448920
-    },
-    {
-      name: "Pennsylvania State University–University Park",
-      latitude: 40.792650,
-      longitude: -77.859082
-    }
-  ]
-
-  schools.each do |school|
-    School.create!(school)
-  end
-  puts "Schools created"
-end
-
-ActiveRecord::Base.transaction do
   Plan.destroy_all
 
   plans = [
@@ -186,9 +98,95 @@ ActiveRecord::Base.transaction do
   puts "Plans created"
 end
 
+ActiveRecord::Base.transaction do
+  User.destroy_all
 
-# Example reverse geocode
-# https://maps.googleapis.com/maps/api/geocode/json?latlng=34.019022,-118.257957&key=AIzaSyCdt5y8QHtz0FgnzgMLAc4-rfVPXz48B-8
+  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+
+  users = [
+    {
+      email: 'rutgers@gmail.com',
+      password: 'ececec',
+      fname: 'Eric',
+      lname: 'Cheon',
+      school_id: rutgers.id
+    },{
+      email: 'penn@gmail.com',
+      password: 'ececec',
+      fname: 'Eric',
+      lname: 'Cheon',
+      school_id: pennState.id
+    },
+  ]
+
+  users.each do |user|
+    User.create!(user)
+  end
+  puts "Users created"
+end
+
+ActiveRecord::Base.transaction do
+  Subscription.destroy_all
+
+  rutgers = User.find_by(email: 'rutgers@gmail.com')
+  penn = User.find_by(email: 'penn@gmail.com')
+  plans = Plan.all
+  rutgers_plan = plans[rand(0..plans.length)]
+  penn_plan = plans[rand(0..plans.length)]
+
+  subscriptions = [
+    {
+      user_id: rutgers.id,
+      plan_id: rutgers_plan.id,
+      meal_credit: rutgers_plan.meals,
+      subscription_start: Date.new(2020, 1, 22),
+      subscription_end: Date.new(2020, 5, 13)
+    },{
+      user_id: penn.id,
+      plan_id: penn_plan.id,
+      meal_credit: penn_plan.meals,
+      subscription_start: Date.new(2020, 1, 22),
+      subscription_end: Date.new(2020, 5, 13)
+    },
+  ]
+
+  subscriptions.each do |subscription|
+    Subscription.create!(subscription)
+  end
+  puts "Subscriptions created"
+end
+
+ActiveRecord::Base.transaction do
+  AccountSummary.destroy_all
+
+  rutgers = User.find_by(email: 'rutgers@gmail.com')
+  penn = User.find_by(email: 'penn@gmail.com')
+
+  memberPolicy = Policy.find_by(policy_type: 'Member')
+
+  summaries = [
+    {
+      user_id: rutgers.id,
+      subscription_id: rutgers.subscription.id,
+      policy_id: memberPolicy.id,
+      total_meal_credits: rutgers.subscription.meal_credit,
+      meal_credits_left: rutgers.subscription.meal_credit
+    },{
+      user_id: penn.id,
+      subscription_id: penn.subscription.id,
+      policy_id: memberPolicy.id,
+      total_meal_credits: penn.subscription.meal_credit,
+      meal_credits_left: penn.subscription.meal_credit
+    },
+  ]
+
+  summaries.each do |summary|
+    AccountSummary.create!(summary)
+  end
+  puts "AccountSummary created"
+end
+
 
 ActiveRecord::Base.transaction do
   Shop.destroy_all
@@ -215,73 +213,74 @@ ActiveRecord::Base.transaction do
       latitude: 40.497950,
       longitude: -74.448530,
       school_id: rutgers.id,
-    }, {
-      name: "Krispy Pizza",
-      address: "50 College Ave, New Brunswick, NJ 08901",
-      latitude: 40.499540,
-      longitude: -74.448630,
-      school_id: rutgers.id,
-    }, {
-      name: "Jersey Mike's Subs",
-      address: "44 College Ave, New Brunswick, NJ 08901",
-      latitude: 40.499290,
-      longitude: -74.448380,
-      school_id: rutgers.id,
-    }, {
-      name: "Nirvanis Indian Kitchen",
-      address: "68 Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.497910,
-      longitude: -74.449700,
-      school_id: rutgers.id,
-    },{
-      name: "Olive Branch",
-      address: "37 Bartlett St, New Brunswick, NJ 08901",
-      latitude: 40.501350,
-      longitude: -74.452830,
-      school_id: rutgers.id,
-    },{
-      name: "Zookini Pizza & Restaurant",
-      address: "60 Sicard St, New Brunswick, NJ 08901",
-      latitude: 40.502708,
-      longitude: -74.454468,
-      school_id: rutgers.id,
-    },{
-      name: "Kelly's Korner",
-      address: "75 Morrell St, New Brunswick, NJ 08901",
-      latitude: 40.501000,
-      longitude: -74.455060,
-      school_id: rutgers.id,
-    },{
-      name: "Daniel's Pizzeria",
-      address: "204 Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.500340,
-      longitude: -74.456000,
-      school_id: rutgers.id,
-    },{
-      name: "Seed Burger",
-      address: "176 Easton Ave New Brunswick, NJ 08901",
-      latitude: 40.499930,
-      longitude: -74.454930,
-      school_id: rutgers.id,
-    },{
-      name: "Thai Noodle",
-      address: "174 Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.499780,
-      longitude: -74.454630,
-      school_id: rutgers.id,
-    },{
-      name: "Wings Over Rutgers",
-      address: "152 Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.499460,
-      longitude: -74.453740,
-      school_id: rutgers.id,
-    },{
-      name: "The Original Pizza City",
-      address: "145 Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.499810,
-      longitude: -74.453430,
-      school_id: rutgers.id,
-    },
+    }, 
+    # {
+    #   name: "Krispy Pizza",
+    #   address: "50 College Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.499540,
+    #   longitude: -74.448630,
+    #   school_id: rutgers.id,
+    # }, {
+    #   name: "Jersey Mike's Subs",
+    #   address: "44 College Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.499290,
+    #   longitude: -74.448380,
+    #   school_id: rutgers.id,
+    # }, {
+    #   name: "Nirvanis Indian Kitchen",
+    #   address: "68 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.497910,
+    #   longitude: -74.449700,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Olive Branch",
+    #   address: "37 Bartlett St, New Brunswick, NJ 08901",
+    #   latitude: 40.501350,
+    #   longitude: -74.452830,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Zookini Pizza & Restaurant",
+    #   address: "60 Sicard St, New Brunswick, NJ 08901",
+    #   latitude: 40.502708,
+    #   longitude: -74.454468,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Kelly's Korner",
+    #   address: "75 Morrell St, New Brunswick, NJ 08901",
+    #   latitude: 40.501000,
+    #   longitude: -74.455060,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Daniel's Pizzeria",
+    #   address: "204 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.500340,
+    #   longitude: -74.456000,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Seed Burger",
+    #   address: "176 Easton Ave New Brunswick, NJ 08901",
+    #   latitude: 40.499930,
+    #   longitude: -74.454930,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Thai Noodle",
+    #   address: "174 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.499780,
+    #   longitude: -74.454630,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Wings Over Rutgers",
+    #   address: "152 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.499460,
+    #   longitude: -74.453740,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "The Original Pizza City",
+    #   address: "145 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.499810,
+    #   longitude: -74.453430,
+    #   school_id: rutgers.id,
+    # },
     # Penn State
     {
       name: "Panda Express",
@@ -572,27 +571,44 @@ ActiveRecord::Base.transaction do
   imageWidth = 480
   imageHeight = 480
   collectionID = 8746283
-  meals = []
+  meals_for_today = []
+  meals_for_tomorrow = []
 
   shops = Shop.all
 
-  (shops.length).times do |i|
-    name = Faker::Food.dish
+  # (shops.length).times do |i|
+  #   name = Faker::Food.dish
 
-    description = ''
-    4.times do |j|
-      description += Faker::Food.ingredient + ", "
-    end
-    description += Faker::Food.ingredient
+  #   description = ''
+  #   4.times do |j|
+  #     description += Faker::Food.ingredient + ", "
+  #   end
+  #   description += Faker::Food.ingredient
 
-    price = rand(3.0..8.0).round(2)
+  #   price = rand(3.0..8.0).round(2)
 
-    randomNumber = rand(1..200)
-    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{randomNumber}"
+  #   randomNumber = rand(1..200)
+  #   image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{randomNumber}"
 
-    shop_id = shops[i].id
+  #   shop_id = shops[i].id
 
-    meals << {
+  #   meals << {
+  #     name: name,
+  #     description: description,
+  #     price: price,
+  #     image_url: image_url,
+  #     shop_id: shop_id
+  #   }
+  # end
+
+  shops.each do |shop|
+    name = 'Burger with fries'
+    description = "Beef patty, cheese, bun, lettus, onion, tomato, potato"
+    price = 8.99
+    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
+    shop_id = shop.id
+
+    meals_for_today << {
       name: name,
       description: description,
       price: price,
@@ -601,35 +617,68 @@ ActiveRecord::Base.transaction do
     }
   end
 
-  meals.each do |meal|
+  shops.each do |shop|
+    name = 'Pizza'
+    description = "Pizza dough, mozzarella cheese, tomato sauce"
+    price = 7.99
+    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
+    shop_id = shop.id
+
+    meals_for_tomorrow << {
+      name: name,
+      description: description,
+      price: price,
+      image_url: image_url,
+      shop_id: shop_id
+    }
+  end
+
+  meals_for_today.each do |meal|
     Meal.create!(meal)
   end
-  puts "Meals created"
+  
+  puts "Meals for today created"
+
+  meals_for_tomorrow.each do |meal|
+    Meal.create!(meal)
+  end
+  
+  puts "Meals for tomorrow created"
+
 end
 
 ActiveRecord::Base.transaction do
   Menu.destroy_all
 
-  meals = Meal.all
+  # Today's menu
+  meals_for_today = Meal.find_by(name: "Burger with fries")
   today = Date.today
+
+  meals_for_today.each do |meal|
+    Menu.create!({meal_id: meal.id, offered_date: today})
+  end
+
+  puts "Menu for TODAY created"
+
+  # Tomorrow's menu
+  meals_for_tomorrow = Meals.find_by(name: "Pizza")
   tomorrow = Date.today + 1
 
-  meals.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: today})
+  meals_for_tomorrow.each do |meal|
     Menu.create!({meal_id: meal.id, offered_date: tomorrow})
   end
 
-  puts "Menu for TODAY and TOMORROW created"
+  puts "Menu for TODAY created"
 end
 
 ActiveRecord::Base.transaction do
   Favorite.destroy_all
-  demo = User.find_by(email: 'penn@gmail.com')
+  rutgers = User.find_by(email: 'rutgers@gmail.com')
   shops = Shop.all
 
   shops.each do |s|
     if (rand(1..10) < 4)
-      Favorite.create!({shop_id: s.id, user_id: demo.id})
+      Favorite.create!({shop_id: s.id, user_id: rutgers.id})
     end
   end
   puts "Favorites created"
@@ -637,7 +686,7 @@ end
 
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
-  demo = User.find_by(email: 'penn@gmail.com')
+  rutgers = User.find_by(email: 'rutgers@gmail.com')
   menus = Menu.all
 
   times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
@@ -647,7 +696,7 @@ ActiveRecord::Base.transaction do
     if (rand(1..10) < 7)
       menu_id = menus.sample.id
       time = (date.to_s + " " + times.sample).to_time
-      Reservation.create!({menu_id: menu_id, user_id: demo.id, time: time, date: date})
+      Reservation.create!({menu_id: menu_id, user_id: rutgers.id, time: time, date: date})
     end
     date = date - 1
   end
