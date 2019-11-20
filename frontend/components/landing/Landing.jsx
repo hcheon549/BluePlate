@@ -50,7 +50,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchSchools: () => dispatch(fetchSchools()),
-    fetchMeals: (school) => dispatch(fetchMeals(school)),
+    fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
   };
 };
 

@@ -12,7 +12,7 @@ import { getFavIds, getSchoolReservations } from '../../util/selectors';
 
 class History extends React.Component {
   componentDidMount() {
-    this.props.fetchMeals(this.props.currentUser.enrolledSchool);
+    this.props.fetchMeals(this.props.currentUser.schoolId);
     this.props.fetchFavorites();
     this.props.fetchReservations();
   }
@@ -105,7 +105,7 @@ const msp = ({entities:
 
 const mdp = (dispatch) => {
  return {
-   fetchMeals: (school) => dispatch(fetchMeals(school)),
+   fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
    fetchFavorites: () => dispatch(fetchFavorites()),
    fetchReservations: () => dispatch(fetchReservations())
  };

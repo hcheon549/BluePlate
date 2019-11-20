@@ -1,7 +1,7 @@
 class Api::MealsController < ApplicationController
   def index
-    @school = School.find_by(name: params[:school])
-    
+    @school = School.find_by(id: params[:id])
+
     if @school
 
       @meals = @school.meals

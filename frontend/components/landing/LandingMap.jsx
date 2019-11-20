@@ -12,16 +12,16 @@ class LandingMap extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      school: null
+      schoolId: null
     }
     this.update = this.update.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState){
     if (!prevState.school && (prevProps.schools !== this.props.schools)){
-      this.props.fetchMeals(this.props.schools[0].name)
+      this.props.fetchMeals(this.props.schools[0].id)
       this.setState({
-        school: this.props.schools[0].name
+        schoolId: this.props.schools[0].id
       })
     }
   }
@@ -76,7 +76,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchSchools: () => dispatch(fetchSchools()),
-    fetchMeals: (school) => dispatch(fetchMeals(school)),
+    fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
   };
 };
 

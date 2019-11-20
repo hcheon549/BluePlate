@@ -7,9 +7,9 @@ export const RECEIVE_MEAL_ERRORS = "RECEIVE_MEAL_ERRORS";
 export const START_LOADING_ALL_MEALS = "START_LOADING_ALL_MEALS";
 export const START_LOADING_SEARCH_MEALS = "START_LOADING_SEARCH_MEALS";
 
-export const fetchMeals = school => dispatch => {
+export const fetchMeals = schoolId => dispatch => {
   dispatch(startLoadingAllMeals());
-  return mealApiUtil.fetchMeals(school).then(
+  return mealApiUtil.fetchMeals(schoolId).then(
     payload => {
       return dispatch(receiveMeals(payload.data));
     },
