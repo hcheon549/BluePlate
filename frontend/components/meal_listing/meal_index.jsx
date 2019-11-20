@@ -73,18 +73,18 @@ class MealIndex extends React.Component {
 
 const msp = (state) => {
   let isFav = state.ui.filters.favorite;
-  let mealVals = Object.values(state.entities.meals)
+  let menuVals = Object.values(state.entities.menus)
 
   let favIds = getFavIds(state.entities.favorites);
   let favs = getFavorites(state.entities.favorites);
 
   if (isFav) {
-    mealVals = getFavMeals(mealVals, favs);
+    menuVals = getFavMeals(menuVals, favs);
   }
 
   return {
     currentUser: state.entities.currentUser,
-    meals: mealVals,
+    menus: menuVals,
     shops: state.entities.shops,
     favorites: favs,
     favIds: favIds,

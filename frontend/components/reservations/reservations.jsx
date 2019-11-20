@@ -219,7 +219,7 @@ const msp = ({entities: {currentUser, mealRes, shopRes, reservations}, session})
   return {
     currentUser,
     reservations: pastFive,
-    meals: mealRes,
+    menus: mealRes,
     shops: shopRes,
     resTime: resTime
   };

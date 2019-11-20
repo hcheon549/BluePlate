@@ -84,10 +84,10 @@ class History extends React.Component {
 }
 
 const msp = ({entities:
-  {currentUser, meals, shops, schools, favorites, reservations},
+  {currentUser, menus, shops, schools, favorites, reservations},
   session, errors, ui}) => {
 
-  let schoolReses = getSchoolReservations(reservations, meals, false);
+  let schoolReses = getSchoolReservations(reservations, menus, false);
   schoolReses = schoolReses.sort((a,b) => {
     return new Date(b.date) - new Date(a.date);
   });
@@ -96,7 +96,7 @@ const msp = ({entities:
 
  return {
     currentUser,
-    meals: meals,
+    menus,
     favIds: favIds,
     schoolReses: schoolReses,
     shops: shops

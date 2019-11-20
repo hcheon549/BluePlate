@@ -24,17 +24,3 @@ export const updateSubscription = subscriptionData => {
     }
   });
 };
-
-// export const fetchSubscriptions = () => {
-//   return axios({
-//     method: "GET",
-//     url: `/api/subscriptions`
-//   });
-// };
-
-// export const deleteSubscription = id => {
-//   return axios({
-//     method: "DELETE",
-//     url: `/api/subscriptions/${id}`
-//   });
-// };
