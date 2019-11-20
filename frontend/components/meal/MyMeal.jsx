@@ -15,26 +15,21 @@ import Reservations from "../reservations/reservations";
 import LoadingIcon from "./loading_icon";
 
 class MyMeal extends React.Component {
-  componentDidMount() {
-    this.props
-      .fetchSchools()
-      .then(this.props.fetchMenus(this.props.currentUser.schoolId))
-      .then(this.props.fetchFavorites())
-      .then(this.props.fetchReservations())
-      .then(this.props.resetFilter());
+  async componentDidMount() {
+    // await this.props.fetchSchools()
+    await this.props.fetchMenus(this.props.currentUser.schoolId)
+    await this.props.fetchFavorites()
+    await this.props.fetchReservations()
+    await this.props.resetFilter()
   }
 
-  componentWillReceiveProps(nextProps) {
+  async componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== "/my-meals") {
       this.props.history.push("/my-meals");
     }
-    if (
-      nextProps.currentUser.schoolId !==
-      this.props.currentUser.schoolId
-    ) {
-      this.props
-        .fetchMenus(nextProps.currentUser.schoolId)
-        .then(this.props.resetFilter());
+    if (nextProps.currentUser.schoolId !== this.props.currentUser.schoolId) {
+      await this.props.fetchMenus(nextProps.currentUser.schoolId)
+      this.props.resetFilter();
     }
   }
 

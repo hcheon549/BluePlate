@@ -52,7 +52,7 @@ export const mapShopIdToMeal = menus => {
   let menuHash = {};
 
   menus.forEach(menu => {
-    menuHash[menu.shopId] = menu;
+    menuHash[menu.shop.id] = menu;
   });
   return menuHash;
 };

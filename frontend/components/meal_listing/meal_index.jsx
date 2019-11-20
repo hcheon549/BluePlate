@@ -60,9 +60,9 @@ class MealIndex extends React.Component {
             <MealIndexItem
               key={menu.id}
               menu={menu}
-              shop={shops[menu.shopId]}
-              favorite={favorites[menu.shopId]}
-              favId={favIds[menu.shopId]}
+              shop={shops[menu.shop.id]}
+              favorite={favorites[menu.shop.id]}
+              favId={favIds[menu.shop.id]}
             />
           );
         })}
@@ -71,24 +71,14 @@ class MealIndex extends React.Component {
   }
 }
 
-const msp = (state) => {
-  let isFav = state.ui.filters.favorite;
-  let menuVals = Object.values(state.entities.menus)
-
-  let favIds = getFavIds(state.entities.favorites);
-  let favs = getFavorites(state.entities.favorites);
-
-  if (isFav) {
-    menuVals = getFavMeals(menuVals, favs);
-  }
-
+const msp = ({ entities, ui }) => {
   return {
-    currentUser: state.entities.currentUser,
-    menus: menuVals,
-    shops: state.entities.shops,
-    favorites: favs,
-    favIds: favIds,
-    loading: state.ui.loading.searchLoading
+    currentUser: entities.currentUser,
+    menus: ui.filters.favorite ? getFavMeals(menuVals, favs) : Object.values(entities.menus),
+    shops: entities.shops,
+    favorites: getFavorites(entities.favorites),
+    favIds: getFavIds(entities.favorites),
+    loading: ui.loading.searchLoading
   };
 };
 
