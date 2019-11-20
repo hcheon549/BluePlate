@@ -14,7 +14,7 @@ export const createReservation = reservation => {
     data: {
       reservation: {
         user_id: reservation.userId,
-        meal_id: reservation.mealId,
+        menu_id: reservation.menuId,
         time: reservation.time
       }
     }
@@ -28,7 +28,7 @@ export const updateReservation = reservation => {
     data: {
       reservation: {
         user_id: reservation.userId,
-        meal_id: reservation.mealId,
+        menu_id: reservation.menuId,
         time: reservation.time
       }
     }

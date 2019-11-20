@@ -28,7 +28,7 @@ class Api::ReservationsController < ApplicationController
 
       @reservation = Reservation.new(
         user_id: params[:reservation][:user_id],
-        meal_id: params[:reservation][:meal_id],
+        menu_id: params[:reservation][:menu_id],
         time: time,
         date: date
         )
@@ -58,7 +58,7 @@ class Api::ReservationsController < ApplicationController
 
     if @reservation.update_attributes(
       user_id: params[:reservation][:user_id],
-      meal_id: params[:reservation][:meal_id],
+      menu_id: params[:reservation][:menu_id],
       time: time,
       date: date
       )
@@ -81,7 +81,7 @@ class Api::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :meal_id, :time, :date)
+    params.require(:reservation).permit(:user_id, :menu_id, :time, :date)
   end
 
 end

@@ -4,7 +4,7 @@
 #
 #  id            :bigint(8)        not null, primary key
 #  user_id       :integer          not null
-#  meal_id       :integer          not null
+#  menu_id       :integer          not null
 #  date          :date             not null
 #  time          :time             not null
 #  datetime      :datetime

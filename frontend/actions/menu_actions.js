@@ -1,4 +1,4 @@
-import * as mealApiUtil from "../util/meal_api_util";
+import * as menuApiUtil from "../util/menu_api_util";
 
 export const RECEIVE_ALL_MENUS = "RECEIVE_ALL_MENUS";
 export const RECEIVE_SEARCH_MENUS = "RECEIVE_SEARCH_MENUS";
@@ -9,7 +9,7 @@ export const START_LOADING_SEARCH_MENUS = "START_LOADING_SEARCH_MENUS";
 
 export const fetchMenus = schoolId => dispatch => {
   dispatch(startLoadingAllMenus());
-  return mealApiUtil.fetchMenus(schoolId).then(
+  return menuApiUtil.fetchMenus(schoolId).then(
     payload => {
       debugger
       return dispatch(receiveMenus(payload.data));

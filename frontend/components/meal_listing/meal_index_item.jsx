@@ -40,7 +40,7 @@ class MealIndexItem extends React.Component {
   }
 
   render() {
-    let { meal, shop, favorite } = this.props;
+    let { menu, shop, favorite } = this.props;
     return (
       <div
         onMouseEnter={() => this.handleHover(shop.id)}
@@ -96,17 +96,17 @@ class MealIndexItem extends React.Component {
           <li>LUNCH</li>
         </div>
 
-        <img alt="" src={meal.imageUrl} />
+        <img alt="" src={menu.imageUrl} />
 
         <div className="hidden-description">
           <ul>
-            <li className="hidden-meal-name">{meal.name.toUpperCase()}</li>
-            <li className="hidden-meal-desc">{meal.description}</li>
+            <li className="hidden-meal-name">{menu.name.toUpperCase()}</li>
+            <li className="hidden-meal-desc">{menu.description}</li>
           </ul>
         </div>
 
         <div className="meal-box-description">
-          <li className="tbd-item meal-name">{meal.name}</li>
+          <li className="tbd-item meal-name">{menu.name}</li>
           <li className="tbd-item shop-name">{shop.name}</li>
           <li className="tbd-item shop-address">{shop.address}</li>
         </div>
@@ -117,7 +117,7 @@ class MealIndexItem extends React.Component {
 
 const msp = (state, ownProps) => {
   return {
-    meal: ownProps.meal,
+    menu: ownProps.menu,
     shop: ownProps.shop,
     favorite: ownProps.favorite,
     favId: ownProps.favId,

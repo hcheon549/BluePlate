@@ -29,7 +29,7 @@ export default class MarkerManager {
     });
   }
 
-  updateMarkers(shops, meals) {
+  updateMarkers(shops, menus) {
     const shopsObj = {};
 
     shops.forEach(shop => {
@@ -38,21 +38,21 @@ export default class MarkerManager {
 
     shops
       .filter(shop => !this.markers[shop.id])
-      .forEach(newShop => this.createMarker(newShop, meals[newShop.id]));
+      .forEach(newShop => this.createMarker(newShop, menus[newShop.id]));
 
     Object.keys(this.markers)
       .filter(shopId => !shopsObj[shopId])
       .forEach(shopId => this.removeMarker(this.markers[shopId]));
   }
 
-  createMarker(shop, meal, animate = null) {
+  createMarker(shop, menu, animate = null) {
     let contentString = `<div class="info-window">
 
-        <img class="info-win-img" src="${meal.imageUrl}"/>
+        <img class="info-win-img" src="${menu.imageUrl}"/>
       
         <div class="info-win-desc">
           <div class="info-win-name">
-            ${meal.name.toUpperCase()}
+            ${menu.name.toUpperCase()}
           </div >
           <div class="info-win-name">
             ${shop.name.toUpperCase()}
@@ -88,7 +88,7 @@ export default class MarkerManager {
       this.resButton = document.getElementById("map-reserve");
 
       this.reserveFunction = () => {
-        this.modal(meal, shop);
+        this.modal(menu, shop);
       };
 
       this.resButton.addEventListener("click", this.reserveFunction);
@@ -123,16 +123,16 @@ export default class MarkerManager {
     }
   }
 
-  // drop(shops, meals) {
+  // drop(shops, menus) {
   //   this.clearMarkers();
   //   for (let i = 0; i < shops.length; i++) {
-  //     this.addMarkerWithTimeout(shops[i], meals[shops[i].id], i * 25);
+  //     this.addMarkerWithTimeout(shops[i], menus[shops[i].id], i * 25);
   //   }
   // }
 
-  // addMarkerWithTimeout(shop, meal, timeout) {
+  // addMarkerWithTimeout(shop, menu, timeout) {
   //   window.setTimeout(() => {
-  //     this.createMarker(shop, meal, google.maps.Animation.DROP)
+  //     this.createMarker(shop, menu, google.maps.Animation.DROP)
 
   //   }, timeout);
   // }

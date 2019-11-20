@@ -48,8 +48,8 @@ class MealMap extends React.Component {
       this.props.openReserveModal
     );
 
-    // this.MarkerManager.drop(this.props.shops, this.props.meals);
-    this.MarkerManager.updateMarkers(this.props.shops, this.props.meals);
+    // this.MarkerManager.drop(this.props.shops, this.props.menus);
+    this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
 
     if (!this.props.landing){this.registerListeners();}
   }
@@ -68,7 +68,7 @@ class MealMap extends React.Component {
   }
 
   componentDidUpdate() {
-    this.MarkerManager.updateMarkers(this.props.shops, this.props.meals);
+    this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
     this.MarkerManager.highlightMarker(this.props.marker);
 
     if (this.props.center) {
@@ -152,7 +152,7 @@ const mdp = (dispatch) => {
     updateFilter: (school, search, filter, bounds) =>
       dispatch(updateFilter(school, search, filter, bounds)),
     changeFilter: (filter, value) => dispatch(changeFilter(filter, value)),
-    openReserveModal: (meal, shop) => dispatch(openModal({ type: 'reserve', meal: meal, shop: shop }))
+    openReserveModal: (menu, shop) => dispatch(openModal({ type: 'reserve', menu: menu, shop: shop }))
   };
 };
 

@@ -18,7 +18,7 @@ class History extends React.Component {
   }
 
   render() {
-    let { meals, shops, schoolReses, favIds } = this.props;
+    let { menus, shops, schoolReses, favIds } = this.props;
 
     if (schoolReses.length === 0) {
       return (
@@ -42,20 +42,20 @@ class History extends React.Component {
               return (
                 <div key={res.id} className="res-item">
                   <div className="reserv-image">
-                    <img alt="" src={meals[res.mealId].imageUrl} />
+                    <img alt="" src={menus[res.menuId].imageUrl} />
                   </div>
 
                   <div className="reserv-text">
                     <div className="res-title-icon">
                       <div className="res-title">
-                        {meals[res.mealId].name}
+                        {menus[res.menuId].name}
                       </div>
 
                       <div className="fav-icon">
                         <img
                           alt=""
                           src={
-                            favIds[meals[res.mealId].shopId]
+                            favIds[menus[res.menuId].shopId]
                               ? "https://res.cloudinary.com/mwojick/image/upload/v1528825174/TreatPal/icons/favorited.png"
                               : ""
                           }
@@ -64,11 +64,11 @@ class History extends React.Component {
                     </div>
 
                     <div className="res-shopname">
-                      {shops[meals[res.mealId].shopId].name}
+                      {shops[menus[res.menuId].shopId].name}
                     </div>
 
                     <div className="fav-address">
-                      {shops[meals[res.mealId].shopId].address}
+                      {shops[menus[res.menuId].shopId].address}
                     </div>
 
                     <div className="res-date">{res.date}</div>

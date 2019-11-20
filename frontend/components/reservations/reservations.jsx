@@ -40,12 +40,12 @@ class Reservations extends React.Component {
   updateRes(e) {
     let newRes = Object.assign({}, this.props.reservations[0]);
     newRes.time = e.currentTarget.value;
-    newRes.mealId = this.props.reservations[0].mealId;
+    newRes.menuId = this.props.reservations[0].menuId;
     this.props.updateReservation(newRes);
   }
 
   render() {
-    let { reservations, meals, shops } = this.props;
+    let { reservations, menus, shops } = this.props;
 
     let mins = new Date(Date.parse(this.state.resTime)).getMinutes();
     let hrs = new Date(Date.parse(this.state.resTime)).getHours();
@@ -78,7 +78,7 @@ class Reservations extends React.Component {
     reservations.forEach(res => {
       if (res.length === 0) {
       } else {
-        savings = savings + meals[res.mealId].price - 3;
+        savings = savings + menus[res.menuId].price - 3;
       }
     });
 
@@ -104,13 +104,13 @@ class Reservations extends React.Component {
                     <div className="day-of-week">{fiveDays[id]}</div>
 
                     <img
-                      src={meals[res.mealId].imageUrl}
+                      src={menus[res.menuId].imageUrl}
                       className="resed-img"
                       alt=""
                     />
 
                     <div className="meal-you-had">
-                      You had {shops[meals[res.mealId].shopId].name} on{" "}
+                      You had {shops[menus[res.menuId].shopId].name} on{" "}
                       {fiveDays[id]}
                     </div>
                   </div>
@@ -140,19 +140,19 @@ class Reservations extends React.Component {
 
                       <ul className="resed-today-desc">
                         <li className="resed-today-desc1">
-                          {meals[res.mealId].name}
+                          {menus[res.menuId].name}
                         </li>
                         <li className="resed-today-desc2">
-                          {shops[meals[res.mealId].shopId].name}
+                          {shops[menus[res.menuId].shopId].name}
                         </li>
                         <li className="resed-today-desc3">
-                          {shops[meals[res.mealId].shopId].address}
+                          {shops[menus[res.menuId].shopId].address}
                         </li>
                       </ul>
 
                       <img
                         className="resed-img-today"
-                        src={meals[res.mealId].imageUrl}
+                        src={menus[res.menuId].imageUrl}
                         alt=""
                       />
 
@@ -194,9 +194,9 @@ class Reservations extends React.Component {
 }
 
 
-const msp = ({entities: {currentUser, mealRes, shopRes, reservations}, session}) => {
+const msp = ({entities: {currentUser, menuRes, shopRes, reservations}, session}) => {
 
-  let schoolReservations = getSchoolReservations(reservations, mealRes, true);
+  let schoolReservations = getSchoolReservations(reservations, menuRes, true);
   schoolReservations = schoolReservations.sort((a,b) => {
     return new Date(b.date) - new Date(a.date);
   });
@@ -219,7 +219,7 @@ const msp = ({entities: {currentUser, mealRes, shopRes, reservations}, session})
   return {
     currentUser,
     reservations: pastFive,
-    menus: mealRes,
+    menus: menuRes,
     shops: shopRes,
     resTime: resTime
   };

@@ -40,32 +40,32 @@ export const getFavorites = favorites => {
   return favs;
 };
 
-export const getFavMeals = (meals, favs) => {
-  return meals.filter(meal => favs[meal.shopId]);
+export const getFavMeals = (menus, favs) => {
+  return menus.filter(menu => favs[menu.shopId]);
 };
 
 export const getFavShops = (shops, favs) => {
   return shops.filter(shop => favs[shop.id]);
 };
 
-export const mapShopIdToMeal = meals => {
-  let mealHash = {};
+export const mapShopIdToMeal = menus => {
+  let menuHash = {};
 
-  meals.forEach(meal => {
-    mealHash[meal.shopId] = meal;
+  menus.forEach(menu => {
+    menuHash[menu.shopId] = menu;
   });
-  return mealHash;
+  return menuHash;
 };
 
-export const getSchoolReservations = (reservations, meals, sel) => {
-  let mealIds = [];
-  Object.values(meals).forEach(tr => {
-    mealIds.push(tr.id);
+export const getSchoolReservations = (reservations, menus, sel) => {
+  let menuIds = [];
+  Object.values(menus).forEach(tr => {
+    menuIds.push(tr.id);
   });
 
   let schoolReses = [];
   Object.values(reservations).forEach(res => {
-    if (mealIds.includes(res.mealId)) {
+    if (menuIds.includes(res.menuId)) {
       schoolReses.push(res);
     }
   });

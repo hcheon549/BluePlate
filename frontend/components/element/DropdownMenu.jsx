@@ -18,7 +18,7 @@ const DropdownMenu = (props) => {
       <li onClick={() => props.history.push("/my-meals")}>
         <div>
           <img src="https://res.cloudinary.com/mwojick/image/upload/v1528591565/TreatPal/icons/Moon-512.png" alt="" />
-          Today's Meal
+          Today's Menu
         </div>
       </li>
 

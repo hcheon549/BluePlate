@@ -4,13 +4,13 @@ import {
   RECEIVE_MENU_ERRORS
 } from '../actions/menu_actions';
 
-const mealReducer = (oldState = {}, action) => {
+const menuReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_ALL_MENUS:
-      return action.payload.meals;
+      return action.payload.menus;
     case RECEIVE_SEARCH_MENUS:
-      return action.payload.meals;
+      return action.payload.menus;
     case RECEIVE_MENU_ERRORS:
       return [];
     default:
@@ -18,4 +18,4 @@ const mealReducer = (oldState = {}, action) => {
   }
 };
 
-export default mealReducer;
+export default menuReducer;

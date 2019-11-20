@@ -638,16 +638,16 @@ end
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
   demo = User.find_by(email: 'penn@gmail.com')
-  meals = Meal.all
+  menus = Menu.all
 
   times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
   date = Date.today + 1
 
   20.times do |t|
     if (rand(1..10) < 7)
-      meal_id = meals.sample.id
+      menu_id = menus.sample.id
       time = (date.to_s + " " + times.sample).to_time
-      Reservation.create!({meal_id: meal_id, user_id: demo.id, time: time, date: date})
+      Reservation.create!({menu_id: menu_id, user_id: demo.id, time: time, date: date})
     end
     date = date - 1
   end

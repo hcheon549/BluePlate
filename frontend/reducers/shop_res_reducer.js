@@ -1,12 +1,12 @@
 import {
-  RECEIVE_ALL_MEALS
-} from '../actions/meal_actions';
+  RECEIVE_ALL_MENUS
+} from '../actions/menu_actions';
 
 
 const shopResReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
-    case RECEIVE_ALL_MEALS:
+    case RECEIVE_ALL_MENUS:
       return action.payload.shops;
     default:
       return oldState;

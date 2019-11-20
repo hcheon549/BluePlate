@@ -29,9 +29,9 @@ class MealIndex extends React.Component {
   }
 
   render() {
-    let { meals, shops, favorites, favIds } = this.props;
+    let { menus, shops, favorites, favIds } = this.props;
 
-    if (meals.length === 0) {
+    if (menus.length === 0) {
       return (
         <div className="meal-errors">
           <div className="meal-errors-text">
@@ -55,14 +55,14 @@ class MealIndex extends React.Component {
 
     return (
       <div className="meal-listing">
-        {meals.map(meal => {
+        {menus.map(menu => {
           return (
             <MealIndexItem
-              key={meal.id}
-              meal={meal}
-              shop={shops[meal.shopId]}
-              favorite={favorites[meal.shopId]}
-              favId={favIds[meal.shopId]}
+              key={menu.id}
+              menu={menu}
+              shop={shops[menu.shopId]}
+              favorite={favorites[menu.shopId]}
+              favId={favIds[menu.shopId]}
             />
           );
         })}

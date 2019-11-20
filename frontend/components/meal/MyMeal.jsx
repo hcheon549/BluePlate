@@ -42,15 +42,15 @@ class MyMeal extends React.Component {
     let arrowR = this.refs.arrowRight;
     let arrowL = this.refs.arrowLeft;
     let map = document.getElementById("map");
-    let mealListing = document.getElementsByClassName("meal-listing")[0];
+    let menuListing = document.getElementsByClassName("meal-listing")[0];
 
     if (map.style.minWidth !== "0px") {
       map.classList.toggle("map-transition");
       map.style.minWidth = "0px";
       arrowL.style.display = "block";
       arrowR.style.display = "none";
-      if (mealListing) {
-        mealListing.classList.toggle("meal-listing-map-collapse");
+      if (menuListing) {
+        menuListing.classList.toggle("meal-listing-map-collapse");
       }
     } else {
       setTimeout(() => {
@@ -59,8 +59,8 @@ class MyMeal extends React.Component {
       map.style.minWidth = "33vw";
       arrowL.style.display = "none";
       arrowR.style.display = "block";
-      if (mealListing) {
-        mealListing.classList.toggle("meal-listing-map-collapse");
+      if (menuListing) {
+        menuListing.classList.toggle("meal-listing-map-collapse");
       }
     }
   }
