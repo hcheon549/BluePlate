@@ -132,8 +132,8 @@ ActiveRecord::Base.transaction do
   rutgers = User.find_by(email: 'rutgers@gmail.com')
   penn = User.find_by(email: 'penn@gmail.com')
   plans = Plan.all
-  rutgers_plan = plans[rand(0..plans.length)]
-  penn_plan = plans[rand(0..plans.length)]
+  rutgers_plan = plans[rand(0..plans.length-1)]
+  penn_plan = plans[rand(0..plans.length-1)]
 
   subscriptions = [
     {
@@ -651,7 +651,7 @@ ActiveRecord::Base.transaction do
   Menu.destroy_all
 
   # Today's menu
-  meals_for_today = Meal.find_by(name: "Burger with fries")
+  meals_for_today = Meal.where(name: "Burger with fries")
   today = Date.today
 
   meals_for_today.each do |meal|
@@ -661,7 +661,7 @@ ActiveRecord::Base.transaction do
   puts "Menu for TODAY created"
 
   # Tomorrow's menu
-  meals_for_tomorrow = Meals.find_by(name: "Pizza")
+  meals_for_tomorrow = Meal.where(name: "Pizza")
   tomorrow = Date.today + 1
 
   meals_for_tomorrow.each do |meal|
