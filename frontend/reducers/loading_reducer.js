@@ -3,6 +3,8 @@ import {
   RECEIVE_ALL_MENUS,
   RECEIVE_MENU_ERRORS,
   START_LOADING_ALL_MENUS,
+  RECEIVE_SEARCH_MENUS,
+  START_LOADING_SEARCH_MENUS
 } from '../actions/menu_actions';
 
 const initialState = {
