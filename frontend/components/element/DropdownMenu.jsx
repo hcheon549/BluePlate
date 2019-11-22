@@ -29,12 +29,12 @@ const DropdownMenu = (props) => {
         </div>
       </li>
 
-      <li onClick={() => props.history.push("/favorites")}>
+      {/* <li onClick={() => props.history.push("/favorites")}>
         <div>
           <img src="https://res.cloudinary.com/mwojick/image/upload/v1532988683/TreatPal/icons/favorite2.png" alt="" />
           Favorites
         </div>
-      </li>
+      </li> */}
 
       <li onClick={() => props.history.push("/history")}>
         <div>

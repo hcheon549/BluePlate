@@ -52,10 +52,16 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = state => {
+  let { currentUser } = state.entities
+  return { 
+    isVisitor: currentUser && currentUser.policyType == "Visitor",
+    isLead: currentUser && currentUser.policyType == "Lead",
+    isMember: currentUser && currentUser.policyType == "Member",
+    loggedIn: Boolean(state.session.id),
   };
 };
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

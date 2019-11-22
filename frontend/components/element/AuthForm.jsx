@@ -19,7 +19,7 @@ class AuthForm extends React.Component{
       isPending: false,
       email: "",
       password: "",
-      school_id: null
+      school_id: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.assembleSchoolChoices = this.assembleSchoolChoices.bind(this);

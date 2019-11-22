@@ -24,16 +24,16 @@ class MealIndexItem extends React.Component {
       });
   }
 
-  handleToggle() {
-    if (this.props.favorite) {
-      this.props.deleteFavorite(this.props.favId);
-    } else {
-      this.props.createFavorite({
-        userId: this.props.currentUser.id,
-        shopId: this.props.shop.id
-      });
-    }
-  }
+  // handleToggle() {
+  //   if (this.props.favorite) {
+  //     this.props.deleteFavorite(this.props.favId);
+  //   } else {
+  //     this.props.createFavorite({
+  //       userId: this.props.currentUser.id,
+  //       shopId: this.props.shop.id
+  //     });
+  //   }
+  // }
 
   handleHover(shopId = null) {
     this.props.changeFilter("marker", shopId);
@@ -47,7 +47,7 @@ class MealIndexItem extends React.Component {
         onMouseLeave={() => this.handleHover()}
         className="meal-box"
       >
-        <button
+        {/* <button
           className={favorite ? "favorited" : "unfavorited"}
           onClick={() => this.handleToggle()}
           id="favorite-button"
@@ -60,7 +60,7 @@ class MealIndexItem extends React.Component {
                 : "https://res.cloudinary.com/mwojick/image/upload/v1528825174/TreatPal/icons/unfavorited.png"
             }
           />
-        </button>
+        </button> */}
 
         <select
           value={this.state.seltime}
@@ -93,7 +93,7 @@ class MealIndexItem extends React.Component {
         </button>
 
         <div className="meal-box-title">
-          <li>LUNCH</li>
+          <span>LUNCH</span>
         </div>
 
         <img alt="" src={menu.imageUrl} />
