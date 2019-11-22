@@ -35,7 +35,6 @@ const Today = (props) => {
 
     let header, day, month, date, year, menuDate
 
-    debugger
     if (thisHour < 21){
       header = 'Today',
       day = DAY[today.getDay()],
