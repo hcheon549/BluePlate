@@ -70,7 +70,6 @@ class MyMeal extends React.Component {
   }
 
   handleTab(tab){
-    debugger
     this.setState({
       activeTab: tab
     })
@@ -83,9 +82,9 @@ class MyMeal extends React.Component {
 
     return (
       <div className="greeting-container">
-        <div className="reservations-container">
+        {/* <div className="reservations-container">
           <Reservations />
-        </div>
+        </div> */}
 
         <div className="search-container">
           <div className="tabs">
@@ -127,7 +126,6 @@ const msp = ({entities}) => {
   const todayMenu = Object.values(entities.menus);
   const lunchMenu = todayMenu.filter(menu => menu.lunch);
   const dinnerMenu = todayMenu.filter(menu => menu.dinner);
-  debugger
   return {
     currentUser: entities.currentUser,
     shops: entities.shops,

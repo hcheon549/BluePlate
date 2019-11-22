@@ -149,8 +149,7 @@ const msp = ({ entities: { currentUser, menus, shops, favorites, schools }, sess
 
 const mdp = (dispatch) => {
   return {
-    updateFilter: (school, search, filter, bounds) =>
-      dispatch(updateFilter(school, search, filter, bounds)),
+    updateFilter: (school, search, filter, bounds) => dispatch(updateFilter(school, search, filter, bounds)),
     changeFilter: (filter, value) => dispatch(changeFilter(filter, value)),
     openReserveModal: (menu, shop) => dispatch(openModal({ type: 'reserve', menu: menu, shop: shop }))
   };

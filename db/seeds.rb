@@ -204,8 +204,8 @@ ActiveRecord::Base.transaction do
     }, {
       name: "KBG Korean BBQ & Grill",
       address: "6 Easton Avenue New Brunswick NJ 08901",
-      latitude: 40.498080,
-      longitude: -74.448920,
+      latitude: 40.497090,
+      longitude: -74.447200,
       school_id: rutgers.id,
     }, {
       name: "Noodle Gourmet",
