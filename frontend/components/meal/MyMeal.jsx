@@ -27,9 +27,7 @@ class MyMeal extends React.Component {
   }
   
   async componentDidMount() {
-    // await this.props.fetchSchools()
     await this.props.fetchMenus(this.props.currentUser.schoolId)
-    await this.props.fetchFavorites()
     await this.props.fetchReservations()
     await this.props.resetFilter()
   }
@@ -72,10 +70,10 @@ class MyMeal extends React.Component {
   }
 
   handleTab(tab){
+    debugger
     this.setState({
       activeTab: tab
     })
-    console.log(this.state.activeTab)
   }
 
   render() {
@@ -102,7 +100,10 @@ class MyMeal extends React.Component {
         </div>
 
         <div className="meals-and-map">
-          <MealIndex />
+          <MealIndex
+            {...this.props}
+            activeTab={this.state.activeTab} 
+          />
 
           <div
             ref="coll"
@@ -122,10 +123,16 @@ class MyMeal extends React.Component {
   }
 }
 
-const msp = (state) => {
+const msp = ({entities}) => {
+  const todayMenu = Object.values(entities.menus);
+  const lunchMenu = todayMenu.filter(menu => menu.lunch);
+  const dinnerMenu = todayMenu.filter(menu => menu.dinner);
+  debugger
   return {
-    currentUser: state.entities.currentUser,
-    loading: state.ui.loading.fetchLoading,
+    currentUser: entities.currentUser,
+    shops: entities.shops,
+    lunchMenu,
+    dinnerMenu,
   };
 };
 

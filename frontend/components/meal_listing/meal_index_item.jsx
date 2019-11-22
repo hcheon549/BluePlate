@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { createFavorite, deleteFavorite } from '../../actions/favorite_actions';
 import { createReservation, updateReservation } from '../../actions/reservation_actions';
 import { changeFilter } from '../../actions/filter_actions';
 import { openModal } from '../../actions/modal_actions';
@@ -24,43 +23,18 @@ class MealIndexItem extends React.Component {
       });
   }
 
-  // handleToggle() {
-  //   if (this.props.favorite) {
-  //     this.props.deleteFavorite(this.props.favId);
-  //   } else {
-  //     this.props.createFavorite({
-  //       userId: this.props.currentUser.id,
-  //       shopId: this.props.shop.id
-  //     });
-  //   }
-  // }
-
   handleHover(shopId = null) {
     this.props.changeFilter("marker", shopId);
   }
 
   render() {
-    let { menu, shop, favorite } = this.props;
+    let { menu, shop } = this.props;
     return (
       <div
         onMouseEnter={() => this.handleHover(shop.id)}
         onMouseLeave={() => this.handleHover()}
         className="meal-box"
       >
-        {/* <button
-          className={favorite ? "favorited" : "unfavorited"}
-          onClick={() => this.handleToggle()}
-          id="favorite-button"
-        >
-          <img
-            alt=""
-            src={
-              favorite
-                ? "https://res.cloudinary.com/mwojick/image/upload/v1528825174/TreatPal/icons/favorited.png"
-                : "https://res.cloudinary.com/mwojick/image/upload/v1528825174/TreatPal/icons/unfavorited.png"
-            }
-          />
-        </button> */}
 
         <select
           value={this.state.seltime}
@@ -119,8 +93,6 @@ const msp = (state, ownProps) => {
   return {
     menu: ownProps.menu,
     shop: ownProps.shop,
-    favorite: ownProps.favorite,
-    favId: ownProps.favId,
     currentUser: state.entities.currentUser,
     resToday: state.ui.filters.restoday
   };
@@ -129,8 +101,6 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   return {
     openConfirmModal: () => dispatch(openModal({ type: 'confirm' })),
-    createFavorite: (fav) => dispatch(createFavorite(fav)),
-    deleteFavorite: (id) => dispatch(deleteFavorite(id)),
     createReservation: (res) => dispatch(createReservation(res)),
     updateReservation: (res) => dispatch(updateReservation(res)),
     changeFilter: (filter, value) => dispatch(changeFilter(filter, value))

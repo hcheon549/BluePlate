@@ -602,9 +602,25 @@ ActiveRecord::Base.transaction do
   # end
 
   shops.each do |shop|
-    name = 'Burger with fries'
+    name = 'Burger with Fries'
     description = "Beef patty, cheese, bun, lettus, onion, tomato, potato"
     price = 8.99
+    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
+    shop_id = shop.id
+
+    meals_for_today << {
+      name: name,
+      description: description,
+      price: price,
+      image_url: image_url,
+      shop_id: shop_id
+    }
+  end
+
+  shops.each do |shop|
+    name = 'Fried Chicken Sandwich'
+    description = "Chicken, breading, coleslaw, bun"
+    price = 9.99
     image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
     shop_id = shop.id
 
@@ -650,15 +666,24 @@ end
 ActiveRecord::Base.transaction do
   Menu.destroy_all
 
-  # Today's menu
-  meals_for_today = Meal.where(name: "Burger with fries")
+  # Today's LUNCH menu
+  meals_for_today_lunch = Meal.where(name: "Burger with Fries")
   today = Date.today
 
-  meals_for_today.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: today})
+  meals_for_today_lunch.each do |meal|
+    Menu.create!({meal_id: meal.id, offered_date: today, lunch: true, dinner: false})
   end
 
-  puts "Menu for TODAY created"
+  puts "Menu for TODAY LUNCH created"
+
+  # Today's DINNER menu
+  meals_for_today_dinner = Meal.where(name: "Fried Chicken Sandwich")
+
+  meals_for_today_dinner.each do |meal|
+    Menu.create!({meal_id: meal.id, offered_date: today, lunch: false, dinner: true})
+  end
+
+  puts "Menu for TODAY DINNER created"
 
   # Tomorrow's menu
   meals_for_tomorrow = Meal.where(name: "Pizza")
@@ -668,7 +693,7 @@ ActiveRecord::Base.transaction do
     Menu.create!({meal_id: meal.id, offered_date: tomorrow})
   end
 
-  puts "Menu for TODAY created"
+  puts "Menu for TOMORROW created"
 end
 
 ActiveRecord::Base.transaction do

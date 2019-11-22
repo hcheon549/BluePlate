@@ -2,13 +2,17 @@ import React from "react";
 // import { Link, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { resetFilter } from '../../actions/filter_actions';
 import { withRouter } from 'react-router-dom';
-import { getFavorites, getFavMeals, getFavIds } from '../../util/selectors';
 
 import MealIndexItem from "./meal_index_item";
 
 class MealIndex extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this);
+    this.buildMenuItems = this.buildMenuItems.bind(this);
+  }
+
   handleClick() {
     // handles resetting filters when map is collapsed
     let coll = document.getElementById("collapsible-map");
@@ -28,8 +32,22 @@ class MealIndex extends React.Component {
     }
   }
 
+  buildMenuItems(menus) {
+    return menus.map(menu => {
+      return (
+        <MealIndexItem
+          key={menu.id}
+          menu={menu}
+          shop={this.props.shops[menu.shop.id]}
+          activeTab={this.props.activeTab}
+        />
+      );
+    })
+  }
+
   render() {
-    let { menus, shops, favorites, favIds } = this.props;
+    let { activeTab, lunchMenu, dinnerMenu } = this.props;
+    let menus = activeTab == 'lunch' ? lunchMenu : dinnerMenu;
 
     if (menus.length === 0) {
       return (
@@ -55,37 +73,10 @@ class MealIndex extends React.Component {
 
     return (
       <div className="meal-listing">
-        {menus.map(menu => {
-          return (
-            <MealIndexItem
-              key={menu.id}
-              menu={menu}
-              shop={shops[menu.shop.id]}
-              favorite={favorites[menu.shop.id]}
-              favId={favIds[menu.shop.id]}
-            />
-          );
-        })}
+        {this.buildMenuItems(menus)}
       </div>
     );
   }
 }
 
-const msp = ({ entities, ui }) => {
-  return {
-    currentUser: entities.currentUser,
-    menus: ui.filters.favorite ? getFavMeals(menuVals, favs) : Object.values(entities.menus),
-    shops: entities.shops,
-    favorites: getFavorites(entities.favorites),
-    favIds: getFavIds(entities.favorites),
-    loading: ui.loading.searchLoading
-  };
-};
-
-const mdp = (dispatch) => {
-  return {
-    resetFilter: () => dispatch(resetFilter())
-  };
-};
-
-export default withRouter(connect(msp, mdp)(MealIndex));
+export default MealIndex;
