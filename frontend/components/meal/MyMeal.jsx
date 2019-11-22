@@ -13,6 +13,7 @@ import Search from "../search/search";
 import MealMap from "../map/meal_map";
 import Reservations from "../reservations/reservations";
 import LoadingIcon from "./loading_icon";
+import Tab from './Tab'
 
 class MyMeal extends React.Component {
   async componentDidMount() {
@@ -72,7 +73,7 @@ class MyMeal extends React.Component {
         </div>
 
         <div className="search-container">
-          <Search />
+          <Tab />
         </div>
 
         <div className="meals-and-map">
