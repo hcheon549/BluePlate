@@ -16,6 +16,15 @@ import LoadingIcon from "./loading_icon";
 import Tab from './Tab'
 
 class MyMeal extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      activeTab: "lunch"
+    }
+    this.handleCollapse = this.handleCollapse.bind(this);
+    this.handleTab = this.handleTab.bind(this);
+  }
+  
   async componentDidMount() {
     // await this.props.fetchSchools()
     await this.props.fetchMenus(this.props.currentUser.schoolId)
@@ -61,6 +70,13 @@ class MyMeal extends React.Component {
     }
   }
 
+  handleTab(tab){
+    this.setState({
+      activeTab: tab
+    })
+    console.log(this.state.activeTab)
+  }
+
   render() {
     if (this.props.loading) {
       return <LoadingIcon />;
@@ -73,7 +89,11 @@ class MyMeal extends React.Component {
         </div>
 
         <div className="search-container">
-          <Tab />
+          <Tab 
+            activeTab={this.state.activeTab}
+            handleTab={this.handleTab}
+          />
+          <div className="borderLine" />
         </div>
 
         <div className="meals-and-map">
