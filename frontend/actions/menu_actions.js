@@ -11,7 +11,6 @@ export const fetchMenus = schoolId => dispatch => {
   dispatch(startLoadingAllMenus());
   return menuApiUtil.fetchMenus(schoolId).then(
     payload => {
-      debugger
       return dispatch(receiveMenus(payload.data));
     },
     errors => dispatch(receiveErrors(errors.response.data))

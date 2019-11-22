@@ -1,6 +1,11 @@
+.tabs{
+  display: flex;
+  justify-content: space-between;
+}
+
 .mealTab{
   display: flex;
-  justify-content: center;
+  justify-content: left;
   .tabLabel{
     margin: 0 0 -1px;
     padding: 15px 50px;
@@ -8,15 +13,23 @@
     text-align: center;
     color: $light-gray;
     border: 1px solid transparent;
+    :hover{
+      cursor: pointer;
+      color: $grayDark;
+    }
     &.active{
       color: $grayDark;
       border: 1px solid $lightest-gray;
       border-top: 2px solid $orange;
       border-bottom: 1px solid $white;
     }
-    :hover{
-      cursor: pointer;
+    &.mounted{
       color: $grayDark;
+      border: 1px solid $lightest-gray;
+      border-top: 2px solid $orange;
+      :hover{
+        cursor: inherit;
+      }
     }
   }
 }

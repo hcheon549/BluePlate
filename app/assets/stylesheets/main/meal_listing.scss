@@ -19,6 +19,7 @@
       display: block;
       padding: 0;
       font-size: 14px;
+      background-color: $white;
     }
     .select-time {
       display: block;
@@ -247,10 +248,10 @@
 // }
 .reserve-btn {
   display: none;
-  color: white;
-  background: $accent;
+  color: $light-gray;
+  background: $white;
   position: absolute;
-  border: none;
+  border: 1px solid $light-gray;
   z-index: 3;
   bottom: 25px;
   height: 40px;

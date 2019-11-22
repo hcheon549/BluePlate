@@ -7,7 +7,6 @@ const menuResReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_ALL_MENUS:
-      debugger
       return action.payload.menus;
     default:
       return oldState;

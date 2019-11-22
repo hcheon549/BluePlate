@@ -6,7 +6,7 @@ const Tab = (props) => {
 
     return (
       <ul className="mealTab">
-        <div className={"tabLabel" + (lunchActive ? ' active' : '')}  onClick={() => props.handleTab('lunch')}>
+        <div className={"tabLabel" + (lunchActive ? ' active' : '')}  onClick={() => props.handleTab('lunch')} style={{marginLeft: '50px'}}>
           <li>LUNCH</li>
         </div>
         <div className={"tabLabel" + (dinnerActive ? ' active' : '')} onClick={() => props.handleTab('dinner')}>

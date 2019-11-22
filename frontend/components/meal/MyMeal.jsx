@@ -14,6 +14,7 @@ import MealMap from "../map/meal_map";
 import Reservations from "../reservations/reservations";
 import LoadingIcon from "./loading_icon";
 import Tab from './Tab'
+import Today from './Today'
 
 class MyMeal extends React.Component {
   constructor(props){
@@ -89,10 +90,14 @@ class MyMeal extends React.Component {
         </div>
 
         <div className="search-container">
-          <Tab 
-            activeTab={this.state.activeTab}
-            handleTab={this.handleTab}
-          />
+          <div className="tabs">
+            <Tab 
+              activeTab={this.state.activeTab}
+              handleTab={this.handleTab}
+            />
+            <Today />
+          </div>
+          
           <div className="borderLine" />
         </div>
 
@@ -120,7 +125,7 @@ class MyMeal extends React.Component {
 const msp = (state) => {
   return {
     currentUser: state.entities.currentUser,
-    loading: state.ui.loading.fetchLoading
+    loading: state.ui.loading.fetchLoading,
   };
 };
 
