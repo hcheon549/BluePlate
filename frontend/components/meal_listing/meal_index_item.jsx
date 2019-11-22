@@ -92,9 +92,9 @@ class MealIndexItem extends React.Component {
           RESERVE NOW
         </button>
 
-        <div className="meal-box-title">
+        {/* <div className="meal-box-title">
           <span>LUNCH</span>
-        </div>
+        </div> */}
 
         <img alt="" src={menu.imageUrl} />
 
