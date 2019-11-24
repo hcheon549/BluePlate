@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchSchools } from '../../actions/school_actions';
 import { setStepJoinStep } from '../../actions/stepjoin_actions';
-import { fetchPlans } from '../../actions/plan_actions'; // MOVE THIS TO SIGN UP PAGE
 
 import SignupForm from '../session_form/SignUpForm';
 import PlanForm from './PlanForm';
@@ -20,7 +18,6 @@ class StepJoin extends React.Component {
   }
 
   async componentDidMount() {
-    await this.props.fetchPlans();
     let policyType = this.props.currentUser ? this.props.currentUser.policyType : null
     if (policyType == 'Visitor'){
       this.props.setStepJoin('plan')
@@ -72,8 +69,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setStepJoin: (step) => dispatch(setStepJoinStep(step)),
-    fetchSchools: () => dispatch(fetchSchools()),
-    fetchPlans: () => dispatch(fetchPlans()),
   };
 };
 

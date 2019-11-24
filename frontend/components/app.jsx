@@ -6,6 +6,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { getCurrentUser } from "../actions/session_actions";
 import { fetchSchools } from '../actions/school_actions';
 import { fetchTimes } from '../actions/time_action';
+import { fetchPlans } from '../actions/plan_actions';
 
 import Modal from "./modal/modal";
 
@@ -26,6 +27,7 @@ class App extends React.Component {
   async componentDidMount() {
     await this.props.getCurrentUser();
     await this.props.fetchSchools();
+    await this.props.fetchPlans();
     await this.props.fetchTimes();
   }
 
@@ -85,7 +87,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchSchools: () => dispatch(fetchSchools()),
     getCurrentUser: () => dispatch(getCurrentUser()),
-    fetchTimes: () => dispatch(fetchTimes())
+    fetchTimes: () => dispatch(fetchTimes()),
+    fetchPlans: () => dispatch(fetchPlans()),
   };
 };
 

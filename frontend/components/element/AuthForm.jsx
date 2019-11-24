@@ -8,7 +8,6 @@ import { withRouter } from 'react-router-dom';
 
 import { createAccount, clearErrors, login } from '../../actions/session_actions';
 import { createAccountSummary } from '../../actions/account_summary_actions'
-import { fetchSchools } from '../../actions/school_actions';
 import { fetchUser } from '../../actions/user_actions';
 
 
@@ -26,11 +25,6 @@ class AuthForm extends React.Component{
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.formType == 'Sign-Up'){
-      this.props.fetchSchools();
-    }
-  }
 
   componentWillUnmount() {
     this.props.clearErrors();
@@ -155,7 +149,6 @@ const mapDispatchToProps = dispatch => {
     processJoinForm: (user) => dispatch(createAccount(user)),
     processLogIn: (user) => dispatch(login(user)),
     createAccountSummary: (userId) => dispatch(createAccountSummary(userId)),
-    fetchSchools: () => dispatch(fetchSchools()),
     clearErrors: () => dispatch(clearErrors())
   };
 };
