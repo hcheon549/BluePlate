@@ -1,4 +1,3 @@
-
 json.menus do
   @menus.each do |menu|
     json.set! menu.id do
