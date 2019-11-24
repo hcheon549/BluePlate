@@ -9,6 +9,7 @@ import menuResReducer from './menu_res_reducer';
 import shopResReducer from './shop_res_reducer';
 import planReducer from './plans_reducer';
 import subscriptionReducer from './subscription_reducer';
+import timeReducer from './time_reducer'
 
 const entitiesReducer = combineReducers({
   currentUser: usersReducer,
@@ -20,7 +21,8 @@ const entitiesReducer = combineReducers({
   plans: planReducer,
   favorites: favoriteReducer,
   reservations: reservationReducer,
-  subscription: subscriptionReducer
+  subscription: subscriptionReducer,
+  pickupTime: timeReducer,
 });
 
 export default entitiesReducer;

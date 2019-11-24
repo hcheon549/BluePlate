@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:create, :update]
     resources :account_summaries, only: [:create, :update]
     resources :menus, only: [:index]
+    resources :pickup_times, only: [:index]
     resources :charges
   end
 

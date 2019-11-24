@@ -1,4 +1,3 @@
-
 json.meals do
   @meals.each do |meal|
     json.set! meal.id do

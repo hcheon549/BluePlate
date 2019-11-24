@@ -17,7 +17,6 @@ const TIMEVALS = ['11:00','11:30','12:00','12:30',
 '13:00','13:30','14:00','14:30','15:00','15:30',
 '16:00','16:30'];
 
-
 class MealIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -39,6 +38,7 @@ class MealIndexItem extends React.Component {
 
   render() {
     let { menu, shop } = this.props;
+    debugger
     return (
       <div
         onMouseEnter={() => this.handleHover(shop.id)}
