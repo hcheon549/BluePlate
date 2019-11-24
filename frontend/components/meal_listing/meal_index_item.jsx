@@ -38,7 +38,8 @@ class MealIndexItem extends React.Component {
 
   render() {
     let { menu, shop, pickupTime } = this.props;
-    debugger
+    let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
+
     return (
       <div
         onMouseEnter={() => this.handleHover(shop.id)}
@@ -54,10 +55,10 @@ class MealIndexItem extends React.Component {
           <option hidden value={null}>
             Pickup Time
           </option>
-          {TIMEVALS.map((tv, idx) => {
+          {timeIntervals.map((interval, idx) => {
             return (
-              <option key={idx} value={tv}>
-                {TIMES[idx]}
+              <option key={idx} value={interval.id}>
+                {interval.start + " - " + interval.end}
               </option>
             );
           })}
