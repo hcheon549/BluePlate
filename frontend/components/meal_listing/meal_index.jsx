@@ -10,7 +10,6 @@ class MealIndex extends React.Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this);
-    this.buildMenuItems = this.buildMenuItems.bind(this);
   }
 
   handleClick() {
@@ -32,22 +31,10 @@ class MealIndex extends React.Component {
     }
   }
 
-  buildMenuItems(menus) {
-    return menus.map(menu => {
-      return (
-        <MealIndexItem
-          key={menu.id}
-          menu={menu}
-          shop={this.props.shops[menu.shop.id]}
-          activeTab={this.props.activeTab}
-        />
-      );
-    })
-  }
-
   render() {
-    let { activeTab, lunchMenu, dinnerMenu } = this.props;
+    let { activeTab, lunchMenu, dinnerMenu, lunchTime, dinnerTime, shops } = this.props;
     let menus = activeTab == 'lunch' ? lunchMenu : dinnerMenu;
+    let times = activeTab == 'lunch' ? lunchTime : dinnerTime;
 
     if (menus.length === 0) {
       return (
@@ -73,7 +60,15 @@ class MealIndex extends React.Component {
 
     return (
       <div className="meal-listing">
-        {this.buildMenuItems(menus)}
+        {menus.map(menu => 
+          <MealIndexItem
+            key={menu.id}
+            menu={menu}
+            shop={shops[menu.shop.id]}
+            activeTab={activeTab}
+            pickupTime={times}
+          />
+        )}
       </div>
     );
   }

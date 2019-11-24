@@ -37,7 +37,8 @@ class MealIndexItem extends React.Component {
   }
 
   render() {
-    let { menu, shop } = this.props;
+    let { menu, shop, pickupTime } = this.props;
+    debugger
     return (
       <div
         onMouseEnter={() => this.handleHover(shop.id)}

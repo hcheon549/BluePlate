@@ -103,20 +103,20 @@ ActiveRecord::Base.transaction do
   PickupTime.destroy_all
 
   lunch_time = [
-    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 30).strftime("%I:%M %p") },
-    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p") },
+    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(15).strftime("%I:%M %p") }, 
   ]
 
   lunch_time.each do |time|
@@ -125,22 +125,22 @@ ActiveRecord::Base.transaction do
   puts "Lunch Times created"
 
   dinner_time = [
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17).strftime("%I:%M %p") },
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p") },
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p") },
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p") },
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p") },
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p") },
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(21).strftime("%I:%M %p") }, 
   ]
 
   dinner_time.each do |time|

@@ -124,13 +124,15 @@ class MyMeal extends React.Component {
 
 const msp = ({entities}) => {
   const todayMenu = Object.values(entities.menus);
-  const lunchMenu = todayMenu.filter(menu => menu.lunch);
-  const dinnerMenu = todayMenu.filter(menu => menu.dinner);
+  const pickupTime = entities.pickupTime
+
   return {
     currentUser: entities.currentUser,
     shops: entities.shops,
-    lunchMenu,
-    dinnerMenu,
+    lunchMenu: todayMenu.filter(menu => menu.lunch),
+    dinnerMenu: todayMenu.filter(menu => menu.dinner),
+    lunchTime: pickupTime.lunch,
+    dinnerTime: pickupTime.dinner
   };
 };
 

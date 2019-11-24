@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_180652) do
+ActiveRecord::Schema.define(version: 2019_11_24_194657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_11_24_180652) do
   create_table "pickup_times", force: :cascade do |t|
     t.integer "pickup_type", null: false
     t.string "start", null: false
+    t.string "end"
   end
 
   create_table "plans", force: :cascade do |t|
