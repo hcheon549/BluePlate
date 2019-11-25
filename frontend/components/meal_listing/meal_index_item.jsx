@@ -5,14 +5,18 @@ import { withRouter } from 'react-router-dom';
 import { createReservation, updateReservation } from '../../actions/reservation_actions';
 import { changeFilter } from '../../actions/filter_actions';
 import { openModal } from '../../actions/modal_actions';
-import { handleReserve } from "../../actions/reservation_actions";
 
 class MealIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      seltime: ""
+      isPending: false,
+      pickupTimeId: null
     };
+
+    this.update = this.update.bind(this);
+    this.handleHover = this.handleHover.bind(this);
+    this.handleReserve = this.handleReserve.bind(this);
   }
 
   update(type) {
@@ -26,23 +30,57 @@ class MealIndexItem extends React.Component {
     this.props.changeFilter("marker", shopId);
   }
 
+  async handleReserve() {
+    this.setState({
+      isPending: true,
+    })
+
+    window.scrollTo(0, 0);
+
+    if (this.props.resToday.constructor !== Array) {
+      let newRes = Object.assign({}, this.props.resToday);
+      newRes.menuId = this.props.menu.id;
+      newRes.time = this.state.pickupTimeId;
+  
+      let updatedReservation = await this.props.updateReservation(newRes)
+      if (updatedReservation) {
+        this.props.openConfirmModal()
+      } else {
+        console.log('error')
+      }
+    } else {
+      let newRes = {
+        userId: this.props.currentUser.id,
+        menuId: this.props.menu.id,
+        time: this.state.pickupTimeId
+      };
+      let newReservation = await this.props.createReservation(newRes)
+      if (newReservation) {
+        this.props.openConfirmModal()
+      } else {
+        console.log('error')
+      }
+    }
+    this.setState({
+      isPending: false
+    })
+  };
+  
+
   render() {
     let { menu, shop, pickupTime, activeTab } = this.props;
+    let { isPending, pickupTimeId } = this.state;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
     let actionButton = activeTab == 'lunch' ? 'RESERVE LUNCH' : 'RESERVE DINNER';
+    let pickupTimeSelected = pickupTimeId !== null;
 
     return (
-      <div
-        onMouseEnter={() => this.handleHover(shop.id)}
-        onMouseLeave={() => this.handleHover()}
-        className="meal-box"
+      <div className="meal-box"
+          onMouseEnter={() => this.handleHover(shop.id)}
+          onMouseLeave={() => this.handleHover()}
       >
 
-        <select
-          value={this.state.seltime}
-          onChange={this.update("seltime")}
-          className="select-time"
-        >
+        <select className="select-time" onChange={this.update("pickupTimeId")} value={pickupTimeId}>
           <option hidden value={null}>
             Pickup Time
           </option>
@@ -56,14 +94,10 @@ class MealIndexItem extends React.Component {
         </select>
 
         <button
-          className={
-            this.state.seltime === ""
-              ? "reserve-btn time-not-selected"
-              : "reserve-btn time-selected"
-          }
-          onClick={() => handleReserve(this.props, this.state)}
+          className={"reserve-btn" + pickupTimeSelected ? (" time-selected" + (isPending ? " -pending" : "")) : " time-not-selected"}
+          onClick={this.handleReserve}
           id={`reserve-button`}
-          disabled={this.state.seltime === ""}
+          disabled={!pickupTimeSelected || isPending}
         >
           {actionButton}
         </button>

@@ -80,14 +80,14 @@ export const handleReserve = (props, state) => {
   if (props.resToday.constructor !== Array) {
     let newRes = Object.assign({}, props.resToday);
     newRes.menuId = props.menu.id;
-    newRes.time = state.seltime;
+    newRes.time = state.pickupTimeId;
 
     props.updateReservation(newRes).then(() => props.openConfirmModal());
   } else {
     let newRes = {
       userId: props.currentUser.id,
       menuId: props.menu.id,
-      time: state.seltime
+      time: state.pickupTimeId
     };
     props.createReservation(newRes).then(() => props.openConfirmModal());
   }
