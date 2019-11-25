@@ -31,32 +31,35 @@ class MealIndexItem extends React.Component {
   }
 
   async handleReserve() {
+    let { resToday, menu, currentUser, updateReservation, createReservation, openConfirmModal } = this.props;
+    let { pickupTimeId } = this.state
+
     this.setState({
       isPending: true,
     })
 
     window.scrollTo(0, 0);
 
-    if (this.props.resToday.constructor !== Array) {
-      let newRes = Object.assign({}, this.props.resToday);
-      newRes.menuId = this.props.menu.id;
-      newRes.time = this.state.pickupTimeId;
+    if (resToday.constructor !== Array) {
+      let newRes = Object.assign({}, resToday);
+      newRes.menuId = menu.id;
+      newRes.time = pickupTimeId;
   
-      let updatedReservation = await this.props.updateReservation(newRes)
+      let updatedReservation = await updateReservation(newRes)
       if (updatedReservation) {
-        this.props.openConfirmModal()
+        openConfirmModal()
       } else {
         console.log('error')
       }
     } else {
       let newRes = {
-        userId: this.props.currentUser.id,
-        menuId: this.props.menu.id,
-        time: this.state.pickupTimeId
+        userId: currentUser.id,
+        menuId: menu.id,
+        time: pickupTimeId
       };
-      let newReservation = await this.props.createReservation(newRes)
+      let newReservation = await createReservation(newRes)
       if (newReservation) {
-        this.props.openConfirmModal()
+        openConfirmModal()
       } else {
         console.log('error')
       }
