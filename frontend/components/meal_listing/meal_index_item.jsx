@@ -7,16 +7,6 @@ import { changeFilter } from '../../actions/filter_actions';
 import { openModal } from '../../actions/modal_actions';
 import { handleReserve } from "../../actions/reservation_actions";
 
-const TIMES = ['11:00 AM - 11:30 AM', '11:30 AM - 12:00 PM',
-'12:00 PM - 12:30 PM','12:30 PM - 1:00 PM', '1:00 PM - 1:30 PM',
-'1:30 PM - 2:00 PM','2:00 PM - 2:30 PM','2:30 PM - 3:00 PM',
-'3:00 PM - 3:30 PM','3:30 PM - 4:00 PM','4:00 PM - 4:30 PM',
-'4:30 PM - 5:00 PM'];
-
-const TIMEVALS = ['11:00','11:30','12:00','12:30',
-'13:00','13:30','14:00','14:30','15:00','15:30',
-'16:00','16:30'];
-
 class MealIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -37,8 +27,9 @@ class MealIndexItem extends React.Component {
   }
 
   render() {
-    let { menu, shop, pickupTime } = this.props;
+    let { menu, shop, pickupTime, activeTab } = this.props;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
+    let actionButton = activeTab == 'lunch' ? 'RESERVE LUNCH' : 'RESERVE DINNER';
 
     return (
       <div
@@ -74,12 +65,8 @@ class MealIndexItem extends React.Component {
           id={`reserve-button`}
           disabled={this.state.seltime === ""}
         >
-          RESERVE NOW
+          {actionButton}
         </button>
-
-        {/* <div className="meal-box-title">
-          <span>LUNCH</span>
-        </div> */}
 
         <img alt="" src={menu.imageUrl} />
 
