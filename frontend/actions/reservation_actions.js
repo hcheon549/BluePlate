@@ -55,7 +55,7 @@ const receiveAllReservations = reses => {
 const receiveReservation = payload => {
   return {
     type: RECEIVE_RESERVATION,
-    res: payload.res,
+    reservation: payload.reservation,
     user: payload.user
   };
 };
@@ -63,7 +63,7 @@ const receiveReservation = payload => {
 const removeReservation = payload => {
   return {
     type: REMOVE_RESERVATION,
-    resId: payload.res.id,
+    resId: payload.reservation.id,
     user: payload.user
   };
 };

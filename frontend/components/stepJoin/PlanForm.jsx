@@ -46,32 +46,32 @@ class PlanForm extends React.Component{
 
   async handleSubmit(e) {
     e.preventDefault();
-    let res;
+    let response;
     this.setState({
       isPending: true
     })
     const subscription = Object.assign({}, { plan_id: parseInt(this.state.selectedPlan) })
     if (this.props.currentSubscription){
-      res = await this.props.updateSubscription({
+      response = await this.props.updateSubscription({
         subscriptionId: this.props.currentSubscription.id,
         plan_id: subscription.plan_id,
         meals: subscription.meals
       })
     } else {
-      res = await this.props.processSubscription(subscription)
+      response = await this.props.processSubscription(subscription)
     }
-    if (res.subscription){
+    if (response.subscription){
       let aUpdate = await this.props.updateAccountSummary({
         id: this.props.currentUser.summary_id || this.props.currentUser.summary.id,
-        subscription_id: res.subscription.id,
+        subscription_id: response.subscription.id,
         policy_type: "Lead"
       })
       if (aUpdate.payload) {
         await this.props.fetchUser(this.props.currentUser.id)
         this.props.setStep('billing')
       }
-    } else if (res.errors){
-      console.log(res.errors)
+    } else if (response.errors){
+      console.log(response.errors)
       this.setState({
         isPending: false,
         showError: true

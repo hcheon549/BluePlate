@@ -27,6 +27,12 @@ class MealIndexItem extends React.Component {
   }
 
   handleHover(shopId = null) {
+    if (!shopId){
+      this.setState({
+        pickupTimeId: "",
+        isPending: false
+      })
+    }
     this.props.changeFilter("marker", shopId);
   }
 
@@ -46,7 +52,7 @@ class MealIndexItem extends React.Component {
       updatedReservation.pickupTimeId = parseInt(pickupTimeId);
   
       let updateResult = await updateReservation(updatedReservation)
-      if (updateResult.data) {
+      if (updateResult.reservation) {
         openConfirmModal()
       } else {
         console.log(updateResult)
@@ -98,15 +104,15 @@ class MealIndexItem extends React.Component {
 
         <button
           className={
-            this.state.pickupTimeId === ""
+            (pickupTimeId === "")
               ? "reserve-btn time-not-selected"
-              : "reserve-btn time-selected"
+              : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
           }
           onClick={this.handleReserve}
           id={`reserve-button`}
           disabled={!pickupTimeSelected || isPending}
         >
-          {actionButton}
+          {!isPending && actionButton}
         </button>
 
         <img alt="" src={menu.imageUrl} />

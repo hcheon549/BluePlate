@@ -68,19 +68,10 @@ class Api::ReservationsController < ApplicationController
   def update
     @reservation = current_user.reservations.find(params[:id])
 
-    if params[:reservation][:date]
-      date = params[:reservation][:date]
-    else
-      date = Date.today + 1
-    end
-
-    time = params[:reservation][:time].to_time
-
     if @reservation.update_attributes(
       user_id: params[:reservation][:user_id],
       menu_id: params[:reservation][:menu_id],
-      time: time,
-      date: date
+      pickup_time_id: params[:reservation][:pickup_time_id],
       )
       @user = current_user
       render :show
