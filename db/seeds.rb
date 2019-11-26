@@ -765,16 +765,18 @@ ActiveRecord::Base.transaction do
   rutgers = User.find_by(email: 'rutgers@gmail.com')
   menus = Menu.all
 
-  times = ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']
-  date = Date.today + 1
+  lunch_time = PickupTime.where(pickup_type: 0)
+  dinner_time = PickupTime.where(pickup_type: 1)
 
   20.times do |t|
-    if (rand(1..10) < 7)
-      menu_id = menus.sample.id
-      time = (date.to_s + " " + times.sample).to_time
-      Reservation.create!({menu_id: menu_id, user_id: rutgers.id, time: time, date: date})
+    menu_id = menus.sample.id
+    if (rand(1..10) < 6)
+      lunch_pickup_time_id = lunch_time.sample.id
+      Reservation.create!({ menu_id: menu_id, user_id: rutgers.id, pickup_time_id: lunch_pickup_time_id })
+    else
+      dinner_pickup_time_id = dinner_time.sample.id
+      Reservation.create!({ menu_id: menu_id, user_id: rutgers.id, pickup_time_id: dinner_pickup_time_id })
     end
-    date = date - 1
   end
 
   puts "Reservations created"

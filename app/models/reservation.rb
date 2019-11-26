@@ -14,8 +14,9 @@
 #
 
 class Reservation < ApplicationRecord
-  validates :date, :time, presence: true
+  validates :user_id, :menu_id, :pickup_time_id, presence: true
 
   belongs_to :user
   belongs_to :menu
+  belongs_to :pickup_time
 end
