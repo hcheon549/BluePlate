@@ -18,6 +18,7 @@ class LandingMap extends React.Component {
   }
 
   componentDidMount(){
+    // CHECK N+1 QUERY HERE
     if (this.state.schoolId){
       this.props.fetchMenus(this.state.schoolId)
     }
