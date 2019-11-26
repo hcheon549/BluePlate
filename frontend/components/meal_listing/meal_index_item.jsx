@@ -57,11 +57,8 @@ class MealIndexItem extends React.Component {
         menuId: menu.id,
         pickupTimeId: parseInt(pickupTimeId)
       };
-
       let reservationResult = await createReservation(newReservation)
-      debugger
-      if (reservationResult.data) {
-        console.log(reservationResult.data)
+      if (reservationResult.reservation) {
         openConfirmModal()
       } else {
         console.log(reservationResult)

@@ -19,7 +19,6 @@
       display: block;
       padding: 0;
       font-size: 14px;
-      background-color: $white;
     }
     .select-time {
       display: block;
@@ -248,10 +247,7 @@
 // }
 .reserve-btn {
   display: none;
-  color: $light-gray;
-  background: $white;
   position: absolute;
-  border: 1px solid $light-gray;
   z-index: 3;
   bottom: 25px;
   height: 40px;
@@ -259,16 +255,22 @@
   right: 10%;
   left: 10%;
   text-align: center;
-}
-
-.time-selected {}
-
-.time-selected:hover {
-  background-color: $accent-light;
-}
-
-.time-not-selected {}
-
-.time-not-selected:hover {
-  cursor: not-allowed;
+  &.time-selected {
+    border: 1px solid $accent;
+    color: $white;
+    background-color: $accent;
+    transition: all 0.5s ease;
+    .time-selected:hover {
+      background-color: $accent-light;
+    }
+  }
+  &.time-not-selected {
+    background-color: $white;
+    color: $light-gray;
+    border: 1px solid $light-gray;
+    transition: all 0.5s ease;
+    .time-not-selected:hover {
+      cursor: not-allowed;
+    }
+  }
 }
