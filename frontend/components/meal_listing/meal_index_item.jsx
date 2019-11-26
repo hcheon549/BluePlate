@@ -77,10 +77,11 @@ class MealIndexItem extends React.Component {
   
 
   render() {
-    let { menu, shop, pickupTime, activeTab } = this.props;
+    let { menu, shop, pickupTime, activeTab, resToday } = this.props;
     let { isPending, pickupTimeId } = this.state;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
-    let actionButton = activeTab == 'lunch' ? 'RESERVE LUNCH' : 'RESERVE DINNER';
+    let actionText = (resToday.constructor !== Array ? 'UPDATE' : 'RESERVE')
+                    + (activeTab == 'lunch' ? ' LUNCH' : ' DINNER')
     let pickupTimeSelected = pickupTimeId !== null;
 
     return (
@@ -112,7 +113,7 @@ class MealIndexItem extends React.Component {
           id={`reserve-button`}
           disabled={!pickupTimeSelected || isPending}
         >
-          {!isPending && actionButton}
+          {!isPending && actionText}
         </button>
 
         <img alt="" src={menu.imageUrl} />
