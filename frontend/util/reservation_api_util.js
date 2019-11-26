@@ -15,7 +15,7 @@ export const createReservation = reservation => {
       reservation: {
         user_id: reservation.userId,
         menu_id: reservation.menuId,
-        time: reservation.time
+        pickup_time_id: reservation.pickupTimeId
       }
     }
   });
@@ -29,7 +29,7 @@ export const updateReservation = reservation => {
       reservation: {
         user_id: reservation.userId,
         menu_id: reservation.menuId,
-        time: reservation.time
+        pickup_time_id: reservation.pickupTimeId
       }
     }
   });

@@ -18,7 +18,7 @@ export const fetchReservations = () => dispatch => {
 export const createReservation = res => dispatch => {
   return reservationApiUtil.createReservation(res).then(
     payload => {
-      dispatch(changeFilter("restoday", payload.data.res));
+      dispatch(changeFilter("restoday", payload.data.reservation));
       return dispatch(receiveReservation(payload.data));
     },
     errors => dispatch(receiveErrors(errors.response.data))
@@ -28,7 +28,7 @@ export const createReservation = res => dispatch => {
 export const updateReservation = res => dispatch => {
   return reservationApiUtil.updateReservation(res).then(
     payload => {
-      dispatch(changeFilter("restoday", payload.data.res));
+      dispatch(changeFilter("restoday", payload.data.reservation));
       return dispatch(receiveReservation(payload.data));
     },
     errors => dispatch(receiveErrors(errors.response.data))

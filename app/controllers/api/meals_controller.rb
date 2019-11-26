@@ -53,6 +53,10 @@ class Api::MealsController < ApplicationController
     end
   end
 
+  def update
+
+  end
+
   private
 
   def bounds

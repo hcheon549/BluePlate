@@ -32,7 +32,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.pickupTime)
     if (!this.props.fetchedUser) {
       return (
         <div>

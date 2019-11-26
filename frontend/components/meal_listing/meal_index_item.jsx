@@ -11,7 +11,7 @@ class MealIndexItem extends React.Component {
     super(props);
     this.state = {
       isPending: false,
-      pickupTimeId: null
+      pickupTimeId: ""
     };
 
     this.update = this.update.bind(this);
@@ -41,27 +41,30 @@ class MealIndexItem extends React.Component {
     window.scrollTo(0, 0);
 
     if (resToday.constructor !== Array) {
-      let newRes = Object.assign({}, resToday);
-      newRes.menuId = menu.id;
-      newRes.time = pickupTimeId;
+      let updatedReservation = Object.assign({}, resToday);
+      updatedReservation.menuId = menu.id;
+      updatedReservation.pickupTimeId = parseInt(pickupTimeId);
   
-      let updatedReservation = await updateReservation(newRes)
-      if (updatedReservation) {
+      let updateResult = await updateReservation(updatedReservation)
+      if (updateResult.data) {
         openConfirmModal()
       } else {
-        console.log('error')
+        console.log(updateResult)
       }
     } else {
-      let newRes = {
+      let newReservation = {
         userId: currentUser.id,
         menuId: menu.id,
-        time: pickupTimeId
+        pickupTimeId: parseInt(pickupTimeId)
       };
-      let newReservation = await createReservation(newRes)
-      if (newReservation) {
+
+      let reservationResult = await createReservation(newReservation)
+      debugger
+      if (reservationResult.data) {
+        console.log(reservationResult.data)
         openConfirmModal()
       } else {
-        console.log('error')
+        console.log(reservationResult)
       }
     }
     this.setState({
@@ -97,7 +100,11 @@ class MealIndexItem extends React.Component {
         </select>
 
         <button
-          className={"reserve-btn" + pickupTimeSelected ? (" time-selected" + (isPending ? " -pending" : "")) : " time-not-selected"}
+          className={
+            this.state.pickupTimeId === ""
+              ? "reserve-btn time-not-selected"
+              : "reserve-btn time-selected"
+          }
           onClick={this.handleReserve}
           id={`reserve-button`}
           disabled={!pickupTimeSelected || isPending}
