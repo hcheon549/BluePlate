@@ -60,7 +60,7 @@ class MyMeal extends React.Component {
       setTimeout(() => {
         map.classList.toggle("map-transition");
       }, 300);
-      map.style.minWidth = "33vw";
+      map.style.minWidth = "25vw";
       arrowL.style.display = "none";
       arrowR.style.display = "block";
       if (menuListing) {
