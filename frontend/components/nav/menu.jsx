@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { logout } from '../../actions/session_actions';
-import DropdownMenu from "../element/DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
 
 class Menu extends React.Component {
   constructor(props) {

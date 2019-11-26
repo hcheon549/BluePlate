@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { NavRoute } from '../../util/route_util';
+import { Link, withRouter } from 'react-router-dom';
 
+import NavLogin from "./NavLogin";
+import Menu from "./Menu";
 import StepIndicator from './StepIndicator'
 
-const Nav = ({location, stepJoin}) => (
+const Nav = (props) => (
   <div className="shadow">
     <div className="nav-main content -siteWidth">
       <div className="navLogo">
@@ -14,18 +15,28 @@ const Nav = ({location, stepJoin}) => (
           <span><strong>BLUE</strong>PLATE</span>
         </Link>
       </div>
-      {location === "/users/signup" && <StepIndicator activeStep={stepJoin}/>}
-      {location !== "/users/signup" && <div className="nav-route">
-        <NavRoute />
+      {props.location === "/users/signup" && <StepIndicator activeStep={props.stepJoin}/>}
+      {props.location !== "/users/signup" && <div className="nav-route">
+        <NavOption {...props}/>
       </div>}
     </div>
     </div>
 );
 
+const NavOption = (props) => (
+  (!props.loggedIn) ? <NavLogin {...props} /> : <Menu {...props} />
+)
+
 const mapStateToProps = state => {
+  let { currentUser } = state.entities
+
   return {
-    stepJoin: state.ui.stepJoin || null
+    stepJoin: state.ui.stepJoin || null,
+    isVisitor: currentUser && currentUser.policyType == "Visitor",
+    isLead: currentUser && currentUser.policyType == "Lead",
+    isMember: currentUser && currentUser.policyType == "Member",
+    loggedIn: Boolean(state.session.id),
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+export default withRouter(connect(mapStateToProps)(Nav));

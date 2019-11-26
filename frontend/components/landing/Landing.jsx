@@ -19,7 +19,7 @@ class Landing extends React.Component {
 
     return(
       <div className="visitor">
-        <LandingHeader />
+        <LandingHeader {...this.props} />
         <LandingHIW />
         {!schoolEmpty && <LandingMap {...this.props} />}
         <LandingPlan />
@@ -40,4 +40,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Landing));

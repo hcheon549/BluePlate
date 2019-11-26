@@ -16,7 +16,7 @@ import Favorites from "./account/favorites";
 import History from "./account/history";
 import LoginPage from "./session_form/LoginPage";
 import StepJoin from "./stepJoin/StepJoin";
-import Nav from "./nav/nav";
+import Nav from "./nav/Nav";
 import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
 import FAQLanding from './footer/FAQLanding'

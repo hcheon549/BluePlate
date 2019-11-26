@@ -1,10 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
-
-import EmailCaptureForm from '../element/EmailCaptureForm'
 
 class LandingHeader extends React.Component {
   constructor(props){
@@ -35,14 +30,4 @@ class LandingHeader extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//   };
-// };
-
-export default withRouter(LandingHeader);
+export default LandingHeader;
