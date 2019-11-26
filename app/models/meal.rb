@@ -18,6 +18,6 @@ class Meal < ApplicationRecord
 
   belongs_to :shop
   has_one :school, through: :shop
-
+  has_many :menu
   has_many :reservations
 end
