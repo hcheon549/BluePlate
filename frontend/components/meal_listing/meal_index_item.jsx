@@ -29,7 +29,6 @@ class MealIndexItem extends React.Component {
   handleHover(shopId = null) {
     if (!shopId){
       this.setState({
-        pickupTimeId: "",
         isPending: false
       })
     }
