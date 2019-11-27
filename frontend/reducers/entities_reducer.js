@@ -8,9 +8,11 @@ import reservationReducer from './reservation_reducer';
 import planReducer from './plans_reducer';
 import subscriptionReducer from './subscription_reducer';
 import timeReducer from './time_reducer'
+import accountHistoryReducer from './accountHistory_reducer'
 
 const entitiesReducer = combineReducers({
   currentUser: usersReducer,
+  accountHistory: accountHistoryReducer,
   menus: menuReducer,
   shops: shopReducer,
   schools: schoolReducer,

@@ -1,6 +1,5 @@
 import {
   RECEIVE_RESERVATION,
-  RECEIVE_ALL_RESERVATIONS,
   REMOVE_RESERVATION
 } from '../actions/reservation_actions';
 import merge from 'lodash/merge';
@@ -12,8 +11,6 @@ let initialState = {
 const reservationReducer = (state = initialState, action) => {
   let newState = merge({}, state);
   switch (action.type) {
-    case RECEIVE_ALL_RESERVATIONS:
-      return action.reses;
     case RECEIVE_RESERVATION:
       if (action.reservation.pickupTime.pickupType == 0){
         newState.lunch = action.reservation

@@ -5,16 +5,17 @@ import { fetchMenus } from '../../actions/menu_actions';
 import { fetchSchools } from '../../actions/school_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
 import { resetFilter } from '../../actions/filter_actions';
-import { fetchReservations } from '../../actions/reservation_actions';
+import { fetchReservations } from '../../actions/accountHistory_actions';
 import { withRouter } from 'react-router-dom';
 
 import MealIndex from "../meal_listing/meal_index";
-import Search from "../search/search";
 import MealMap from "../map/meal_map";
-import Reservations from "../reservations/reservations";
 import LoadingIcon from "./loading_icon";
 import Tab from './Tab'
 import Today from './Today'
+
+// import Search from "../search/search";
+// import Reservations from "../reservations/reservations";
 
 class MyMeal extends React.Component {
   constructor(props){

@@ -5,16 +5,16 @@ import { withRouter } from 'react-router-dom';
 
 import { fetchMenus } from '../../actions/menu_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
-import { fetchReservations } from '../../actions/reservation_actions';
+import { fetchReservations } from '../../actions/accountHistory_actions';
 import { getFavIds, getSchoolReservations } from '../../util/selectors';
 
 
 
 class History extends React.Component {
-  componentDidMount() {
-    this.props.fetchMenus(this.props.currentUser.schoolId);
-    this.props.fetchFavorites();
-    this.props.fetchReservations();
+  async componentDidMount() {
+    await this.props.fetchMenus(this.props.currentUser.schoolId);
+    await this.props.fetchReservations();
+    // await this.props.fetchFavorites();
   }
 
   render() {

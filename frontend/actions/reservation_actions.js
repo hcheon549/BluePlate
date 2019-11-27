@@ -1,18 +1,8 @@
 import * as reservationApiUtil from "../util/reservation_api_util";
 
 export const RECEIVE_RESERVATION = "RECEIVE_RESERVATION";
-export const RECEIVE_ALL_RESERVATIONS = "RECEIVE_ALL_RESERVATIONS";
 export const REMOVE_RESERVATION = "REMOVE_RESERVATION";
 export const RECEIVE_RES_ERRORS = "RECEIVE_RES_ERRORS";
-
-export const fetchReservations = () => dispatch => {
-  return reservationApiUtil.fetchReservations().then(
-    resS => {
-      return dispatch(receiveAllReservations(resS.data));
-    },
-    errors => dispatch(receiveErrors(errors.response.data))
-  );
-};
 
 export const createReservation = res => dispatch => {
   return reservationApiUtil.createReservation(res).then(
@@ -39,13 +29,6 @@ export const deleteReservation = id => dispatch => {
     },
     errors => dispatch(receiveErrors(errors.response.data))
   );
-};
-
-const receiveAllReservations = reses => {
-  return {
-    type: RECEIVE_ALL_RESERVATIONS,
-    reses
-  };
 };
 
 const receiveReservation = payload => {
