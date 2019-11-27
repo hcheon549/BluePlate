@@ -19,7 +19,6 @@ const reservationReducer = (state = initialState, action) => {
       } else {
         newState
       }
-      debugger
       return newState;
     case REMOVE_RESERVATION:
       delete newState[action.resId];

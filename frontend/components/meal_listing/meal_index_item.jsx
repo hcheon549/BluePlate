@@ -36,7 +36,7 @@ class MealIndexItem extends React.Component {
   }
 
   async handleReserve() {
-    let { resToday, menu, currentUser, updateReservation, createReservation, openConfirmModal } = this.props;
+    let { menu, currentUser, updateReservation, createReservation, openConfirmModal, activeTab, todayReservations } = this.props;
     let { pickupTimeId } = this.state
 
     this.setState({
@@ -45,8 +45,8 @@ class MealIndexItem extends React.Component {
 
     window.scrollTo(0, 0);
 
-    if (resToday.constructor !== Array) {
-      let updatedReservation = Object.assign({}, resToday);
+    if (todayReservations[activeTab]) {
+      let updatedReservation = Object.assign({}, todayReservations[activeTab]);
       updatedReservation.menuId = menu.id;
       updatedReservation.pickupTimeId = parseInt(pickupTimeId);
   
@@ -76,13 +76,13 @@ class MealIndexItem extends React.Component {
   
 
   render() {
-    let { menu, shop, pickupTime, activeTab, resToday } = this.props;
+    let { menu, shop, pickupTime, activeTab, todayReservations } = this.props;
     let { isPending, pickupTimeId } = this.state;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
-    let actionText = (resToday.constructor !== Array ? 'UPDATE' : 'RESERVE')
+    let actionText = (Object.values(todayReservations[activeTab]).length == 0 ? 'RESERVE' : 'UPDATE')
                     + (activeTab == 'lunch' ? ' LUNCH' : ' DINNER')
     let pickupTimeSelected = pickupTimeId !== null;
-
+    debugger
     return (
       <div className="meal-box"
           onMouseEnter={() => this.handleHover(shop.id)}
@@ -136,10 +136,10 @@ class MealIndexItem extends React.Component {
 
 const msp = (state, ownProps) => {
   return {
+    todayReservations: state.entities.reservations,
     menu: ownProps.menu,
     shop: ownProps.shop,
     currentUser: state.entities.currentUser,
-    resToday: state.ui.filters.restoday
   };
 };
 

@@ -1,8 +1,7 @@
 class Api::ReservationsController < ApplicationController
   def index
-    debugger
     @reservations = current_user.reservations
-    debugger
+
     if @reservations
       render :index
     else
