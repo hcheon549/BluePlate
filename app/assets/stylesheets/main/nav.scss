@@ -51,18 +51,23 @@
   margin-right: 20px;
   li{
     margin: 0 20px;
+    transition: all 0.3s ease;
     .signup-button{
-      border: 1px solid $siteColor;
+      color: $accent;
+      font-weight: 500;
+      border: 1px solid $accent;
       border-radius: 3px;
-      padding: 8px 20px;
-      transition: 0.3s;
+      padding: 7px 25px;
+      transition: all 0.3s ease;
     }
     .signup-button:hover{
-      background-color: $lightest-gray;
+      border-color: $siteColor;
+      color: $siteColor;
     }
   }
   li:hover{
     cursor: pointer;
+    color: $accent;
   }
 }
 
@@ -83,6 +88,9 @@
   margin-bottom: 10px;
   margin-right: 20px;
   position: relative;
+  &.-active{
+    color: $accent
+  }
 }
 
 .hamburger {
@@ -99,30 +107,18 @@
   flex-direction: column;
   position: absolute;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 1px;
   border: 1px solid $light-gray;
-  top: 40px;
-  right: 0px;
+  top: 35px;
+  right: -50px;
   font-weight: lighter;
-  width: 170px;
+  width: 140px;
   letter-spacing: 1px;
-
+  padding: 10px 0;
   li {
     color: $gray-menu;
-    padding: 10px;
-    height: 30px;
-
-    div {
-      display: flex;
-      align-items: center;
-      height: 100%;
-
-      img {
-        height: 100%;
-        width: auto;
-        margin-right: 10px;
-      }
-    }
+    padding: 10px 0;
+    height: 10px;
   }
 }
 

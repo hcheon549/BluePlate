@@ -5,19 +5,20 @@ import { Link, withRouter } from 'react-router-dom';
 import { login, demo } from '../../actions/session_actions';
 
 const NavLogin = (props) => {
-  if (props.pathname == "/users/signup"){
+  let { history: { location, push } } = props
+  if (location.pathname == "/users/signup"){
     return <div />
   }
 
   return (
     <ul className="navLogin">
-      <li key='signup'>
-        <div className="signup-button">
-          <Link to='/users/signup'>GET STARTED</Link>
+      <li className="nav-menu-button miniText" key='signup' >
+        <div className="signup-button" onClick={() => push('/users/signup')}>
+          Get started
         </div>
       </li>
-      <li key='login'>
-        <Link to='/users/login'>LOG IN</Link>
+      <li className={"nav-menu-button miniText" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={() => push('/users/login')}>
+        Log in
       </li>
     </ul>
   );

@@ -30,6 +30,9 @@ class Menu extends React.Component {
   }
 
   render() {
+    let { history: {location} } = this.props
+    let accountPath = ['/account', '/history']
+    
     let dropdownMenu = (
       <DropdownMenu
         isMember={this.props.isMember}
@@ -38,16 +41,17 @@ class Menu extends React.Component {
         handleLogout={this.handleLogout.bind(this)}
       />
     )
+
     return (
       <ul className="navLogin">
-        <li className="nav-menu-button miniText" onClick={() => this.props.history.push('/my-meals')}>
+        <li className={"nav-menu-button miniText" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={() => this.props.history.push('/my-meals')}>
           View meals
         </li>
-        <li className="nav-menu-button miniText" onClick={() => this.toggleClass()}>
+        <li className={"nav-menu-button miniText" + (accountPath.includes(location.pathname) ? " -active" : "")} onClick={() => this.toggleClass()}>
           My account
           {dropdownMenu}
         </li>
-        <li className="login-link miniText"nonClick={this.handleLogout}>
+        <li className="login-link miniText" onClick={this.handleLogout}>
           Log out
         </li>
       </ul>

@@ -15,18 +15,12 @@ const DropdownMenu = (props) => {
 
   return (
     <ul className={props.active ? "dropdown-active animated fadeIn" : "dropdown animated" }>
-      <li onClick={() => props.history.push("/my-meals")}>
-        <div>
-          <img src="https://res.cloudinary.com/mwojick/image/upload/v1528591565/TreatPal/icons/Moon-512.png" alt="" />
-          Today's Menu
-        </div>
+      <li className="nav-menu-button miniText" onClick={() => props.history.push("/my-meals")}>
+        Today's Menu
       </li>
 
-      <li onClick={() => props.history.push("/account")}>
-        <div>
-          <img src="https://res.cloudinary.com/mwojick/image/upload/v1533677351/TreatPal/icons/profile2.png" alt="" />
-          My Account
-        </div>
+      <li className="nav-menu-button miniText" onClick={() => props.history.push("/account")}>
+        My Account
       </li>
 
       {/* <li onClick={() => props.history.push("/favorites")}>
@@ -36,18 +30,12 @@ const DropdownMenu = (props) => {
         </div>
       </li> */}
 
-      <li onClick={() => props.history.push("/history")}>
-        <div>
-          <img src="https://res.cloudinary.com/mwojick/image/upload/v1533677351/TreatPal/icons/history2.png" alt="" />
-          History
-        </div>
+      <li className="nav-menu-button miniText" onClick={() => props.history.push("/history")}>
+        History
       </li>
 
-      <li onClick={props.handleLogout} className="menu-logout">
-        <div>
-          <img src="https://res.cloudinary.com/mwojick/image/upload/v1528590545/TreatPal/icons/logout.png" alt="" />
-          Logout
-        </div>
+      <li className="nav-menu-button miniText" onClick={props.handleLogout} >
+        Logout
       </li>
     </ul>
   )
