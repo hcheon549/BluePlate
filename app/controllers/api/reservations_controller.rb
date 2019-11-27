@@ -1,12 +1,17 @@
 class Api::ReservationsController < ApplicationController
   def index
+    debugger
     @reservations = current_user.reservations
-
+    debugger
     if @reservations
       render :index
     else
       render json: ["No reservations found"], status: 404
     end
+  end
+
+  def show
+
   end
 
   def create

@@ -5,20 +5,30 @@ import {
 } from '../actions/reservation_actions';
 import merge from 'lodash/merge';
 
-const reservationReducer = (oldState = {}, action) => {
-  Object.freeze(oldState);
-  let newState = merge({}, oldState);
+let initialState = {
+  lunch: {},
+  dinner: {}
+}
+const reservationReducer = (state = initialState, action) => {
+  let newState = merge({}, state);
   switch (action.type) {
     case RECEIVE_ALL_RESERVATIONS:
       return action.reses;
     case RECEIVE_RESERVATION:
-      newState[action.reservation.id] = action.reservation;
+      if (action.reservation.pickupTime.pickupType == 0){
+        newState.lunch = action.reservation
+      } else if (action.reservation.pickupTime.pickupType == 1){
+        newState.dinner = action.reservation
+      } else {
+        newState
+      }
+      debugger
       return newState;
     case REMOVE_RESERVATION:
       delete newState[action.resId];
       return newState;
     default:
-      return oldState;
+      return state;
   }
 };
 

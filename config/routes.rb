@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :account_summaries, only: [:create, :update]
     resources :menus, only: [:index, :update]
     resources :pickup_times, only: [:index]
-    resources :reservations, only: [:index, :create, :update, :destroy]
+    resources :reservations, only: [:index, :show, :create, :update, :destroy]
     resources :charges
   end
 
