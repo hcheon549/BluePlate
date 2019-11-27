@@ -91,7 +91,7 @@ class MealMap extends React.Component {
 
     //handle edge case where bounds are sometimes not defined on refresh
     if (mapBounds) {
-      window.scrollTo(0, 280);
+      // window.scrollTo(0, 280);
 
       const { north, south, east, west } = mapBounds.toJSON();
 

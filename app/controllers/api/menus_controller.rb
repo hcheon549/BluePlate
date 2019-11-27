@@ -1,7 +1,7 @@
 class Api::MenusController < ApplicationController
   def index
     @today = Date.today
-    @menus = Menu.where(offered_date: @today).includes(:meals)
+    @menus = Menu.where(offered_date: @today).includes(:meal)
     @school = School.find_by(id: params[:id])
 
     if @menus && @school

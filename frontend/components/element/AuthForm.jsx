@@ -36,7 +36,8 @@ class AuthForm extends React.Component{
     const user = Object.assign({}, this.state);
     if (this.props.formType == 'Login'){
       let loggedinUser = await this.props.processLogIn(user);
-      let nextPath = loggedinUser.policy_type == 'Member' ? '/my-meals' : '/users/signup'
+      debugger
+      let nextPath = loggedinUser.user.policyType == 'Member' ? '/my-meals' : '/users/signup'
       this.props.history.push(nextPath)
     } else if (this.props.formType == 'Sign-Up'){
       let res = await this.props.processJoinForm(user);

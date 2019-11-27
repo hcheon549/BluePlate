@@ -21,6 +21,7 @@ class Menu extends React.Component {
 
   handleLogout() {
     this.setState({ disabled: true }, () => this.props.logout());
+    window.location.replace('/')
   }
 
   toggleClass() {

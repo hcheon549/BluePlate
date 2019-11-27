@@ -6,7 +6,8 @@ import NavLogin from "./NavLogin";
 import Menu from "./Menu";
 import StepIndicator from './StepIndicator'
 
-const Nav = (props) => (
+const Nav = (props) => {
+  return (
   <div className="shadow">
     <div className="nav-main content -siteWidth">
       <div className="navLogo">
@@ -15,13 +16,14 @@ const Nav = (props) => (
           <span><strong>BLUE</strong>PLATE</span>
         </Link>
       </div>
-      {props.location === "/users/signup" && <StepIndicator activeStep={props.stepJoin}/>}
-      {props.location !== "/users/signup" && <div className="nav-route">
+      {props.location.pathname === "/users/signup" && <StepIndicator activeStep={props.stepJoin}/>}
+      {props.location.pathname !== "/users/signup" && <div className="nav-route">
         <NavOption {...props}/>
       </div>}
     </div>
     </div>
-);
+    )
+};
 
 const NavOption = (props) => (
   (!props.loggedIn) ? <NavLogin {...props} /> : <Menu {...props} />
