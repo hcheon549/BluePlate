@@ -38,8 +38,15 @@ class AuthForm extends React.Component{
 
     if (this.props.formType == 'Login'){ //LOG IN LOGIC
       let loggedinUser = await this.props.processLogIn(user);
-      let nextPath = loggedinUser.user.policyType == 'Member' ? '/my-meals' : '/users/signup'
-      this.props.history.push(nextPath)
+      if (loggedinUser.user){
+        let nextPath = loggedinUser.user.policyType == 'Member' ? '/my-meals' : '/users/signup'
+        this.props.history.push(nextPath)
+      } else {
+        this.setState({
+          isPending: false,
+          errorMessage: loggedinUser.errors
+        })
+      }
     } else if (this.props.formType == 'Sign-Up'){ //SIGN UP LOGIC
       let res = await this.props.processJoinForm(user);
       if (res.user && this.props.setStep){
