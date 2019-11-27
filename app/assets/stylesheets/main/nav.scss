@@ -44,9 +44,10 @@
 .navLogin {
   display: flex;
   align-items: center;
+  color: $black;
   height: 100%;
   letter-spacing: 0.5px;
-  font-weight: bold;
+  font-weight: 400;
   margin-right: 20px;
   li{
     margin: 0 20px;

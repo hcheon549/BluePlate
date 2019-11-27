@@ -40,13 +40,15 @@ class Menu extends React.Component {
     )
     return (
       <ul className="navLogin">
-        <li className="nav-menu-button" onClick={() => this.toggleClass()}>
-          <img className="hamburger" src="https://blueplate-development.s3.amazonaws.com/elements/hamburger.svg" alt="" />
-          MENU
+        <li className="nav-menu-button miniText" onClick={() => this.props.history.push('/my-meals')}>
+          View meals
+        </li>
+        <li className="nav-menu-button miniText" onClick={() => this.toggleClass()}>
+          My account
           {dropdownMenu}
         </li>
-        <li className="login-link">
-          <div onClick={this.handleLogout}>LOGOUT</div>
+        <li className="login-link miniText"nonClick={this.handleLogout}>
+          Log out
         </li>
       </ul>
     );
