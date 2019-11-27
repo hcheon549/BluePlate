@@ -102,6 +102,7 @@ class MyMeal extends React.Component {
           <MealIndex
             {...this.props}
             activeTab={this.state.activeTab} 
+            handleTab={this.handleTab}
           />
 
           <div
