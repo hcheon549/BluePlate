@@ -66,7 +66,7 @@ class App extends React.Component {
           </main>
 
           <footer>
-            <Footer />
+            <Footer {...this.props} />
           </footer>
         </div>
       );

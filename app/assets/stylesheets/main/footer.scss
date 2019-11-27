@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  a {
+  li {
     margin: 0px 20px;
   }
   span {
@@ -47,8 +47,8 @@
   }
 }
 
-.footer-links a:hover {
-  text-decoration: underline;
+.footer-links li:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 800px) {

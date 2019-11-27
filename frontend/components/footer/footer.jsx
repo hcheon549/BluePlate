@@ -1,15 +1,18 @@
 import React from "react";
-import { Link, Redirect } from 'react-router-dom';
 
-const Footer = () => (
+const Footer = (props) => (
   <div className="footer-container">
-    <div className="footer-links">
-      <Link to="/faq">FAQS</Link>
+    <ul className="footer-links">
+      <li className="miniText" onClick={() => props.history.push('/faq')}>FAQs</li>
       <span />
-      <a href="/">HELLO@BLUEPLATE.COM</a>
+      <li className="miniText" onClick={() => props.history.push('/')}>Contact us</li>
       <span />
-      <a href="/">TERMS OF USE</a>
-    </div>
+      <li className="miniText" onClick={() => props.history.push('/')}>Terms of Use</li>
+      <span />
+      <li className="miniText" onClick={() => props.history.push('/')}>Privacy Policy</li>
+      <span />
+      <li className="miniText" onClick={() => props.history.push('/')}>Career</li>
+    </ul>
     <nav>
       <div>&copy; BluePlate, INC.</div>
     </nav>
