@@ -21,4 +21,9 @@ class Reservation < ApplicationRecord
   belongs_to :pickup_time
 
   has_one :meal, through: :menu
+
+  def self.getToday(today)
+
+  end
+
 end

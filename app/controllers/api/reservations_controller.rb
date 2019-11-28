@@ -1,6 +1,8 @@
 class Api::ReservationsController < ApplicationController
   def index
     @reservations = current_user.reservations
+    today = Date.today
+    @today_reservation = Reservation.getToday(today)
 
     if @reservations
       render :index
