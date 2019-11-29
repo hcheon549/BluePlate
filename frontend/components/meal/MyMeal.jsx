@@ -15,7 +15,7 @@ import Tab from './Tab'
 import Today from './Today'
 
 // import Search from "../search/search";
-// import Reservations from "../reservations/reservations";
+import TodayReservations from "../reservations/TodayReservations";
 
 class MyMeal extends React.Component {
   constructor(props){
@@ -83,9 +83,7 @@ class MyMeal extends React.Component {
 
     return (
       <div className="greeting-container">
-        {/* <div className="reservations-container">
-          <Reservations />
-        </div> */}
+        <TodayReservations {...this.props}/>
 
         <div className="search-container">
           <div className="tabs">
@@ -134,7 +132,8 @@ const msp = ({entities}) => {
     lunchMenu: todayMenu.filter(menu => menu.lunch),
     dinnerMenu: todayMenu.filter(menu => menu.dinner),
     lunchTime: pickupTime.lunch,
-    dinnerTime: pickupTime.dinner
+    dinnerTime: pickupTime.dinner,
+    todayReservations: entities.todayReservations,
   };
 };
 
