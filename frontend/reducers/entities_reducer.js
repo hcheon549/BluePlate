@@ -18,7 +18,7 @@ const entitiesReducer = combineReducers({
   schools: schoolReducer,
   plans: planReducer,
   favorites: favoriteReducer,
-  reservations: reservationReducer,
+  todayReservations: reservationReducer,
   subscription: subscriptionReducer,
   pickupTime: timeReducer,
 });

@@ -136,7 +136,7 @@ class MealIndexItem extends React.Component {
 
 const msp = (state, ownProps) => {
   return {
-    todayReservations: state.entities.reservations,
+    todayReservations: state.entities.todayReservations,
     menu: ownProps.menu,
     shop: ownProps.shop,
     currentUser: state.entities.currentUser,
