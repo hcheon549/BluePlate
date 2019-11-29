@@ -1,10 +1,12 @@
 class Api::ReservationsController < ApplicationController
   def index
-    @reservations = current_user.reservations
-    today = Date.today
-    @today_reservation = Reservation.getToday(today)
+    @reservations = Reservation.includes(:menu).where(user_id: current_user.id)
 
     if @reservations
+      today = Date.today
+      @today_reservations = @reservations.select do | reservation |
+        reservation.menu.offered_date == today
+      end
       render :index
     else
       render json: ["No reservations found"], status: 404

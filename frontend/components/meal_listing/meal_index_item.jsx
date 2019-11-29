@@ -82,7 +82,7 @@ class MealIndexItem extends React.Component {
     let actionText = (Object.values(todayReservations[activeTab]).length == 0 ? 'RESERVE' : 'UPDATE')
                     + (activeTab == 'lunch' ? ' LUNCH' : ' DINNER')
     let pickupTimeSelected = pickupTimeId !== null;
-    debugger
+
     return (
       <div className="meal-box"
           onMouseEnter={() => this.handleHover(shop.id)}

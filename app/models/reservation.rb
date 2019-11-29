@@ -22,8 +22,4 @@ class Reservation < ApplicationRecord
 
   has_one :meal, through: :menu
 
-  def self.getToday(today)
-
-  end
-
 end

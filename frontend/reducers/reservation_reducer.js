@@ -2,6 +2,9 @@ import {
   RECEIVE_RESERVATION,
   REMOVE_RESERVATION
 } from '../actions/reservation_actions';
+import {
+  RECEIVE_TODAY_RESERVATIONS
+} from '../actions/accountHistory_actions';
 import merge from 'lodash/merge';
 
 let initialState = {
@@ -19,6 +22,17 @@ const reservationReducer = (state = initialState, action) => {
       } else {
         newState
       }
+      return newState;
+    case RECEIVE_TODAY_RESERVATIONS:
+      Object.values(action.reservations).forEach((reservation) => {
+        if (reservation.pickupTime.pickupType == 0){
+          newState.lunch = reservation
+        } else if (reservation.pickupTime.pickupType == 1){
+          newState.dinner = reservation
+        } else {
+          newState
+        }
+      })
       return newState;
     case REMOVE_RESERVATION:
       delete newState[action.resId];
