@@ -7,22 +7,17 @@ const ReservationItem = (props) => {
   if (!hasMeal){
     return <div />
   }
-  
+
   return (
-    <div className="meal-box">
+    <div className="reservation-box">
       <img alt="" src={menu.meal.imageUrl} />
-
-      <div className="hidden-description">
+      <div className="reservation-content">
         <ul>
-          <li className="hidden-meal-name">{menu.meal.name.toUpperCase()}</li>
-          <li className="hidden-meal-desc">{menu.meal.description}</li>
+          <li className="meal-name">{menu.meal.name}</li>
+          <li className="shop-name">{menu.shop.name}</li>
+          <li className="shop-address">{menu.shop.address}</li>
+          <li calssName="pickup-time">Pick up between {menu.pickupTime.start} and {menu.pickupTime.end}</li>
         </ul>
-      </div>
-
-      <div className="meal-box-description">
-        <li className="tbd-item meal-name">{menu.meal.name}</li>
-        <li className="tbd-item shop-name">{menu.shop.name}</li>
-        <li className="tbd-item shop-address">{menu.shop.address}</li>
       </div>
     </div>
 
