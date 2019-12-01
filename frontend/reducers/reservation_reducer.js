@@ -24,15 +24,17 @@ const reservationReducer = (state = initialState, action) => {
       }
       return newState;
     case RECEIVE_TODAY_RESERVATIONS:
-      Object.values(action.reservations).forEach((reservation) => {
-        if (reservation.pickupTime.pickupType == 0){
-          newState.lunch = reservation
-        } else if (reservation.pickupTime.pickupType == 1){
-          newState.dinner = reservation
-        } else {
-          newState
-        }
-      })
+      if (action.reservations) {
+        Object.values(action.reservations).forEach((reservation) => {
+          if (reservation.pickupTime.pickupType == 0){
+            newState.lunch = reservation
+          } else if (reservation.pickupTime.pickupType == 1){
+            newState.dinner = reservation
+          } else {
+            newState
+          }
+        })
+      }
       return newState;
     case REMOVE_RESERVATION:
       delete newState[action.resId];

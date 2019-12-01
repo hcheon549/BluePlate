@@ -4,11 +4,10 @@ import {
 import merge from 'lodash/merge';
 
 const accountHistoryReducer = (state = {}, action) => {
-  Object.freeze(state);
   let newState = merge({}, state);
   switch (action.type) {
     case RECEIVE_ALL_RESERVATIONS:
-      return action.reses;
+      return merge(state, action.reservations);
     default:
       return newState;
   }
