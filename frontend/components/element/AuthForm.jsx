@@ -18,7 +18,8 @@ class AuthForm extends React.Component{
       isPending: false,
       email: "",
       password: "",
-      school_id: ""
+      school_id: "",
+      errorMessage: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.assembleSchoolChoices = this.assembleSchoolChoices.bind(this);
@@ -64,8 +65,11 @@ class AuthForm extends React.Component{
 
   update(type, event) {
     let validationState = ["email", "password"];
+    let hasErrors = Boolean(this.props.errors.length !== 0 || this.state.errorMessage.length !== 0)
+
     this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
-    if (this.props.errors || this.state.errorMessage) {
+    
+    if (hasErrors) {
       this.props.clearErrors();
       this.setState({ errorMessage: [] })
     }

@@ -112,8 +112,11 @@ class BillingInput extends React.Component{
 
   update(type, event) {
     let validationState = ["zipCode"];
+    let hasError = Boolean(this.props.errors.length !== 0 || this.state.errorMessage.length !== 0)
+    
     this.state[type] = validationState.includes(type) ? event.target.value.replace(/[^0-9]/g, '') : event.target.value;
-    if (this.props.errors || this.state.errorMessage) {
+    
+    if (hasError) {
       this.props.clearErrors();
       this.setState({ errorMessage: [] })
     }
