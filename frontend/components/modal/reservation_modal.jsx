@@ -88,47 +88,49 @@ class ReservationModal extends React.Component {
       >
         <img className="res-modal-img" src={menu.imageUrl} alt="" />
         <div className="res-modal-right">
-          <div className="modal-top">
-            <div>{menu.name.toUpperCase()}</div>
-            <div onClick={closeModal} className="res-modal-x">
-              &times;
-            </div>
+          <div onClick={closeModal} className="res-modal-x">
+            &times;
           </div>
 
-          <div className="modal-desc">{menu.description}</div>
-          <div className="modal-shop">{shop.name}</div>
-          <div className="modal-loc">{shop.address}</div>
+          <div style={{margin: 'auto'}}>
+            <div className="reservation-content-modal">
+              <li className="meal-name">{menu.name.toUpperCase()}</li>
+              <li className="meal-description">{menu.description}</li>
+              <li className="shop-name">{shop.name}</li>
+              <li className="shop-address">{shop.address}</li>
+            </div>
 
-          <div className="res-modal-sel-btn">
-            <select 
-              className="select-time"
-              onChange={this.update("pickupTimeId")}
-              defaultValue={pickupTimeId}
-            >
-              <option hidden value={null}>
-                Pickup Time
-              </option>
-              {timeIntervals.map((interval, idx) => {
-                return (
-                  <option key={idx} value={interval.id}>
-                    {interval.start + " - " + interval.end}
-                  </option>
-                );
-              })}
-            </select>
+            <div className="select-button">
+              <select 
+                className="time-select"
+                onChange={this.update("pickupTimeId")}
+                defaultValue={pickupTimeId}
+              >
+                <option hidden value={null}>
+                  Pickup Time
+                </option>
+                {timeIntervals.map((interval, idx) => {
+                  return (
+                    <option key={idx} value={interval.id}>
+                      {interval.start + " - " + interval.end}
+                    </option>
+                  );
+                })}
+              </select>
 
-            <button
-              className={
-                (pickupTimeId === "")
-                  ? "reserve-btn time-not-selected"
-                  : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
-              }
-              onClick={this.handleReserve}
-              id={`reserve-button`}
-              disabled={!pickupTimeSelected || isPending}
-            >
-              {!isPending && actionText}
-            </button>
+              <button
+                className={
+                  (pickupTimeId === "")
+                    ? "reserve-button time-not-selected"
+                    : ("reserve-button time-selected" + (isPending ? " -pending" : ""))
+                }
+                onClick={this.handleReserve}
+                id={`reserve-button`}
+                disabled={!pickupTimeSelected || isPending}
+              >
+                {!isPending && actionText}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -147,7 +149,8 @@ const mapDispatchToProps = (dispatch) => {
     openConfirmModal: () => dispatch(openModal({ type: 'confirm' })),
     createReservation: (res) => dispatch(createReservation(res)),
     updateReservation: (res) => dispatch(updateReservation(res)),
-    changeFilter: (filter, value) => dispatch(changeFilter(filter, value))
+    changeFilter: (filter, value) => dispatch(changeFilter(filter, value)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 

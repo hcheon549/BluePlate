@@ -25,17 +25,10 @@
 }
 
 .res-modal-right {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   width: 430px;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
   padding: 0 20px;
   box-sizing: border-box;
-}
-
-.res-modal-sel-btn {
-  display: flex;
 }
 
 .modal-select-time {
@@ -77,32 +70,102 @@
 }
 
 .res-modal-x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   font-size: 30px;
   padding: 0 10px;
   cursor: pointer;
+  transition: all 0.3s ease-in;
+  &:hover {
+    color: $accent;
+  }
 }
 
-.res-modal-x:hover {
-  color: $light-gray;
+.reservation-content-modal{
+  margin: auto 0;
+  li{
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .meal-name{
+    font-size: 18px;
+    color: $siteColor;
+    font-weight: 600;
+  }
+  .meal-description{
+    color: $gray;
+    font-weight: 200;
+  }
+  .shop-name{
+    color: $gray-menu;
+    font-weight: 400;
+  }
+  .shop-address{
+    color: $gray;
+    font-weight: 400;
+  }
+  .pickup-time{
+    color: $light-gray;
+    font-weight: 200;
+  }
+  .no-meal{
+    color: $gray;
+    font-weight: 400;
+    margin: auto;
+  }
 }
 
-.modal-desc {
-  color: $darkest-gray;
-  margin-bottom: 20px;
-}
-
-.modal-shop {
-  font-size: 18px;
-  font-weight: bold;
-  color: $main;
-}
-
-.modal-loc {
-  color: $gray;
-  margin: 10px 0 20px 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.select-button {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+  .time-select {
+    color: $accent;
+    background: white;
+    font-size: 14px;
+    padding-left: 10px;
+    border: none;
+    z-index: 3;
+    height: 35px;
+    width: 60%;
+    border: 1px solid $gray;
+  }
+  .reserve-button {
+    z-index: 3;
+    height: 35px;
+    margin-top: 3px;
+    margin-left: 10px;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    &.time-selected {
+      border: 1px solid $accent;
+      color: $white;
+      background-color: $accent;
+      transition: all 0.5s ease;
+      .time-selected:hover {
+        background-color: $accent-light;
+      }
+      &.-pending{
+        cursor: default;
+        &::before {
+        @extend %spinit;  
+          border: solid 3px rgba($black, 45%);
+          border-bottom-color: $white;
+        }
+      }  
+    }
+    &.time-not-selected {
+      background-color: $white;
+      color: $light-gray;
+      border: 1px solid $light-gray;
+      transition: all 0.5s ease;
+      .time-not-selected:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
 }
 
 .confirm-modal {
