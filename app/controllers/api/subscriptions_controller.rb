@@ -6,7 +6,7 @@ class Api::SubscriptionsController < ApplicationController
     @subscription.meal_credit = @subscription.plan.meals
     @subscription.subscription_start = Date.today
     @subscription.subscription_end = Date.new(2020, 5, 13)
-    debugger
+
     if @subscription.save
       render :show
     else

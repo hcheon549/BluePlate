@@ -145,7 +145,7 @@ const mayDispatchToProps = (dispatch) => {
     fetchFavorites: () => dispatch(fetchFavorites()),
     fetchReservations: () => dispatch(fetchReservations()),
     resetFilter: () => dispatch(resetFilter()),
-    openReserveModal: (action, menu, shop) => dispatch(openModal({ type: 'reserve', action: action, menu: menu, shop: shop }))
+    openReserveModal: (data) => dispatch(openModal({ type: 'reserve', data }))
   };
 };
 

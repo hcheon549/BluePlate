@@ -13,11 +13,7 @@ function Modal({ modal, closeModal }) {
   switch (modal.type) {
     case 'reserve':
       component =
-        <ReservationModal
-          action={modal.action}
-          menu={modal.menu}
-          shop={modal.shop} 
-        />;
+        <ReservationModal data={modal.data} />;
       break;
     case 'confirm':
       component = <ConfirmModal />;

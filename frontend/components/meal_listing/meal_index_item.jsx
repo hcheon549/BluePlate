@@ -16,7 +16,8 @@ class MealIndexItem extends React.Component {
 
     this.update = this.update.bind(this);
     this.handleHover = this.handleHover.bind(this);
-    this.handleReserve = this.handleReserve.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    // this.handleReserve = this.handleReserve.bind(this);
   }
 
   update(type) {
@@ -35,45 +36,55 @@ class MealIndexItem extends React.Component {
     this.props.changeFilter("marker", shopId);
   }
 
-  async handleReserve() {
-    let { menu, currentUser, updateReservation, createReservation, openConfirmModal, activeTab, todayReservations } = this.props;
-    let { pickupTimeId } = this.state
-    let hasReservations = Object.values(todayReservations[activeTab]).length !== 0;
+  handleClick(){
+    let { menu, shop, pickupTime, activeTab, todayReservations } = this.props;
+    let {pickupTimeId} = this.state;
+    let action = todayReservations[activeTab].id ? 'update' : 'reserve'
 
-    this.setState({
-      isPending: true,
-    })
+    this.props.openReserveModal(
+      { action, menu, shop, pickupTime, pickupTimeId }
+    )
+  }
 
-    window.scrollTo(0, 0);
+  // async handleReserve() {
+  //   let { menu, currentUser, updateReservation, createReservation, openConfirmModal, activeTab, todayReservations } = this.props;
+  //   let { pickupTimeId } = this.state
+  //   let hasReservations = Object.values(todayReservations[activeTab]).length !== 0;
 
-    if (hasReservations) {
-      let updatedReservation = Object.assign({}, todayReservations[activeTab]);
-      updatedReservation.menuId = menu.id;
-      updatedReservation.pickupTimeId = parseInt(pickupTimeId);
+  //   this.setState({
+  //     isPending: true,
+  //   })
+
+  //   window.scrollTo(0, 0);
+
+  //   if (hasReservations) {
+  //     let updatedReservation = Object.assign({}, todayReservations[activeTab]);
+  //     updatedReservation.menuId = menu.id;
+  //     updatedReservation.pickupTimeId = parseInt(pickupTimeId);
   
-      let updateResult = await updateReservation(updatedReservation)
-      if (updateResult.reservation) {
-        openConfirmModal()
-      } else {
-        console.log(updateResult)
-      }
-    } else {
-      let newReservation = {
-        userId: currentUser.id,
-        menuId: menu.id,
-        pickupTimeId: parseInt(pickupTimeId)
-      };
-      let reservationResult = await createReservation(newReservation)
-      if (reservationResult.reservation) {
-        openConfirmModal()
-      } else {
-        console.log(reservationResult)
-      }
-    }
-    this.setState({
-      isPending: false
-    })
-  };
+  //     let updateResult = await updateReservation(updatedReservation)
+  //     if (updateResult.reservation) {
+  //       openConfirmModal()
+  //     } else {
+  //       console.log(updateResult)
+  //     }
+  //   } else {
+  //     let newReservation = {
+  //       userId: currentUser.id,
+  //       menuId: menu.id,
+  //       pickupTimeId: parseInt(pickupTimeId)
+  //     };
+  //     let reservationResult = await createReservation(newReservation)
+  //     if (reservationResult.reservation) {
+  //       openConfirmModal()
+  //     } else {
+  //       console.log(reservationResult)
+  //     }
+  //   }
+  //   this.setState({
+  //     isPending: false
+  //   })
+  // };
   
 
   render() {
@@ -110,7 +121,7 @@ class MealIndexItem extends React.Component {
               : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
           }
           // onClick={this.handleReserve}
-          onClick={() => this.props.openReserveModal(menu, shop)}
+          onClick={this.handleClick}
           id={`reserve-button`}
           disabled={!pickupTimeSelected || isPending}
         >

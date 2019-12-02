@@ -9,24 +9,16 @@ import {
   handleReserve
 } from "../../actions/reservation_actions";
 
-const TIMES = ['11:00 AM - 11:30 AM', '11:30 AM - 12:00 PM',
-'12:00 PM - 12:30 PM','12:30 PM - 1:00 PM', '1:00 PM - 1:30 PM',
-'1:30 PM - 2:00 PM','2:00 PM - 2:30 PM','2:30 PM - 3:00 PM',
-'3:00 PM - 3:30 PM','3:30 PM - 4:00 PM','4:00 PM - 4:30 PM',
-'4:30 PM - 5:00 PM'];
-
-const TIMEVALS = ['11:00','11:30','12:00','12:30',
-'13:00','13:30','14:00','14:30','15:00','15:30',
-'16:00','16:30'];
-
-
 class ReservationModal extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      seltime: "",
+      isPending: false,
+      pickupTimeId: this.props.data.pickupTimeId || ""
     };
+
     this.update = this.update.bind(this);
+    this.handleReserve = this.handleReserve.bind(this);
   }
 
   update(type) {
@@ -36,9 +28,58 @@ class ReservationModal extends React.Component {
       });
   };
 
+  async handleReserve() {
+    let { data: { action, menu }, currentUser, updateReservation, createReservation, openConfirmModal } = this.props;
+    let { pickupTimeId } = this.state
+
+    this.setState({
+      isPending: true,
+    })
+
+    window.scrollTo(0, 0);
+
+    if (action == 'reserve'){
+      let newReservation = {
+        userId: currentUser.id,
+        menuId: menu.id,
+        pickupTimeId: parseInt(pickupTimeId)
+      };
+      let reservationResult = await createReservation(newReservation)
+      if (reservationResult.reservation) {
+        openConfirmModal()
+      } else {
+        console.log(reservationResult)
+      }
+    }
+    
+    // else if (action == 'update') {
+    //   let updatedReservation = Object.assign({}, todayReservations[activeTab]);
+    //   updatedReservation.menuId = menu.id;
+    //   updatedReservation.pickupTimeId = parseInt(pickupTimeId);
+  
+    //   let updateResult = await updateReservation(updatedReservation)
+    //   if (updateResult.reservation) {
+    //     openConfirmModal()
+    //   } else {
+    //     console.log(updateResult)
+    //   }
+    // }
+    
+    // else if (action == 'cancel'){
+    //   //cancel reservation here
+    // }
+
+    this.setState({
+      isPending: false
+    })
+  };
+
   render() {
-    let { closeModal, shop, menu } = this.props;
-    let { seltime } = this.state;
+    let { data: { action, menu, shop, pickupTime }, closeModal } = this.props;
+    let { isPending, pickupTimeId } = this.state;
+    let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
+    let actionText = action.toUpperCase();
+    let pickupTimeSelected = pickupTimeId !== null;
 
     return (
       <div
@@ -59,18 +100,18 @@ class ReservationModal extends React.Component {
           <div className="modal-loc">{shop.address}</div>
 
           <div className="res-modal-sel-btn">
-            <select
-              value={seltime}
-              onChange={this.update("seltime")}
-              className="modal-select-time"
+            <select 
+              className="select-time"
+              onChange={this.update("pickupTimeId")}
+              defaultValue={pickupTimeId}
             >
               <option hidden value={null}>
                 Pickup Time
               </option>
-              {TIMEVALS.map((tv, idx) => {
+              {timeIntervals.map((interval, idx) => {
                 return (
-                  <option key={idx} value={tv}>
-                    {TIMES[idx]}
+                  <option key={idx} value={interval.id}>
+                    {interval.start + " - " + interval.end}
                   </option>
                 );
               })}
@@ -78,15 +119,15 @@ class ReservationModal extends React.Component {
 
             <button
               className={
-                seltime === ""
-                  ? "modal-reserve-btn time-not-selected"
-                  : "modal-reserve-btn time-selected"
+                (pickupTimeId === "")
+                  ? "reserve-btn time-not-selected"
+                  : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
               }
-              onClick={() => handleReserve(this.props, this.state)}
+              onClick={this.handleReserve}
               id={`reserve-button`}
-              disabled={seltime === ""}
+              disabled={!pickupTimeSelected || isPending}
             >
-              RESERVE NOW
+              {!isPending && actionText}
             </button>
           </div>
         </div>
@@ -95,11 +136,8 @@ class ReservationModal extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    todayReservations: state.entities.todayReservations,
-    menu: ownProps.menu,
-    shop: ownProps.shop,
     currentUser: state.entities.currentUser,
   };
 };
