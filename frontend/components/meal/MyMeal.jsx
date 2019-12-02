@@ -149,4 +149,4 @@ const mayDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(msp, mdp)(MyMeal));
+export default withRouter(connect(mapStateToProps, mayDispatchToProps)(MyMeal));
