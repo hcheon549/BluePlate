@@ -21,10 +21,10 @@ const receiveTodayReservations = reservations => {
   }
 }
 
-const receiveAllReservations = reses => {
+const receiveAllReservations = allReservations => {
   return {
     type: RECEIVE_ALL_RESERVATIONS,
-    reses
+    allReservations
   };
 };
 

@@ -1,36 +1,72 @@
-.reservations-container {
-  display: flex;
-  justify-content: left;
-  margin: 40px 30px 10px;
-  .reservation-box{
+.reservations{
+  margin: 30px 30px 10px;
+  h4{
+    margin: 0 20px 20px;
+    font-display: 24px;
+    color: $grayDark;
+  }
+  .reservations-container {
     display: flex;
     justify-content: left;
-    margin: 0 20px;
-    border: 1px solid lightgray;
-    img{
-      width: 20%;
-    }
-    .reservation-content{
-      margin: auto 0 auto 20px;
-      li{
-        font-size: 14px;
-        line-height: 1.5;
+    .reservation-box{
+      display: flex;
+      justify-content: left;
+      margin: 0 20px;
+      border: 1px solid $lightest-gray;
+      width: 560px;
+      height: 100px;
+      .order-label{
+        display: flex;
+        padding-right: 2px;
+        border-left: 2px solid $orange;
+        border-right: 1px solid $lightest-gray;
+        li {
+          font-size: 16px;
+          line-height: 1.5;
+          color: $grayDark;
+          writing-mode: vertical-lr;
+          -webkit-writing-mode: vertical-lr;
+          -ms-writing-mode: vertical-lr;      
+          text-orientation: mixed;
+          margin: auto;
+
+          transform: rotate(180deg);
+          -webkit-transform:rotate(180deg);
+          -moz-transform:rotate(180deg);
+          -o-transform: rotate(180deg);
+          -ms-transform:rotate(180deg);
+        }
       }
-      .meal-name{
-        color: $siteColor;
-        font-weight: 600;
+      .image-container{
+        width: 100px;
       }
-      .shop-name{
-        color: $gray-menu;
-        font-weight: 400;
-      }
-      .shop-address{
-        color: $gray;
-        font-weight: 400;
-      }
-      .pickup-time{
-        color: $light-gray;
-        font-weight: 200;
+      .reservation-content{
+        margin: auto 0 auto 20px;
+        li{
+          font-size: 14px;
+          line-height: 1.5;
+        }
+        .meal-name{
+          color: $siteColor;
+          font-weight: 600;
+        }
+        .shop-name{
+          color: $gray-menu;
+          font-weight: 400;
+        }
+        .shop-address{
+          color: $gray;
+          font-weight: 400;
+        }
+        .pickup-time{
+          color: $light-gray;
+          font-weight: 200;
+        }
+        .no-meal{
+          color: $gray;
+          font-weight: 400;
+          margin: auto;
+        }
       }
     }
   }
