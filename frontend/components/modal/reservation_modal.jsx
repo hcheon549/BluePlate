@@ -21,7 +21,7 @@ const TIMEVALS = ['11:00','11:30','12:00','12:30',
 
 
 class ReservationModal extends React.Component {
-  constructor(){
+  constructor(props){
     super(props)
     this.state = {
       seltime: "",
@@ -95,27 +95,22 @@ class ReservationModal extends React.Component {
   }
 }
 
-const msp = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
+    todayReservations: state.entities.todayReservations,
     menu: ownProps.menu,
     shop: ownProps.shop,
     currentUser: state.entities.currentUser,
-    resToday: state.ui.filters.restoday
   };
 };
 
-const mdp = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    openConfirmModal: () => dispatch(openModal({ type: "confirm" })),
-    closeModal: () => dispatch(closeModal()),
-    createReservation: res => dispatch(createReservation(res)),
-    updateReservation: res => dispatch(updateReservation(res))
+    openConfirmModal: () => dispatch(openModal({ type: 'confirm' })),
+    createReservation: (res) => dispatch(createReservation(res)),
+    updateReservation: (res) => dispatch(updateReservation(res)),
+    changeFilter: (filter, value) => dispatch(changeFilter(filter, value))
   };
 };
 
-export default withRouter(
-  connect(
-    msp,
-    mdp
-  )(ReservationModal)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReservationModal));

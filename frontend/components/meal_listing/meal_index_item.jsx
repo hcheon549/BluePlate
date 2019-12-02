@@ -109,7 +109,8 @@ class MealIndexItem extends React.Component {
               ? "reserve-btn time-not-selected"
               : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
           }
-          onClick={this.handleReserve}
+          // onClick={this.handleReserve}
+          onClick={() => this.props.openReserveModal(menu, shop)}
           id={`reserve-button`}
           disabled={!pickupTimeSelected || isPending}
         >
@@ -135,16 +136,14 @@ class MealIndexItem extends React.Component {
   }
 }
 
-const msp = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     todayReservations: state.entities.todayReservations,
-    menu: ownProps.menu,
-    shop: ownProps.shop,
     currentUser: state.entities.currentUser,
   };
 };
 
-const mdp = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     openConfirmModal: () => dispatch(openModal({ type: 'confirm' })),
     createReservation: (res) => dispatch(createReservation(res)),
@@ -153,4 +152,4 @@ const mdp = (dispatch) => {
   };
 };
 
-export default withRouter(connect(msp, mdp)(MealIndexItem));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MealIndexItem));

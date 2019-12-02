@@ -1,12 +1,13 @@
 import React from "react";
-
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { fetchMenus } from '../../actions/menu_actions';
 import { fetchSchools } from '../../actions/school_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
 import { resetFilter } from '../../actions/filter_actions';
 import { fetchReservations } from '../../actions/accountHistory_actions';
-import { withRouter } from 'react-router-dom';
+import { openModal } from "../../actions/modal_actions";
 
 import MealIndex from "../meal_listing/meal_index";
 import MealMap from "../map/meal_map";
@@ -122,7 +123,7 @@ class MyMeal extends React.Component {
   }
 }
 
-const msp = ({entities}) => {
+const mapStateToProps = ({entities}) => {
   const todayMenu = Object.values(entities.menus);
   const pickupTime = entities.pickupTime
 
@@ -137,13 +138,14 @@ const msp = ({entities}) => {
   };
 };
 
-const mdp = (dispatch) => {
+const mayDispatchToProps = (dispatch) => {
   return {
     fetchMenus: (schoolId) => dispatch(fetchMenus(schoolId)),
     fetchSchools: () => dispatch(fetchSchools()),
     fetchFavorites: () => dispatch(fetchFavorites()),
     fetchReservations: () => dispatch(fetchReservations()),
-    resetFilter: () => dispatch(resetFilter())
+    resetFilter: () => dispatch(resetFilter()),
+    openReserveModal: (action, menu, shop) => dispatch(openModal({ type: 'reserve', action: action, menu: menu, shop: shop }))
   };
 };
 

@@ -14,8 +14,10 @@ function Modal({ modal, closeModal }) {
     case 'reserve':
       component =
         <ReservationModal
+          action={modal.action}
           menu={modal.menu}
-          shop={modal.shop} />;
+          shop={modal.shop} 
+        />;
       break;
     case 'confirm':
       component = <ConfirmModal />;

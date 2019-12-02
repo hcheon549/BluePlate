@@ -62,6 +62,7 @@ class MealIndex extends React.Component {
       <div className="meal-listing">
         {menus.map(menu => 
           <MealIndexItem
+            openReserveModal={this.props.openReserveModal}
             key={menu.id}
             menu={menu}
             shop={shops[menu.shop.id]}
