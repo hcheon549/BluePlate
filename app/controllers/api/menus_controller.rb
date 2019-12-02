@@ -1,8 +1,14 @@
 class Api::MenusController < ApplicationController
   def index
-    @today = Date.today
-    @menus = Menu.where(offered_date: @today).includes(:meal)
     @school = School.find_by(id: params[:id])
+    @today = Date.today
+    @tomorrow = @today + 1
+    
+    if Time.now.hour < 21
+      @menus = Menu.where(offered_date: @today).includes(:meal)
+    else
+      @menus = Menu.where(offered_date: @tomorrow).includes(:meal)
+    end
 
     if @menus && @school
       @shops = params[:bounds] ? Shop.in_bounds(bounds) : @school.shops
