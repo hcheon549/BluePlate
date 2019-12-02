@@ -22,9 +22,9 @@ class Api::ReservationsController < ApplicationController
 
   def create
     @user = current_user
-    user_summary = @user.account_summary
+    @user_summary = @user.account_summary
 
-    if user_summary.meal_credits_left < 1
+    if @user_summary.meal_credits_left < 1
       render json: ["No Meals left!"], status: 422
     end
 
@@ -93,11 +93,16 @@ class Api::ReservationsController < ApplicationController
   end
 
   def destroy
-    @reservation = current_user.reservations.find(params[:id])
-    @reservation.destroy
-    current_user.update_attributes(meals_left: current_user.meals_left + 1)
     @user = current_user
-    render :show
+    @reservation = @user.reservations.find(params[:id])
+    @user_summary = @user.account_summary
+    @menu = @reservation.menu
+    @meal = @reservation.meal
+
+    if @reservation.destroy
+      # adjust_attributes(user_summary, menu, meal)
+      render :show
+    end
   end
 
   private
@@ -106,17 +111,17 @@ class Api::ReservationsController < ApplicationController
     params.require(:reservation).permit(:user_id, :menu_id, :pickup_time_id)
   end
 
-  def adjust_attributes(user_summary, menu, meal)
-    user_summary.update_attributes(
-      meal_credits_left: user_summary.meal_credits_left - 1
-    )
-    # menu.update_attributes(
-    #   quantity_available: menu.quantity_available -1,
-    #   quantity_ordered: menu.quantity_ordered + 1
-    # )
-    # meal.update_attributes(
-    #   total_number_ordered: meal.total_number_ordered + 1
-    # )
-  end
+  # def adjust_attributes(user_summary, menu, meal)
+  #   user_summary.update_attributes(
+  #     meal_credits_left: user_summary.meal_credits_left - 1
+  #   )
+  #   menu.update_attributes(
+  #     quantity_available: menu.quantity_available -1,
+  #     quantity_ordered: menu.quantity_ordered + 1
+  #   )
+  #   meal.update_attributes(
+  #     total_number_ordered: meal.total_number_ordered + 1
+  #   )
+  # end
 
 end

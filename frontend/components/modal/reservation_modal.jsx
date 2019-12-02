@@ -6,6 +6,7 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 import {
   createReservation,
   updateReservation,
+  deleteReservation,
   handleReserve
 } from "../../actions/reservation_actions";
 
@@ -30,7 +31,7 @@ class ReservationModal extends React.Component {
 
   async handleReserve() {
     let { data: { action, menu, currentReservation }, currentUser, 
-          updateReservation, createReservation, openConfirmModal } = this.props;
+          updateReservation, createReservation, deleteReservation, openConfirmModal } = this.props;
     let { pickupTimeId } = this.state
 
     this.setState({
@@ -66,9 +67,14 @@ class ReservationModal extends React.Component {
       }
     }
     
-    // else if (action == 'cancel'){
-    //   //cancel reservation here
-    // }
+    else if (action == 'cancel'){
+      let cancellation = await deleteReservation(currentReservation.id)
+      if (cancellation.reservation) {
+        openConfirmModal()
+      } else {
+        console.log(cancellation)
+      }
+    }
 
     this.setState({
       isPending: false
@@ -80,6 +86,48 @@ class ReservationModal extends React.Component {
     let { isPending, pickupTimeId } = this.state;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
     let actionText = action.toUpperCase();
+
+    let actionButton = action == 'cancel' ? (
+      <div className="select-button">
+        <button
+          className={"modal-action" + (isPending ? " -pending" : "")}
+          onClick={this.handleReserve}
+          id={`reserve-button`}
+          disabled={isPending}
+          style={{marginLeft: 0}}
+        >
+          {!isPending && actionText}
+        </button>
+      </div>
+    ) : (
+      <React.Fragment>
+        <li className="pickup-time">Select Pickup Time</li>
+        <div className="select-button">
+          <select 
+            className="time-select"
+            onChange={this.update("pickupTimeId")}
+            defaultValue={pickupTimeId}
+          >
+            {timeIntervals.map((interval, idx) => {
+              return (
+                <option key={idx} value={interval.id}>
+                  {interval.start + " - " + interval.end}
+                </option>
+              );
+            })}
+          </select>
+
+          <button
+            className={"modal-action" + (isPending ? " -pending" : "")}
+            onClick={this.handleReserve}
+            id={`reserve-button`}
+            disabled={isPending}
+          >
+            {!isPending && actionText}
+          </button>
+        </div>
+      </React.Fragment>
+    )
 
     return (
       <div
@@ -100,34 +148,8 @@ class ReservationModal extends React.Component {
               <li className="shop-address">{shop.address}</li>
             </div>
 
-            <li className="pickup-time">Select Pickup Time</li>
-            <div className="select-button">
-              <select 
-                className="time-select"
-                onChange={this.update("pickupTimeId")}
-                defaultValue={pickupTimeId}
-              >
-                <option hidden value={null}>
-                  Pickup Time
-                </option>
-                {timeIntervals.map((interval, idx) => {
-                  return (
-                    <option key={idx} value={interval.id}>
-                      {interval.start + " - " + interval.end}
-                    </option>
-                  );
-                })}
-              </select>
+            {actionButton}
 
-              <button
-                className={"reserve-button time-selected" + (isPending ? " -pending" : "")}
-                onClick={this.handleReserve}
-                id={`reserve-button`}
-                disabled={isPending}
-              >
-                {!isPending && actionText}
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -146,6 +168,7 @@ const mapDispatchToProps = (dispatch) => {
     openConfirmModal: () => dispatch(openModal({ type: 'confirm' })),
     createReservation: (res) => dispatch(createReservation(res)),
     updateReservation: (res) => dispatch(updateReservation(res)),
+    deleteReservation: (id) => dispatch(deleteReservation(id)),
     changeFilter: (filter, value) => dispatch(changeFilter(filter, value)),
     closeModal: () => dispatch(closeModal())
   };

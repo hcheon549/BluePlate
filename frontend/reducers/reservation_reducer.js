@@ -37,10 +37,16 @@ const reservationReducer = (state = initialState, action) => {
       }
       return newState;
     case REMOVE_RESERVATION:
-      delete newState[action.resId];
+      if (action.reservation.pickupTime.pickupType == 0){
+        newState.lunch = {}
+      } else if (action.reservation.pickupTime.pickupType == 1){
+        newState.dinner = {}
+      } else {
+        newState
+      }
       return newState;
     default:
-      return state;
+    return state;
   }
 };
 

@@ -42,8 +42,7 @@ const receiveReservation = payload => {
 const removeReservation = payload => {
   return {
     type: REMOVE_RESERVATION,
-    resId: payload.reservation.id,
-    user: payload.user
+    reservation: payload.reservation,
   };
 };
 

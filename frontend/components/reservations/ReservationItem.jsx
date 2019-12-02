@@ -7,7 +7,7 @@ const ReservationItem = (props) => {
   let data = {
     menu: menu.meal,
     shop: menu.shop,
-    pickuptime: pickupTime,
+    pickupTime: pickupTime,
     pickupTimeId: menu.pickupTimeId,
     currentReservation: menu
   }
