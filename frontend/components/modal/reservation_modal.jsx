@@ -29,7 +29,7 @@ class ReservationModal extends React.Component {
   };
 
   async handleReserve() {
-    let { data: { action, menu }, currentUser, updateReservation, createReservation, openConfirmModal } = this.props;
+    let { data: { action, menu, currentReservation }, currentUser, updateReservation, createReservation, openConfirmModal } = this.props;
     let { pickupTimeId } = this.state
 
     this.setState({
@@ -52,18 +52,18 @@ class ReservationModal extends React.Component {
       }
     }
     
-    // else if (action == 'update') {
-    //   let updatedReservation = Object.assign({}, todayReservations[activeTab]);
-    //   updatedReservation.menuId = menu.id;
-    //   updatedReservation.pickupTimeId = parseInt(pickupTimeId);
-  
-    //   let updateResult = await updateReservation(updatedReservation)
-    //   if (updateResult.reservation) {
-    //     openConfirmModal()
-    //   } else {
-    //     console.log(updateResult)
-    //   }
-    // }
+    else if (action == 'update' && currentReservation) {
+      let updatedReservation = Object.assign({}, currentReservation);
+      updatedReservation.menuId = menu.id;
+      updatedReservation.pickupTimeId = parseInt(pickupTimeId);
+      debugger
+      let updateResult = await updateReservation(updatedReservation)
+      if (updateResult.reservation) {
+        openConfirmModal()
+      } else {
+        console.log(updateResult)
+      }
+    }
     
     // else if (action == 'cancel'){
     //   //cancel reservation here
@@ -92,7 +92,7 @@ class ReservationModal extends React.Component {
             &times;
           </div>
 
-          <div style={{margin: 'auto'}}>
+          <div className="content-container-modal">
             <div className="reservation-content-modal">
               <li className="meal-name">{menu.name.toUpperCase()}</li>
               <li className="meal-description">{menu.description}</li>
@@ -100,6 +100,7 @@ class ReservationModal extends React.Component {
               <li className="shop-address">{shop.address}</li>
             </div>
 
+            <li className="pickup-time">Select Pickup Time</li>
             <div className="select-button">
               <select 
                 className="time-select"
@@ -119,14 +120,10 @@ class ReservationModal extends React.Component {
               </select>
 
               <button
-                className={
-                  (pickupTimeId === "")
-                    ? "reserve-button time-not-selected"
-                    : ("reserve-button time-selected" + (isPending ? " -pending" : ""))
-                }
+                className={"reserve-button time-selected" + (isPending ? " -pending" : "")}
                 onClick={this.handleReserve}
                 id={`reserve-button`}
-                disabled={!pickupTimeSelected || isPending}
+                disabled={isPending}
               >
                 {!isPending && actionText}
               </button>

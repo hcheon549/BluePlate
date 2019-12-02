@@ -40,9 +40,10 @@ class MealIndexItem extends React.Component {
     let { menu, shop, pickupTime, activeTab, todayReservations } = this.props;
     let {pickupTimeId} = this.state;
     let action = todayReservations[activeTab].id ? 'update' : 'reserve'
-
+    let currentReservation = todayReservations[activeTab].id ? todayReservations[activeTab] : null;
+    
     this.props.openReserveModal(
-      { action, menu, shop, pickupTime, pickupTimeId }
+      { action, menu, shop, pickupTime, pickupTimeId, currentReservation }
     )
   }
 

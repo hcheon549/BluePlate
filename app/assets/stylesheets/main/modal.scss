@@ -25,6 +25,7 @@
 }
 
 .res-modal-right {
+  display: flex;
   position: relative;
   width: 430px;
   padding: 0 20px;
@@ -82,8 +83,11 @@
   }
 }
 
-.reservation-content-modal{
+.content-container-modal{
   margin: auto 0;
+  .reservation-content-modal{
+    margin-bottom: 20px;
+  }
   li{
     font-size: 14px;
     line-height: 1.5;
@@ -96,18 +100,19 @@
   .meal-description{
     color: $gray;
     font-weight: 200;
+    margin-bottom: 10px;
   }
   .shop-name{
-    color: $gray-menu;
-    font-weight: 400;
+    color: $orange;
+    font-weight: 600;
   }
   .shop-address{
     color: $gray;
-    font-weight: 400;
+    font-weight: 200;
   }
   .pickup-time{
-    color: $light-gray;
-    font-weight: 200;
+    color: $darkest-gray;
+    font-weight: 600;
   }
   .no-meal{
     color: $gray;
@@ -116,10 +121,10 @@
   }
 }
 
+
 .select-button {
   display: flex;
   justify-content: left;
-  margin-top: 20px;
   .time-select {
     color: $accent;
     background: white;
