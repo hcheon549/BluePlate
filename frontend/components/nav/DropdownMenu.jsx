@@ -4,10 +4,8 @@ const DropdownMenu = (props) => {
   if (!props.isMember){
     return (
       <ul className={props.active ? "dropdown-active animated fadeIn" : "dropdown animated" }>
-        <li onClick={() => props.history.push("/users/signup")}>
-          <div>
+        <li className="nav-menu-button miniText" onClick={() => props.history.push("/users/signup")}>
             Finish Enrollment
-          </div>
         </li>
       </ul>
       )

@@ -6,7 +6,7 @@ class Api::SubscriptionsController < ApplicationController
     @subscription.meal_credit = @subscription.plan.meals
     @subscription.subscription_start = Date.today
     @subscription.subscription_end = Date.new(2020, 5, 13)
-
+    debugger
     if @subscription.save
       render :show
     else
@@ -17,9 +17,7 @@ class Api::SubscriptionsController < ApplicationController
   def update
     @subscription = Subscription.find(params[:id])
 
-    if @subscription.update_attributes(
-      plan_id: params[:subscription][:plan_id]
-      )
+    if @subscription.update_attributes(plan_id: params[:subscription][:plan_id])
       @subscription.meal_credit = @subscription.plan.meals
       render :show
     else

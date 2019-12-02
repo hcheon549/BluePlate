@@ -47,8 +47,11 @@ class ChangeEmailForm extends React.Component{
 
   update(type, event) {
     let validationState = ["email"];
+    let hasErrors = Boolean(this.props.errors.length !== 0 || this.state.errorMessage.length !== 0)
+
     this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
-    if (this.props.errors || this.state.errorMessage) {
+
+    if (hasErrors) {
       this.props.clearErrors();
       this.setState({ errorMessage: [] })
     }
