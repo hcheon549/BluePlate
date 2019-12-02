@@ -150,7 +150,7 @@
     background-color: $accent;
     transition: all 0.5s ease;
     &:hover {
-      background-color: $accent-light;
+      background-color: $siteColor;
     }
     &.-pending{
       cursor: default;

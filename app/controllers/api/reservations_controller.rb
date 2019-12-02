@@ -35,38 +35,7 @@ class Api::ReservationsController < ApplicationController
     )
     
     if @reservation.save
-      # menu = @reservation.menu
-      # meal = @reservation.meal
-
-      # print "before update: quantity_available"
-      # puts menu.quantity_available
-      # print "before update: meal_credits_left"
-      # puts user_summary.meal_credits_left
-      # print "before update: total_number_ordered"
-      # puts meal.total_number_ordered
-
-      # adjust_attributes(user_summary, menu, meal)
-
-      # user_summary.update_attributes(
-      #   meal_credits_left: user_summary.meal_credits_left - 1
-      # )
-      
-      # menu.update_attributes(
-      #   quantity_available: menu.quantity_available -1,
-      #   quantity_ordered: menu.quantity_ordered + 1
-      # )
-
-      # meal.update_attributes(
-      #   total_number_ordered: meal.total_number_ordered + 1
-      # )
-      
-      # print "after update: quantity_available"
-      # puts menu.quantity_available
-      # print "after update: meal_credits_left"
-      # puts user_summary.meal_credits_left
-      # print "after update: total_number_ordered"
-      # puts meal.total_number_ordered
-
+      adjust_attributes('create', @user, @reservation)
       render :show
     else
       render json: @reservation.errors.full_messages, status: 422
@@ -95,12 +64,9 @@ class Api::ReservationsController < ApplicationController
   def destroy
     @user = current_user
     @reservation = @user.reservations.find(params[:id])
-    @user_summary = @user.account_summary
-    @menu = @reservation.menu
-    @meal = @reservation.meal
 
     if @reservation.destroy
-      # adjust_attributes(user_summary, menu, meal)
+      adjust_attributes('destroy', @user, @reservation)
       render :show
     end
   end
@@ -111,17 +77,43 @@ class Api::ReservationsController < ApplicationController
     params.require(:reservation).permit(:user_id, :menu_id, :pickup_time_id)
   end
 
-  # def adjust_attributes(user_summary, menu, meal)
-  #   user_summary.update_attributes(
-  #     meal_credits_left: user_summary.meal_credits_left - 1
-  #   )
-  #   menu.update_attributes(
-  #     quantity_available: menu.quantity_available -1,
-  #     quantity_ordered: menu.quantity_ordered + 1
-  #   )
-  #   meal.update_attributes(
-  #     total_number_ordered: meal.total_number_ordered + 1
-  #   )
-  # end
+  def adjust_attributes(type, user, reservation)
+    account_summary = AccountSummary.find(user.account_summary.id)
+    menu = Menu.find(reservation.menu.id)
+    meal = Meal.find(reservation.meal.id)
+    now = Time.now
+
+    print "User meal credits left:  "
+    puts account_summary.meal_credits_left
+    print "Menu quantity avaialble:  "
+    puts menu.quantity_available
+    print "Menu quantity ordered:   "
+    puts menu.quantity_ordered
+    print "Meal TOTAL number ordered:   "
+    puts meal.total_number_ordered
+
+    if type == 'create'
+      account_summary.decrement!(:meal_credits_left)
+      menu.decrement!(:quantity_available)
+      menu.increment!(:quantity_ordered)
+      meal.increment!(:total_number_ordered)
+    elsif type == 'destroy'
+      if ((reservation.pickup_time.pickup_type == 0 && (now.hour <= 10 && now.min < 30)) || (reservation.pickup_time.pickup_type == 1 && (now.hour <= 16 && now.min < 30)))
+        account_summary.increment!(:meal_credits_left)
+      end
+      menu.increment!(:quantity_available)
+      menu.decrement!(:quantity_ordered)
+      meal.increment!(:total_number_ordered)
+    end
+
+    print "User meal credits left:  "
+    puts account_summary.meal_credits_left
+    print "Menu quantity avaialble:  "
+    puts menu.quantity_available
+    print "Menu quantity ordered:   "
+    puts menu.quantity_ordered
+    print "Meal TOTAL number ordered:   "
+    puts meal.total_number_ordered
+  end
 
 end
