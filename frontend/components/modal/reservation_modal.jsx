@@ -29,7 +29,8 @@ class ReservationModal extends React.Component {
   };
 
   async handleReserve() {
-    let { data: { action, menu, currentReservation }, currentUser, updateReservation, createReservation, openConfirmModal } = this.props;
+    let { data: { action, menu, currentReservation }, currentUser, 
+          updateReservation, createReservation, openConfirmModal } = this.props;
     let { pickupTimeId } = this.state
 
     this.setState({
@@ -79,7 +80,6 @@ class ReservationModal extends React.Component {
     let { isPending, pickupTimeId } = this.state;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
     let actionText = action.toUpperCase();
-    let pickupTimeSelected = pickupTimeId !== null;
 
     return (
       <div

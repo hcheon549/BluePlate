@@ -2,9 +2,16 @@ import React from "react";
 
 const ReservationItem = (props) => {
 
-  let { type, hasMeal, menu } = props;
+  let { type, hasMeal, menu, pickupTime, openReserveModal } = props;
   let imageUrl, content;
-
+  let data = {
+    menu: menu.meal,
+    shop: menu.shop,
+    pickuptime: pickupTime,
+    pickupTimeId: menu.pickupTimeId,
+    currentReservation: menu
+  }
+  
   if (hasMeal){
     imageUrl = menu.meal.imageUrl;
     content = (
@@ -13,6 +20,10 @@ const ReservationItem = (props) => {
         <li className="shop-name">{menu.shop.name}</li>
         <li className="shop-address">{menu.shop.address}</li>
         <li className="pickup-time">Pick up between {menu.pickupTime.start} and {menu.pickupTime.end}</li>
+        <li style={{display: 'flex', justifyContent: 'left'}}>
+          <span onClick={() => openReserveModal({ action: 'update', ...data})}>Update</span>
+          <span style={{marginLeft: '20px'}} onClick={() => openReserveModal({action: 'cancel', ...data})}>Cancel</span>
+        </li>
       </ul>
     )
   } else {

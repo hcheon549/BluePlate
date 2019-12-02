@@ -14,9 +14,11 @@
       justify-content: left;
       margin: 0 20px;
       border: 1px solid $lightest-gray;
+      box-sizing: border-box;
       width: 560px;
-      height: 100px;
+      button{display: none;}
       .order-label{
+        position: relative;
         display: flex;
         padding-right: 2px;
         border-left: 2px solid $orange;
@@ -39,13 +41,21 @@
         }
       }
       .image-container{
-        width: 100px;
+        width: 25%;
       }
       .reservation-content{
         margin: auto 0 auto 20px;
         li{
           font-size: 14px;
           line-height: 1.5;
+          span{
+            color: $accent;
+            font-weight: 400;
+            &:hover{
+              text-decoration: underline;
+              cursor: pointer
+            }
+          }
         }
         .meal-name{
           color: $siteColor;

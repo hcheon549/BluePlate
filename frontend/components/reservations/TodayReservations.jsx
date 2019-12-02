@@ -3,7 +3,7 @@ import React from "react";
 import ReservationItem from './ReservationItem'
 
 const TodayReservations = (props) => {
-  let { todayReservations } = props;
+  let { todayReservations, lunchTime, dinnerTime, openReserveModal } = props;
   let hasLunch = Object.values(todayReservations.lunch).length !== 0
   let hasDinner = Object.values(todayReservations.dinner).length !== 0
 
@@ -15,11 +15,15 @@ const TodayReservations = (props) => {
           type={"lunch"}
           hasMeal={hasLunch}
           menu={todayReservations.lunch}
+          openReserveModal={openReserveModal}
+          pickupTime={lunchTime}
         />
         <ReservationItem
           type={"dinner"}
           hasMeal={hasDinner}
           menu={todayReservations.dinner}
+          openReserveModal={openReserveModal}
+          pickupTime={dinnerTime}
         />
       </div>
     </div>
