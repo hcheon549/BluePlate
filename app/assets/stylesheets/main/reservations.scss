@@ -2,8 +2,9 @@
   margin: 30px 30px 10px;
   h4{
     margin: 0 20px 20px;
-    font-display: 24px;
-    color: $grayDark;
+    font-size: 24px;
+    font-weight: 500;
+    color: $darkest-gray;
   }
   .reservations-container {
     display: flex;
@@ -23,7 +24,7 @@
         li {
           font-size: 16px;
           line-height: 1.5;
-          color: $grayDark;
+          color: $darkest-gray;
           writing-mode: vertical-lr;
           -webkit-writing-mode: vertical-lr;
           -ms-writing-mode: vertical-lr;      

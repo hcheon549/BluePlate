@@ -19,13 +19,13 @@
       color: $grayDark;
     }
     &.active{
-      color: $grayDark;
+      color: $darkest-gray;
       border: 1px solid $lightest-gray;
       border-top: 2px solid $orange;
       border-bottom: 1px solid $white;
     }
     &.mounted{
-      color: $grayDark;
+      color: $darkest-gray;
       border: 1px solid $lightest-gray;
       border-top: 2px solid $orange;
       :hover{
