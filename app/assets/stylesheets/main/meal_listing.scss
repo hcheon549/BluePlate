@@ -265,8 +265,6 @@
     }
     &.-pending{
       cursor: default;
-       position: relative;
-       height: 48px;
        &::before {
        @extend %spinit;  
         border: solid 3px rgba($black, 45%);
