@@ -38,6 +38,7 @@ class MealIndexItem extends React.Component {
   async handleReserve() {
     let { menu, currentUser, updateReservation, createReservation, openConfirmModal, activeTab, todayReservations } = this.props;
     let { pickupTimeId } = this.state
+    let hasReservations = Object.values(todayReservations[activeTab]).length !== 0;
 
     this.setState({
       isPending: true,
@@ -45,7 +46,7 @@ class MealIndexItem extends React.Component {
 
     window.scrollTo(0, 0);
 
-    if (todayReservations[activeTab]) {
+    if (hasReservations) {
       let updatedReservation = Object.assign({}, todayReservations[activeTab]);
       updatedReservation.menuId = menu.id;
       updatedReservation.pickupTimeId = parseInt(pickupTimeId);

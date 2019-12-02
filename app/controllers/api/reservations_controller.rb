@@ -1,9 +1,12 @@
 class Api::ReservationsController < ApplicationController
   def index
     @reservations = Reservation.includes(:menu).where(user_id: current_user.id)
+    today = Date.today
+    if Time.now.hour > 21
+      today += 1
+    end
 
     if @reservations
-      today = Date.today
       @today_reservations = @reservations.select do | reservation |
         reservation.menu.offered_date == today
       end
@@ -30,7 +33,7 @@ class Api::ReservationsController < ApplicationController
       menu_id: params[:reservation][:menu_id],
       pickup_time_id: params[:reservation][:pickup_time_id]
     )
-
+    
     if @reservation.save
       # menu = @reservation.menu
       # meal = @reservation.meal

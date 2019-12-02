@@ -12,7 +12,7 @@ const ReservationItem = (props) => {
         <li className="meal-name">{menu.meal.name}</li>
         <li className="shop-name">{menu.shop.name}</li>
         <li className="shop-address">{menu.shop.address}</li>
-        <li calssName="pickup-time">Pick up between {menu.pickupTime.start} and {menu.pickupTime.end}</li>
+        <li className="pickup-time">Pick up between {menu.pickupTime.start} and {menu.pickupTime.end}</li>
       </ul>
     )
   } else {
