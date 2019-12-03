@@ -7,9 +7,7 @@ import {
   createReservation,
   updateReservation,
   deleteReservation,
-  handleReserve
 } from "../../actions/reservation_actions";
-import { stringify } from "querystring";
 
 const pickupTimeClose = {
   lunch: {
@@ -107,15 +105,22 @@ class ReservationModal extends React.Component {
     return pickupTime.pickupType == 0
       ? ((thisHour < pickupTimeClose.lunch.hour) || ((thisHour == pickupTimeClose.lunch.hour) && (thisMinute <= pickupTimeClose.lunch.minute)))
       : ((thisHour < pickupTimeClose.dinner.hour) || ((thisHour == pickupTimeClose.dinner.hour) && (thisMinute <= pickupTimeClose.dinner.minute)))
-
   }
 
   render() {
     let { data: { action, menu, shop, pickupTime, currentReservation }, closeModal } = this.props;
     let { isPending, pickupTimeId } = this.state;
-    let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
-    let actionText = action.toUpperCase();
     let pickingTimeOff, pickingClosingTime, warningMessage
+
+    const today = new Date()
+    const thisHour = today.getHours();
+
+    let timeIntervals = pickupTime ? thisHour < 21 ? Object.values(pickupTime).filter((time) => {
+      let type = (time.end.slice(time.end.length - 2, time.end.length));
+      let hour = type == 'AM' ? parseInt(time.end.slice(0, 2)) : (parseInt(time.end.slice(0, 2)) + 12)
+      return hour > thisHour
+    }) : Object.values(pickupTime) : [];
+    let actionText = action.toUpperCase();
     
     if (action == 'cancel'){
       pickingTimeOff = !this.refundable();
