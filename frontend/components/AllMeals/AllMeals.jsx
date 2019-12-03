@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { fetchMenus } from '../../actions/menu_actions';
+
 import SchoolDropdown from '../landing/SchoolDropdown';
 
 class AllMeals extends Component{
@@ -14,6 +16,7 @@ class AllMeals extends Component{
   }
 
   componentDidMount(){
+    debugger
     if (this.state.schoolId){
       debugger
       this.props.fetchMenus(this.state.schoolId)
@@ -62,6 +65,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchMenus: (schoolId) => dispatch(fetchMenus(schoolId)),
   };
 };
 
