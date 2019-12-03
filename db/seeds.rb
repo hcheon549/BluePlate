@@ -333,98 +333,99 @@ ActiveRecord::Base.transaction do
     #   school_id: rutgers.id,
     # },
     # Penn State
+    # {
+    #   name: "Panda Express",
+    #   address: "7 Hub Robeson Center, University Park, PA 16802",
+    #   latitude: 40.802589,
+    #   longitude: -77.856529,
+    #   school_id: pennState.id,
+    # },{
+    #   name: "Sbarro",
+    #   address: "7 Hub Robeson Center, University Park, PA 16802",
+    #   latitude: 40.802589,
+    #   longitude: -77.856529,
+    #   school_id: pennState.id,
+    # },{
+    #   name: "McAlister's Deli",
+    #   address: "7 Hub Robeson Center, University Park, PA 16802",
+    #   latitude: 40.802589,
+    #   longitude: -77.856529,
+    #   school_id: pennState.id,
+    # },{
+    #   name: "HUB Dining - Soup and Garden",
+    #   address: "7 Hub Robeson Center, University Park, PA 16802",
+    #   latitude: 40.802589,
+    #   longitude: -77.856529,
+    #   school_id: pennState.id,
+    # },
     {
-      name: "Panda Express",
-      address: "7 Hub Robeson Center, University Park, PA 16802",
-      latitude: 40.802589,
-      longitude: -77.856529,
-      school_id: pennState.id,
-    },{
-      name: "Sbarro",
-      address: "7 Hub Robeson Center, University Park, PA 16802",
-      latitude: 40.802589,
-      longitude: -77.856529,
-      school_id: pennState.id,
-    },{
-      name: "McAlister's Deli",
-      address: "7 Hub Robeson Center, University Park, PA 16802",
-      latitude: 40.802589,
-      longitude: -77.856529,
-      school_id: pennState.id,
-    },{
-      name: "HUB Dining - Soup and Garden",
-      address: "7 Hub Robeson Center, University Park, PA 16802",
-      latitude: 40.802589,
-      longitude: -77.856529,
-      school_id: pennState.id,
-    },{
       name: "The Tavern",
       address: "220 E College Ave, State College, PA 16801",
       latitude: 40.795540,
       longitude: -77.860020,
       school_id: pennState.id,
     },{
-      name: "Chopstick Express",
+      name: "Chopstick Express", ##### Check
       address: "134 E College Ave, State College, PA 16801",
       latitude: 40.794950,
       longitude: -77.860420,
       school_id: pennState.id,
     },{
-      name: "Queenstown Restaurant",
+      name: "Queenstown Restaurant", 
       address: "142 E College Ave, State College, PA 16801",
       latitude: 40.795140,
       longitude: -77.856529,
       school_id: pennState.id,
     },{
-      name: "Chick2",
+      name: "Chick2", #####
       address: "128 E College Ave, State College, PA 16801",
       latitude: 40.794811,
       longitude: -77.860558,
       school_id: pennState.id,
     },{
-      name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches",
+      name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches", 
       address: "118 S Pugh St, State College, PA 16801",
       latitude: 40.794900,
       longitude: -77.860100,
       school_id: pennState.id,
     },{
-      name: "Irvings Bagels",
+      name: "Irvings Bagels", #### Check
       address: "110 E College Ave #4816, State College, PA 16801",
       latitude: 40.794560,
       longitude: -77.861210,
       school_id: pennState.id,
     },{
-      name: "Underground",
+      name: "Underground", 
       address: "218 E Calder Way, State College, PA 16801",
       latitude: 40.795140,
       longitude: -77.859360,
       school_id: pennState.id,
     },{
-      name: "Yallah Taco",
+      name: "Yallah Taco",  ###check
       address: "217 McAllister Alley, State College, PA 16801",
       latitude: 40.795220,
       longitude: -77.859070,
       school_id: pennState.id,
     },{
-      name: "India Pavilion",
+      name: "India Pavilion", ##### Check
       address: "222 E Calder Way, State College, PA 16801",
       latitude: 40.795380,
       longitude: -77.859080,
       school_id: pennState.id,
     },{
-      name: "College Pizza",
+      name: "College Pizza", 
       address: "128 Locust Ln, State College, PA 16801",
       latitude: 40.795900,
       longitude: -77.857910,
       school_id: pennState.id,
     },{
-      name: "The Koop",
+      name: "The Koop", #### check
       address: "129 Locust Ln, State College, PA 16801",
       latitude: 40.796100,
       longitude: -77.857760,
       school_id: pennState.id,
     },{
-      name: "Latinos Food",
+      name: "Latinos Food", 
       address: "324 E Calder Way, State College, PA 16801",
       latitude: 40.796680,
       longitude: -77.857450,
@@ -437,31 +438,31 @@ ActiveRecord::Base.transaction do
       longitude: -77.856880,
       school_id: pennState.id,
     },{
-      name: "Bagel Crust",
+      name: "Bagel Crust", #####
       address: "332 E Calder Way, State College, PA 16801",
       latitude: 40.796780,
       longitude: -77.857310,
       school_id: pennState.id,
     },{
-      name: "Yum Cafe",
+      name: "Yum Cafe", 
       address: "320 E Calder Way, State College, PA 16801",
       latitude: 40.796630,
       longitude: -77.857510,
       school_id: pennState.id,
     },{
-      name: "The Waffle Shop",
+      name: "The Waffle Shop", 
       address: "364 E College Ave, State College, PA 16801",
       latitude: 40.797700,
       longitude: -77.856930,
       school_id: pennState.id,
     },{
-      name: "Deli and Z Bar",
+      name: "Deli and Z Bar", #####
       address: "113 Heister St, State College, PA 16801",
       latitude: 40.797250,
       longitude: -77.857090,
       school_id: pennState.id,
     },{
-      name: "Baby's Burgers and Shakes",
+      name: "Baby's Burgers and Shakes", ##### Check
       address: "131 S Garner St, State College, PA 16801",
       latitude: 40.797580,
       longitude: -77.856270,
@@ -479,7 +480,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.856170,
       school_id: pennState.id,
     },{
-      name: "Big Bowl Noodle House",
+      name: "Big Bowl Noodle House", #####
       address: "418 E College Ave, State College, PA 16801",
       latitude: 40.798010,
       longitude: -77.856480,
@@ -491,7 +492,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.856290,
       school_id: pennState.id,
     },{
-      name: "Are U Hungry",
+      name: "Are U Hungry", ##### check
       address: "111 Sowers St, State College, PA 16801",
       latitude: 40.798280,
       longitude: -77.855530,
@@ -503,19 +504,19 @@ ActiveRecord::Base.transaction do
       longitude: -77.855860,
       school_id: pennState.id,
     },{
-      name: "D. P. Dough",
+      name: "D. P. Dough", ##### yum cafe
       address: "401 E Beaver Ave, State College, PA 16801",
       latitude: 40.797140,
       longitude: -77.855640,
       school_id: pennState.id,
     },{
-      name: "Uncle Chen's",
+      name: "Uncle Chen's", 
       address: "430 E Calder Way, State College, PA 16801",
       latitude: 40.797610,
       longitude: -77.855170,
       school_id: pennState.id,
     },{
-      name: "Zen Wings and Things",
+      name: "Zen Wings and Things",  ### CHECK
       address: "433 E Beaver Ave, State College, PA 16801",
       latitude: 40.797510,
       longitude: -77.855080,
@@ -533,7 +534,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.855600,
       school_id: pennState.id,
     },{
-      name: "Galanga by Cozy Thai",
+      name: "Galanga by Cozy Thai", #####uncle chens
       address: "454 E College Ave, State College, PA 16801",
       latitude: 40.798890,
       longitude: -77.855490,
@@ -557,13 +558,13 @@ ActiveRecord::Base.transaction do
       longitude: -77.859500,
       school_id: pennState.id,
     },{
-      name: "Mad Mex",
+      name: "Mad Mex", ###
       address: "240 S Pugh St, State College, PA 16801",
       latitude: 40.793640,
       longitude: -77.858710,
       school_id: pennState.id,
     },{
-      name: "Gumby's Pizza",
+      name: "Gumby's Pizza", #### Check
       address: "300 S Pugh St Suite 101, State College, PA 16801",
       latitude: 40.793070,
       longitude: -77.857190,
@@ -625,7 +626,10 @@ ActiveRecord::Base.transaction do
   meals_for_today = []
   meals_for_tomorrow = []
 
-  shops = Shop.all
+  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+
+  shops = Shop.where(school_id: rutgers.id)
 
   # (shops.length).times do |i|
   #   name = Faker::Food.dish
@@ -704,13 +708,342 @@ ActiveRecord::Base.transaction do
     Meal.create!(meal)
   end
   
-  puts "Meals for today created"
+  puts "Meals at Rutgers for today created"
 
   meals_for_tomorrow.each do |meal|
     Meal.create!(meal)
   end
   
-  puts "Meals for tomorrow created"
+  puts "Meals at Rutgers for tomorrow created"
+
+
+
+  ##############################################
+
+
+
+  chopstick = Shop.where(name: "Chopstick Express")
+  chopstickMeals = [
+    {
+      name: '2 Tuna Roll',
+      description: "Tuna, rice, vinegrette, seaweed, sesame seeds",
+      price: 7.99,
+      image_url: '',
+      shop_id: chopstick.id
+    }, {
+      name: 'Beef Udon',
+      description: "Beef, flour noodle, beef broth, bakchoy, beansprouts",
+      price: 8.99,
+      image_url: '',
+      shop_id: chopstick.id
+    }, {
+      name: 'Pad Thai',
+      description: "Eggs, rice noodle, soy sauce, sallion, peanut",
+      price: 9.99,
+      image_url: '',
+      shop_id: chopstick.id
+    }, {
+      name: '2 Salmon Rolls',
+      description: "Salmon, rice, vinegrette, seaweed, sesame seeds",
+      price: 8.99,
+      image_url: '',
+      shop_id: chopstick.id
+    }, {
+      name: 'Sushi Platter',
+      description: "Assorted fish (raw), rice, vinegrette, sesame seeds, wasabi",
+      price: 12.99,
+      image_url: '',
+      shop_id: chopstick.id
+    }
+  ]
+
+  chopstickMeals.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "chopstickMeals Meal Created"
+
+
+  gumbys = Shop.where(name: "Gumby's Pizza")
+  gumbysmeal = [
+    {
+      name: '2 Ham Pizza',
+      description: "Pizza dough, tomato sauce, cheese, ham",
+      price: 7.99,
+      image_url: '',
+      shop_id: gumbys.id
+    },{
+      name: '3 Pepperoni_pizza',
+      description: "Pizza dough, tomato sauce, cheese, pepperoni",
+      price: 8.99,
+      image_url: '',
+      shop_id: gumbys.id
+    },{
+      name: 'Supreme Pizza',
+      description: "Pizza dough, tomato sauce, cheese, ham, pepperoni, peppers",
+      price: 9.99,
+      image_url: '',
+      shop_id: gumbys.id
+    },{
+      name: '2 Margharita Pizza',
+      description: "Pizza dough, tomato sauce, cheese, olive oil",
+      price: 10.99,
+      image_url: '',
+      shop_id: gumbys.id
+    }
+  ]
+
+  gumbysmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "gumbysmeal Meal Created"
+
+  india = Shop.where(name: "India Pavilion")
+  indiameal = [
+    {
+      name: 'Bean Curry',
+      description: "Beans, curry powder, vegitable broth",
+      price: 10.99,
+      image_url: '',
+      shop_id: india.id
+    },{
+      name: 'Chicken Curry',
+      description: "Chicken, curry powder, chicken broth",
+      price: 8.99,
+      image_url: '',
+      shop_id: india.id
+    },{
+      name: '3 Chicken Satay',
+      description: "Chicken breast, chicken thigh, curry power, grilled",
+      price: 9.99,
+      image_url: '',
+      shop_id: india.id
+    },{
+      name: 'Curry',
+      description: "Curry powder, begitable broth",
+      price: 7.99,
+      image_url: '',
+      shop_id: india.id
+    }
+  ]
+
+  indiameal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "indiameal Meal Created"
+
+
+  irving = Shop.where(name: "Irvings Bagels")
+  irvingmeal = [
+    {
+      name: 'Italian Sandwich',
+      description: "Bread, pepperoni, salami, ham, mustard, lettus",
+      price: 7.99,
+      image_url: '',
+      shop_id: irving.id
+    },{
+      name: 'Avocado Bagel',
+      description: "Avocado, greens, bagel, sesame seeds",
+      price: 8.99,
+      image_url: '',
+      shop_id: irving.id
+    },{
+      name: 'Tuna Bagel',
+      description: "Tuna, bagel",
+      price: 9.99,
+      image_url: '',
+      shop_id: irving.id
+    },{
+      name: 'Roast Beef Sandwich',
+      description: "Roast beef, aruguala, mayo, tomato, bread",
+      price: 10.99,
+      image_url: '',
+      shop_id: irving.id
+    }
+  ]
+
+  irvingmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "irvingmeal Meal Created"
+
+  hungry = Shop.where(name: "Are U Hungry")
+  hungrymeal = [
+    {
+      name: 'Chicken Sandwich',
+      description: "Chicken thigh grilled, white bread, aruguala, mayo, tomato",
+      price: 7.99,
+      image_url: '',
+      shop_id: hungry.id
+    }, {
+      name: 'Ham Sandwich',
+      description: "Roasted ham, rye bread, lettus, swiss cheese, mayo",
+      price: 8.99,
+      image_url: '',
+      shop_id: hungry.id
+    }, {
+      name: 'Pork Chop',
+      description: "Glazed Pork, mashed potato, sweet sauce",
+      price: 9.99,
+      image_url: '',
+      shop_id: hungry.id
+    }, {
+      name: 'Roast Beef Sandwich',
+      description: "Roast beef, aruguala, tomato, mayo, baguette",
+      price: 10.99,
+      image_url: '',
+      shop_id: hungry.id
+    }, {
+      name: 'Salami Sandwich',
+      description: "Salami, bread, mayo, aruguala",
+      price: 11.99,
+      image_url: '',
+      shop_id: hungry.id
+    }
+  ]
+
+  hungrymeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "hungrymeal Meal Created"
+  
+  zen = Shop.where(name: "Zen Wings and Things")
+  zenmeal = [
+    {
+      name: 'Garden Salad',
+      description: "Greens, tomato, egg, salad dressing",
+      price: 7.99,
+      image_url: '',
+      shop_id: zen.id
+    },{
+      name: 'Ham Sadnwich',
+      description: "Ham, cheese, bread, mustard, aruguala",
+      price: 7.99,
+      image_url: '',
+      shop_id: zen.id
+    },{
+      name: 'Turkey Sandwich',
+      description: "Turkey, bread, swiss cheese, mustard, aruguala",
+      price: 7.99,
+      image_url: '',
+      shop_id: zen.id
+    }
+  ]
+
+  zenmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "zenmeal Meal Created"
+  
+  yallahtaco = Shop.where(name: "Yallah Taco")
+  yallahtacomeal = [
+    {
+      name: 'Breakfast Burrito',
+      description: "Eggs, Sausages, wrap, mexican sauce",
+      price: 7.99,
+      image_url: '',
+      shop_id: yallahtaco.id
+    },{
+      name: 'Grilled Cheese Sandwich',
+      description: "White bread, swiss cheese, american cheese, mozzarella cheese",
+      price: 8.99,
+      image_url: '',
+      shop_id: yallahtaco.id
+    },{
+      name: 'Nachos',
+      description: "Loaded nachos, melted cheese, blue cheese, sour cream, bacons, scallion",
+      price: 9.99,
+      image_url: '',
+      shop_id: yallahtaco.id
+    }
+  ]
+
+  yallahtacomeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "yallahtacomeal Meal Created"
+
+  babysburger = Shop.where(name: "Baby's Burgers and Shakes")
+  babysmeal = [
+    {
+      name: 'Bacon Cheese Burger',
+      description: "Beef patty, buns, lettus, tomato, onion, bacon, american cheese",
+      price: 7.99,
+      image_url: '',
+      shop_id: babysburger.id
+    },{
+      name: 'Fried Chicken Sandwich',
+      description: "Fried chicken, bun, coleslaw, mayo",
+      price: 8.99,
+      image_url: '',
+      shop_id: babysburger.id
+    },{
+      name: 'Glazed Salmon',
+      description: "Glazed Salmon, risotto, fish broth",
+      price: 9.99,
+      image_url: '',
+      shop_id: babysburger.id
+    },{
+      name: 'Spinach Salad',
+      description: "Spinach, eggs, tomato, carrots, avocado, croutons",
+      price: 10.99,
+      image_url: '',
+      shop_id: babysburger.id
+    },{
+      name: 'Vegi Sandwich',
+      description: "Assorted vegitables, bread, tomato, mayo",
+      price: 11.99,
+      image_url: '',
+      shop_id: babysburger.id
+    }
+  ]
+
+  babysmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "babysmeal Meal Created"
+
+  kook = Shop.where(name: "The Koop")
+  kookmeal = [
+    {
+      name: 'Chicken Ramen',
+      description: "Chicken, wheat noodle, chicken broth, beansprouts, scaliions",
+      price: 11.99,
+      image_url: '',
+      shop_id: kook.id
+    }, {
+      name: '3 Dumplings',
+      description: "Beef, vegitables, flour, soy sauce",
+      price: 7.99,
+      image_url: '',
+      shop_id: kook.id
+    }, {
+      name: 'Orange Chicken',
+      description: "Deep fried chicken, peppers, orange sauce",
+      price: 11.99,
+      image_url: '',
+      shop_id: kook.id
+    }, {
+      name: 'Sushi Platter',
+      description: "Assorted fish, rice, vinegrette, wasabi, seaweeds",
+      price: 11.99,
+      image_url: '',
+      shop_id: kook.id
+    }
+  ]
+
+  kookmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "kookmeal Meal Created"
 
 end
 
