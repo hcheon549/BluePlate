@@ -9,6 +9,18 @@ import {
   deleteReservation,
   handleReserve
 } from "../../actions/reservation_actions";
+import { stringify } from "querystring";
+
+const pickupTimeClose = {
+  lunch: {
+    hour: 10,
+    minute: 30
+  },
+  dinner: {
+    hour: 16,
+    minute: 0
+  }
+}
 
 class ReservationModal extends React.Component {
   constructor(props){
@@ -20,6 +32,7 @@ class ReservationModal extends React.Component {
 
     this.update = this.update.bind(this);
     this.handleReserve = this.handleReserve.bind(this);
+    this.refundable = this.refundable.bind(this);
   }
 
   update(type) {
@@ -67,7 +80,7 @@ class ReservationModal extends React.Component {
       }
     }
     
-    else if (action == 'cancel'){
+    else if (action == 'cancel' && currentReservation){
       let cancellation = await deleteReservation(currentReservation.id)
       if (cancellation.reservation) {
         openConfirmModal()
@@ -81,14 +94,39 @@ class ReservationModal extends React.Component {
     })
   };
 
+  refundable(){
+    let {data: {currentReservation: { pickupTime }}} = this.props
+    const today = new Date()
+    const thisHour = today.getHours();
+    const thisMinute = today.getMinutes();
+
+    return pickupTime.pickupType == 0
+      ? ((thisHour < pickupTimeClose.lunch.hour) || ((thisHour == pickupTimeClose.lunch.hour) && (thisMinute <= pickupTimeClose.lunch.minute)))
+      : ((thisHour < pickupTimeClose.dinner.hour) || ((thisHour == pickupTimeClose.dinner.hour) && (thisMinute <= pickupTimeClose.dinner.minute)))
+
+  }
+
   render() {
-    let { data: { action, menu, shop, pickupTime }, closeModal } = this.props;
+    let { data: { action, menu, shop, pickupTime, currentReservation }, closeModal } = this.props;
     let { isPending, pickupTimeId } = this.state;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
     let actionText = action.toUpperCase();
+    let pickingTimeOff, pickingClosingTime, warningMessage
+    
+    if (action == 'cancel'){
+      pickingTimeOff = !this.refundable();
+      pickingClosingTime = currentReservation.pickupTime.pickupType == 0
+        ? `${pickupTimeClose.lunch.hour}:${pickupTimeClose.lunch.minute}AM`
+        : `${pickupTimeClose.dinner.hour - 12}:${pickupTimeClose.dinner.minute}0PM` 
+      warningMessage = `Your meal credit is not refundable for cancellations after ${pickingClosingTime}.`
+    } else {
+      pickingTimeOff = null;
+      pickingClosingTime = null;
+      warningMessage = null;
+    }
 
     let actionButton = action == 'cancel' ? (
-      <div className="select-button">
+      <div className="select-button -cancellation">
         <button
           className={"modal-action" + (isPending ? " -pending" : "")}
           onClick={this.handleReserve}
@@ -98,6 +136,11 @@ class ReservationModal extends React.Component {
         >
           {!isPending && actionText}
         </button>
+        {pickingTimeOff && 
+          <div className="tinyText -warning">
+            {warningMessage}
+          </div>
+        }
       </div>
     ) : (
       <React.Fragment>

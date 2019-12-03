@@ -125,6 +125,7 @@
 .select-button {
   display: flex;
   justify-content: left;
+  &.-cancellation{ display: block; }
   .time-select {
     color: $accent;
     background: white;
