@@ -12,7 +12,7 @@ const NavLogin = (props) => {
 
   return (
     <ul className="navLogin">
-      <li className={"nav-menu-button miniText" + (location.pathname == '/all-meals' ? " -active" : "")} key='login' onClick={() => push('/all-meals')}>
+      <li className={"nav-menu-button miniText" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={() => push('/all-meals')}>
         View meals
       </li>
       <li className={"nav-menu-button miniText" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={() => push('/users/login')}>
