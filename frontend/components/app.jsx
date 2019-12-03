@@ -10,6 +10,7 @@ import { fetchPlans } from '../actions/plan_actions';
 
 import Modal from "./modal/modal";
 
+import AllMeals from "./AllMeals/AllMeals"
 import MyMeal from "./meal/MyMeal";
 import Account from "./account/account";
 import Favorites from "./account/favorites";
@@ -53,6 +54,7 @@ class App extends React.Component {
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
               <Route path="/faq" component={FAQLanding} />
+              <Route exact path="/all-meals" component={AllMeals} />
               {/* Auth Pages */}
               <AuthRoute path="/users/login" component={LoginPage} />
               <Route exact path="/users/signup" component={StepJoin} />
