@@ -718,9 +718,10 @@ ActiveRecord::Base.transaction do
 
 
 
-  ##############################################
-
-
+  ###############################################
+  ######## PENN STATE REAL LIFE EXAMPLES ########
+  ###############################################
+  
 
   chopstick = Shop.where(name: "Chopstick Express")
   chopstickMeals = [
@@ -728,31 +729,31 @@ ActiveRecord::Base.transaction do
       name: '2 Tuna Roll',
       description: "Tuna, rice, vinegrette, seaweed, sesame seeds",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_tuna_roll.jpeg',
       shop_id: chopstick.id
     }, {
       name: 'Beef Udon',
       description: "Beef, flour noodle, beef broth, bakchoy, beansprouts",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_beef_udon.jpeg',
       shop_id: chopstick.id
     }, {
       name: 'Pad Thai',
       description: "Eggs, rice noodle, soy sauce, sallion, peanut",
       price: 9.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_pad_thai.jpeg',
       shop_id: chopstick.id
     }, {
       name: '2 Salmon Rolls',
       description: "Salmon, rice, vinegrette, seaweed, sesame seeds",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_salmon_roll.jpeg',
       shop_id: chopstick.id
     }, {
       name: 'Sushi Platter',
       description: "Assorted fish (raw), rice, vinegrette, sesame seeds, wasabi",
       price: 12.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_sushi_platter.jpeg',
       shop_id: chopstick.id
     }
   ]
@@ -770,25 +771,25 @@ ActiveRecord::Base.transaction do
       name: '2 Ham Pizza',
       description: "Pizza dough, tomato sauce, cheese, ham",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_ham_pizza.jpeg',
       shop_id: gumbys.id
     },{
       name: '3 Pepperoni_pizza',
       description: "Pizza dough, tomato sauce, cheese, pepperoni",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_pepperoni_pizza.jpeg',
       shop_id: gumbys.id
     },{
       name: 'Supreme Pizza',
       description: "Pizza dough, tomato sauce, cheese, ham, pepperoni, peppers",
       price: 9.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_supreme_pizza.jpeg',
       shop_id: gumbys.id
     },{
       name: '2 Margharita Pizza',
       description: "Pizza dough, tomato sauce, cheese, olive oil",
       price: 10.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_margharita_pizza.jpeg',
       shop_id: gumbys.id
     }
   ]
@@ -805,25 +806,25 @@ ActiveRecord::Base.transaction do
       name: 'Bean Curry',
       description: "Beans, curry powder, vegitable broth",
       price: 10.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_bean_curry.jpeg',
       shop_id: india.id
     },{
       name: 'Chicken Curry',
       description: "Chicken, curry powder, chicken broth",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_curry.jpeg',
       shop_id: india.id
     },{
       name: '3 Chicken Satay',
       description: "Chicken breast, chicken thigh, curry power, grilled",
       price: 9.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_satay.jpeg',
       shop_id: india.id
     },{
       name: 'Curry',
       description: "Curry powder, begitable broth",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_curry.jpeg',
       shop_id: india.id
     }
   ]
@@ -841,25 +842,25 @@ ActiveRecord::Base.transaction do
       name: 'Italian Sandwich',
       description: "Bread, pepperoni, salami, ham, mustard, lettus",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagel_italian_sandwich.jpeg',
       shop_id: irving.id
     },{
       name: 'Avocado Bagel',
       description: "Avocado, greens, bagel, sesame seeds",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagels_avocado_bagel.jpeg',
       shop_id: irving.id
     },{
       name: 'Tuna Bagel',
       description: "Tuna, bagel",
       price: 9.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagels_tuna_bagle.jpeg',
       shop_id: irving.id
     },{
       name: 'Roast Beef Sandwich',
       description: "Roast beef, aruguala, mayo, tomato, bread",
       price: 10.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagles_roast_beef_sandwich.jpeg',
       shop_id: irving.id
     }
   ]
@@ -876,31 +877,31 @@ ActiveRecord::Base.transaction do
       name: 'Chicken Sandwich',
       description: "Chicken thigh grilled, white bread, aruguala, mayo, tomato",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_chicken_sandwich.jpeg',
       shop_id: hungry.id
     }, {
       name: 'Ham Sandwich',
       description: "Roasted ham, rye bread, lettus, swiss cheese, mayo",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_ham_sandwich.jpeg',
       shop_id: hungry.id
     }, {
       name: 'Pork Chop',
       description: "Glazed Pork, mashed potato, sweet sauce",
       price: 9.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_pork_chop.jpeg',
       shop_id: hungry.id
     }, {
       name: 'Roast Beef Sandwich',
       description: "Roast beef, aruguala, tomato, mayo, baguette",
       price: 10.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_roast_beef_sandwich.jpeg',
       shop_id: hungry.id
     }, {
       name: 'Salami Sandwich',
       description: "Salami, bread, mayo, aruguala",
       price: 11.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_salami_sandwich.jpeg',
       shop_id: hungry.id
     }
   ]
@@ -917,19 +918,19 @@ ActiveRecord::Base.transaction do
       name: 'Garden Salad',
       description: "Greens, tomato, egg, salad dressing",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/zen_garden_salad.jpeg',
       shop_id: zen.id
     },{
       name: 'Ham Sadnwich',
       description: "Ham, cheese, bread, mustard, aruguala",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/zen_ham_sandwich.jpeg',
       shop_id: zen.id
     },{
       name: 'Turkey Sandwich',
       description: "Turkey, bread, swiss cheese, mustard, aruguala",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/zen_turkey_sandwich.jpeg',
       shop_id: zen.id
     }
   ]
@@ -946,19 +947,19 @@ ActiveRecord::Base.transaction do
       name: 'Breakfast Burrito',
       description: "Eggs, Sausages, wrap, mexican sauce",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_taco_breakfast_burrito.jpeg',
       shop_id: yallahtaco.id
     },{
       name: 'Grilled Cheese Sandwich',
       description: "White bread, swiss cheese, american cheese, mozzarella cheese",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_taco_grilled_cheese_sandwich.jpeg',
       shop_id: yallahtaco.id
     },{
       name: 'Nachos',
       description: "Loaded nachos, melted cheese, blue cheese, sour cream, bacons, scallion",
       price: 9.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_taco_nachos.jpeg',
       shop_id: yallahtaco.id
     }
   ]
@@ -975,31 +976,31 @@ ActiveRecord::Base.transaction do
       name: 'Bacon Cheese Burger',
       description: "Beef patty, buns, lettus, tomato, onion, bacon, american cheese",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_bacon_burger.jpeg',
       shop_id: babysburger.id
     },{
       name: 'Fried Chicken Sandwich',
       description: "Fried chicken, bun, coleslaw, mayo",
       price: 8.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_fried_chicken_sandwich.jpeg',
       shop_id: babysburger.id
     },{
       name: 'Glazed Salmon',
       description: "Glazed Salmon, risotto, fish broth",
       price: 9.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_glazed_salmon.jpeg',
       shop_id: babysburger.id
     },{
       name: 'Spinach Salad',
       description: "Spinach, eggs, tomato, carrots, avocado, croutons",
       price: 10.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_spinach_salad.jpeg',
       shop_id: babysburger.id
     },{
       name: 'Vegi Sandwich',
       description: "Assorted vegitables, bread, tomato, mayo",
       price: 11.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_vegi_sandwich.jpeg',
       shop_id: babysburger.id
     }
   ]
@@ -1016,25 +1017,25 @@ ActiveRecord::Base.transaction do
       name: 'Chicken Ramen',
       description: "Chicken, wheat noodle, chicken broth, beansprouts, scaliions",
       price: 11.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_chicken_ramen.jpeg',
       shop_id: kook.id
     }, {
       name: '3 Dumplings',
       description: "Beef, vegitables, flour, soy sauce",
       price: 7.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_dumpling.jpeg',
       shop_id: kook.id
     }, {
       name: 'Orange Chicken',
       description: "Deep fried chicken, peppers, orange sauce",
       price: 11.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_orange_chicken.jpeg',
       shop_id: kook.id
     }, {
       name: 'Sushi Platter',
       description: "Assorted fish, rice, vinegrette, wasabi, seaweeds",
       price: 11.99,
-      image_url: '',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_sushi.jpeg',
       shop_id: kook.id
     }
   ]
