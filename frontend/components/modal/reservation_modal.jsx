@@ -60,6 +60,9 @@ class ReservationModal extends React.Component {
         pickupTimeId: parseInt(pickupTimeId)
       };
       let reservationResult = await createReservation(newReservation)
+      this.setState({
+        isPending: false
+      })  
       if (reservationResult.reservation) {
         openConfirmModal()
       } else {
@@ -71,8 +74,10 @@ class ReservationModal extends React.Component {
       let updatedReservation = Object.assign({}, currentReservation);
       updatedReservation.menuId = menu.id;
       updatedReservation.pickupTimeId = parseInt(pickupTimeId);
-      debugger
       let updateResult = await updateReservation(updatedReservation)
+      this.setState({
+        isPending: false
+      })  
       if (updateResult.reservation) {
         openConfirmModal()
       } else {
@@ -82,16 +87,15 @@ class ReservationModal extends React.Component {
     
     else if (action == 'cancel' && currentReservation){
       let cancellation = await deleteReservation(currentReservation.id)
+      this.setState({
+        isPending: false
+      })  
       if (cancellation.reservation) {
         openConfirmModal()
       } else {
         console.log(cancellation)
       }
     }
-
-    this.setState({
-      isPending: false
-    })
   };
 
   refundable(){
