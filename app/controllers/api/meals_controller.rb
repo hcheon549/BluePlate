@@ -6,7 +6,7 @@ class Api::MealsController < ApplicationController
 
       @meals = @school.meals
 
-      @shops = params[:bounds] ? Shop.in_bounds(bounds) : @school.shops
+      @shops = params[:bounds] ? Shop.in_bounds(bounds) : @school.shops.includes(:meals)
       shop_ids = @shops.map { |s| s.id }
 
       @meals = @meals.select { |meal| shop_ids.include?(meal.shop_id) }

@@ -4,13 +4,13 @@
 
 //from http://tobiasahlin.com/spinkit/
 
-.spinner {
+.bouncer {
   margin: 70px auto 70px;
   width: 70px;
   text-align: center;
 }
 
-.spinner > div {
+.bouncer > div {
   width: 18px;
   height: 18px;
   background-color: $main;
@@ -21,12 +21,12 @@
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
-.spinner .bounce1 {
+.bouncer .bounce1 {
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
 
-.spinner .bounce2 {
+.bouncer .bounce2 {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }

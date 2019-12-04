@@ -11,7 +11,7 @@ class Api::MenusController < ApplicationController
     end
 
     if @menus && @school
-      @shops = params[:bounds] ? Shop.in_bounds(bounds) : @school.shops
+      @shops = params[:bounds] ? Shop.includes(:meals).in_bounds(bounds) : @school.shops.includes(:meals)
       shop_ids = @shops.map{ |shop| shop.id }
 
       @menus = @menus.select{ |menu| shop_ids.include?(menu.meal.shop_id) }

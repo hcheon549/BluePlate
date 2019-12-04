@@ -45,17 +45,17 @@ export default class MarkerManager {
       .forEach(shopId => this.removeMarker(this.markers[shopId]));
   }
 
-  createMarker(shop, menu, animate = null) {
+  createMarker(shop, menu = {}, animate = null) {
     let contentString = `<div class="info-window">
 
         <img class="info-win-img" src="${menu.imageUrl}"/>
       
         <div class="info-win-desc">
           <div class="info-win-name">
-            ${menu.name.toUpperCase()}
+            ${menu.name}
           </div >
           <div class="info-win-name">
-            ${shop.name.toUpperCase()}
+            ${shop.name}
           </div >
           <div id="map-reserve" class="info-win-name info-win-reserve">
             RESERVE
