@@ -358,6 +358,9 @@ ActiveRecord::Base.transaction do
     #   longitude: -77.856529,
     #   school_id: pennState.id,
     # },
+  ###############################################
+  ######## PENN STATE REAL LIFE EXAMPLES ########
+  ###############################################
     {
       name: "The Tavern", ## check
       address: "220 E College Ave, State College, PA 16801",
@@ -663,6 +666,131 @@ ActiveRecord::Base.transaction do
   ###############################################
   
 
+  tommys = Shop.where(name: "Tommy's Asian Grill")
+  tommysmeal = [
+    {
+      name: 'Kalbi Platter',
+      description: "Short rib, soy sauce, sesame oil, scallion, rice",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tommys_asian_kalbi.jpeg',
+      shop_id:  tommys.id
+    }
+  ]
+
+  tommysmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts  "tommysmeal Meal Created"
+
+
+  unclechen = Shop.where(name: "Uncle Chen's")
+  unclemeal = [
+    {
+      name: 'Spicy Ramen',
+      description: "Ramen noodle, spicy pepper flakes, vegitable broth",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_spicy_ramen.jpeg',
+      shop_id:  uncle.id
+    }, {
+      name: 'Vegitable Noodle',
+      description: "Udon noodle, assorted vegitables",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_vegi_noodle.jpeg',
+      shop_id:  uncle.id
+    }
+  ]
+
+  unclemeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts  "unclemeal Meal Created"
+
+  doans = Shop.where(name: "Doan's Bones")
+  doansmeal = [
+    {
+      name: 'Salmon Burger with Fries',
+      description: "Salmon, bun, ketchup, french fries",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bone_salmon_burger.jpeg',
+      shop_id:  doans.id
+    }, {
+      name: 'Hamburger',
+      description: "Beef patty, american cheese, buns, lettus, tomato",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bone_hamburger.jpeg',
+      shop_id:  doans.id
+    }
+  ]
+
+  doansmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts  "doansmeal Meal Created"
+
+
+  bigbowl = Shop.where(name: "Big Bowl Noodle House")
+  bigbowlmeal = [
+    {
+      name: 'Shrimp Ramen',
+      description: "Shrimp, vegitables, ramen noodle, seafood broth",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_shrimp_ramen.jpeg',
+      shop_id: bigbowl.id
+    }, {
+      name: 'Tonkotsu Ramen',
+      description: "Grilled pork belly, pork broth, ramen noodle, vegitables",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_tonkotsu_ramen.jpeg',
+      shop_id: bigbowl.id
+    }, {
+      name: 'Yakisoba',
+      description: "Stir fried udon noodle, vegitables, soy sauce, chicken",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_yakisoba.jpeg',
+      shop_id: bigbowl.id
+    }
+  ]
+
+  bigbowlmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "bigbowlmeal Meal Created"
+
+
+  chick2 = Shop.where(name: "Chick2")
+  chick2meal = [
+    {
+      name: 'Chicken Tender with Chips',
+      description: "Fried chicken breast, potato chips, mustard sacue",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chipss.jpeg',
+      shop_id: chick2.id
+    }, {
+      name: 'Fried Chicken Sandwich with Fries',
+      description: "Fried chicken breast, bun, coleslaw, french fries",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_fried_chicken_fries.jpeg',
+      shop_id: chick2.id
+    }, {
+      name: 'Chicken Nuggets with Fries',
+      description: "Chicken nuggets 4 peices, french fries, ketchup",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_nuggets.jpeg',
+      shop_id: chick2.id
+    }
+  ]
+
+  chick2meal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "chick2meal Meal Created"
+
+
   chopstick = Shop.where(name: "Chopstick Express")
   chopstickMeals = [
     {
@@ -809,6 +937,35 @@ ActiveRecord::Base.transaction do
   end
 
   puts "irvingmeal Meal Created"
+
+  crust = Shop.where(name: "Bagel Crust")
+  crustmeal = [
+    {
+      name: 'Bagel with Cream Cheese',
+      description: "Bagel, toasted with cream cheese",
+      price: 7.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/bagel_crust_bagel_creamcheese.jpeg',
+      shop_id: crust.id
+    },{
+      name: 'Loaded Bagel',
+      description: "Bagel, loaded meat, vegitables, cream cheese",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/bagel_crust_loaded_bagel.jpeg',
+      shop_id: crust.id
+    },{
+      name: 'Mexican Bagel',
+      description: "Bagel, guacamole, sour cream, tomato, pico de gallo",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/bagel_crust_mexican_bagel.jpeg',
+      shop_id: crust.id
+    }
+  ]
+
+  crustmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "crustmeal Meal Created"
 
   hungry = Shop.where(name: "Are U Hungry")
   hungrymeal = [
@@ -973,14 +1130,386 @@ ActiveRecord::Base.transaction do
 
   puts "kookmeal Meal Created"
 
+  deliz = Shop.where(name: "Deli and Z Bar")
+  delizmeal = [
+    {
+      name: 'Sandwich with French Fries',
+      description: "Bread, beef, lettus, tomato, onion, potato fries, ketchup",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_sandwich_fries.jpeg',
+      shop_id: deliz.id
+    },{
+      name: 'Turkey Bacon Sandwich',
+      description: "Turkey, bacon, bread, lettus, tomato, onion, mayo",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_turkey_bacon_sandwich.jpeg',
+      shop_id: deliz.id
+    }
+  ]
+
+  delizmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "delizmeal Meal Created"
+
+  jimmy = Shop.where(name: "Jimmy John's")
+  jimmymeal = [
+    {
+      name: 'Chicken Sandwich with Fries',
+      description: "Chicken, breading, coleslaw, potato fries, bread",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/jimmy_johns_chicken_sandwich_fries.jpeg',
+      shop_id: jimmy.id
+    },{
+      name: 'Turkey Sandwich',
+      description: "Turkey, bread, lettus, tomato, onion, mayo",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/jimmy_johns_turkey_sandwich.jpeg',
+      shop_id: jimmy.id
+    }
+  ]
+  jimmymeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "jimmymeal Meal Created"
+
+
+  joes = Shop.where(name: "John's Shanghai")
+  joesmeal = [
+    {
+      name: 'Beef Roll',
+      description: "Beef, flour wrap, lettus, dressing",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/joes_shanghai_beef_roll.jpeg',
+      shop_id: joes.id
+    },{
+      name: 'Seafood Noodle Soup',
+      description: "Assorted seafood, soup, vegitables, onions, peppers",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/joes_shanghai_seafood_noodle_soup.jpeg',
+      shop_id: joes.id
+    }
+  ]
+  joesmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "joesmeal Meal Created"
+
+  kaarma = Shop.where(name: "Kaarma Indian Cuisine")
+  kaarmameal = [
+    {
+      name: 'Chicken Satay',
+      description: "Chicken, curry seasoning, grilled",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/kaarma_indian_chicken_satay.jpeg',
+      shop_id: kaarma.id
+    },{
+      name: 'Curry',
+      description: "Curry powder, rice, vegitable broth",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/kaarma_indian_curry.jpeg',
+      shop_id: kaarma.id
+    }
+  ]
+
+  kaarmameal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "kaarmameal Meal Created"
+
+  koreantable = Shop.where(name: "Korean Table")
+  koreantablemeal = [
+    {
+      name: 'Beef Bibimbab',
+      description: "Beef, assorted vegitables, gochujang, rice, sesame oil",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/korean_table_beef_bibimbop.jpeg',
+      shop_id: koreantable.id
+    },{
+      name: 'Pork Bibimbab',
+      description: "Pork, assorted vegitables, gochujang, rice, sesame oil",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/korean_table_pork_bibimbop.jpeg',
+      shop_id: koreantable.id
+    }
+  ]
+
+  koreantablemeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "koreantablemeal Meal Created"
+
+
+  latinofood = Shop.where(name: "Latinos Food")
+  latinofoodmeal = [
+    {
+      name: 'Loaded Nachos',
+      description: "Nachos, cheese, sour cream, beef, bacon, grilled onions",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/latino_food_loaded_nachos.jpeg',
+      shop_id: latinofood.id
+    },{
+      name: '3 Tacos',
+      description: "Carne asada, chicken, al pastor",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/latino_food_tacos.jpeg',
+      shop_id: latinofood.id
+    }
+  ]
+
+  latinofoodmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "latinofoodmeal Meal Created"
+
+  osaka = Shop.where(name: "Osaka")
+  osakameal = [
+    {
+      name: 'Karaage Don',
+      description: "Fried chicken, rice, soy sauce, vegitables",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/osaka_karaage_don.jpeg',
+      shop_id: osaka.id
+    },{
+      name: 'Spicy Pork Don',
+      description: "Spicy pork, rice, gochujang, vegitables, kimchi",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/osaka_spicy_pork_don.jpeg',
+      shop_id: osaka.id
+    }
+  ]
+
+  osakameal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "osakameal Meal Created"
+
+  pizzamia = Shop.where(name: "Pizza Mia")
+  pizzamiameal = [
+    {
+      name: 'Salad',
+      description: "Greens, chicken, avocado",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/pizza_mia_salad.jpeg',
+      shop_id: pizzamia.id
+    },{
+      name: 'Vegitable Sandwich',
+      description: "Vegitables, mayo, bread toasted",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/pizza_mia_vegi_sandwich.jpeg',
+      shop_id: pizzamia.id
+    }
+  ]
+
+  pizzamiameal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "pizzamiameal Meal Created"
+
+  primimanti = Shop.where(name: "Primanti Bros")
+  primimantimeal = [
+    {
+      name: 'Salad',
+      description: "Greens, chicken, avocado",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/primimanti_bros_bolognese.jpeg',
+      shop_id: primimanti.id
+    }
+  ]
+
+  primimantimeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "primimantimeal Meal Created"
+
+  queenstown = Shop.where(name: "Queenstown Restaurant")
+  queenstownmeal = [
+    {
+      name: 'Pork Chop',
+      description: "Pork, amazing sauce, grilled, mashed potato",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_pork_chop.jpeg',
+      shop_id: queenstown.id
+    },{
+      name: 'Roast Beef Sandwich',
+      description: "Roast beef, bread, mustard, lettus, tomato, red onion",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg',
+      shop_id: queenstown.id
+    }
+  ]
+
+  queenstownmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "queenstownmeal Meal Created"
+
+  saddies = Shop.where(name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches")
+  saddiesmeal = [
+    {
+      name: 'Two Waffle',
+      description: "Waffle, syrup, strawberries",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_two_waffles.jpeg',
+      shop_id: saddies.id
+    },{
+      name: 'Waffle Chicken',
+      description: "Fried chicken, waffles, syrup, butter",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_roast_beef_sandwich.jpeg',
+      shop_id: saddies.id
+    }
+  ]
+
+  saddiesmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "saddiesmeal Meal Created"
+
+  tadashi = Shop.where(name: "Tadashi Japanese Restaurant")
+  tadashimeal = [
+    {
+      name: 'Salmon Roll',
+      description: "Salmon, seaweed, rice, vinegrette",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tadashi_salmon_roll.jpeg',
+      shop_id: tadashi.id
+    },{
+      name: 'Sushi Platter',
+      description: "Assorted fish, rice",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tadashi_sushi_platter.jpeg',
+      shop_id: tadashi.id
+    }
+  ]
+
+  tadashimeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "tadashimeal Meal Created"
+
+
+  tavern = Shop.where(name: "The Tavern")
+  tavernmeal = [
+    {
+      name: 'Supreme Pasta',
+      description: "Shrimp, squid, spaghetti, tomato sauce, onion",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tavern_supreme_pasta.jpeg',
+      shop_id: tavern.id
+    },{
+      name: 'Beef Ragu',
+      description: "Short rib, tomato sauce, linguini",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tavern_beef_ragu.jpeg',
+      shop_id: tavern.id
+    }
+  ]
+
+  tavernmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "tavernmeal Meal Created"
+
+
+  waffle = Shop.where(name: "The Waffle Shop")
+  wafflemeal = [
+    {
+      name: 'Four Waffles',
+      description: "Waffles, strawberries, syrup",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_waffle_four_waffles.jpeg',
+      shop_id: waffle.id
+    },{
+      name: 'Waffle Mac Fries',
+      description: "Beef patties, cheese, bread lettus, tomato, french fries",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_waffle_waffle_mac_fries.jpeg',
+      shop_id: waffle.id
+    }
+  ]
+
+  wafflemeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "wafflemeal Meal Created"
+
+  yallahb = Shop.where(name: "Yallah Burrito")
+  yallahbmeal = [
+    {
+      name: 'Beef Tacos',
+      description: "Beef, Tortilla, onions, cilantros",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_burrito_beef_taco.jpeg',
+      shop_id: yallahb.id
+    },{
+      name: 'Four Tacoss',
+      description: "Beef, al pastor, chicken, vegi tacos",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_burrito_four_tacos.jpeg',
+      shop_id: yallahb.id
+    }
+  ]
+
+  yallahbmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "yallahbmeal Meal Created"
+
+  yum = Shop.where(name: "Yum Cafe")
+  yummeal = [
+    {
+      name: 'Carbonara',
+      description: "Spaghetti, eggs, cheese, bacon",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yum_cafe_carbonara.jpeg',
+      shop_id: yum.id
+    },{
+      name: 'Curliflower Delight',
+      description: "Curliflowers, spaghetti, heavy cream, cheese",
+      price: 15.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yum_cafe_curliflower_delight.jpeg',
+      shop_id: yum.id
+    }
+  ]
+
+  yummeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "yummeal Meal Created"
+
 end
 
 ActiveRecord::Base.transaction do
   Menu.destroy_all
+  
+  today = Date.today
+  tomorrow = Date.today + 1
+  day3 = Date.today + 2
+  day4 = Date.today + 3
+  day5 = Date.today + 4
+  day6 = Date.today + 5
+  day7 = Date.today + 6
+  week = [today, tomorrow, day3, day4, day5, day6, day7]
 
   # Today's LUNCH menu
   meals_for_today_lunch = Meal.where(name: "Burger with Fries")
-  today = Date.today
 
   meals_for_today_lunch.each do |meal|
     Menu.create!({meal_id: meal.id, offered_date: today, lunch: true, dinner: false})
@@ -999,13 +1528,37 @@ ActiveRecord::Base.transaction do
 
   # Tomorrow's menu
   meals_for_tomorrow = Meal.where(name: "Pizza")
-  tomorrow = Date.today + 1
 
   meals_for_tomorrow.each do |meal|
     Menu.create!({meal_id: meal.id, offered_date: tomorrow})
   end
 
   puts "Menu for TOMORROW created"
+
+  ###############################################
+  ######## PENN STATE REAL LIFE EXAMPLES ########
+  ###############################################
+
+  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  pennShops = Shop.where(school_id: pennState.id)
+
+  lunch_count = 0
+  dinner_count = 0
+
+  pennShop.each do |shop|
+    week.each do |day|
+      sample_lunch_meal = shop.meals.sample
+      sample_dinner_meal = shop.meals.sample
+      Menu.create!(meal_id: sample_lunch_meal.id, offer_date: day, lunch: true, dinner: false)
+      Menu.create!(meal_id: sample_dinner_meal.id, offer_date: day, lunch: false, dinner: true)
+      lunch_count += 1
+      dinner_count += 1
+    end
+  end
+
+  puts lunch_count + " lunch menus in Penn State created"
+  puts dinner_count + " dinner menus in Penn State created"
+
 end
 
 ActiveRecord::Base.transaction do
