@@ -51,7 +51,7 @@ class LandingMap extends React.Component {
               />
             </div>
           </div>
-          <Link className="full-list"to="/users/signup">See Full List</Link>
+          <Link className="full-list miniText"to="/all-restaurants">See Full List</Link>
 
           <div className="map">
             {this.state.schoolId && <MealMap
