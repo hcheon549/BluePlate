@@ -359,7 +359,7 @@ ActiveRecord::Base.transaction do
     #   school_id: pennState.id,
     # },
     {
-      name: "The Tavern",
+      name: "The Tavern", ## check
       address: "220 E College Ave, State College, PA 16801",
       latitude: 40.795540,
       longitude: -77.860020,
@@ -371,7 +371,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.860420,
       school_id: pennState.id,
     },{
-      name: "Queenstown Restaurant", 
+      name: "Queenstown Restaurant", ##
       address: "142 E College Ave, State College, PA 16801",
       latitude: 40.795140,
       longitude: -77.856529,
@@ -383,7 +383,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.860558,
       school_id: pennState.id,
     },{
-      name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches", 
+      name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches", ##
       address: "118 S Pugh St, State College, PA 16801",
       latitude: 40.794900,
       longitude: -77.860100,
@@ -393,12 +393,6 @@ ActiveRecord::Base.transaction do
       address: "110 E College Ave #4816, State College, PA 16801",
       latitude: 40.794560,
       longitude: -77.861210,
-      school_id: pennState.id,
-    },{
-      name: "Underground", 
-      address: "218 E Calder Way, State College, PA 16801",
-      latitude: 40.795140,
-      longitude: -77.859360,
       school_id: pennState.id,
     },{
       name: "Yallah Taco",  ###check
@@ -413,26 +407,20 @@ ActiveRecord::Base.transaction do
       longitude: -77.859080,
       school_id: pennState.id,
     },{
-      name: "College Pizza", 
-      address: "128 Locust Ln, State College, PA 16801",
-      latitude: 40.795900,
-      longitude: -77.857910,
-      school_id: pennState.id,
-    },{
       name: "The Koop", #### check
       address: "129 Locust Ln, State College, PA 16801",
       latitude: 40.796100,
       longitude: -77.857760,
       school_id: pennState.id,
     },{
-      name: "Latinos Food", 
+      name: "Latinos Food", ## check
       address: "324 E Calder Way, State College, PA 16801",
       latitude: 40.796680,
       longitude: -77.857450,
       school_id: pennState.id,
     },
     {
-      name: "Primanti Bros.",
+      name: "Primanti Bros.", ##
       address: "130 Heister St, State College, PA 16801",
       latitude: 40.796700,
       longitude: -77.856880,
@@ -444,7 +432,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.857310,
       school_id: pennState.id,
     },{
-      name: "Yum Cafe", 
+      name: "Yum Cafe",  ### check
       address: "320 E Calder Way, State College, PA 16801",
       latitude: 40.796630,
       longitude: -77.857510,
@@ -456,25 +444,19 @@ ActiveRecord::Base.transaction do
       longitude: -77.856930,
       school_id: pennState.id,
     },{
-      name: "Deli and Z Bar", #####
+      name: "Deli and Z Bar", ## check
       address: "113 Heister St, State College, PA 16801",
       latitude: 40.797250,
       longitude: -77.857090,
       school_id: pennState.id,
     },{
-      name: "Baby's Burgers and Shakes", ##### Check
+      name: "Baby's Burgers and Shakes", ### Check
       address: "131 S Garner St, State College, PA 16801",
       latitude: 40.797580,
       longitude: -77.856270,
       school_id: pennState.id,
     },{
-      name: "Happy Buns",
-      address: "426 E College Ave, State College, PA 16801",
-      latitude: 40.798130,
-      longitude: -77.856510,
-      school_id: pennState.id,
-    },{
-      name: "Jimmy John's",
+      name: "Jimmy John's", ## check
       address: "434 E College Ave, State College, PA 16801",
       latitude: 40.798340,
       longitude: -77.856170,
@@ -498,16 +480,10 @@ ActiveRecord::Base.transaction do
       longitude: -77.855530,
       school_id: pennState.id,
     },{
-      name: "Yallah Burrito",
+      name: "Yallah Burrito", ## check
       address: "404 E Calder Way, State College, PA 16801",
       latitude: 40.797510,
       longitude: -77.855860,
-      school_id: pennState.id,
-    },{
-      name: "D. P. Dough", ##### yum cafe
-      address: "401 E Beaver Ave, State College, PA 16801",
-      latitude: 40.797140,
-      longitude: -77.855640,
       school_id: pennState.id,
     },{
       name: "Uncle Chen's",  #### check
@@ -522,46 +498,22 @@ ActiveRecord::Base.transaction do
       longitude: -77.855080,
       school_id: pennState.id,
     },{
-      name: "Beijing Restaurant",
-      address: "452 E College Ave, State College, PA 16801",
-      latitude: 40.798740,
-      longitude: -77.855610,
-      school_id: pennState.id,
-    },{
-      name: "Osaka",
+      name: "Osaka", ##
       address: "450 E College Ave, State College, PA 16801",
       latitude: 40.798830,
       longitude: -77.855600,
       school_id: pennState.id,
     },{
-      name: "Galanga by Cozy Thai", #####uncle chens
-      address: "454 E College Ave, State College, PA 16801",
-      latitude: 40.798890,
-      longitude: -77.855490,
-      school_id: pennState.id,
-    },{
-      name: "Pizza Mia",
+      name: "Pizza Mia", ##
       address: "114 Hetzel St, State College, PA 16801",
       latitude: 40.799030,
       longitude: -77.854700,
       school_id: pennState.id,
     },{
-      name: "Playa Bowl",
-      address: "482 E Calder Way, State College, PA 16801",
-      latitude: 40.798770,
-      longitude: -77.854350,
-      school_id: pennState.id,
-    },{
-      name: "Kaarma Indian Cuisine",
+      name: "Kaarma Indian Cuisine", ##
       address: "120 E Beaver Ave, State College, PA 16801",
       latitude: 40.793700,
       longitude: -77.859500,
-      school_id: pennState.id,
-    },{
-      name: "Mad Mex", ###
-      address: "240 S Pugh St, State College, PA 16801",
-      latitude: 40.793640,
-      longitude: -77.858710,
       school_id: pennState.id,
     },{
       name: "Gumby's Pizza", #### Check
@@ -570,19 +522,13 @@ ActiveRecord::Base.transaction do
       longitude: -77.857190,
       school_id: pennState.id,
     },{
-      name: "Korean Table",
+      name: "Korean Table", ##
       address: "310 S Allen St, State College, PA 16801",
       latitude: 40.791930,
       longitude: -77.858500,
       school_id: pennState.id,
     },{
-      name: "Cozy Thai Bistro",
-      address: "232 S Allen St, State College, PA 16801",
-      latitude: 40.792710,
-      longitude: -77.859510,
-      school_id: pennState.id,
-    },{
-      name: "John's Shanghai",
+      name: "John's Shanghai", ##
       address: "312 W Beaver Ave, State College, PA 16801",
       latitude: 40.791060,
       longitude: -77.862930,
@@ -594,16 +540,10 @@ ActiveRecord::Base.transaction do
       longitude: -77.864070,
       school_id: pennState.id,
     },{
-      name: "Tadashi Japanese Restaurant",
+      name: "Tadashi Japanese Restaurant", ##
       address: "206 W College Ave, State College, PA 16801",
       latitude: 40.793220,
       longitude: -77.862680,
-      school_id: pennState.id,
-    },{
-      name: "Little Szechuan",
-      address: "228 W College Ave, State College, PA 16801",
-      latitude: 40.792720,
-      longitude: -77.863300,
       school_id: pennState.id,
     }
   ]
@@ -615,7 +555,7 @@ ActiveRecord::Base.transaction do
   puts "Shops created"
 end
 
-# https://source.unsplash.com/collection/9012004/480x480/?sig=1/
+# https://source.unsplash.com/collection/9011946/480x480/?sig=1/
 
 ActiveRecord::Base.transaction do
   Meal.destroy_all
@@ -743,18 +683,6 @@ ActiveRecord::Base.transaction do
       price: 9.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_pad_thai.jpeg',
       shop_id: chopstick.id
-    }, {
-      name: '2 Salmon Rolls',
-      description: "Salmon, rice, vinegrette, seaweed, sesame seeds",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_salmon_roll.jpeg',
-      shop_id: chopstick.id
-    }, {
-      name: 'Sushi Platter',
-      description: "Assorted fish (raw), rice, vinegrette, sesame seeds, wasabi",
-      price: 12.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_sushi_platter.jpeg',
-      shop_id: chopstick.id
     }
   ]
 
@@ -764,6 +692,29 @@ ActiveRecord::Base.transaction do
 
   puts "chopstickMeals Meal Created"
 
+
+  tadashi = Shop.where(name: )
+  tadashimeals = [
+    {
+      name: '2 Salmon Rolls',
+      description: "Salmon, rice, vinegrette, seaweed, sesame seeds",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tadashi_salmon_roll.jpeg',
+      shop_id: tadashi.id
+    }, {
+      name: 'Sushi Platter',
+      description: "Assorted fish (raw), rice, vinegrette, sesame seeds, wasabi",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tadashi_sushi_platter.jpeg',
+      shop_id: tadashi.id
+    }
+  ]
+
+  tadashimeals.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts 'tadashimeals created'
 
   gumbys = Shop.where(name: "Gumby's Pizza")
   gumbysmeal = [
@@ -813,18 +764,6 @@ ActiveRecord::Base.transaction do
       description: "Chicken, curry powder, chicken broth",
       price: 8.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_curry.jpeg',
-      shop_id: india.id
-    },{
-      name: '3 Chicken Satay',
-      description: "Chicken breast, chicken thigh, curry power, grilled",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_satay.jpeg',
-      shop_id: india.id
-    },{
-      name: 'Curry',
-      description: "Curry powder, begitable broth",
-      price: 7.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_curry.jpeg',
       shop_id: india.id
     }
   ]
@@ -884,18 +823,6 @@ ActiveRecord::Base.transaction do
       description: "Roasted ham, rye bread, lettus, swiss cheese, mayo",
       price: 8.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_ham_sandwich.jpeg',
-      shop_id: hungry.id
-    }, {
-      name: 'Pork Chop',
-      description: "Glazed Pork, mashed potato, sweet sauce",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_pork_chop.jpeg',
-      shop_id: hungry.id
-    }, {
-      name: 'Roast Beef Sandwich',
-      description: "Roast beef, aruguala, tomato, mayo, baguette",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_roast_beef_sandwich.jpeg',
       shop_id: hungry.id
     }, {
       name: 'Salami Sandwich',
