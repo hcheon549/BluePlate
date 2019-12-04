@@ -47,47 +47,6 @@ class MealIndexItem extends React.Component {
     )
   }
 
-  // async handleReserve() {
-  //   let { menu, currentUser, updateReservation, createReservation, openConfirmModal, activeTab, todayReservations } = this.props;
-  //   let { pickupTimeId } = this.state
-  //   let hasReservations = Object.values(todayReservations[activeTab]).length !== 0;
-
-  //   this.setState({
-  //     isPending: true,
-  //   })
-
-  //   window.scrollTo(0, 0);
-
-  //   if (hasReservations) {
-  //     let updatedReservation = Object.assign({}, todayReservations[activeTab]);
-  //     updatedReservation.menuId = menu.id;
-  //     updatedReservation.pickupTimeId = parseInt(pickupTimeId);
-  
-  //     let updateResult = await updateReservation(updatedReservation)
-  //     if (updateResult.reservation) {
-  //       openConfirmModal()
-  //     } else {
-  //       console.log(updateResult)
-  //     }
-  //   } else {
-  //     let newReservation = {
-  //       userId: currentUser.id,
-  //       menuId: menu.id,
-  //       pickupTimeId: parseInt(pickupTimeId)
-  //     };
-  //     let reservationResult = await createReservation(newReservation)
-  //     if (reservationResult.reservation) {
-  //       openConfirmModal()
-  //     } else {
-  //       console.log(reservationResult)
-  //     }
-  //   }
-  //   this.setState({
-  //     isPending: false
-  //   })
-  // };
-  
-
   render() {
     let { menu, shop, pickupTime, activeTab, todayReservations } = this.props;
     let { isPending, pickupTimeId } = this.state;

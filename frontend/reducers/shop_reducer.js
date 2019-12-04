@@ -4,6 +4,10 @@ import {
   RECEIVE_MENU_ERRORS
 } from '../actions/menu_actions';
 
+import {
+  RECEIVE_ALL_SHOPS
+} from '../actions/meal_actions';
+
 const shopReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
@@ -12,6 +16,8 @@ const shopReducer = (oldState = {}, action) => {
       return shops;
     case RECEIVE_SEARCH_MENUS:
       return action.payload.shops;
+    case RECEIVE_ALL_SHOPS:
+      return action.shops
     case RECEIVE_MENU_ERRORS:
       return [];
     default:
