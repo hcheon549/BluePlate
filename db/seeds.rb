@@ -377,7 +377,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.856529,
       school_id: pennState.id,
     },{
-      name: "Chick2", #####
+      name: "Chick2", ##### check
       address: "128 E College Ave, State College, PA 16801",
       latitude: 40.794811,
       longitude: -77.860558,
@@ -438,7 +438,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.856880,
       school_id: pennState.id,
     },{
-      name: "Bagel Crust", #####
+      name: "Bagel Crust", ### check
       address: "332 E Calder Way, State College, PA 16801",
       latitude: 40.796780,
       longitude: -77.857310,
@@ -450,7 +450,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.857510,
       school_id: pennState.id,
     },{
-      name: "The Waffle Shop", 
+      name: "The Waffle Shop", # wip
       address: "364 E College Ave, State College, PA 16801",
       latitude: 40.797700,
       longitude: -77.856930,
@@ -486,7 +486,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.856480,
       school_id: pennState.id,
     },{
-      name: "Tommy's Asian Grill",
+      name: "Tommy's Asian Grill", # wip
       address: "432 E College Ave, State College, PA 16801",
       latitude: 40.798040,
       longitude: -77.856290,
@@ -510,7 +510,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.855640,
       school_id: pennState.id,
     },{
-      name: "Uncle Chen's", 
+      name: "Uncle Chen's",  #### check
       address: "430 E Calder Way, State College, PA 16801",
       latitude: 40.797610,
       longitude: -77.855170,
@@ -588,7 +588,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.862930,
       school_id: pennState.id,
     },{
-      name: "Doan's Bones",
+      name: "Doan's Bones", ## check
       address: "401 W Beaver Ave, State College, PA 16801",
       latitude: 40.790780,
       longitude: -77.864070,
@@ -615,7 +615,7 @@ ActiveRecord::Base.transaction do
   puts "Shops created"
 end
 
-# https://source.unsplash.com/collection/8746283/480x480/?sig=1/
+# https://source.unsplash.com/collection/9012004/480x480/?sig=1/
 
 ActiveRecord::Base.transaction do
   Meal.destroy_all
