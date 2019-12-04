@@ -7,6 +7,7 @@ import { fetchSchools } from '../../actions/school_actions';
 
 import LoadingIcon from "../meal/loading_icon";
 import SchoolDropdown from '../landing/SchoolDropdown';
+import ImageSlider from "./ImageSlider";
 
 class AllMeals extends Component{
   constructor(props){
@@ -52,13 +53,16 @@ class AllMeals extends Component{
 
   render(){
     let shops = this.props.shops.map((shop, idx) => {
-      let imageUrl = shop.meals[0].imageUrl
+      var meal = shop.meals[Math.floor(Math.random()*(shop.meals.length))];
+      let imageUrl = meal.imageUrl
       return (
         <div className="meal-box" key={idx} style={{margin: '20px'}}>
           <img alt="" src={imageUrl} />
+          {/* <ImageSlider meals={shop.meals} /> */}
           <div className="meal-box-description">
-            <li className="tbd-item meal-name">{shop.name}</li>
-            <li className="tbd-item shop-name">{shop.address}</li>
+          <li className="tbd-item meal-name">{meal.name}</li>
+          <li className="tbd-item shop-name">{shop.name}</li>
+          <li className="tbd-item shop-address">{shop.address}</li>
           </div>
         </div>
       )
