@@ -1501,12 +1501,12 @@ ActiveRecord::Base.transaction do
   
   today = Date.today
   tomorrow = Date.today + 1
-  day3 = Date.today + 2
-  day4 = Date.today + 3
-  day5 = Date.today + 4
-  day6 = Date.today + 5
-  day7 = Date.today + 6
-  week = [today, tomorrow, day3, day4, day5, day6, day7]
+
+  week = []
+  7.times do |count|
+    week << today
+    today += 1
+  end
 
   # Today's LUNCH menu
   meals_for_today_lunch = Meal.where(name: "Burger with Fries")
@@ -1559,19 +1559,6 @@ ActiveRecord::Base.transaction do
   puts lunch_count + " lunch menus in Penn State created"
   puts dinner_count + " dinner menus in Penn State created"
 
-end
-
-ActiveRecord::Base.transaction do
-  Favorite.destroy_all
-  rutgers = User.find_by(email: 'rutgers@gmail.com')
-  shops = Shop.all
-
-  shops.each do |s|
-    if (rand(1..10) < 4)
-      Favorite.create!({shop_id: s.id, user_id: rutgers.id})
-    end
-  end
-  puts "Favorites created"
 end
 
 ActiveRecord::Base.transaction do
