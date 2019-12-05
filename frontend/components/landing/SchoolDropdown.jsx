@@ -8,18 +8,27 @@ class SchoolDropdown extends React.Component{
 
   markDropdown(){
     const { schools } = this.props;
-    return Object.values(schools).map((school, idx) => <option className="schoolList" value={school.id} key={idx}>{school.name}</option>)
+    return Object.values(schools).map((school, idx) => (
+      <option className="schoolList" value={school.id} key={idx}>
+        {school.name}
+      </option>)
+    )
   }
 
   render() {
-    const { schools, nextAction } = this.props;
+    const { schools, nextAction, schoolId } = this.props;
 
     if (schools && schools.length === 0) {
       return (<div></div>);
     }
 
     return(
-        <select className="schoolDropdown" id="dropdown-button" onChange={nextAction}>
+        <select
+          className="schoolDropdown"
+          id="dropdown-button"
+          defaultValue={schoolId}
+          onChange={nextAction}
+        >
           {this.markDropdown()}
         </select>
     );

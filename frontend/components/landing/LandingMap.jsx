@@ -12,23 +12,32 @@ class LandingMap extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      schoolId: (Object.values(this.props.schools).length > 0 ? Object.values(this.props.schools)[0].id : null)
+      schoolId: (this.props.currentUser.schoolId || (Object.values(this.props.schools).length > 0 ? Object.values(this.props.schools)[0].id : null))
     }
     this.update = this.update.bind(this);
   }
 
   componentDidMount(){
-    // CHECK N+1 QUERY HERE
     if (this.state.schoolId){
       this.props.fetchMenus(this.state.schoolId)
     }
   }
 
-  async update(e){
-    await this.props.fetchMenus(e.target.value)
-    this.setState({
-        schoolId: e.target.value
+  async componentDidUpdate(prevProps, prevState){
+    if (prevProps.schools == null && Object.values(this.props.schools)[0]){
+      this.setState({
+        schoolId: Object.values(this.props.schools)[0].id
       })
+    }
+    if ((!prevState.schoolId && this.state.schoolId) || (prevState.schoolId !== this.state.schoolId)){
+      await this.props.fetchMenus(this.state.schoolId)
+    }
+  }
+
+  update(e){
+    this.setState({
+      schoolId: e.target.value
+    })
   }
 
   render(){
@@ -48,6 +57,7 @@ class LandingMap extends React.Component {
               <SchoolDropdown
                 schools={schools}
                 nextAction={this.update}
+                schoolId={this.state.schoolId}
               />
             </div>
           </div>
@@ -66,7 +76,10 @@ class LandingMap extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {}
+  console.log(state.entities.currentUser)
+  return {
+    currentUser: state.entities.currentUser
+  }
 };
 
 const mapDispatchToProps = dispatch => {

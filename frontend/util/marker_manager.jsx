@@ -122,26 +122,3 @@ export default class MarkerManager {
       this.highlight = shopId;
     }
   }
-
-  // drop(shops, menus) {
-  //   this.clearMarkers();
-  //   for (let i = 0; i < shops.length; i++) {
-  //     this.addMarkerWithTimeout(shops[i], menus[shops[i].id], i * 25);
-  //   }
-  // }
-
-  // addMarkerWithTimeout(shop, menu, timeout) {
-  //   window.setTimeout(() => {
-  //     this.createMarker(shop, menu, google.maps.Animation.DROP)
-
-  //   }, timeout);
-  // }
-
-  // clearMarkers() {
-  //   let keys = Object.keys(this.markers);
-  //   keys.forEach((k) => {
-  //     this.markers[k].setMap(null);
-  //   });
-  //   this.markers = {};
-  // }
-}
