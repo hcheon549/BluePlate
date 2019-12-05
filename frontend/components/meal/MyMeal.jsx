@@ -115,7 +115,10 @@ class MyMeal extends React.Component {
             <div ref="arrowRight" className="arrow arrow-right" />
           </div>
           <div className="map-container">
-            <MealMap />
+            <MealMap
+              {...this.props}
+              activeTab={this.state.activeTab}
+            />
           </div>
         </div>
       </div>

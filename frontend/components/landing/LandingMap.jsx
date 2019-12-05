@@ -66,7 +66,7 @@ class LandingMap extends React.Component {
           <div className="map">
             {this.state.schoolId && <MealMap
               landing={true}
-              school={this.state.schoolId}
+              school={schools[this.state.schoolId]}
               />}
           </div>
         </div>

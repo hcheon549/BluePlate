@@ -899,7 +899,7 @@ ActiveRecord::Base.transaction do
       name: 'Tuna Bagel',
       description: "Tuna, bagel",
       price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagels_tuna_bagle.jpeg',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagels_tuna_bagel.jpeg',
       shop_id: irving.id
     },{
       name: 'Roast Beef Sandwich',

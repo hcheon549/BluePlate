@@ -17,7 +17,6 @@ class MealIndexItem extends React.Component {
     this.update = this.update.bind(this);
     this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    // this.handleReserve = this.handleReserve.bind(this);
   }
 
   update(type) {

@@ -11,21 +11,15 @@ import MarkerManager from "../../util/marker_manager";
 
 const google = window.google;
 
-// const getCoordsObj = latLng => ({
-//   lat: latLng.lat(),
-//   lng: latLng.lng()
-// });
-
 class MealMap extends React.Component {
   constructor(props) {
     super(props);
-
     this.updateBounds = this.updateBounds.bind(this);
 
     this.mapOptions = {
       center: {
-        lat: this.props.enrolledSchool.latitude,
-        lng: this.props.enrolledSchool.longitude
+        lat: this.props.landing ? this.props.school.latitude : this.props.enrolledSchool.latitude,
+        lng: this.props.landing ? this.props.school.longitude : this.props.enrolledSchool.longitude
       },
       zoom: 15,
       clickableIcons: false,
@@ -48,9 +42,9 @@ class MealMap extends React.Component {
       this.props.openReserveModal
     );
 
-    // this.MarkerManager.drop(this.props.shops, this.props.menus);
     this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
 
+    // Not updating the shops when the map moves on the Landing Page
     if (!this.props.landing){this.registerListeners();}
   }
 
@@ -84,6 +78,16 @@ class MealMap extends React.Component {
 
       this.props.changeFilter("center", false);
     }
+
+    if (this.props.landing) {
+      let latLng = new google.maps.LatLng(
+        this.props.school.latitude,
+        this.props.school.longitude
+      );
+
+      this.map.setCenter(latLng);
+      this.map.setZoom(15);
+    }
   }
 
   updateBounds() {
@@ -110,6 +114,7 @@ class MealMap extends React.Component {
   }
 
   registerListeners() {
+    //Not being used on Landing Page Map
     google.maps.event.addListener(this.map, "dragend", this.updateBounds);
     google.maps.event.addListener(this.map, "zoom_changed", this.updateBounds);
   }
@@ -123,23 +128,15 @@ class MealMap extends React.Component {
   }
 }
 
-const msp = ({ entities: { currentUser, menus, shops, favorites, schools }, session, ui }) => {
+const msp = ({entities, ui}, ownProps) => {
+  const allMenus = Object.values(entities.menus);
 
-  let isFav = ui.filters.favorite;
-  let shopVals = Object.values(shops);
-  let menuVals = Object.values(menus);
-  let currentSchool = session.id ? getEnrolledSchool(session, currentUser, schools) : getCurrentSchool(shopVals, schools);
-
-  if (isFav) {
-    let favs = getFavorites(favorites);
-    shopVals = getFavShops(shopVals, favs);
-    menuVals = getFavMeals(menuVals, favs);
-  }
-  
   return {
-    menus: mapShopIdToMeal(menuVals),
-    shops: shopVals,
-    enrolledSchool: currentSchool,
+    currentUser: entities.currentUser,
+    enrolledSchool: entities.currentUser ? entities.currentUser.enrolledSchool : null,
+    menus: ownProps.activeTab ? allMenus.filter(menu => menu[ownProps.activeTab]) : allMenus,
+    shops: Object.values(entities.shops),
+
     center: ui.filters.center,
     search: ui.filters.search,
     marker: ui.filters.marker
@@ -151,7 +148,6 @@ const mdp = (dispatch) => {
   return {
     updateFilter: (school, search, filter, bounds) => dispatch(updateFilter(school, search, filter, bounds)),
     changeFilter: (filter, value) => dispatch(changeFilter(filter, value)),
-    openReserveModal: (menu, shop) => dispatch(openModal({ type: 'reserve', menu: menu, shop: shop }))
   };
 };
 

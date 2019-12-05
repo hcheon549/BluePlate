@@ -9,13 +9,8 @@ export default class MarkerManager {
     this.highlight = null;
     this.resButton = null;
     this.reserveFunction = null;
-
-    // Marker icons from:
-    // https://www.iconsdb.com/soylent-red-icons/marker-icon.html
-    this.orangeIcon =
-      "https://res.cloudinary.com/mwojick/image/upload/v1533428003/TreatPal/icons/marker-32-orange.ico";
-    this.blueIcon =
-      "https://res.cloudinary.com/mwojick/image/upload/v1533428003/TreatPal/icons/marker-32-blue.ico";
+    this.orangeIcon = "https://blueplate-development.s3.amazonaws.com/elements/red_marker.ico";
+    this.blueIcon = "https://blueplate-development.s3.amazonaws.com/elements/blue_marker.ico";
 
     google.maps.event.addListener(this.map, "click", e => {
       if (this.openWindow) {
@@ -122,3 +117,4 @@ export default class MarkerManager {
       this.highlight = shopId;
     }
   }
+}
