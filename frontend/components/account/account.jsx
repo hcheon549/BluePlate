@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { updateUser } from '../../actions/user_actions';
+import { openModal } from "../../actions/modal_actions";
 
 class Account extends React.Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class Account extends React.Component {
       fname: this.props.currentUser.fname || "",
       lname: this.props.currentUser.lname || "",
     };
+  }
+
+  componentDidMount(){
+    this.props.openClosedModal();
   }
 
   update(type) {
@@ -123,7 +128,8 @@ const msp = ({entities:
 
 const mdp = (dispatch) => {
  return {
-   updateUser: (user) => dispatch(updateUser(user))
+   updateUser: (user) => dispatch(updateUser(user)),
+   openClosedModal: () => dispatch(openModal({ type: 'closed'}))
  };
 };
 

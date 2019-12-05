@@ -29,7 +29,7 @@ const DropdownMenu = (props) => {
       </li> */}
 
       <li className="nav-menu-button miniText" onClick={() => props.history.push("/history")}>
-        History
+        Order History
       </li>
 
       <li className="nav-menu-button miniText" onClick={props.handleLogout} >
