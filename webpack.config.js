@@ -3,7 +3,8 @@ require("babel-polyfill");
 
 module.exports = {
     context: __dirname,
-    entry: ["babel-polyfill", './frontend/blueplate.jsx'],
+    // entry: ["babel-polyfill", './frontend/blueplate.jsx'],
+    entry: ['./frontend/blueplate.jsx'],
     output: {
         path: path.join(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'
