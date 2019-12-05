@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { updateFilter, changeFilter } from '../../actions/filter_actions';
-import { getEnrolledSchool } from '../../util/selectors';
-import { openModal } from '../../actions/modal_actions';
-import { getFavorites, getFavMeals, getFavShops, mapShopIdToMeal, getCurrentSchool } from '../../util/selectors';
 
 import MarkerManager from "../../util/marker_manager";
 
@@ -39,7 +36,8 @@ class MealMap extends React.Component {
 
     this.MarkerManager = new MarkerManager(
       this.map,
-      this.props.openReserveModal
+      this.props.openReserveModal,
+      this.props.landing
     );
 
     this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
@@ -48,18 +46,15 @@ class MealMap extends React.Component {
     if (!this.props.landing){this.registerListeners();}
   }
 
-  // fix for when enrolledSchool is not available on tab reopen
-  componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.enrolledSchool.latitude !== this.props.enrolledSchool.latitude
-    ) {
-      let latLng = new google.maps.LatLng(
-        nextProps.enrolledSchool.latitude,
-        nextProps.enrolledSchool.longitude
-      );
-      this.map.setCenter(latLng);
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.enrolledSchool.latitude !== this.props.enrolledSchool.latitude) {
+  //     let latLng = new google.maps.LatLng(
+  //       nextProps.enrolledSchool.latitude,
+  //       nextProps.enrolledSchool.longitude
+  //     );
+  //     this.map.setCenter(latLng);
+  //   }
+  // }
 
   componentDidUpdate() {
     this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);

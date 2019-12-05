@@ -1,9 +1,10 @@
 const google = window.google;
 
 export default class MarkerManager {
-  constructor(map, modal) {
+  constructor(map, modal, landing) {
     this.map = map;
     this.modal = modal;
+    this.landing = landing
     this.markers = {};
     this.openWindow = null;
     this.highlight = null;
@@ -41,8 +42,22 @@ export default class MarkerManager {
   }
 
   createMarker(shop, menu = {}, animate = null) {
-    let contentString = `<div class="info-window">
-
+    let contentString = this.landing ? 
+      `
+      <div class="info-window">      
+        <div class="info-win-desc">
+          <div class="info-win-name">
+            ${shop.name}
+          </div >
+          <div class="info-win-name">
+            ${shop.address}
+          </div >
+        </div >
+      </div >
+      `
+    :
+      `
+      <div class="info-window">
         <img class="info-win-img" src="${menu.imageUrl}"/>
       
         <div class="info-win-desc">
@@ -56,7 +71,8 @@ export default class MarkerManager {
             RESERVE
           </div >
         </div >
-      </div >`;
+      </div >
+      `;
 
     let infoWindow = new google.maps.InfoWindow({
       content: contentString
