@@ -52,12 +52,6 @@
   border-right: 13px solid $light-blue;
 }
 
-.gm-style-iw {
-  left: 9px !important;
-  top: 9px !important;
-  height: 100px;
-}
-
 .info-window {
   display: flex;
   font-family: $main-font-family;
@@ -69,22 +63,29 @@
   justify-content: center;
   text-align: center;
   margin-left: 10px;
-  height: 100px;
-  width: 125px;
 }
 
 .info-win-img {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
 }
 
-.info-win-name {
+.info-win-menu {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $dark-gray-tb;
-  font-size: 16px;
-  margin: 5px 0px 5px 0px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $siteColor;
+  margin-top: 3px;
+}
+.info-win-name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 200;
+  color: $gray;
 }
 
 .info-win-reserve {
@@ -94,6 +95,22 @@
 .info-win-reserve:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.info-window-landing{
+  margin: 2px;
+  text-align: center;
+  height: auto;
+  .info-shop-name{
+    font-size: 14px;
+    font-weight: 600;
+    color: $orange;
+  }
+  .info-shop-address{
+    font-size: 12px;
+    font-weight: 200;
+    color: $gray;
+  }
 }
 
 @media (max-width: $media2) {

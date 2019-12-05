@@ -9,7 +9,6 @@ export default class MarkerManager {
     this.openWindow = null;
     this.highlight = null;
     this.reservationButton = null;
-    this.reserveFunction = null;
     this.orangeIcon = "https://blueplate-development.s3.amazonaws.com/elements/red_marker.ico";
     this.blueIcon = "https://blueplate-development.s3.amazonaws.com/elements/blue_marker.ico";
 
@@ -17,9 +16,9 @@ export default class MarkerManager {
     //Closing infoWindow when clicking anywhere on the map
     google.maps.event.addListener(this.map, "click", e => {
       if (this.openWindow) {
-        if(!this.landing){
-          this.reservationButton.removeEventListener("click", this.reserveFunction);
-        }
+        // if(!this.landing){
+        //   this.reservationButton.removeEventListener("click", this.reserveFunction);
+        // }
         this.openWindow.close();
 
         this.openWindow = null;
@@ -29,17 +28,18 @@ export default class MarkerManager {
     });
   }
 
+
   createMarker(shop, menu = {}, animate = null) {
+    let reserveFunction = () => { this.openReserveModal(menu, shop)};
+
     let contentString = this.landing ? 
       `
-      <div class="info-window">      
-        <div class="info-win-desc">
-          <div class="info-win-name">
-            ${shop.name}
-          </div >
-          <div class="info-win-name">
-            ${shop.address}
-          </div >
+      <div class="info-window-landing">      
+        <div class="info-shop-name">
+          ${shop.name}
+        </div >
+        <div class="info-shop-address">
+          ${shop.address}
         </div >
       </div >
       `
@@ -55,7 +55,7 @@ export default class MarkerManager {
           <div class="info-win-name">
             ${shop.name}
           </div >
-          <div id="map-reserve" class="info-win-name info-win-reserve">
+          <div id="map-reserve" class="info-win-name info-win-reserve" onclick=${reserveFunction}>
             RESERVE
           </div >
         </div >
@@ -79,9 +79,9 @@ export default class MarkerManager {
     marker.addListener("click", () => {
       //Closing infoWindow if there is one open already
       if (this.openWindow) {
-        if (!this.landing){
-          this.reservationButton.removeEventListener("click", this.reserveFunction);
-        }
+        // if (!this.landing){
+        //   this.reservationButton.removeEventListener("click", this.reserveFunction);
+        // }
         this.openWindow.close();
       }
 
@@ -90,11 +90,11 @@ export default class MarkerManager {
       infoWindow.open(this.map, marker);
 
       //Making the 'RESERVE' button to work and show the modal
-      if (!this.landing){
-        this.reservationButton = document.getElementById("map-reserve");
-        this.reserveFunction = () => { this.openReserveModal(menu, shop);};
-        this.reservationButton.addEventListener("click", this.reserveFunction);
-      } 
+      // if (!this.landing){
+      //   this.reservationButton = document.getElementById("map-reserve");
+      //   this.reserveFunction = () => { this.openReserveModal(menu, shop);};
+      //   this.reservationButton.addEventListener("click", this.reserveFunction);
+      // } 
     });
 
     marker.addListener("mouseover", () => {
@@ -123,7 +123,6 @@ export default class MarkerManager {
       .filter(shopId => !shopsObj[shopId])
       .forEach(shopId => this.removeMarker(this.markers[shopId]));
   }
-
 
   removeMarker(marker) {
     this.markers[marker.shopId].setMap(null);
