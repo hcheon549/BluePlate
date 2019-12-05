@@ -7,6 +7,19 @@
   left: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 20;
+  &.-closed{
+    background: $siteColor;
+    opacity: 0.7;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    touch-action: none;  
+  }
+}
+
+.closed-modal {
+  margin: auto;
+  text-align: center;
+  color: white;
 }
 
 .reserve-modal {

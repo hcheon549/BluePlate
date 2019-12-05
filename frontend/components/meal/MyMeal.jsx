@@ -30,8 +30,10 @@ class MyMeal extends React.Component {
   
   async componentDidMount() {
     await this.props.fetchMenus(this.props.currentUser.schoolId)
+    this.props.openClosedModal();
     await this.props.fetchReservations()
     await this.props.resetFilter()
+
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -148,7 +150,8 @@ const mayDispatchToProps = (dispatch) => {
     fetchFavorites: () => dispatch(fetchFavorites()),
     fetchReservations: () => dispatch(fetchReservations()),
     resetFilter: () => dispatch(resetFilter()),
-    openReserveModal: (data) => dispatch(openModal({ type: 'reserve', data }))
+    openReserveModal: (data) => dispatch(openModal({ type: 'reserve', data })),
+    openClosedModal: () => dispatch(openModal({ type: 'closed'}))
   };
 };
 

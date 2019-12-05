@@ -1,14 +1,20 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import ReservationModal from './reservation_modal';
-import ConfirmModal from './confirm_modal';
+import ReservationModal from './ReservationModal';
+import ConfirmModal from './ConfirmModal';
+import ClosedModal from './ClosedModal';
 
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
     return null;
   }
+
+  if(modal.type == 'closed'){
+    return <ClosedModal />;
+  }
+
   let component;
   switch (modal.type) {
     case 'reserve':
@@ -22,7 +28,7 @@ function Modal({ modal, closeModal }) {
       return null;
   }
   return (
-    <div className="modal-background" onClick={closeModal}>
+    <div className="modal-background">
       {component}
     </div>
   );
