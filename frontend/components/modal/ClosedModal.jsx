@@ -1,18 +1,34 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-export default function ClosedModal() {
-  return (
-    <div className="modal-background -closed">
+class ClosedModal extends React.Component {
+  constructor(props){
+    super(props)
+    this.goBack = this.goBack.bind(this);
+  }
+
+  goBack(){
+    this.props.history.push('/');
+    this.props.closeModal();
+  }
+
+  render() {
+    return (
       <div
-        className="closed-modal"
+        className="closed-modal animated fadeInDown"
         onClick={e => e.stopPropagation()}
       >
-        <h2>Your Plan has not started yet...</h2>
-        <Link className="button orange" to="/">
-          <button className='orange' type="submit">Go to Home Page</button>
-        </Link>
+        <div className="innerContent">
+          <img className="logo" src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
+          <h4>See you in Spring 2020...</h4>
+          <p><span className="miniText">
+            Your plan starts on the first day of Spring 2020 semester. Preciesly speaking, that's January 22, 2020. Until then, Keep calm and stay hungry.
+          </span></p>
+          <button className='orange' type="submit" onClick={this.goBack}>Go to Home Page</button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default withRouter(ClosedModal);

@@ -11,10 +11,6 @@ function Modal({ modal, closeModal }) {
     return null;
   }
 
-  if(modal.type == 'closed'){
-    return <ClosedModal />;
-  }
-
   let component;
   switch (modal.type) {
     case 'reserve':
@@ -23,6 +19,9 @@ function Modal({ modal, closeModal }) {
       break;
     case 'confirm':
       component = <ConfirmModal />;
+      break;
+    case 'closed':
+      component = <ClosedModal closeModal={closeModal} />;
       break;
     default:
       return null;

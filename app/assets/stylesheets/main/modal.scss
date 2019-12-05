@@ -7,19 +7,29 @@
   left: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 20;
-  &.-closed{
-    background: $siteColor;
-    opacity: 0.7;
-    -webkit-overflow-scrolling: touch;
-    overflow: hidden;
-    touch-action: none;  
-  }
 }
 
 .closed-modal {
-  margin: auto;
-  text-align: center;
-  color: white;
+  width: 550px;
+  background: white;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: calc(50% - 200px);
+  left: calc(50% - 275px);
+  .innerContent{
+    padding: 40px;
+    text-align: center;
+    img{
+      margin: auto;
+      width: 25%
+    }
+    h4{ margin-bottom: 20px; }
+    p{ 
+      margin-bottom: 20px;
+      line-height: 20px;
+    }
+  }
 }
 
 .reserve-modal {
