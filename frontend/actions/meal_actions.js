@@ -20,17 +20,6 @@ export const fetchMeals = schoolId => dispatch => {
   );
 };
 
-//search = {school, query, bounds}
-export const searchMeals = search => dispatch => {
-  dispatch(startLoadingSearchMeals());
-  return mealApiUtil.searchMeals(search).then(payload => {
-    if (payload.data.constructor === Array) {
-      return dispatch(receiveErrors(payload.data));
-    }
-    return dispatch(receiveMealsSearch(payload.data));
-  });
-};
-
 const receiveMeals = meals => {
   return {
     type: RECEIVE_ALL_MEALS,
@@ -38,12 +27,6 @@ const receiveMeals = meals => {
   };
 };
 
-const receiveMealsSearch = payload => {
-  return {
-    type: RECEIVE_SEARCH_MEALS,
-    payload
-  };
-};
 
 const receiveShops = shops => {
   return {

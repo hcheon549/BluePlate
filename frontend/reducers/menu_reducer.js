@@ -8,7 +8,8 @@ const menuReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_ALL_MENUS:
-      let menus = action.payload.menus ? action.payload.menus : {}
+      debugger
+      let menus = action.payload.menus || {}
       return menus;
     case RECEIVE_SEARCH_MENUS:
       return action.payload.menus;

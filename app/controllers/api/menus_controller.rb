@@ -24,8 +24,8 @@ class Api::MenusController < ApplicationController
 
   # private
 
-  # def bounds
-  #   JSON.parse(params[:bounds])
-  # end
+  def bounds
+    JSON.parse(params[:bounds])
+  end
 
 end

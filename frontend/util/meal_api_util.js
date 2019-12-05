@@ -7,15 +7,3 @@ export const fetchMeals = schoolId => {
     params: { id: schoolId }
   });
 };
-
-export const searchMeals = search => {
-  return axios({
-    method: "GET",
-    url: `/api/meals/search`,
-    params: {
-      school: search.school,
-      search: search.search,
-      bounds: search.bounds
-    }
-  });
-};

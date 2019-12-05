@@ -16,11 +16,7 @@ export default class MarkerManager {
     //Closing infoWindow when clicking anywhere on the map
     google.maps.event.addListener(this.map, "click", e => {
       if (this.openWindow) {
-        // if(!this.landing){
-        //   this.reservationButton.removeEventListener("click", this.reserveFunction);
-        // }
         this.openWindow.close();
-
         this.openWindow = null;
         this.reservationButton = null;
         this.reserveFunction = null;
@@ -49,7 +45,7 @@ export default class MarkerManager {
         <img class="info-win-img" src="${menu.imageUrl}"/>
       
         <div class="info-win-desc">
-          <div class="info-win-name">
+          <div class="info-win-menu">
             ${menu.name}
           </div >
           <div class="info-win-name">
@@ -79,22 +75,11 @@ export default class MarkerManager {
     marker.addListener("click", () => {
       //Closing infoWindow if there is one open already
       if (this.openWindow) {
-        // if (!this.landing){
-        //   this.reservationButton.removeEventListener("click", this.reserveFunction);
-        // }
         this.openWindow.close();
       }
-
       //Open the infoWindow
       this.openWindow = infoWindow;
       infoWindow.open(this.map, marker);
-
-      //Making the 'RESERVE' button to work and show the modal
-      // if (!this.landing){
-      //   this.reservationButton = document.getElementById("map-reserve");
-      //   this.reserveFunction = () => { this.openReserveModal(menu, shop);};
-      //   this.reservationButton.addEventListener("click", this.reserveFunction);
-      // } 
     });
 
     marker.addListener("mouseover", () => {

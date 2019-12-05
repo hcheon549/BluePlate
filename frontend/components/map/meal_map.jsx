@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { updateFilter, changeFilter } from '../../actions/filter_actions';
+import { changeFilter } from '../../actions/filter_actions';
+import { updateMapMenus } from '../../actions/menu_actions'
 
 import MarkerManager from "../../util/marker_manager";
 
@@ -45,16 +46,6 @@ class MealMap extends React.Component {
     // Not updating the shops when the map moves on the Landing Page
     if (!this.props.landing){this.registerListeners();}
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.enrolledSchool.latitude !== this.props.enrolledSchool.latitude) {
-  //     let latLng = new google.maps.LatLng(
-  //       nextProps.enrolledSchool.latitude,
-  //       nextProps.enrolledSchool.longitude
-  //     );
-  //     this.map.setCenter(latLng);
-  //   }
-  // }
 
   componentDidUpdate() {
     this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
@@ -99,12 +90,10 @@ class MealMap extends React.Component {
         southWest: { lat: south, lng: west }
       };
 
-      this.props.updateFilter(
-        this.props.enrolledSchool.name,
-        this.props.search,
-        "bounds",
-        bounds
-      );
+      this.props.updateMapMenus({
+        schoolId: this.props.landing ? this.props.school.id : this.props.enrolledSchool.id,
+        bounds: bounds
+      });
     }
   }
 
@@ -141,8 +130,8 @@ const msp = ({entities, ui}, ownProps) => {
 
 const mdp = (dispatch) => {
   return {
-    updateFilter: (school, search, filter, bounds) => dispatch(updateFilter(school, search, filter, bounds)),
     changeFilter: (filter, value) => dispatch(changeFilter(filter, value)),
+    updateMapMenus: (data) => dispatch(updateMapMenus(data))
   };
 };
 

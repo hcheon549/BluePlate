@@ -47,8 +47,9 @@ class MealIndexItem extends React.Component {
   }
 
   render() {
-    let { menu, shop, pickupTime, activeTab, todayReservations } = this.props;
+    let { menu, pickupTime, activeTab, todayReservations } = this.props;
     let { isPending, pickupTimeId } = this.state;
+    let shop = menu.shop;
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
     let actionText = (Object.values(todayReservations[activeTab]).length == 0 ? 'RESERVE' : 'UPDATE')
                     + (activeTab == 'lunch' ? ' LUNCH' : ' DINNER')

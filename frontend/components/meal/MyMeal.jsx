@@ -129,7 +129,7 @@ class MyMeal extends React.Component {
 const mapStateToProps = ({entities}) => {
   const todayMenu = Object.values(entities.menus);
   const pickupTime = entities.pickupTime
-
+  debugger
   return {
     currentUser: entities.currentUser,
     shops: entities.shops,
