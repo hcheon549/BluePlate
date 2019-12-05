@@ -28,7 +28,7 @@ const DropdownMenu = (props) => {
         </div>
       </li> */}
 
-      <li className="nav-menu-button miniText" onClick={() => props.history.push("/history")}>
+      <li className="nav-menu-button miniText" onClick={() => props.history.push("/")}>
         Order History
       </li>
 

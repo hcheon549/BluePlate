@@ -13,8 +13,6 @@ import Modal from "./modal/modal";
 import AllMeals from "./AllMeals/AllMeals"
 import MyMeal from "./meal/MyMeal";
 import Account from "./account/account";
-import Favorites from "./account/favorites";
-import History from "./account/history";
 import LoginPage from "./session_form/LoginPage";
 import StepJoin from "./stepJoin/StepJoin";
 import Nav from "./nav/Nav";
@@ -61,8 +59,6 @@ class App extends React.Component {
 
               {/* Content Pages */}
               <ProtectedRoute path="/account" component={Account} />
-              <ProtectedRoute path="/favorites" component={Favorites} />
-              <ProtectedRoute path="/history" component={History} />
               <ProtectedRoute path="/my-meals" component={MyMeal} />
             </Switch>
           </main>
