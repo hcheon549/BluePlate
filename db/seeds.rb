@@ -666,14 +666,15 @@ ActiveRecord::Base.transaction do
   ###############################################
   
 
-  tommys = Shop.where(name: "Tommy's Asian Grill")
+  tommys = Shop.find_by(name: "Tommy's Asian Grill")
+  puts tommys.id
   tommysmeal = [
     {
       name: 'Kalbi Platter',
       description: "Short rib, soy sauce, sesame oil, scallion, rice",
       price: 12.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tommys_asian_kalbi.jpeg',
-      shop_id:  tommys.id
+      shop_id: tommys.id
     }
   ]
 
@@ -684,20 +685,20 @@ ActiveRecord::Base.transaction do
   puts  "tommysmeal Meal Created"
 
 
-  unclechen = Shop.where(name: "Uncle Chen's")
+  unclechen = Shop.find_by(name: "Uncle Chen's")
   unclemeal = [
     {
       name: 'Spicy Ramen',
       description: "Ramen noodle, spicy pepper flakes, vegitable broth",
       price: 9.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_spicy_ramen.jpeg',
-      shop_id:  uncle.id
+      shop_id:  unclechen.id
     }, {
       name: 'Vegitable Noodle',
       description: "Udon noodle, assorted vegitables",
       price: 10.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_vegi_noodle.jpeg',
-      shop_id:  uncle.id
+      shop_id:  unclechen.id
     }
   ]
 
@@ -707,7 +708,7 @@ ActiveRecord::Base.transaction do
 
   puts  "unclemeal Meal Created"
 
-  doans = Shop.where(name: "Doan's Bones")
+  doans = Shop.find_by(name: "Doan's Bones")
   doansmeal = [
     {
       name: 'Salmon Burger with Fries',
@@ -719,7 +720,7 @@ ActiveRecord::Base.transaction do
       name: 'Hamburger',
       description: "Beef patty, american cheese, buns, lettus, tomato",
       price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bone_hamburger.jpeg',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bones_hamburger.jpeg',
       shop_id:  doans.id
     }
   ]
@@ -731,7 +732,7 @@ ActiveRecord::Base.transaction do
   puts  "doansmeal Meal Created"
 
 
-  bigbowl = Shop.where(name: "Big Bowl Noodle House")
+  bigbowl = Shop.find_by(name: "Big Bowl Noodle House")
   bigbowlmeal = [
     {
       name: 'Shrimp Ramen',
@@ -761,13 +762,13 @@ ActiveRecord::Base.transaction do
   puts "bigbowlmeal Meal Created"
 
 
-  chick2 = Shop.where(name: "Chick2")
+  chick2 = Shop.find_by(name: "Chick2")
   chick2meal = [
     {
       name: 'Chicken Tender with Chips',
       description: "Fried chicken breast, potato chips, mustard sacue",
       price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chipss.jpeg',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chips.jpeg',
       shop_id: chick2.id
     }, {
       name: 'Fried Chicken Sandwich with Fries',
@@ -791,7 +792,7 @@ ActiveRecord::Base.transaction do
   puts "chick2meal Meal Created"
 
 
-  chopstick = Shop.where(name: "Chopstick Express")
+  chopstick = Shop.find_by(name: "Chopstick Express")
   chopstickMeals = [
     {
       name: '2 Tuna Roll',
@@ -821,30 +822,7 @@ ActiveRecord::Base.transaction do
   puts "chopstickMeals Meal Created"
 
 
-  tadashi = Shop.where(name: )
-  tadashimeals = [
-    {
-      name: '2 Salmon Rolls',
-      description: "Salmon, rice, vinegrette, seaweed, sesame seeds",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tadashi_salmon_roll.jpeg',
-      shop_id: tadashi.id
-    }, {
-      name: 'Sushi Platter',
-      description: "Assorted fish (raw), rice, vinegrette, sesame seeds, wasabi",
-      price: 12.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tadashi_sushi_platter.jpeg',
-      shop_id: tadashi.id
-    }
-  ]
-
-  tadashimeals.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts 'tadashimeals created'
-
-  gumbys = Shop.where(name: "Gumby's Pizza")
+  gumbys = Shop.find_by(name: "Gumby's Pizza")
   gumbysmeal = [
     {
       name: '2 Ham Pizza',
@@ -879,7 +857,7 @@ ActiveRecord::Base.transaction do
 
   puts "gumbysmeal Meal Created"
 
-  india = Shop.where(name: "India Pavilion")
+  india = Shop.find_by(name: "India Pavilion")
   indiameal = [
     {
       name: 'Bean Curry',
@@ -903,7 +881,7 @@ ActiveRecord::Base.transaction do
   puts "indiameal Meal Created"
 
 
-  irving = Shop.where(name: "Irvings Bagels")
+  irving = Shop.find_by(name: "Irvings Bagels")
   irvingmeal = [
     {
       name: 'Italian Sandwich',
@@ -938,7 +916,7 @@ ActiveRecord::Base.transaction do
 
   puts "irvingmeal Meal Created"
 
-  crust = Shop.where(name: "Bagel Crust")
+  crust = Shop.find_by(name: "Bagel Crust")
   crustmeal = [
     {
       name: 'Bagel with Cream Cheese',
@@ -967,7 +945,7 @@ ActiveRecord::Base.transaction do
 
   puts "crustmeal Meal Created"
 
-  hungry = Shop.where(name: "Are U Hungry")
+  hungry = Shop.find_by(name: "Are U Hungry")
   hungrymeal = [
     {
       name: 'Chicken Sandwich',
@@ -996,7 +974,7 @@ ActiveRecord::Base.transaction do
 
   puts "hungrymeal Meal Created"
   
-  zen = Shop.where(name: "Zen Wings and Things")
+  zen = Shop.find_by(name: "Zen Wings and Things")
   zenmeal = [
     {
       name: 'Garden Salad',
@@ -1025,7 +1003,7 @@ ActiveRecord::Base.transaction do
 
   puts "zenmeal Meal Created"
   
-  yallahtaco = Shop.where(name: "Yallah Taco")
+  yallahtaco = Shop.find_by(name: "Yallah Taco")
   yallahtacomeal = [
     {
       name: 'Breakfast Burrito',
@@ -1054,7 +1032,7 @@ ActiveRecord::Base.transaction do
 
   puts "yallahtacomeal Meal Created"
 
-  babysburger = Shop.where(name: "Baby's Burgers and Shakes")
+  babysburger = Shop.find_by(name: "Baby's Burgers and Shakes")
   babysmeal = [
     {
       name: 'Bacon Cheese Burger',
@@ -1095,7 +1073,7 @@ ActiveRecord::Base.transaction do
 
   puts "babysmeal Meal Created"
 
-  kook = Shop.where(name: "The Koop")
+  kook = Shop.find_by(name: "The Koop")
   kookmeal = [
     {
       name: 'Chicken Ramen',
@@ -1130,7 +1108,7 @@ ActiveRecord::Base.transaction do
 
   puts "kookmeal Meal Created"
 
-  deliz = Shop.where(name: "Deli and Z Bar")
+  deliz = Shop.find_by(name: "Deli and Z Bar")
   delizmeal = [
     {
       name: 'Sandwich with French Fries',
@@ -1153,7 +1131,7 @@ ActiveRecord::Base.transaction do
 
   puts "delizmeal Meal Created"
 
-  jimmy = Shop.where(name: "Jimmy John's")
+  jimmy = Shop.find_by(name: "Jimmy John's")
   jimmymeal = [
     {
       name: 'Chicken Sandwich with Fries',
@@ -1176,7 +1154,7 @@ ActiveRecord::Base.transaction do
   puts "jimmymeal Meal Created"
 
 
-  joes = Shop.where(name: "John's Shanghai")
+  joes = Shop.find_by(name: "John's Shanghai")
   joesmeal = [
     {
       name: 'Beef Roll',
@@ -1198,7 +1176,7 @@ ActiveRecord::Base.transaction do
 
   puts "joesmeal Meal Created"
 
-  kaarma = Shop.where(name: "Kaarma Indian Cuisine")
+  kaarma = Shop.find_by(name: "Kaarma Indian Cuisine")
   kaarmameal = [
     {
       name: 'Chicken Satay',
@@ -1221,7 +1199,7 @@ ActiveRecord::Base.transaction do
 
   puts "kaarmameal Meal Created"
 
-  koreantable = Shop.where(name: "Korean Table")
+  koreantable = Shop.find_by(name: "Korean Table")
   koreantablemeal = [
     {
       name: 'Beef Bibimbab',
@@ -1245,7 +1223,7 @@ ActiveRecord::Base.transaction do
   puts "koreantablemeal Meal Created"
 
 
-  latinofood = Shop.where(name: "Latinos Food")
+  latinofood = Shop.find_by(name: "Latinos Food")
   latinofoodmeal = [
     {
       name: 'Loaded Nachos',
@@ -1268,7 +1246,7 @@ ActiveRecord::Base.transaction do
 
   puts "latinofoodmeal Meal Created"
 
-  osaka = Shop.where(name: "Osaka")
+  osaka = Shop.find_by(name: "Osaka")
   osakameal = [
     {
       name: 'Karaage Don',
@@ -1291,7 +1269,7 @@ ActiveRecord::Base.transaction do
 
   puts "osakameal Meal Created"
 
-  pizzamia = Shop.where(name: "Pizza Mia")
+  pizzamia = Shop.find_by(name: "Pizza Mia")
   pizzamiameal = [
     {
       name: 'Salad',
@@ -1314,12 +1292,12 @@ ActiveRecord::Base.transaction do
 
   puts "pizzamiameal Meal Created"
 
-  primimanti = Shop.where(name: "Primanti Bros")
+  primimanti = Shop.find_by(name: "Primanti Bros.")
   primimantimeal = [
     {
-      name: 'Salad',
-      description: "Greens, chicken, avocado",
-      price: 10.99,
+      name: 'Bolognese',
+      description: "Meat, tomato sauce, spaghetti, black pepper, parmasan cheese",
+      price: 13.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/primimanti_bros_bolognese.jpeg',
       shop_id: primimanti.id
     }
@@ -1331,7 +1309,7 @@ ActiveRecord::Base.transaction do
 
   puts "primimantimeal Meal Created"
 
-  queenstown = Shop.where(name: "Queenstown Restaurant")
+  queenstown = Shop.find_by(name: "Queenstown Restaurant")
   queenstownmeal = [
     {
       name: 'Pork Chop',
@@ -1354,7 +1332,7 @@ ActiveRecord::Base.transaction do
 
   puts "queenstownmeal Meal Created"
 
-  saddies = Shop.where(name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches")
+  saddies = Shop.find_by(name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches")
   saddiesmeal = [
     {
       name: 'Two Waffle',
@@ -1366,7 +1344,7 @@ ActiveRecord::Base.transaction do
       name: 'Waffle Chicken',
       description: "Fried chicken, waffles, syrup, butter",
       price: 14.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_roast_beef_sandwich.jpeg',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_waffle_chicken.jpeg',
       shop_id: saddies.id
     }
   ]
@@ -1377,7 +1355,7 @@ ActiveRecord::Base.transaction do
 
   puts "saddiesmeal Meal Created"
 
-  tadashi = Shop.where(name: "Tadashi Japanese Restaurant")
+  tadashi = Shop.find_by(name: "Tadashi Japanese Restaurant")
   tadashimeal = [
     {
       name: 'Salmon Roll',
@@ -1401,19 +1379,19 @@ ActiveRecord::Base.transaction do
   puts "tadashimeal Meal Created"
 
 
-  tavern = Shop.where(name: "The Tavern")
+  tavern = Shop.find_by(name: "The Tavern")
   tavernmeal = [
     {
       name: 'Supreme Pasta',
       description: "Shrimp, squid, spaghetti, tomato sauce, onion",
       price: 14.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tavern_supreme_pasta.jpeg',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_tavern_supreme_pasta.jpeg',
       shop_id: tavern.id
     },{
       name: 'Beef Ragu',
       description: "Short rib, tomato sauce, linguini",
       price: 12.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tavern_beef_ragu.jpeg',
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_tavern_beef_ragu.jpeg',
       shop_id: tavern.id
     }
   ]
@@ -1425,7 +1403,7 @@ ActiveRecord::Base.transaction do
   puts "tavernmeal Meal Created"
 
 
-  waffle = Shop.where(name: "The Waffle Shop")
+  waffle = Shop.find_by(name: "The Waffle Shop")
   wafflemeal = [
     {
       name: 'Four Waffles',
@@ -1448,7 +1426,7 @@ ActiveRecord::Base.transaction do
 
   puts "wafflemeal Meal Created"
 
-  yallahb = Shop.where(name: "Yallah Burrito")
+  yallahb = Shop.find_by(name: "Yallah Burrito")
   yallahbmeal = [
     {
       name: 'Beef Tacos',
@@ -1471,7 +1449,7 @@ ActiveRecord::Base.transaction do
 
   puts "yallahbmeal Meal Created"
 
-  yum = Shop.where(name: "Yum Cafe")
+  yum = Shop.find_by(name: "Yum Cafe")
   yummeal = [
     {
       name: 'Carbonara',
@@ -1545,19 +1523,19 @@ ActiveRecord::Base.transaction do
   lunch_count = 0
   dinner_count = 0
 
-  pennShop.each do |shop|
+  pennShops.each do |shop|
     week.each do |day|
       sample_lunch_meal = shop.meals.sample
       sample_dinner_meal = shop.meals.sample
-      Menu.create!(meal_id: sample_lunch_meal.id, offer_date: day, lunch: true, dinner: false)
-      Menu.create!(meal_id: sample_dinner_meal.id, offer_date: day, lunch: false, dinner: true)
+      Menu.create!(meal_id: sample_lunch_meal.id, offered_date: day, lunch: true, dinner: false)
+      Menu.create!(meal_id: sample_dinner_meal.id, offered_date: day, lunch: false, dinner: true)
       lunch_count += 1
       dinner_count += 1
     end
   end
 
-  puts lunch_count + " lunch menus in Penn State created"
-  puts dinner_count + " dinner menus in Penn State created"
+  puts lunch_count.to_s + " lunch menus in Penn State created"
+  puts dinner_count.to_s + " dinner menus in Penn State created"
 
 end
 
