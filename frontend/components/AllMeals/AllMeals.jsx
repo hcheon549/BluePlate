@@ -59,10 +59,17 @@ class AllMeals extends Component{
         <div className="meal-box" key={idx} style={{margin: '20px'}}>
           <img alt="" src={imageUrl} />
           {/* <ImageSlider meals={shop.meals} /> */}
+
+          <div className="hidden-description">
+            <ul>
+              <li className="hidden-meal-name">{meal.name}</li>
+              <li className="hidden-meal-desc">{meal.description}</li>
+            </ul>
+          </div>
+
           <div className="meal-box-description">
-          <li className="tbd-item meal-name">{meal.name}</li>
-          <li className="tbd-item shop-name">{shop.name}</li>
-          <li className="tbd-item shop-address">{shop.address}</li>
+            <li className="tbd-item shop-name">{shop.name}</li>
+            <li className="tbd-item shop-address">{shop.address}</li>
           </div>
         </div>
       )

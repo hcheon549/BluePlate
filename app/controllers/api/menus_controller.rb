@@ -5,9 +5,9 @@ class Api::MenusController < ApplicationController
     @tomorrow = @today + 1
     
     if Time.now.hour < 21
-      @menus = Menu.where(offered_date: @today).includes(:meal)
+      @menus = Menu.where(offered_date: @today).includes(:meal, :shop)
     else
-      @menus = Menu.where(offered_date: @tomorrow).includes(:meal)
+      @menus = Menu.where(offered_date: @tomorrow).includes(:meal, :shop)
     end
 
     if @menus && @school

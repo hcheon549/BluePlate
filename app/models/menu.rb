@@ -5,4 +5,5 @@ class Menu < ApplicationRecord
 
   belongs_to :meal
   has_many :reservations
+  has_one :shop, through: :meal
 end
