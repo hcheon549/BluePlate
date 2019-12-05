@@ -2,21 +2,17 @@ import React from 'react'
 import ChangeEmailForm from '../element/ChangeEmailForm';
 
 const SubscriptionSummary = (props) => {
-  let { currentUser, currentPlan, calculatePayment, toggleUpdateForm, updateEmail,
-        updateUserEmail, setStep, errors, clearErrors } = props
-  // let payments = calculatePayment(currentPlan.price)
+  let { currentUser, currentPlan, toggleUpdateForm, updateEmail,
+        updateUserEmail, setStep, errors, clearErrors } = props;
 
   if (!currentPlan){
     return <div />
   }
   
-  let tax = Math.round(currentPlan.price * 6.625) / 100
-  let totalPayment = Math.round((currentPlan.price + tax) * 100) / 100
+  let tax = Math.round(currentPlan.price * 6.625) / 100;
+  let totalPayment = Math.round((currentPlan.price + tax) * 100) / 100;
   let buttonText = updateEmail ? 'Cancel' : 'Change';
 
-  // updateEmail = true ?
-  // 1) buttonText = Cancel
-  // 2) Show ChangeEmailForm
   return (
     <section className="SubscriptionSummary">
       <div className="sectionHeader">
