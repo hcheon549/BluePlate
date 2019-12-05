@@ -102,7 +102,10 @@ export default class MarkerManager {
 
     shops
       .filter(shop => !this.markers[shop.id])
-      .forEach(newShop => this.createMarker(newShop, menus[newShop.id]));
+      .forEach(newShop => {
+        let menu = menus.filter(menu => menu.shop.id == newShop.id)
+        return this.createMarker(newShop, menu[0])
+      });
 
     Object.keys(this.markers)
       .filter(shopId => !shopsObj[shopId])

@@ -21,7 +21,6 @@ export const updateMapMenus = data => dispatch => {
   return menuApiUtil.mapUpdateMenus(data).then(
     payload => {
       dispatch(receiveShops(payload.data.shops))
-      debugger
       return dispatch(receiveMenus(payload.data));
     },
     errors => dispatch(receiveErrors(errors.response.data))
@@ -36,7 +35,6 @@ const receiveShops = shops => {
 }
 
 const receiveMenus = payload => {
-  debugger
   return {
     type: RECEIVE_ALL_MENUS,
     payload
