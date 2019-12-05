@@ -1,44 +1,32 @@
 const google = window.google;
 
 export default class MarkerManager {
-  constructor(map, modal, landing) {
+  constructor(map, openReserveModal, landing) {
     this.map = map;
-    this.modal = modal;
+    this.openReserveModal = openReserveModal;
     this.landing = landing
     this.markers = {};
     this.openWindow = null;
     this.highlight = null;
-    this.resButton = null;
+    this.reservationButton = null;
     this.reserveFunction = null;
     this.orangeIcon = "https://blueplate-development.s3.amazonaws.com/elements/red_marker.ico";
     this.blueIcon = "https://blueplate-development.s3.amazonaws.com/elements/blue_marker.ico";
 
+
+    //Closing infoWindow when clicking anywhere on the map
     google.maps.event.addListener(this.map, "click", e => {
       if (this.openWindow) {
-        this.resButton.removeEventListener("click", this.reserveFunction);
+        if(!this.landing){
+          this.reservationButton.removeEventListener("click", this.reserveFunction);
+        }
         this.openWindow.close();
 
         this.openWindow = null;
-        this.resButton = null;
+        this.reservationButton = null;
         this.reserveFunction = null;
       }
     });
-  }
-
-  updateMarkers(shops, menus) {
-    const shopsObj = {};
-
-    shops.forEach(shop => {
-      shopsObj[shop.id] = shop;
-    });
-
-    shops
-      .filter(shop => !this.markers[shop.id])
-      .forEach(newShop => this.createMarker(newShop, menus[newShop.id]));
-
-    Object.keys(this.markers)
-      .filter(shopId => !shopsObj[shopId])
-      .forEach(shopId => this.removeMarker(this.markers[shopId]));
   }
 
   createMarker(shop, menu = {}, animate = null) {
@@ -89,20 +77,24 @@ export default class MarkerManager {
     });
 
     marker.addListener("click", () => {
+      //Closing infoWindow if there is one open already
       if (this.openWindow) {
-        this.resButton.removeEventListener("click", this.reserveFunction);
+        if (!this.landing){
+          this.reservationButton.removeEventListener("click", this.reserveFunction);
+        }
         this.openWindow.close();
       }
+
+      //Open the infoWindow
       this.openWindow = infoWindow;
       infoWindow.open(this.map, marker);
 
-      this.resButton = document.getElementById("map-reserve");
-
-      this.reserveFunction = () => {
-        this.modal(menu, shop);
-      };
-
-      this.resButton.addEventListener("click", this.reserveFunction);
+      //Making the 'RESERVE' button to work and show the modal
+      if (!this.landing){
+        this.reservationButton = document.getElementById("map-reserve");
+        this.reserveFunction = () => { this.openReserveModal(menu, shop);};
+        this.reservationButton.addEventListener("click", this.reserveFunction);
+      } 
     });
 
     marker.addListener("mouseover", () => {
@@ -115,6 +107,23 @@ export default class MarkerManager {
 
     this.markers[shop.id] = marker;
   }
+
+  updateMarkers(shops, menus) {
+    const shopsObj = {};
+
+    shops.forEach(shop => {
+      shopsObj[shop.id] = shop;
+    });
+
+    shops
+      .filter(shop => !this.markers[shop.id])
+      .forEach(newShop => this.createMarker(newShop, menus[newShop.id]));
+
+    Object.keys(this.markers)
+      .filter(shopId => !shopsObj[shopId])
+      .forEach(shopId => this.removeMarker(this.markers[shopId]));
+  }
+
 
   removeMarker(marker) {
     this.markers[marker.shopId].setMap(null);
