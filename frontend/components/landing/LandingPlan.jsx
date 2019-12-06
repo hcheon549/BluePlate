@@ -6,7 +6,7 @@ const LandingPlan = () => {
     <section className="landingPlan">
       <div className="content -siteWidth">
         <img className="choose-icon icon" src={"https://blueplate-development.s3.amazonaws.com/elements/meal.svg"} alt={"meal"}/>
-        <h4>Starting at $5.99 per meal</h4>
+        <h4>Starting at $4.99 per meal</h4>
         <p>Eating well and saving money now go hand in hand.</p>
         <Link to="/users/signup">
           <button className='secondary' type="submit">Choose your plan</button>
