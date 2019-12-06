@@ -6,7 +6,19 @@ import NavLogin from "./NavLogin";
 import Menu from "./Menu";
 import StepIndicator from './StepIndicator'
 
-const Navigation = (props) => {
+const Nav = (props) => {
+  let navSelect = props.location.pathname === "/users/signup" ? (
+    <StepIndicator activeStep={props.stepJoin}/>
+  ) : props.loggedIn ? (
+    <div className="nav-route">
+      <Menu {...props} />
+    </div>
+  ) : (
+    <div className="nav-route">
+      <NavLogin {...props} />
+    </div>
+  )
+
   return (
   <div className="shadow">
     <div className="nav-main content -siteWidth">
@@ -16,10 +28,7 @@ const Navigation = (props) => {
           <span><strong>BLUE</strong>PLATE</span>
         </Link>
       </div>
-      {props.location.pathname === "/users/signup" && <StepIndicator activeStep={props.stepJoin}/>}
-      {props.location.pathname !== "/users/signup" && <div className="nav-route">
-      {(!props.loggedIn) ? <NavLogin {...props} /> : <Menu {...props} />}
-      </div>}
+      {navSelect}
     </div>
     </div>
     )
@@ -37,4 +46,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Navigation));
+export default withRouter(connect(mapStateToProps)(Nav));
