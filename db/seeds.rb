@@ -74,22 +74,22 @@ ActiveRecord::Base.transaction do
 
   plans = [
     {
-      name: "12 Meals",
+      name: "12 Meals",  ##### $4.99 per meal
       plan_type: "semester",
       meals: 180,
-      price: 1078.20
+      price: 898.20
     },
     {
-      name: "8 Meals",
+      name: "8 Meals", ##### $5.49 per meal
       plan_type: "semester",
       meals: 120,
-      price: 778.80
+      price: 658.80
     },
     {
-      name: "4 Meals",
+      name: "4 Meals",  ##### $5.99 per meal
       plan_type: "semester",
       meals: 60,
-      price: 419.40
+      price: 359.40
     }
   ]
 
@@ -252,19 +252,20 @@ ActiveRecord::Base.transaction do
       latitude: 40.498080,
       longitude: -74.448920,
       school_id: rutgers.id,
-    }, {
-      name: "KBG Korean BBQ & Grill",
-      address: "6 Easton Avenue New Brunswick NJ 08901",
-      latitude: 40.497090,
-      longitude: -74.447200,
-      school_id: rutgers.id,
-    }, {
-      name: "Noodle Gourmet",
-      address: "43 Easton Avenue New Brunswick NJ 08901",
-      latitude: 40.497950,
-      longitude: -74.448530,
-      school_id: rutgers.id,
-    }, 
+    },
+    # {
+    #   name: "KBG Korean BBQ & Grill",
+    #   address: "6 Easton Avenue New Brunswick NJ 08901",
+    #   latitude: 40.497090,
+    #   longitude: -74.447200,
+    #   school_id: rutgers.id,
+    # }, {
+    #   name: "Noodle Gourmet",
+    #   address: "43 Easton Avenue New Brunswick NJ 08901",
+    #   latitude: 40.497950,
+    #   longitude: -74.448530,
+    #   school_id: rutgers.id,
+    # }, 
     # {
     #   name: "Krispy Pizza",
     #   address: "50 College Ave, New Brunswick, NJ 08901",

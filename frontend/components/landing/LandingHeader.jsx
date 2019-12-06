@@ -19,7 +19,7 @@ class LandingHeader extends React.Component {
     return (
       <section className="landingHeader">
         <div className="landingCapture">
-          <h3>MEALPLAN FOR LESS THAN<br/> $6 PER MEAL</h3>
+          <h3>MEALPLAN FOR LESS THAN<br/> $5 PER MEAL</h3>
           <p>{subHeader}</p>
           <Link to="/users/signup">
             <button className='orange' type="submit">{buttonText}</button>
