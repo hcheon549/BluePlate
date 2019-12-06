@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import NavLogin from "./NavLogin";
-import Menu from "./Menu";
+import MenuItem from "./MenuItem";
 import StepIndicator from './StepIndicator'
 
 const Nav = (props) => {
@@ -11,7 +11,7 @@ const Nav = (props) => {
     <StepIndicator activeStep={props.stepJoin}/>
   ) : props.loggedIn ? (
     <div className="nav-route">
-      <Menu {...props} />
+      <MenuItem {...props} />
     </div>
   ) : (
     <div className="nav-route">
