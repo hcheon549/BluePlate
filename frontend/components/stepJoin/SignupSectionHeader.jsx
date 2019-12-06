@@ -10,7 +10,7 @@ const SectionHeader = ({form}) => {
       break;
     case 'plan':
       header = 'Select your plan.',
-      subHead = 'Select this semester\'s BluePlate Plan.';
+      subHead = 'Select this semester\'s BluePlattr Plan.';
       break;
     case 'billing':
       header = 'One more step!',

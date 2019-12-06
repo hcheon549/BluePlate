@@ -21,7 +21,7 @@ const SignupForm = ({ setStep }) => {
         </div>
       </div>
       <div className="login-donthave">
-        Already have a BluePlate account?
+        Already have a BluePlattr account?
       </div>
       <Link to="/users/login" className="blueLink">Log In!</Link>
     </React.Fragment>

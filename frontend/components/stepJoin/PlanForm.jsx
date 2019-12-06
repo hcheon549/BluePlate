@@ -93,7 +93,7 @@ class PlanForm extends React.Component{
           </ul>}
           {error}
         <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} onClick={this.handleSubmit}>{!isPending && buttonText}</button>
-        <span className="miniText"><em>State and local taxes may apply.<br/>For more information about BluePlate plans, <Link to="/faq" target="_blank">click here</Link></em></span>
+        <span className="miniText"><em>State and local taxes may apply.<br/>For more information about BluePlattr plans, <Link to="/faq" target="_blank">click here</Link></em></span>
       </div>
     )
   }
