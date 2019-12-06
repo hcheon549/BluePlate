@@ -15,7 +15,7 @@ import MyMeal from "./meal/MyMeal";
 import Account from "./account/account";
 import LoginPage from "./session_form/LoginPage";
 import StepJoin from "./stepJoin/StepJoin";
-import Nav from "./nav/Nav";
+import Navigation from "./nav/Navigation";
 import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
 import FAQLanding from './footer/FAQLanding'
@@ -44,7 +44,7 @@ class App extends React.Component {
           <Modal />
 
           <header>
-            <Nav location={this.props.location.pathname}/>
+            <Navigation location={this.props.location.pathname}/>
           </header>
 
           <main className="main-page">
