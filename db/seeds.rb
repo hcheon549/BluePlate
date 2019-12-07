@@ -247,50 +247,51 @@ ActiveRecord::Base.transaction do
 
   shops = [
     {
-      name: "Stuff Yer Face",
-      address: "49 Easton Avenue New Brunswick NJ 08901",
+      name: "Melt Sandwich Shop",
+      address: "21 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.498080,
       longitude: -74.448920,
       school_id: rutgers.id,
     },
+    {
+      name: "Woori House Korean Eatery",
+      address: "6 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.497090,
+      longitude: -74.447200,
+      school_id: rutgers.id,
+    }, {
+      name: "Unchle Chen's",
+      address: "11 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.497950,
+      longitude: -74.448530,
+      school_id: rutgers.id,
+    }, 
+    {
+      name: "My Pie Pizzaria",
+      address: "30 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.499540,
+      longitude: -74.448630,
+      school_id: rutgers.id,
+    }, {
+      name: "Hoagie Haven",
+      address: "42 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.499290,
+      longitude: -74.448380,
+      school_id: rutgers.id,
+    }, {
+      name: "Namaste",
+      address: "48 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.497910,
+      longitude: -74.449700,
+      school_id: rutgers.id,
+    },{
+      name: "Olive Garden Sandwich",
+      address: "35 Bartlett St, New Brunswick, NJ 08901",
+      latitude: 40.501350,
+      longitude: -74.452830,
+      school_id: rutgers.id,
+    },
     # {
-    #   name: "KBG Korean BBQ & Grill",
-    #   address: "6 Easton Avenue New Brunswick NJ 08901",
-    #   latitude: 40.497090,
-    #   longitude: -74.447200,
-    #   school_id: rutgers.id,
-    # }, {
-    #   name: "Noodle Gourmet",
-    #   address: "43 Easton Avenue New Brunswick NJ 08901",
-    #   latitude: 40.497950,
-    #   longitude: -74.448530,
-    #   school_id: rutgers.id,
-    # }, 
-    # {
-    #   name: "Krispy Pizza",
-    #   address: "50 College Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499540,
-    #   longitude: -74.448630,
-    #   school_id: rutgers.id,
-    # }, {
-    #   name: "Jersey Mike's Subs",
-    #   address: "44 College Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499290,
-    #   longitude: -74.448380,
-    #   school_id: rutgers.id,
-    # }, {
-    #   name: "Nirvanis Indian Kitchen",
-    #   address: "68 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.497910,
-    #   longitude: -74.449700,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Olive Branch",
-    #   address: "37 Bartlett St, New Brunswick, NJ 08901",
-    #   latitude: 40.501350,
-    #   longitude: -74.452830,
-    #   school_id: rutgers.id,
-    # },{
     #   name: "Zookini Pizza & Restaurant",
     #   address: "60 Sicard St, New Brunswick, NJ 08901",
     #   latitude: 40.502708,
@@ -363,189 +364,189 @@ ActiveRecord::Base.transaction do
   ######## PENN STATE REAL LIFE EXAMPLES ########
   ###############################################
     {
-      name: "The Tavern", ## check
-      address: "220 E College Ave, State College, PA 16801",
+      name: "Minetta Taverna", ## check
+      address: "320 E College Ave, State College, PA 16801",
       latitude: 40.795540,
       longitude: -77.860020,
       school_id: pennState.id,
     },{
-      name: "Chopstick Express", ##### Check
-      address: "134 E College Ave, State College, PA 16801",
+      name: "Marathon Sushi", ##### Check
+      address: "154 E College Ave, State College, PA 16801",
       latitude: 40.794950,
       longitude: -77.860420,
       school_id: pennState.id,
     },{
-      name: "Queenstown Restaurant", ##
-      address: "142 E College Ave, State College, PA 16801",
+      name: "Queensboro Restaurant", ##
+      address: "122 E College Ave, State College, PA 16801",
       latitude: 40.795140,
       longitude: -77.856529,
       school_id: pennState.id,
     },{
-      name: "Chick2", ##### check
-      address: "128 E College Ave, State College, PA 16801",
+      name: "Chicken2", ##### check
+      address: "120 E College Ave, State College, PA 16801",
       latitude: 40.794811,
       longitude: -77.860558,
       school_id: pennState.id,
     },{
-      name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches", ##
-      address: "118 S Pugh St, State College, PA 16801",
+      name: "Eric's Gourmet Sandwich and Waffle", ##
+      address: "108 S Pugh St, State College, PA 16801",
       latitude: 40.794900,
       longitude: -77.860100,
       school_id: pennState.id,
     },{
-      name: "Irvings Bagels", #### Check
-      address: "110 E College Ave #4816, State College, PA 16801",
+      name: "Kyrie's Bagel", #### Check
+      address: "100 E College Ave #4816, State College, PA 16801",
       latitude: 40.794560,
       longitude: -77.861210,
       school_id: pennState.id,
     },{
-      name: "Yallah Taco",  ###check
-      address: "217 McAllister Alley, State College, PA 16801",
+      name: "Yahoo Taco",  ###check
+      address: "207 McAllister Alley, State College, PA 16801",
       latitude: 40.795220,
       longitude: -77.859070,
       school_id: pennState.id,
     },{
-      name: "India Pavilion", ##### Check
-      address: "222 E Calder Way, State College, PA 16801",
+      name: "Namaste Pavilion", ##### Check
+      address: "202 E Calder Way, State College, PA 16801",
       latitude: 40.795380,
       longitude: -77.859080,
       school_id: pennState.id,
     },{
-      name: "The Koop", #### check
-      address: "129 Locust Ln, State College, PA 16801",
+      name: "The Kook", #### check
+      address: "109 Locust Ln, State College, PA 16801",
       latitude: 40.796100,
       longitude: -77.857760,
       school_id: pennState.id,
     },{
-      name: "Latinos Food", ## check
-      address: "324 E Calder Way, State College, PA 16801",
+      name: "Mexicano Food", ## check
+      address: "304 E Calder Way, State College, PA 16801",
       latitude: 40.796680,
       longitude: -77.857450,
       school_id: pennState.id,
     },
     {
-      name: "Primanti Bros.", ##
-      address: "130 Heister St, State College, PA 16801",
+      name: "Warner Bros.", ##
+      address: "110 Heister St, State College, PA 16801",
       latitude: 40.796700,
       longitude: -77.856880,
       school_id: pennState.id,
     },{
       name: "Bagel Crust", ### check
-      address: "332 E Calder Way, State College, PA 16801",
+      address: "312 E Calder Way, State College, PA 16801",
       latitude: 40.796780,
       longitude: -77.857310,
       school_id: pennState.id,
     },{
-      name: "Yum Cafe",  ### check
-      address: "320 E Calder Way, State College, PA 16801",
+      name: "Yummy Cafe",  ### check
+      address: "300 E Calder Way, State College, PA 16801",
       latitude: 40.796630,
       longitude: -77.857510,
       school_id: pennState.id,
     },{
-      name: "The Waffle Shop", # wip
-      address: "364 E College Ave, State College, PA 16801",
+      name: "Checker Waffle", # wip
+      address: "344 E College Ave, State College, PA 16801",
       latitude: 40.797700,
       longitude: -77.856930,
       school_id: pennState.id,
     },{
-      name: "Deli and Z Bar", ## check
-      address: "113 Heister St, State College, PA 16801",
+      name: "Delissimo", ## check
+      address: "111 Heister St, State College, PA 16801",
       latitude: 40.797250,
       longitude: -77.857090,
       school_id: pennState.id,
     },{
-      name: "Baby's Burgers and Shakes", ### Check
-      address: "131 S Garner St, State College, PA 16801",
+      name: "Bobby's Burger", ### Check
+      address: "111 S Garner St, State College, PA 16801",
       latitude: 40.797580,
       longitude: -77.856270,
       school_id: pennState.id,
     },{
-      name: "Jimmy John's", ## check
-      address: "434 E College Ave, State College, PA 16801",
+      name: "Mama John's", ## check
+      address: "414 E College Ave, State College, PA 16801",
       latitude: 40.798340,
       longitude: -77.856170,
       school_id: pennState.id,
     },{
-      name: "Big Bowl Noodle House", #####
-      address: "418 E College Ave, State College, PA 16801",
+      name: "The Noodle Associates", #####
+      address: "416 E College Ave, State College, PA 16801",
       latitude: 40.798010,
       longitude: -77.856480,
       school_id: pennState.id,
     },{
-      name: "Tommy's Asian Grill", # wip
-      address: "432 E College Ave, State College, PA 16801",
+      name: "Eric's Asian Fushion", # wip
+      address: "430 E College Ave, State College, PA 16801",
       latitude: 40.798040,
       longitude: -77.856290,
       school_id: pennState.id,
     },{
-      name: "Are U Hungry", ##### check
-      address: "111 Sowers St, State College, PA 16801",
+      name: "Am I Hungry", ##### check
+      address: "109 Sowers St, State College, PA 16801",
       latitude: 40.798280,
       longitude: -77.855530,
       school_id: pennState.id,
     },{
-      name: "Yallah Burrito", ## check
-      address: "404 E Calder Way, State College, PA 16801",
+      name: "Yahoo Burrito", ## check
+      address: "402 E Calder Way, State College, PA 16801",
       latitude: 40.797510,
       longitude: -77.855860,
       school_id: pennState.id,
     },{
-      name: "Uncle Chen's",  #### check
-      address: "430 E Calder Way, State College, PA 16801",
+      name: "Uncle Sam's",  #### check
+      address: "410 E Calder Way, State College, PA 16801",
       latitude: 40.797610,
       longitude: -77.855170,
       school_id: pennState.id,
     },{
-      name: "Zen Wings and Things",  ### CHECK
-      address: "433 E Beaver Ave, State College, PA 16801",
+      name: "Soto Wings Factory",  ### CHECK
+      address: "413 E Beaver Ave, State College, PA 16801",
       latitude: 40.797510,
       longitude: -77.855080,
       school_id: pennState.id,
     },{
-      name: "Osaka", ##
-      address: "450 E College Ave, State College, PA 16801",
+      name: "Hiroshima", ##
+      address: "430 E College Ave, State College, PA 16801",
       latitude: 40.798830,
       longitude: -77.855600,
       school_id: pennState.id,
     },{
-      name: "Pizza Mia", ##
-      address: "114 Hetzel St, State College, PA 16801",
+      name: "Mama Mia", ##
+      address: "112 Hetzel St, State College, PA 16801",
       latitude: 40.799030,
       longitude: -77.854700,
       school_id: pennState.id,
     },{
-      name: "Kaarma Indian Cuisine", ##
-      address: "120 E Beaver Ave, State College, PA 16801",
+      name: "Kuamar Indian Cuisine", ##
+      address: "100 E Beaver Ave, State College, PA 16801",
       latitude: 40.793700,
       longitude: -77.859500,
       school_id: pennState.id,
     },{
-      name: "Gumby's Pizza", #### Check
-      address: "300 S Pugh St Suite 101, State College, PA 16801",
+      name: "Grubhub's Pizza", #### Check
+      address: "100 S Pugh St Suite 101, State College, PA 16801",
       latitude: 40.793070,
       longitude: -77.857190,
       school_id: pennState.id,
     },{
-      name: "Korean Table", ##
-      address: "310 S Allen St, State College, PA 16801",
+      name: "Seoul Sang", ##
+      address: "110 S Allen St, State College, PA 16801",
       latitude: 40.791930,
       longitude: -77.858500,
       school_id: pennState.id,
     },{
-      name: "John's Shanghai", ##
-      address: "312 W Beaver Ave, State College, PA 16801",
+      name: "Joe's Shanghai", ##
+      address: "310 W Beaver Ave, State College, PA 16801",
       latitude: 40.791060,
       longitude: -77.862930,
       school_id: pennState.id,
     },{
-      name: "Doan's Bones", ## check
-      address: "401 W Beaver Ave, State College, PA 16801",
+      name: "Eric's Bones", ## check
+      address: "201 W Beaver Ave, State College, PA 16801",
       latitude: 40.790780,
       longitude: -77.864070,
       school_id: pennState.id,
     },{
-      name: "Tadashi Japanese Restaurant", ##
-      address: "206 W College Ave, State College, PA 16801",
+      name: "Hon Sushi", ##
+      address: "204 W College Ave, State College, PA 16801",
       latitude: 40.793220,
       longitude: -77.862680,
       school_id: pennState.id,
@@ -667,7 +668,7 @@ ActiveRecord::Base.transaction do
   ###############################################
   
 
-  tommys = Shop.find_by(name: "Tommy's Asian Grill")
+  tommys = Shop.find_by(name: "Eric's Asian Fushion")
   puts tommys.id
   tommysmeal = [
     {
@@ -686,7 +687,7 @@ ActiveRecord::Base.transaction do
   puts  "tommysmeal Meal Created"
 
 
-  unclechen = Shop.find_by(name: "Uncle Chen's")
+  unclechen = Shop.find_by(name: "Uncle Sam's")
   unclemeal = [
     {
       name: 'Spicy Ramen',
@@ -709,7 +710,7 @@ ActiveRecord::Base.transaction do
 
   puts  "unclemeal Meal Created"
 
-  doans = Shop.find_by(name: "Doan's Bones")
+  doans = Shop.find_by(name: "Eric's Bones")
   doansmeal = [
     {
       name: 'Salmon Burger with Fries',
@@ -733,7 +734,7 @@ ActiveRecord::Base.transaction do
   puts  "doansmeal Meal Created"
 
 
-  bigbowl = Shop.find_by(name: "Big Bowl Noodle House")
+  bigbowl = Shop.find_by(name: "The Noodle Associates")
   bigbowlmeal = [
     {
       name: 'Shrimp Ramen',
@@ -763,7 +764,7 @@ ActiveRecord::Base.transaction do
   puts "bigbowlmeal Meal Created"
 
 
-  chick2 = Shop.find_by(name: "Chick2")
+  chick2 = Shop.find_by(name: "Chicken2")
   chick2meal = [
     {
       name: 'Chicken Tender with Chips',
@@ -793,7 +794,7 @@ ActiveRecord::Base.transaction do
   puts "chick2meal Meal Created"
 
 
-  chopstick = Shop.find_by(name: "Chopstick Express")
+  chopstick = Shop.find_by(name: "Marathon Sushi")
   chopstickMeals = [
     {
       name: '2 Tuna Roll',
@@ -823,7 +824,7 @@ ActiveRecord::Base.transaction do
   puts "chopstickMeals Meal Created"
 
 
-  gumbys = Shop.find_by(name: "Gumby's Pizza")
+  gumbys = Shop.find_by(name: "Grubhub's Pizza")
   gumbysmeal = [
     {
       name: '2 Ham Pizza',
@@ -858,7 +859,7 @@ ActiveRecord::Base.transaction do
 
   puts "gumbysmeal Meal Created"
 
-  india = Shop.find_by(name: "India Pavilion")
+  india = Shop.find_by(name: "Namaste Pavilion")
   indiameal = [
     {
       name: 'Bean Curry',
@@ -882,7 +883,7 @@ ActiveRecord::Base.transaction do
   puts "indiameal Meal Created"
 
 
-  irving = Shop.find_by(name: "Irvings Bagels")
+  irving = Shop.find_by(name: "Kyrie's Bagel")
   irvingmeal = [
     {
       name: 'Italian Sandwich',
@@ -946,7 +947,7 @@ ActiveRecord::Base.transaction do
 
   puts "crustmeal Meal Created"
 
-  hungry = Shop.find_by(name: "Are U Hungry")
+  hungry = Shop.find_by(name: "Am I Hungry")
   hungrymeal = [
     {
       name: 'Chicken Sandwich',
@@ -975,7 +976,7 @@ ActiveRecord::Base.transaction do
 
   puts "hungrymeal Meal Created"
   
-  zen = Shop.find_by(name: "Zen Wings and Things")
+  zen = Shop.find_by(name: "Soto Wings Factory")
   zenmeal = [
     {
       name: 'Garden Salad',
@@ -1004,7 +1005,7 @@ ActiveRecord::Base.transaction do
 
   puts "zenmeal Meal Created"
   
-  yallahtaco = Shop.find_by(name: "Yallah Taco")
+  yallahtaco = Shop.find_by(name: "Yahoo Taco")
   yallahtacomeal = [
     {
       name: 'Breakfast Burrito',
@@ -1033,7 +1034,7 @@ ActiveRecord::Base.transaction do
 
   puts "yallahtacomeal Meal Created"
 
-  babysburger = Shop.find_by(name: "Baby's Burgers and Shakes")
+  babysburger = Shop.find_by(name: "Bobby's Burger")
   babysmeal = [
     {
       name: 'Bacon Cheese Burger',
@@ -1074,7 +1075,7 @@ ActiveRecord::Base.transaction do
 
   puts "babysmeal Meal Created"
 
-  kook = Shop.find_by(name: "The Koop")
+  kook = Shop.find_by(name: "The Kook")
   kookmeal = [
     {
       name: 'Chicken Ramen',
@@ -1109,7 +1110,7 @@ ActiveRecord::Base.transaction do
 
   puts "kookmeal Meal Created"
 
-  deliz = Shop.find_by(name: "Deli and Z Bar")
+  deliz = Shop.find_by(name: "Delissimo")
   delizmeal = [
     {
       name: 'Sandwich with French Fries',
@@ -1132,7 +1133,7 @@ ActiveRecord::Base.transaction do
 
   puts "delizmeal Meal Created"
 
-  jimmy = Shop.find_by(name: "Jimmy John's")
+  jimmy = Shop.find_by(name: "Mama John's")
   jimmymeal = [
     {
       name: 'Chicken Sandwich with Fries',
@@ -1155,7 +1156,7 @@ ActiveRecord::Base.transaction do
   puts "jimmymeal Meal Created"
 
 
-  joes = Shop.find_by(name: "John's Shanghai")
+  joes = Shop.find_by(name: "Joe's Shanghai")
   joesmeal = [
     {
       name: 'Beef Roll',
@@ -1177,7 +1178,7 @@ ActiveRecord::Base.transaction do
 
   puts "joesmeal Meal Created"
 
-  kaarma = Shop.find_by(name: "Kaarma Indian Cuisine")
+  kaarma = Shop.find_by(name: "Kumar Indian Cuisine")
   kaarmameal = [
     {
       name: 'Chicken Satay',
@@ -1200,7 +1201,7 @@ ActiveRecord::Base.transaction do
 
   puts "kaarmameal Meal Created"
 
-  koreantable = Shop.find_by(name: "Korean Table")
+  koreantable = Shop.find_by(name: "Seoul Sang")
   koreantablemeal = [
     {
       name: 'Beef Bibimbab',
@@ -1224,7 +1225,7 @@ ActiveRecord::Base.transaction do
   puts "koreantablemeal Meal Created"
 
 
-  latinofood = Shop.find_by(name: "Latinos Food")
+  latinofood = Shop.find_by(name: "Mexicano Food")
   latinofoodmeal = [
     {
       name: 'Loaded Nachos',
@@ -1247,7 +1248,7 @@ ActiveRecord::Base.transaction do
 
   puts "latinofoodmeal Meal Created"
 
-  osaka = Shop.find_by(name: "Osaka")
+  osaka = Shop.find_by(name: "Hiroshima")
   osakameal = [
     {
       name: 'Karaage Don',
@@ -1270,7 +1271,7 @@ ActiveRecord::Base.transaction do
 
   puts "osakameal Meal Created"
 
-  pizzamia = Shop.find_by(name: "Pizza Mia")
+  pizzamia = Shop.find_by(name: "Mama Mia")
   pizzamiameal = [
     {
       name: 'Salad',
@@ -1293,7 +1294,7 @@ ActiveRecord::Base.transaction do
 
   puts "pizzamiameal Meal Created"
 
-  primimanti = Shop.find_by(name: "Primanti Bros.")
+  primimanti = Shop.find_by(name: "Warner Bros.")
   primimantimeal = [
     {
       name: 'Bolognese',
@@ -1310,7 +1311,7 @@ ActiveRecord::Base.transaction do
 
   puts "primimantimeal Meal Created"
 
-  queenstown = Shop.find_by(name: "Queenstown Restaurant")
+  queenstown = Shop.find_by(name: "Queensboro Restaurant")
   queenstownmeal = [
     {
       name: 'Pork Chop',
@@ -1333,7 +1334,7 @@ ActiveRecord::Base.transaction do
 
   puts "queenstownmeal Meal Created"
 
-  saddies = Shop.find_by(name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches")
+  saddies = Shop.find_by(name: "Eric's Gourmet Sandwich and Waffle")
   saddiesmeal = [
     {
       name: 'Two Waffle',
@@ -1356,7 +1357,7 @@ ActiveRecord::Base.transaction do
 
   puts "saddiesmeal Meal Created"
 
-  tadashi = Shop.find_by(name: "Tadashi Japanese Restaurant")
+  tadashi = Shop.find_by(name: "Hon Sushi")
   tadashimeal = [
     {
       name: 'Salmon Roll',
@@ -1380,7 +1381,7 @@ ActiveRecord::Base.transaction do
   puts "tadashimeal Meal Created"
 
 
-  tavern = Shop.find_by(name: "The Tavern")
+  tavern = Shop.find_by(name: "Minetta Taverna")
   tavernmeal = [
     {
       name: 'Supreme Pasta',
@@ -1404,7 +1405,7 @@ ActiveRecord::Base.transaction do
   puts "tavernmeal Meal Created"
 
 
-  waffle = Shop.find_by(name: "The Waffle Shop")
+  waffle = Shop.find_by(name: "Checker Waffle")
   wafflemeal = [
     {
       name: 'Four Waffles',
@@ -1427,7 +1428,7 @@ ActiveRecord::Base.transaction do
 
   puts "wafflemeal Meal Created"
 
-  yallahb = Shop.find_by(name: "Yallah Burrito")
+  yallahb = Shop.find_by(name: "Yahoo Burrito")
   yallahbmeal = [
     {
       name: 'Beef Tacos',
@@ -1450,7 +1451,7 @@ ActiveRecord::Base.transaction do
 
   puts "yallahbmeal Meal Created"
 
-  yum = Shop.find_by(name: "Yum Cafe")
+  yum = Shop.find_by(name: "Yummy Cafe")
   yummeal = [
     {
       name: 'Carbonara',
