@@ -34,4 +34,4 @@ const mapStateToProps = state => {
 
 export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));
 export const ProtectedRoute = withRouter(connect(mapStateToProps, null)(Protected));
-export const AuthenticatedRoute = withRouter(connectgit(mapStateToProps, null)(Authenticated));
+export const AuthenticatedRoute = withRouter(connect(mapStateToProps, null)(Authenticated));
