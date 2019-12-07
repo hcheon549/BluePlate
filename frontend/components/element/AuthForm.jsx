@@ -35,7 +35,11 @@ class AuthForm extends React.Component{
     e.preventDefault();
     this.setState({isPending: true})
     
-    const user = Object.assign({}, this.state);
+    const user = Object.assign({}, { 
+      email: this.state.email.toLowerCase(),
+      password: this.state.password,
+      school_id: this.state.school_id
+    });
 
     if (this.props.formType == 'Login'){ //LOG IN LOGIC
       let loggedinUser = await this.props.processLogIn(user);
