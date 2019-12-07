@@ -2,7 +2,7 @@ import React from "react";
 import { Route, withRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import { AuthRoute, ProtectedRoute, AuthenticatedRoute } from "../util/route_util";
 import { getCurrentUser } from "../actions/session_actions";
 import { fetchSchools } from '../actions/school_actions';
 import { fetchTimes } from '../actions/time_action';
@@ -55,7 +55,7 @@ class App extends React.Component {
               <Route exact path="/all-restaurants" component={AllMeals} />
               {/* Auth Pages */}
               <AuthRoute path="/users/login" component={LoginPage} />
-              <Route exact path="/users/signup" component={StepJoin} />
+              <AuthenticatedRoute exact path="/users/signup" component={StepJoin} />
 
               {/* Content Pages */}
               <ProtectedRoute path="/account" component={Account} />

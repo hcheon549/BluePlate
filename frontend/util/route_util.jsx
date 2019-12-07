@@ -14,6 +14,13 @@ const Protected = ({ component: Component, path, isMember, exact }) => (
   }/>
 );
 
+const Authenticated = ({ component: Component, path, isMember, exact }) => (
+  <Route path={path} exact={exact} render={props => (
+    (isMember) ? <Redirect to="/my-meals" /> : <Component {...props} />)
+  }/>
+);
+
+
 const mapStateToProps = state => {
   let { currentUser } = state.entities
   // Match with the entities.plans
@@ -26,4 +33,5 @@ const mapStateToProps = state => {
 };
 
 export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));
-export const ProtectedRoute = withRouter(connect(mapStateToProps, null)(Protected));''
+export const ProtectedRoute = withRouter(connect(mapStateToProps, null)(Protected));
+export const AuthenticatedRoute = withRouter(connect(mapStateToProps, null)(Authenticated));
