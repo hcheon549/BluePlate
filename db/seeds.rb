@@ -515,7 +515,7 @@ ActiveRecord::Base.transaction do
       longitude: -77.854700,
       school_id: pennState.id,
     },{
-      name: "Kuamar Indian Cuisine", ##
+      name: "Kumar Indian Cuisine", ##
       address: "100 E Beaver Ave, State College, PA 16801",
       latitude: 40.793700,
       longitude: -77.859500,
