@@ -53,10 +53,11 @@ class App extends React.Component {
               <Route exact path="/" component={Landing} />
               <Route path="/faq" component={FAQLanding} />
               <Route exact path="/all-restaurants" component={AllMeals} />
+              <Route path="/demo" component={MyMeal} />
               {/* Auth Pages */}
               <AuthRoute path="/users/login" component={LoginPage} />
               <AuthenticatedRoute exact path="/users/signup" component={StepJoin} />
-
+ 
               {/* Content Pages */}
               <ProtectedRoute path="/account" component={Account} />
               <ProtectedRoute path="/my-meals" component={MyMeal} />
