@@ -189,6 +189,7 @@ button.orangeSecondary,
   color: $orange;//
   background-color: transparent;
   border-color: $orange;
+  transition: all 0.3s ease;
   &:hover{ 
     border-color: darken( $orange, 8% );
     color: darken( $orange, 8% );
@@ -199,9 +200,7 @@ button.orangeSecondary,
     background-color: $white;
     border-color: $grayMed;
     &:hover{
-      color: $grayMed;
-      background-color: $white;
-      border-color: $grayMed;
+      cursor: not-allowed;
     }
   }
   &.-alert{

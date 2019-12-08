@@ -13,16 +13,14 @@ class DisclaimerModal extends React.Component {
   }
 
   proceed(){
-    this.props.closeModal();
+    if (this.state.signed){
+      this.props.closeModal();
+    }
   }
 
-  toggleAgreeButton(event){
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
+  toggleAgreeButton(){
     this.setState({
-      [name]: value
+      signed: !this.state.signed
     });
   }
 
@@ -37,9 +35,11 @@ class DisclaimerModal extends React.Component {
           <p><span className="miniText">
             Any information and actions in this page including, but not limited to, name and location of restaurants, menu items and reservations are for demonstration purposes. BluePlattr or restaurants will not recognize or honor reservations or any claims made in this page.
           </span></p>
-          <input type="checkbox"  name="signed" checked={this.state.signed} value="" onChange={this.toggleAgreeButton} />
-          <label>I have read and agree to the disclaimer.</label>
-          <button className={'orangeSecondary' + (this.state.signed ? '' : ' disabled')} type="submit" onClick={this.proceed}>Check it out!</button>
+          <label>
+            <input type="checkbox"  name="signed" id="disclaimer-agree" checked={this.state.signed} value="" onChange={this.toggleAgreeButton} />
+            I have read and agree to the disclaimer.
+          </label>
+          <button className={'orangeSecondary' + (this.state.signed ? '' : ' -disabled')} type="submit" onClick={this.proceed}>Check it out!</button>
         </div>
       </div>
     );
