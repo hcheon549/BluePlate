@@ -27,7 +27,7 @@ class LandingHeader extends React.Component {
               <button className='orange' type="submit">{buttonText}</button>
             </Link>
             <Link to="/demo">
-              <button className='orange' type="submit" style={{marginLeft: '20px'}}>{altButtonText}</button>
+              <button className='orangeSecondary' type="submit" style={{marginLeft: '20px'}}>{altButtonText}</button>
             </Link>
           </div>
         </div>

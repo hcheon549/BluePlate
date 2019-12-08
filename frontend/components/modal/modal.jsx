@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReservationModal from './ReservationModal';
 import ConfirmModal from './ConfirmModal';
 import ClosedModal from './ClosedModal';
+import DisclaimerModal from './DisclaimerModal';
 
 
 function Modal({ modal, closeModal }) {
@@ -12,6 +13,7 @@ function Modal({ modal, closeModal }) {
   }
 
   let component;
+
   switch (modal.type) {
     case 'reserve':
       component =
@@ -22,6 +24,9 @@ function Modal({ modal, closeModal }) {
       break;
     case 'closed':
       component = <ClosedModal closeModal={closeModal} />;
+      break;
+    case 'disclaimer':
+      component = <DisclaimerModal closeModal={closeModal} />;
       break;
     default:
       return null;

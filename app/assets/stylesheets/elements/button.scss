@@ -56,7 +56,7 @@ button,
   }
 }
 
-// *** PRIMARY ***
+// *** BLUE PRIMARY ***
 
 a.button.primary,
 button.primary{
@@ -97,7 +97,7 @@ button.primary{
   }
 }
 
-// *** SECONDARY ***
+// *** BLUE SECONDARY ***
 
 a.button.secondary,
 button.secondary,
@@ -138,7 +138,7 @@ button.secondary,
   }
 }
 
-// *** Orange ***
+// *** ORANGE PRIMARY ***
 
 a.button.orange,
 button.orange{
@@ -181,6 +181,46 @@ button.orange{
   }
 }
 
+// *** ORANGE SECONDARY ***
+
+a.button.orangeSecondary,
+button.orangeSecondary,
+.button.orangeSecondary {
+  color: $orange;//
+  background-color: transparent;
+  border-color: $orange;
+  &:hover{ 
+    border-color: darken( $orange, 8% );
+    color: darken( $orange, 8% );
+  }
+  &.-disabled{
+    cursor: default;
+    color: $grayMed;
+    background-color: $white;
+    border-color: $grayMed;
+    &:hover{
+      color: $grayMed;
+      background-color: $white;
+      border-color: $grayMed;
+    }
+  }
+  &.-alert{
+    background-color: $white;
+    border-color: $red;
+    color: $red;
+    //width: auto;
+  }
+  &.-pending{
+    cursor: default;
+     position: relative;
+     height: 48px;
+     &::before {
+     @extend %spinit;  
+      border: solid 3px rgba($black, 45%);
+      border-bottom-color: $white;
+    }
+  }
+}
 // *** DEFAULT DISABLED ***
 
 button.disabled, .button.disabled{

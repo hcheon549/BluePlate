@@ -30,7 +30,9 @@ class MyMeal extends React.Component {
   
   async componentDidMount() {
     await this.props.fetchMenus(this.props.currentUser.schoolId)
-    if (this.props.location.pathname !== "/demo"){
+    if (this.props.location.pathname == "/demo"){
+      this.props.openDisclaimer();
+    } else {
       this.props.openClosedModal();
     }
     await this.props.fetchReservations()
@@ -39,9 +41,9 @@ class MyMeal extends React.Component {
   }
 
   async componentWillReceiveProps(nextProps) {
-    if (nextProps.location.pathname !== "/my-meals") {
-      this.props.history.push("/my-meals");
-    }
+    // if (nextProps.location.pathname !== "/my-meals") {
+    //   this.props.history.push("/my-meals");
+    // }
     if (nextProps.currentUser.schoolId !== this.props.currentUser.schoolId) {
       await this.props.fetchMenus(nextProps.currentUser.schoolId)
       this.props.resetFilter();
@@ -153,7 +155,8 @@ const mayDispatchToProps = (dispatch) => {
     fetchReservations: () => dispatch(fetchReservations()),
     resetFilter: () => dispatch(resetFilter()),
     openReserveModal: (data) => dispatch(openModal({ type: 'reserve', data })),
-    openClosedModal: () => dispatch(openModal({ type: 'closed'}))
+    openClosedModal: () => dispatch(openModal({ type: 'closed'})),
+    openDisclaimer: () => dispatch(openModal({type: 'disclaimer'}))
   };
 };
 
