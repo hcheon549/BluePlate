@@ -91,7 +91,6 @@ class MyMeal extends React.Component {
     if (this.props.loading) {
       return <LoadingIcon />;
     }
-
     return (
       <div className="greeting-container">
         <TodayReservations {...this.props}/>

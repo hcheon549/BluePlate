@@ -78,7 +78,6 @@ class LandingMap extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.entities.currentUser)
   return {
     currentUser: state.entities.currentUser
   }

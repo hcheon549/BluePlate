@@ -47,7 +47,7 @@ class MealMap extends React.Component {
     if (!this.props.landing){this.registerListeners();}
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
     this.MarkerManager.highlightMarker(this.props.marker);
 
