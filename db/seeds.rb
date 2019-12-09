@@ -518,7 +518,6 @@ ActiveRecord::Base.transaction do
   puts "Shops created"
 end
 
-# https://source.unsplash.com/collection/9011946/480x480/?sig=1/
 
 ActiveRecord::Base.transaction do
   Meal.destroy_all
