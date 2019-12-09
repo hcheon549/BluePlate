@@ -52,7 +52,7 @@ class App extends React.Component {
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
               <Route path="/faq" component={FAQLanding} />
-              <Route exact path="/all-restaurants" component={AllMeals} />
+              <Route exact path="/all-meals" component={AllMeals} />
               <Route path="/demo" component={MyMeal} />
               {/* Auth Pages */}
               <AuthRoute path="/users/login" component={LoginPage} />

@@ -25,7 +25,7 @@ const Nav = (props) => {
       <div className="navLogo">
         <Link to="/">
           <img src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
-          <span><strong>BLUE</strong>PLATTR</span>
+          <span className="theLogo">BluePlattr</span>
         </Link>
       </div>
       {navSelect}
