@@ -63,12 +63,14 @@ class LandingMap extends React.Component {
           </div>
           <Link className="full-list miniText"to="/all-restaurants">See Full List</Link>
 
+
           <div className="map">
             {this.state.schoolId && <MealMap
               landing={true}
               school={schools[this.state.schoolId]}
               />}
           </div>
+          <span className="tinyText" style={{color: 'white'}}>*The website is current on BETA mode. The restaurants displayed are not real-life businesses</span>
         </div>
       </section>
     )

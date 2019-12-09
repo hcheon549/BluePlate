@@ -247,45 +247,45 @@ ActiveRecord::Base.transaction do
 
   shops = [
     {
-      name: "Melt Sandwich Shop",
+      name: "Marathon Sushi",
       address: "63 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.498030,
       longitude: -74.449500,
       school_id: rutgers.id,
     },
     {
-      name: "Woori House Korean Eatery",
+      name: "Queensboro Restaurant",
       address: "101 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.499020,
       longitude: -74.451320,
       school_id: rutgers.id,
     }, {
-      name: "Unchle Chen's",
+      name: "Chicken2",
       address: "72 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.497980,
       longitude: -74.449910,
       school_id: rutgers.id,
     }, 
     {
-      name: "My Pie Pizzaria",
+      name: "Eric's Gourmet Sandwich and Waffle",
       address: "90 College Ave, New Brunswick, NJ 08901",
       latitude: 40.500740,
       longitude: -74.449290,
       school_id: rutgers.id,
     }, {
-      name: "Hoagie Haven",
+      name: "Namaste Pavilion",
       address: "10 College Ave, New Brunswick, NJ 08901",
       latitude: 40.498130,
       longitude: -74.447090,
       school_id: rutgers.id,
     }, {
-      name: "Namaste",
+      name: "Delissimo",
       address: "48 Easton Ave, New Brunswick, NJ 08901",
       latitude: 40.497910,
       longitude: -74.449700,
       school_id: rutgers.id,
     },{
-      name: "Joe's Sandwich",
+      name: "Bobby's Burger",
       address: "45 Bartlett St, New Brunswick, NJ 08901",
       latitude: 40.501200,
       longitude: -74.453110,
@@ -370,30 +370,6 @@ ActiveRecord::Base.transaction do
       longitude: -77.860020,
       school_id: pennState.id,
     },{
-      name: "Marathon Sushi", ##### Check
-      address: "154 E College Ave, State College, PA 16801",
-      latitude: 40.794950,
-      longitude: -77.860420,
-      school_id: pennState.id,
-    },{
-      name: "Queensboro Restaurant", ##
-      address: "122 E College Ave, State College, PA 16801",
-      latitude: 40.795140,
-      longitude: -77.856529,
-      school_id: pennState.id,
-    },{
-      name: "Chicken2", ##### check
-      address: "120 E College Ave, State College, PA 16801",
-      latitude: 40.794811,
-      longitude: -77.860558,
-      school_id: pennState.id,
-    },{
-      name: "Eric's Gourmet Sandwich and Waffle", ##
-      address: "108 S Pugh St, State College, PA 16801",
-      latitude: 40.794900,
-      longitude: -77.860100,
-      school_id: pennState.id,
-    },{
       name: "Kyrie's Bagel", #### Check
       address: "100 E College Ave #4816, State College, PA 16801",
       latitude: 40.794560,
@@ -404,12 +380,6 @@ ActiveRecord::Base.transaction do
       address: "207 McAllister Alley, State College, PA 16801",
       latitude: 40.795220,
       longitude: -77.859070,
-      school_id: pennState.id,
-    },{
-      name: "Namaste Pavilion", ##### Check
-      address: "202 E Calder Way, State College, PA 16801",
-      latitude: 40.795380,
-      longitude: -77.859080,
       school_id: pennState.id,
     },{
       name: "The Kook", #### check
@@ -447,18 +417,6 @@ ActiveRecord::Base.transaction do
       address: "344 E College Ave, State College, PA 16801",
       latitude: 40.797700,
       longitude: -77.856930,
-      school_id: pennState.id,
-    },{
-      name: "Delissimo", ## check
-      address: "111 Heister St, State College, PA 16801",
-      latitude: 40.797250,
-      longitude: -77.857090,
-      school_id: pennState.id,
-    },{
-      name: "Bobby's Burger", ### Check
-      address: "111 S Garner St, State College, PA 16801",
-      latitude: 40.797580,
-      longitude: -77.856270,
       school_id: pennState.id,
     },{
       name: "Mama John's", ## check
@@ -574,94 +532,192 @@ ActiveRecord::Base.transaction do
   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
   pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
-  shops = Shop.where(school_id: rutgers.id)
 
-  # (shops.length).times do |i|
-  #   name = Faker::Food.dish
+  ###############################################
+  ######## RUTGERS REAL LIFE EXAMPLES ########
+  ###############################################
 
-  #   description = ''
-  #   4.times do |j|
-  #     description += Faker::Food.ingredient + ", "
-  #   end
-  #   description += Faker::Food.ingredient
-
-  #   price = rand(3.0..8.0).round(2)
-
-  #   randomNumber = rand(1..200)
-  #   image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{randomNumber}"
-
-  #   shop_id = shops[i].id
-
-  #   meals << {
-  #     name: name,
-  #     description: description,
-  #     price: price,
-  #     image_url: image_url,
-  #     shop_id: shop_id
-  #   }
-  # end
-
-  shops.each do |shop|
-    name = 'Burger with Fries'
-    description = "Beef patty, cheese, bun, lettus, onion, tomato, potato"
-    price = 8.99
-    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
-    shop_id = shop.id
-
-    meals_for_today << {
-      name: name,
-      description: description,
-      price: price,
-      image_url: image_url,
-      shop_id: shop_id
+  chopstick = Shop.find_by(name: "Marathon Sushi")
+  chopstickMeals = [
+    {
+      name: '2 Tuna Roll',
+      description: "Tuna, rice, vinegrette, seaweed, sesame seeds",
+      price: 7.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_tuna_roll.jpeg',
+      shop_id: chopstick.id
+    }, {
+      name: 'Beef Udon',
+      description: "Beef, flour noodle, beef broth, bakchoy, beansprouts",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_beef_udon.jpeg',
+      shop_id: chopstick.id
+    }, {
+      name: 'Pad Thai',
+      description: "Eggs, rice noodle, soy sauce, sallion, peanut",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_pad_thai.jpeg',
+      shop_id: chopstick.id
     }
-  end
+  ]
 
-  shops.each do |shop|
-    name = 'Fried Chicken Sandwich'
-    description = "Chicken, breading, coleslaw, bun"
-    price = 9.99
-    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
-    shop_id = shop.id
-
-    meals_for_today << {
-      name: name,
-      description: description,
-      price: price,
-      image_url: image_url,
-      shop_id: shop_id
-    }
-  end
-
-  shops.each do |shop|
-    name = 'Pizza'
-    description = "Pizza dough, mozzarella cheese, tomato sauce"
-    price = 7.99
-    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
-    shop_id = shop.id
-
-    meals_for_tomorrow << {
-      name: name,
-      description: description,
-      price: price,
-      image_url: image_url,
-      shop_id: shop_id
-    }
-  end
-
-  meals_for_today.each do |meal|
+  chopstickMeals.each do |meal|
     Meal.create!(meal)
   end
-  
-  puts "Meals at Rutgers for today created"
 
-  meals_for_tomorrow.each do |meal|
+  puts "chopstickMeals Meal Created"
+
+
+  queenstown = Shop.find_by(name: "Queensboro Restaurant")
+  queenstownmeal = [
+    {
+      name: 'Pork Chop',
+      description: "Pork, amazing sauce, grilled, mashed potato",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_pork_chop.jpeg',
+      shop_id: queenstown.id
+    },{
+      name: 'Roast Beef Sandwich',
+      description: "Roast beef, bread, mustard, lettus, tomato, red onion",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg',
+      shop_id: queenstown.id
+    }
+  ]
+
+  queenstownmeal.each do |meal|
     Meal.create!(meal)
   end
-  
-  puts "Meals at Rutgers for tomorrow created"
+
+  puts "queenstownmeal Meal Created"
+
+  chick2 = Shop.find_by(name: "Chicken2")
+  chick2meal = [
+    {
+      name: 'Chicken Tender with Chips',
+      description: "Fried chicken breast, potato chips, mustard sacue",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chips.jpeg',
+      shop_id: chick2.id
+    }, {
+      name: 'Fried Chicken Sandwich with Fries',
+      description: "Fried chicken breast, bun, coleslaw, french fries",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_fried_chicken_fries.jpeg',
+      shop_id: chick2.id
+    }, {
+      name: 'Chicken Nuggets with Fries',
+      description: "Chicken nuggets 4 peices, french fries, ketchup",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_nuggets.jpeg',
+      shop_id: chick2.id
+    }
+  ]
+
+  chick2meal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "chick2meal Meal Created"
+
+  saddies = Shop.find_by(name: "Eric's Gourmet Sandwich and Waffle")
+  saddiesmeal = [
+    {
+      name: 'Two Waffle',
+      description: "Waffle, syrup, strawberries",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_two_waffles.jpeg',
+      shop_id: saddies.id
+    },{
+      name: 'Waffle Chicken',
+      description: "Fried chicken, waffles, syrup, butter",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_waffle_chicken.jpeg',
+      shop_id: saddies.id
+    }
+  ]
+
+  saddiesmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "saddiesmeal Meal Created"
+
+  india = Shop.find_by(name: "Namaste Pavilion")
+  indiameal = [
+    {
+      name: 'Bean Curry',
+      description: "Beans, curry powder, vegitable broth",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_bean_curry.jpeg',
+      shop_id: india.id
+    },{
+      name: 'Chicken Curry',
+      description: "Chicken, curry powder, chicken broth",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_curry.jpeg',
+      shop_id: india.id
+    }
+  ]
+
+  indiameal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "indiameal Meal Created"
 
 
+  deliz = Shop.find_by(name: "Delissimo")
+  delizmeal = [
+    {
+      name: 'Sandwich with French Fries',
+      description: "Bread, beef, lettus, tomato, onion, potato fries, ketchup",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_sandwich_fries.jpeg',
+      shop_id: deliz.id
+    },{
+      name: 'Turkey Bacon Sandwich',
+      description: "Turkey, bacon, bread, lettus, tomato, onion, mayo",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_turkey_bacon_sandwich.jpeg',
+      shop_id: deliz.id
+    }
+  ]
+
+  delizmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "delizmeal Meal Created"
+
+
+  babysburger = Shop.find_by(name: "Bobby's Burger")
+  babysmeal = [
+    {
+      name: 'Bacon Cheese Burger',
+      description: "Beef patty, buns, lettus, tomato, onion, bacon, american cheese",
+      price: 7.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_bacon_burger.jpeg',
+      shop_id: babysburger.id
+    },{
+      name: 'Fried Chicken Sandwich',
+      description: "Fried chicken, bun, coleslaw, mayo",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_fried_chicken_sandwich.jpeg',
+      shop_id: babysburger.id
+    },{
+      name: 'Glazed Salmon',
+      description: "Glazed Salmon, risotto, fish broth",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_glazed_salmon.jpeg',
+      shop_id: babysburger.id
+    }
+  ]
+
+  babysmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "babysmeal Meal Created"
 
   ###############################################
   ######## PENN STATE REAL LIFE EXAMPLES ########
@@ -669,7 +725,6 @@ ActiveRecord::Base.transaction do
   
 
   tommys = Shop.find_by(name: "Eric's Asian Fushion")
-  puts tommys.id
   tommysmeal = [
     {
       name: 'Kalbi Platter',
@@ -764,66 +819,6 @@ ActiveRecord::Base.transaction do
   puts "bigbowlmeal Meal Created"
 
 
-  chick2 = Shop.find_by(name: "Chicken2")
-  chick2meal = [
-    {
-      name: 'Chicken Tender with Chips',
-      description: "Fried chicken breast, potato chips, mustard sacue",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chips.jpeg',
-      shop_id: chick2.id
-    }, {
-      name: 'Fried Chicken Sandwich with Fries',
-      description: "Fried chicken breast, bun, coleslaw, french fries",
-      price: 12.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_fried_chicken_fries.jpeg',
-      shop_id: chick2.id
-    }, {
-      name: 'Chicken Nuggets with Fries',
-      description: "Chicken nuggets 4 peices, french fries, ketchup",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_nuggets.jpeg',
-      shop_id: chick2.id
-    }
-  ]
-
-  chick2meal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "chick2meal Meal Created"
-
-
-  chopstick = Shop.find_by(name: "Marathon Sushi")
-  chopstickMeals = [
-    {
-      name: '2 Tuna Roll',
-      description: "Tuna, rice, vinegrette, seaweed, sesame seeds",
-      price: 7.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_tuna_roll.jpeg',
-      shop_id: chopstick.id
-    }, {
-      name: 'Beef Udon',
-      description: "Beef, flour noodle, beef broth, bakchoy, beansprouts",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_beef_udon.jpeg',
-      shop_id: chopstick.id
-    }, {
-      name: 'Pad Thai',
-      description: "Eggs, rice noodle, soy sauce, sallion, peanut",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chopstick_express_pad_thai.jpeg',
-      shop_id: chopstick.id
-    }
-  ]
-
-  chopstickMeals.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "chopstickMeals Meal Created"
-
-
   gumbys = Shop.find_by(name: "Grubhub's Pizza")
   gumbysmeal = [
     {
@@ -858,30 +853,6 @@ ActiveRecord::Base.transaction do
   end
 
   puts "gumbysmeal Meal Created"
-
-  india = Shop.find_by(name: "Namaste Pavilion")
-  indiameal = [
-    {
-      name: 'Bean Curry',
-      description: "Beans, curry powder, vegitable broth",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_bean_curry.jpeg',
-      shop_id: india.id
-    },{
-      name: 'Chicken Curry',
-      description: "Chicken, curry powder, chicken broth",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_curry.jpeg',
-      shop_id: india.id
-    }
-  ]
-
-  indiameal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "indiameal Meal Created"
-
 
   irving = Shop.find_by(name: "Kyrie's Bagel")
   irvingmeal = [
@@ -1034,46 +1005,6 @@ ActiveRecord::Base.transaction do
 
   puts "yallahtacomeal Meal Created"
 
-  babysburger = Shop.find_by(name: "Bobby's Burger")
-  babysmeal = [
-    {
-      name: 'Bacon Cheese Burger',
-      description: "Beef patty, buns, lettus, tomato, onion, bacon, american cheese",
-      price: 7.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_bacon_burger.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Fried Chicken Sandwich',
-      description: "Fried chicken, bun, coleslaw, mayo",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_fried_chicken_sandwich.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Glazed Salmon',
-      description: "Glazed Salmon, risotto, fish broth",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_glazed_salmon.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Spinach Salad',
-      description: "Spinach, eggs, tomato, carrots, avocado, croutons",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_spinach_salad.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Vegi Sandwich',
-      description: "Assorted vegitables, bread, tomato, mayo",
-      price: 11.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_vegi_sandwich.jpeg',
-      shop_id: babysburger.id
-    }
-  ]
-
-  babysmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "babysmeal Meal Created"
 
   kook = Shop.find_by(name: "The Kook")
   kookmeal = [
@@ -1109,29 +1040,6 @@ ActiveRecord::Base.transaction do
   end
 
   puts "kookmeal Meal Created"
-
-  deliz = Shop.find_by(name: "Delissimo")
-  delizmeal = [
-    {
-      name: 'Sandwich with French Fries',
-      description: "Bread, beef, lettus, tomato, onion, potato fries, ketchup",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_sandwich_fries.jpeg',
-      shop_id: deliz.id
-    },{
-      name: 'Turkey Bacon Sandwich',
-      description: "Turkey, bacon, bread, lettus, tomato, onion, mayo",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_turkey_bacon_sandwich.jpeg',
-      shop_id: deliz.id
-    }
-  ]
-
-  delizmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "delizmeal Meal Created"
 
   jimmy = Shop.find_by(name: "Mama John's")
   jimmymeal = [
@@ -1310,52 +1218,6 @@ ActiveRecord::Base.transaction do
   end
 
   puts "primimantimeal Meal Created"
-
-  queenstown = Shop.find_by(name: "Queensboro Restaurant")
-  queenstownmeal = [
-    {
-      name: 'Pork Chop',
-      description: "Pork, amazing sauce, grilled, mashed potato",
-      price: 14.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_pork_chop.jpeg',
-      shop_id: queenstown.id
-    },{
-      name: 'Roast Beef Sandwich',
-      description: "Roast beef, bread, mustard, lettus, tomato, red onion",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg',
-      shop_id: queenstown.id
-    }
-  ]
-
-  queenstownmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "queenstownmeal Meal Created"
-
-  saddies = Shop.find_by(name: "Eric's Gourmet Sandwich and Waffle")
-  saddiesmeal = [
-    {
-      name: 'Two Waffle',
-      description: "Waffle, syrup, strawberries",
-      price: 11.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_two_waffles.jpeg',
-      shop_id: saddies.id
-    },{
-      name: 'Waffle Chicken',
-      description: "Fried chicken, waffles, syrup, butter",
-      price: 14.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_waffle_chicken.jpeg',
-      shop_id: saddies.id
-    }
-  ]
-
-  saddiesmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "saddiesmeal Meal Created"
 
   tadashi = Shop.find_by(name: "Hon Sushi")
   tadashimeal = [

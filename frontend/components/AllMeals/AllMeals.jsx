@@ -106,7 +106,9 @@ class AllMeals extends Component{
           <div className="miniText" style={{marginTop: '15px'}}>
             Restaurants offer around 5 different menu items
           </div>
-
+          <span className="tinyText">
+            *The website is current on BETA mode. The restaurants and items displayed are not real.
+          </span>
           {content}
         </div>
       </section>
