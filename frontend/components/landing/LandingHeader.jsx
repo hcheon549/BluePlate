@@ -25,7 +25,8 @@ class LandingHeader extends React.Component {
     let header = 'MEALPLAN FOR LESS THAN $5 PER MEAL',
         subHeader = 'FIND OUT THE RESTAURANTS IN YOUR CAMPUS.',
         buttonText = 'Browse Meals',
-        altButtonText = 'Try DEMO';
+        altButtonText = 'Try DEMO',
+        browseLink = this.props.currentUser.policyType == 'Member' ? '/my-meals' : '/users/signup';
 
     return (
       <section className="landingHeader">
@@ -33,7 +34,7 @@ class LandingHeader extends React.Component {
           <h3>MEALPLAN FOR LESS THAN<br/> $5 PER MEAL</h3>
           <p>{subHeader}</p>
           <div style={{display: "flex", justifyContent: 'center'}}>
-            <Link to="/users/signup">
+            <Link to={browseLink}>
               <button className='orange' type="submit">{buttonText}</button>
             </Link>
             <button

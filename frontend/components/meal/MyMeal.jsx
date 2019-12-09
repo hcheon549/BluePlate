@@ -30,12 +30,12 @@ class MyMeal extends React.Component {
   }
   
   async componentDidMount() {
-    await this.props.fetchMenus(this.props.currentUser.schoolId)
     if (this.props.location.pathname == "/demo"){
       this.props.openDisclaimer();
     } else {
       this.props.openClosedModal();
     }
+    await this.props.fetchMenus(this.props.currentUser.schoolId)
     await this.props.fetchReservations()
     await this.props.resetFilter()
   }

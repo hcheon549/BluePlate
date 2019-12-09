@@ -23,7 +23,7 @@ class Landing extends React.Component {
         <LandingHeader {...this.props} />
         <LandingHIW />
         {!schoolEmpty && <LandingMap {...this.props} />}
-        <LandingPlan />
+        <LandingPlan {...this.props} />
     </div>
     );
   }
@@ -32,6 +32,7 @@ class Landing extends React.Component {
 const mapStateToProps = state => {
   return {
     schools: state.entities.schools,
+    currentUser: state.entities.currentUser
   };
 };
 
