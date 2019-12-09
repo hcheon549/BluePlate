@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { fetchSchools } from '../../actions/school_actions';
+import { login } from '../../actions/session_actions';
 
 import LandingHeader from './LandingHeader'
 import LandingHIW from './LandingHIW';
@@ -37,6 +38,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchSchools: () => dispatch(fetchSchools()),
+    processLogIn: (user) => dispatch(login(user)),
   };
 };
 

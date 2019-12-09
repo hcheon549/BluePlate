@@ -5,10 +5,20 @@ class LandingHeader extends React.Component {
   constructor(props){
     super(props);
     this.nextAction = this.nextAction.bind(this);
+    this.tryDemo = this.tryDemo.bind(this);
   }
 
   nextAction() {
     this.props.history.push("/my-meals");
+  }
+
+  async tryDemo(){
+    let user = {
+      email: 'rutgers@gmail.com',
+      password: 'ececec'
+    }
+    await this.props.processLogIn(user);
+    this.props.history.push('/demo')
   }
 
   render() {
@@ -26,9 +36,12 @@ class LandingHeader extends React.Component {
             <Link to="/users/signup">
               <button className='orange' type="submit">{buttonText}</button>
             </Link>
-            <Link to="/demo">
-              <button className='orangeSecondary' type="submit" style={{marginLeft: '20px'}}>{altButtonText}</button>
-            </Link>
+            <button
+              className='orangeSecondary'
+              type="submit"
+              style={{marginLeft: '20px'}}
+              onClick={this.tryDemo}
+            >{altButtonText}</button>
           </div>
         </div>
       </section>

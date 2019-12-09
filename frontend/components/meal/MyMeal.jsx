@@ -8,6 +8,7 @@ import { fetchFavorites } from '../../actions/favorite_actions';
 import { resetFilter } from '../../actions/filter_actions';
 import { fetchReservations } from '../../actions/accountHistory_actions';
 import { openModal } from "../../actions/modal_actions";
+import { logout } from '../../actions/session_actions';
 
 import MealIndex from "../meal_listing/meal_index";
 import MealMap from "../map/meal_map";
@@ -41,12 +42,15 @@ class MyMeal extends React.Component {
   }
 
   async componentWillReceiveProps(nextProps) {
-    // if (nextProps.location.pathname !== "/my-meals") {
-    //   this.props.history.push("/my-meals");
-    // }
     if (nextProps.currentUser.schoolId !== this.props.currentUser.schoolId) {
       await this.props.fetchMenus(nextProps.currentUser.schoolId)
       this.props.resetFilter();
+    }
+  }
+
+  async componentWillUnmount(){
+    if (this.props.location.pathname == "/demo"){
+      await this.props.logout();
     }
   }
 
@@ -156,7 +160,8 @@ const mayDispatchToProps = (dispatch) => {
     resetFilter: () => dispatch(resetFilter()),
     openReserveModal: (data) => dispatch(openModal({ type: 'reserve', data })),
     openClosedModal: () => dispatch(openModal({ type: 'closed'})),
-    openDisclaimer: () => dispatch(openModal({type: 'disclaimer'}))
+    openDisclaimer: () => dispatch(openModal({type: 'disclaimer'})),
+    logout: () => dispatch(logout())
   };
 };
 
