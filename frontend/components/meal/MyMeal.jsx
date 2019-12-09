@@ -38,7 +38,6 @@ class MyMeal extends React.Component {
     }
     await this.props.fetchReservations()
     await this.props.resetFilter()
-
   }
 
   async componentWillReceiveProps(nextProps) {

@@ -38,12 +38,14 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+
   <% if logged_in? %>
       <script type="text/javascript">
         window.currentUser =
         <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
       </script>
     <% end %>
+
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
