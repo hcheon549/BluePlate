@@ -70,7 +70,7 @@ class LandingMap extends React.Component {
               school={schools[this.state.schoolId]}
               />}
           </div>
-          <span className="tinyText" style={{color: 'white'}}>*The website is current on BETA mode. The restaurants displayed are not real-life businesses</span>
+          <span className="tinyText" style={{color: 'white'}}>*The website is current on BETA mode. The restaurants displayed are not real.</span>
         </div>
       </section>
     )
