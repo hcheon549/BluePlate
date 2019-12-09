@@ -788,7 +788,6 @@ ActiveRecord::Base.transaction do
 
   puts  "doansmeal Meal Created"
 
-
   bigbowl = Shop.find_by(name: "The Noodle Associates")
   bigbowlmeal = [
     {
