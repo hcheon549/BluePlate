@@ -1348,32 +1348,31 @@ ActiveRecord::Base.transaction do
     today += 1
   end
 
-  # Today's LUNCH menu
-  meals_for_today_lunch = Meal.where(name: "Burger with Fries")
+  ###############################################
+  ######## RUTGERS REAL LIFE EXAMPLES ########
+  ###############################################
 
-  meals_for_today_lunch.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: today, lunch: true, dinner: false})
+
+  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  rutgersShops = Shop.where(school_id: rutgers.id)
+
+  lunch_count = 0
+  dinner_count = 0
+
+  rutgersShops.each do |shop|
+    week.each do |day|
+      sample_lunch_meal = shop.meals.sample
+      sample_dinner_meal = shop.meals.sample
+      Menu.create!(meal_id: sample_lunch_meal.id, offered_date: day, lunch: true, dinner: false)
+      Menu.create!(meal_id: sample_dinner_meal.id, offered_date: day, lunch: false, dinner: true)
+      lunch_count += 1
+      dinner_count += 1
+    end
   end
 
-  puts "Menu for TODAY LUNCH created"
+  puts lunch_count.to_s + " lunch menus in Rutgers created"
+  puts dinner_count.to_s + " dinner menus in Rutgers created"
 
-  # Today's DINNER menu
-  meals_for_today_dinner = Meal.where(name: "Fried Chicken Sandwich")
-
-  meals_for_today_dinner.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: today, lunch: false, dinner: true})
-  end
-
-  puts "Menu for TODAY DINNER created"
-
-  # Tomorrow's menu
-  meals_for_tomorrow = Meal.where(name: "Pizza")
-
-  meals_for_tomorrow.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: tomorrow})
-  end
-
-  puts "Menu for TOMORROW created"
 
   ###############################################
   ######## PENN STATE REAL LIFE EXAMPLES ########
