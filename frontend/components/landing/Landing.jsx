@@ -14,15 +14,17 @@ import LandingPlan from './LandingPlan';
 class Landing extends React.Component {
   constructor(props) {
     super(props);
+    this.leadCapture = null;
+    this.leadCaptureId = null;
     this.openLeadCapture = this.openLeadCapture.bind(this);
   }
 
   componentDidMount(){
-    setTimeout(this.openLeadCapture, 10000);
+    this.leadCaptureId = setTimeout(this.openLeadCapture, 5000);
   }
 
   componentWillUnmount(){
-    clearTimeout(this.openLeadCapture);
+    clearTimeout(this.leadCaptureId);
   }
 
   openLeadCapture(){
