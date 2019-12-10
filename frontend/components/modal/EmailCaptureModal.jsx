@@ -19,7 +19,7 @@ const EmailCaptureModal = (props) => {
 
   return (
     <div
-      className="leadCapture-modal animated fadeInDown"
+      className="leadCapture-modal animated fadeInDown fadeInUp"
       onClick={e => e.stopPropagation()}
     >
       <div className="innerContent">

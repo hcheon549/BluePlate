@@ -18,7 +18,7 @@ class Landing extends React.Component {
   }
 
   componentDidMount(){
-    setTimeout(this.openLeadCapture, 5000);
+    setTimeout(this.openLeadCapture, 10000);
   }
 
   componentWillUnmount(){
@@ -27,7 +27,7 @@ class Landing extends React.Component {
 
   openLeadCapture(){
     let currentUser = Object.values(this.props.currentUser).length !== 0
-    
+
     if(!this.props.leadCaptureSeen && !currentUser){
       this.props.openEmailCapture();
     }
