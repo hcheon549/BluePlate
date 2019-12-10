@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
   def user
     @user = current_user
     
-    if @user && @user.email != 'rutgers@gmail.com'
+    if @user && @user.email != 'demo@gmail.com'
       render 'api/users/show'
     else
       render json: {}
