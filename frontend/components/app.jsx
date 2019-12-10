@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, withRouter, Switch } from "react-router-dom";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { AuthRoute, ProtectedRoute, AuthenticatedRoute } from "../util/route_util";
@@ -62,7 +62,7 @@ class App extends React.Component {
               <ProtectedRoute exact path="/account" component={Account} />
               <ProtectedRoute exact path="/my-meals" component={MyMeal} />
 
-              <Route path="*" component={Landing} />
+              <Redirect from="*" to="/" />
             </Switch>
           </main>
 
