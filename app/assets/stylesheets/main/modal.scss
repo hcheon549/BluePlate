@@ -68,6 +68,8 @@
     .reject{
       margin: 20px auto;
       color: $gray;
+      display: inline-block;
+      transition: all, 0.3, ease;
       &:hover{
         cursor: pointer;
         color: $light-gray;
