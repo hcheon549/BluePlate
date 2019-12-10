@@ -2,7 +2,7 @@ import { SET_SIGNATURE } from "../actions/modal_actions";
 
 const signatureReducer = (state = null, action) => {
   switch (action.type) {
-    case signatureReducer:
+    case SET_SIGNATURE:
       return true;
     default:
       return state;

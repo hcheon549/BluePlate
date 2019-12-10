@@ -28,6 +28,8 @@ class MyMeal extends React.Component {
     }
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
+    this.showEmailCapture = this.showEmailCapture.bind(this);
+    this.openEmailCapture = this.openEmailCapture.bind(this);
   }
   
   async componentDidMount() {
@@ -48,14 +50,27 @@ class MyMeal extends React.Component {
     }
   }
 
-  componentDidUpdate(){
-
+  componentDidUpdate(prevProps){
+    if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer) && !this.state.seenEmailCapture){
+      addEventListener('scroll', this.showEmailCapture)
+    }
   }
 
   async componentWillUnmount(){
     if (this.props.location.pathname == "/demo"){
       await this.props.logout();
     }
+  }
+
+  showEmailCapture(){
+    setTimeout(this.openEmailCapture, 10000)
+  }
+
+  openEmailCapture(){
+    this.props.openEmailCapture();
+    this.setState({
+      seenEmailCapture: true
+    })
   }
 
   handleCollapse() {
@@ -139,7 +154,7 @@ class MyMeal extends React.Component {
   }
 }
 
-const mapStateToProps = ({entities}) => {
+const mapStateToProps = ({entities, ui}) => {
   const todayMenu = Object.values(entities.menus);
   const pickupTime = entities.pickupTime
 
@@ -151,6 +166,7 @@ const mapStateToProps = ({entities}) => {
     lunchTime: pickupTime.lunch,
     dinnerTime: pickupTime.dinner,
     todayReservations: entities.todayReservations,
+    signedDisclaimer: ui.disclaimerSignature
   };
 };
 
@@ -164,6 +180,7 @@ const mayDispatchToProps = (dispatch) => {
     openReserveModal: (data) => dispatch(openModal({ type: 'reserve', data })),
     openClosedModal: () => dispatch(openModal({ type: 'closed'})),
     openDisclaimer: () => dispatch(openModal({type: 'disclaimer'})),
+    openEmailCapture: () => dispatch(openModal({type: 'emailCapture'})),
     logout: () => dispatch(logout())
   };
 };
