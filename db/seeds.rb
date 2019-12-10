@@ -17,12 +17,12 @@ ActiveRecord::Base.transaction do
       name: "Rutgers University–New Brunswick",
       latitude: 40.498080,
       longitude: -74.448920
-    },
-    {
-      name: "Pennsylvania State University–University Park",
-      latitude: 40.792650,
-      longitude: -77.859082
     }
+    # ,{
+    #   name: "Pennsylvania State University–University Park",
+    #   latitude: 40.792650,
+    #   longitude: -77.859082
+    # }
   ]
 
   schools.each do |school|
@@ -153,22 +153,23 @@ ActiveRecord::Base.transaction do
   User.destroy_all
 
   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
   users = [
     {
-      email: 'rutgers@gmail.com',
+      email: 'demo@gmail.com',
       password: 'ececec',
-      fname: 'Eric',
-      lname: 'Cheon',
+      fname: 'BluePlattr',
+      lname: 'Demo',
       school_id: rutgers.id
-    },{
-      email: 'penn@gmail.com',
-      password: 'ececec',
-      fname: 'Eric',
-      lname: 'Cheon',
-      school_id: pennState.id
-    },
+    }
+    # ,{
+    #   email: 'penn@gmail.com',
+    #   password: 'ececec',
+    #   fname: 'Eric',
+    #   lname: 'Cheon',
+    #   school_id: pennState.id
+    # },
   ]
 
   users.each do |user|
@@ -180,11 +181,11 @@ end
 ActiveRecord::Base.transaction do
   Subscription.destroy_all
 
-  rutgers = User.find_by(email: 'rutgers@gmail.com')
-  penn = User.find_by(email: 'penn@gmail.com')
+  rutgers = User.find_by(email: 'demo@gmail.com')
+  # penn = User.find_by(email: 'penn@gmail.com')
   plans = Plan.all
   rutgers_plan = plans[rand(0..plans.length-1)]
-  penn_plan = plans[rand(0..plans.length-1)]
+  # penn_plan = plans[rand(0..plans.length-1)]
 
   subscriptions = [
     {
@@ -193,13 +194,14 @@ ActiveRecord::Base.transaction do
       meal_credit: rutgers_plan.meals,
       subscription_start: Date.new(2020, 1, 22),
       subscription_end: Date.new(2020, 5, 13)
-    },{
-      user_id: penn.id,
-      plan_id: penn_plan.id,
-      meal_credit: penn_plan.meals,
-      subscription_start: Date.new(2020, 1, 22),
-      subscription_end: Date.new(2020, 5, 13)
-    },
+    }
+    # ,{
+    #   user_id: penn.id,
+    #   plan_id: penn_plan.id,
+    #   meal_credit: penn_plan.meals,
+    #   subscription_start: Date.new(2020, 1, 22),
+    #   subscription_end: Date.new(2020, 5, 13)
+    # },
   ]
 
   subscriptions.each do |subscription|
@@ -211,8 +213,8 @@ end
 ActiveRecord::Base.transaction do
   AccountSummary.destroy_all
 
-  rutgers = User.find_by(email: 'rutgers@gmail.com')
-  penn = User.find_by(email: 'penn@gmail.com')
+  rutgers = User.find_by(email: 'demo@gmail.com')
+  # penn = User.find_by(email: 'penn@gmail.com')
 
   memberPolicy = Policy.find_by(policy_type: 'Member')
 
@@ -223,13 +225,14 @@ ActiveRecord::Base.transaction do
       policy_id: memberPolicy.id,
       total_meal_credits: rutgers.subscription.meal_credit,
       meal_credits_left: rutgers.subscription.meal_credit
-    },{
-      user_id: penn.id,
-      subscription_id: penn.subscription.id,
-      policy_id: memberPolicy.id,
-      total_meal_credits: penn.subscription.meal_credit,
-      meal_credits_left: penn.subscription.meal_credit
-    },
+    }
+    # ,{
+    #   user_id: penn.id,
+    #   subscription_id: penn.subscription.id,
+    #   policy_id: memberPolicy.id,
+    #   total_meal_credits: penn.subscription.meal_credit,
+    #   meal_credits_left: penn.subscription.meal_credit
+    # },
   ]
 
   summaries.each do |summary|
@@ -243,46 +246,47 @@ ActiveRecord::Base.transaction do
   Shop.destroy_all
 
   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
   shops = [
+  ###############################################
+  ######## RUTGERS REAL LIFE EXAMPLES ###########
+  ###############################################
     {
       name: "Marathon Sushi",
       address: "63 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.498030,
       longitude: -74.449500,
       school_id: rutgers.id,
-    },
-    {
+    },{
       name: "Queensboro Restaurant",
       address: "101 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.499020,
       longitude: -74.451320,
       school_id: rutgers.id,
-    }, {
+    },{
       name: "Chicken2",
       address: "72 Easton Avenue New Brunswick NJ 08901",
       latitude: 40.497980,
       longitude: -74.449910,
       school_id: rutgers.id,
-    }, 
-    {
+    },{
       name: "Eric's Gourmet Sandwich and Waffle",
       address: "90 College Ave, New Brunswick, NJ 08901",
       latitude: 40.500740,
       longitude: -74.449290,
       school_id: rutgers.id,
-    }, {
+    },{
       name: "Namaste Pavilion",
       address: "10 College Ave, New Brunswick, NJ 08901",
       latitude: 40.498130,
       longitude: -74.447090,
       school_id: rutgers.id,
-    }, {
+    },{
       name: "Delissimo",
-      address: "48 Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.497910,
-      longitude: -74.449700,
+      address: "45 Central Ave, New Brunswick, NJ 08901",
+      latitude: 40.498210,
+      longitude: -74.457090,
       school_id: rutgers.id,
     },{
       name: "Bobby's Burger",
@@ -290,224 +294,150 @@ ActiveRecord::Base.transaction do
       latitude: 40.501200,
       longitude: -74.453110,
       school_id: rutgers.id,
-    },
-    # {
-    #   name: "Zookini Pizza & Restaurant",
-    #   address: "60 Sicard St, New Brunswick, NJ 08901",
-    #   latitude: 40.502708,
-    #   longitude: -74.454468,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Kelly's Korner",
-    #   address: "75 Morrell St, New Brunswick, NJ 08901",
-    #   latitude: 40.501000,
-    #   longitude: -74.455060,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Daniel's Pizzeria",
-    #   address: "204 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.500340,
-    #   longitude: -74.456000,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Seed Burger",
-    #   address: "176 Easton Ave New Brunswick, NJ 08901",
-    #   latitude: 40.499930,
-    #   longitude: -74.454930,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Thai Noodle",
-    #   address: "174 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499780,
-    #   longitude: -74.454630,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Wings Over Rutgers",
-    #   address: "152 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499460,
-    #   longitude: -74.453740,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "The Original Pizza City",
-    #   address: "145 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499810,
-    #   longitude: -74.453430,
-    #   school_id: rutgers.id,
-    # },
-    # Penn State
-    # {
-    #   name: "Panda Express",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },{
-    #   name: "Sbarro",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },{
-    #   name: "McAlister's Deli",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },{
-    #   name: "HUB Dining - Soup and Garden",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },
-  ###############################################
-  ######## PENN STATE REAL LIFE EXAMPLES ########
-  ###############################################
-    {
-      name: "Minetta Taverna", ## check
-      address: "320 E College Ave, State College, PA 16801",
-      latitude: 40.795540,
-      longitude: -77.860020,
-      school_id: pennState.id,
     },{
-      name: "Kyrie's Bagel", #### Check
-      address: "100 E College Ave #4816, State College, PA 16801",
-      latitude: 40.794560,
-      longitude: -77.861210,
-      school_id: pennState.id,
+      name: "Mexicano Food",
+      address: "31 Sicard St, New Brunswick, NJ 08901",
+      latitude: 40.502708,
+      longitude: -74.454468,
+      school_id: rutgers.id,
     },{
-      name: "Yahoo Taco",  ###check
-      address: "207 McAllister Alley, State College, PA 16801",
-      latitude: 40.795220,
-      longitude: -77.859070,
-      school_id: pennState.id,
+      name: "Soto Wings Factory",
+      address: "48 Morrell St, New Brunswick, NJ 08901",
+      latitude: 40.501000,
+      longitude: -74.455060,
+      school_id: rutgers.id,
     },{
-      name: "The Kook", #### check
-      address: "109 Locust Ln, State College, PA 16801",
-      latitude: 40.796100,
-      longitude: -77.857760,
-      school_id: pennState.id,
+      name: "Mama Mia",
+      address: "207 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500340,
+      longitude: -74.456000,
+      school_id: rutgers.id,
     },{
-      name: "Mexicano Food", ## check
-      address: "304 E Calder Way, State College, PA 16801",
-      latitude: 40.796680,
-      longitude: -77.857450,
-      school_id: pennState.id,
-    },
-    {
-      name: "Warner Bros.", ##
-      address: "110 Heister St, State College, PA 16801",
-      latitude: 40.796700,
-      longitude: -77.856880,
-      school_id: pennState.id,
+      name: "Grubhub's Pizza",
+      address: "230 Easton Ave New Brunswick, NJ 08901",
+      latitude: 40.499930,
+      longitude: -74.454930,
+      school_id: rutgers.id,
     },{
-      name: "Bagel Crust", ### check
-      address: "312 E Calder Way, State College, PA 16801",
-      latitude: 40.796780,
-      longitude: -77.857310,
-      school_id: pennState.id,
+      name: "Hon Sushi",
+      address: "120 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499780,
+      longitude: -74.454630,
+      school_id: rutgers.id,
     },{
-      name: "Yummy Cafe",  ### check
-      address: "300 E Calder Way, State College, PA 16801",
-      latitude: 40.796630,
-      longitude: -77.857510,
-      school_id: pennState.id,
+      name: "Seoul Sang",
+      address: "130 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499460,
+      longitude: -74.453740,
+      school_id: rutgers.id,
     },{
-      name: "Checker Waffle", # wip
-      address: "344 E College Ave, State College, PA 16801",
-      latitude: 40.797700,
-      longitude: -77.856930,
-      school_id: pennState.id,
-    },{
-      name: "Mama John's", ## check
-      address: "414 E College Ave, State College, PA 16801",
-      latitude: 40.798340,
-      longitude: -77.856170,
-      school_id: pennState.id,
+      name: "Uncle Sam's",
+      address: "530 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499810,
+      longitude: -74.453430,
+      school_id: rutgers.id,
     },{
       name: "The Noodle Associates", #####
-      address: "416 E College Ave, State College, PA 16801",
-      latitude: 40.798010,
-      longitude: -77.856480,
-      school_id: pennState.id,
+      address: "128 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.502209,
+      longitude: -74.451950,
+      school_id: rutgers.id,
+    },{
+      name: "Minetta Taverna", ## check
+      address: "149 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.503210,
+      longitude: -74.451970,
+      school_id: rutgers.id,
+    },{
+      name: "Kyrie's Bagel", #### Check
+      address: "208 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500340,
+      longitude: -74.456001,
+      school_id: rutgers.id,
+    },{
+      name: "Yahoo Taco",  ###check
+      address: "201 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500620,
+      longitude: -74.455520,
+      school_id: rutgers.id,
+    },{
+      name: "Checker Waffle", # wip
+      address: "33 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.499290,
+      longitude: -74.448380,
+      school_id: rutgers.id,
+    },{
+      name: "Mama John's", ## check
+      address: "98 Hamilton St, New Brunswick, NJ 08901",
+      latitude: 40.499330,
+      longitude: -74.448490,
+      school_id: rutgers.id,
     },{
       name: "Eric's Asian Fushion", # wip
-      address: "430 E College Ave, State College, PA 16801",
-      latitude: 40.798040,
-      longitude: -77.856290,
-      school_id: pennState.id,
+      address: "55 Mine St, New Brunswick, NJ 08901",
+      latitude: 40.499350,
+      longitude: -74.451780,
+      school_id: rutgers.id,
+    },{
+      name: "The Kook", #### check
+      address: "379 George St, New Brunswick, NJ 08901",
+      latitude: 40.495380,
+      longitude: -74.443817,
+      school_id: rutgers.id,
+    },{
+      name: "Warner Bros.", ##
+      address: "45 Bayard St, New Brunswick, NJ 08901",
+      latitude: 40.494560,
+      longitude: -74.444620,
+      school_id: rutgers.id,
+    },{
+      name: "Bagel Crust", ### check
+      address: "276 George St, New Brunswick, NJ 08901",
+      latitude: 40.495670,
+      longitude: -74.444290,
+      school_id: rutgers.id,
+    },{
+      name: "Yummy Cafe",  ### check
+      address: "355 George St, New Brunswick, NJ 08901",
+      latitude: 40.494870,
+      longitude: -74.443460,
+      school_id: rutgers.id,
     },{
       name: "Am I Hungry", ##### check
-      address: "109 Sowers St, State College, PA 16801",
-      latitude: 40.798280,
-      longitude: -77.855530,
-      school_id: pennState.id,
+      address: "354 George St, New Brunswick, NJ 08901",
+      latitude: 40.494850,
+      longitude: -74.443790,
+      school_id: rutgers.id,
     },{
       name: "Yahoo Burrito", ## check
-      address: "402 E Calder Way, State College, PA 16801",
-      latitude: 40.797510,
-      longitude: -77.855860,
-      school_id: pennState.id,
-    },{
-      name: "Uncle Sam's",  #### check
-      address: "410 E Calder Way, State College, PA 16801",
-      latitude: 40.797610,
-      longitude: -77.855170,
-      school_id: pennState.id,
-    },{
-      name: "Soto Wings Factory",  ### CHECK
-      address: "413 E Beaver Ave, State College, PA 16801",
-      latitude: 40.797510,
-      longitude: -77.855080,
-      school_id: pennState.id,
+      address: "349 George St, New Brunswick, NJ 08901",
+      latitude: 40.494640,
+      longitude: -74.443480,
+      school_id: rutgers.id,
     },{
       name: "Hiroshima", ##
-      address: "430 E College Ave, State College, PA 16801",
-      latitude: 40.798830,
-      longitude: -77.855600,
-      school_id: pennState.id,
-    },{
-      name: "Mama Mia", ##
-      address: "112 Hetzel St, State College, PA 16801",
-      latitude: 40.799030,
-      longitude: -77.854700,
-      school_id: pennState.id,
+      address: "333 George St, New Brunswick, NJ 08901",
+      latitude: 40.494410,
+      longitude: -74.443160,
+      school_id: rutgers.id,
     },{
       name: "Kumar Indian Cuisine", ##
-      address: "100 E Beaver Ave, State College, PA 16801",
-      latitude: 40.793700,
-      longitude: -77.859500,
-      school_id: pennState.id,
-    },{
-      name: "Grubhub's Pizza", #### Check
-      address: "100 S Pugh St Suite 101, State College, PA 16801",
-      latitude: 40.793070,
-      longitude: -77.857190,
-      school_id: pennState.id,
-    },{
-      name: "Seoul Sang", ##
-      address: "110 S Allen St, State College, PA 16801",
-      latitude: 40.791930,
-      longitude: -77.858500,
-      school_id: pennState.id,
+      address: "208 Hamilton St, New Brunswick, NJ 08901",
+      latitude: 40.496690,
+      longitude: -74.454270,
+      school_id: rutgers.id,
     },{
       name: "Joe's Shanghai", ##
-      address: "310 W Beaver Ave, State College, PA 16801",
-      latitude: 40.791060,
-      longitude: -77.862930,
-      school_id: pennState.id,
+      address: "170 Hamilton St, New Brunswick, NJ 08901",
+      latitude: 40.497430,
+      longitude: -74.452140,
+      school_id: rutgers.id,
     },{
       name: "Eric's Bones", ## check
-      address: "201 W Beaver Ave, State College, PA 16801",
-      latitude: 40.790780,
-      longitude: -77.864070,
-      school_id: pennState.id,
-    },{
-      name: "Hon Sushi", ##
-      address: "204 W College Ave, State College, PA 16801",
-      latitude: 40.793220,
-      longitude: -77.862680,
-      school_id: pennState.id,
+      address: "296 George St, New Brunswick, NJ 08901",
+      latitude: 40.492080,
+      longitude: -74.443300,
+      school_id: rutgers.id,
     }
   ]
 
@@ -529,7 +459,7 @@ ActiveRecord::Base.transaction do
   meals_for_tomorrow = []
 
   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
 
   ###############################################
@@ -717,11 +647,6 @@ ActiveRecord::Base.transaction do
   end
 
   puts "babysmeal Meal Created"
-
-  ###############################################
-  ######## PENN STATE REAL LIFE EXAMPLES ########
-  ###############################################
-  
 
   tommys = Shop.find_by(name: "Eric's Asian Fushion")
   tommysmeal = [
@@ -1378,31 +1303,31 @@ ActiveRecord::Base.transaction do
   ######## PENN STATE REAL LIFE EXAMPLES ########
   ###############################################
 
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
-  pennShops = Shop.where(school_id: pennState.id)
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  # pennShops = Shop.where(school_id: pennState.id)
 
-  lunch_count = 0
-  dinner_count = 0
+  # lunch_count = 0
+  # dinner_count = 0
 
-  pennShops.each do |shop|
-    week.each do |day|
-      sample_lunch_meal = shop.meals.sample
-      sample_dinner_meal = shop.meals.sample
-      Menu.create!(meal_id: sample_lunch_meal.id, offered_date: day, lunch: true, dinner: false)
-      Menu.create!(meal_id: sample_dinner_meal.id, offered_date: day, lunch: false, dinner: true)
-      lunch_count += 1
-      dinner_count += 1
-    end
-  end
+  # pennShops.each do |shop|
+  #   week.each do |day|
+  #     sample_lunch_meal = shop.meals.sample
+  #     sample_dinner_meal = shop.meals.sample
+  #     Menu.create!(meal_id: sample_lunch_meal.id, offered_date: day, lunch: true, dinner: false)
+  #     Menu.create!(meal_id: sample_dinner_meal.id, offered_date: day, lunch: false, dinner: true)
+  #     lunch_count += 1
+  #     dinner_count += 1
+  #   end
+  # end
 
-  puts lunch_count.to_s + " lunch menus in Penn State created"
-  puts dinner_count.to_s + " dinner menus in Penn State created"
+  # puts lunch_count.to_s + " lunch menus in Penn State created"
+  # puts dinner_count.to_s + " dinner menus in Penn State created"
 
 end
 
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
-  rutgers = User.find_by(email: 'rutgers@gmail.com')
+  rutgers = User.find_by(email: 'demo@gmail.com')
   menus = Menu.all
 
   lunch_time = PickupTime.where(pickup_type: 0)
