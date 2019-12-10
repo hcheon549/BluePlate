@@ -61,6 +61,8 @@ class App extends React.Component {
               {/* Content Pages */}
               <ProtectedRoute exact path="/account" component={Account} />
               <ProtectedRoute exact path="/my-meals" component={MyMeal} />
+
+              <Route path="*" component={Landing} />
             </Switch>
           </main>
 
