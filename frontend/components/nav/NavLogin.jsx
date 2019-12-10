@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
-import { login, demo } from '../../actions/session_actions';
+import { login } from '../../actions/session_actions';
 
 const NavLogin = (props) => {
   let { history: { location, push } } = props
