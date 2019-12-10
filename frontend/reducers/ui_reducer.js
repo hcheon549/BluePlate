@@ -15,7 +15,7 @@ const uiReducer = combineReducers({
   modal: modalReducer,
   stepJoin: stepJoinReducer,
   disclaimerSignature: signatureReducer,
-  emailCapture: leadReducer
+  leadCapture: leadReducer
 });
 
 export default uiReducer;

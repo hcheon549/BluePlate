@@ -3,6 +3,10 @@
 */
 
 import React from "react";
+import { connect } from 'react-redux';
+
+import { createLeadCapture } from '../../actions/user_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 class LeadCaptureForm extends React.Component{
   constructor(props){
@@ -20,29 +24,25 @@ class LeadCaptureForm extends React.Component{
   async handleSubmit(e) {
     e.preventDefault();
     this.setState({ isPending: true })
-    let oUpdate = await this.updateUserEmail();
-    if (oUpdate.user){
+
+    let leadData = {
+      email: this.state.email,
+      campus: this.state.campus,
+      wishlist: this.state.wishlist
+    }
+    let leadData = await this.createLeadCapture(leadData);
+    if (leadData.lead){
+      // lead captured logic
       this.setState({
-        emailUpdated: true
+        submitted: true
       })
-      setTimeout(() => {
-        this.props.toggleUpdateForm();
-      }, 3000);
+      setTimeout(this.props.closeModal, 1500)
     } else {
       this.setState({
-        errorMessage: oUpdate.errors
+        errorMessage: leadData.errors
       })
     }
     this.setState({isPending: false})
-  }
-
-  async updateUserEmail(){
-    const userData = {
-      userId: this.props.currentUser.id,
-      email: this.state.email
-    }
-    let oUpdate = this.props.updateUserEmail(userData)
-    return oUpdate
   }
 
   update(type, event) {
@@ -69,24 +69,32 @@ class LeadCaptureForm extends React.Component{
   }
 
   render(){
-    let { isPending, errorMessage, emailUpdated } = this.state;
-    let buttonText = emailUpdated ? 'Updated!' : 'Update';
+    let { email, isPending, errorMessage, submitted } = this.state;
+    let buttonText = submitted ? 'Success!' : 'Submit'
 
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
-        <div className="updateEmail-form">
-          <label className="login-label">
-            <input
-              type="text"
-              autoComplete="email"
-              value={this.state.email}
-              onChange={this.update.bind(this, "email")}
-              className="login-input"
-            />
-          </label>
+        <div className="leadCapture-form">
+        <label className="login-label">EMAIL ADDRESS:
+          <input
+            type="text"
+            autoComplete="email"
+            onChange={this.update.bind(this, "email")}
+            className="login-input"
+          />
+        </label>
+
+        <label className="login-label">List all restaurants you would like to see in BluePlattr:
+          <input
+            type="text"
+            autoComplete="wishlist"
+            onChange={this.update.bind(this, "wishlist")}
+            className="login-input"
+          />
+        </label>
 
 
-          <button className={"secondary"} type="submit" disabled={emailUpdated || isPending} >
+          <button className={"secondary"} type="submit" disabled={!email || isPending} >
             {buttonText}
           </button>
         </div>
@@ -96,4 +104,18 @@ class LeadCaptureForm extends React.Component{
   }
 }
 
-export default LeadCaptureForm;
+const mapStateToProps = state => {
+  return {
+    leadCapture: state.ui.leadCapture,
+    errors: state.ui.leadCapture.errors
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+ return {
+    createLeadCapture: (leadData) => dispatch(createLeadCapture(leadData)),
+    closeModal: () => dispatch(closeModal()),
+ };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeadCaptureForm);
