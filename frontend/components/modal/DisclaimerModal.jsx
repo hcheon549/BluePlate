@@ -14,6 +14,7 @@ class DisclaimerModal extends React.Component {
 
   proceed(){
     if (this.state.signed){
+      this.props.setSignature();
       this.props.closeModal();
     }
   }

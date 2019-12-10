@@ -23,7 +23,8 @@ class MyMeal extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      activeTab: "lunch"
+      activeTab: "lunch",
+      seenEmailCapture: false
     }
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
@@ -45,6 +46,10 @@ class MyMeal extends React.Component {
       await this.props.fetchMenus(nextProps.currentUser.schoolId)
       this.props.resetFilter();
     }
+  }
+
+  componentDidUpdate(){
+
   }
 
   async componentWillUnmount(){

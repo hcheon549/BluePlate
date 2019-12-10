@@ -1,5 +1,5 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
+import { closeModal, setSignature } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ReservationModal from './ReservationModal';
 import ConfirmModal from './ConfirmModal';
@@ -26,7 +26,10 @@ function Modal({ modal, closeModal }) {
       component = <ClosedModal closeModal={closeModal} />;
       break;
     case 'disclaimer':
-      component = <DisclaimerModal closeModal={closeModal} />;
+      component = <DisclaimerModal 
+                    closeModal={closeModal} 
+                    setSignature={setSignature}
+                  />;
       break;
     default:
       return null;
@@ -46,7 +49,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    setSignature: () => dispatch(setSignature())
   };
 };
 
