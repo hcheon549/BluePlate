@@ -1,6 +1,6 @@
 class Api::ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.includes(:menu, :pickup_time, :meal, :user).where(user_id: current_user.id)
+    @reservations = Reservation.includes(:menu, :pickup_time, :meal, :user, meal: :shop).where(user_id: current_user.id)
     today = Date.today
     if Time.now.hour > 21
       today += 1
