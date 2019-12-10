@@ -18,7 +18,8 @@ import StepJoin from "./stepJoin/StepJoin";
 import Navigation from "./nav/Navigation";
 import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
-import FAQLanding from './footer/FAQLanding'
+import FAQLanding from './footer/FAQLanding';
+import MobileMenuItems from './nav/MobileMenuItems';
 
 import LoadingIcon from "./meal/loading_icon";
 
@@ -45,6 +46,7 @@ class App extends React.Component {
 
           <header>
             <Navigation location={this.props.location.pathname}/>
+            <MobileMenuItems />
           </header>
 
           <main className="main-page">

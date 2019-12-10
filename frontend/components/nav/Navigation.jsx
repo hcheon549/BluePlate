@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
+import { toggleBurger } from '../../actions/burger_actions'
+
 import NavLogin from "./NavLogin";
 import MenuItem from "./MenuItem";
 import StepIndicator from './StepIndicator'
@@ -47,17 +49,15 @@ const MobileNav = (props) => {
 }
 
 const Burger = (props) => {
-  let [showMobileNav, setShowMobileNav] = useState(false);
-
-  const toggle = () => {
-    setShowMobileNav(!showMobileNav)
+  const toggleBurgerMenu = () => {
+    props.toggleBurger();
   }
 
   return(
     <div
       className={"burger"
-      + (showMobileNav ? ' open' : '')}
-      onClick={toggle}
+      + (props.burger ? ' open' : '')}
+      onClick={toggleBurgerMenu}
       id="burger"
     ><span className="burgerLines"></span>
     </div>
@@ -110,7 +110,14 @@ const mapStateToProps = state => {
     isLead: currentUser && currentUser.policyType == "Lead",
     isMember: currentUser && currentUser.policyType == "Member",
     loggedIn: Boolean(state.session.id),
+    burger: state.ui.burger
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Navigation));
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleBurger: () => dispatch(toggleBurger())
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navigation));

@@ -8,6 +8,7 @@ import modalReducer from './modal_reducer';
 import stepJoinReducer from './stepJoin_reducer';
 import signatureReducer from './signature_reducer';
 import leadReducer from './lead_reducer';
+import burgerReducer from './burger_reducer';
 
 const uiReducer = combineReducers({
   loading: loadingReducer,
@@ -15,7 +16,8 @@ const uiReducer = combineReducers({
   modal: modalReducer,
   stepJoin: stepJoinReducer,
   disclaimerSignature: signatureReducer,
-  leadCapture: leadReducer
+  leadCapture: leadReducer,
+  burger: burgerReducer
 });
 
 export default uiReducer;

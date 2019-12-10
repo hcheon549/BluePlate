@@ -154,19 +154,6 @@
   color: $main;
 }
 
-// .arrow-up {
-//   width: 0;
-//   height: 0;
-//   border-left: 10px solid transparent;
-//   border-right: 10px solid transparent;
-//
-//   border-bottom: 10px solid $accent;
-//
-//   position: absolute;
-//   left: 130px;
-//   bottom: 195px;
-// }
-
 .menu-logout {
   border-top: 1px solid $light-gray;
 }
@@ -182,4 +169,31 @@
 }
 .login-link div {
   padding: 10px 0;
+}
+
+///////////////////////////////////////////////////
+/////////      MOBILE NAV MENU ITEMS     //////////
+///////////////////////////////////////////////////
+
+.mobileMenu {
+  border-top: 1px solid $grayMed;;
+  //display: none;
+  padding: 0 20px 40px ;
+  background-color: $white;
+  color: $siteColorDark;
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  //height: 100vh;//100%;
+  visibility: hidden;
+  border-right: 1px solid $grayLight;
+  margin-top: 50px;
+  transition: left 0.3s ease-out;
+  visibility: 0.3s;
+  &.-open{
+    left: 0;
+    visibility: visible;
+  }
 }
