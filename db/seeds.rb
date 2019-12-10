@@ -1265,10 +1265,9 @@ ActiveRecord::Base.transaction do
   Menu.destroy_all
   
   today = Date.today
-  tomorrow = Date.today + 1
 
   week = []
-  7.times do |count|
+  21.times do |count|
     week << today
     today += 1
   end
