@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -20,27 +20,46 @@ const Nav = (props) => {
   )
 
   return (
-  <div className="shadow">
-    <div className="nav-main content -siteWidth">
+      <div className="desktopNav content -siteWidth">
+        <div className="navLogo">
+          <Link to="/">
+            <img src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
+            <span className="theLogo">BluePlattr</span>
+          </Link>
+        </div>
+        {navSelect}
+      </div>
+    )
+};
+
+const MobileNav = (props) => {
+  return (
+    <div className="mobileNav">
+      <Burger {...props} />
       <div className="navLogo">
         <Link to="/">
           <img src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
           <span className="theLogo">BluePlattr</span>
         </Link>
       </div>
-      {navSelect}
-      </div>
     </div>
-    )
-};
+  )
+}
 
 const Burger = (props) => {
-  return (
-    <div className="navLogo">
-      <Link to="/">
-        <img src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
-        <span className="theLogo">BluePlattr</span>
-      </Link>
+  let [showMobileNav, setShowMobileNav] = useState(false);
+
+  const toggle = () => {
+    setShowMobileNav(!showMobileNav)
+  }
+
+  return(
+    <div
+      className={"burger"
+      + (showMobileNav ? ' open' : '')}
+      onClick={toggle}
+      id="burger"
+    ><span className="burgerLines"></span>
     </div>
   )
 }
@@ -73,8 +92,12 @@ class Navigation extends React.Component {
 	}
 
   render(){
-    let navigation = this.state.isMobile ? <Burger {...this.props} /> : <Nav {...this.props} />
-    return navigation
+    let navigation = this.state.isMobile ? <MobileNav {...this.props} /> : <Nav {...this.props} />
+    return (
+      <div className="shadow">
+        {navigation}
+      </div>
+    )
   }
 }
 

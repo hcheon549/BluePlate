@@ -1,0 +1,47 @@
+.burger{
+  display: none;
+  width: 24px;
+  height: 24px;
+  //margin-right: 10px;
+  margin-top: -3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.burger span,
+.burger span:before,
+.burger span:after {
+  border-radius :0;
+  height: 2px;
+  width: 24px;
+  background: $black;
+  position: absolute;
+  display: block;
+  content: '';
+}
+.burger span{ top: 12px }
+.burger span:before { /*top bun*/top: -8px }
+.burger span:after { /*bottom bun*/bottom: -8px }
+
+/* animate hamburger */
+.burger span, .burger span:before, .burger span:after { transition : all 300ms ease-in-out; }
+.burger.open span { background-color: transparent; transition : none; }
+.burger.open span:before,
+.burger.open span:after { top: 0; }
+.burger.open span:before { transform: rotate(45deg) }
+.burger.open span:after { transform: rotate(-45deg) }
+
+.burger.back span { background-color: transparent; transition : none;}
+.burger.back span:before { top: -6px;transform: rotate(-45deg); width: 17px }
+.burger.back span:after { top: 6px; transform: rotate(45deg); width: 17px }
+
+
+@media screen and (max-width: 960px) {
+  .burger { display: block; }
+}
+
+@media screen and (max-width: 640px) {
+  .burger{
+    span, span:before, span:after {width: 20px;}
+  }
+}
