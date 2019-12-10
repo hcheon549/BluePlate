@@ -1267,7 +1267,7 @@ ActiveRecord::Base.transaction do
   today = Date.today
 
   week = []
-  21.times do |count|
+  45.times do |count|
     week << today
     today += 1
   end
