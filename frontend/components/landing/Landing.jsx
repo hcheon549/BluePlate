@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { fetchSchools } from '../../actions/school_actions';
+import { openModal } from "../../actions/modal_actions";
 import { login } from '../../actions/session_actions';
 
 import LandingHeader from './LandingHeader'
@@ -13,6 +14,12 @@ import LandingPlan from './LandingPlan';
 class Landing extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+    if(!this.props.leadCaptureSeen){
+      setTimeout(this.props.openEmailCapture, 10000)
+    }
   }
   
   render(){
@@ -32,7 +39,8 @@ class Landing extends React.Component {
 const mapStateToProps = state => {
   return {
     schools: state.entities.schools,
-    currentUser: state.entities.currentUser
+    currentUser: state.entities.currentUser,
+    leadCaptureSeen: state.ui.leadCapture.seen
   };
 };
 
@@ -40,6 +48,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchSchools: () => dispatch(fetchSchools()),
     processLogIn: (user) => dispatch(login(user)),
+    openEmailCapture: () => dispatch(openModal({type: 'emailCapture'})),
   };
 };
 

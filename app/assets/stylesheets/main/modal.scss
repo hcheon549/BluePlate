@@ -37,6 +37,45 @@
   }
 }
 
+.leadCapture-modal{
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  .innerContent{
+    padding: 40px 0 60px;
+    margin: auto;
+    text-align: center;
+    .captureLogo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{ width: 15% }
+      span{
+        margin-left: 20px;
+        font-size: 50px;
+        color: $siteColor;
+      }
+    }
+    h4{ margin-bottom: 20px; }
+    p{ 
+      margin: 0 auto 20px;
+      margin-bottom: 20px;
+      line-height: 20px;
+      max-width: 375px
+    }
+    .reject{
+      margin: 20px auto;
+      color: $gray;
+      &:hover{
+        cursor: pointer;
+        color: $light-gray;
+      }
+    }
+  }
+}
+
 .reserve-modal {
   width: 680px;
   height: 250px;

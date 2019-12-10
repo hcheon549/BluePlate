@@ -1,47 +1,42 @@
 import React from "react";
-import { withRouter } from 'react-router-dom';
-
 import LeadCaptureForm from '../element/LeadCaptureForm';
 
-class EmailCaptureModal extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      email: '',
-      wishlist: ''
-    }
-
-    this.proceed = this.proceed.bind(this);
-    this.toggleAgreeButton = this.toggleAgreeButton.bind(this);
+const EmailCaptureModal = (props) => {
+  let header, subHead, action;
+  
+  if (props.landing){
+    header = "Sign Up and Get an Exclusive Offer!"
+    subHead = 'BluePlattr is coming to Rutgers University campus this spring semester! It\'s the easiest, most affordable and convinient way to do lunches and dinners living off-campus, and we know you are going to love it. Sign up and get an exclusive offer for next semester\'s plan!'
+  } else {
+    header = 'See you in the Spring semester!'
+    subHead = 'Living off-campus? You can now have an affordable meal plan for yourself as low as $5 per meal! Sign up and get a exclusive discount offer.'
   }
 
-  proceed(){
-    console.log(this.state)
+  action = () => {
+    props.markAsSeen();
+    props.closeModal();
   }
 
-  toggleAgreeButton(){
-    this.setState({
-      signed: !this.state.signed
-    });
-  }
-
-  render() {
-    return (
-      <div
-        className="closed-modal animated fadeInDown"
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="innerContent">
+  return (
+    <div
+      className="leadCapture-modal animated fadeInDown"
+      onClick={e => e.stopPropagation()}
+    >
+      <div className="innerContent">
+        <div className="captureLogo">
           <img className="logo" src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
-          <h4>See you in the Spring semester!</h4>
-          <p><span className="miniText">
-            BluePlattr is coming to Rutgers in this coming Spring Semester. Sign up for exclusive discount offers.
-          </span></p>
-          <LeadCaptureForm />
+          <span className="theLogo">BluePlattr</span>
         </div>
+        <h4>{header}</h4>
+        <p><span className="miniText">
+          {subHead}
+        </span></p>
+        <LeadCaptureForm />
+        <div className="reject tinyText" onClick={action}>No Thanks</div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default withRouter(EmailCaptureModal);
+
+export default EmailCaptureModal;

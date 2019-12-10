@@ -24,7 +24,6 @@ class MyMeal extends React.Component {
     super(props)
     this.state = {
       activeTab: "lunch",
-      seenEmailCapture: false
     }
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
@@ -51,8 +50,11 @@ class MyMeal extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer) && !this.state.seenEmailCapture){
+    if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer) && !this.props.leadCaptureSeen){
       addEventListener('scroll', this.showEmailCapture)
+    }
+    if (this.props.leadCaptureSeen){
+      removeEventListener('scroll', this.showEmailCapture)
     }
   }
 
@@ -166,7 +168,8 @@ const mapStateToProps = ({entities, ui}) => {
     lunchTime: pickupTime.lunch,
     dinnerTime: pickupTime.dinner,
     todayReservations: entities.todayReservations,
-    signedDisclaimer: ui.disclaimerSignature
+    signedDisclaimer: ui.disclaimerSignature,
+    leadCaptureSeen: ui.leadCapture.seen
   };
 };
 

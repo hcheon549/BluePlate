@@ -83,7 +83,7 @@ const receiveLead = lead => {
   }
 }
 
-const receiveErrors = errors => {
+const receiveLeadErrors = errors => {
   return {
     type: RECEIVE_LEAD_ERRORS,
     errors

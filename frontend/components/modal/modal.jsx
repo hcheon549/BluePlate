@@ -1,5 +1,7 @@
 import React from 'react';
-import { closeModal, setSignature } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
+
+import { closeModal, setSignature, markAsSeen } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 
 import ReservationModal from './ReservationModal';
@@ -8,14 +10,16 @@ import ClosedModal from './ClosedModal';
 import DisclaimerModal from './DisclaimerModal';
 import EmailCaptureModal from './EmailCaptureModal';
 
-function Modal({ modal, closeModal, setSignature }) {
-  if (!modal) {
+function Modal(props) {
+  if (!props.modal) {
     return null;
   }
 
-  let component;
+  let { modal, closeModal, setSignature, location, markLeadCaptureAsSeen } = props;
+  let isLanding = location.pathname == "/";
   let isEmailCapture = (modal.type == 'emailCapture');
 
+  let component;
   switch (modal.type) {
     case 'reserve':
       component =
@@ -34,7 +38,13 @@ function Modal({ modal, closeModal, setSignature }) {
                   />;
       break;
     case 'emailCapture':
-      component = <EmailCaptureModal />
+      component = !props.leadCaptureSeen
+      ? <EmailCaptureModal
+          landing={isLanding}
+          closeModal={closeModal}
+          markAsSeen={markLeadCaptureAsSeen}
+        />
+      : <></>
     break;
     default:
       return null;
@@ -47,17 +57,19 @@ function Modal({ modal, closeModal, setSignature }) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ui}) => {
   return {
-    modal: state.ui.modal
+    modal: ui.modal,
+    leadCaptureSeen: ui.leadCapture.seen
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
-    setSignature: () => dispatch(setSignature())
+    setSignature: () => dispatch(setSignature()),
+    markLeadCaptureAsSeen: () => dispatch(markAsSeen())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));

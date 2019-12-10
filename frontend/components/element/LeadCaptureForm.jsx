@@ -16,6 +16,7 @@ class LeadCaptureForm extends React.Component{
       email: '',
       campus: '',
       wishlist: '',
+      errorMessage: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,8 +31,8 @@ class LeadCaptureForm extends React.Component{
       campus: this.state.campus,
       wishlist: this.state.wishlist
     }
-    let leadData = await this.createLeadCapture(leadData);
-    if (leadData.lead){
+    let leadReceived = await this.props.createLeadCapture(leadData);
+    if (leadReceived.lead){
       // lead captured logic
       this.setState({
         submitted: true
@@ -39,7 +40,7 @@ class LeadCaptureForm extends React.Component{
       setTimeout(this.props.closeModal, 1500)
     } else {
       this.setState({
-        errorMessage: leadData.errors
+        errorMessage: leadReceived.errors
       })
     }
     this.setState({isPending: false})
@@ -75,7 +76,7 @@ class LeadCaptureForm extends React.Component{
     return(
       <form onSubmit={this.handleSubmit} className="login-form-box">
         <div className="leadCapture-form">
-        <label className="login-label">EMAIL ADDRESS:
+        <label className="login-label">Email Address
           <input
             type="text"
             autoComplete="email"
@@ -94,8 +95,8 @@ class LeadCaptureForm extends React.Component{
         </label>
 
 
-          <button className={"secondary"} type="submit" disabled={!email || isPending} >
-            {buttonText}
+          <button className={"secondary -fullWidth" + (isPending ? " -pending" : "")} type="submit" disabled={!email || isPending} >
+            {!isPending && buttonText}
           </button>
         </div>
         {(errorMessage && errorMessage.length > 0) && this.renderErrors()}
