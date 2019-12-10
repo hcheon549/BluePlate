@@ -85,7 +85,7 @@ class LeadCaptureForm extends React.Component{
           />
         </label>
 
-        <label className="login-label">List all restaurants you would like to see in BluePlattr:
+        <label className="login-label">List all restaurants you would like to see on BluePlattr
           <input
             type="text"
             autoComplete="wishlist"

@@ -6,7 +6,7 @@ const LandingHIW = (props) => {
       subHead2, content2,
       subHead3, content3;
 
-    header = 'How BluePlattr works:',
+    header = 'How BluePlattr works',
     subHead1 = 'Choose',
     content1 = 'Whether it\'s your favorite, the closest, or the new place you\'ve wanted to try.',
     subHead2 = 'Pick up',

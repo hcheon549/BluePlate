@@ -31,18 +31,18 @@ class LandingHeader extends React.Component {
     return (
       <section className="landingHeader">
         <div className="landingCapture">
-          <h3>MEALPLAN FOR LESS THAN<br/> $5 PER MEAL</h3>
-          <p>{subHeader}</p>
-          <div style={{display: "flex", justifyContent: 'center'}}>
-            <Link to={browseLink}>
-              <button className='orange' type="submit">{buttonText}</button>
-            </Link>
-            <button
-              className='orangeSecondary'
-              type="submit"
-              style={{marginLeft: '20px'}}
-              onClick={this.tryDemo}
-            >{altButtonText}</button>
+          <div className="mobileContent">
+            <h3>MEALPLAN FOR LESS THAN<br/> $5 PER MEAL</h3>
+            <p>{subHeader}</p>
+            <div style={{display: "flex", justifyContent: 'center'}}>
+              <button className='orange' type="submit" onClick={() => this.props.history.push(browseLink)}>{buttonText}</button>
+              <button
+                className='orangeSecondary'
+                type="submit"
+                style={{marginLeft: '20px'}}
+                onClick={this.tryDemo}
+              >{altButtonText}</button>
+            </div>
           </div>
         </div>
       </section>
