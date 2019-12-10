@@ -78,15 +78,14 @@
     section.landingHIW{
       padding: 40px 0;
       .main-info{
-        display: flex;
-        justify-content: center;
+        display: block;
         padding: 20px 0 40px;
         .column{
-          margin: 0 20px;
-          width: 33%;
+          margin: 0;
+          width: 100%;
           text-align: center;
-          &:first-of-type{ margin-left: 0px; }
-          &:last-of-type{ margin-right: 0px; }
+          &:first-of-type{ margin: 0; }
+          &:last-of-type{ margin: 0; }  
           img{ 
             width: 85px;
             margin: 0 auto;
@@ -150,6 +149,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  align-items: center;
   margin: 0 auto;
   max-width: 450px;
   .schoolSelector{
