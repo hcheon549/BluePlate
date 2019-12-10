@@ -60,3 +60,11 @@ export const updateUserMeals = (userData) => {
     }
   });
 };
+
+export const createLead = (leadData) => {
+  return axios({
+    method: 'POST',
+    url: 'api/leads',
+    data: leadData
+  })
+}

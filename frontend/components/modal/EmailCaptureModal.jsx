@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
 
+import LeadCaptureForm from '../element/LeadCaptureForm';
+
 class EmailCaptureModal extends React.Component {
   constructor(props){
     super(props)
@@ -30,8 +32,12 @@ class EmailCaptureModal extends React.Component {
         onClick={e => e.stopPropagation()}
       >
         <div className="innerContent">
-          <h4>Disclaimer</h4>
-          <button className={'orangeSecondary -disabled'} type="submit" onClick={this.proceed}>Check it out!</button>
+          <img className="logo" src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
+          <h4>See you in the Spring semester!</h4>
+          <p><span className="miniText">
+            BluePlattr is coming to Rutgers in this coming Spring Semester. Sign up for exclusive discount offers.
+          </span></p>
+          <LeadCaptureForm />
         </div>
       </div>
     );
