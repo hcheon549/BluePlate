@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
     return (
       <div className="login-page">
         <div className="login-form-main">
-          <div className="login-form-container loginForm animated fadeInUp">
+          <div className="login-form-container loginForm animated fadeInDown">
             <div className="login-welcome">WELCOME BACK</div>
 
             <div className="login-to-account">

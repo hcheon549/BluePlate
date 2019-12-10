@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :reservations, only: [:index, :show, :create, :update, :destroy]
     resources :leads, only: [:create]
     resources :charges
+
   end
+
+  match '*path', to: 'static_pages#root', via: :all
 
 end
