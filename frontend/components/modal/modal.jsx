@@ -38,14 +38,12 @@ function Modal(props) {
                   />;
       break;
     case 'emailCapture':
-      component = !props.leadCaptureSeen
-      ? <EmailCaptureModal
-          landing={isLanding}
-          closeModal={closeModal}
-          markAsSeen={markLeadCaptureAsSeen}
-        />
-      : <></>
-    break;
+      component = <EmailCaptureModal
+                    landing={isLanding}
+                    closeModal={closeModal}
+                    markAsSeen={markLeadCaptureAsSeen}
+                  />;
+      break;
     default:
       return null;
   }

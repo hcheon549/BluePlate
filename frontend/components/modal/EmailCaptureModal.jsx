@@ -5,11 +5,11 @@ const EmailCaptureModal = (props) => {
   let header, subHead, action;
   
   if (props.landing){
-    header = "Sign Up and Get an Exclusive Offer!"
-    subHead = 'BluePlattr is coming to Rutgers University campus this spring semester! It\'s the easiest, most affordable and convinient way to do lunches and dinners living off-campus, and we know you are going to love it. Sign up and get an exclusive offer for next semester\'s plan!'
+    header = "Living Off-campus just got better!"
+    subHead = 'BluePlattr is coming to Rutgers University next semester! It\'s the easiest, most affordable and convinient way to do lunches and dinners, and we are sure that you will love it. Sign up and get an exclusive offer for next semester\'s plan!'
   } else {
     header = 'See you in the Spring semester!'
-    subHead = 'Living off-campus? You can now have an affordable meal plan for yourself as low as $5 per meal! Sign up and get a exclusive discount offer.'
+    subHead = 'Living off-campus? You can now have an affordable meal plan for yourself for as low as $5 per meal! Sign up and get a exclusive discount offer.'
   }
 
   action = () => {
@@ -32,7 +32,7 @@ const EmailCaptureModal = (props) => {
           {subHead}
         </span></p>
         <LeadCaptureForm />
-        <div className="reject tinyText" onClick={action}>No Thanks</div>
+        {props.landing && <div className="reject tinyText" onClick={action}>No Thanks</div>}
       </div>
     </div>
   );

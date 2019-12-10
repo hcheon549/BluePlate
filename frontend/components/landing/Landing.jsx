@@ -14,11 +14,22 @@ import LandingPlan from './LandingPlan';
 class Landing extends React.Component {
   constructor(props) {
     super(props);
+    this.openLeadCapture = this.openLeadCapture.bind(this);
   }
 
   componentDidMount(){
-    if(!this.props.leadCaptureSeen){
-      setTimeout(this.props.openEmailCapture, 10000)
+    setTimeout(this.openLeadCapture, 5000);
+  }
+
+  componentWillUnmount(){
+    clearTimeout(this.openLeadCapture);
+  }
+
+  openLeadCapture(){
+    let currentUser = Object.values(this.props.currentUser).length !== 0
+    
+    if(!this.props.leadCaptureSeen && !currentUser){
+      this.props.openEmailCapture();
     }
   }
   

@@ -50,7 +50,10 @@ class MyMeal extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer) && !this.props.leadCaptureSeen){
+    if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer)
+        && !this.props.leadCaptureSeen
+        && this.props.location.pathname == "/demo"
+      ){
       addEventListener('scroll', this.showEmailCapture)
     }
     if (this.props.leadCaptureSeen){
@@ -59,6 +62,8 @@ class MyMeal extends React.Component {
   }
 
   async componentWillUnmount(){
+    removeEventListener('scroll', this.showEmailCapture);
+    clearTimeout(this.openEmailCapture);
     if (this.props.location.pathname == "/demo"){
       await this.props.logout();
     }
