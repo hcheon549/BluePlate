@@ -14,7 +14,7 @@ const Footer = (props) => (
       <li className="miniText" onClick={() => props.history.push('/')}>Career</li>
     </ul>
     <nav>
-      <div>&copy; BluePlate, INC.</div>
+      <div>&copy; BluePlans Inc.</div>
     </nav>
   </div>
 );

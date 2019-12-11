@@ -10,6 +10,13 @@
   &.-narrow{ max-width: $content-narrow; }
 }
 
+@media screen and (max-width: 560px){
+  .content{
+    &.-siteWidth{ width: 90%; }
+  }
+}
+
+
 section{
   width: 100%;
   text-align: center;

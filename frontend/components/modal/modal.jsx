@@ -1,15 +1,23 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
+
+import { closeModal, setSignature, markAsSeen } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+
 import ReservationModal from './ReservationModal';
 import ConfirmModal from './ConfirmModal';
 import ClosedModal from './ClosedModal';
+import DisclaimerModal from './DisclaimerModal';
+import EmailCaptureModal from './EmailCaptureModal';
 
-
-function Modal({ modal, closeModal }) {
-  if (!modal) {
+function Modal(props) {
+  if (!props.modal) {
     return null;
   }
+
+  let { modal, closeModal, setSignature, location, markLeadCaptureAsSeen } = props;
+  let isLanding = location.pathname == "/";
+  let isEmailCapture = (modal.type == 'emailCapture');
 
   let component;
   switch (modal.type) {
@@ -23,26 +31,43 @@ function Modal({ modal, closeModal }) {
     case 'closed':
       component = <ClosedModal closeModal={closeModal} />;
       break;
+    case 'disclaimer':
+      component = <DisclaimerModal 
+                    closeModal={closeModal} 
+                    setSignature={setSignature}
+                  />;
+      break;
+    case 'emailCapture':
+      component = <EmailCaptureModal
+                    landing={isLanding}
+                    closeModal={closeModal}
+                    markAsSeen={markLeadCaptureAsSeen}
+                  />;
+      break;
     default:
       return null;
   }
+
   return (
-    <div className="modal-background">
+    <div className={"modal-background" + (isEmailCapture ? ' -emailCapture' : '')}>
       {component}
     </div>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ui}) => {
   return {
-    modal: state.ui.modal
+    modal: ui.modal,
+    leadCaptureSeen: ui.leadCapture.seen
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    setSignature: () => dispatch(setSignature()),
+    markLeadCaptureAsSeen: () => dispatch(markAsSeen())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));

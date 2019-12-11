@@ -53,7 +53,7 @@ class EmailCapture extends React.Component {
           {this.makeDropdown()}
         </select>
 
-          <Link to="/users/signup">
+          <Link to="/signup">
             <button className={this.props.buttonType} type="submit" onClick={this.handleSubmit}>{buttonText}</button>
           </Link>
         </div>

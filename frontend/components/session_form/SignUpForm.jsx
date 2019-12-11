@@ -9,7 +9,7 @@ const SignupForm = ({ setStep }) => {
   return (
     <React.Fragment>
       <div className="partitions">
-        <div className="signupPartition">
+        <div className="signupPartition" id="hiw">
           <HowItWorks authPage={true}/>
         </div>
         <div className="signupPartition">
@@ -21,9 +21,9 @@ const SignupForm = ({ setStep }) => {
         </div>
       </div>
       <div className="login-donthave">
-        Already have a BluePlate account?
+        Already have a BluePlattr account?
       </div>
-      <Link to="/users/login" className="blueLink">Log In!</Link>
+      <Link to="/login" className="blueLink">Log In!</Link>
     </React.Fragment>
   );
 }

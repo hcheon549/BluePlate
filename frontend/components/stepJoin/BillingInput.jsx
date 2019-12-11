@@ -204,7 +204,7 @@ class BillingInput extends React.Component{
                 onChange={this.updateError}
               />
             </div>
-            <div>
+            <div style={{width: '40%'}}>
               <label className="billing-label">Zip Code</label>
               <input
                 type="text"

@@ -5,12 +5,12 @@ const SectionHeader = ({form}) => {
 
   switch(form){
     case 'account':
-      header = 'Your Mealplan now costs less than $6 per meal.',
+      header = 'Your Mealplan now costs less than $5 per meal.',
       subHead = 'Create an account to get started.';
       break;
     case 'plan':
       header = 'Select your plan.',
-      subHead = 'Select this semester\'s BluePlate Plan.';
+      subHead = 'Select this semester\'s BluePlattr Plan.';
       break;
     case 'billing':
       header = 'One more step!',
@@ -22,8 +22,8 @@ const SectionHeader = ({form}) => {
 
   return (
     <>
-      <div className="login-welcome">{header}</div>
-      <div className="login-to-account">{subHead}</div>
+      <div className="login-header">{header}</div>
+      <div className="login-subHeader">{subHead}</div>
     </>
   );
 }

@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <title>BluePlate</title>
+  <meta name="theme-color" content="#0f346c">
+  <title>BluePlattr</title>
 
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZhdkdzphYPV_HV0MjdkM_kXV8MDsCU-8&libraries=places" %>
   <%= javascript_include_tag 'application' %>
@@ -15,17 +15,22 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <meta name="description" content="The Ultimate Meal Plan Service">
+  
   <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Poppins|Raleway|Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="shortcut icon" type="image/png" href="<%= image_url('favicon.ico') %>"/>
+  <link rel="shortcut icon" type="image/png" href="<%= image_url('favicon.png') %>"/>
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154138828-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-120921803-1');
+    gtag('config', 'UA-154138828-1');
   </script>
 </head>
 
@@ -33,12 +38,14 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+
   <% if logged_in? %>
       <script type="text/javascript">
         window.currentUser =
         <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
       </script>
     <% end %>
+
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

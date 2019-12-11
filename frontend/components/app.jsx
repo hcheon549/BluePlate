@@ -1,8 +1,8 @@
 import React from "react";
-import { Route, withRouter, Switch } from "react-router-dom";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import { AuthRoute, ProtectedRoute, AuthenticatedRoute } from "../util/route_util";
 import { getCurrentUser } from "../actions/session_actions";
 import { fetchSchools } from '../actions/school_actions';
 import { fetchTimes } from '../actions/time_action';
@@ -18,7 +18,8 @@ import StepJoin from "./stepJoin/StepJoin";
 import Navigation from "./nav/Navigation";
 import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
-import FAQLanding from './footer/FAQLanding'
+import FAQLanding from './footer/FAQLanding';
+import MobileMenuItems from './nav/MobileMenuItems';
 
 import LoadingIcon from "./meal/loading_icon";
 
@@ -45,21 +46,25 @@ class App extends React.Component {
 
           <header>
             <Navigation location={this.props.location.pathname}/>
+            <MobileMenuItems />
           </header>
 
           <main className="main-page">
             <Switch>
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
-              <Route path="/faq" component={FAQLanding} />
-              <Route exact path="/all-restaurants" component={AllMeals} />
+              <Route exact path="/faq" component={FAQLanding} />
+              <Route exact path="/all-meals" component={AllMeals} />
+              <Route exact path="/demo" component={MyMeal} />
               {/* Auth Pages */}
-              <AuthRoute path="/users/login" component={LoginPage} />
-              <Route exact path="/users/signup" component={StepJoin} />
-
+              <AuthRoute exact path="/login" component={LoginPage} />
+              <AuthenticatedRoute exact path="/signup" component={StepJoin} />
+ 
               {/* Content Pages */}
-              <ProtectedRoute path="/account" component={Account} />
-              <ProtectedRoute path="/my-meals" component={MyMeal} />
+              <ProtectedRoute exact path="/account" component={Account} />
+              <ProtectedRoute exact path="/my-meals" component={MyMeal} />
+
+              <Redirect from="*" to="/" />
             </Switch>
           </main>
 

@@ -29,9 +29,19 @@
         margin: 0 5px;
         color: $dark-gray;
       }
+      @media screen and (max-width: 560px) {
+        display: block;
+        margin: 0 10px;
+        .signupPartition#hiw{
+          display: none;
+        }
+      }
     }
     &.loginForm{
       max-width: 450px;
+      @media screen and (max-width: 560px) {
+        padding: 0 20px;
+      }
     }
     .planForm{
       max-width: 500px;
@@ -73,6 +83,18 @@
       button {
         margin: 20px auto;
       }
+      @media screen and (max-width: 560px) {
+        width: 90%;
+        .plans{
+          display: block;
+          margin-bottom: 0;
+          li{
+            width: 100%;
+            padding: 15px 0;
+            margin-top: 10px;
+          }
+        }
+      }
     }
     .PlanExplaination{
       max-width: 500px;
@@ -87,6 +109,19 @@
           }
         }
       }
+    }
+    @media screen and (max-width: 560px){
+      padding: 0;
+    }
+    .login-header {
+      font-size: 25px;
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: $main;
+      margin-bottom: 10px;
+      @media screen and (max-width: 560px){
+        margin: auto 20px;
+      }  
     }
   }
   .sectionHeader{
@@ -128,18 +163,15 @@
   max-width: 450px;
 }
 
-.login-welcome {
-  font-size: 25px;
-  font-weight: bolder;
-  letter-spacing: 1px;
-  color: $main;
-  margin-bottom: 10px;
-}
-.login-to-account {
+.login-subHeader {
   font-size: 18px;
   font-weight: lighter;
   color: $gray;
   margin-bottom: 40px;
+  @media screen and (max-width: 560px){
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .login-form-box {
@@ -204,6 +236,9 @@
   width: 100%;
   padding: 0 20px;
   button{ margin-top: 10px; }
+  @media screen and (max-width: 560px){
+    padding: 0;
+  }
 }
 
 .login-label {
@@ -316,21 +351,8 @@ select {
   border-right: 1px solid $gray;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 560px){
   .login-page {
     background-image: none;
-  }
-  .login-label {
-    min-width: calc(80vw);
-  }
-  .session-submit {
-    min-width: calc(80vw);
-  }
-  .login-form-container {
-    padding: 0;
-    text-align: center;
-  }
-  .login-welcome {
-    width: 60%;
   }
 }

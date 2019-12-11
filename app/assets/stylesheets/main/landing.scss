@@ -18,7 +18,9 @@
       top: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      width: 555px;
+      width: 100%;
+      max-width: 555px;
+      box-sizing: border-box;
       h3{ margin: 0 auto;}
       p{ margin: 20px auto; }
     }
@@ -49,6 +51,58 @@
     }
   }
 
+  @media screen and (max-width: 560px){
+    section.landingHeader{
+      position: relative;
+      height: calc(100vh - 60px);
+      max-height: 525px;
+      background: url('https://blueplate-development.s3.amazonaws.com/landing.jpg') no-repeat 40% bottom;
+      background-size: 1000px auto;
+      -webkit-background-size: 1000px auto;
+      -moz-background-size: 1000px auto;
+      -o-background-size: 1000px auto;
+      .mobileContent{
+        margin: 0 auto;
+        max-width: 90%;
+      }
+      .landingCapture{
+        position: absolute;
+        h3{
+          font-size: 32px; 
+          margin: 0 auto;
+          width: 90%;
+        }
+        p{ 
+          font-size: 14px;
+          margin: 20px auto; }
+      }
+    }
+  
+    section.landingHIW{
+      padding: 40px 0;
+      .main-info{
+        display: block;
+        padding: 20px 0 40px;
+        .column{
+          margin: 0;
+          width: 100%;
+          text-align: center;
+          &:first-of-type{ margin: 0; }
+          &:last-of-type{ margin: 0; }  
+          img{ 
+            width: 85px;
+            margin: 0 auto;
+          }
+          h4{ margin-bottom: 10px; }
+          p{ 
+            max-width: 320px;
+            margin: auto;
+          }
+        }
+      }
+    }  
+  }
+
   section.landingMap{
     padding: 40px 0;
     border-top: 1px solid $lightest-gray;
@@ -59,6 +113,7 @@
       width: 100%;
       position: absolute;
       top: 295px;
+      z-index: -10;
     }
     h4{margin-bottom: 20px;}
     .full-list{
@@ -97,6 +152,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  align-items: center;
   margin: 0 auto;
   max-width: 450px;
   .schoolSelector{

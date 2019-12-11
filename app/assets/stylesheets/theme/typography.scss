@@ -148,6 +148,10 @@ nav li, nav a, .nav a{ color: $black; }
   &.-error{ color: red; }
 }
 
+.theLogo{
+  font-family: 'Lobster', cursive;
+  color: $siteColor;
+}
 
 // ===================
 // for mobile

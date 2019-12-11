@@ -61,13 +61,17 @@ class LandingMap extends React.Component {
               />
             </div>
           </div>
-          <Link className="full-list miniText"to="/all-restaurants">See Full List</Link>
+          <Link className="full-list miniText"to="/all-meals">See Full List</Link>
+
 
           <div className="map">
             {this.state.schoolId && <MealMap
               landing={true}
               school={schools[this.state.schoolId]}
               />}
+          </div>
+          <div className="content -siteWidth">
+            <span className="tinyText" style={{color: 'white'}}>*The website is current on BETA mode. The restaurants displayed are not real.</span>
           </div>
         </div>
       </section>
@@ -76,7 +80,6 @@ class LandingMap extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.entities.currentUser)
   return {
     currentUser: state.entities.currentUser
   }

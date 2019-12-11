@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const getUser = userId => {
+  debugger
   return axios({
     method: "GET",
     url: `api/users/${userId}`
@@ -60,3 +61,11 @@ export const updateUserMeals = (userData) => {
     }
   });
 };
+
+export const createLead = (leadData) => {
+  return axios({
+    method: 'POST',
+    url: 'api/leads',
+    data: leadData
+  })
+}

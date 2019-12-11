@@ -13,17 +13,17 @@ class LoginPage extends React.Component {
     return (
       <div className="login-page">
         <div className="login-form-main">
-          <div className="login-form-container loginForm animated fadeInUp">
-            <div className="login-welcome">WELCOME BACK</div>
+          <div className="login-form-container loginForm animated fadeInDown">
+            <div className="login-header">WELCOME BACK</div>
 
-            <div className="login-to-account">
-              Log in to your BluePlate account
+            <div className="login-subHeader">
+              Log in to your BluePlattr account
             </div>
             <AuthForm formType={'Login'} buttonText={'Log In'} />
             <div className="login-donthave">
-              Don't have a BluePlate account?
+              Don't have a BluePlattr account?
             </div>
-            <Link to="/users/signup" className="blueLink">Sign Up!</Link>
+            <Link to="/signup" className="blueLink">Sign Up!</Link>
           </div>
         </div>
       </div>

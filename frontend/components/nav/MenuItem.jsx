@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
 import DropdownMenu from "./DropdownMenu";
 
-class Menu extends React.Component {
+class MenuItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,7 @@ class Menu extends React.Component {
     };
     this.handleLogout = this.handleLogout.bind(this);
   }
-
+ 
   componentDidMount() {
     this.setState({ disabled: false });
   }
@@ -76,4 +76,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MenuItem));

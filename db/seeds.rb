@@ -17,12 +17,12 @@ ActiveRecord::Base.transaction do
       name: "Rutgers University–New Brunswick",
       latitude: 40.498080,
       longitude: -74.448920
-    },
-    {
-      name: "Pennsylvania State University–University Park",
-      latitude: 40.792650,
-      longitude: -77.859082
     }
+    # ,{
+    #   name: "Pennsylvania State University–University Park",
+    #   latitude: 40.792650,
+    #   longitude: -77.859082
+    # }
   ]
 
   schools.each do |school|
@@ -74,22 +74,22 @@ ActiveRecord::Base.transaction do
 
   plans = [
     {
-      name: "12 Meals",
+      name: "12 Meals",  ##### $4.99 per meal
       plan_type: "semester",
       meals: 180,
-      price: 1078.20
+      price: 898.20
     },
     {
-      name: "8 Meals",
+      name: "8 Meals", ##### $5.49 per meal
       plan_type: "semester",
       meals: 120,
-      price: 778.80
+      price: 658.80
     },
     {
-      name: "4 Meals",
+      name: "4 Meals",  ##### $5.99 per meal
       plan_type: "semester",
       meals: 60,
-      price: 419.40
+      price: 359.40
     }
   ]
 
@@ -153,22 +153,23 @@ ActiveRecord::Base.transaction do
   User.destroy_all
 
   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
   users = [
     {
-      email: 'rutgers@gmail.com',
+      email: 'demo@gmail.com',
       password: 'ececec',
-      fname: 'Eric',
-      lname: 'Cheon',
+      fname: 'BluePlattr',
+      lname: 'Demo',
       school_id: rutgers.id
-    },{
-      email: 'penn@gmail.com',
-      password: 'ececec',
-      fname: 'Eric',
-      lname: 'Cheon',
-      school_id: pennState.id
-    },
+    }
+    # ,{
+    #   email: 'penn@gmail.com',
+    #   password: 'ececec',
+    #   fname: 'Eric',
+    #   lname: 'Cheon',
+    #   school_id: pennState.id
+    # },
   ]
 
   users.each do |user|
@@ -180,11 +181,11 @@ end
 ActiveRecord::Base.transaction do
   Subscription.destroy_all
 
-  rutgers = User.find_by(email: 'rutgers@gmail.com')
-  penn = User.find_by(email: 'penn@gmail.com')
+  rutgers = User.find_by(email: 'demo@gmail.com')
+  # penn = User.find_by(email: 'penn@gmail.com')
   plans = Plan.all
   rutgers_plan = plans[rand(0..plans.length-1)]
-  penn_plan = plans[rand(0..plans.length-1)]
+  # penn_plan = plans[rand(0..plans.length-1)]
 
   subscriptions = [
     {
@@ -193,13 +194,14 @@ ActiveRecord::Base.transaction do
       meal_credit: rutgers_plan.meals,
       subscription_start: Date.new(2020, 1, 22),
       subscription_end: Date.new(2020, 5, 13)
-    },{
-      user_id: penn.id,
-      plan_id: penn_plan.id,
-      meal_credit: penn_plan.meals,
-      subscription_start: Date.new(2020, 1, 22),
-      subscription_end: Date.new(2020, 5, 13)
-    },
+    }
+    # ,{
+    #   user_id: penn.id,
+    #   plan_id: penn_plan.id,
+    #   meal_credit: penn_plan.meals,
+    #   subscription_start: Date.new(2020, 1, 22),
+    #   subscription_end: Date.new(2020, 5, 13)
+    # },
   ]
 
   subscriptions.each do |subscription|
@@ -211,8 +213,8 @@ end
 ActiveRecord::Base.transaction do
   AccountSummary.destroy_all
 
-  rutgers = User.find_by(email: 'rutgers@gmail.com')
-  penn = User.find_by(email: 'penn@gmail.com')
+  rutgers = User.find_by(email: 'demo@gmail.com')
+  # penn = User.find_by(email: 'penn@gmail.com')
 
   memberPolicy = Policy.find_by(policy_type: 'Member')
 
@@ -223,13 +225,14 @@ ActiveRecord::Base.transaction do
       policy_id: memberPolicy.id,
       total_meal_credits: rutgers.subscription.meal_credit,
       meal_credits_left: rutgers.subscription.meal_credit
-    },{
-      user_id: penn.id,
-      subscription_id: penn.subscription.id,
-      policy_id: memberPolicy.id,
-      total_meal_credits: penn.subscription.meal_credit,
-      meal_credits_left: penn.subscription.meal_credit
-    },
+    }
+    # ,{
+    #   user_id: penn.id,
+    #   subscription_id: penn.subscription.id,
+    #   policy_id: memberPolicy.id,
+    #   total_meal_credits: penn.subscription.meal_credit,
+    #   meal_credits_left: penn.subscription.meal_credit
+    # },
   ]
 
   summaries.each do |summary|
@@ -243,311 +246,198 @@ ActiveRecord::Base.transaction do
   Shop.destroy_all
 
   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
   shops = [
-    {
-      name: "Stuff Yer Face",
-      address: "49 Easton Avenue New Brunswick NJ 08901",
-      latitude: 40.498080,
-      longitude: -74.448920,
-      school_id: rutgers.id,
-    }, {
-      name: "KBG Korean BBQ & Grill",
-      address: "6 Easton Avenue New Brunswick NJ 08901",
-      latitude: 40.497090,
-      longitude: -74.447200,
-      school_id: rutgers.id,
-    }, {
-      name: "Noodle Gourmet",
-      address: "43 Easton Avenue New Brunswick NJ 08901",
-      latitude: 40.497950,
-      longitude: -74.448530,
-      school_id: rutgers.id,
-    }, 
-    # {
-    #   name: "Krispy Pizza",
-    #   address: "50 College Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499540,
-    #   longitude: -74.448630,
-    #   school_id: rutgers.id,
-    # }, {
-    #   name: "Jersey Mike's Subs",
-    #   address: "44 College Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499290,
-    #   longitude: -74.448380,
-    #   school_id: rutgers.id,
-    # }, {
-    #   name: "Nirvanis Indian Kitchen",
-    #   address: "68 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.497910,
-    #   longitude: -74.449700,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Olive Branch",
-    #   address: "37 Bartlett St, New Brunswick, NJ 08901",
-    #   latitude: 40.501350,
-    #   longitude: -74.452830,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Zookini Pizza & Restaurant",
-    #   address: "60 Sicard St, New Brunswick, NJ 08901",
-    #   latitude: 40.502708,
-    #   longitude: -74.454468,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Kelly's Korner",
-    #   address: "75 Morrell St, New Brunswick, NJ 08901",
-    #   latitude: 40.501000,
-    #   longitude: -74.455060,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Daniel's Pizzeria",
-    #   address: "204 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.500340,
-    #   longitude: -74.456000,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Seed Burger",
-    #   address: "176 Easton Ave New Brunswick, NJ 08901",
-    #   latitude: 40.499930,
-    #   longitude: -74.454930,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Thai Noodle",
-    #   address: "174 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499780,
-    #   longitude: -74.454630,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Wings Over Rutgers",
-    #   address: "152 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499460,
-    #   longitude: -74.453740,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "The Original Pizza City",
-    #   address: "145 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.499810,
-    #   longitude: -74.453430,
-    #   school_id: rutgers.id,
-    # },
-    # Penn State
-    # {
-    #   name: "Panda Express",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },{
-    #   name: "Sbarro",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },{
-    #   name: "McAlister's Deli",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },{
-    #   name: "HUB Dining - Soup and Garden",
-    #   address: "7 Hub Robeson Center, University Park, PA 16802",
-    #   latitude: 40.802589,
-    #   longitude: -77.856529,
-    #   school_id: pennState.id,
-    # },
   ###############################################
-  ######## PENN STATE REAL LIFE EXAMPLES ########
+  ######## RUTGERS REAL LIFE EXAMPLES ###########
   ###############################################
     {
-      name: "The Tavern", ## check
-      address: "220 E College Ave, State College, PA 16801",
-      latitude: 40.795540,
-      longitude: -77.860020,
-      school_id: pennState.id,
+      name: "Marathon Sushi",
+      address: "63 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.498030,
+      longitude: -74.449500,
+      school_id: rutgers.id,
     },{
-      name: "Chopstick Express", ##### Check
-      address: "134 E College Ave, State College, PA 16801",
-      latitude: 40.794950,
-      longitude: -77.860420,
-      school_id: pennState.id,
+      name: "Queensboro Restaurant",
+      address: "101 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.499020,
+      longitude: -74.451320,
+      school_id: rutgers.id,
     },{
-      name: "Queenstown Restaurant", ##
-      address: "142 E College Ave, State College, PA 16801",
-      latitude: 40.795140,
-      longitude: -77.856529,
-      school_id: pennState.id,
+      name: "Chicken2",
+      address: "72 Easton Avenue New Brunswick NJ 08901",
+      latitude: 40.497980,
+      longitude: -74.449910,
+      school_id: rutgers.id,
     },{
-      name: "Chick2", ##### check
-      address: "128 E College Ave, State College, PA 16801",
-      latitude: 40.794811,
-      longitude: -77.860558,
-      school_id: pennState.id,
+      name: "Eric's Gourmet Sandwich and Waffle",
+      address: "90 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.500740,
+      longitude: -74.449290,
+      school_id: rutgers.id,
     },{
-      name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches", ##
-      address: "118 S Pugh St, State College, PA 16801",
-      latitude: 40.794900,
-      longitude: -77.860100,
-      school_id: pennState.id,
+      name: "Namaste Pavilion",
+      address: "10 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.498130,
+      longitude: -74.447090,
+      school_id: rutgers.id,
     },{
-      name: "Irvings Bagels", #### Check
-      address: "110 E College Ave #4816, State College, PA 16801",
-      latitude: 40.794560,
-      longitude: -77.861210,
-      school_id: pennState.id,
+      name: "Delissimo",
+      address: "45 Central Ave, New Brunswick, NJ 08901",
+      latitude: 40.498210,
+      longitude: -74.457090,
+      school_id: rutgers.id,
     },{
-      name: "Yallah Taco",  ###check
-      address: "217 McAllister Alley, State College, PA 16801",
-      latitude: 40.795220,
-      longitude: -77.859070,
-      school_id: pennState.id,
+      name: "Bobby's Burger",
+      address: "45 Bartlett St, New Brunswick, NJ 08901",
+      latitude: 40.501200,
+      longitude: -74.453110,
+      school_id: rutgers.id,
     },{
-      name: "India Pavilion", ##### Check
-      address: "222 E Calder Way, State College, PA 16801",
-      latitude: 40.795380,
-      longitude: -77.859080,
-      school_id: pennState.id,
+      name: "Mexicano Food",
+      address: "31 Sicard St, New Brunswick, NJ 08901",
+      latitude: 40.502708,
+      longitude: -74.454468,
+      school_id: rutgers.id,
     },{
-      name: "The Koop", #### check
-      address: "129 Locust Ln, State College, PA 16801",
-      latitude: 40.796100,
-      longitude: -77.857760,
-      school_id: pennState.id,
+      name: "Soto Wings Factory",
+      address: "48 Morrell St, New Brunswick, NJ 08901",
+      latitude: 40.501000,
+      longitude: -74.455060,
+      school_id: rutgers.id,
     },{
-      name: "Latinos Food", ## check
-      address: "324 E Calder Way, State College, PA 16801",
-      latitude: 40.796680,
-      longitude: -77.857450,
-      school_id: pennState.id,
-    },
-    {
-      name: "Primanti Bros.", ##
-      address: "130 Heister St, State College, PA 16801",
-      latitude: 40.796700,
-      longitude: -77.856880,
-      school_id: pennState.id,
+      name: "Mama Mia",
+      address: "207 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500340,
+      longitude: -74.456000,
+      school_id: rutgers.id,
+    },{
+      name: "Grubhub's Pizza",
+      address: "230 Easton Ave New Brunswick, NJ 08901",
+      latitude: 40.499930,
+      longitude: -74.454930,
+      school_id: rutgers.id,
+    },{
+      name: "Hon Sushi",
+      address: "120 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499780,
+      longitude: -74.454630,
+      school_id: rutgers.id,
+    },{
+      name: "Seoul Sang",
+      address: "130 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499460,
+      longitude: -74.453740,
+      school_id: rutgers.id,
+    },{
+      name: "Uncle Sam's",
+      address: "530 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.499810,
+      longitude: -74.453430,
+      school_id: rutgers.id,
+    },{
+      name: "The Noodle Associates", #####
+      address: "128 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.502209,
+      longitude: -74.451950,
+      school_id: rutgers.id,
+    },{
+      name: "Minetta Taverna", ## check
+      address: "149 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.503210,
+      longitude: -74.451970,
+      school_id: rutgers.id,
+    },{
+      name: "Kyrie's Bagel", #### Check
+      address: "208 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500340,
+      longitude: -74.456001,
+      school_id: rutgers.id,
+    },{
+      name: "Yahoo Taco",  ###check
+      address: "201 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500620,
+      longitude: -74.455520,
+      school_id: rutgers.id,
+    },{
+      name: "Checker Waffle", # wip
+      address: "33 College Ave, New Brunswick, NJ 08901",
+      latitude: 40.499290,
+      longitude: -74.448380,
+      school_id: rutgers.id,
+    },{
+      name: "Mama John's", ## check
+      address: "98 Hamilton St, New Brunswick, NJ 08901",
+      latitude: 40.499330,
+      longitude: -74.448490,
+      school_id: rutgers.id,
+    },{
+      name: "Eric's Asian Fushion", # wip
+      address: "55 Mine St, New Brunswick, NJ 08901",
+      latitude: 40.499350,
+      longitude: -74.451780,
+      school_id: rutgers.id,
+    },{
+      name: "The Kook", #### check
+      address: "379 George St, New Brunswick, NJ 08901",
+      latitude: 40.495380,
+      longitude: -74.443817,
+      school_id: rutgers.id,
+    },{
+      name: "Warner Bros.", ##
+      address: "45 Bayard St, New Brunswick, NJ 08901",
+      latitude: 40.494560,
+      longitude: -74.444620,
+      school_id: rutgers.id,
     },{
       name: "Bagel Crust", ### check
-      address: "332 E Calder Way, State College, PA 16801",
-      latitude: 40.796780,
-      longitude: -77.857310,
-      school_id: pennState.id,
+      address: "276 George St, New Brunswick, NJ 08901",
+      latitude: 40.495670,
+      longitude: -74.444290,
+      school_id: rutgers.id,
     },{
-      name: "Yum Cafe",  ### check
-      address: "320 E Calder Way, State College, PA 16801",
-      latitude: 40.796630,
-      longitude: -77.857510,
-      school_id: pennState.id,
+      name: "Yummy Cafe",  ### check
+      address: "355 George St, New Brunswick, NJ 08901",
+      latitude: 40.494870,
+      longitude: -74.443460,
+      school_id: rutgers.id,
     },{
-      name: "The Waffle Shop", # wip
-      address: "364 E College Ave, State College, PA 16801",
-      latitude: 40.797700,
-      longitude: -77.856930,
-      school_id: pennState.id,
+      name: "Am I Hungry", ##### check
+      address: "354 George St, New Brunswick, NJ 08901",
+      latitude: 40.494850,
+      longitude: -74.443790,
+      school_id: rutgers.id,
     },{
-      name: "Deli and Z Bar", ## check
-      address: "113 Heister St, State College, PA 16801",
-      latitude: 40.797250,
-      longitude: -77.857090,
-      school_id: pennState.id,
+      name: "Yahoo Burrito", ## check
+      address: "349 George St, New Brunswick, NJ 08901",
+      latitude: 40.494640,
+      longitude: -74.443480,
+      school_id: rutgers.id,
     },{
-      name: "Baby's Burgers and Shakes", ### Check
-      address: "131 S Garner St, State College, PA 16801",
-      latitude: 40.797580,
-      longitude: -77.856270,
-      school_id: pennState.id,
+      name: "Hiroshima", ##
+      address: "333 George St, New Brunswick, NJ 08901",
+      latitude: 40.494410,
+      longitude: -74.443160,
+      school_id: rutgers.id,
     },{
-      name: "Jimmy John's", ## check
-      address: "434 E College Ave, State College, PA 16801",
-      latitude: 40.798340,
-      longitude: -77.856170,
-      school_id: pennState.id,
+      name: "Kumar Indian Cuisine", ##
+      address: "208 Hamilton St, New Brunswick, NJ 08901",
+      latitude: 40.496690,
+      longitude: -74.454270,
+      school_id: rutgers.id,
     },{
-      name: "Big Bowl Noodle House", #####
-      address: "418 E College Ave, State College, PA 16801",
-      latitude: 40.798010,
-      longitude: -77.856480,
-      school_id: pennState.id,
+      name: "Joe's Shanghai", ##
+      address: "170 Hamilton St, New Brunswick, NJ 08901",
+      latitude: 40.497430,
+      longitude: -74.452140,
+      school_id: rutgers.id,
     },{
-      name: "Tommy's Asian Grill", # wip
-      address: "432 E College Ave, State College, PA 16801",
-      latitude: 40.798040,
-      longitude: -77.856290,
-      school_id: pennState.id,
-    },{
-      name: "Are U Hungry", ##### check
-      address: "111 Sowers St, State College, PA 16801",
-      latitude: 40.798280,
-      longitude: -77.855530,
-      school_id: pennState.id,
-    },{
-      name: "Yallah Burrito", ## check
-      address: "404 E Calder Way, State College, PA 16801",
-      latitude: 40.797510,
-      longitude: -77.855860,
-      school_id: pennState.id,
-    },{
-      name: "Uncle Chen's",  #### check
-      address: "430 E Calder Way, State College, PA 16801",
-      latitude: 40.797610,
-      longitude: -77.855170,
-      school_id: pennState.id,
-    },{
-      name: "Zen Wings and Things",  ### CHECK
-      address: "433 E Beaver Ave, State College, PA 16801",
-      latitude: 40.797510,
-      longitude: -77.855080,
-      school_id: pennState.id,
-    },{
-      name: "Osaka", ##
-      address: "450 E College Ave, State College, PA 16801",
-      latitude: 40.798830,
-      longitude: -77.855600,
-      school_id: pennState.id,
-    },{
-      name: "Pizza Mia", ##
-      address: "114 Hetzel St, State College, PA 16801",
-      latitude: 40.799030,
-      longitude: -77.854700,
-      school_id: pennState.id,
-    },{
-      name: "Kaarma Indian Cuisine", ##
-      address: "120 E Beaver Ave, State College, PA 16801",
-      latitude: 40.793700,
-      longitude: -77.859500,
-      school_id: pennState.id,
-    },{
-      name: "Gumby's Pizza", #### Check
-      address: "300 S Pugh St Suite 101, State College, PA 16801",
-      latitude: 40.793070,
-      longitude: -77.857190,
-      school_id: pennState.id,
-    },{
-      name: "Korean Table", ##
-      address: "310 S Allen St, State College, PA 16801",
-      latitude: 40.791930,
-      longitude: -77.858500,
-      school_id: pennState.id,
-    },{
-      name: "John's Shanghai", ##
-      address: "312 W Beaver Ave, State College, PA 16801",
-      latitude: 40.791060,
-      longitude: -77.862930,
-      school_id: pennState.id,
-    },{
-      name: "Doan's Bones", ## check
-      address: "401 W Beaver Ave, State College, PA 16801",
-      latitude: 40.790780,
-      longitude: -77.864070,
-      school_id: pennState.id,
-    },{
-      name: "Tadashi Japanese Restaurant", ##
-      address: "206 W College Ave, State College, PA 16801",
-      latitude: 40.793220,
-      longitude: -77.862680,
-      school_id: pennState.id,
+      name: "Eric's Bones", ## check
+      address: "296 George St, New Brunswick, NJ 08901",
+      latitude: 40.492080,
+      longitude: -74.443300,
+      school_id: rutgers.id,
     }
   ]
 
@@ -558,7 +448,6 @@ ActiveRecord::Base.transaction do
   puts "Shops created"
 end
 
-# https://source.unsplash.com/collection/9011946/480x480/?sig=1/
 
 ActiveRecord::Base.transaction do
   Meal.destroy_all
@@ -570,229 +459,14 @@ ActiveRecord::Base.transaction do
   meals_for_tomorrow = []
 
   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
-
-  shops = Shop.where(school_id: rutgers.id)
-
-  # (shops.length).times do |i|
-  #   name = Faker::Food.dish
-
-  #   description = ''
-  #   4.times do |j|
-  #     description += Faker::Food.ingredient + ", "
-  #   end
-  #   description += Faker::Food.ingredient
-
-  #   price = rand(3.0..8.0).round(2)
-
-  #   randomNumber = rand(1..200)
-  #   image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{randomNumber}"
-
-  #   shop_id = shops[i].id
-
-  #   meals << {
-  #     name: name,
-  #     description: description,
-  #     price: price,
-  #     image_url: image_url,
-  #     shop_id: shop_id
-  #   }
-  # end
-
-  shops.each do |shop|
-    name = 'Burger with Fries'
-    description = "Beef patty, cheese, bun, lettus, onion, tomato, potato"
-    price = 8.99
-    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
-    shop_id = shop.id
-
-    meals_for_today << {
-      name: name,
-      description: description,
-      price: price,
-      image_url: image_url,
-      shop_id: shop_id
-    }
-  end
-
-  shops.each do |shop|
-    name = 'Fried Chicken Sandwich'
-    description = "Chicken, breading, coleslaw, bun"
-    price = 9.99
-    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
-    shop_id = shop.id
-
-    meals_for_today << {
-      name: name,
-      description: description,
-      price: price,
-      image_url: image_url,
-      shop_id: shop_id
-    }
-  end
-
-  shops.each do |shop|
-    name = 'Pizza'
-    description = "Pizza dough, mozzarella cheese, tomato sauce"
-    price = 7.99
-    image_url = "https://source.unsplash.com/collection/#{collectionID}/#{imageWidth}x#{imageHeight}/?sig=#{rand(1..200)}"
-    shop_id = shop.id
-
-    meals_for_tomorrow << {
-      name: name,
-      description: description,
-      price: price,
-      image_url: image_url,
-      shop_id: shop_id
-    }
-  end
-
-  meals_for_today.each do |meal|
-    Meal.create!(meal)
-  end
-  
-  puts "Meals at Rutgers for today created"
-
-  meals_for_tomorrow.each do |meal|
-    Meal.create!(meal)
-  end
-  
-  puts "Meals at Rutgers for tomorrow created"
-
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
 
   ###############################################
-  ######## PENN STATE REAL LIFE EXAMPLES ########
+  ######## RUTGERS REAL LIFE EXAMPLES ########
   ###############################################
-  
 
-  tommys = Shop.find_by(name: "Tommy's Asian Grill")
-  puts tommys.id
-  tommysmeal = [
-    {
-      name: 'Kalbi Platter',
-      description: "Short rib, soy sauce, sesame oil, scallion, rice",
-      price: 12.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tommys_asian_kalbi.jpeg',
-      shop_id: tommys.id
-    }
-  ]
-
-  tommysmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts  "tommysmeal Meal Created"
-
-
-  unclechen = Shop.find_by(name: "Uncle Chen's")
-  unclemeal = [
-    {
-      name: 'Spicy Ramen',
-      description: "Ramen noodle, spicy pepper flakes, vegitable broth",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_spicy_ramen.jpeg',
-      shop_id:  unclechen.id
-    }, {
-      name: 'Vegitable Noodle',
-      description: "Udon noodle, assorted vegitables",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_vegi_noodle.jpeg',
-      shop_id:  unclechen.id
-    }
-  ]
-
-  unclemeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts  "unclemeal Meal Created"
-
-  doans = Shop.find_by(name: "Doan's Bones")
-  doansmeal = [
-    {
-      name: 'Salmon Burger with Fries',
-      description: "Salmon, bun, ketchup, french fries",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bone_salmon_burger.jpeg',
-      shop_id:  doans.id
-    }, {
-      name: 'Hamburger',
-      description: "Beef patty, american cheese, buns, lettus, tomato",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bones_hamburger.jpeg',
-      shop_id:  doans.id
-    }
-  ]
-
-  doansmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts  "doansmeal Meal Created"
-
-
-  bigbowl = Shop.find_by(name: "Big Bowl Noodle House")
-  bigbowlmeal = [
-    {
-      name: 'Shrimp Ramen',
-      description: "Shrimp, vegitables, ramen noodle, seafood broth",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_shrimp_ramen.jpeg',
-      shop_id: bigbowl.id
-    }, {
-      name: 'Tonkotsu Ramen',
-      description: "Grilled pork belly, pork broth, ramen noodle, vegitables",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_tonkotsu_ramen.jpeg',
-      shop_id: bigbowl.id
-    }, {
-      name: 'Yakisoba',
-      description: "Stir fried udon noodle, vegitables, soy sauce, chicken",
-      price: 11.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_yakisoba.jpeg',
-      shop_id: bigbowl.id
-    }
-  ]
-
-  bigbowlmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "bigbowlmeal Meal Created"
-
-
-  chick2 = Shop.find_by(name: "Chick2")
-  chick2meal = [
-    {
-      name: 'Chicken Tender with Chips',
-      description: "Fried chicken breast, potato chips, mustard sacue",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chips.jpeg',
-      shop_id: chick2.id
-    }, {
-      name: 'Fried Chicken Sandwich with Fries',
-      description: "Fried chicken breast, bun, coleslaw, french fries",
-      price: 12.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_fried_chicken_fries.jpeg',
-      shop_id: chick2.id
-    }, {
-      name: 'Chicken Nuggets with Fries',
-      description: "Chicken nuggets 4 peices, french fries, ketchup",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_nuggets.jpeg',
-      shop_id: chick2.id
-    }
-  ]
-
-  chick2meal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "chick2meal Meal Created"
-
-
-  chopstick = Shop.find_by(name: "Chopstick Express")
+  chopstick = Shop.find_by(name: "Marathon Sushi")
   chopstickMeals = [
     {
       name: '2 Tuna Roll',
@@ -822,7 +496,253 @@ ActiveRecord::Base.transaction do
   puts "chopstickMeals Meal Created"
 
 
-  gumbys = Shop.find_by(name: "Gumby's Pizza")
+  queenstown = Shop.find_by(name: "Queensboro Restaurant")
+  queenstownmeal = [
+    {
+      name: 'Pork Chop',
+      description: "Pork, amazing sauce, grilled, mashed potato",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_pork_chop.jpeg',
+      shop_id: queenstown.id
+    },{
+      name: 'Roast Beef Sandwich',
+      description: "Roast beef, bread, mustard, lettus, tomato, red onion",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg',
+      shop_id: queenstown.id
+    }
+  ]
+
+  queenstownmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "queenstownmeal Meal Created"
+
+  chick2 = Shop.find_by(name: "Chicken2")
+  chick2meal = [
+    {
+      name: 'Chicken Tender with Chips',
+      description: "Fried chicken breast, potato chips, mustard sacue",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chips.jpeg',
+      shop_id: chick2.id
+    }, {
+      name: 'Fried Chicken Sandwich with Fries',
+      description: "Fried chicken breast, bun, coleslaw, french fries",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_fried_chicken_fries.jpeg',
+      shop_id: chick2.id
+    }, {
+      name: 'Chicken Nuggets with Fries',
+      description: "Chicken nuggets 4 peices, french fries, ketchup",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_nuggets.jpeg',
+      shop_id: chick2.id
+    }
+  ]
+
+  chick2meal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "chick2meal Meal Created"
+
+  saddies = Shop.find_by(name: "Eric's Gourmet Sandwich and Waffle")
+  saddiesmeal = [
+    {
+      name: 'Two Waffle',
+      description: "Waffle, syrup, strawberries",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_two_waffles.jpeg',
+      shop_id: saddies.id
+    },{
+      name: 'Waffle Chicken',
+      description: "Fried chicken, waffles, syrup, butter",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_waffle_chicken.jpeg',
+      shop_id: saddies.id
+    }
+  ]
+
+  saddiesmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "saddiesmeal Meal Created"
+
+  india = Shop.find_by(name: "Namaste Pavilion")
+  indiameal = [
+    {
+      name: 'Bean Curry',
+      description: "Beans, curry powder, vegitable broth",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_bean_curry.jpeg',
+      shop_id: india.id
+    },{
+      name: 'Chicken Curry',
+      description: "Chicken, curry powder, chicken broth",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_curry.jpeg',
+      shop_id: india.id
+    }
+  ]
+
+  indiameal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "indiameal Meal Created"
+
+
+  deliz = Shop.find_by(name: "Delissimo")
+  delizmeal = [
+    {
+      name: 'Sandwich with French Fries',
+      description: "Bread, beef, lettus, tomato, onion, potato fries, ketchup",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_sandwich_fries.jpeg',
+      shop_id: deliz.id
+    },{
+      name: 'Turkey Bacon Sandwich',
+      description: "Turkey, bacon, bread, lettus, tomato, onion, mayo",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_turkey_bacon_sandwich.jpeg',
+      shop_id: deliz.id
+    }
+  ]
+
+  delizmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "delizmeal Meal Created"
+
+
+  babysburger = Shop.find_by(name: "Bobby's Burger")
+  babysmeal = [
+    {
+      name: 'Bacon Cheese Burger',
+      description: "Beef patty, buns, lettus, tomato, onion, bacon, american cheese",
+      price: 7.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_bacon_burger.jpeg',
+      shop_id: babysburger.id
+    },{
+      name: 'Fried Chicken Sandwich',
+      description: "Fried chicken, bun, coleslaw, mayo",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_fried_chicken_sandwich.jpeg',
+      shop_id: babysburger.id
+    },{
+      name: 'Glazed Salmon',
+      description: "Glazed Salmon, risotto, fish broth",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_glazed_salmon.jpeg',
+      shop_id: babysburger.id
+    }
+  ]
+
+  babysmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "babysmeal Meal Created"
+
+  tommys = Shop.find_by(name: "Eric's Asian Fushion")
+  tommysmeal = [
+    {
+      name: 'Kalbi Platter',
+      description: "Short rib, soy sauce, sesame oil, scallion, rice",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/tommys_asian_kalbi.jpeg',
+      shop_id: tommys.id
+    }
+  ]
+
+  tommysmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts  "tommysmeal Meal Created"
+
+
+  unclechen = Shop.find_by(name: "Uncle Sam's")
+  unclemeal = [
+    {
+      name: 'Spicy Ramen',
+      description: "Ramen noodle, spicy pepper flakes, vegitable broth",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_spicy_ramen.jpeg',
+      shop_id:  unclechen.id
+    }, {
+      name: 'Vegitable Noodle',
+      description: "Udon noodle, assorted vegitables",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/uncle_chen_vegi_noodle.jpeg',
+      shop_id:  unclechen.id
+    }
+  ]
+
+  unclemeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts  "unclemeal Meal Created"
+
+  doans = Shop.find_by(name: "Eric's Bones")
+  doansmeal = [
+    {
+      name: 'Salmon Burger with Fries',
+      description: "Salmon, bun, ketchup, french fries",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bone_salmon_burger.jpeg',
+      shop_id:  doans.id
+    }, {
+      name: 'Hamburger',
+      description: "Beef patty, american cheese, buns, lettus, tomato",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/doans_bones_hamburger.jpeg',
+      shop_id:  doans.id
+    }
+  ]
+
+  doansmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts  "doansmeal Meal Created"
+
+  bigbowl = Shop.find_by(name: "The Noodle Associates")
+  bigbowlmeal = [
+    {
+      name: 'Shrimp Ramen',
+      description: "Shrimp, vegitables, ramen noodle, seafood broth",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_shrimp_ramen.jpeg',
+      shop_id: bigbowl.id
+    }, {
+      name: 'Tonkotsu Ramen',
+      description: "Grilled pork belly, pork broth, ramen noodle, vegitables",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_tonkotsu_ramen.jpeg',
+      shop_id: bigbowl.id
+    }, {
+      name: 'Yakisoba',
+      description: "Stir fried udon noodle, vegitables, soy sauce, chicken",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_yakisoba.jpeg',
+      shop_id: bigbowl.id
+    }
+  ]
+
+  bigbowlmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "bigbowlmeal Meal Created"
+
+
+  gumbys = Shop.find_by(name: "Grubhub's Pizza")
   gumbysmeal = [
     {
       name: '2 Ham Pizza',
@@ -857,31 +777,7 @@ ActiveRecord::Base.transaction do
 
   puts "gumbysmeal Meal Created"
 
-  india = Shop.find_by(name: "India Pavilion")
-  indiameal = [
-    {
-      name: 'Bean Curry',
-      description: "Beans, curry powder, vegitable broth",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_bean_curry.jpeg',
-      shop_id: india.id
-    },{
-      name: 'Chicken Curry',
-      description: "Chicken, curry powder, chicken broth",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/india_pavilion_chicken_curry.jpeg',
-      shop_id: india.id
-    }
-  ]
-
-  indiameal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "indiameal Meal Created"
-
-
-  irving = Shop.find_by(name: "Irvings Bagels")
+  irving = Shop.find_by(name: "Kyrie's Bagel")
   irvingmeal = [
     {
       name: 'Italian Sandwich',
@@ -945,7 +841,7 @@ ActiveRecord::Base.transaction do
 
   puts "crustmeal Meal Created"
 
-  hungry = Shop.find_by(name: "Are U Hungry")
+  hungry = Shop.find_by(name: "Am I Hungry")
   hungrymeal = [
     {
       name: 'Chicken Sandwich',
@@ -974,7 +870,7 @@ ActiveRecord::Base.transaction do
 
   puts "hungrymeal Meal Created"
   
-  zen = Shop.find_by(name: "Zen Wings and Things")
+  zen = Shop.find_by(name: "Soto Wings Factory")
   zenmeal = [
     {
       name: 'Garden Salad',
@@ -1003,7 +899,7 @@ ActiveRecord::Base.transaction do
 
   puts "zenmeal Meal Created"
   
-  yallahtaco = Shop.find_by(name: "Yallah Taco")
+  yallahtaco = Shop.find_by(name: "Yahoo Taco")
   yallahtacomeal = [
     {
       name: 'Breakfast Burrito',
@@ -1032,48 +928,8 @@ ActiveRecord::Base.transaction do
 
   puts "yallahtacomeal Meal Created"
 
-  babysburger = Shop.find_by(name: "Baby's Burgers and Shakes")
-  babysmeal = [
-    {
-      name: 'Bacon Cheese Burger',
-      description: "Beef patty, buns, lettus, tomato, onion, bacon, american cheese",
-      price: 7.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_bacon_burger.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Fried Chicken Sandwich',
-      description: "Fried chicken, bun, coleslaw, mayo",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_fried_chicken_sandwich.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Glazed Salmon',
-      description: "Glazed Salmon, risotto, fish broth",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_glazed_salmon.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Spinach Salad',
-      description: "Spinach, eggs, tomato, carrots, avocado, croutons",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_spinach_salad.jpeg',
-      shop_id: babysburger.id
-    },{
-      name: 'Vegi Sandwich',
-      description: "Assorted vegitables, bread, tomato, mayo",
-      price: 11.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_vegi_sandwich.jpeg',
-      shop_id: babysburger.id
-    }
-  ]
 
-  babysmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "babysmeal Meal Created"
-
-  kook = Shop.find_by(name: "The Koop")
+  kook = Shop.find_by(name: "The Kook")
   kookmeal = [
     {
       name: 'Chicken Ramen',
@@ -1108,30 +964,7 @@ ActiveRecord::Base.transaction do
 
   puts "kookmeal Meal Created"
 
-  deliz = Shop.find_by(name: "Deli and Z Bar")
-  delizmeal = [
-    {
-      name: 'Sandwich with French Fries',
-      description: "Bread, beef, lettus, tomato, onion, potato fries, ketchup",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_sandwich_fries.jpeg',
-      shop_id: deliz.id
-    },{
-      name: 'Turkey Bacon Sandwich',
-      description: "Turkey, bacon, bread, lettus, tomato, onion, mayo",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/deli_z_turkey_bacon_sandwich.jpeg',
-      shop_id: deliz.id
-    }
-  ]
-
-  delizmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "delizmeal Meal Created"
-
-  jimmy = Shop.find_by(name: "Jimmy John's")
+  jimmy = Shop.find_by(name: "Mama John's")
   jimmymeal = [
     {
       name: 'Chicken Sandwich with Fries',
@@ -1154,7 +987,7 @@ ActiveRecord::Base.transaction do
   puts "jimmymeal Meal Created"
 
 
-  joes = Shop.find_by(name: "John's Shanghai")
+  joes = Shop.find_by(name: "Joe's Shanghai")
   joesmeal = [
     {
       name: 'Beef Roll',
@@ -1176,7 +1009,7 @@ ActiveRecord::Base.transaction do
 
   puts "joesmeal Meal Created"
 
-  kaarma = Shop.find_by(name: "Kaarma Indian Cuisine")
+  kaarma = Shop.find_by(name: "Kumar Indian Cuisine")
   kaarmameal = [
     {
       name: 'Chicken Satay',
@@ -1199,7 +1032,7 @@ ActiveRecord::Base.transaction do
 
   puts "kaarmameal Meal Created"
 
-  koreantable = Shop.find_by(name: "Korean Table")
+  koreantable = Shop.find_by(name: "Seoul Sang")
   koreantablemeal = [
     {
       name: 'Beef Bibimbab',
@@ -1223,7 +1056,7 @@ ActiveRecord::Base.transaction do
   puts "koreantablemeal Meal Created"
 
 
-  latinofood = Shop.find_by(name: "Latinos Food")
+  latinofood = Shop.find_by(name: "Mexicano Food")
   latinofoodmeal = [
     {
       name: 'Loaded Nachos',
@@ -1246,7 +1079,7 @@ ActiveRecord::Base.transaction do
 
   puts "latinofoodmeal Meal Created"
 
-  osaka = Shop.find_by(name: "Osaka")
+  osaka = Shop.find_by(name: "Hiroshima")
   osakameal = [
     {
       name: 'Karaage Don',
@@ -1269,7 +1102,7 @@ ActiveRecord::Base.transaction do
 
   puts "osakameal Meal Created"
 
-  pizzamia = Shop.find_by(name: "Pizza Mia")
+  pizzamia = Shop.find_by(name: "Mama Mia")
   pizzamiameal = [
     {
       name: 'Salad',
@@ -1292,7 +1125,7 @@ ActiveRecord::Base.transaction do
 
   puts "pizzamiameal Meal Created"
 
-  primimanti = Shop.find_by(name: "Primanti Bros.")
+  primimanti = Shop.find_by(name: "Warner Bros.")
   primimantimeal = [
     {
       name: 'Bolognese',
@@ -1309,53 +1142,7 @@ ActiveRecord::Base.transaction do
 
   puts "primimantimeal Meal Created"
 
-  queenstown = Shop.find_by(name: "Queenstown Restaurant")
-  queenstownmeal = [
-    {
-      name: 'Pork Chop',
-      description: "Pork, amazing sauce, grilled, mashed potato",
-      price: 14.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_pork_chop.jpeg',
-      shop_id: queenstown.id
-    },{
-      name: 'Roast Beef Sandwich',
-      description: "Roast beef, bread, mustard, lettus, tomato, red onion",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg',
-      shop_id: queenstown.id
-    }
-  ]
-
-  queenstownmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "queenstownmeal Meal Created"
-
-  saddies = Shop.find_by(name: "Sadie's Gourmet Waffles & Smokey Joe's Sandwiches")
-  saddiesmeal = [
-    {
-      name: 'Two Waffle',
-      description: "Waffle, syrup, strawberries",
-      price: 11.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_two_waffles.jpeg',
-      shop_id: saddies.id
-    },{
-      name: 'Waffle Chicken',
-      description: "Fried chicken, waffles, syrup, butter",
-      price: 14.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/saddies_gourmet_waffle_chicken.jpeg',
-      shop_id: saddies.id
-    }
-  ]
-
-  saddiesmeal.each do |meal|
-    Meal.create!(meal)
-  end
-
-  puts "saddiesmeal Meal Created"
-
-  tadashi = Shop.find_by(name: "Tadashi Japanese Restaurant")
+  tadashi = Shop.find_by(name: "Hon Sushi")
   tadashimeal = [
     {
       name: 'Salmon Roll',
@@ -1379,7 +1166,7 @@ ActiveRecord::Base.transaction do
   puts "tadashimeal Meal Created"
 
 
-  tavern = Shop.find_by(name: "The Tavern")
+  tavern = Shop.find_by(name: "Minetta Taverna")
   tavernmeal = [
     {
       name: 'Supreme Pasta',
@@ -1403,7 +1190,7 @@ ActiveRecord::Base.transaction do
   puts "tavernmeal Meal Created"
 
 
-  waffle = Shop.find_by(name: "The Waffle Shop")
+  waffle = Shop.find_by(name: "Checker Waffle")
   wafflemeal = [
     {
       name: 'Four Waffles',
@@ -1426,7 +1213,7 @@ ActiveRecord::Base.transaction do
 
   puts "wafflemeal Meal Created"
 
-  yallahb = Shop.find_by(name: "Yallah Burrito")
+  yallahb = Shop.find_by(name: "Yahoo Burrito")
   yallahbmeal = [
     {
       name: 'Beef Tacos',
@@ -1449,7 +1236,7 @@ ActiveRecord::Base.transaction do
 
   puts "yallahbmeal Meal Created"
 
-  yum = Shop.find_by(name: "Yum Cafe")
+  yum = Shop.find_by(name: "Yummy Cafe")
   yummeal = [
     {
       name: 'Carbonara',
@@ -1478,52 +1265,25 @@ ActiveRecord::Base.transaction do
   Menu.destroy_all
   
   today = Date.today
-  tomorrow = Date.today + 1
 
   week = []
-  7.times do |count|
+  45.times do |count|
     week << today
     today += 1
   end
 
-  # Today's LUNCH menu
-  meals_for_today_lunch = Meal.where(name: "Burger with Fries")
-
-  meals_for_today_lunch.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: today, lunch: true, dinner: false})
-  end
-
-  puts "Menu for TODAY LUNCH created"
-
-  # Today's DINNER menu
-  meals_for_today_dinner = Meal.where(name: "Fried Chicken Sandwich")
-
-  meals_for_today_dinner.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: today, lunch: false, dinner: true})
-  end
-
-  puts "Menu for TODAY DINNER created"
-
-  # Tomorrow's menu
-  meals_for_tomorrow = Meal.where(name: "Pizza")
-
-  meals_for_tomorrow.each do |meal|
-    Menu.create!({meal_id: meal.id, offered_date: tomorrow})
-  end
-
-  puts "Menu for TOMORROW created"
-
   ###############################################
-  ######## PENN STATE REAL LIFE EXAMPLES ########
+  ######## RUTGERS REAL LIFE EXAMPLES ########
   ###############################################
 
-  pennState = School.find_by(name: "Pennsylvania State University–University Park")
-  pennShops = Shop.where(school_id: pennState.id)
+
+  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  rutgersShops = Shop.where(school_id: rutgers.id)
 
   lunch_count = 0
   dinner_count = 0
 
-  pennShops.each do |shop|
+  rutgersShops.each do |shop|
     week.each do |day|
       sample_lunch_meal = shop.meals.sample
       sample_dinner_meal = shop.meals.sample
@@ -1534,14 +1294,39 @@ ActiveRecord::Base.transaction do
     end
   end
 
-  puts lunch_count.to_s + " lunch menus in Penn State created"
-  puts dinner_count.to_s + " dinner menus in Penn State created"
+  puts lunch_count.to_s + " lunch menus in Rutgers created"
+  puts dinner_count.to_s + " dinner menus in Rutgers created"
+
+
+  ###############################################
+  ######## PENN STATE REAL LIFE EXAMPLES ########
+  ###############################################
+
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  # pennShops = Shop.where(school_id: pennState.id)
+
+  # lunch_count = 0
+  # dinner_count = 0
+
+  # pennShops.each do |shop|
+  #   week.each do |day|
+  #     sample_lunch_meal = shop.meals.sample
+  #     sample_dinner_meal = shop.meals.sample
+  #     Menu.create!(meal_id: sample_lunch_meal.id, offered_date: day, lunch: true, dinner: false)
+  #     Menu.create!(meal_id: sample_dinner_meal.id, offered_date: day, lunch: false, dinner: true)
+  #     lunch_count += 1
+  #     dinner_count += 1
+  #   end
+  # end
+
+  # puts lunch_count.to_s + " lunch menus in Penn State created"
+  # puts dinner_count.to_s + " dinner menus in Penn State created"
 
 end
 
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
-  rutgers = User.find_by(email: 'rutgers@gmail.com')
+  rutgers = User.find_by(email: 'demo@gmail.com')
   menus = Menu.all
 
   lunch_time = PickupTime.where(pickup_type: 0)

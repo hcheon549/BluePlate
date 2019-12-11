@@ -9,10 +9,10 @@ class Api::SessionsController < ApplicationController
     end
   end
 
-  # get current user (fetch on page refresh to bootstrap user)
   def user
     @user = current_user
-    if @user
+    
+    if @user && @user.email != 'demo@gmail.com'
       render 'api/users/show'
     else
       render json: {}

@@ -8,6 +8,7 @@ import { fetchFavorites } from '../../actions/favorite_actions';
 import { resetFilter } from '../../actions/filter_actions';
 import { fetchReservations } from '../../actions/accountHistory_actions';
 import { openModal } from "../../actions/modal_actions";
+import { logout } from '../../actions/session_actions';
 
 import MealIndex from "../meal_listing/meal_index";
 import MealMap from "../map/meal_map";
@@ -22,28 +23,74 @@ class MyMeal extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      activeTab: "lunch"
+      activeTab: "lunch",
+      isMobile: window.innerWidth <= 560
     }
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
+    this.showEmailCapture = this.showEmailCapture.bind(this);
+    this.openEmailCapture = this.openEmailCapture.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
   
   async componentDidMount() {
+    this.handleResize();
+		window.addEventListener('resize', this.handleResize);
+    if (this.props.location.pathname == "/demo"){
+      this.props.openDisclaimer();
+    } else {
+      this.props.openClosedModal();
+    }
     await this.props.fetchMenus(this.props.currentUser.schoolId)
-    this.props.openClosedModal();
     await this.props.fetchReservations()
     await this.props.resetFilter()
-
   }
 
   async componentWillReceiveProps(nextProps) {
-    if (nextProps.location.pathname !== "/my-meals") {
-      this.props.history.push("/my-meals");
-    }
     if (nextProps.currentUser.schoolId !== this.props.currentUser.schoolId) {
       await this.props.fetchMenus(nextProps.currentUser.schoolId)
       this.props.resetFilter();
     }
+  }
+
+  componentDidUpdate(prevProps){
+    if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer)
+        && !this.props.leadCaptureSeen
+        && this.props.location.pathname == "/demo"
+      ){
+      addEventListener('scroll', this.showEmailCapture)
+    }
+    if (this.props.leadCaptureSeen){
+      removeEventListener('scroll', this.showEmailCapture)
+    }
+  }
+
+  async componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
+    removeEventListener('scroll', this.showEmailCapture);
+    clearTimeout(this.openEmailCapture);
+    if (this.props.location.pathname == "/demo"){
+      await this.props.logout();
+    }
+  }
+
+  handleResize() {
+		if (window.innerWidth <= 560 && this.state.isMobile === false) {
+			this.setState({ isMobile: true });
+		} else if (window.innerWidth > 560 && this.state.isMobile === true) {
+			this.setState({ isMobile: false });
+		}
+	}
+
+  showEmailCapture(){
+    setTimeout(this.openEmailCapture, 10000)
+  }
+
+  openEmailCapture(){
+    this.props.openEmailCapture();
+    this.setState({
+      seenEmailCapture: true
+    })
   }
 
   handleCollapse() {
@@ -83,18 +130,18 @@ class MyMeal extends React.Component {
     if (this.props.loading) {
       return <LoadingIcon />;
     }
-
     return (
       <div className="greeting-container">
         <TodayReservations {...this.props}/>
 
-        <div className="search-container">
+        <div className="tabs-container">
           <div className="tabs">
+            {this.state.isMobile && <Today isMobile={this.state.isMobile}/>}
             <Tab 
               activeTab={this.state.activeTab}
               handleTab={this.handleTab}
             />
-            <Today />
+            {!this.state.isMobile && <Today isMobile={this.state.isMobile}/>}
           </div>
           
           <div className="borderLine" />
@@ -128,7 +175,7 @@ class MyMeal extends React.Component {
   }
 }
 
-const mapStateToProps = ({entities}) => {
+const mapStateToProps = ({entities, ui}) => {
   const todayMenu = Object.values(entities.menus);
   const pickupTime = entities.pickupTime
 
@@ -140,6 +187,8 @@ const mapStateToProps = ({entities}) => {
     lunchTime: pickupTime.lunch,
     dinnerTime: pickupTime.dinner,
     todayReservations: entities.todayReservations,
+    signedDisclaimer: ui.disclaimerSignature,
+    leadCaptureSeen: ui.leadCapture.seen
   };
 };
 
@@ -151,7 +200,10 @@ const mayDispatchToProps = (dispatch) => {
     fetchReservations: () => dispatch(fetchReservations()),
     resetFilter: () => dispatch(resetFilter()),
     openReserveModal: (data) => dispatch(openModal({ type: 'reserve', data })),
-    openClosedModal: () => dispatch(openModal({ type: 'closed'}))
+    openClosedModal: () => dispatch(openModal({ type: 'closed'})),
+    openDisclaimer: () => dispatch(openModal({type: 'disclaimer'})),
+    openEmailCapture: () => dispatch(openModal({type: 'emailCapture'})),
+    logout: () => dispatch(logout())
   };
 };
 

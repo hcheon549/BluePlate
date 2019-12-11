@@ -5,12 +5,14 @@
 .shadow{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   position: fixed;
-  width: 100%;
+  height: 60px;
   z-index: 10;
   background-color: white;
+  box-sizing: border-box;
+  width: 100vw;
 }
 
-.nav-main {
+.desktopNav {
   position: relative;
   width: 100%;
   height: 60px;
@@ -18,9 +20,17 @@
   align-items: center;
   color: $main;
 }
-.nav-main strong {
-  font-weight: bold;
+
+.mobileNav{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
 }
+
 .navLogo {
   position: absolute;
   font-size: 25px;
@@ -35,6 +45,25 @@
     }
   }
 }
+@media screen and (max-width: 560px){
+  .navLogo {
+    position: block;
+    margin: auto;
+    font-size: 25px;
+    letter-spacing: 1px;
+    left: 28%;
+    a{
+      display: flex;
+      align-items: center;
+      img{ 
+        width: 35px;
+        margin-right: 5px;
+      }
+    }
+  }  
+}
+
+
 .nav-route{
   position: absolute;
   right: 0;
@@ -125,19 +154,6 @@
   color: $main;
 }
 
-// .arrow-up {
-//   width: 0;
-//   height: 0;
-//   border-left: 10px solid transparent;
-//   border-right: 10px solid transparent;
-//
-//   border-bottom: 10px solid $accent;
-//
-//   position: absolute;
-//   left: 130px;
-//   bottom: 195px;
-// }
-
 .menu-logout {
   border-top: 1px solid $light-gray;
 }
@@ -153,4 +169,38 @@
 }
 .login-link div {
   padding: 10px 0;
+}
+
+///////////////////////////////////////////////////
+/////////      MOBILE NAV MENU ITEMS     //////////
+///////////////////////////////////////////////////
+
+.mobileMenu {
+  border-top: 1px solid $grayMed;
+  border-bottom: 1px solid $grayMed;
+  padding: 0 20px 20px ;
+  background-color: $white;
+  color: $siteColorDark;
+  box-sizing: border-box;
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  top: -400px;
+  width: 100vw;
+  visibility: hidden;
+  border-right: 1px solid $grayLight;
+  margin-top: 60px;
+  transition: all 0.5s ease-out;
+  visibility: 0.4s;
+  &.-open{
+    top: 0;
+    visibility: visible;
+  }
+  .navMenu{
+    padding: 20px;
+    text-align: center;
+  }
+  .mobile-menu-button{
+    margin: 20px auto;
+  }
 }

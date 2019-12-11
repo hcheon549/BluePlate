@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import swal from 'sweetalert';
+
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 import {
@@ -40,9 +42,29 @@ class ReservationModal extends React.Component {
       });
   };
 
+  openSwal(action){
+    let message, subMessage;
+    switch(action){
+      case 'reserve':
+        message = 'Reserved';
+        subMessage = 'Your reservation is received. Be ready to pick up!';
+        break;
+      case 'update':
+        message = 'Updated';
+        subMessage = 'Your reservation is updated!';
+        break;
+      case 'cancel':
+        message = 'Cancelled';
+        subMessage = 'Your reservation is cancelled';
+        break;
+      default:
+    }
+    swal(`${message}!`, `${subMessage}`, "success");
+  }
+
   async handleReserve() {
     let { data: { action, menu, currentReservation }, currentUser, 
-          updateReservation, createReservation, deleteReservation, openConfirmModal } = this.props;
+          updateReservation, createReservation, deleteReservation, openConfirmModal, closeModal } = this.props;
     let { pickupTimeId } = this.state
 
     this.setState({
@@ -62,7 +84,8 @@ class ReservationModal extends React.Component {
         isPending: false
       })  
       if (reservationResult.reservation) {
-        openConfirmModal()
+        this.openSwal(action);
+        closeModal();
       } else {
         console.log(reservationResult)
       }
@@ -77,7 +100,8 @@ class ReservationModal extends React.Component {
         isPending: false
       })  
       if (updateResult.reservation) {
-        openConfirmModal()
+        this.openSwal(action)
+        closeModal();
       } else {
         console.log(updateResult)
       }
@@ -89,7 +113,8 @@ class ReservationModal extends React.Component {
         isPending: false
       })  
       if (cancellation.reservation) {
-        openConfirmModal()
+        this.openSwal(action)
+        closeModal();
       } else {
         console.log(cancellation)
       }
