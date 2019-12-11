@@ -10,11 +10,9 @@
 }
 
 .closed-modal {
-  width: 550px;
+  max-width: 550px;
   background: white;
   position: absolute;
-  display: flex;
-  flex-direction: column;
   top: calc(50% - 200px);
   left: calc(50% - 275px);
   .innerContent{
@@ -33,6 +31,19 @@
       width: 13px;
       height: 13px;
       margin: 0 10px 30px 0;
+    }
+  }
+  @media screen and (max-width: 560px){
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    .innerContent{
+      padding: 0;
+      width: 90%;
+      margin: auto;
+      box-sizing: border-box;
     }
   }
 }

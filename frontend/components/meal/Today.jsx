@@ -53,6 +53,10 @@ const Today = (props) => {
 
     return menuDate
   }
+  
+  if (props.isMobile){
+    return <h4>{getMenuDate()}</h4>
+  }
 
   return (
     <ul className="mealTab">

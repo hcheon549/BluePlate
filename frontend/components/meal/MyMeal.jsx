@@ -24,14 +24,18 @@ class MyMeal extends React.Component {
     super(props)
     this.state = {
       activeTab: "lunch",
+      isMobile: window.innerWidth <= 560
     }
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
     this.showEmailCapture = this.showEmailCapture.bind(this);
     this.openEmailCapture = this.openEmailCapture.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
   
   async componentDidMount() {
+    this.handleResize();
+		window.addEventListener('resize', this.handleResize);
     if (this.props.location.pathname == "/demo"){
       this.props.openDisclaimer();
     } else {
@@ -62,12 +66,21 @@ class MyMeal extends React.Component {
   }
 
   async componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
     removeEventListener('scroll', this.showEmailCapture);
     clearTimeout(this.openEmailCapture);
     if (this.props.location.pathname == "/demo"){
       await this.props.logout();
     }
   }
+
+  handleResize() {
+		if (window.innerWidth <= 560 && this.state.isMobile === false) {
+			this.setState({ isMobile: true });
+		} else if (window.innerWidth > 560 && this.state.isMobile === true) {
+			this.setState({ isMobile: false });
+		}
+	}
 
   showEmailCapture(){
     setTimeout(this.openEmailCapture, 10000)
@@ -121,13 +134,14 @@ class MyMeal extends React.Component {
       <div className="greeting-container">
         <TodayReservations {...this.props}/>
 
-        <div className="search-container">
+        <div className="tabs-container">
           <div className="tabs">
+            {this.state.isMobile && <Today isMobile={this.state.isMobile}/>}
             <Tab 
               activeTab={this.state.activeTab}
               handleTab={this.handleTab}
             />
-            <Today />
+            {!this.state.isMobile && <Today isMobile={this.state.isMobile}/>}
           </div>
           
           <div className="borderLine" />
