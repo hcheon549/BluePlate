@@ -33,9 +33,12 @@ class MobileMenuItems extends React.Component {
         {this.props.isMember && <li className={"mobile-menu-button" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={this.nextAction.bind(this, '/my-meals')}>
           View meals
         </li>}
-        <li className={"mobile-menu-button" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={this.nextAction.bind(this, '/account')}>
+        {this.props.isMember && <li className={"mobile-menu-button" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={this.nextAction.bind(this, '/account')}>
           My account
-        </li>
+        </li>}
+        {!this.props.isMember && <li className="mobile-menu-button" onClick={this.nextAction.bind(this, "/signup")}>
+          Finish Enrollment
+        </li>}
         <li className="mobile-menu-button" onClick={this.handleLogout.bind(this)}>
           Log out
         </li>
@@ -55,8 +58,6 @@ class MobileMenuItems extends React.Component {
         </li>
       </ul>
     )
-    
-
     
     return (
       <div className={"mobileMenu" + (burgerOpen ? ' -open' : '')}>
