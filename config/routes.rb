@@ -23,6 +23,6 @@ Rails.application.routes.draw do
 
   end
 
-  # match '*path', to: 'static_pages#root', via: :all
+  match '*path', to: 'static_pages#root', via: :all
 
 end

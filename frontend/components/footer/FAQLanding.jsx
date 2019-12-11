@@ -91,7 +91,7 @@ const FAQLanding = () => {
       />
     );
   return(
-    <section className="content FAQs">
+    <section className="FAQs">
       <div className="pageHeader">
         <h3>Frequently Asked Questions</h3>
       </div>
