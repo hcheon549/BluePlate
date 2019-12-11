@@ -35,10 +35,16 @@ const Nav = (props) => {
 };
 
 const MobileNav = (props) => {
+  const closeMenuItem = () => {
+    if (props.burger){
+      props.toggleBurger();
+    }
+  }
+
   return (
     <div className="mobileNav">
       <Burger {...props} />
-      <div className="navLogo">
+      <div className="navLogo" onClick={closeMenuItem}>
         <Link to="/">
           <img src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
           <span className="theLogo">BluePlattr</span>
