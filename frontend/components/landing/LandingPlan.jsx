@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const LandingPlan = (props) => {
-  let planPath = props.currentUser.policyType == 'Member' ? '/my-meals' : '/users/signup';
+  let planPath = props.currentUser.policyType == 'Member' ? '/my-meals' : '/signup';
 
   return (
     <section className="landingPlan">

@@ -26,7 +26,7 @@ class LandingHeader extends React.Component {
         subHeader = 'FIND OUT THE RESTAURANTS IN YOUR CAMPUS.',
         buttonText = 'Browse Meals',
         altButtonText = 'Try DEMO',
-        browseLink = this.props.currentUser.policyType == 'Member' ? '/my-meals' : '/users/signup';
+        browseLink = this.props.currentUser.policyType == 'Member' ? '/my-meals' : '/signup';
 
     return (
       <section className="landingHeader">

@@ -9,7 +9,7 @@ import MenuItem from "./MenuItem";
 import StepIndicator from './StepIndicator'
 
 const Nav = (props) => {
-  let navSelect = props.location.pathname === "/users/signup" ? (
+  let navSelect = props.location.pathname === "/signup" ? (
     <StepIndicator activeStep={props.stepJoin}/>
   ) : (props.loggedIn && props.location.pathname !== '/demo') ? (
     <div className="nav-route">

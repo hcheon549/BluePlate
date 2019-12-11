@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const getUser = userId => {
+  debugger
   return axios({
     method: "GET",
     url: `api/users/${userId}`

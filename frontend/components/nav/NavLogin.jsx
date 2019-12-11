@@ -6,7 +6,7 @@ import { login } from '../../actions/session_actions';
 
 const NavLogin = (props) => {
   let { history: { location, push } } = props
-  if (location.pathname == "/users/signup"){
+  if (location.pathname == "/signup"){
     return <div />
   }
 
@@ -15,11 +15,11 @@ const NavLogin = (props) => {
       <li className={"nav-menu-button miniText" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={() => push('/all-meals')}>
         View meals
       </li>
-      <li className={"nav-menu-button miniText" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={() => push('/users/login')}>
+      <li className={"nav-menu-button miniText" + (location.pathname == '/login' ? " -active" : "")} key='login' onClick={() => push('/login')}>
         Log in
       </li>
       <li className="nav-menu-button miniText" key='signup' >
-        <div className="signup-button" onClick={() => push('/users/signup')}>
+        <div className="signup-button" onClick={() => push('/signup')}>
           Get started
         </div>
       </li>

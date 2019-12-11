@@ -18,6 +18,9 @@ class MobileMenuItems extends React.Component {
   }
 
   handleLogout() {
+    if (this.props.burgerOpen){
+      this.props.toggleBurger();
+    }
     this.props.logout();
     window.location.replace('/');
   }
@@ -42,11 +45,11 @@ class MobileMenuItems extends React.Component {
         <li className={"mobile-menu-button" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={this.nextAction.bind(this, '/all-meals')}>
           View meals
         </li>
-        <li className={"mobile-menu-button" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={this.nextAction.bind(this, '/users/login')}>
+        <li className={"mobile-menu-button" + (location.pathname == '/login' ? " -active" : "")} key='login' onClick={this.nextAction.bind(this, '/login')}>
           Log in
         </li>
         <li className="mobile-menu-button" key='signup' >
-          <button className="secondary" onClick={this.nextAction.bind(this, '/users/signup')}>
+          <button className="secondary" onClick={this.nextAction.bind(this, '/signup')}>
             Get started
           </button>
         </li>

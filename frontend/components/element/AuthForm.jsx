@@ -44,7 +44,7 @@ class AuthForm extends React.Component{
     if (this.props.formType == 'Login'){ //LOG IN LOGIC
       let loggedinUser = await this.props.processLogIn(user);
       if (loggedinUser.user){
-        let nextPath = loggedinUser.user.policyType == 'Member' ? '/my-meals' : '/users/signup'
+        let nextPath = loggedinUser.user.policyType == 'Member' ? '/my-meals' : '/signup'
         this.props.history.push(nextPath)
       } else {
         this.setState({

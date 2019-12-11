@@ -23,7 +23,7 @@ class LoginPage extends React.Component {
             <div className="login-donthave">
               Don't have a BluePlattr account?
             </div>
-            <Link to="/users/signup" className="blueLink">Sign Up!</Link>
+            <Link to="/signup" className="blueLink">Sign Up!</Link>
           </div>
         </div>
       </div>

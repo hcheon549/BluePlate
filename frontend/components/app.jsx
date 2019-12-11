@@ -57,8 +57,8 @@ class App extends React.Component {
               <Route exact path="/all-meals" component={AllMeals} />
               <Route exact path="/demo" component={MyMeal} />
               {/* Auth Pages */}
-              <AuthRoute exact path="/users/login" component={LoginPage} />
-              <AuthenticatedRoute exact path="/users/signup" component={StepJoin} />
+              <AuthRoute exact path="/login" component={LoginPage} />
+              <AuthenticatedRoute exact path="/signup" component={StepJoin} />
  
               {/* Content Pages */}
               <ProtectedRoute exact path="/account" component={Account} />
