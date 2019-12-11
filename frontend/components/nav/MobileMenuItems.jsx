@@ -16,17 +16,17 @@ class MobileMenuItems extends React.Component {
     
     return (
       <div className={"mobileMenu" + (burger ? ' -open' : '')}>
-        <ul className="navLogin">
-          <li className={"nav-menu-button miniText" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={() => push('/all-meals')}>
+        <ul className="navMenu">
+          <li className={"mobile-menu-button" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={() => push('/all-meals')}>
             View meals
           </li>
-          <li className={"nav-menu-button miniText" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={() => push('/users/login')}>
+          <li className={"mobile-menu-button" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={() => push('/users/login')}>
             Log in
           </li>
-          <li className="nav-menu-button miniText" key='signup' >
-            <div className="signup-button" onClick={() => push('/users/signup')}>
+          <li className="mobile-menu-button" key='signup' >
+            <button className="secondary" onClick={() => push('/users/signup')}>
               Get started
-            </div>
+            </button>
           </li>
         </ul>
       </div>
