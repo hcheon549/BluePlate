@@ -10,25 +10,54 @@ class MobileMenuItems extends React.Component {
     super(props)
   }
 
+  nextAction(path){
+    if (this.props.burgerOpen){
+      this.props.toggleBurger();
+    }
+    this.props.history.push(path)
+  }
+
+  handleLogout() {
+    this.props.logout();
+    window.location.replace('/');
+  }
+
   render(){
-    let { history: { location, push }, burger } = this.props
-    // let navSelect = (props.loggedIn && props.location.pathname !== '/demo') ? <MenuItem {...props} /> : <NavLogin {...props} />
+    let { history: { location }, burgerOpen, logout } = this.props;
+    let navSelect = (this.props.loggedIn && this.props.location.pathname !== '/demo') 
+    ? (
+      <ul className="navMenu">
+        {this.props.isMember && <li className={"mobile-menu-button" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={this.nextAction.bind(this, '/my-meals')}>
+          View meals
+        </li>}
+        <li className={"mobile-menu-button" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={this.nextAction.bind(this, '/account')}>
+          My account
+        </li>
+        <li className="mobile-menu-button" onClick={this.handleLogout.bind(this)}>
+          Log out
+        </li>
+      </ul>
+    ) : (
+      <ul className="navMenu">
+        <li className={"mobile-menu-button" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={this.nextAction.bind(this, '/all-meals')}>
+          View meals
+        </li>
+        <li className={"mobile-menu-button" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={this.nextAction.bind(this, '/users/login')}>
+          Log in
+        </li>
+        <li className="mobile-menu-button" key='signup' >
+          <button className="secondary" onClick={this.nextAction.bind(this, '/users/signup')}>
+            Get started
+          </button>
+        </li>
+      </ul>
+    )
+    
+
     
     return (
-      <div className={"mobileMenu" + (burger ? ' -open' : '')}>
-        <ul className="navMenu">
-          <li className={"mobile-menu-button" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={() => push('/all-meals')}>
-            View meals
-          </li>
-          <li className={"mobile-menu-button" + (location.pathname == '/users/login' ? " -active" : "")} key='login' onClick={() => push('/users/login')}>
-            Log in
-          </li>
-          <li className="mobile-menu-button" key='signup' >
-            <button className="secondary" onClick={() => push('/users/signup')}>
-              Get started
-            </button>
-          </li>
-        </ul>
+      <div className={"mobileMenu" + (burgerOpen ? ' -open' : '')}>
+        {navSelect}
       </div>
     )
   }
@@ -43,7 +72,7 @@ const mapStateToProps = state => {
     isLead: currentUser && currentUser.policyType == "Lead",
     isMember: currentUser && currentUser.policyType == "Member",
     loggedIn: Boolean(state.session.id),
-    burger: state.ui.burger
+    burgerOpen: state.ui.burger
   };
 };
 

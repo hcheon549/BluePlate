@@ -20,7 +20,7 @@ class Landing extends React.Component {
   }
 
   componentDidMount(){
-    // this.leadCaptureId = setTimeout(this.openLeadCapture, 10000);
+    this.leadCaptureId = setTimeout(this.openLeadCapture, 10000);
   }
 
   componentWillUnmount(){
