@@ -18,7 +18,9 @@
       top: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      width: 555px;
+      width: 100%;
+      max-width: 555px;
+      box-sizing: border-box;
       h3{ margin: 0 auto;}
       p{ margin: 20px auto; }
     }
@@ -61,7 +63,7 @@
       -o-background-size: 1000px auto;
       .mobileContent{
         margin: 0 auto;
-        max-width: 60%;
+        max-width: 90%;
       }
       .landingCapture{
         position: absolute;

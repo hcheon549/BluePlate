@@ -74,7 +74,7 @@ class LeadCaptureForm extends React.Component{
     let buttonText = submitted ? 'Success!' : 'Submit'
 
     return(
-      <form onSubmit={this.handleSubmit} className="login-form-box">
+      <form onSubmit={this.handleSubmit} className="emailCapture-box">
         <div className="leadCapture-form">
         <label className="login-label">Email Address
           <input
@@ -85,7 +85,7 @@ class LeadCaptureForm extends React.Component{
           />
         </label>
 
-        <label className="login-label">List all restaurants you would like to see on BluePlattr
+        <label className="login-label">List Your Wishlist Restaurants
           <input
             type="text"
             autoComplete="wishlist"

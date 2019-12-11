@@ -38,15 +38,16 @@
 }
 
 .leadCapture-modal{
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   background: white;
-  display: flex;
-  flex-direction: column;
   .innerContent{
-    padding: 40px 0 60px;
-    margin: auto;
     text-align: center;
+    width: 90%;
+    max-width: 450px;
+    margin: auto;
     .captureLogo{
       display: flex;
       justify-content: center;
@@ -75,6 +76,9 @@
         color: $light-gray;
       }
     }
+    .emailCapture-box{
+      box-sizing: border-box;
+    }    
   }
 }
 

@@ -182,22 +182,23 @@
   background-color: $white;
   color: $siteColorDark;
   box-sizing: border-box;
-  z-index: 10000;
+  z-index: 9;
   position: fixed;
   top: 0;
-  left: -100vw;
+  top: -400px;
   width: 100vw;
   visibility: hidden;
   border-right: 1px solid $grayLight;
   margin-top: 60px;
-  transition: all 0.3s ease-out;
-  visibility: 0.3s;
+  transition: all 0.5s ease-out;
+  visibility: 0.4s;
   &.-open{
-    left: 0;
+    top: 0;
     visibility: visible;
   }
   .navMenu{
     padding: 20px;
+    text-align: center;
   }
   .mobile-menu-button{
     margin: 20px auto;
