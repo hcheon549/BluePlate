@@ -9,7 +9,7 @@ const SignupForm = ({ setStep }) => {
   return (
     <React.Fragment>
       <div className="partitions">
-        <div className="signupPartition">
+        <div className="signupPartition" id="hiw">
           <HowItWorks authPage={true}/>
         </div>
         <div className="signupPartition">
