@@ -88,6 +88,16 @@
         }
       }
     }
+    @media screen and (max-width: 560px){
+      padding: 0;
+    }
+    .login-welcome {
+      font-size: 25px;
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: $main;
+      margin-bottom: 10px;
+    }
   }
   .sectionHeader{
     margin: 0 0 20px;;
@@ -128,13 +138,6 @@
   max-width: 450px;
 }
 
-.login-welcome {
-  font-size: 25px;
-  font-weight: bolder;
-  letter-spacing: 1px;
-  color: $main;
-  margin-bottom: 10px;
-}
 .login-to-account {
   font-size: 18px;
   font-weight: lighter;
@@ -316,21 +319,8 @@ select {
   border-right: 1px solid $gray;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 560px){
   .login-page {
     background-image: none;
-  }
-  .login-label {
-    min-width: calc(80vw);
-  }
-  .session-submit {
-    min-width: calc(80vw);
-  }
-  .login-form-container {
-    padding: 0;
-    text-align: center;
-  }
-  .login-welcome {
-    width: 60%;
   }
 }
