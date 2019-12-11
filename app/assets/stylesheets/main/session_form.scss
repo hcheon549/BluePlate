@@ -31,7 +31,7 @@
       }
       @media screen and (max-width: 560px) {
         display: block;
-        margin: 0;
+        margin: 0 10px;
         .signupPartition#hiw{
           display: none;
         }
@@ -110,7 +110,7 @@
     @media screen and (max-width: 560px){
       padding: 0;
     }
-    .login-welcome {
+    .login-header {
       font-size: 25px;
       font-weight: bolder;
       letter-spacing: 1px;
@@ -160,11 +160,15 @@
   max-width: 450px;
 }
 
-.login-to-account {
+.login-subHeader {
   font-size: 18px;
   font-weight: lighter;
   color: $gray;
   margin-bottom: 40px;
+  @media screen and (max-width: 560px){
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .login-form-box {
@@ -229,6 +233,9 @@
   width: 100%;
   padding: 0 20px;
   button{ margin-top: 10px; }
+  @media screen and (max-width: 560px){
+    padding: 0;
+  }
 }
 
 .login-label {

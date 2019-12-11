@@ -14,9 +14,9 @@ class LoginPage extends React.Component {
       <div className="login-page">
         <div className="login-form-main">
           <div className="login-form-container loginForm animated fadeInDown">
-            <div className="login-welcome">WELCOME BACK</div>
+            <div className="login-header">WELCOME BACK</div>
 
-            <div className="login-to-account">
+            <div className="login-subHeader">
               Log in to your BluePlattr account
             </div>
             <AuthForm formType={'Login'} buttonText={'Log In'} />

@@ -22,8 +22,8 @@ const SectionHeader = ({form}) => {
 
   return (
     <>
-      <div className="login-welcome">{header}</div>
-      <div className="login-to-account">{subHead}</div>
+      <div className="login-header">{header}</div>
+      <div className="login-subHeader">{subHead}</div>
     </>
   );
 }
