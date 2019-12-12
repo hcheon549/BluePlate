@@ -14,6 +14,9 @@ class MobileMenuItems extends React.Component {
     if (this.props.burgerOpen){
       this.props.toggleBurger();
     }
+    if (this.props.history.location == '/demo'){
+      this.props.logout();
+    }
     this.props.history.push(path)
   }
 

@@ -53,9 +53,9 @@ class App extends React.Component {
             <Switch>
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
-              <Route exact path="/faq" component={FAQLanding} />
               <Route exact path="/all-meals" component={AllMeals} />
               <Route exact path="/demo" component={MyMeal} />
+
               {/* Auth Pages */}
               <AuthRoute exact path="/login" component={LoginPage} />
               <AuthenticatedRoute exact path="/signup" component={StepJoin} />
@@ -64,6 +64,12 @@ class App extends React.Component {
               <ProtectedRoute exact path="/account" component={Account} />
               <ProtectedRoute exact path="/my-meals" component={MyMeal} />
 
+              {/* Footer */}
+              <Route exact path="/faq" component={FAQLanding} />
+              {/* <Route exact path="/privacy-policy" component={PrivacyPolicy} /> */}
+              {/* <Route exact path="/terms-of-use" component={TOU} /> */}
+
+              {/* Collect All */}
               <Redirect from="*" to="/" />
             </Switch>
           </main>
