@@ -29,6 +29,7 @@ const Answers = [
       <li>2. 8 Meals per week plan, $5.49 per meal, plus taxes and fees.</li>
       <li>3. 4 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
     </ol>
+    <p>Please remember that your state and local taxes may be applied.</p>
     <p>The total number of meals you can order can be obtained by multiplying the number of weeks left until the end of the semester according to your university’s official academic calendar times the number of meals per week specified in your plan. The total cost of the plan can be obtained by multiplying the number of meals by the average per meal price.</p>
     <p><strong>Example 1.</strong></p>
     <p>A student signing up for a 12 Meals per week plan in the beginning of a 15-week semester will get the total of 180 meal credits for the semester at the cost of $1,078.20 ($5.99 per meal times 180 meal credits). That is up to 50% discount from a typical traditional meal plan offered by a university!</p>
