@@ -73,6 +73,9 @@ ActiveRecord::Base.transaction do
   Plan.destroy_all
 
   plans = [
+    ################################################
+    ##############  SEMESTER CYCLE  ################
+    ################################################
     {
       name: "12 Meals",  ##### $4.99 per meal
       plan_type: "semester",
@@ -90,6 +93,57 @@ ActiveRecord::Base.transaction do
       plan_type: "semester",
       meals: 60,
       price: 359.40
+    },
+    ################################################
+    ###############  4-WEEKS CYCLE  ################
+    ################################################
+    {
+      name: "12 Meals",  ##### $4.99 per meal
+      plan_type: "4weeks",
+      meals: 48,
+      price: 239.52
+    },
+    {
+      name: "8 Meals", ##### $5.49 per meal
+      plan_type: "4weeks",
+      meals: 32,
+      price: 175.68
+    },
+    {
+      name: "4 Meals",  ##### $5.99 per meal
+      plan_type: "4weeks",
+      meals: 16,
+      price: 95.84
+    },
+    ################################################
+    ###############  2-WEEKS TRIAL  ################
+    ################################################
+    {
+      name: "12 Meals",  ##### $4.99 per meal
+      plan_type: "2weeks",
+      meals: 24,
+      price: 119.76
+    },
+    {
+      name: "8 Meals", ##### $5.49 per meal
+      plan_type: "2weeks",
+      meals: 16,
+      price: 87.84
+    },
+    {
+      name: "4 Meals",  ##### $5.99 per meal
+      plan_type: "2weeks",
+      meals: 8,
+      price: 47.92
+    },
+    ################################################
+    ###############       TEST      ################
+    ################################################
+    {
+      name: "1 Meals",  ##### $0.99 per meal
+      plan_type: "2weeks",
+      meals: 2,
+      price: 1.98
     }
   ]
 
