@@ -19,8 +19,8 @@ const Questions = [
 
 const Answers = [
   <div>
-    <p>BluePlattr offers an affordable meal plan subscriptions giving you access to the local restaurants in your campus for less than $6 per meal. We provide a fast, fun, and efficient system to get you delicious and affordable meals every day.</p>
-    <p>BluePlattr members can reserve meals from any participating restaurant. Each restaurant offers one of their signature dishes daily.</p>
+    <p>What is BluePlattr?  BluePlattr offers an affordable meal plan subscriptions giving you access to the local restaurants on (or around) your campus for LESS THAN $5 PER MEAL. BluePlattr aims to provide you with a quick, simple and convenient system for you to get affordable meals every day.</p>
+    <p>Simply put, BluePlattr members can reserve meals from any participating restaurant. Each restaurant offers one of their signature dishes everyday.</p>
   </div>,
   <div>
     <p>BluePlattr offers three options every semester:</p>
