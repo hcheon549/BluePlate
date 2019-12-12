@@ -15,8 +15,6 @@ import MealMap from "../map/meal_map";
 import LoadingIcon from "./loading_icon";
 import Tab from './Tab'
 import Today from './Today'
-
-// import Search from "../search/search";
 import TodayReservations from "../reservations/TodayReservations";
 
 class MyMeal extends React.Component {

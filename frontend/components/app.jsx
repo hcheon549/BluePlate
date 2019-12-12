@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+import ReactGa from 'react-ga';
+
 import { AuthRoute, ProtectedRoute, AuthenticatedRoute } from "../util/route_util";
 import { getCurrentUser } from "../actions/session_actions";
 import { fetchSchools } from '../actions/school_actions';
@@ -23,8 +25,14 @@ import MobileMenuItems from './nav/MobileMenuItems';
 
 import LoadingIcon from "./meal/loading_icon";
 
-class App extends React.Component {
+function initializeAnalytic(){
+  ReactGa.initialize('UA-154138828-1')
+  ReactGa.pageview(window.location.pathname + window.location.search)
+}
+
+class App extends React.Component {  
   async componentDidMount() {
+    initializeAnalytic();
     await this.props.getCurrentUser();
     await this.props.fetchSchools();
     await this.props.fetchPlans();
