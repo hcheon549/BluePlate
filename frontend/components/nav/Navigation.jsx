@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import { toggleBurger } from '../../actions/burger_actions'
+import { logout } from '../../actions/session_actions';
 
 import NavLogin from "./NavLogin";
 import MenuItem from "./MenuItem";
@@ -36,6 +37,9 @@ const Nav = (props) => {
 
 const MobileNav = (props) => {
   const closeMenuItem = () => {
+    if (props.location.pathname === "/demo"){
+      props.logout()
+    }
     if (props.burger){
       props.toggleBurger();
     }
@@ -122,7 +126,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleBurger: () => dispatch(toggleBurger())
+    toggleBurger: () => dispatch(toggleBurger()),
+    logout: () => dispatch(logout())
   }
 }
 

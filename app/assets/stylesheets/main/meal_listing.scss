@@ -48,6 +48,13 @@
   }
 }
 
+@media screen and (max-width: 460px) {
+  .meal-listing {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media (min-width: $media0) {
   .meal-listing {
     grid-template-columns: repeat(2, 1fr);

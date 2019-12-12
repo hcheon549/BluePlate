@@ -83,7 +83,7 @@ class MyMeal extends React.Component {
 	}
 
   showEmailCapture(){
-    setTimeout(this.openEmailCapture, 10000)
+    // setTimeout(this.openEmailCapture, 10000)
   }
 
   openEmailCapture(){

@@ -80,7 +80,6 @@ class MealIndexItem extends React.Component {
               ? "reserve-btn time-not-selected"
               : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
           }
-          // onClick={this.handleReserve}
           onClick={this.handleClick}
           id={`reserve-button`}
           disabled={!pickupTimeSelected || isPending}
