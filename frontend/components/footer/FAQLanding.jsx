@@ -4,7 +4,7 @@ import FAQ from './FAQ';
 
 const Questions = [
   'What is BluePlattr?',
-  'What are the membership plans and how much do they cost?',
+  'How much is the meal plan?',
   'How do I use BluePlattr?',
   'Where can I use BluePlattr?',
   'When is BluePlattr available?',
@@ -25,9 +25,9 @@ const Answers = [
   <div>
     <p>BluePlattr offers three options every semester:</p>
     <ol>
-      <li>1. 12 Meals per week plan, $5.99 per meal, plus tax and fees.</li>
-      <li>2. 8 Meals per week plan, $6.49 per meal, plus tax and fees.</li>
-      <li>3. 4 Meals per week plan, $6.99 per meal, plus tax and fees.</li>
+      <li>1. 12 Meals per week plan, $4.99 per meal, plus taxes and fees.</li>
+      <li>2. 8 Meals per week plan, $5.49 per meal, plus taxes and fees.</li>
+      <li>3. 4 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
     </ol>
     <p>The total number of meals you can order can be obtained by multiplying the number of weeks left until the end of the semester according to your university’s official academic calendar times the number of meals per week specified in your plan. The total cost of the plan can be obtained by multiplying the number of meals by the average per meal price.</p>
     <p><strong>Example 1.</strong></p>
