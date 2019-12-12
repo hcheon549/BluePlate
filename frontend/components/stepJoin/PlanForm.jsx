@@ -8,6 +8,7 @@ import { createSubscription, updateSubscription } from "../../actions/subscripti
 import { updateAccountSummary } from '../../actions/account_summary_actions';
 import { fetchUser, updateUserMeals } from "../../actions/user_actions";
 
+const CURRENT_PLAN_OFFERED = "4weeks";
 class PlanForm extends React.Component{
   constructor(props){
     super(props)
@@ -17,35 +18,20 @@ class PlanForm extends React.Component{
       selectedPlan: this.props.currentSubscription ? this.props.currentSubscription.planId : null,
       showError: false,
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.submitPlan = this.submitPlan.bind(this);
     this.buildPlans = this.buildPlans.bind(this);
   }
 
-  togglePlan(planId){
+  selectPlan(planId){
     this.setState({
       showError: false,
       selectedPlan: planId,
-    })
+    }, this.submitPlan)
   }
 
-  buildPlans(){
-    let { plans } = this.props,
-        { selectedPlan } = this.state;
-    return Object.values(plans).map(({id, name, meals, price}, idx) => {
-      let perMeal = Math.round(price / meals * 100) / 100
-      return (
-        <li className={(selectedPlan == id) ? 'active' : ''} key={idx} onClick={this.togglePlan.bind(this, id)}>
-          <h5>Plan {idx+1}</h5>
-          <h4>{name}</h4>
-          <span className="smallText">per week</span>
-          <p><em>${perMeal} per meal</em></p>
-        </li>
-      )
-    })
-  }
-
-  async handleSubmit(e) {
-    e.preventDefault();
+  async submitPlan() {
+    // e.preventDefault();
     let response;
     this.setState({
       isPending: true
@@ -79,10 +65,40 @@ class PlanForm extends React.Component{
     }
   }
 
+  buildPlans(){
+    let { plans } = this.props,
+        { isPending, selectedPlan } = this.state,
+        buttonText = "Select";
+
+    let plansOffered = Object.values(plans).filter(plan => plan.planType == CURRENT_PLAN_OFFERED);
+
+    return plansOffered.map(({id, name, meals, price}, idx) => {
+      let perMeal = Math.round(price / meals * 100) / 100
+      let spinit = isPending && selectedPlan == id
+      return (
+        <li key={id}>
+          <div>
+            <h4>{name}</h4>
+            <span className="smallText">per week</span>
+            <p>${perMeal} per meal</p>
+          </div>
+          <div className="line" />
+          <div className="detail">
+            <p>4-Week Cycle</p>
+            <p>Total {meals} meal credit</p>
+            <p>Roll over to next cycle.</p>
+          </div>
+          <button className={"secondary" + (spinit ? " -pending" : "")} onClick={this.selectPlan.bind(this, id)}>{!spinit && buttonText}</button>
+        </li>
+      )
+    })
+  }
+
+
+
   render(){
     let { plans } = this.props,
-        { isPending, showError } = this.state,
-        buttonText = "Next",
+        { showError } = this.state,
         error = showError ? (<div className="error" role="alert">You must select a plan.</div>) : null;
 
     return(
@@ -92,7 +108,6 @@ class PlanForm extends React.Component{
             {this.buildPlans()}
           </ul>}
           {error}
-        <button className={"primary -fullWidth" + (isPending ? " -pending" : "")} onClick={this.handleSubmit}>{!isPending && buttonText}</button>
         <span className="miniText"><em>State and local taxes may apply.<br/>For more information about BluePlattr plans, <Link to="/faq" target="_blank">click here</Link></em></span>
       </div>
     )
