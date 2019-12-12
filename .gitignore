@@ -25,6 +25,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/initializers/stripe.rb
+config/secrets.yml
 
 bundle.js
 bundle.js.map
@@ -35,4 +36,3 @@ npm-debug.log
 client/build
 
 node_modules
-
