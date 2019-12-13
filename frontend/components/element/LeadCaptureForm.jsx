@@ -20,10 +20,22 @@ class LeadCaptureForm extends React.Component{
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+  }
+
+  resetForm() {
+    this.setState({
+      submitted: false,
+      email: '',
+      campus: '',
+      wishlist: '',
+      errorMessage: []
+    })
   }
 
   async handleSubmit(e) {
     e.preventDefault();
+
     this.setState({ isPending: true })
 
     let leadData = {
@@ -32,16 +44,12 @@ class LeadCaptureForm extends React.Component{
       wishlist: this.state.wishlist
     }
     let leadReceived = await this.props.createLeadCapture(leadData);
+
     if (leadReceived.lead){
-      // lead captured logic
-      this.setState({
-        submitted: true
-      })
-      setTimeout(this.props.closeModal, 1500)
+      this.setState({submitted: true})
+      this.props.landing ? setTimeout(this.resetForm, 2500) : setTimeout(this.props.closeModal, 1500)
     } else {
-      this.setState({
-        errorMessage: leadReceived.errors
-      })
+      this.setState({errorMessage: leadReceived.errors})
     }
     this.setState({isPending: false})
   }
@@ -53,7 +61,6 @@ class LeadCaptureForm extends React.Component{
     this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
 
     if (hasErrors) {
-      this.props.clearErrors();
       this.setState({ errorMessage: [] })
     }
     this.setState({ [type]: this.state[type] });
@@ -82,6 +89,7 @@ class LeadCaptureForm extends React.Component{
             autoComplete="email"
             onChange={this.update.bind(this, "email")}
             className="login-input"
+            value={this.state.email}
           />
         </label>
 
@@ -91,11 +99,12 @@ class LeadCaptureForm extends React.Component{
             autoComplete="wishlist"
             onChange={this.update.bind(this, "wishlist")}
             className="login-input"
+            value={this.state.wishlist}
           />
         </label>
 
 
-          <button className={"secondary -fullWidth" + (isPending ? " -pending" : "")} type="submit" disabled={!email || isPending} >
+          <button className={this.props.style + " -fullWidth" + (isPending ? " -pending" : "")} type="submit" disabled={!email || isPending} >
             {!isPending && buttonText}
           </button>
         </div>

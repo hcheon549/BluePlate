@@ -1,8 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { closeModal, setSignature, markAsSeen } from '../../actions/modal_actions';
-import { connect } from 'react-redux';
 
 import ReservationModal from './ReservationModal';
 import ConfirmModal from './ConfirmModal';

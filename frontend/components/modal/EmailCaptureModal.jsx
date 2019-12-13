@@ -31,7 +31,7 @@ const EmailCaptureModal = (props) => {
         <p><span className="miniText">
           {subHead}
         </span></p>
-        <LeadCaptureForm />
+        <LeadCaptureForm landing={false} style={"secondary"}/>
         {props.landing && <div className="reject tinyText" onClick={action}>No Thanks</div>}
       </div>
     </div>

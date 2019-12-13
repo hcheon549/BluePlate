@@ -30,7 +30,7 @@ class LandingHeader extends React.Component {
 
     return (
       <section className="landingHeader">
-        <div className="landingCapture">
+        <div className="headerContent">
           <div className="mobileContent">
             <h3>MEALPLAN FOR LESS THAN<br/> $5 PER MEAL</h3>
             <p>{subHeader}</p>

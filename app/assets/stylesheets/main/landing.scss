@@ -12,7 +12,7 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    .landingCapture{
+    .headerContent{
       position: absolute;
       left: 50%;
       top: 50%;
@@ -65,7 +65,7 @@
         margin: 0 auto;
         max-width: 90%;
       }
-      .landingCapture{
+      .headerContent{
         position: absolute;
         h3{
           font-size: 32px; 
@@ -193,5 +193,13 @@
         outline: none;
     }
     .select-css option { font-weight:normal;}
+  }
+}
+
+section.landingCapture{
+  padding: 40px 0 80px;
+  background: $grayLight;
+  .sectionHeader{
+    margin-bottom: 20px;
   }
 }

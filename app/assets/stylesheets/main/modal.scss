@@ -87,11 +87,12 @@
         color: $light-gray;
       }
     }
-    .emailCapture-box{
-      box-sizing: border-box;
-    }    
   }
 }
+
+.emailCapture-box{
+  box-sizing: border-box;
+}    
 
 .reserve-modal {
   width: 680px;

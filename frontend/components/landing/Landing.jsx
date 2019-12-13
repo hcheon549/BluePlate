@@ -10,6 +10,7 @@ import LandingHeader from './LandingHeader'
 import LandingHIW from './LandingHIW';
 import LandingMap from './LandingMap';
 import LandingPlan from './LandingPlan';
+import LandingCapture from './LandingCapture';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class Landing extends React.Component {
         <LandingHIW />
         {!schoolEmpty && <LandingMap {...this.props} />}
         <LandingPlan {...this.props} />
+        <LandingCapture />
     </div>
     );
   }
