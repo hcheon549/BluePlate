@@ -27,7 +27,7 @@
 /config/initializers/stripe.rb
 /config/secrets.yml
 /config/credentials.yml
-/config/credentials.enc
+/config/credentials.yml.enc
 
 bundle.js
 bundle.js.map
