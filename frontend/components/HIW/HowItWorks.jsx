@@ -11,9 +11,9 @@ const HowItWorks = (props) => {
     subHead1 = 'Browse',
     content1 = 'Your local favorite restaurants offer daily specials everyday. Be excited about new menus you\'ll see!',
     subHead2 = 'Order',
-    content2 = 'Kitchen opens at 9 PM the day before. You can order your a lunch by 10 AM, and a dinner by 4 PM with pick-up time.',
+    content2 = 'Kitchen opens at 9 PM the day before. You can order your lunch by 10 AM, and dinner by 4 PM with desired pick-up time.',
     subHead3 = 'Pick up',
-    content3 = 'You\'ve already received the 4-digit pick-up code when you ordered. Show it to at the cashier, get your food, and enjoy!'
+    content3 = 'You\'ve already received the 4-digit pick-up code when you ordered in your inbox. Show it to at the cashier, get your food, and enjoy!'
 
 
   return (
