@@ -12,7 +12,7 @@ const LandingCapture = (props) => {
       <div className="content -narrow">
         <div className="sectionHeader">
           <h4>Get Exclusive Offers</h4>
-          <p>Tell us your favorite restaurants. We will give you an exclusive offer for the next semester's plan!</p>
+          <p>Tell us your favorite restaurants. We will give you an <span className="nowrap">exclusive offer</span> for the <span className="nowrap">next semester's plan!</span></p>
         </div>
 
         <LeadCaptureForm {...props} style={"primary"} landing={true} />
