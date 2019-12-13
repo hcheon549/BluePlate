@@ -11,7 +11,7 @@ const Footer = (props) => (
       <span />
       <li className="miniText" onClick={() => props.history.push('/privacy-policy')}>Privacy Policy</li>
       <span />
-      <li className="miniText" onClick={() => props.history.push('/')}>Career</li>
+      <li className="miniText"><a href="mailto:partner@blueplattr.com">Become a vendor</a></li>
     </ul>
     <nav>
       <div>&copy; BluePlans Inc.</div>
