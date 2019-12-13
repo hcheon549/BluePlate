@@ -141,9 +141,21 @@ ActiveRecord::Base.transaction do
     ################################################
     {
       name: "1 Meals",  ##### $0.99 per meal
-      plan_type: "2weeks",
+      plan_type: "test",
+      meals: 1,
+      price: 0.99
+    },
+    {
+      name: "1 Meals",  ##### $0.99 per meal
+      plan_type: "test",
       meals: 2,
       price: 1.98
+    },
+    {
+      name: "1 Meals",  ##### $0.99 per meal
+      plan_type: "test",
+      meals: 3,
+      price: 2.97
     }
   ]
 

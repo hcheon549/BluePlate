@@ -25,7 +25,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/initializers/stripe.rb
-config/secrets.yml
+/config/secrets.yml
+/config/credentials.yml
+/config/credentials.enc
 
 bundle.js
 bundle.js.map

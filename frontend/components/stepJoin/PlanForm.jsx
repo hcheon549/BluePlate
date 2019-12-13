@@ -8,7 +8,7 @@ import { createSubscription, updateSubscription } from "../../actions/subscripti
 import { updateAccountSummary } from '../../actions/account_summary_actions';
 import { fetchUser, updateUserMeals } from "../../actions/user_actions";
 
-const CURRENT_PLAN_OFFERED = "2weeks";
+const CURRENT_PLAN_OFFERED = "test";
 class PlanForm extends React.Component{
   constructor(props){
     super(props)
