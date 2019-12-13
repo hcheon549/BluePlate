@@ -14,7 +14,7 @@ const Footer = (props) => (
       <li className="miniText"><a href="mailto:partner@blueplattr.com">Become a vendor</a></li>
     </ul>
     <nav>
-      <div>&copy; BluePlans Inc.</div>
+      <div style={{textAlign: "center"}}>All rights reserved<br/>&copy; BluePlans Inc.</div>
     </nav>
   </div>
 );
