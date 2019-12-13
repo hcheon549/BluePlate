@@ -27,8 +27,8 @@ const fullDate = monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFull
 
 const Answers = [
   <div>
-    <p>BluePlattr offers an affordable, convenient and flexible meal plan subscriptions giving you access to the local restaurants on (or around) your campus for LESS THAN $5 PER MEAL. BluePlattr aims to provide you with a quick, simple and convenient system for you to get affordable meals every day.</p>
-    <p>Simply put, BluePlattr members can reserve meals from any participating restaurant. Each restaurant offers one of their signature dishes everyday.</p>
+    <p>BluePlattr offers an affordable, convenient and flexible meal plan subscriptions giving members access to the local restaurants on and around your campus. BluePlattr aims to provide you with a quick, simple and convenient system for you to get affordable meals every day.</p>
+    <p>BluePlattr members can reserve meals from any participating restaurant during when the kitchen is open. Each restaurant offers one of their signature dishes everyday as a daily special for members to choose from.</p>
   </div>,
   <div>
     <p>BluePlattr offers three options every semester:</p>
@@ -38,7 +38,6 @@ const Answers = [
       <li>3. 4 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
     </ol>
     <p>Please remember that your state and local taxes may be applied.</p>
-
   </div>,
   <div>
     <p>As you might have guessed from the above, your BluePlattr cycle will begin the first day of your academic term that you sign up (please refer to your academic calendar). In the same vein, your BluePlattr cycle will end on the last day of your academic term. Simply, it is according to the university’s official academic calendar. </p>
@@ -60,14 +59,14 @@ const Answers = [
   <div>
     <p>You can use BluePlattr to get your lunch or dinner, as follows:</p>
     <p>If you would like to get lunch:</p>
-    <p>Once you subscribe to one of the meal plans described above, please plan ahead and reserve lunch the night before. BluePlattr lunch kitchen opens daily at 9:00 PM (your time). BluePlattr lunch kitchen closes at 10:00 AM the next morning. Log in while BluePlattr lunch kitchen is open to reserve your choice of lunch. Participating restaurants offer daily lunch options. If you wish to change your lunch reservation, you may do so by selecting another meal and pick-up time provided that you make the change before 10:00am.</p>
+    <p>Once you subscribe to one of the meal plans, you are ready to order your meals. BluePlattr lunch kitchen opens daily at 9:00 PM, the day before. BluePlattr lunch kitchen closes at 10:00 AM the day you will be picking up your lunch. Log in while BluePlattr lunch kitchen is open to reserve your choice of lunch. Participating restaurants offer daily lunch options. If you wish to change your lunch reservation, you may do so by selecting another meal and pick-up time provided that you make the change before 10:00 AM.</p>
     <p>If you would like to get dinner:</p>
-    <p>BluePlattr dinner kitchen will open at 9:00 PM on the day immediately before you will pick up your dinner. The opening time of BluePlattr dinner kitchen is the same time as BluePlattr lunch kitchen. However, BluePlattr dinner kitchen will close at 4:00 PM the day you will be picking up your dinner. Log in while BluePlattr dinner kitchen is open to reserve your choice of dinner. Participating restaurants offer daily dinner options. If you wish to change your dinner reservation, you may do so by selecting another meal and pick-up time provided that you make the change before 4:00pm.</p>
+    <p>BluePlattr dinner kitchen will open at 9:00 PM the day before, same time as the lunch kitchen. However, BluePlattr dinner kitchen closes at 4:00 PM the day you will be picking up your dinner. Log in while BluePlattr dinner kitchen is open to reserve your choice of dinner. Participating restaurants offer daily dinner options. If you wish to change your dinner reservation, you may do so by selecting another meal and pick-up time provided that you make the change before 4:00 PM.</p>
   </div>,
   <div>
     <p>Once you order through BluePlattr platform, we will send you an order confirmation with a unique pick-up code via email. In order to pickup your meal, you must take the order confirmation page and tell the pick-up code to the restaurant.</p>
     <p>Once at the restaurant, you can show your pick-up code at the designated pick-up location inside the restaurant. The restaurant will match your pick-up code with their record, and you will be able to pick up the meal.</p>
-    <p>We are currently in development of utilizing your mobile devices for the order verification and pick-up process!</p>
+    <p>We are currently in development of utilizing your mobile devices for the order verification and pick-up process! So stay tuned!</p>
   </div>,
   <div>
     <p>Unfortunately, no. At this moment, meals reserved on BluePlattr are for pick up only. As a fast growing start-up, we are looking at innovative ideas of getting delicious meals into your hands in more convenient and efficient way. If you have any ideas, feel free to contact us. Your suggestions are extremely valuable, and we will do our best to make our service better for all of you!</p>
