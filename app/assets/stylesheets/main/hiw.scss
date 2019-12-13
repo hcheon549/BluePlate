@@ -1,0 +1,53 @@
+.howItWorks{
+  section.landingHIW{
+    .sectionHeader{
+      margin-top: 100px;
+      margin-bottom: 10px;
+      h4{ color: $black }
+    }
+    .slogan{
+      display: flex;
+      justify-content: space-around;
+      margin: auto;
+      max-width: 400px;
+      margin-bottom: 100px;
+      li{
+        color: $gray-menu;
+        font-size: 16px;
+        font-weight: 200;
+      }
+    }
+    .main-info{
+      max-width: 972px;
+      margin: auto;
+      .column{
+        text-align: left;
+        img{margin: 0;}
+        .hiwContent{
+          h4{
+            color: $main;
+            font-size: 24px;
+          }
+          p{
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 680px) {
+    section.landingHIW{
+      .sectionHeader{
+        margin-top: 50px;
+      }
+      .slogan{ margin-bottom: 50px; }
+      .main-info{
+        .column{
+          text-align: center;
+          margin-bottom: 20px;
+          img{margin: auto;}
+        }
+      }
+    }
+  }
+}
