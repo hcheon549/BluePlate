@@ -18,6 +18,13 @@ const Questions = [
   'As a parent, how can I sign up a BluePlattr meal plan for my child(ren)?'
 ]
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+const d = new Date();
+
+const fullDate = monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+
 const Answers = [
   <div>
     <p>What is BluePlattr?  BluePlattr offers an affordable meal plan subscriptions giving you access to the local restaurants on (or around) your campus for LESS THAN $5 PER MEAL. BluePlattr aims to provide you with a quick, simple and convenient system for you to get affordable meals every day.</p>
@@ -37,7 +44,7 @@ const Answers = [
     <p>As you might have guessed from the above, your BluePlattr cycle will begin the first day of your academic term that you sign up (please refer to your academic calendar). In the same vein, your BluePlattr cycle will end on the last day of your academic term. Simply, it is according to the university’s official academic calendar. </p>
   </div>,
   <div>
-    <p>As of December 10, 2019, BluePlattr meal plans are currently available for students, faculty and community members of the Rutgers University-New Brunswick Campus. BluePlattr meal credits can be used at any participating restaurant in the BluePlattr network!</p>
+    <p>As of {fullDate}, BluePlattr meal plans are currently available for students, faculty and community members of the Rutgers University-New Brunswick Campus. BluePlattr meal credits can be used at any participating restaurant in the BluePlattr network!</p>
     <p>Please contact us If you wish us to reach your campus.</p>
   </div>,
   <div>
