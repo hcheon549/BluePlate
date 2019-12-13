@@ -9,9 +9,8 @@ const Questions = [
   'Where can I use BluePlattr?',
   'What do I get with my plan?',
   'Is there any additional charge?',
+  'Can I use BluePlattr on holidays?',
   'How do I use BluePlattr?',
-  'If you would like to get lunch:',
-  'If you would like to get dinner:',
   'How do I pick up my meal?',
   'Does BluePlattr deliver?',
   'Can I change my plan?',
@@ -38,10 +37,14 @@ const Answers = [
     <p>As you might have guessed from the above, your BluePlattr cycle will begin the first day of your academic term that you sign up (please refer to your academic calendar). In the same vein, your BluePlattr cycle will end on the last day of your academic term. Simply, it is according to the university’s official academic calendar. </p>
   </div>,
   <div>
+    <p>As of December 10, 2019, BluePlattr meal plans are currently available for students, faculty and community members of the Rutgers University-New Brunswick Campus. BluePlattr meal credits can be used at any participating restaurant in the BluePlattr network!</p>
+    <p>Please contact us If you wish us to reach your campus.</p>
+  </div>,
+  <div>
     <p>The meal plan you purchase will cover 100% of the cost of your meal, whether it’s for lunch or dinner!</p>
   </div>,
   <div>
-    <p>No.</p>
+    <p>No. But you are more than welcome to purchase any additional items such as your favorite sides or a drink.</p>
   </div>,
   <div>
     <p>Except on holidays and official recesses as designated on your official university academic calendar, you will be able to use BluePlattr everyday.</p>
@@ -49,11 +52,9 @@ const Answers = [
   </div>,
   <div>
     <p>You can use BluePlattr to get your lunch or dinner, as follows:</p>
-  </div>,
-  <div>
+    <p>If you would like to get lunch:</p>
     <p>Once you subscribe to one of the meal plans described above, please plan ahead and reserve lunch the night before. BluePlattr lunch kitchen opens daily at 9:00 PM (your time). BluePlattr lunch kitchen closes at 10:00 AM the next morning. Log in while BluePlattr lunch kitchen is open to reserve your choice of lunch. Participating restaurants offer daily lunch options. If you wish to change your lunch reservation, you may do so by selecting another meal and pick-up time provided that you make the change before 10:00am.</p>
-  </div>,
-  <div>
+    <p>If you would like to get dinner:</p>
     <p>BluePlattr dinner kitchen will open at 9:00 PM on the day immediately before you will pick up your dinner. The opening time of BluePlattr dinner kitchen is the same time as BluePlattr lunch kitchen. However, BluePlattr dinner kitchen will close at 4:00 PM the day you will be picking up your dinner. Log in while BluePlattr dinner kitchen is open to reserve your choice of dinner. Participating restaurants offer daily dinner options. If you wish to change your dinner reservation, you may do so by selecting another meal and pick-up time provided that you make the change before 4:00pm.</p>
   </div>,
   <div>
