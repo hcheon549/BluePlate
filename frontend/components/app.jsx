@@ -22,6 +22,8 @@ import Footer from "./footer/footer";
 import Landing from "./landing/Landing";
 import FAQLanding from './footer/FAQLanding';
 import MobileMenuItems from './nav/MobileMenuItems';
+import Terms from './footer/Terms';
+import PrivacyPolicy from './footer/PrivacyPolicy';
 
 import LoadingIcon from "./meal/loading_icon";
 
@@ -74,8 +76,8 @@ class App extends React.Component {
 
               {/* Footer */}
               <Route exact path="/faq" component={FAQLanding} />
-              {/* <Route exact path="/privacy-policy" component={PrivacyPolicy} /> */}
-              {/* <Route exact path="/terms-of-use" component={TOU} /> */}
+              <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+              <Route exact path="/terms-of-use" component={Terms} />
 
               {/* Collect All */}
               <Redirect from="*" to="/" />

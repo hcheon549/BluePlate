@@ -1,4 +1,4 @@
-.FAQs{
+.footerPage{
   margin: 50px auto;
   max-width: 715px;
   .pageHeader{
@@ -43,10 +43,13 @@
       }
     }
   }
+  .terms{
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 560px){
-  .FAQs{
+  .footerPage{
     width: 90%;
     .pageHeader{
       padding-top: 20px;
