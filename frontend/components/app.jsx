@@ -24,6 +24,7 @@ import FAQLanding from './footer/FAQLanding';
 import MobileMenuItems from './nav/MobileMenuItems';
 import Terms from './footer/Terms';
 import PrivacyPolicy from './footer/PrivacyPolicy';
+import HowItWorks from './HIW/HowItWorks'
 
 import LoadingIcon from "./meal/loading_icon";
 
@@ -64,6 +65,7 @@ class App extends React.Component {
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
               <Route exact path="/all-meals" component={AllMeals} />
+              <Route exact path="/how-it-works" component={HowItWorks} />
               <Route exact path="/demo" component={MyMeal} />
 
               {/* Auth Pages */}

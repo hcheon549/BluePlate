@@ -12,6 +12,9 @@ const NavLogin = (props) => {
 
   return (
     <ul className="navLogin">
+      <li className={"nav-menu-button miniText" + (location.pathname == '/how-it-works' ? " -active" : "")} key='how-it-works' onClick={() => push('/how-it-works')}>
+        How it works
+      </li>
       <li className={"nav-menu-button miniText" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={() => push('/all-meals')}>
         View meals
       </li>
