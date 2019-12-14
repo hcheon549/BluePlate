@@ -33,6 +33,9 @@ class Api::ReservationsController < ApplicationController
       menu_id: params[:reservation][:menu_id],
       pickup_time_id: params[:reservation][:pickup_time_id]
     )
+
+    @reservation.pickup_code = generate_pickup_code
+
     
     if @reservation.save
       adjust_attributes('create', @user, @reservation)
@@ -116,4 +119,14 @@ class Api::ReservationsController < ApplicationController
     puts meal.total_number_ordered
   end
 
+  def generate_pickup_code
+    other_codes = Reservation.where(menu_id: params[:reservation][:menu_id]).map(&:pickup_code)
+    new_code = rand(1000...9999)
+
+    while other_codes.include?(new_code)
+      new_code = rand(1000...9999)
+    end
+
+    return new_code
+  end
 end

@@ -1,7 +1,7 @@
 json.all_reservations do 
   @reservations.each do |res|
     json.set! res.id do
-      json.extract! res, :id, :user_id, :menu_id, :pickup_time_id, :pickup_status
+      json.extract! res, :id, :user_id, :menu_id, :pickup_time_id, :pickup_status, :pickup_code
         
       json.user do
         json.extract! res.user, :id, :email, :fname, :lname
@@ -29,7 +29,7 @@ end
 json.today_reservations do
   @today_reservations.each do | res |
     json.set! res.id do
-      json.extract! res, :id, :user_id, :menu_id, :pickup_time_id, :pickup_status
+      json.extract! res, :id, :user_id, :menu_id, :pickup_time_id, :pickup_status, :pickup_code
         
       json.user do
         json.extract! res.user, :id, :email, :fname, :lname
