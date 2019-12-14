@@ -9,303 +9,303 @@
 require 'open-uri'
 require 'tod'
 
-ActiveRecord::Base.transaction do
-  School.destroy_all
+# ActiveRecord::Base.transaction do
+#   School.destroy_all
 
-  schools = [
-    {
-      name: "Rutgers University–New Brunswick",
-      latitude: 40.498080,
-      longitude: -74.448920
-    }
-    # ,{
-    #   name: "Pennsylvania State University–University Park",
-    #   latitude: 40.792650,
-    #   longitude: -77.859082
-    # }
-  ]
+#   schools = [
+#     {
+#       name: "Rutgers University–New Brunswick",
+#       latitude: 40.498080,
+#       longitude: -74.448920
+#     }
+#     # ,{
+#     #   name: "Pennsylvania State University–University Park",
+#     #   latitude: 40.792650,
+#     #   longitude: -77.859082
+#     # }
+#   ]
 
-  schools.each do |school|
-    School.create!(school)
-  end
-  puts "Schools created"
-end
+#   schools.each do |school|
+#     School.create!(school)
+#   end
+#   puts "Schools created"
+# end
 
-ActiveRecord::Base.transaction do
-  Policy.destroy_all
+# ActiveRecord::Base.transaction do
+#   Policy.destroy_all
 
-  policies = [
-    {
-      policy_id: 100,
-      name: "Credit",
-      description: 'Fully paid member',
-      policy_type: 'Member',
-    },{
-      policy_id: 200,
-      name: "Free",
-      description: 'Free gift',
-      policy_type: 'Member',
-    },{
-      policy_id: 500,
-      name: "Lead",
-      description: 'Signed up but haven\'t paid',
-      policy_type: 'Lead',
-    },{
-      policy_id: 700,
-      name: "Visitor",
-      description: 'Visitor',
-      policy_type: 'Visitor',
-    },{
-      policy_id: 400,
-      name: "Chargeback",
-      description: 'Chargeback',
-      policy_type: 'Ban',
-    },
-  ]
+#   policies = [
+#     {
+#       policy_id: 100,
+#       name: "Credit",
+#       description: 'Fully paid member',
+#       policy_type: 'Member',
+#     },{
+#       policy_id: 200,
+#       name: "Free",
+#       description: 'Free gift',
+#       policy_type: 'Member',
+#     },{
+#       policy_id: 500,
+#       name: "Lead",
+#       description: 'Signed up but haven\'t paid',
+#       policy_type: 'Lead',
+#     },{
+#       policy_id: 700,
+#       name: "Visitor",
+#       description: 'Visitor',
+#       policy_type: 'Visitor',
+#     },{
+#       policy_id: 400,
+#       name: "Chargeback",
+#       description: 'Chargeback',
+#       policy_type: 'Ban',
+#     },
+#   ]
 
-  policies.each do |policy|
-    Policy.create!(policy)
-  end
-  puts "Policies created"
-end
+#   policies.each do |policy|
+#     Policy.create!(policy)
+#   end
+#   puts "Policies created"
+# end
 
-ActiveRecord::Base.transaction do
-  Plan.destroy_all
+# ActiveRecord::Base.transaction do
+#   Plan.destroy_all
 
-  plans = [
-    ################################################
-    ##############  SEMESTER CYCLE  ################
-    ################################################
-    {
-      name: "12 Meals",  ##### $4.99 per meal
-      plan_type: "semester",
-      meals: 180,
-      price: 898.20
-    },
-    {
-      name: "8 Meals", ##### $5.49 per meal
-      plan_type: "semester",
-      meals: 120,
-      price: 658.80
-    },
-    {
-      name: "4 Meals",  ##### $5.99 per meal
-      plan_type: "semester",
-      meals: 60,
-      price: 359.40
-    },
-    ################################################
-    ###############  4-WEEKS CYCLE  ################
-    ################################################
-    {
-      name: "12 Meals",  ##### $4.99 per meal
-      plan_type: "4weeks",
-      meals: 48,
-      price: 239.52
-    },
-    {
-      name: "8 Meals", ##### $5.49 per meal
-      plan_type: "4weeks",
-      meals: 32,
-      price: 175.68
-    },
-    {
-      name: "4 Meals",  ##### $5.99 per meal
-      plan_type: "4weeks",
-      meals: 16,
-      price: 95.84
-    },
-    ################################################
-    ###############  2-WEEKS TRIAL  ################
-    ################################################
-    {
-      name: "12 Meals",  ##### $4.99 per meal
-      plan_type: "2weeks",
-      meals: 24,
-      price: 119.76
-    },
-    {
-      name: "8 Meals", ##### $5.49 per meal
-      plan_type: "2weeks",
-      meals: 16,
-      price: 87.84
-    },
-    {
-      name: "4 Meals",  ##### $5.99 per meal
-      plan_type: "2weeks",
-      meals: 8,
-      price: 47.92
-    },
-    ################################################
-    ###############       TEST      ################
-    ################################################
-    {
-      name: "1 Meals",  ##### $0.99 per meal
-      plan_type: "test",
-      meals: 1,
-      price: 0.99
-    },
-    {
-      name: "1 Meals",  ##### $0.99 per meal
-      plan_type: "test",
-      meals: 2,
-      price: 1.98
-    },
-    {
-      name: "1 Meals",  ##### $0.99 per meal
-      plan_type: "test",
-      meals: 3,
-      price: 2.97
-    }
-  ]
+#   plans = [
+#     ################################################
+#     ##############  SEMESTER CYCLE  ################
+#     ################################################
+#     {
+#       name: "12 Meals",  ##### $4.99 per meal
+#       plan_type: "semester",
+#       meals: 180,
+#       price: 898.20
+#     },
+#     {
+#       name: "8 Meals", ##### $5.49 per meal
+#       plan_type: "semester",
+#       meals: 120,
+#       price: 658.80
+#     },
+#     {
+#       name: "4 Meals",  ##### $5.99 per meal
+#       plan_type: "semester",
+#       meals: 60,
+#       price: 359.40
+#     },
+#     ################################################
+#     ###############  4-WEEKS CYCLE  ################
+#     ################################################
+#     {
+#       name: "12 Meals",  ##### $4.99 per meal
+#       plan_type: "4weeks",
+#       meals: 48,
+#       price: 239.52
+#     },
+#     {
+#       name: "8 Meals", ##### $5.49 per meal
+#       plan_type: "4weeks",
+#       meals: 32,
+#       price: 175.68
+#     },
+#     {
+#       name: "4 Meals",  ##### $5.99 per meal
+#       plan_type: "4weeks",
+#       meals: 16,
+#       price: 95.84
+#     },
+#     ################################################
+#     ###############  2-WEEKS TRIAL  ################
+#     ################################################
+#     {
+#       name: "12 Meals",  ##### $4.99 per meal
+#       plan_type: "2weeks",
+#       meals: 24,
+#       price: 119.76
+#     },
+#     {
+#       name: "8 Meals", ##### $5.49 per meal
+#       plan_type: "2weeks",
+#       meals: 16,
+#       price: 87.84
+#     },
+#     {
+#       name: "4 Meals",  ##### $5.99 per meal
+#       plan_type: "2weeks",
+#       meals: 8,
+#       price: 47.92
+#     },
+#     ################################################
+#     ###############       TEST      ################
+#     ################################################
+#     {
+#       name: "1 Meals",  ##### $0.99 per meal
+#       plan_type: "test",
+#       meals: 1,
+#       price: 0.99
+#     },
+#     {
+#       name: "1 Meals",  ##### $0.99 per meal
+#       plan_type: "test",
+#       meals: 2,
+#       price: 1.98
+#     },
+#     {
+#       name: "1 Meals",  ##### $0.99 per meal
+#       plan_type: "test",
+#       meals: 3,
+#       price: 2.97
+#     }
+#   ]
 
-  plans.each do |plan|
-    Plan.create!(plan)
-  end
-  puts "Plans created"
-end
+#   plans.each do |plan|
+#     Plan.create!(plan)
+#   end
+#   puts "Plans created"
+# end
 
-ActiveRecord::Base.transaction do
-  PickupTime.destroy_all
+# ActiveRecord::Base.transaction do
+#   PickupTime.destroy_all
 
-  lunch_time = [
-    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p") },
-    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(15).strftime("%I:%M %p") }, 
-  ]
+#   lunch_time = [
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(11, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p") },
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(12).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(13).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(14).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p") }, 
+#     { pickup_type: 0, start: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(15).strftime("%I:%M %p") }, 
+#   ]
 
-  lunch_time.each do |time|
-    PickupTime.create!(time)
-  end
-  puts "Lunch Times created"
+#   lunch_time.each do |time|
+#     PickupTime.create!(time)
+#   end
+#   puts "Lunch Times created"
 
-  dinner_time = [
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p") },
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p") },
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p") },
-    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p") }, 
-    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(21).strftime("%I:%M %p") }, 
-  ]
+#   dinner_time = [
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(17).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p") },
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p") },
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p") },
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(18).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(19).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(20).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p") }, 
+#     { pickup_type: 1, start: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(21).strftime("%I:%M %p") }, 
+#   ]
 
-  dinner_time.each do |time|
-    PickupTime.create!(time)
-  end
-  puts "Dinner Times created"
-end
+#   dinner_time.each do |time|
+#     PickupTime.create!(time)
+#   end
+#   puts "Dinner Times created"
+# end
 
-ActiveRecord::Base.transaction do
-  User.destroy_all
+# ActiveRecord::Base.transaction do
+#   User.destroy_all
 
-  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
+#   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+#   # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
-  users = [
-    {
-      email: 'demo@gmail.com',
-      password: 'ececec',
-      fname: 'BluePlattr',
-      lname: 'Demo',
-      school_id: rutgers.id
-    }
-    # ,{
-    #   email: 'penn@gmail.com',
-    #   password: 'ececec',
-    #   fname: 'Eric',
-    #   lname: 'Cheon',
-    #   school_id: pennState.id
-    # },
-  ]
+#   users = [
+#     {
+#       email: 'demo@gmail.com',
+#       password: 'ececec',
+#       fname: 'BluePlattr',
+#       lname: 'Demo',
+#       school_id: rutgers.id
+#     }
+#     # ,{
+#     #   email: 'penn@gmail.com',
+#     #   password: 'ececec',
+#     #   fname: 'Eric',
+#     #   lname: 'Cheon',
+#     #   school_id: pennState.id
+#     # },
+#   ]
 
-  users.each do |user|
-    User.create!(user)
-  end
-  puts "Users created"
-end
+#   users.each do |user|
+#     User.create!(user)
+#   end
+#   puts "Users created"
+# end
 
-ActiveRecord::Base.transaction do
-  Subscription.destroy_all
+# ActiveRecord::Base.transaction do
+#   Subscription.destroy_all
 
-  rutgers = User.find_by(email: 'demo@gmail.com')
-  # penn = User.find_by(email: 'penn@gmail.com')
-  plans = Plan.all
-  rutgers_plan = plans[rand(0..plans.length-1)]
-  # penn_plan = plans[rand(0..plans.length-1)]
+#   rutgers = User.find_by(email: 'demo@gmail.com')
+#   # penn = User.find_by(email: 'penn@gmail.com')
+#   plans = Plan.all
+#   rutgers_plan = plans[rand(0..plans.length-1)]
+#   # penn_plan = plans[rand(0..plans.length-1)]
 
-  subscriptions = [
-    {
-      user_id: rutgers.id,
-      plan_id: rutgers_plan.id,
-      meal_credit: rutgers_plan.meals,
-      subscription_start: Date.new(2020, 1, 22),
-      subscription_end: Date.new(2020, 5, 13)
-    }
-    # ,{
-    #   user_id: penn.id,
-    #   plan_id: penn_plan.id,
-    #   meal_credit: penn_plan.meals,
-    #   subscription_start: Date.new(2020, 1, 22),
-    #   subscription_end: Date.new(2020, 5, 13)
-    # },
-  ]
+#   subscriptions = [
+#     {
+#       user_id: rutgers.id,
+#       plan_id: rutgers_plan.id,
+#       meal_credit: rutgers_plan.meals,
+#       subscription_start: Date.new(2020, 1, 22),
+#       subscription_end: Date.new(2020, 5, 13)
+#     }
+#     # ,{
+#     #   user_id: penn.id,
+#     #   plan_id: penn_plan.id,
+#     #   meal_credit: penn_plan.meals,
+#     #   subscription_start: Date.new(2020, 1, 22),
+#     #   subscription_end: Date.new(2020, 5, 13)
+#     # },
+#   ]
 
-  subscriptions.each do |subscription|
-    Subscription.create!(subscription)
-  end
-  puts "Subscriptions created"
-end
+#   subscriptions.each do |subscription|
+#     Subscription.create!(subscription)
+#   end
+#   puts "Subscriptions created"
+# end
 
-ActiveRecord::Base.transaction do
-  AccountSummary.destroy_all
+# ActiveRecord::Base.transaction do
+#   AccountSummary.destroy_all
 
-  rutgers = User.find_by(email: 'demo@gmail.com')
-  # penn = User.find_by(email: 'penn@gmail.com')
+#   rutgers = User.find_by(email: 'demo@gmail.com')
+#   # penn = User.find_by(email: 'penn@gmail.com')
 
-  memberPolicy = Policy.find_by(policy_type: 'Member')
+#   memberPolicy = Policy.find_by(policy_type: 'Member')
 
-  summaries = [
-    {
-      user_id: rutgers.id,
-      subscription_id: rutgers.subscription.id,
-      policy_id: memberPolicy.id,
-      total_meal_credits: rutgers.subscription.meal_credit,
-      meal_credits_left: rutgers.subscription.meal_credit
-    }
-    # ,{
-    #   user_id: penn.id,
-    #   subscription_id: penn.subscription.id,
-    #   policy_id: memberPolicy.id,
-    #   total_meal_credits: penn.subscription.meal_credit,
-    #   meal_credits_left: penn.subscription.meal_credit
-    # },
-  ]
+#   summaries = [
+#     {
+#       user_id: rutgers.id,
+#       subscription_id: rutgers.subscription.id,
+#       policy_id: memberPolicy.id,
+#       total_meal_credits: rutgers.subscription.meal_credit,
+#       meal_credits_left: rutgers.subscription.meal_credit
+#     }
+#     # ,{
+#     #   user_id: penn.id,
+#     #   subscription_id: penn.subscription.id,
+#     #   policy_id: memberPolicy.id,
+#     #   total_meal_credits: penn.subscription.meal_credit,
+#     #   meal_credits_left: penn.subscription.meal_credit
+#     # },
+#   ]
 
-  summaries.each do |summary|
-    AccountSummary.create!(summary)
-  end
-  puts "AccountSummary created"
-end
+#   summaries.each do |summary|
+#     AccountSummary.create!(summary)
+#   end
+#   puts "AccountSummary created"
+# end
 
 
 ActiveRecord::Base.transaction do
@@ -504,6 +504,64 @@ ActiveRecord::Base.transaction do
       latitude: 40.492080,
       longitude: -74.443300,
       school_id: rutgers.id,
+    },
+    
+    {
+      name: "Fatty Daddy",
+      address: "604 Bartholomew Rd, Piscataway, NJ 08854",
+      latitude: 40.523006,
+      longitude: -74.458548,
+      school_id: rutgers.id,
+    },{
+      name: "Tang Dynasty",
+      address: "604 Bartholomew Rd, Piscataway, NJ 08854",
+      latitude: 40.522948,
+      longitude: -74.458344,
+      school_id: rutgers.id,
+    },{
+      name: "Frank's Pizza",
+      address: "604 Bartholomew Rd, Piscataway, NJ 08854",
+      latitude: 40.523192,
+      longitude: -74.458623,
+      school_id: rutgers.id,
+    },{
+      name: "Belt Shop",
+      address: "604 Bartholomew Rd, Piscataway, NJ 08854",
+      latitude: 40.523219,
+      longitude: -74.458390,
+      school_id: rutgers.id,
+    },{
+      name: "Metro",
+      address: "604 Bartholomew Rd, Piscataway, NJ 08854",
+      latitude: 40.523402,
+      longitude: -74.458566,
+      school_id: rutgers.id,
+    },
+
+    {
+      name: "Sophia",
+      address: "83 Rockafeller Rd, Piscataway, NJ 08854",
+      latitude: 40.525461,
+      longitude: -74.439161
+      school_id: rutgers.id,
+    },{
+      name: "Peter's Deli",
+      address: "55 Rockafeller Rd, Piscataway, NJ 08854",
+      latitude: 40.525797,
+      longitude: -74.438867
+      school_id: rutgers.id,
+    },{
+      name: "Collegetown Pizza",
+      address: "55 Rockafeller Rd, Piscataway, NJ 08854",
+      latitude: 40.525898,
+      longitude: -74.438363,
+      school_id: rutgers.id,
+    },{
+      name: "Meetball",
+      address: "Honors Plaza, Piscataway, NJ 08854",
+      latitude: 40.525012,
+      longitude: -74.439559,
+      school_id: rutgers.id,
     }
   ]
 
@@ -531,6 +589,211 @@ ActiveRecord::Base.transaction do
   ###############################################
   ######## RUTGERS REAL LIFE EXAMPLES ########
   ###############################################
+
+  sophia = Shop.find_by(name: "Sophia")
+  sophiameal = [
+    {
+      name: 'Chicken Tender with Chips',
+      description: "Fried chicken breast, potato chips, mustard sacue",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chips.jpeg',
+      shop_id: sophia.id
+    },{
+      name: 'Fried Chicken Sandwich',
+      description: "Fried chicken, bun, coleslaw, mayo",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_fried_chicken_sandwich.jpeg',
+      shop_id: sophia.id
+    }
+  ]
+
+  sophiameal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "sophiameal Meal Created"
+
+  peter = Shop.find_by(name: "Peter's Deli")
+  petermeal = [
+    {
+      name: 'Shrimp Ramen',
+      description: "Shrimp, vegitables, ramen noodle, seafood broth",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_shrimp_ramen.jpeg',
+      shop_id: peter.id
+    }, {
+      name: 'Ham Sandwich',
+      description: "Roasted ham, rye bread, lettus, swiss cheese, mayo",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_ham_sandwich.jpeg',
+      shop_id: peter.id
+    }
+  ]
+
+  petermeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "petermeal Meal Created"
+
+  collegetown = Shop.find_by(name: "Collegetown Pizza")
+  collegetownmeal = [
+    {
+      name: 'Supreme Pasta',
+      description: "Shrimp, squid, spaghetti, tomato sauce, onion",
+      price: 14.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_tavern_supreme_pasta.jpeg',
+      shop_id: collegetown.id
+    },{
+      name: 'Beef Ragu',
+      description: "Short rib, tomato sauce, linguini",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_tavern_beef_ragu.jpeg',
+      shop_id: collegetown.id
+    }
+  ]
+
+  collegetownmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "collegetownmeal Meal Created"
+
+
+  meetball = Shop.find_by(name: "Meetball")
+  meetballmeal = [
+    {
+      name: 'Carbonara',
+      description: "Spaghetti, eggs, cheese, bacon",
+      price: 12.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yum_cafe_carbonara.jpeg',
+      shop_id: meetball.id
+    },{
+      name: 'Curliflower Delight',
+      description: "Curliflowers, spaghetti, heavy cream, cheese",
+      price: 15.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yum_cafe_curliflower_delight.jpeg',
+      shop_id: meetball.id
+    }
+  ]
+
+  meetballmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "meetballmeal Meal Created"
+
+
+  fattydaddy = Shop.find_by(name: "Fatty Daddy")
+  fattydaddymeal = [
+    {
+      name: 'Grilled Cheese Sandwich',
+      description: "White bread, swiss cheese, american cheese, mozzarella cheese",
+      price: 8.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_taco_grilled_cheese_sandwich.jpeg',
+      shop_id: fattydaddy.id
+    },{
+      name: 'Nachos',
+      description: "Loaded nachos, melted cheese, blue cheese, sour cream, bacons, scallion",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_taco_nachos.jpeg',
+      shop_id: fattydaddy.id
+    }
+  ]
+
+  fattydaddymeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "fattydaddymeal Meal Created"
+
+  tang = Shop.find_by(name: "Tang Dynasty")
+  tangmeal = [
+    {
+      name: 'Orange Chicken',
+      description: "Deep fried chicken, peppers, orange sauce",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_orange_chicken.jpeg',
+      shop_id: tang.id
+    }, {
+      name: 'Sushi Platter',
+      description: "Assorted fish, rice, vinegrette, wasabi, seaweeds",
+      price: 11.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_sushi.jpeg',
+      shop_id: tang.id
+    }
+  ]
+
+  tangmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "tangmeal Meal Created"
+
+  franks = Shop.find_by(name: "Frank's Pizza")
+  franksmeal = [
+    {
+      name: 'Supreme Pizza',
+      description: "Pizza dough, tomato sauce, cheese, ham, pepperoni, peppers",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_supreme_pizza.jpeg',
+      shop_id: franks.id
+    },{
+      name: '2 Margharita Pizza',
+      description: "Pizza dough, tomato sauce, cheese, olive oil",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_margharita_pizza.jpeg',
+      shop_id: franks.id
+    }
+  ]
+
+  franksmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "franksmeal Meal Created"
+  Belt Shop
+
+  belt = Shop.find_by(name: "Belt Shop")
+  beltmeal = [
+    {
+      name: 'Tuna Bagel',
+      description: "Tuna, bagel",
+      price: 9.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagels_tuna_bagel.jpeg',
+      shop_id: belt.id
+    },{
+      name: 'Roast Beef Sandwich',
+      description: "Roast beef, aruguala, mayo, tomato, bread",
+      price: 10.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagles_roast_beef_sandwich.jpeg',
+      shop_id: belt.id
+    }
+  ]
+
+  beltmeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "beltmeal Meal Created"
+
+
+  metro = Shop.find_by(name: "Metro")
+  metromeal = [
+    {
+      name: 'Turkey Sandwich',
+      description: "Turkey, bread, swiss cheese, mustard, aruguala",
+      price: 7.99,
+      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/zen_turkey_sandwich.jpeg',
+      shop_id: metro.id
+    }
+  ]
+
+  metromeal.each do |meal|
+    Meal.create!(meal)
+  end
+
+  puts "metromeal Meal Created"
 
   chopstick = Shop.find_by(name: "Marathon Sushi")
   chopstickMeals = [
@@ -588,12 +851,6 @@ ActiveRecord::Base.transaction do
   chick2 = Shop.find_by(name: "Chicken2")
   chick2meal = [
     {
-      name: 'Chicken Tender with Chips',
-      description: "Fried chicken breast, potato chips, mustard sacue",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/chick2_chicken_tender_chips.jpeg',
-      shop_id: chick2.id
-    }, {
       name: 'Fried Chicken Sandwich with Fries',
       description: "Fried chicken breast, bun, coleslaw, french fries",
       price: 12.99,
@@ -694,12 +951,6 @@ ActiveRecord::Base.transaction do
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_bacon_burger.jpeg',
       shop_id: babysburger.id
     },{
-      name: 'Fried Chicken Sandwich',
-      description: "Fried chicken, bun, coleslaw, mayo",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/babys_burger_fried_chicken_sandwich.jpeg',
-      shop_id: babysburger.id
-    },{
       name: 'Glazed Salmon',
       description: "Glazed Salmon, risotto, fish broth",
       price: 9.99,
@@ -781,12 +1032,6 @@ ActiveRecord::Base.transaction do
   bigbowl = Shop.find_by(name: "The Noodle Associates")
   bigbowlmeal = [
     {
-      name: 'Shrimp Ramen',
-      description: "Shrimp, vegitables, ramen noodle, seafood broth",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/big_bowl_shrimp_ramen.jpeg',
-      shop_id: bigbowl.id
-    }, {
       name: 'Tonkotsu Ramen',
       description: "Grilled pork belly, pork broth, ramen noodle, vegitables",
       price: 10.99,
@@ -822,18 +1067,6 @@ ActiveRecord::Base.transaction do
       price: 8.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_pepperoni_pizza.jpeg',
       shop_id: gumbys.id
-    },{
-      name: 'Supreme Pizza',
-      description: "Pizza dough, tomato sauce, cheese, ham, pepperoni, peppers",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_supreme_pizza.jpeg',
-      shop_id: gumbys.id
-    },{
-      name: '2 Margharita Pizza',
-      description: "Pizza dough, tomato sauce, cheese, olive oil",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/gumbys_pizza_margharita_pizza.jpeg',
-      shop_id: gumbys.id
     }
   ]
 
@@ -856,18 +1089,6 @@ ActiveRecord::Base.transaction do
       description: "Avocado, greens, bagel, sesame seeds",
       price: 8.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagels_avocado_bagel.jpeg',
-      shop_id: irving.id
-    },{
-      name: 'Tuna Bagel',
-      description: "Tuna, bagel",
-      price: 9.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagels_tuna_bagel.jpeg',
-      shop_id: irving.id
-    },{
-      name: 'Roast Beef Sandwich',
-      description: "Roast beef, aruguala, mayo, tomato, bread",
-      price: 10.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/irvings_bagles_roast_beef_sandwich.jpeg',
       shop_id: irving.id
     }
   ]
@@ -916,12 +1137,6 @@ ActiveRecord::Base.transaction do
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_chicken_sandwich.jpeg',
       shop_id: hungry.id
     }, {
-      name: 'Ham Sandwich',
-      description: "Roasted ham, rye bread, lettus, swiss cheese, mayo",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/ru_hungry_ham_sandwich.jpeg',
-      shop_id: hungry.id
-    }, {
       name: 'Salami Sandwich',
       description: "Salami, bread, mayo, aruguala",
       price: 11.99,
@@ -950,12 +1165,6 @@ ActiveRecord::Base.transaction do
       price: 7.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/zen_ham_sandwich.jpeg',
       shop_id: zen.id
-    },{
-      name: 'Turkey Sandwich',
-      description: "Turkey, bread, swiss cheese, mustard, aruguala",
-      price: 7.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/zen_turkey_sandwich.jpeg',
-      shop_id: zen.id
     }
   ]
 
@@ -973,13 +1182,7 @@ ActiveRecord::Base.transaction do
       price: 7.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_taco_breakfast_burrito.jpeg',
       shop_id: yallahtaco.id
-    },{
-      name: 'Grilled Cheese Sandwich',
-      description: "White bread, swiss cheese, american cheese, mozzarella cheese",
-      price: 8.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/yallah_taco_grilled_cheese_sandwich.jpeg',
-      shop_id: yallahtaco.id
-    },{
+    }, {
       name: 'Nachos',
       description: "Loaded nachos, melted cheese, blue cheese, sour cream, bacons, scallion",
       price: 9.99,
@@ -1008,18 +1211,6 @@ ActiveRecord::Base.transaction do
       description: "Beef, vegitables, flour, soy sauce",
       price: 7.99,
       image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_dumpling.jpeg',
-      shop_id: kook.id
-    }, {
-      name: 'Orange Chicken',
-      description: "Deep fried chicken, peppers, orange sauce",
-      price: 11.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_orange_chicken.jpeg',
-      shop_id: kook.id
-    }, {
-      name: 'Sushi Platter',
-      description: "Assorted fish, rice, vinegrette, wasabi, seaweeds",
-      price: 11.99,
-      image_url: 'https://blueplate-development.s3.amazonaws.com/seeds/the_koop_sushi.jpeg',
       shop_id: kook.id
     }
   ]
