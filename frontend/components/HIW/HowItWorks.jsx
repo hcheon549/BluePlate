@@ -9,9 +9,9 @@ const HowItWorks = (props) => {
 
     header = 'How BluePlattr works',
     subHead1 = 'Browse',
-    content1 = 'Your local favorite restaurants offer daily specials everyday. Be excited about new menus you\'ll see!',
+    content1 = 'Your favorite local restaurants offer daily specials everyday. Be excited about new menus you\'ll see!',
     subHead2 = 'Order',
-    content2 = 'Kitchen opens at 9 PM the day before. You can order your lunch by 10 AM, and dinner by 4 PM with desired pick-up time.',
+    content2 = 'Kitchen opens at 9 PM the day before. You can order your lunch by 10 AM, and dinner by 4 PM with a desired pick-up time.',
     subHead3 = 'Pick up',
     content3 = 'You\'ve already received the 4-digit pick-up code when you ordered in your inbox. Show it to at the cashier, get your food, and enjoy!'
 
