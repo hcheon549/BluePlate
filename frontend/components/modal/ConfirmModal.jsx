@@ -29,11 +29,11 @@ function ConfirmModal({ closeModal, data }) {
       <div className="confirm-modal-bottom">
         <div className="confirm-modal-text">
           <h4>{header}</h4>
-          <p>{subhead}</p>
+          {subhead && <p>{subhead}</p>}
         </div>
-        <div className="confirm-number">
+        {pickupCode && <div className="confirm-number">
           {pickupCode}
-        </div>
+        </div>}
         <div onClick={closeModal} className="sounds-good">
           Got it!
         </div>
