@@ -1,4 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { login } from '../../actions/session_actions';
+
 import LandingCapture from './../landing/LandingCapture';
 
 const HowItWorks = (props) => {
@@ -9,11 +14,20 @@ const HowItWorks = (props) => {
 
     header = 'How BluePlattr works',
     subHead1 = 'Browse',
-    content1 = 'Your local favorite restaurants offer daily specials everyday. Be excited about new menus you\'ll see!',
+    content1 = 'Your favorite local restaurants offer daily specials everyday. Be excited about new menus you\'ll see!',
     subHead2 = 'Order',
-    content2 = 'Kitchen opens at 9 PM the day before. You can order your lunch by 10 AM, and dinner by 4 PM with desired pick-up time.',
+    content2 = 'Kitchen opens at 9 PM the day before. You can order your lunch by 10 AM, and dinner by 4 PM with a desired pick-up time.',
     subHead3 = 'Pick up',
     content3 = 'You\'ve already received the 4-digit pick-up code when you ordered in your inbox. Show it to at the cashier, get your food, and enjoy!'
+
+  let tryDemo = async () => {
+    let user = {
+      email: 'demo@gmail.com',
+      password: 'ececec'
+    }
+    await props.processLogIn(user);
+    props.history.push('/demo')
+  }
 
 
   return (
@@ -28,6 +42,13 @@ const HowItWorks = (props) => {
             <li>CONVENIENT</li>
             <li>FLEXIBLE</li>
           </div>
+          <button
+            className='orangeSecondary'
+            type="submit"
+            onClick={tryDemo}
+          >
+            Try Demo
+          </button>
           <div className="main-info">
             <div className="column">
               <img className="choose-icon icon" src={"https://blueplate-development.s3.amazonaws.com/elements/choose.svg"} alt={"well-known"}/>
@@ -60,4 +81,15 @@ const HowItWorks = (props) => {
   )
 }
 
-export default HowItWorks
+const mapStateToProps = state => {
+  return {
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    processLogIn: (user) => dispatch(login(user)),
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HowItWorks));

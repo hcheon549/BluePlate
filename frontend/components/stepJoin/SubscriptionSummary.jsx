@@ -41,8 +41,8 @@ const SubscriptionSummary = (props) => {
             <p>January 21, 2020</p>
           </div>
           <div className="row -right">
-            <h4>Plan End Date</h4>
-            <p>May 13, 2020</p>
+            <h4>Renewal Date</h4>
+            <p>February 11, 2020</p>
           </div>
         </div>
         <div className="divider" />

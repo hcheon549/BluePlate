@@ -71,7 +71,7 @@ class LandingMap extends React.Component {
               />}
           </div>
           <div className="content -siteWidth">
-            <span className="tinyText" style={{color: 'white'}}>*The website is current on BETA mode. The restaurants displayed are not real.</span>
+            <span className="tinyText" style={{color: 'white'}}>*The website is currently on BETA mode. The restaurants displayed are not real.</span>
           </div>
         </div>
       </section>

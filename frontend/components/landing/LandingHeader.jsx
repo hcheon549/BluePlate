@@ -41,7 +41,9 @@ class LandingHeader extends React.Component {
                 type="submit"
                 style={{marginLeft: '20px'}}
                 onClick={this.tryDemo}
-              >{altButtonText}</button>
+              >
+                {altButtonText}
+              </button>
             </div>
           </div>
         </div>
