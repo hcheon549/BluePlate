@@ -84,8 +84,12 @@ class ReservationModal extends React.Component {
         isPending: false
       })  
       if (reservationResult.reservation) {
-        this.openSwal(action);
-        closeModal();
+        openConfirmModal({
+          action,
+          code: reservationResult.reservation.pickupCode,
+        })
+        // this.openSwal(action);
+        // closeModal();
       } else {
         console.log(reservationResult)
       }
@@ -100,8 +104,12 @@ class ReservationModal extends React.Component {
         isPending: false
       })  
       if (updateResult.reservation) {
-        this.openSwal(action)
-        closeModal();
+        openConfirmModal({
+          action,
+          code: updateResult.reservation.pickupCode,
+        })
+        // this.openSwal(action)
+        // closeModal();
       } else {
         console.log(updateResult)
       }
@@ -113,8 +121,11 @@ class ReservationModal extends React.Component {
         isPending: false
       })  
       if (cancellation.reservation) {
-        this.openSwal(action)
-        closeModal();
+        openConfirmModal({
+          action,
+        })
+        // this.openSwal(action)
+        // closeModal();
       } else {
         console.log(cancellation)
       }
@@ -242,7 +253,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    openConfirmModal: () => dispatch(openModal({ type: 'confirm' })),
+    openConfirmModal: (data) => dispatch(openModal({ type: 'confirm', data})),
     createReservation: (res) => dispatch(createReservation(res)),
     updateReservation: (res) => dispatch(updateReservation(res)),
     deleteReservation: (id) => dispatch(deleteReservation(id)),

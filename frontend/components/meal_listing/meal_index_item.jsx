@@ -115,7 +115,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    openConfirmModal: () => dispatch(openModal({ type: 'confirm' })),
+    openConfirmModal: (data) => dispatch(openModal({ type: 'confirm' , data})),
     createReservation: (res) => dispatch(createReservation(res)),
     updateReservation: (res) => dispatch(updateReservation(res)),
     changeFilter: (filter, value) => dispatch(changeFilter(filter, value))

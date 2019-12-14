@@ -1,6 +1,6 @@
 
 json.reservation do
-  json.extract! @reservation, :id, :user_id, :menu_id, :pickup_time_id, :pickup_status
+  json.extract! @reservation, :id, :user_id, :menu_id, :pickup_time_id, :pickup_status, :pickup_code
   
   json.user do
     json.extract! @reservation.user, :id, :email, :fname, :lname

@@ -26,7 +26,7 @@ function Modal(props) {
         <ReservationModal data={modal.data} />;
       break;
     case 'confirm':
-      component = <ConfirmModal />;
+      component = <ConfirmModal closeModal={closeModal} data={modal.data} />;
       break;
     case 'closed':
       component = <ClosedModal closeModal={closeModal} />;

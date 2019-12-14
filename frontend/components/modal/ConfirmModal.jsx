@@ -1,57 +1,45 @@
 import React from "react";
-import { connect } from "react-redux";
-import { closeModal } from "../../actions/modal_actions";
 
-function ConfirmModal({ closeModal }) {
-  let min = 1000,
-    max = 10000;
-  let rand4DigitNum = Math.floor(Math.random() * (max - min)) + min;
+function ConfirmModal({ closeModal, data }) {
+  let header, subhead, pickupCode;
+
+  if (data.action == 'reserve'){
+    header = 'Your order is reserved!';
+    subhead = 'Here\'s the pick up code. We will also email you.';
+    pickupCode = data.code;
+  } else if (data.action == 'update'){
+    header = 'Your order is updated!'
+    subhead = 'Your pick up code hasn\'t changed.'
+    pickupCode = data.code;
+  } else if (data.action == 'cancel'){
+    header = 'Your order is cancelled'
+    subhead = null;
+    pickupCode = null;
+  } else {
+    header = null
+    subhead = null;
+    pickupCode = null;
+  }
 
   return (
     <div
       className="confirm-modal animated fadeInDown"
       onClick={e => e.stopPropagation()}
     >
-      <div className="confirm-modal-top">
-        <div />
-        <div className="donut-forget">DONUT FORGET!</div>
-        <div onClick={closeModal} className="confirm-modal-x">
-          &times;
-        </div>
-      </div>
-
       <div className="confirm-modal-bottom">
         <div className="confirm-modal-text">
-          <div>Show the shop this </div>
-          <div>
-            <span>order number</span> at pickup.
-          </div>
+          <h4>{header}</h4>
+          {subhead && <p>{subhead}</p>}
         </div>
-        <img
-          className="confirm-ticket"
-          src="https://res.cloudinary.com/mwojick/image/upload/v1534227185/TreatPal/icons/ticket.png"
-          alt=""
-        />
-        <div className="confirm-number">{rand4DigitNum}</div>
+        {pickupCode && <div className="confirm-number">
+          {pickupCode}
+        </div>}
         <div onClick={closeModal} className="sounds-good">
-          SOUNDS GOOD
+          Got it!
         </div>
       </div>
     </div>
   );
 }
 
-const msp = state => {
-  return {};
-};
-
-const mdp = dispatch => {
-  return {
-    closeModal: () => dispatch(closeModal())
-  };
-};
-
-export default connect(
-  msp,
-  mdp
-)(ConfirmModal);
+export default ConfirmModal;

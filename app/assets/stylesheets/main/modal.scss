@@ -101,7 +101,7 @@
   position: absolute;
   display: flex;
   top: calc(50% - 175px);
-  left: calc(50% - 340px); // transform: translate(-50%, -50%);
+  left: calc(50% - 340px);
 }
 
 .res-modal-img {
@@ -250,28 +250,13 @@
 }
 
 .confirm-modal {
-  width: 550px;
-  height: 350px;
+  width: 680px;
   background: white;
   position: absolute;
   display: flex;
   flex-direction: column;
   top: calc(50% - 200px);
   left: calc(50% - 275px);
-}
-
-.confirm-modal-top {
-  padding: 10px 10px;
-  font-size: 16px;
-  color: white;
-  background: $accent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.donut-forget {
-  margin-left: 20px;
 }
 
 .confirm-modal-x {
@@ -296,17 +281,12 @@
   flex-direction: column;
   align-items: center;
   color: $darkest-gray;
-  padding: 10px 50px;
-  border: 1px solid $light-gray;
-  border-radius: 5px;
-  span {
-    color: $main;
-    font-weight: bold;
-  }
+  h4 { margin-bottom: 10px; }
 }
 
 .sounds-good {
   margin-top: 15px;
+  margin-bottom: 30px;
   color: white;
   background: $main;
   padding: 10px 90px;
@@ -324,10 +304,8 @@
 .confirm-number {
   letter-spacing: 2px;
   color: $main;
-  font-weight: bold;
   font-size: 40px;
-  position: absolute;
-  top: 190px;
+  margin: 20px auto;
 }
 
 @media (max-width: $media2) {
