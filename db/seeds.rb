@@ -542,13 +542,13 @@ ActiveRecord::Base.transaction do
       name: "Sophia",
       address: "83 Rockafeller Rd, Piscataway, NJ 08854",
       latitude: 40.525461,
-      longitude: -74.439161
+      longitude: -74.439161,
       school_id: rutgers.id,
     },{
       name: "Peter's Deli",
       address: "55 Rockafeller Rd, Piscataway, NJ 08854",
       latitude: 40.525797,
-      longitude: -74.438867
+      longitude: -74.438867,
       school_id: rutgers.id,
     },{
       name: "Collegetown Pizza",
@@ -752,7 +752,7 @@ ActiveRecord::Base.transaction do
   end
 
   puts "franksmeal Meal Created"
-  Belt Shop
+
 
   belt = Shop.find_by(name: "Belt Shop")
   beltmeal = [
