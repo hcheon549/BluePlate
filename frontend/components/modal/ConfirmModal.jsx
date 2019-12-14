@@ -1,28 +1,39 @@
 import React from "react";
 
 function ConfirmModal({ closeModal, data }) {
-  console.log(data)
+  let header, subhead, pickupCode;
+
+  if (data.action == 'reserve'){
+    header = 'Your order is reserved!';
+    subhead = 'Here\'s the pick up code. We will also email you.';
+    pickupCode = data.code;
+  } else if (data.action == 'update'){
+    header = 'Your order is updated!'
+    subhead = 'Your pick up code hasn\'t changed.'
+    pickupCode = data.code;
+  } else if (data.action == 'cancel'){
+    header = 'Your order is cancelled'
+    subhead = null;
+    pickupCode = null;
+  } else {
+    header = null
+    subhead = null;
+    pickupCode = null;
+  }
+
   return (
     <div
       className="confirm-modal animated fadeInDown"
       onClick={e => e.stopPropagation()}
     >
-      <div className="confirm-modal-top">
-        <div />
-        <div className="donut-forget">CONFIRMED!</div>
-        <div onClick={closeModal} className="confirm-modal-x">
-          &times;
-        </div>
-      </div>
-
       <div className="confirm-modal-bottom">
         <div className="confirm-modal-text">
-          <div>Show thid code at the pick up location.</div>
-          <div>
-            <span>order number</span> at pickup.
-          </div>
+          <h4>{header}</h4>
+          <p>{subhead}</p>
         </div>
-        <div className="confirm-number"></div>
+        <div className="confirm-number">
+          {pickupCode}
+        </div>
         <div onClick={closeModal} className="sounds-good">
           Got it!
         </div>
