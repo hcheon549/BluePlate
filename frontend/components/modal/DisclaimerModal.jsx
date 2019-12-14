@@ -38,7 +38,7 @@ class DisclaimerModal extends React.Component {
           </span></p>
           <label style={{display: 'block'}}>
             <input type="checkbox"  name="signed" id="disclaimer-agree" checked={this.state.signed} value="" onChange={this.toggleAgreeButton} />
-            <span className="miniText">I have read and agreed to the disclaimer.</span>
+            <span className="miniText">I have read and agreed to this disclaimer.</span>
           </label>
           <button className={'orangeSecondary' + (this.state.signed ? '' : ' -disabled')} type="submit" onClick={this.proceed}>Check it out!</button>
         </div>
