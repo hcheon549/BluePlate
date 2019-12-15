@@ -4,6 +4,7 @@
 
 import React from "react";
 import { connect } from 'react-redux';
+import ReactGA from 'react-ga';
 
 import { createLeadCapture } from '../../actions/user_actions';
 import { closeModal } from '../../actions/modal_actions';
@@ -21,6 +22,7 @@ class LeadCaptureForm extends React.Component{
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.tractAction = this.tractAction.bind(this);
   }
 
   resetForm() {
@@ -33,10 +35,18 @@ class LeadCaptureForm extends React.Component{
     })
   }
 
+  tractAction(){
+    ReactGA.event({
+      category: 'Lead',
+      action: 'Lead Captured'
+    })
+  }
+
   async handleSubmit(e) {
     e.preventDefault();
-
     this.setState({ isPending: true })
+
+    this.tractAction();
 
     let leadData = {
       email: this.state.email,

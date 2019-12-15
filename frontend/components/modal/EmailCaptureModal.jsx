@@ -1,7 +1,14 @@
 import React from "react";
+import ReactGA from 'react-ga';
 import LeadCaptureForm from '../element/LeadCaptureForm';
 
 const EmailCaptureModal = (props) => {
+  ReactGA.event({
+    category: 'Lead',
+    action: 'Show the lead capture modal.',
+    nonInteraction: true
+  })
+
   let header, subHead, action;
   
   if (props.landing){
