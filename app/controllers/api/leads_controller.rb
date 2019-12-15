@@ -3,6 +3,7 @@ class Api::LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
 
     if @lead.save
+      LeadMailer.new_lead(@lead).deliver_now
       render json: @lead
     else
       render json: @lead.errors.full_messages, status: 422
