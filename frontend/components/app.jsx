@@ -28,14 +28,8 @@ import HowItWorks from './HIW/HowItWorks'
 
 import LoadingIcon from "./meal/loading_icon";
 
-function initializeAnalytic(){
-  ReactGa.initialize('UA-154138828-1')
-  ReactGa.pageview(window.location.pathname + window.location.search)
-}
-
 class App extends React.Component {  
   async componentDidMount() {
-    initializeAnalytic();
     await this.props.getCurrentUser();
     await this.props.fetchSchools();
     await this.props.fetchPlans();
