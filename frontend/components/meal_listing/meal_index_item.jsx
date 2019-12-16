@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 import { createReservation, updateReservation } from '../../actions/reservation_actions';
 import { changeFilter } from '../../actions/filter_actions';
@@ -17,6 +18,7 @@ class MealIndexItem extends React.Component {
     this.update = this.update.bind(this);
     this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.trackAction = this.trackAction.bind(this);
   }
 
   update(type) {
@@ -35,12 +37,21 @@ class MealIndexItem extends React.Component {
     this.props.changeFilter("marker", shopId);
   }
 
+  trackAction(action){
+    ReactGA.event({
+      category: 'Demo Action',
+      action: 'Demo user created an action.',
+      label: action
+    })
+  }
+
   handleClick(){
     let { menu, shop, pickupTime, activeTab, todayReservations } = this.props;
     let {pickupTimeId} = this.state;
     let action = todayReservations[activeTab].id ? 'update' : 'reserve'
     let currentReservation = todayReservations[activeTab].id ? todayReservations[activeTab] : null;
-    
+      
+    this.trackAction(action)
     this.props.openReserveModal(
       { action, menu, shop, pickupTime, pickupTimeId, currentReservation }
     )
