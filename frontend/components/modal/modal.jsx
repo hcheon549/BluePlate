@@ -15,7 +15,7 @@ function Modal(props) {
     return null;
   }
 
-  let { modal, closeModal, setSignature, location, markLeadCaptureAsSeen } = props;
+  let { modal, closeModal, setSignature, location, markLeadCaptureAsSeen, leadCaptureSeen } = props;
   let isLanding = location.pathname == "/";
   let isEmailCapture = (modal.type == 'emailCapture');
 
@@ -42,6 +42,7 @@ function Modal(props) {
                     landing={isLanding}
                     closeModal={closeModal}
                     markAsSeen={markLeadCaptureAsSeen}
+                    leadCaptureSeen={leadCaptureSeen}
                   />;
       break;
     default:
