@@ -38,3 +38,6 @@ npm-debug.log
 client/build
 
 node_modules
+
+# Ignore application configuration
+/config/application.yml
