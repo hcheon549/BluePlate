@@ -262,6 +262,34 @@
   text-align: left;
 }
 
+.auth-options{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  .remember-checkbox{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    .remember-input{
+      width: inherit;
+    }
+    .remember-label{
+      color: $darkest-gray;
+      margin-left: 10px;
+    }
+  }
+  .forgot-password{
+    display: flex;
+    align-items: center;
+    color: $siteColor;
+    font-weight: 600;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
 .stripe-input {
   color: $black;
   font-size: 16px;
