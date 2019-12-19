@@ -2,14 +2,19 @@ import React from "react";
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
+import { updateUserPassword } from '../../actions/password_reset_actions'
+
 class ForgotPassword extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       email: "",
       isPending: false,
-      sent: false
+      sent: false,
+      message: ""
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   update(type, event) {
@@ -20,8 +25,36 @@ class ForgotPassword extends React.Component {
     });
   }
 
+  async handleSubmit(){
+    this.setState({
+      isPending: true
+    })
+
+    let userEmail = this.state.email
+    let response = await this.props.updateUserPassword(userEmail)
+    debugger
+    if (response){
+      this.setState({
+        sent: true,
+        email: "",
+        message: response
+      })
+    } else {
+      this.setState({
+        email: "",
+        message: response
+      })
+    }
+
+    this.setState({
+      isPending: false
+    })
+
+  }
   
   render() {
+    let buttonText = this.state.sent ? 'Instruction Sent!' : 'Send Reset Instruction'
+
     return (
       <div className="login-page">
         <div className="login-form-main">
@@ -44,7 +77,7 @@ class ForgotPassword extends React.Component {
                   />
                 </label>
                 <button className={"primary -fullWidth" + (this.state.isPending ? " -pending" : "")} type="submit" disabled={this.state.isPending} >
-                  {!this.state.isPending && 'Send Reset Instruction'}
+                  {!this.state.isPending && buttonText}
                 </button>
               </div>
             </form>
@@ -61,4 +94,15 @@ class ForgotPassword extends React.Component {
   }
 }
 
-export default withRouter(ForgotPassword);
+const mapStateToProps = () => {
+  return {
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateUserPassword: (email) => dispatch(updateUserPassword(email)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);
