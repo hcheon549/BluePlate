@@ -27,6 +27,7 @@ import PrivacyPolicy from './footer/PrivacyPolicy';
 import HowItWorks from './HIW/HowItWorks'
 
 import LoadingIcon from "./meal/loading_icon";
+import ForgotPassword from "./session_form/ForgotPassword";
 
 class App extends React.Component {  
   async componentDidMount() {
@@ -65,6 +66,7 @@ class App extends React.Component {
               {/* Auth Pages */}
               <AuthRoute exact path="/login" component={LoginPage} />
               <AuthenticatedRoute exact path="/signup" component={StepJoin} />
+              <AuthenticatedRoute exact path="/forgot-password" component={ForgotPassword} />
  
               {/* Content Pages */}
               <ProtectedRoute exact path="/account" component={Account} />
