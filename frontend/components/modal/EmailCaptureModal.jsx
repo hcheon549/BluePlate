@@ -9,10 +9,6 @@ const EmailCaptureModal = (props) => {
     nonInteraction: true
   })
 
-  if (!props.leadCaptureSeen){
-    props.markAsSeen();
-  }
-
   let header, subHead, action;
   
   if (props.landing){
@@ -24,6 +20,7 @@ const EmailCaptureModal = (props) => {
   }
 
   action = () => {
+    props.markAsSeen();
     props.closeModal();
   }
 
