@@ -1,2 +1,2 @@
-module PasswordResetsHelper
+module Api::PasswordResetsHelper
 end
