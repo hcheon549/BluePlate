@@ -9,18 +9,21 @@ class Api::PasswordResetsController < ApplicationController
   end
 
   def edit
-    @user = User.find_by_password_reset_token!(params[:id])
+    @user = User.find_by(password_reset_token: params[:id])
+    if @user
+      redirect_to("/reset-password?#{@user.password_reset_token}")
+    end
   end
 
   def update
-    @user = User.find_by_password_reset_token!(params[:id])
+    @user = User.find_by(password_reset_token: params[:id])
 
     if @user.password_reset_sent_at < 2.hours.ago
       render json: ["Password reset has expired."]
-    elsif @user.update_attributes(params[:user])
+    elsif @user.update_attributes(password: params[:newPassword])
       render json: ["Password has been reset!"]
     else
-      render :edit
+      redirect_to("/forgot-password")
     end
   end
 end
