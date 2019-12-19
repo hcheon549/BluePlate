@@ -2,7 +2,6 @@ class Api::PasswordResetsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user
-      debugger
       user.send_password_reset
       render json: ["Email sent"], status: 200
     end
