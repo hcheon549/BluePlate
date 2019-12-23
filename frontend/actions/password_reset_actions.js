@@ -43,7 +43,6 @@ const resetPassword = resetData => {
 
 
 const receiveResponse = response => {
-  debugger
   return {
     type: RECEIVE_PASSWORD_RESET_RESPOSE,
     response
@@ -51,7 +50,6 @@ const receiveResponse = response => {
 };
 
 const receiveErrors = error => {
-  debugger
   return {
     type: RECEIVE_PASSWORD_RESET_RESPONSE_ERROR,
     error

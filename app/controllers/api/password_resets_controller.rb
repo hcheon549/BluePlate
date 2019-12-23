@@ -3,7 +3,7 @@ class Api::PasswordResetsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user
       user.send_password_reset
-      render json: ["Email sent"], status: 200
+      render json: { message: 'Success!' }, status: 200
     end
   end
 

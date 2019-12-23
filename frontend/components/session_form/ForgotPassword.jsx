@@ -31,8 +31,9 @@ class ForgotPassword extends React.Component {
     })
 
     let userEmail = this.state.email
+    debugger
     let response = await this.props.updateUserPassword(userEmail)
-    
+    debugger
     if (response){
       this.setState({
         sent: true,
