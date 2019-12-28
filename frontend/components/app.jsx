@@ -65,7 +65,7 @@ class App extends React.Component {
               {/* Auth Pages */}
               <AuthRoute exact path="/login" component={LoginPage} />
               <AuthenticatedRoute exact path="/signup" component={StepJoin} />
-              <AuthenticatedRoute exact path="/forgot-password" component={ForgotPassword} />
+              <Route exact path="/forgot-password" component={ForgotPassword} />
               <AuthenticatedRoute path="/reset-password" component={ResetPassword} />
  
               {/* Content Pages */}

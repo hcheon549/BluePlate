@@ -3,7 +3,7 @@ class Api::PasswordResetsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user
       user.send_password_reset
-      render json: { message: 'Success!' }, status: 200
+      render json: { message: 'Email sent!' }, status: 200
     end
   end
 
@@ -18,9 +18,9 @@ class Api::PasswordResetsController < ApplicationController
     @user = User.find_by(password_reset_token: params[:id])
 
     if @user.password_reset_sent_at < 2.hours.ago
-      render json: ["Password reset has expired."]
+      render json: {message: "Password reset has expired."}
     elsif @user.update_attributes(password: params[:newPassword])
-      render json: ["Password has been reset!"]
+      render json: {message: "Password has been reset!"}
     else
       redirect_to("/forgot-password")
     end

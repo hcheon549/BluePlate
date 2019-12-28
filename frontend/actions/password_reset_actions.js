@@ -24,7 +24,7 @@ export const resetUserPassword = data => dispatch => {
 const updatePassword = userEmail => {
   return axios({
     method: "POST",
-    url: 'api/password_resets',
+    url: '/api/password_resets',
     data: {
       email: userEmail
     }
@@ -34,7 +34,7 @@ const updatePassword = userEmail => {
 const resetPassword = resetData => {
   return axios({
     method: "PATCH",
-    url: `api/password_resets/${resetData.password_reset_token}`,
+    url: `/api/password_resets/${resetData.password_reset_token}`,
     data: {
       password: resetData.newPassword
     }
