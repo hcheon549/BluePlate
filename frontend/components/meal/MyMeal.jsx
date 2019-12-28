@@ -24,8 +24,6 @@ class MyMeal extends React.Component {
       activeTab: "lunch",
       isMobile: window.innerWidth <= 560
     }
-    this.leadCaptureId = null
-
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
     this.showEmailCapture = this.showEmailCapture.bind(this);
@@ -56,20 +54,19 @@ class MyMeal extends React.Component {
   componentDidUpdate(prevProps){
     if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer)
         && !this.props.leadCaptureSeen
-        && !this.state.leadCaptureSeen
         && this.props.location.pathname == "/demo"
       ){
-      this.showEmailCapture()
+      addEventListener('scroll', this.showEmailCapture)
     }
-    // if (this.state.leadCaptureSeen || this.props.leadCaptureSeen){
-    //   removeEventListener('scroll', this.showEmailCapture)
-    // }
+    if (this.props.leadCaptureSeen){
+      removeEventListener('scroll', this.showEmailCapture)
+    }
   }
 
   async componentWillUnmount(){
     window.removeEventListener('resize', this.handleResize);
-    // removeEventListener('scroll', this.showEmailCapture);
-    // clearTimeout(this.leadCaptureId);
+    removeEventListener('scroll', this.showEmailCapture);
+    clearTimeout(this.openEmailCapture);
     if (this.props.location.pathname == "/demo"){
       await this.props.logout();
     }
@@ -84,14 +81,14 @@ class MyMeal extends React.Component {
 	}
 
   showEmailCapture(){
-    this.setState({
-      seenEmailCapture: true
-    })
-    this.leadCaptureId = setTimeout(this.openEmailCapture, 9000)
+    setTimeout(this.openEmailCapture, 9000)
   }
 
   openEmailCapture(){
     this.props.openEmailCapture();
+    this.setState({
+      seenEmailCapture: true
+    })
   }
 
   handleCollapse() {

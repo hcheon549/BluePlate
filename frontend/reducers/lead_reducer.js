@@ -13,7 +13,7 @@ let initialState = {
   errors: []
 }
 
-const leadReducer = (state=initialState, action) => {
+const signatureReducer = (state=initialState, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_LEAD:
@@ -30,4 +30,4 @@ const leadReducer = (state=initialState, action) => {
   }
 };
 
-export default leadReducer;
+export default signatureReducer;
