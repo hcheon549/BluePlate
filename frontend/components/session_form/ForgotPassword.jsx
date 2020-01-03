@@ -25,7 +25,9 @@ class ForgotPassword extends React.Component {
     });
   }
 
-  async handleSubmit(){
+  async handleSubmit(e){
+    e.preventDefault();
+
     this.setState({
       isPending: true
     })
@@ -33,11 +35,10 @@ class ForgotPassword extends React.Component {
     let userEmail = this.state.email
 
     let response = await this.props.updateUserPassword(userEmail)
-    debugger
+
     if (response){
       this.setState({
         sent: true,
-        email: "",
         message: response
       })
     } else {
@@ -50,7 +51,13 @@ class ForgotPassword extends React.Component {
     this.setState({
       isPending: false
     })
-
+    
+    setTimeout(() => {
+      this.setState({
+        sent: false,
+        email: "",
+      })
+    }, 5000)
   }
   
   render() {
@@ -77,7 +84,7 @@ class ForgotPassword extends React.Component {
                     className="login-input"
                   />
                 </label>
-                <button className={"primary -fullWidth" + (this.state.isPending ? " -pending" : "")} type="submit" disabled={this.state.isPending} >
+                <button className={"primary -fullWidth" + (this.state.isPending ? " -pending" : "")} type="submit" disabled={this.state.isPending || this.state.sent} >
                   {!this.state.isPending && buttonText}
                 </button>
               </div>

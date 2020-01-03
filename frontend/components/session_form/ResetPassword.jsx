@@ -11,7 +11,7 @@ class ResetPassword extends React.Component {
       password: "",
       confirmPassword: "",
       isPending: false,
-      sent: false,
+      reset: false,
       message: ""
     }
     this.password_reset_token = this.props.history.location.search.slice(1, this.props.history.location.search.length)
@@ -31,7 +31,9 @@ class ResetPassword extends React.Component {
     });
   }
 
-  async handleSubmit(){
+  async handleSubmit(e){
+    e.preventDefault();
+
     if (this.state.confirmPassword != this.state.password){
       this.setState({
         message: "Confirmation password must be identical."
@@ -48,29 +50,31 @@ class ResetPassword extends React.Component {
       newPassword: this.state.confirmPassword,
       password_reset_token: this.password_reset_token
     }
+
     let response = await this.props.resetUserPassword(resetData)
 
-    if (response){
+    if (response.response){
       this.setState({
-        sent: true,
-        email: "",
-        message: response
+        isPending: false,
+        reset: true,
+        password: "",
+        confirmPassword: ""
       })
+      setTimeout(() => {
+        window.location.replace('/login')
+      }, 4000)
     } else {
       this.setState({
-        email: "",
-        message: response
+        isPending: false,
+        password: "",
+        confirmPassword: "",
+        message: response.error.message
       })
     }
-
-    this.setState({
-      isPending: false
-    })
-
   }
   
   render() {
-    let buttonText = this.state.sent ? 'Password Reset!' : 'Reset Password'
+    let buttonText = this.state.reset ? 'Password has been reset!' : 'Reset Password'
 
     return (
       <div className="login-page">
@@ -103,7 +107,9 @@ class ResetPassword extends React.Component {
                   />
                 </label>
 
-                {this.state.message}
+                {this.state.message && <div className="error" role="alert">
+                  {this.state.message}
+                </div>}
 
                 <button className={"primary -fullWidth" + (this.state.isPending ? " -pending" : "")} type="submit" disabled={this.state.isPending} >
                   {!this.state.isPending && buttonText}
@@ -124,7 +130,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUserPassword: (email) => dispatch(updateUserPassword(email)),
+    resetUserPassword: (data) => dispatch(resetUserPassword(data)),
   };
 };
 
