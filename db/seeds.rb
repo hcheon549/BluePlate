@@ -9,65 +9,65 @@
 require 'open-uri'
 require 'tod'
 
-# ActiveRecord::Base.transaction do
-#   School.destroy_all
+ActiveRecord::Base.transaction do
+  School.destroy_all
 
-#   schools = [
-#     {
-#       name: "Rutgers University–New Brunswick",
-#       latitude: 40.498080,
-#       longitude: -74.448920
-#     }
-#     # ,{
-#     #   name: "Pennsylvania State University–University Park",
-#     #   latitude: 40.792650,
-#     #   longitude: -77.859082
-#     # }
-#   ]
+  schools = [
+    {
+      name: "Rutgers University–New Brunswick",
+      latitude: 40.498080,
+      longitude: -74.448920
+    }
+    # ,{
+    #   name: "Pennsylvania State University–University Park",
+    #   latitude: 40.792650,
+    #   longitude: -77.859082
+    # }
+  ]
 
-#   schools.each do |school|
-#     School.create!(school)
-#   end
-#   puts "Schools created"
-# end
+  schools.each do |school|
+    School.create!(school)
+  end
+  puts "Schools created"
+end
 
-# ActiveRecord::Base.transaction do
-#   Policy.destroy_all
+ActiveRecord::Base.transaction do
+  Policy.destroy_all
 
-#   policies = [
-#     {
-#       policy_id: 100,
-#       name: "Credit",
-#       description: 'Fully paid member',
-#       policy_type: 'Member',
-#     },{
-#       policy_id: 200,
-#       name: "Free",
-#       description: 'Free gift',
-#       policy_type: 'Member',
-#     },{
-#       policy_id: 500,
-#       name: "Lead",
-#       description: 'Signed up but haven\'t paid',
-#       policy_type: 'Lead',
-#     },{
-#       policy_id: 700,
-#       name: "Visitor",
-#       description: 'Visitor',
-#       policy_type: 'Visitor',
-#     },{
-#       policy_id: 400,
-#       name: "Chargeback",
-#       description: 'Chargeback',
-#       policy_type: 'Ban',
-#     },
-#   ]
+  policies = [
+    {
+      policy_id: 100,
+      name: "Credit",
+      description: 'Fully paid member',
+      policy_type: 'Member',
+    },{
+      policy_id: 200,
+      name: "Free",
+      description: 'Free gift',
+      policy_type: 'Member',
+    },{
+      policy_id: 500,
+      name: "Lead",
+      description: 'Signed up but haven\'t paid',
+      policy_type: 'Lead',
+    },{
+      policy_id: 700,
+      name: "Visitor",
+      description: 'Visitor',
+      policy_type: 'Visitor',
+    },{
+      policy_id: 400,
+      name: "Chargeback",
+      description: 'Chargeback',
+      policy_type: 'Ban',
+    },
+  ]
 
-#   policies.each do |policy|
-#     Policy.create!(policy)
-#   end
-#   puts "Policies created"
-# end
+  policies.each do |policy|
+    Policy.create!(policy)
+  end
+  puts "Policies created"
+end
 
 ActiveRecord::Base.transaction do
   Plan.destroy_all
@@ -165,147 +165,147 @@ ActiveRecord::Base.transaction do
   puts "Plans created"
 end
 
-# ActiveRecord::Base.transaction do
-#   PickupTime.destroy_all
+ActiveRecord::Base.transaction do
+  PickupTime.destroy_all
 
-#   lunch_time = [
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(11, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p") },
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(12).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(13).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(14).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p") }, 
-#     { pickup_type: 0, start: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(15).strftime("%I:%M %p") }, 
-#   ]
+  lunch_time = [
+    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p") },
+    { pickup_type: 0, start: Tod::TimeOfDay.new(11, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(12, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(13, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 0, start: Tod::TimeOfDay.new(14, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(15).strftime("%I:%M %p") }, 
+  ]
 
-#   lunch_time.each do |time|
-#     PickupTime.create!(time)
-#   end
-#   puts "Lunch Times created"
+  lunch_time.each do |time|
+    PickupTime.create!(time)
+  end
+  puts "Lunch Times created"
 
-#   dinner_time = [
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(17).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p") },
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p") },
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p") },
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(18).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(19).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(20).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p") }, 
-#     { pickup_type: 1, start: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(21).strftime("%I:%M %p") }, 
-#   ]
+  dinner_time = [
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p") },
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p") },
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p") },
+    { pickup_type: 1, start: Tod::TimeOfDay.new(17, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(18, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(19, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 15).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 30).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p") }, 
+    { pickup_type: 1, start: Tod::TimeOfDay.new(20, 45).strftime("%I:%M %p"), end: Tod::TimeOfDay.new(21).strftime("%I:%M %p") }, 
+  ]
 
-#   dinner_time.each do |time|
-#     PickupTime.create!(time)
-#   end
-#   puts "Dinner Times created"
-# end
+  dinner_time.each do |time|
+    PickupTime.create!(time)
+  end
+  puts "Dinner Times created"
+end
 
-# ActiveRecord::Base.transaction do
-#   User.destroy_all
+ActiveRecord::Base.transaction do
+  User.destroy_all
 
-#   rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-#   # pennState = School.find_by(name: "Pennsylvania State University–University Park")
+  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  # pennState = School.find_by(name: "Pennsylvania State University–University Park")
 
-#   users = [
-#     {
-#       email: 'demo@gmail.com',
-#       password: 'ececec',
-#       fname: 'BluePlattr',
-#       lname: 'Demo',
-#       school_id: rutgers.id
-#     }
-#     # ,{
-#     #   email: 'penn@gmail.com',
-#     #   password: 'ececec',
-#     #   fname: 'Eric',
-#     #   lname: 'Cheon',
-#     #   school_id: pennState.id
-#     # },
-#   ]
+  users = [
+    {
+      email: 'demo@gmail.com',
+      password: 'ececec',
+      fname: 'BluePlattr',
+      lname: 'Demo',
+      school_id: rutgers.id
+    }
+    # ,{
+    #   email: 'penn@gmail.com',
+    #   password: 'ececec',
+    #   fname: 'Eric',
+    #   lname: 'Cheon',
+    #   school_id: pennState.id
+    # },
+  ]
 
-#   users.each do |user|
-#     User.create!(user)
-#   end
-#   puts "Users created"
-# end
+  users.each do |user|
+    User.create!(user)
+  end
+  puts "Users created"
+end
 
-# ActiveRecord::Base.transaction do
-#   Subscription.destroy_all
+ActiveRecord::Base.transaction do
+  Subscription.destroy_all
 
-#   rutgers = User.find_by(email: 'demo@gmail.com')
-#   # penn = User.find_by(email: 'penn@gmail.com')
-#   plans = Plan.all
-#   rutgers_plan = plans[rand(0..plans.length-1)]
-#   # penn_plan = plans[rand(0..plans.length-1)]
+  rutgers = User.find_by(email: 'demo@gmail.com')
+  # penn = User.find_by(email: 'penn@gmail.com')
+  plans = Plan.all
+  rutgers_plan = plans[rand(0..plans.length-1)]
+  # penn_plan = plans[rand(0..plans.length-1)]
 
-#   subscriptions = [
-#     {
-#       user_id: rutgers.id,
-#       plan_id: rutgers_plan.id,
-#       meal_credit: rutgers_plan.meals,
-#       subscription_start: Date.new(2020, 1, 22),
-#       subscription_end: Date.new(2020, 5, 13)
-#     }
-#     # ,{
-#     #   user_id: penn.id,
-#     #   plan_id: penn_plan.id,
-#     #   meal_credit: penn_plan.meals,
-#     #   subscription_start: Date.new(2020, 1, 22),
-#     #   subscription_end: Date.new(2020, 5, 13)
-#     # },
-#   ]
+  subscriptions = [
+    {
+      user_id: rutgers.id,
+      plan_id: rutgers_plan.id,
+      meal_credit: rutgers_plan.meals,
+      subscription_start: Date.new(2020, 1, 22),
+      subscription_end: Date.new(2020, 5, 13)
+    }
+    # ,{
+    #   user_id: penn.id,
+    #   plan_id: penn_plan.id,
+    #   meal_credit: penn_plan.meals,
+    #   subscription_start: Date.new(2020, 1, 22),
+    #   subscription_end: Date.new(2020, 5, 13)
+    # },
+  ]
 
-#   subscriptions.each do |subscription|
-#     Subscription.create!(subscription)
-#   end
-#   puts "Subscriptions created"
-# end
+  subscriptions.each do |subscription|
+    Subscription.create!(subscription)
+  end
+  puts "Subscriptions created"
+end
 
-# ActiveRecord::Base.transaction do
-#   AccountSummary.destroy_all
+ActiveRecord::Base.transaction do
+  AccountSummary.destroy_all
 
-#   rutgers = User.find_by(email: 'demo@gmail.com')
-#   # penn = User.find_by(email: 'penn@gmail.com')
+  rutgers = User.find_by(email: 'demo@gmail.com')
+  # penn = User.find_by(email: 'penn@gmail.com')
 
-#   memberPolicy = Policy.find_by(policy_type: 'Member')
+  memberPolicy = Policy.find_by(policy_type: 'Member')
 
-#   summaries = [
-#     {
-#       user_id: rutgers.id,
-#       subscription_id: rutgers.subscription.id,
-#       policy_id: memberPolicy.id,
-#       total_meal_credits: rutgers.subscription.meal_credit,
-#       meal_credits_left: rutgers.subscription.meal_credit
-#     }
-#     # ,{
-#     #   user_id: penn.id,
-#     #   subscription_id: penn.subscription.id,
-#     #   policy_id: memberPolicy.id,
-#     #   total_meal_credits: penn.subscription.meal_credit,
-#     #   meal_credits_left: penn.subscription.meal_credit
-#     # },
-#   ]
+  summaries = [
+    {
+      user_id: rutgers.id,
+      subscription_id: rutgers.subscription.id,
+      policy_id: memberPolicy.id,
+      total_meal_credits: rutgers.subscription.meal_credit,
+      meal_credits_left: rutgers.subscription.meal_credit
+    }
+    # ,{
+    #   user_id: penn.id,
+    #   subscription_id: penn.subscription.id,
+    #   policy_id: memberPolicy.id,
+    #   total_meal_credits: penn.subscription.meal_credit,
+    #   meal_credits_left: penn.subscription.meal_credit
+    # },
+  ]
 
-#   summaries.each do |summary|
-#     AccountSummary.create!(summary)
-#   end
-#   puts "AccountSummary created"
-# end
+  summaries.each do |summary|
+    AccountSummary.create!(summary)
+  end
+  puts "AccountSummary created"
+end
 
 
 ActiveRecord::Base.transaction do
