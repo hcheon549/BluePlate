@@ -9,6 +9,7 @@ import stepJoinReducer from './stepJoin_reducer';
 import signatureReducer from './signature_reducer';
 import leadReducer from './lead_reducer';
 import burgerReducer from './burger_reducer';
+import passwordResetReducer from './password_reset_reducer'
 
 const uiReducer = combineReducers({
   loading: loadingReducer,
@@ -17,7 +18,8 @@ const uiReducer = combineReducers({
   stepJoin: stepJoinReducer,
   disclaimerSignature: signatureReducer,
   leadCapture: leadReducer,
-  burger: burgerReducer
+  burger: burgerReducer,
+  passwordReset: passwordResetReducer
 });
 
 export default uiReducer;

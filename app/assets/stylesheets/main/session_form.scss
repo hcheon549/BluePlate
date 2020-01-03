@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  // min-height: calc(100vh - 60px);
+  min-height: 60vh;
   padding: 50px 0;
 }
 
@@ -148,7 +148,7 @@
     flex-direction: row;
     align-items: center;;
     img{
-      width: 50px;
+      width: 80px;
       margin-right: 15px;
     }
     .hiwContent{
@@ -175,7 +175,7 @@
 .login-subHeader {
   font-size: 18px;
   font-weight: lighter;
-  color: $gray;
+  color: $dark-gray3;
   margin-bottom: 40px;
   @media screen and (max-width: 560px){
     padding: 10px 20px;
@@ -260,6 +260,34 @@
   font-size: 12px;
   text-transform: uppercase;
   text-align: left;
+}
+
+.auth-options{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  .remember-checkbox{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    .remember-input{
+      width: inherit;
+    }
+    .remember-label{
+      color: $darkest-gray;
+      margin-left: 10px;
+    }
+  }
+  .forgot-password{
+    display: flex;
+    align-items: center;
+    color: $siteColor;
+    font-weight: 600;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
 }
 
 .stripe-input {
