@@ -10,14 +10,14 @@ const LandingHIW = (props) => {
     subHead1 = 'Choose',
     content1 = 'Whether it\'s your favorite, the closest, or the new place you\'ve wanted to try.',
     subHead2 = 'Pick up',
-    content2 = 'Skip the line, the wait, and the hassle. Just pick up and go on.',
+    content2 = 'Skip the line, the wait, and the hassle. Just pick up and go.',
     subHead3 = 'Eat Well, Save Money',
     content3 = 'You can still eat well within your budget without a trip to a grocery store.'
 
 
   if (props.authPage){
     content1 = 'Choose a meal from 9PM the day before. Order your lunch by 10AM and your dinner by 4PM.',
-    content2 = 'Show up, show the cashier your order summary, pick up and go on.',
+    content2 = 'Show up, show the cashier your order summary, pick up and go.',
     content3 = 'Eat well and save money without a trip to the grocery. You already have a lot of things to do.'
   }
 
