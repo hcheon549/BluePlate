@@ -26,7 +26,6 @@ import Footer from "./footer/footer";
 import FAQLanding from './footer/FAQLanding';
 import Terms from './footer/Terms';
 import PrivacyPolicy from './footer/PrivacyPolicy';
-import HowItWorks from './HIW/HowItWorks';
 import GeneralTerms from './footer/GeneralTerms';
 import LoadingIcon from "./meal/loading_icon";
 
