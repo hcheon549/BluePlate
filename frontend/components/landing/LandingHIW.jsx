@@ -29,7 +29,7 @@ const LandingHIW = (props) => {
         </div>
         <div className="main-info">
           <div className="column">
-            <img className="choose-icon icon" src={"https://blueplate-development.s3.amazonaws.com/elements/choose.svg"} alt={"well-known"}/>
+            <img className="choose-icon icon" src={"https://blueplate-development.s3.amazonaws.com/elements/choose.png"} alt={"well-known"}/>
             <div className="hiwContent">
               <h4 className="column-text">{subHead1}</h4>
               <p className={"column-text " + ( props.authPage ? ' miniText' : '' )}>{content1}</p>
@@ -37,7 +37,7 @@ const LandingHIW = (props) => {
           </div>
           <br/>
           <div className="column">
-            <img className="showup-icon icon" src={'https://blueplate-development.s3.amazonaws.com/elements/pizza.svg'} alt={"well-known"}/>
+            <img className="showup-icon icon" src={'https://blueplate-development.s3.amazonaws.com/elements/pickup.png'} alt={"well-known"}/>
             <div className="hiwContent">
               <h4 className="column-text">{subHead2}</h4>
               <p className={"column-text " + ( props.authPage ? ' miniText' : '' )}>{content2}</p>
@@ -45,7 +45,7 @@ const LandingHIW = (props) => {
           </div>
           <br/>
           <div className="column">
-            <img className="drink-icon icon" src={'https://blueplate-development.s3.amazonaws.com/elements/smile.svg'} alt={"well-known"}/>
+            <img className="drink-icon icon" src={'https://blueplate-development.s3.amazonaws.com/elements/eatwell.png'} alt={"well-known"}/>
             <div className="hiwContent">
               <h4 className="column-text">{subHead3}</h4>
               <p className={"column-text " + ( props.authPage ? ' miniText' : '' )}>{content3}</p>
