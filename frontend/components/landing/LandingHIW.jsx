@@ -16,7 +16,7 @@ const LandingHIW = (props) => {
 
 
   if (props.authPage){
-    content1 = 'Choose a meal from 5pm the day before until 1 hour prior to your desired pick up time.',
+    content1 = 'Choose a meal from 9PM the day before. Order your lunch by 10AM and your dinner by 4PM.',
     content2 = 'Show up, show the cashier your order summary, pick up and go on.',
     content3 = 'Eat well and save money without a trip to the grocery. You already have a lot of things to do.'
   }
