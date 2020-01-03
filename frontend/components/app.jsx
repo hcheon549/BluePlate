@@ -11,22 +11,23 @@ import { fetchTimes } from '../actions/time_action';
 import { fetchPlans } from '../actions/plan_actions';
 
 import Modal from "./modal/modal";
-
+import Landing from "./landing/Landing";
 import AllMeals from "./AllMeals/AllMeals"
 import MyMeal from "./meal/MyMeal";
 import Account from "./account/account";
 import LoginPage from "./session_form/LoginPage";
+import ForgotPassword from "./session_form/ForgotPassword";
+import ResetPassword from "./session_form/ResetPassword";
+import HowItWorks from './HIW/HowItWorks'
 import StepJoin from "./stepJoin/StepJoin";
 import Navigation from "./nav/Navigation";
-import Footer from "./footer/footer";
-import Landing from "./landing/Landing";
-import FAQLanding from './footer/FAQLanding';
 import MobileMenuItems from './nav/MobileMenuItems';
+import Footer from "./footer/footer";
+import FAQLanding from './footer/FAQLanding';
 import Terms from './footer/Terms';
 import PrivacyPolicy from './footer/PrivacyPolicy';
 import HowItWorks from './HIW/HowItWorks';
 import GeneralTerms from './footer/GeneralTerms';
-
 import LoadingIcon from "./meal/loading_icon";
 
 class App extends React.Component {  
@@ -66,6 +67,8 @@ class App extends React.Component {
               {/* Auth Pages */}
               <AuthRoute exact path="/login" component={LoginPage} />
               <AuthenticatedRoute exact path="/signup" component={StepJoin} />
+              <Route exact path="/forgot-password" component={ForgotPassword} />
+              <AuthenticatedRoute path="/reset-password" component={ResetPassword} />
  
               {/* Content Pages */}
               <ProtectedRoute exact path="/account" component={Account} />

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'static_pages#root'
 
@@ -19,9 +18,9 @@ Rails.application.routes.draw do
     resources :menus, only: [:index, :update]
     resources :pickup_times, only: [:index]
     resources :reservations, only: [:index, :show, :create, :update, :destroy]
+    resources :password_resets, only: [:create, :update, :edit]
     resources :leads, only: [:create]
     resources :charges
-    resources :password_resets
 
   end
 

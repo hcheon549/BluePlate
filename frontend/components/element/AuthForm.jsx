@@ -4,7 +4,7 @@
 
 import React from "react";
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { createAccount, clearErrors, login } from '../../actions/session_actions';
 import { createAccountSummary } from '../../actions/account_summary_actions'
@@ -19,6 +19,7 @@ class AuthForm extends React.Component{
       email: "",
       password: "",
       school_id: "",
+      rememberMe: false,
       errorMessage: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -126,6 +127,24 @@ class AuthForm extends React.Component{
               className="login-input"
             />
           </label>
+
+          {(formType && formType == 'Login') &&  
+          <label className="auth-options">
+            <div className="remember-checkbox">
+              <input
+                className="remember-input"
+                name="rememberMe"
+                type="checkbox"
+                checked={this.state.remeberMe}
+                onChange={this.update.bind(this, "rememberMe")}
+              />
+              <div className="remember-label">REMEMBER ME</div>
+            </div>
+            <Link className="forgot-password" to="/forgot-password">
+              Forgot Password?
+            </Link>
+          </label>
+          }
 
           {(formType && formType == 'Sign-Up') && 
             <label className="login-label">SELECT CAMPUS:
