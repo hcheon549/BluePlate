@@ -147,7 +147,7 @@ class AuthForm extends React.Component{
           }
 
           {(formType && formType == 'Sign-Up') && 
-            <label className="login-label">CAMPUS:
+            <label className="login-label">SELECT CAMPUS:
               <select
                 value={this.state.school_id}
                 onChange={this.update.bind(this, "school_id")}

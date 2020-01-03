@@ -26,6 +26,8 @@ import Footer from "./footer/footer";
 import FAQLanding from './footer/FAQLanding';
 import Terms from './footer/Terms';
 import PrivacyPolicy from './footer/PrivacyPolicy';
+import HowItWorks from './HIW/HowItWorks';
+import GeneralTerms from './footer/GeneralTerms';
 import LoadingIcon from "./meal/loading_icon";
 
 class App extends React.Component {  
@@ -76,6 +78,7 @@ class App extends React.Component {
               <Route exact path="/faq" component={FAQLanding} />
               <Route exact path="/privacy-policy" component={PrivacyPolicy} />
               <Route exact path="/terms-of-use" component={Terms} />
+              <Route exact path="/general-terms-conditions" component={GeneralTerms} />
 
               {/* Collect All */}
               <Redirect from="*" to="/" />
