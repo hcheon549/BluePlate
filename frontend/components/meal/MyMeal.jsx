@@ -51,25 +51,25 @@ class MyMeal extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps){
-  //   if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer)
-  //       && !this.props.leadCaptureSeen
-  //       && this.props.location.pathname == "/demo"
-  //     ){
-  //     addEventListener('scroll', this.showEmailCapture)
-  //   }
-  //   if (this.props.leadCaptureSeen){
-  //     removeEventListener('scroll', this.showEmailCapture)
-  //   }
-  // }
+  componentDidUpdate(prevProps){
+    // if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer)
+    //     && !this.props.leadCaptureSeen
+    //     && this.props.location.pathname == "/demo"
+    //   ){
+    //   addEventListener('scroll', this.showEmailCapture)
+    // }
+    // if (this.props.leadCaptureSeen){
+    //   removeEventListener('scroll', this.showEmailCapture)
+    // }
+  }
 
   async componentWillUnmount(){
     window.removeEventListener('resize', this.handleResize);
-    // removeEventListener('scroll', this.showEmailCapture);
-    // clearTimeout(this.openEmailCapture);
-    // if (this.props.location.pathname == "/demo"){
-    //   await this.props.logout();
-    // }
+    removeEventListener('scroll', this.showEmailCapture);
+    clearTimeout(this.openEmailCapture);
+    if (this.props.location.pathname == "/demo"){
+      await this.props.logout();
+    }
   }
 
   handleResize() {
@@ -80,16 +80,16 @@ class MyMeal extends React.Component {
 		}
 	}
 
-  // showEmailCapture(){
-  //   setTimeout(this.openEmailCapture, 9000)
-  // }
+  showEmailCapture(){
+    setTimeout(this.openEmailCapture, 9000)
+  }
 
-  // openEmailCapture(){
-  //   this.props.openEmailCapture();
-  //   this.setState({
-  //     seenEmailCapture: true
-  //   })
-  // }
+  openEmailCapture(){
+    this.props.openEmailCapture();
+    this.setState({
+      seenEmailCapture: true
+    })
+  }
 
   handleCollapse() {
     let arrowR = this.refs.arrowRight;
