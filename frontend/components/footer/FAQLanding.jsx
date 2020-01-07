@@ -33,9 +33,9 @@ const Answers = [
   <div>
     <p>BluePlattr offers three options every semester:</p>
     <ol>
-      <li>1. 12 Meals per week plan, $4.99 per meal, plus taxes and fees.</li>
-      <li>2. 8 Meals per week plan, $5.49 per meal, plus taxes and fees.</li>
-      <li>3. 4 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
+      <li>1. 12 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
+      <li>2. 8 Meals per week plan, $6.49 per meal, plus taxes and fees.</li>
+      <li>3. 4 Meals per week plan, $6.99 per meal, plus taxes and fees.</li>
     </ol>
     <p>Please remember that your state and local taxes may applied.</p>
   </div>,

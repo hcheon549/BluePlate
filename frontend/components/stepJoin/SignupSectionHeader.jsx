@@ -5,7 +5,7 @@ const SectionHeader = ({form}) => {
 
   switch(form){
     case 'account':
-      header = 'Your Mealplan now costs less than $5 per meal.',
+      header = 'Your Mealplan now costs less than $6 per meal.',
       subHead = 'Create an account to get started.';
       break;
     case 'plan':

@@ -16,7 +16,7 @@ const EmailCaptureModal = (props) => {
     subHead = 'BluePlattr is coming to Rutgers University next semester! It\'s the easiest, most affordable and convenient way to do meals, and we are sure that you will love it. Sign up and get an exclusive offer for next semester\'s plan!'
   } else {
     header = 'See you in the Spring semester!'
-    subHead = 'Living off-campus? You can now have an affordable meal plan for yourself for as low as $5 per meal! Sign up and get exclusive offers.'
+    subHead = 'Living off-campus? You can now have an affordable meal plan for yourself for as low as $6 per meal! Sign up and get exclusive offers.'
   }
 
   action = () => {

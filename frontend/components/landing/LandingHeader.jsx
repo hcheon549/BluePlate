@@ -22,9 +22,9 @@ class LandingHeader extends React.Component {
   }
 
   render() {
-    let header = 'MEALPLAN FOR LESS THAN $5 PER MEAL',
+    let header = 'MEALPLAN FOR LESS THAN $6 PER MEAL',
         subHeader = 'FIND OUT THE RESTAURANTS NEAR YOUR CAMPUS.',
-        buttonText = 'Browse Meals',
+        buttonText = 'Get Started',
         altButtonText = 'Try DEMO',
         browseLink = this.props.currentUser.policyType == 'Member' ? '/my-meals' : '/signup';
 
@@ -32,7 +32,7 @@ class LandingHeader extends React.Component {
       <section className="landingHeader">
         <div className="headerContent">
           <div className="mobileContent">
-            <h3>MEALPLAN FOR LESS THAN<br/> $5 PER MEAL</h3>
+            <h3>LUNCH AND DINNER<br/>FOR LESS THAN $6</h3>
             <p>{subHeader}</p>
             <div style={{display: "flex", justifyContent: 'center'}}>
               <button className='orange' type="submit" onClick={() => this.props.history.push(browseLink)}>{buttonText}</button>

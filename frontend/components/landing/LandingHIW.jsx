@@ -7,19 +7,19 @@ const LandingHIW = (props) => {
       subHead3, content3;
 
     header = 'How BluePlattr works',
-    subHead1 = 'Choose',
-    content1 = 'Whether it\'s your favorite, the closest, or the new place you\'ve wanted to try.',
-    subHead2 = 'Pick up',
-    content2 = 'Skip the line, the wait, and the hassle. Just pick up and go.',
-    subHead3 = 'Eat Well, Save Money',
-    content3 = 'You can still eat well within your budget without a trip to a grocery store.'
+    subHead1 = 'Browse',
+    content1 = 'Local restaurants offer one special meal per day. We call that the BluePlattr.',
+    subHead2 = 'Choose',
+    content2 = 'Select your meals and pick-up time in advance, as early as the night before.',
+    subHead3 = 'Pick up',
+    content3 = 'Skip the line, the wait, and the hassle. Just pick up and go.'
 
 
-  if (props.authPage){
-    content1 = 'Choose a meal from 9PM the day before. Order your lunch by 10AM and your dinner by 4PM.',
-    content2 = 'Show up, show the cashier your order summary, pick up and go.',
-    content3 = 'Eat well and save money without a trip to the grocery. You already have a lot of things to do.'
-  }
+  // if (props.authPage){
+  //   content1 = 'Choose a meal from 9PM the night before. Select your lunch by 10 AM and your dinner by 4 PM.',
+  //   content2 = 'Show up, show the cashier your order summary, pick up and go.',
+  //   content3 = 'Eat well and save money without a trip to the grocery. You already have a lot of things to do.'
+  // }
 
   return (
     <section className="landingHIW">
