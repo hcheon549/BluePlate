@@ -5,6 +5,11 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.password_reset.subject
   #
+  def welcome_email(user)
+    @user = user
+    mail to: user.email, subject: "Welcome to BluePlattr!"
+  end
+
   def password_reset(user)
     @user = user
     mail to: user.email, subject: "Reset Password Instruction from BluePlattr"

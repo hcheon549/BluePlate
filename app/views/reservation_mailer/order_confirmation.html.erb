@@ -1,0 +1,8 @@
+<div>
+  <h4>New Reservation</h4>
+  <p>Menu: <%= @reservation.menu.meal.name %></p>
+  <p>Restaurant: <%= @reservation.menu.shop.name %></p>
+  <p>Pick Up Time <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .</p>
+  <h4>Pick up code is <%= @reservation.pickup_code %>.</h4>
+  <p>Enjoy!</p>
+</div>
