@@ -44,7 +44,7 @@ const HowItWorks = (props) => {
               <img className="number" src={"https://blueplate-development.s3.amazonaws.com/elements/one.png"} alt={"One"}/>
               <div className="hiwContent">
                 <h4 className="column-text">Browse</h4>
-                <p className="column-text">Your local restaurants offer one daily special every day for lunch and dinner. We call that the BluePlattr. You can select any of the BluePlattr specials for your lunch and dinner. Be excited about the new BluePlattr specials you'll see every day!</p>
+                <p className="column-text">Your local restaurants offer one daily special every day for lunch and dinner. We call that the BluePlattr. You can select any of the BluePlattr specials for your lunch and dinner. Everyday is something different!</p>
               </div>
             </div>
             <br/>
