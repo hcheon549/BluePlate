@@ -7,14 +7,20 @@ class ReservationMailer < ApplicationMailer
     mail to: 'eric@blueplattr.com', subject: mail_subject
   end
 
-  def update_confirmation(reservation)
+  def update_confirmation(user, reservation)
+    @user = user
     @reservation = reservation
-    mail to: 'eric@blueplattr.com', subject: "Update Order Confirmation"
+    @date = format_date(@reservation.menu.offered_date)
+    mail_subject = "BluePlattr - Update for Your #{@reservation.pickup_time.pickup_type == 0 ? 'Lunch' : 'Dinner'} Reserved for #{@date}"
+    mail to: 'eric@blueplattr.com', subject: mail_subject
   end
 
-  def cancel_confirmation(reservation)
+  def cancel_confirmation(user, reservation)
+    @user = user
     @reservation = reservation
-    mail to: 'eric@blueplattr.com', subject: "Order Cancellation Confirmation"
+    @date = format_date(@reservation.menu.offered_date)
+    mail_subject = "BluePlattr - Cancellation for Your #{@reservation.pickup_time.pickup_type == 0 ? 'Lunch' : 'Dinner'} Reserved for #{@date}"
+    mail to: 'eric@blueplattr.com', subject: mail_subject
   end
 
   private

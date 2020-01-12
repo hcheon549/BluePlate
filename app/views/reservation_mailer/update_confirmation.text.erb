@@ -1,1 +1,14 @@
-Update Reservation
+
+  Hi <%= @user.fname.capitalize %>!
+
+  We have received an update request for your order. Your order has been updated, however, your pick-up code hasn't been changed.
+  
+  Pick up code is still
+  <%= @reservation.pickup_code %>
+
+  Restaurant: <%= @reservation.menu.shop.name %>
+  Menu: <%= @reservation.menu.meal.name %>
+  Date: <%= @date %>
+  Pick Up Time:  <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .
+  
+  Enjoy your <%= @reservation.pickup_time.pickup_type == 0 ? 'lunch' : 'dinner' %>!

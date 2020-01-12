@@ -1,7 +1,11 @@
 <div>
-  <h4>Update Reservation</h4>
-  <p>Menu: <%= @reservation.menu.meal.name %></p>
-  <p>Restaurant: <%= @reservation.menu.shop.name %></p>
-  <p>Pick Up Time <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %>.</p>
-  <h4>Pick up code is <%= @reservation.pickup_code %>.</h4>
+  <p>Hi <%= @user.fname.capitalize %>!</p>
+  <p>We have received an update request for your order. Your order has been updated, however, your pick-up code hasn't been changed.</p>
+  <p>Pick up code is still</p>
+  <h3><%= @reservation.pickup_code %></h3>
+  <p><strong>Restaurant:</strong> <%= @reservation.menu.shop.name %></p>
+  <p><strong>Menu:</strong> <%= @reservation.menu.meal.name %></p>
+  <p><strong>Date:</strong> <%= @date %></p>
+  <p><strong>Pick Up Time: </strong> <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .</p>
+  <p>Enjoy your <%= @reservation.pickup_time.pickup_type == 0 ? 'lunch' : 'dinner' %>!</p>
 </div>
