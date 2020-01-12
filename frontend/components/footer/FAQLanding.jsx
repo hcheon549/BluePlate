@@ -57,10 +57,10 @@ const Answers = [
   </div>,
   <div>
     <p>You can use BluePlattr to get your lunch or dinner, as follows:</p>
-    <p>Lunch:</p>
+    <p><strong>Lunch:</strong></p>
     <p>Once subscribed to a meal plan, you can begin right away! BluePlattr lunch menu selections go live the night before at 9:00 PM. Users have until 10:00 AM on pickup day to select their lunch option. After you make your selection and select your pickup time, you will receive your unique four digit code which is shown to the staff at your favorite local restaurant when picking up. If you wish to change your lunch reservation, you may do so by selecting another meal and pick-up time, provided that you make the change before 10:00 AM.</p>
     <p>At 10:00 AM the menu is closed and you may no longer make changes or cancel your order. This is to assure that restaurants have adequate time to prepare your food to be ready for pick up at the time you selected.</p>
-    <p>Dinner:</p>
+    <p><strong>Dinner:</strong></p>
     <p>Almost the exact same as lunch, except you have from 9:00 PM the night before up until 4:00PM the day of. Plenty of time to make your selection. Want to change your dinner selection? No problem! Just select a new option before 4:00 PM and you are good to go.</p>
     <p>However keep in mind that each restaurant has a limited number of BluePlattr meals per day, so first come, first serve. Don’t wait until the last minute!</p>
   </div>,
