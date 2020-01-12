@@ -1,5 +1,6 @@
 class ReservationMailer < ApplicationMailer
-  def order_confirmation(reservation)
+  def order_confirmation(user, reservation)
+    @user = user
     @reservation = reservation
     @date = format_date(@reservation.menu.offered_date)
     mail_subject = "BluePlattr - #{@reservation.pickup_time.pickup_type == 0 ? 'Lunch' : 'Dinner'} Reserved for #{@date}"

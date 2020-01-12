@@ -39,7 +39,7 @@ class Api::ReservationsController < ApplicationController
     
     if @reservation.save
       adjust_attributes('create', @user, @reservation)
-      ReservationMailer.order_confirmation(@reservation).deliver_later(wait: 5.second)
+      ReservationMailer.order_confirmation(@user, @reservation).deliver_later(wait: 5.second)
       render :show
     else
       render json: @reservation.errors.full_messages, status: 422
