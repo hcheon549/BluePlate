@@ -58,7 +58,7 @@ class Api::ReservationsController < ApplicationController
       pickup_time_id: params[:reservation][:pickup_time_id],
       )
       @user = current_user
-      ReservationMailer.update_confirmation(@reservation).deliver_later(wait: 5.second)
+      ReservationMailer.update_confirmation(@user, @reservation).deliver_later(wait: 5.second)
       render :show
     else
       render json: @reservation.errors.full_messages, status: 422
@@ -69,9 +69,9 @@ class Api::ReservationsController < ApplicationController
   def destroy
     @user = current_user
     @reservation = @user.reservations.find(params[:id])
-
+    reservation_dup = @reservation
     if @reservation.destroy
-      ReservationMailer.cancel_confirmation(@reservation).deliver_now
+      ReservationMailer.cancel_confirmation(@user, reservation_dup).deliver_later(wait: 5.second)
       adjust_attributes('destroy', @user, @reservation)
       render :show
     end

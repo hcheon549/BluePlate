@@ -11,7 +11,7 @@ const HowItWorks = (props) => {
 
   let tryDemo = async () => {
     let user = {
-      email: 'demo@gmail.com',
+      email: 'eric@blueplattr.com',
       password: 'ececec'
     }
     await props.processLogIn(user);
