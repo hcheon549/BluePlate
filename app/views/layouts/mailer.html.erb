@@ -3,17 +3,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-    <%= stylesheet_link_tag "mailer/mailer", media: 'all' %>
+    <%= stylesheet_link_tag "mailer", media: 'all' %>
 
   <body>
     <div id="root">
       <%= yield %>
 
       <div class="signature">
-        <p>
-          Thanks!<br/>
-          Team BluePlattr
-        </p>
+        <p>Team BluePlattr</p>
       </div>
     </div>
   </body>

@@ -1,11 +1,20 @@
-<div>
+<div class="order">
   <p>Hi <%= @user.fname.capitalize %>!</p>
+  
   <p>We have received your order, and the restaurant is preparing your meal to be picked up! Here's the summary of your order.</p>
   <p>Pick up code is</p>
-  <h3><%= @reservation.pickup_code %></h3>
-  <p><strong>Restaurant:</strong> <%= @reservation.menu.shop.name %></p>
-  <p><strong>Menu:</strong> <%= @reservation.menu.meal.name %></p>
-  <p><strong>Date:</strong> <%= @date %></p>
-  <p><strong>Pick Up Time: </strong> <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .</p>
+  
+  <div class="pickupCode">
+    <h3><%= @reservation.pickup_code %></h3>
+  </div>
+
+  <div class="orderSummary">
+    <p><strong>Restaurant:</strong> <%= @reservation.menu.shop.name %></p>
+    <p><strong>Address:</strong> <%= @reservation.menu.shop.address %></p>
+    <p><strong>Menu:</strong> <%= @reservation.menu.meal.name %></p>
+    <p><strong>Date:</strong> <%= @date %></p>
+    <p><strong>Pick Up Time: </strong> <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .</p>
+  </div>
+  
   <p>Enjoy your <%= @reservation.pickup_time.pickup_type == 0 ? 'lunch' : 'dinner' %>!</p>
 </div>

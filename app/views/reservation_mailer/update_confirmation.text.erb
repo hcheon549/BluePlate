@@ -1,12 +1,13 @@
 
   Hi <%= @user.fname.capitalize %>!
 
-  We have received an update request for your order. Your order has been updated, however, your pick-up code hasn't been changed.
+  We have received an update request on your order. Your order has been updated, however, your pick-up code hasn't been changed.
   
   Pick up code is still
   <%= @reservation.pickup_code %>
 
   Restaurant: <%= @reservation.menu.shop.name %>
+  Address: <%= @reservation.menu.shop.address %>
   Menu: <%= @reservation.menu.meal.name %>
   Date: <%= @date %>
   Pick Up Time:  <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .

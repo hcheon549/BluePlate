@@ -69,9 +69,9 @@ class Api::ReservationsController < ApplicationController
   def destroy
     @user = current_user
     @reservation = @user.reservations.find(params[:id])
-    reservation_dup = @reservation
+
     if @reservation.destroy
-      ReservationMailer.cancel_confirmation(@user, reservation_dup).deliver_later(wait: 5.second)
+      ReservationMailer.cancel_confirmation(@user, @reservation).deliver_now
       adjust_attributes('destroy', @user, @reservation)
       render :show
     end
