@@ -1,0 +1,14 @@
+Hi <%= @user.fname.capitalize %>!
+
+We have received your oder, and the restaurant is preparing your meal to be picked up! Here's the summary of your order.
+
+Pick up code is
+<%= @reservation.pickup_code %>
+
+Restaurant: <%= @reservation.menu.shop.name %>
+Address: <%= @reservation.menu.shop.address %>
+Menu: <%= @reservation.menu.meal.name %>
+Date: <%= @date %>
+Pick Up Time:  <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .
+
+Enjoy your <%= @reservation.pickup_time.pickup_type == 0 ? 'lunch' : 'dinner' %>!

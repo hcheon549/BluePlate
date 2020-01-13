@@ -223,7 +223,7 @@ ActiveRecord::Base.transaction do
 
   users = [
     {
-      email: 'demo@gmail.com',
+      email: 'eric@blueplattr.com',
       password: 'ececec',
       fname: 'BluePlattr',
       lname: 'Demo',
@@ -247,7 +247,7 @@ end
 ActiveRecord::Base.transaction do
   Subscription.destroy_all
 
-  rutgers = User.find_by(email: 'demo@gmail.com')
+  rutgers = User.find_by(email: 'eric@blueplattr.com')
   # penn = User.find_by(email: 'penn@gmail.com')
   plans = Plan.all
   rutgers_plan = plans[rand(0..plans.length-1)]
@@ -279,7 +279,7 @@ end
 ActiveRecord::Base.transaction do
   AccountSummary.destroy_all
 
-  rutgers = User.find_by(email: 'demo@gmail.com')
+  rutgers = User.find_by(email: 'eric@blueplattr.com')
   # penn = User.find_by(email: 'penn@gmail.com')
 
   memberPolicy = Policy.find_by(policy_type: 'Member')
@@ -1583,7 +1583,7 @@ end
 
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
-  rutgers = User.find_by(email: 'demo@gmail.com')
+  rutgers = User.find_by(email: 'eric@blueplattr.com')
   menus = Menu.all
 
   lunch_time = PickupTime.where(pickup_type: 0)

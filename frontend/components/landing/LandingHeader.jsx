@@ -14,7 +14,7 @@ class LandingHeader extends React.Component {
 
   async tryDemo(){
     let user = {
-      email: 'demo@gmail.com',
+      email: 'eric@blueplattr.com',
       password: 'ececec'
     }
     await this.props.processLogIn(user);

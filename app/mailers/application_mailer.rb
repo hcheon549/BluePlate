@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'support@blueplattr.com'
+  default from: 'hello@blueplattr.com'
   layout 'mailer'
 end
