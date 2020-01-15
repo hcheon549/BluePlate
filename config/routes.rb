@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     resources :schools, only: [:index]
     resources :plans, only: [:index]
+    resources :promos, only: [:index, :show]
     resources :favorites, only: [:index, :create, :destroy]
     resources :subscriptions, only: [:create, :update]
     resources :account_summaries, only: [:create, :update]

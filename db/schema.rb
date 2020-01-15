@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_053921) do
+ActiveRecord::Schema.define(version: 2020_01_15_134538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,19 @@ ActiveRecord::Schema.define(version: 2019_12_19_053921) do
     t.string "policy_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "promos", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "description", null: false
+    t.string "adjustment_type", null: false
+    t.integer "adjustment_value", null: false
+    t.integer "quantity", default: 5000, null: false
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "total_redeemed", default: 0, null: false
+    t.index ["code"], name: "index_promos_on_code"
   end
 
   create_table "reservations", force: :cascade do |t|
