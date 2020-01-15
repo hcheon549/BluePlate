@@ -21,10 +21,8 @@ class Api::AccountSummariesController < ApplicationController
       total_meal_credits: params[:account_summary][:total_meal_credits] || @summary.total_meal_credits,
       meal_credits_left: params[:account_summary][:meal_credits_left] || @summary.meal_credits_left
       )
-      debugger
       # Sending welcome email to a new user
       if wasLead && (@summary.policy_id == Policy.find_by(policy_id: 100).id)
-        debugger
         @user = @summary.user
         UserMailer.welcome_email(@user).deliver_later(wait: 5.second)
       end
