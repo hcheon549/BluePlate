@@ -1,6 +1,7 @@
 class Api::ChargesController < ApplicationController
   def create
-    Stripe.api_key = "sk_live_s0bZte2dqIShRIIkcawJQIGN00jf9IWLEN"
+    # secret_key
+    Stripe.api_key = "sk_test_4qiK0iSd8XZDkOqzgx2Vkrc000LjZTEdJp"
 
     customer = Stripe::Customer.create({
       email: params[:chargeData][:stripeEmail],
