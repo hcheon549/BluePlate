@@ -15,7 +15,7 @@
   .main-info{
     text-align: left;
     .infoSection{
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       overflow: hidden;
       h4{ 
         color: $gray-menu;
@@ -46,8 +46,14 @@
       }
     }
   }
+
+  .havePromo{
+    color: $siteColor;
+    font-size: 14px;
+    &:hover{ cursor: pointer; }
+  }
   .divider{
-    margin: 25px 0;
+    margin: 15px 0 25px;
     width: 100%;
     border-bottom: 1px solid #cccccc;
   }
