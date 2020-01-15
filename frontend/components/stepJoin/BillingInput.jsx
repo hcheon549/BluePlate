@@ -249,10 +249,10 @@ export default class BillingInputStripe extends React.Component{
   constructor(props){
     super(props)
   }
-
+  // add publishable key below
   render(){
     return(
-      <StripeProvider apiKey="pk_live_maUU7kWSgzoJ1UxXbwOvjEKO00Ze5SojIO">
+      <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
         <Elements>
           <BillingStipeForm {...this.props} />
         </Elements>

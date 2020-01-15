@@ -12,14 +12,23 @@ class Api::AccountSummariesController < ApplicationController
 
   def update
     @summary = AccountSummary.find(params[:id])
+    wasLead = @summary.policy_id == getPolicyId('Lead')
     @policy_id = getPolicyId(params[:account_summary][:policy_type])
-
+    
     if @summary.update_attributes(
       policy_id: @policy_id || @summary.policy_type,
       subscription_id: params[:account_summary][:subscription_id] || @summary.subscription_id,
       total_meal_credits: params[:account_summary][:total_meal_credits] || @summary.total_meal_credits,
       meal_credits_left: params[:account_summary][:meal_credits_left] || @summary.meal_credits_left
       )
+      debugger
+      # Sending welcome email to a new user
+      if wasLead && (@summary.policy_id == Policy.find_by(policy_id: 100).id)
+        debugger
+        @user = @summary.user
+        UserMailer.welcome_email(@user).deliver_later(wait: 5.second)
+      end
+
       render :show
     else
       render json: @summary.errors.full_messages, status: 422
@@ -34,18 +43,26 @@ class Api::AccountSummariesController < ApplicationController
 
   def getPolicyId(policy_type)
     case policy_type
-    when "Visitor"
-      policy_id = Policy.find_by(policy_id: 700).id
-    when "Lead"
-      policy_id = Policy.find_by(policy_id: 500).id
-    when "Ban"
-      policy_id = Policy.find_by(policy_id: 400).id
-    when "Member"
-      policy_id = Policy.find_by(policy_id: 100).id
-    when "Gift"
-      policy_id = Policy.find_by(policy_id: 200).id
+      when "Visitor"
+        policy_id = Policy.find_by(policy_id: 700).id
+      when "Lead"
+        policy_id = Policy.find_by(policy_id: 500).id
+      when "Ban"
+        policy_id = Policy.find_by(policy_id: 400).id
+      when "Member"
+        policy_id = Policy.find_by(policy_id: 100).id
+      when "Gift"
+        policy_id = Policy.find_by(policy_id: 200).id
     end
 
-    return policy_id
+    policy_id
+  end
+
+  def getLeadPolicyId
+
+  end
+
+  def getMemberPolicyId
+    Policy.find_by(policy_type: 'Member').policy_id
   end
 end
