@@ -42,15 +42,12 @@ class PromoInputField extends React.Component {
   }
 
   update(type, event) {
-    let validationState = ["promoCode"];
-    this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
-    
     if (this.state.errorMessage.length > 0){
       this.setState({ errorMessage: [] })
     }
     
     this.setState({ 
-      [type]: this.state[type] 
+      [type]: event.target.value.toUpperCase()
     });
   }
 
