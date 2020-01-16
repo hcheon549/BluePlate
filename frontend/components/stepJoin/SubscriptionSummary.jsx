@@ -10,6 +10,7 @@ class SubscriptionSummary extends React.Component {
       showPromoInput: false,
     };
 
+    this.calculateTotal = this.calculateTotal.bind(this);
     this.togglePromoInput = this.togglePromoInput.bind(this);
   }
 
@@ -17,6 +18,35 @@ class SubscriptionSummary extends React.Component {
     this.setState({
       showPromoInput: !this.state.showPromoInput
     })
+  }
+
+  calculateTotal(){
+    let { currentPlan, promoApplied } = this.props
+
+    let planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal;
+    if (promoApplied){
+      planPrice = Math.round(currentPlan.price * 100) / 100;
+      promoCode = promoApplied.code;
+      adjustment = promoApplied.adjustmentType;
+      discount = promoApplied.adjustmentValue;
+      discountAmount = promoApplied.adjustmentType == 'Fixed'
+        ? discount * -1
+        : Math.round(planPrice * discount) / 100;
+      planTotal = planPrice - discountAmount;
+      tax = Math.round(planTotal * 6.625) / 100;
+      todayTotal = Math.round((planTotal + tax) * 100) / 100;
+    } else {
+      planPrice = Math.round(currentPlan.price * 100) / 100
+      promoCode = null;
+      discount = null;
+      adjustment = null;
+      discountAmount = null;
+      planTotal = planPrice
+      tax = Math.round(planTotal * 6.625) / 100;
+      todayTotal = Math.round((planTotal + tax) * 100) / 100;
+    }
+
+    return { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal }
   }
 
   render() {
@@ -27,9 +57,9 @@ class SubscriptionSummary extends React.Component {
       return <div />
     }
     
-    let tax = Math.round(currentPlan.price * 6.625) / 100;
-    let totalPayment = Math.round((currentPlan.price + tax) * 100) / 100;
+    let { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal } = this.calculateTotal()
     let buttonText = updateEmail ? 'Cancel' : 'Change';
+    let additionalPromoInfo = adjustment == "Percent" ? `(${discount}% OFF)` : "";
 
     return (
       <section className="SubscriptionSummary">
@@ -69,30 +99,44 @@ class SubscriptionSummary extends React.Component {
             {this.state.showPromoInput && 
               <PromoInputField 
                 currentUser={currentUser}
+                calculateTotal={this.calculateTotal}
+                togglePromoInput={this.togglePromoInput}
               />}
           </div>
           
           <div className="divider" />
           <div className="infoSection -billing">
-            <div className="row -left">
-              <p>Subtotal</p>
+            <div className="checkout">
+              <p>Plan Price</p>
+            {/* </div>
+            <div className="row -right"> */}
+              <p>${planPrice.toFixed(2)}</p>
             </div>
-            <div className="row -right">
-              <p>${currentPlan.price.toFixed(2)}</p>
-            </div>
-            <div className="row -left">
+
+            {promoCode &&
+            <div className="promoField">
+              <div className="checkout">
+                <p>Discount {promoCode} {additionalPromoInfo}</p>
+              {/* </div> */}
+              {/* <div className="row -right"> */}
+                <p>-${discountAmount}</p>
+              </div>
+            </div>}
+            
+            
+            <div className="checkout">
               <p>Est. tax</p>
-            </div>
-            <div className="row -right">
+            {/* </div>
+            <div className="row -right"> */}
               <p>${tax.toFixed(2)}</p>
             </div>
           </div>
           <div className="infoSection -billing">
-            <div className="row -left">
+            <div className="checkout">
               <p><span>Today's Total</span></p>
-            </div>
-            <div className="row -right">
-              <p><span>${totalPayment.toFixed(2)}</span></p>
+            {/* </div>
+            <div className="row -right"> */}
+              <p><span>${todayTotal.toFixed(2)}</span></p>
             </div>
           </div>
         </div>

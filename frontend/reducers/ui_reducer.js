@@ -10,6 +10,7 @@ import signatureReducer from './signature_reducer';
 import leadReducer from './lead_reducer';
 import burgerReducer from './burger_reducer';
 import passwordResetReducer from './password_reset_reducer'
+import promoReducer from './promo_reducer';
 
 const uiReducer = combineReducers({
   loading: loadingReducer,
@@ -19,7 +20,8 @@ const uiReducer = combineReducers({
   disclaimerSignature: signatureReducer,
   leadCapture: leadReducer,
   burger: burgerReducer,
-  passwordReset: passwordResetReducer
+  passwordReset: passwordResetReducer,
+  promo: promoReducer
 });
 
 export default uiReducer;

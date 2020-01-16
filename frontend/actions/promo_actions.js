@@ -5,7 +5,7 @@ export const RECEIVE_PROMO = "RECEIVE_PROMO";
 export const RECEIVE_PROMO_ERRORS = "RECEIVE_PROMO_ERRORS";
 
 export const fetchOnePromo = promoData => dispatch => {
-  return fetchOnePromo(promoData).then(
+  return fetchPromo(promoData).then(
     result => {
       return dispatch(receivePromo(result.data))
     },
@@ -14,7 +14,7 @@ export const fetchOnePromo = promoData => dispatch => {
 }
 
 export const fetchAllPromos = () => dispatch => {
-  return fetchAllPromos().then(
+  return fetchPromos().then(
     result => {
       return dispatch(receivePromos(result.data))
     },
@@ -22,23 +22,17 @@ export const fetchAllPromos = () => dispatch => {
   )
 }
 
-const fetchOnePromo = promoData => {
+const fetchPromo = promoCode => {
   return axios({
     method: "GET",
-    url: `/api/promos/${promoData.id}`,
-    data: {
-      code: promoData.code
-    }
+    url: `/api/promos/match?code=${promoCode}`,
   })
 }
 
-const fetchAllPromos = () => {
+const fetchPromos = () => {
   return axios({
     method: "GET",
     url: `/api/promos`,
-    data: {
-      password: resetData.newPassword
-    }
   })
 }
 
@@ -48,7 +42,6 @@ const receivePromo = promo => {
     promo
   };
 };
-
 
 const receivePromos = promos => {
   return {

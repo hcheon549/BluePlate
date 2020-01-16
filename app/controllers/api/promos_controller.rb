@@ -9,15 +9,13 @@ class Api::PromosController < ApplicationController
     end
   end
 
-  def show
+  def match
     @promo = Promo.find_by(code: params[:code])
 
     if @promo
       render :show
     else
-      render json: ["No promo found"], status: 404
+      render json: ["Invalid Code"], status: 404
     end
   end
-
-  private
 end

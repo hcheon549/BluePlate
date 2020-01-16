@@ -1,4 +1,8 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { fetchOnePromo } from '../../actions/promo_actions';
 
 class PromoInputField extends React.Component {
   constructor(props){
@@ -7,6 +11,7 @@ class PromoInputField extends React.Component {
       promoApplied: false,
       isPending: false,
       promoCode: '',
+      appliedPromo: '',
       errorMessage: []
     }
 
@@ -17,13 +22,33 @@ class PromoInputField extends React.Component {
   async applyPromo(e){
     e.preventDefault();
     this.setState({ isPending: true })
+    let { promoCode } = this.state;
 
-    console.log('herehereraufiu')
+    let promoResponse = await this.props.matchPromo(promoCode)
+
+    if (promoResponse.promo) {
+      this.setState({ 
+        isPending: false,
+        appliedPromo: promoResponse.promo.code,
+        promoApplied: true
+      })
+      setTimeout(this.props.togglePromoInput, 5000)
+    } else {
+      this.setState({
+        isPending: false,
+        errorMessage: promoResponse.error
+      })
+    }
   }
 
   update(type, event) {
     let validationState = ["promoCode"];
     this.state[type] = validationState.includes(type) ? event.target.value.replace(/\s+/g, '') : event.target.value;
+    
+    if (this.state.errorMessage.length > 0){
+      this.setState({ errorMessage: [] })
+    }
+    
     this.setState({ 
       [type]: this.state[type] 
     });
@@ -55,8 +80,8 @@ class PromoInputField extends React.Component {
             />
           </label>
 
-          <button className={"secondary"} type="submit" disabled={promoApplied || isPending} >
-            {buttonText}
+          <button className={("secondary") +  (this.state.isPending ? " -pending" : "")} type="submit" disabled={promoApplied || isPending} >
+            {!this.state.isPending && buttonText}
           </button>
         </div>
         {(errorMessage && errorMessage.length > 0) && this.renderErrors()}
@@ -65,4 +90,17 @@ class PromoInputField extends React.Component {
   }
 }
 
-export default PromoInputField;
+const mapStateToProps = (state) => {
+  return {
+    currentPromo: state.ui.promo,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    matchPromo: (promoCode) => dispatch(fetchOnePromo(promoCode)),
+  };
+ };
+ 
+ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PromoInputField));
+ 

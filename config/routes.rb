@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
     resources :schools, only: [:index]
     resources :plans, only: [:index]
-    resources :promos, only: [:index, :show]
+    get 'promos/match', to: 'promos#match'
+    resources :promos, only: [:index]
     resources :favorites, only: [:index, :create, :destroy]
     resources :subscriptions, only: [:create, :update]
     resources :account_summaries, only: [:create, :update]

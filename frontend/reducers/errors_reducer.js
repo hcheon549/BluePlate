@@ -5,7 +5,8 @@ import schoolErrorsReducer from './school_errors_reducer';
 import userErrorsReducer from './user_errors_reducer';
 import planErrorsReducer from './plan_errors_reducer';
 import chargeErrorsReducer from './charge_errors_reducer';
-import accountHistoryErrorsReducer from './accountHistory_errors_reducer'
+import accountHistoryErrorsReducer from './accountHistory_errors_reducer';
+import promoErrorsReducer from './promo_errors_reducer';
 
 const errorsReducer = combineReducers({
   session: sessionErrorsReducer,
@@ -14,7 +15,8 @@ const errorsReducer = combineReducers({
   schools: schoolErrorsReducer,
   plans: planErrorsReducer,
   charges: chargeErrorsReducer,
-  accountHistory: accountHistoryErrorsReducer
+  accountHistory: accountHistoryErrorsReducer,
+  promo: promoErrorsReducer
 });
 
 export default errorsReducer;

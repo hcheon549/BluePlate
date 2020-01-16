@@ -45,6 +45,16 @@
         width: 49%
       }
     }
+    .checkout {
+      display: flex;
+      justify-content: space-between;
+    }
+    .promoField{
+      padding: 5px 0;
+      .checkout p {
+        color: $orange !important;
+      }
+    }
   }
 
   .havePromo{

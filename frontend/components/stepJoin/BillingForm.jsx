@@ -27,18 +27,6 @@ class BillingForm extends React.Component{
     this.setState({ updateEmail: !this.state.updateEmail })
   }
 
-  calculatePayment(total){
-    let payment = Math.round((total / 3) * 100) / 100;
-    let payments = [];
-    while (total > 0){
-      let thisPayment = payment + (total <= 0.02 ? total : 0);
-      payments.push(thisPayment);
-      total -= thisPayment;
-      total = Math.round(total * 100) / 100;
-    }
-    return payments.map(payment => payment.toFixed(2));
-  }
-
   render(){
     return(
       <React.Fragment>
@@ -46,7 +34,6 @@ class BillingForm extends React.Component{
           <div className="signupPartition">
             <SubscriptionSummary
               {...this.props}
-              calculatePayment={this.calculatePayment}
               toggleUpdateForm={this.toggleUpdateForm}
               updateEmail={this.state.updateEmail}
             />
@@ -61,12 +48,12 @@ class BillingForm extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  const {entities: { currentUser, subscription, plans }} = state;
-  console.log(plans)
-  if (currentUser){console.log(currentUser)}
+  const {entities: { currentUser, subscription, plans }, ui} = state;
+
   return {
     currentUser,
     currentPlan: currentUser ? plans[currentUser.subscription.planId] : null,
+    promoApplied: ui.promo,
     errors: state.errors.session,
   };
 };
