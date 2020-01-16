@@ -11,6 +11,7 @@ import leadReducer from './lead_reducer';
 import burgerReducer from './burger_reducer';
 import passwordResetReducer from './password_reset_reducer'
 import promoReducer from './promo_reducer';
+import { chargePriceReducer } from '../actions/price_actions';
 
 const uiReducer = combineReducers({
   loading: loadingReducer,
@@ -21,7 +22,8 @@ const uiReducer = combineReducers({
   leadCapture: leadReducer,
   burger: burgerReducer,
   passwordReset: passwordResetReducer,
-  promo: promoReducer
+  promo: promoReducer,
+  chargePrice: chargePriceReducer
 });
 
 export default uiReducer;

@@ -46,6 +46,8 @@ class SubscriptionSummary extends React.Component {
       todayTotal = Math.round((planTotal + tax) * 100) / 100;
     }
 
+    this.props.setChargePrice(todayTotal);
+
     return { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal }
   }
 
@@ -53,10 +55,6 @@ class SubscriptionSummary extends React.Component {
     let { currentUser, currentPlan, toggleUpdateForm, updateEmail,
           updateUserEmail, setStep, errors, clearErrors } = this.props;
 
-    if (!currentPlan){
-      return <div />
-    }
-    
     let { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal } = this.calculateTotal()
     let buttonText = updateEmail ? 'Cancel' : 'Change';
     let additionalPromoInfo = adjustment == "Percent" ? `(${discount}% OFF)` : "";

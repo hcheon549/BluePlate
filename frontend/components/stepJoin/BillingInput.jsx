@@ -76,8 +76,9 @@ class BillingInput extends React.Component{
         stripeToken: token.id,
         customerId: this.props.currentUser.id,
         customerName: token.card.name,
-        amount: this.props.currentPlan.price,
+        amount: this.props.chargeAmount,
         description: this.props.currentPlan.name,
+        promo: this.props.promoApplied
       })
       if (charge.errors){
         //FAILED CHARGE LOGIC
@@ -252,7 +253,7 @@ export default class BillingInputStripe extends React.Component{
   // add publishable key below
   render(){
     return(
-      <StripeProvider apiKey="pk_live_maUU7kWSgzoJ1UxXbwOvjEKO00Ze5SojIO">
+      <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
         <Elements>
           <BillingStipeForm {...this.props} />
         </Elements>
