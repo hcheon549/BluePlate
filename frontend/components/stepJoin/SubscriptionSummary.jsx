@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 
 import ChangeEmailForm from '../element/ChangeEmailForm';
 import PromoInputField from '../element/PromoInputField';
@@ -51,11 +52,29 @@ class SubscriptionSummary extends React.Component {
     return { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal }
   }
 
+  calculateSubscriptionDates(){
+    let now = moment()
+    let launchDate = moment('2020-1-21')
+    let start_subscription, start_date, renew_date;
+
+    if (now.diff(launchDate, 'days') > 0){
+      start_subscription = now
+      start_date = now.format('MMMM Do, YYYY');
+      renew_date = now.add(28, 'days').format('MMMM Do, YYYY');
+    } else {
+      start_date = launchDate.format('MMMM Do, YYYY')
+      renew_date = launchDate.add(28, 'days').format('MMMM Do, YYYY');
+    }
+
+    return { start_date, renew_date }
+  }
+
   render() {
     let { currentUser, currentPlan, toggleUpdateForm, updateEmail,
           updateUserEmail, setStep, errors, clearErrors } = this.props;
 
     let { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal } = this.calculateTotal()
+    let { start_date, renew_date } = this.calculateSubscriptionDates()
     let buttonText = updateEmail ? 'Cancel' : 'Change';
     let additionalPromoInfo = adjustment == "Percent" ? `(${discount}% OFF)` : "";
 
@@ -84,11 +103,11 @@ class SubscriptionSummary extends React.Component {
           <div className="infoSection">
             <div className="row -left">
               <h4>Plan Start Date</h4>
-              <p>January 21, 2020</p>
+              <p>{start_date}</p>
             </div>
             <div className="row -right">
               <h4>Renewal Date</h4>
-              <p>February 11, 2020</p>
+              <p>{renew_date}</p>
             </div>
           </div>
 

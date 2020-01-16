@@ -220,7 +220,6 @@ ActiveRecord::Base.transaction do
 
   promos = [
     { code: 'BLUEPLATTR15', description: '$15 Off on Any Plans', adjustment_type: 'Fixed', adjustment_value: -15, quantity: 1000000, active: 1 },
-    { code: '25PCTOFF', description: '25% Off', adjustment_type: 'Percent', adjustment_value: 25, quantity: 100, active: 0 }
   ]
 
   promos.each do |promo|
