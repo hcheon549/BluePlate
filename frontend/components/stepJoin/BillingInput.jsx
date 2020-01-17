@@ -78,7 +78,6 @@ class BillingInput extends React.Component{
         customerName: token.card.name,
         amount: this.props.chargeAmount,
         description: this.props.currentPlan.name,
-        promo: this.props.promoApplied
       })
       if (charge.errors){
         //FAILED CHARGE LOGIC

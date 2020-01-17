@@ -15,7 +15,6 @@ export const charge = chargeData => {
         customerName: chargeData.customerName,
         amount: chargeData.amount,
         description: chargeData.description,
-        promo: chargeData.promo
       }
     }
   })

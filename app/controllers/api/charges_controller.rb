@@ -13,7 +13,6 @@ class Api::ChargesController < ApplicationController
       customer: customer.id,
       amount: (params[:chargeData][:amount] * 100).to_i,
       description: params[:chargeData][:description],
-      promo: params[:chargeData][:promo],
       currency: 'usd',
     })
 
