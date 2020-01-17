@@ -46,6 +46,10 @@
   }
 }
 @media screen and (max-width: 560px){
+  .shadow{
+    box-shadow: none;
+    border-bottom: solid 1px #E2E2E2
+  }
   .navLogo {
     position: block;
     margin: auto;
