@@ -116,10 +116,7 @@ class MyMeal extends React.Component {
         <div className="tabs-container">
           <div className="tabs">
             {this.state.isMobile && <Today isMobile={this.state.isMobile}/>}
-            <Tab 
-              activeTab={this.state.activeTab}
-              handleTab={this.handleTab}
-            />
+            <Tab activeTab={this.state.activeTab} handleTab={this.handleTab} />
             {!this.state.isMobile && <Today isMobile={this.state.isMobile}/>}
           </div>
           

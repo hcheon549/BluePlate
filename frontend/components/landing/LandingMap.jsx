@@ -44,7 +44,7 @@ class LandingMap extends React.Component {
     let { schools } = this.props
   
     return (
-      <section className="landingMap">
+      <section className="landingMap" id="landingMap">
         <div className="blueBackground" />
         <div className="content -siteWidth">
           <div className="sectionHeader">

@@ -11,6 +11,14 @@ class LandingHeader extends React.Component {
     this.props.history.push("/my-meals");
   }
 
+  scrollToMap(){
+    let destination = document.getElementById('landingMap').offsetTop
+    window.scrollTo({
+      top: destination,
+      behavior: 'smooth'
+    })
+  }
+
   render() {
     let header = 'MEALPLAN FOR LESS THAN $6 PER MEAL',
         subHeader = 'FIND OUT THE RESTAURANTS NEAR YOUR CAMPUS.',
@@ -30,7 +38,7 @@ class LandingHeader extends React.Component {
                 className='orangeSecondary'
                 type="submit"
                 style={{marginLeft: '20px'}}
-                onClick={() => this.props.history.push('/all-meals')}
+                onClick={this.scrollToMap}
               >
                 {altButtonText}
               </button>

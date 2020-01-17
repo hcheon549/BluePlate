@@ -61,7 +61,6 @@ class App extends React.Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/all-meals" component={AllMeals} />
               <Route exact path="/how-it-works" component={HowItWorks} />
-              <Route exact path="/demo" component={MyMeal} />
 
               {/* Auth Pages */}
               <AuthRoute exact path="/login" component={LoginPage} />
