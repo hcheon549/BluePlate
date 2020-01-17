@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
-import { login, clearErrors, demo } from '../../actions/session_actions';
-
 import AuthForm from '../element/AuthForm';
 
 class LoginPage extends React.Component {

@@ -14,9 +14,6 @@ class MobileMenuItems extends React.Component {
     if (this.props.burgerOpen){
       this.props.toggleBurger();
     }
-    if (this.props.history.location == '/demo'){
-      this.props.logout();
-    }
     this.props.history.push(path)
   }
 
@@ -30,7 +27,7 @@ class MobileMenuItems extends React.Component {
 
   render(){
     let { history: { location }, burgerOpen, logout } = this.props;
-    let navSelect = (this.props.loggedIn && this.props.location.pathname !== '/demo') 
+    let navSelect = (this.props.loggedIn) 
     ? (
       <ul className="navMenu">
         {this.props.isMember && <li className={"mobile-menu-button" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={this.nextAction.bind(this, '/my-meals')}>

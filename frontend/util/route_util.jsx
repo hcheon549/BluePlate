@@ -2,11 +2,11 @@ import React from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Auth = ({ component: Component, path, loggedIn, isVisitor, isLead, isMember, exact, fromDemo }) => {
+const Auth = ({ component: Component, path, loggedIn, isVisitor, isLead, isMember, exact, }) => {
   return (
-  <Route path={path} exact={exact} render={props => (<Component {...props} />
-    // (!loggedIn || isVisitor) ? <Component {...props} /> : <Redirect to="/my-meals" />
-  )}/>
+  <Route path={path} exact={exact} render={props => 
+    (!loggedIn || isVisitor) ? <Component {...props} /> : <Redirect to="/my-meals" />
+  }/>
 )};
 
 const Protected = ({ component: Component, path, isMember, exact }) => (
@@ -15,9 +15,9 @@ const Protected = ({ component: Component, path, isMember, exact }) => (
   }/>
 );
 
-const Authenticated = ({ component: Component, path, isMember, exact, fromDemo }) => (
-  <Route path={path} exact={exact} render={props => (<Component {...props} />)
-    // (isMember) ? <Redirect to="/my-meals" /> : <Component {...props} />)
+const Authenticated = ({ component: Component, path, isMember, exact }) => (
+  <Route path={path} exact={exact} render={props => 
+    (isMember) ? <Redirect to="/my-meals" /> : <Component {...props} />
   }/>
 );
 

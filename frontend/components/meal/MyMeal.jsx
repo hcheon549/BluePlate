@@ -7,8 +7,7 @@ import { fetchSchools } from '../../actions/school_actions';
 import { fetchFavorites } from '../../actions/favorite_actions';
 import { resetFilter } from '../../actions/filter_actions';
 import { fetchReservations } from '../../actions/accountHistory_actions';
-import { openModal } from "../../actions/modal_actions";
-import { logout } from '../../actions/session_actions';
+import { openModal } from "../../actions/modal_actions"
 
 import MealIndex from "../meal_listing/meal_index";
 import MealMap from "../map/meal_map";
@@ -34,11 +33,6 @@ class MyMeal extends React.Component {
   async componentDidMount() {
     this.handleResize();
 		window.addEventListener('resize', this.handleResize);
-    if (this.props.location.pathname == "/demo"){
-      this.props.openDisclaimer();
-    } else {
-      this.props.openClosedModal();
-    }
     await this.props.fetchMenus(this.props.currentUser.schoolId)
     await this.props.fetchReservations()
     await this.props.resetFilter()
@@ -51,25 +45,11 @@ class MyMeal extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps){
-    // if ((prevProps.signedDisclaimer !== this.props.signedDisclaimer)
-    //     && !this.props.leadCaptureSeen
-    //     && this.props.location.pathname == "/demo"
-    //   ){
-    //   addEventListener('scroll', this.showEmailCapture)
-    // }
-    // if (this.props.leadCaptureSeen){
-    //   removeEventListener('scroll', this.showEmailCapture)
-    // }
-  }
 
   async componentWillUnmount(){
     window.removeEventListener('resize', this.handleResize);
     removeEventListener('scroll', this.showEmailCapture);
     clearTimeout(this.openEmailCapture);
-    if (this.props.location.pathname == "/demo"){
-      await this.props.logout();
-    }
   }
 
   handleResize() {
@@ -202,7 +182,6 @@ const mayDispatchToProps = (dispatch) => {
     openClosedModal: () => dispatch(openModal({ type: 'closed'})),
     openDisclaimer: () => dispatch(openModal({type: 'disclaimer'})),
     openEmailCapture: () => dispatch(openModal({type: 'emailCapture'})),
-    logout: () => dispatch(logout())
   };
 };
 

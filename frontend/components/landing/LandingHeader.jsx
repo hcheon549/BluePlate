@@ -5,27 +5,17 @@ class LandingHeader extends React.Component {
   constructor(props){
     super(props);
     this.nextAction = this.nextAction.bind(this);
-    this.tryDemo = this.tryDemo.bind(this);
   }
 
   nextAction() {
     this.props.history.push("/my-meals");
   }
 
-  async tryDemo(){
-    let user = {
-      email: 'eric@blueplattr.com',
-      password: 'ececec'
-    }
-    await this.props.processLogIn(user);
-    this.props.history.push('/demo')
-  }
-
   render() {
     let header = 'MEALPLAN FOR LESS THAN $6 PER MEAL',
         subHeader = 'FIND OUT THE RESTAURANTS NEAR YOUR CAMPUS.',
         buttonText = 'Get Started',
-        altButtonText = 'Try DEMO',
+        altButtonText = 'See Restaurants',
         browseLink = this.props.currentUser.policyType == 'Member' ? '/my-meals' : '/signup';
 
     return (
@@ -40,7 +30,7 @@ class LandingHeader extends React.Component {
                 className='orangeSecondary'
                 type="submit"
                 style={{marginLeft: '20px'}}
-                onClick={this.tryDemo}
+                onClick={() => this.props.history.push('/all-meals')}
               >
                 {altButtonText}
               </button>
