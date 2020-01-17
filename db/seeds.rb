@@ -236,7 +236,7 @@ ActiveRecord::Base.transaction do
 
   users = [
     {
-      email: 'eric@blueplattr.com',
+      email: '',
       password: 'ececec',
       fname: 'BluePlattr',
       lname: 'Demo',

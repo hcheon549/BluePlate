@@ -9,16 +9,6 @@ import LandingCapture from './../landing/LandingCapture';
 const HowItWorks = (props) => {
   let header = 'How BluePlattr works';
 
-  let tryDemo = async () => {
-    let user = {
-      email: 'eric@blueplattr.com',
-      password: 'ececec'
-    }
-    await props.processLogIn(user);
-    props.history.push('/demo')
-  }
-
-
   return (
     <div className="howItWorks">
       <section className="landingHIW">
@@ -34,9 +24,9 @@ const HowItWorks = (props) => {
           <button
             className='orangeSecondary'
             type="submit"
-            onClick={tryDemo}
+            onClick={() => props.history.push('/signup')}
           >
-            Try DEMO
+            Get Started
           </button>
           <div className="main-info">
             <div className="column">

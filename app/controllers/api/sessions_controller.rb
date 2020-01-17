@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
   def user
     @user = current_user
     
-    if @user && @user.email != 'eric@blueplattr.com'
+    if @user
       render 'api/users/show'
     else
       render json: {}
