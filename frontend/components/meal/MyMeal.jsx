@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 import { fetchMenus } from '../../actions/menu_actions';
 import { fetchSchools } from '../../actions/school_actions';
@@ -20,8 +21,9 @@ class MyMeal extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      activeTab: "lunch",
-      isMobile: window.innerWidth <= 560
+      activeTab: (moment().hour()  > 10 && moment().hour() < 21) ? "dinner" : "lunch",
+      isMobile: window.innerWidth <= 560,
+      loading: true
     }
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
@@ -36,6 +38,9 @@ class MyMeal extends React.Component {
     await this.props.fetchMenus(this.props.currentUser.schoolId)
     await this.props.fetchReservations()
     await this.props.resetFilter()
+    this.setState({
+      loading: false
+    })
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -104,10 +109,53 @@ class MyMeal extends React.Component {
     })
   }
 
+  orderOpen(){
+    let currentHour = moment().hour();
+    if(this.state.activeTab == 'lunch'){
+      // return currentHour < 10 || currentHour > 21 ? true : false
+      false
+    } else if ( this.state.activeTab == 'dinner'){
+      return currentHour < 16 || currentHour > 21 ? true : false
+    }
+  }
+
   render() {
-    if (this.props.loading) {
+    
+    if (this.props.loading || this.state.loading) {
       return <LoadingIcon />;
     }
+    
+    let isOpen = this.orderOpen()
+
+    let orderTab = isOpen ? (
+      <div className="meals-and-map">
+        <MealIndex
+          {...this.props}
+          activeTab={this.state.activeTab} 
+          handleTab={this.handleTab}
+        />
+
+        <div
+          ref="coll"
+          onClick={() => this.handleCollapse()}
+          className="collapsible-map"
+          id="collapsible-map"
+        >
+          <div ref="arrowLeft" className="arrow arrow-left" />
+          <div ref="arrowRight" className="arrow arrow-right" />
+        </div>
+        <div className="map-container">
+          <MealMap
+            {...this.props}
+            activeTab={this.state.activeTab}
+          />
+        </div>
+      </div>
+    ) : (
+      <div className="meals-and-map">
+        <h1>Picking closed at this moment</h1>
+      </div>
+    )
 
     return (
       <div className="greeting-container">
@@ -119,33 +167,10 @@ class MyMeal extends React.Component {
             <Tab activeTab={this.state.activeTab} handleTab={this.handleTab} />
             {!this.state.isMobile && <Today isMobile={this.state.isMobile}/>}
           </div>
-          
           <div className="borderLine" />
+          {orderTab}
         </div>
 
-        <div className="meals-and-map">
-          <MealIndex
-            {...this.props}
-            activeTab={this.state.activeTab} 
-            handleTab={this.handleTab}
-          />
-
-          <div
-            ref="coll"
-            onClick={() => this.handleCollapse()}
-            className="collapsible-map"
-            id="collapsible-map"
-          >
-            <div ref="arrowLeft" className="arrow arrow-left" />
-            <div ref="arrowRight" className="arrow arrow-right" />
-          </div>
-          <div className="map-container">
-            <MealMap
-              {...this.props}
-              activeTab={this.state.activeTab}
-            />
-          </div>
-        </div>
       </div>
     );
   }
