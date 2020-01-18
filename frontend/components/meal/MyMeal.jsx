@@ -21,7 +21,8 @@ class MyMeal extends React.Component {
     super(props)
     this.state = {
       activeTab: "lunch",
-      isMobile: window.innerWidth <= 560
+      isMobile: window.innerWidth <= 560,
+      loading: true
     }
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleTab = this.handleTab.bind(this);
@@ -32,10 +33,14 @@ class MyMeal extends React.Component {
   
   async componentDidMount() {
     this.handleResize();
+    debugger
 		window.addEventListener('resize', this.handleResize);
     await this.props.fetchMenus(this.props.currentUser.schoolId)
     await this.props.fetchReservations()
     await this.props.resetFilter()
+    this.setState({
+      loading: false
+    })
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -105,7 +110,7 @@ class MyMeal extends React.Component {
   }
 
   render() {
-    if (this.props.loading) {
+    if (this.props.loading || this.state.loading) {
       return <LoadingIcon />;
     }
 
