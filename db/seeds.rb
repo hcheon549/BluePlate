@@ -326,8 +326,8 @@ ActiveRecord::Base.transaction do
     },{
       name: "KBG Korean BBQ & Grill",
       address: "6 Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.497089,
-      longitude: -74.447197,
+      latitude: 40.496862, 
+      longitude: -74.447166,
       school_id: rutgers.id,
     },{
       name: "Knights Express Pizza & Grill",
@@ -338,14 +338,14 @@ ActiveRecord::Base.transaction do
     },{
       name: "25 Burgers",
       address: "4A Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.49676,
-      longitude: -74.44707,
+      latitude: 40.496575, 
+      longitude: -74.446986,
       school_id: rutgers.id,
     },{
       name: "25 Burgers & Pizza",
       address: "4B Easton Ave, New Brunswick, NJ 08901",
-      latitude: 40.496746,
-      longitude: -74.447068,
+      latitude: 40.496741, 
+      longitude: -74.447003,
       school_id: rutgers.id,
     },{
       name: "Kam Fung",
@@ -362,8 +362,8 @@ ActiveRecord::Base.transaction do
     },{
       name: "Jersey Mike's Subs",
       address: "44 College Ave, New Brunswick, NJ 08901",
-      latitude: 40.49929,
-      longitude: -74.44838,
+      latitude: 40.499365, 
+      longitude: -74.448818,
       school_id: rutgers.id,
     },{
       name: "The Halal Guys",
@@ -374,8 +374,8 @@ ActiveRecord::Base.transaction do
     },{
       name: "Elevation Burger",
       address: "48 College Ave, New Brunswick, NJ 08901",
-      latitude: 40.49933,
-      longitude: -74.44861,
+      latitude: 40.499449,
+      longitude: -74.448693,
       school_id: rutgers.id,
     },{
       name: "Knight's Deli",
@@ -422,8 +422,8 @@ ActiveRecord::Base.transaction do
     },{
       name: "Krispy Pizza and Grill",
       address: "50 College Ave, New Brunswick, NJ 08901",
-      latitude: 40.499538,
-      longitude: -74.448631,
+      latitude: 40.499608,
+      longitude: -74.448520,
       school_id: rutgers.id,
     },{
       name: "Popeyes Louisiana Kitchen",
@@ -432,6 +432,31 @@ ActiveRecord::Base.transaction do
       longitude: -74.44359,
       school_id: rutgers.id,
     }
+    # ,{
+    #   name: "King of Gyro",
+    #   address: "105 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.49877,
+    #   longitude: -74.45167,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Ramen Stop",
+    #   address: "176 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.500109, 
+    #   longitude: -74.454945,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "R.U. Grill and Pizza",
+    #   address: "142 Easton Ave, New Brunswick, NJ 08901",
+    #   latitude: 40.49929,
+    #   longitude: -74.45327,
+    #   school_id: rutgers.id,
+    # },{
+    #   name: "Seed Burger",
+    #   address: "176 Easton Ave store 1A, New Brunswick, NJ 08901",
+    #   latitude: 40.500045, 
+    #   longitude: -74.454799,
+    #   school_id: rutgers.id,
+    # }
   ]
 
 
@@ -464,6 +489,8 @@ ActiveRecord::Base.transaction do
       price: 8.99,
       image_url: "https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg"
     }
+    Meal.create(meal)
+    puts shop.name + " created"
   end
 
 
@@ -477,7 +504,7 @@ ActiveRecord::Base.transaction do
   today = Date.today
 
   week = []
-  45.times do |count|
+  14.times do |count|
     week << today
     today += 1
   end
