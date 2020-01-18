@@ -110,7 +110,6 @@ class MyMeal extends React.Component {
   }
 
   orderOpen(){
-    return false
     let currentHour = moment().hour();
     if(this.state.activeTab == 'lunch'){
       return currentHour < 10 || currentHour > 21 ? true : false
