@@ -110,10 +110,10 @@ class MyMeal extends React.Component {
   }
 
   orderOpen(){
+    return false
     let currentHour = moment().hour();
     if(this.state.activeTab == 'lunch'){
-      // return currentHour < 10 || currentHour > 21 ? true : false
-      false
+      return currentHour < 10 || currentHour > 21 ? true : false
     } else if ( this.state.activeTab == 'dinner'){
       return currentHour < 16 || currentHour > 21 ? true : false
     }
@@ -126,6 +126,7 @@ class MyMeal extends React.Component {
     }
     
     let isOpen = this.orderOpen()
+    let mealType = this.state.activeTab.charAt(0).toUpperCase() + this.state.activeTab.slice(1)
 
     let orderTab = isOpen ? (
       <div className="meals-and-map">
@@ -152,8 +153,12 @@ class MyMeal extends React.Component {
         </div>
       </div>
     ) : (
-      <div className="meals-and-map">
-        <h1>Picking closed at this moment</h1>
+      <div className="order-closed">
+        <div className="info-container">
+          <h3>Oops! The {this.state.activeTab} kitchen is closed.</h3>
+          <div className="borderLine" />
+          <span>We will re-open the kitchen at 9 PM tonight!</span>
+        </div>
       </div>
     )
 

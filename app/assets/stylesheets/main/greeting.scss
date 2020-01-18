@@ -1,4 +1,4 @@
-
+va
 .greeting-container {
   display: flex;
   flex-direction: column;
@@ -21,3 +21,29 @@
     width: 100%;
   }
 }
+
+.order-closed{
+  min-height: 50vh;
+  display: flex;
+  text-align: center;
+  @media (max-width: $media2) {
+    margin: auto;
+    max-width: 80%;
+  }
+  .info-container{
+    margin: auto;
+    h3{
+      color: $gray-menu;
+      margin-bottom: 20px;
+    }
+    .borderLine{
+      width: 100%;
+      margin-bottom: 20px;
+      border-top: 1px solid $lightest-gray;
+    }
+    span{
+      color: $dark-gray
+    }
+  }
+}
+
