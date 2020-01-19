@@ -18,11 +18,6 @@ ActiveRecord::Base.transaction do
       latitude: 40.498080,
       longitude: -74.448920
     }
-    # ,{
-    #   name: "Pennsylvania State University–University Park",
-    #   latitude: 40.792650,
-    #   longitude: -77.859082
-    # }
   ]
 
   schools.each do |school|
@@ -104,16 +99,22 @@ ActiveRecord::Base.transaction do
       price: 287.52
     },
     {
-      name: "8 Meals", ##### $6.59 per meal
+      name: "9 Meals", ##### $6.39 per meal
       plan_type: "4weeks",
-      meals: 32,
-      price: 207.68
+      meals: 36,
+      price: 230.04
     },
     {
-      name: "4 Meals",  ##### $7.29 per meal
+      name: "6 Meals", ##### $6.69 per meal
       plan_type: "4weeks",
-      meals: 16,
-      price: 111.84
+      meals: 24,
+      price: 160.56
+    },
+    {
+      name: "3 Meals",  ##### $6.99 per meal
+      plan_type: "4weeks",
+      meals: 12,
+      price: 83.88
     },
     ################################################
     ###############  2-WEEKS TRIAL  ################
@@ -219,7 +220,8 @@ ActiveRecord::Base.transaction do
   Promo.destroy_all
 
   promos = [
-    { code: 'BLUEPLATTR15', description: '$15 Off on Any Plans', adjustment_type: 'Fixed', adjustment_value: -15, quantity: 1000000, active: 1 },
+    { code: 'BLUEPLATTR15', description: '$15 Off on Any Plans', adjustment_type: 'Fixed', adjustment_value: -15, quantity: 1000000, active: 1, total_redeemed: 0 },
+    { code: 'EARLYBIRD', description: '$25 Off on Any Plans', adjustment_type: 'Fixed', adjustment_value: -25, quantity: 20, active: 1, total_redeemed: 0 }
   ]
 
   promos.each do |promo|
@@ -431,18 +433,18 @@ ActiveRecord::Base.transaction do
       latitude: 40.49559,
       longitude: -74.44359,
       school_id: rutgers.id,
+    },{
+      name: "Ramen Stop",
+      address: "176 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.500109, 
+      longitude: -74.454945,
+      school_id: rutgers.id,
     }
     # ,{
     #   name: "King of Gyro",
     #   address: "105 Easton Ave, New Brunswick, NJ 08901",
     #   latitude: 40.49877,
     #   longitude: -74.45167,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "Ramen Stop",
-    #   address: "176 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.500109, 
-    #   longitude: -74.454945,
     #   school_id: rutgers.id,
     # },{
     #   name: "R.U. Grill and Pizza",
@@ -470,91 +472,91 @@ end
 ActiveRecord::Base.transaction do
   Meal.destroy_all
 
-  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  shops = Shop.all
+  # rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  # shops = Shop.all
 
-  meals_for_today = []
-  meals_for_tomorrow = []
+  # meals_for_today = []
+  # meals_for_tomorrow = []
 
 
   ###############################################
   ######## RUTGERS REAL LIFE EXAMPLES ########
   ###############################################
 
-  shops.each do | shop |
-    meal = {
-      shop_id: shop.id,
-      name: shop.name,
-      description: "This and that",
-      price: 8.99,
-      image_url: "https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg"
-    }
-    Meal.create(meal)
-    puts shop.name + " created"
-  end
+  # shops.each do | shop |
+  #   meal = {
+  #     shop_id: shop.id,
+  #     name: shop.name,
+  #     description: "This and that",
+  #     price: 8.99,
+  #     image_url: "https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg"
+  #   }
+  #   Meal.create(meal)
+  #   puts shop.name + " created"
+  # end
 
 
-  puts "Meals Created"
+  # puts "Meals Created"
 
 end
 
 ActiveRecord::Base.transaction do
   Menu.destroy_all
   
-  today = Date.today
+  # today = Date.today
 
-  week = []
-  14.times do |count|
-    week << today
-    today += 1
-  end
+  # week = []
+  # 14.times do |count|
+  #   week << today
+  #   today += 1
+  # end
 
-  ###############################################
-  ######## RUTGERS REAL LIFE EXAMPLES ########
-  ###############################################
+  # ###############################################
+  # ######## RUTGERS REAL LIFE EXAMPLES ########
+  # ###############################################
 
 
-  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
-  rutgersShops = Shop.where(school_id: rutgers.id)
+  # rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  # rutgersShops = Shop.where(school_id: rutgers.id)
 
-  lunch_count = 0
-  dinner_count = 0
+  # lunch_count = 0
+  # dinner_count = 0
 
-  rutgersShops.each do |shop|
-    week.each do |day|
-      sample_lunch_meal = shop.meals.sample
-      sample_dinner_meal = shop.meals.sample
-      Menu.create!(meal_id: sample_lunch_meal.id, offered_date: day, lunch: true, dinner: false)
-      Menu.create!(meal_id: sample_dinner_meal.id, offered_date: day, lunch: false, dinner: true)
-      lunch_count += 1
-      dinner_count += 1
-    end
-  end
+  # rutgersShops.each do |shop|
+  #   week.each do |day|
+  #     sample_lunch_meal = shop.meals.sample
+  #     sample_dinner_meal = shop.meals.sample
+  #     Menu.create!(meal_id: sample_lunch_meal.id, offered_date: day, lunch: true, dinner: false)
+  #     Menu.create!(meal_id: sample_dinner_meal.id, offered_date: day, lunch: false, dinner: true)
+  #     lunch_count += 1
+  #     dinner_count += 1
+  #   end
+  # end
 
-  puts lunch_count.to_s + " lunch menus in Rutgers created"
-  puts dinner_count.to_s + " dinner menus in Rutgers created"
+  # puts lunch_count.to_s + " lunch menus in Rutgers created"
+  # puts dinner_count.to_s + " dinner menus in Rutgers created"
 
 
 end
 
 ActiveRecord::Base.transaction do
   Reservation.destroy_all
-  rutgers = User.find_by(email: 'eric@blueplattr.com')
-  menus = Menu.all
+  # rutgers = User.find_by(email: 'eric@blueplattr.com')
+  # menus = Menu.all
 
-  lunch_time = PickupTime.where(pickup_type: 0)
-  dinner_time = PickupTime.where(pickup_type: 1)
+  # lunch_time = PickupTime.where(pickup_type: 0)
+  # dinner_time = PickupTime.where(pickup_type: 1)
 
-  20.times do |t|
-    menu_id = menus.sample.id
-    if (rand(1..10) < 6)
-      lunch_pickup_time_id = lunch_time.sample.id
-      Reservation.create!({ menu_id: menu_id, user_id: rutgers.id, pickup_time_id: lunch_pickup_time_id })
-    else
-      dinner_pickup_time_id = dinner_time.sample.id
-      Reservation.create!({ menu_id: menu_id, user_id: rutgers.id, pickup_time_id: dinner_pickup_time_id })
-    end
-  end
+  # 20.times do |t|
+  #   menu_id = menus.sample.id
+  #   if (rand(1..10) < 6)
+  #     lunch_pickup_time_id = lunch_time.sample.id
+  #     Reservation.create!({ menu_id: menu_id, user_id: rutgers.id, pickup_time_id: lunch_pickup_time_id })
+  #   else
+  #     dinner_pickup_time_id = dinner_time.sample.id
+  #     Reservation.create!({ menu_id: menu_id, user_id: rutgers.id, pickup_time_id: dinner_pickup_time_id })
+  #   end
+  # end
 
-  puts "Reservations created"
+  # puts "Reservations created"
 end
