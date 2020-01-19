@@ -36,6 +36,7 @@ class MyMeal extends React.Component {
     await this.props.fetchMenus(this.props.currentUser.schoolId)
     await this.props.fetchReservations()
     await this.props.resetFilter()
+    this.props.openClosedModal();
   }
 
   async componentWillReceiveProps(nextProps) {

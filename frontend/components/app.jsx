@@ -29,19 +29,28 @@ import PrivacyPolicy from './footer/PrivacyPolicy';
 import GeneralTerms from './footer/GeneralTerms';
 import LoadingIcon from "./meal/loading_icon";
 
-class App extends React.Component {  
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      dataFetched: false
+    }
+  }
+
   async componentDidMount() {
     await this.props.getCurrentUser();
     await this.props.fetchSchools();
     await this.props.fetchPlans();
     await this.props.fetchTimes();
+    this.setState({
+      dataFetched: true
+    })
   }
 
   render() {
-    if (!this.props.fetchedUser) {
+    if (!this.state.dataFetched) {
       return (
         <div>
-          <div style={{ height: "60px" }} />
           <LoadingIcon />
         </div>
       );
@@ -59,7 +68,7 @@ class App extends React.Component {
             <Switch>
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
-              <Route exact path="/all-meals" component={AllMeals} />
+              {/* <Route exact path="/all-meals" component={AllMeals} /> */}
               <Route exact path="/how-it-works" component={HowItWorks} />
 
               {/* Auth Pages */}

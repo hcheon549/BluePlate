@@ -72,19 +72,19 @@ ActiveRecord::Base.transaction do
     ##############  SEMESTER CYCLE  ################
     ################################################
     {
-      name: "12 Meals",  ##### $4.99 per meal
+      name: "12-Meals",  ##### $4.99 per meal
       plan_type: "semester",
       meals: 180,
       price: 898.20
     },
     {
-      name: "8 Meals", ##### $5.49 per meal
+      name: "8-Meals", ##### $5.49 per meal
       plan_type: "semester",
       meals: 120,
       price: 658.80
     },
     {
-      name: "4 Meals",  ##### $5.99 per meal
+      name: "4-Meals",  ##### $5.99 per meal
       plan_type: "semester",
       meals: 60,
       price: 359.40
@@ -93,25 +93,25 @@ ActiveRecord::Base.transaction do
     ###############  4-WEEKS CYCLE  ################
     ################################################
     {
-      name: "12 Meals",  ##### $5.99 per meal
+      name: "12-Meals",  ##### $5.99 per meal
       plan_type: "4weeks",
       meals: 48,
       price: 287.52
     },
     {
-      name: "9 Meals", ##### $6.39 per meal
+      name: "9-Meals", ##### $6.39 per meal
       plan_type: "4weeks",
       meals: 36,
       price: 230.04
     },
     {
-      name: "6 Meals", ##### $6.69 per meal
+      name: "6-Meals", ##### $6.69 per meal
       plan_type: "4weeks",
       meals: 24,
       price: 160.56
     },
     {
-      name: "3 Meals",  ##### $6.99 per meal
+      name: "3-Meals",  ##### $6.99 per meal
       plan_type: "4weeks",
       meals: 12,
       price: 83.88
@@ -120,19 +120,19 @@ ActiveRecord::Base.transaction do
     ###############  2-WEEKS TRIAL  ################
     ################################################
     {
-      name: "12 Meals",  ##### $4.99 per meal
+      name: "12-Meals",  ##### $4.99 per meal
       plan_type: "2weeks",
       meals: 24,
       price: 119.76
     },
     {
-      name: "8 Meals", ##### $5.49 per meal
+      name: "8-Meals", ##### $5.49 per meal
       plan_type: "2weeks",
       meals: 16,
       price: 87.84
     },
     {
-      name: "4 Meals",  ##### $5.99 per meal
+      name: "4-Meals",  ##### $5.99 per meal
       plan_type: "2weeks",
       meals: 8,
       price: 47.92
@@ -141,19 +141,19 @@ ActiveRecord::Base.transaction do
     ###############       TEST      ################
     ################################################
     {
-      name: "1 Meals",  ##### $0.99 per meal
+      name: "1-Meals",  ##### $0.99 per meal
       plan_type: "test",
       meals: 1,
       price: 0.99
     },
     {
-      name: "1 Meals",  ##### $0.99 per meal
+      name: "1-Meals",  ##### $0.99 per meal
       plan_type: "test",
       meals: 2,
       price: 1.98
     },
     {
-      name: "1 Meals",  ##### $0.99 per meal
+      name: "1-Meals",  ##### $0.99 per meal
       plan_type: "test",
       meals: 3,
       price: 2.97
