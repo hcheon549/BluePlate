@@ -61,7 +61,7 @@ class LandingMap extends React.Component {
               />
             </div>
           </div>
-          <Link className="full-list miniText"to="/all-meals">See Full List</Link>
+          {/* <Link className="full-list miniText"to="/all-meals">See Full List</Link> */}
 
 
           <div className="map">
@@ -70,9 +70,9 @@ class LandingMap extends React.Component {
               school={schools[this.state.schoolId]}
               />}
           </div>
-          <div className="content -siteWidth">
+          {/* <div className="content -siteWidth">
             <span className="tinyText" style={{color: 'white'}}>*The website is currently on BETA mode. The restaurants displayed are not real.</span>
-          </div>
+          </div> */}
         </div>
       </section>
     )

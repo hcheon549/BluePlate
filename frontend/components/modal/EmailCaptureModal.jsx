@@ -31,7 +31,7 @@ const EmailCaptureModal = (props) => {
     >
       <div className="innerContent">
         <div className="captureLogo">
-          <img className="logo" src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
+          <img className="logo" src="https://blueplate-development.s3.amazonaws.com/BluePlattr_logo.png" alt="logo" />
           <span className="theLogo">BluePlattr</span>
         </div>
         <h4>{header}</h4>

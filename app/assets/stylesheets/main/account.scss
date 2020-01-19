@@ -82,19 +82,14 @@
   text-align: center;
   border-bottom: 1px solid $light-gray;
   line-height: 0.1em;
-  margin: 30px 0 40px;
+  margin: 40px 0;
   font-weight: bold;
 }
 
 .acc-info span {
   background:#fff;
   padding:0 15px;
-
 }
-
-
-////////////
-
 
 .account-bottom {
   display: flex;
@@ -102,41 +97,28 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
-}
+  .personal-information{
+    margin-right: 50px;
+  }
+  .subscription-informatioin{
+    margin-left: 50px;
+  }
+  h5{
+    margin-bottom: 20px;
+    color: $siteColor;
+  }
+  .field{
+    margin: 20px 0;
+    .label{
+      font-weight: bold;
+    }
 
-.account-text {
-  display: flex;
-  flex-direction: column;
-}
-.account-name {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-.account-email {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-.acc-update {
-  color: white;
-  background: $accent;
-  height: 35px;
-  border: none;
-  border-radius: 5px;
+  }
 
-  text-align: center;
-}
-
-.acc-update:active {
-  background-color: $accent-light;
-  box-shadow: 0 3px #ffff;
-  transform: translateY(4px);
-}
-
-
-@media (max-width: $media1) {
-  .account-bottom {
+  @media (max-width: $media1) {
     flex-direction: column;
+    text-align: center;
+    .personal-information{ margin: 0; }
+    .subscription-informatioin{ margin: 0; }  
   }
 }

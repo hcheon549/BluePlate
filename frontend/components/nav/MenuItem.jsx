@@ -42,15 +42,26 @@ class MenuItem extends React.Component {
       />
     )
 
+    let optionMenu = this.props.isMember ? (
+      <li className={"nav-menu-button miniText" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={() => this.props.history.push('/account')}>
+        My Account
+      </li>
+    ) : (
+      <li className={"nav-menu-button miniText"} onClick={() => props.history.push("/signup")}>
+        Finish Enrollment
+      </li>
+    )
+
     return (
       <ul className="navLogin">
         {this.props.isMember && <li className={"nav-menu-button miniText" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={() => this.props.history.push('/my-meals')}>
           View meals
         </li>}
-        <li className={"nav-menu-button miniText" + (accountPath.includes(location.pathname) ? " -active" : "")} onClick={() => this.toggleClass()}>
+        {/* <li className={"nav-menu-button miniText" + (accountPath.includes(location.pathname) ? " -active" : "")} onClick={() => this.toggleClass()}>
           My account
           {dropdownMenu}
-        </li>
+        </li> */}
+        {optionMenu}
         <li className="login-link miniText" onClick={this.handleLogout}>
           Log out
         </li>

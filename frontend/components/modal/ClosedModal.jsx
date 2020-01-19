@@ -19,10 +19,10 @@ class ClosedModal extends React.Component {
         onClick={e => e.stopPropagation()}
       >
         <div className="innerContent">
-          <img className="logo" src="https://blueplate-development.s3.amazonaws.com/logo.png" alt="logo" />
+          <img className="logo" src="https://blueplate-development.s3.amazonaws.com/BluePlattr_logo.png" alt="logo" />
           <h4>See you in the Spring semester...</h4>
           <p><span className="miniText">
-            Your plan starts on the first day of Spring 2020 semester. Preciesly speaking, that's January 21, 2020. Until then, keep calm and stay hungry.
+            Your plan sarts on the first day of spring 2020 semester. Preciesly speaking, that's January 21st, in which you can start selecting Lunch and Dinner for the 22nd. Until then, keep calm and stay hungry.
           </span></p>
           <button className='orange' type="submit" onClick={this.goBack}>Go to Home Page</button>
         </div>

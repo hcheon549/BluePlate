@@ -9,106 +9,76 @@ import { openModal } from "../../actions/modal_actions";
 class Account extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      id: this.props.currentUser.id,
-      email: this.props.currentUser.email,
-      fname: this.props.currentUser.fname || "",
-      lname: this.props.currentUser.lname || "",
-    };
   }
 
   componentDidMount(){
     this.props.openClosedModal();
   }
 
-  update(type) {
-    return e => this.setState({ [type]: e.currentTarget.value });
-  }
-
   render() {
-    let { currentUser, errors } = this.props;
-
-    let mealType = [];
-    for (let i = 0; i < 20; i++) {
-      if (i < currentUser.mealsLeft) {
-        mealType.unshift(false);
-      } else {
-        mealType.unshift(true);
-      }
-    }
-
+    let { currentUser, currentPlan } = this.props;
+    console.log(currentPlan)
     return (
       <div className="account-page">
         <div className="account-top">
           <div className="account-hi">Hi {currentUser.fname}!</div>
           <div className="account-plan">
-            You are currently on the <span>20 MEAL PLAN.</span>
+            You are currently on the <span className="nowrap">{currentPlan.name}-per-Week</span> plan
           </div>
           <div className="account-cycle">
-            You have <span>{currentUser.mealsLeft} MORE MEALS</span> left in
-            your cycle.
+            You have <span>{currentUser.summary.mealCreditsLeft} meals</span> left in your cycle.
           </div>
-          <div className="account-icons">
-            {mealType.map((type, idx) => {
-              return (
-                <img
-                  key={idx}
-                  alt=""
-                  src={
-                    type
-                      ? "https://res.cloudinary.com/mwojick/image/upload/v1529051209/TreatPal/icons/ic-used.png"
-                      : "https://res.cloudinary.com/mwojick/image/upload/v1533444387/TreatPal/icons/ic-unused-c.png"
-                  }
-                />
-              );
-            })}
-          </div>
-
           <div className="acc-info">
-            <span>YOUR ACCOUNT INFORMATION</span>
+            <span>ACCOUNT INFORMATION</span>
           </div>
         </div>
 
         <div className="account-bottom">
 
-          <div className="account-text">
-            <div className="account-name">
-              <strong>FIRST NAME:</strong>
-              <input
-                type="text"
-                disabled={this.state.email === "demo" ? true : false}
-                value={this.state.fname}
-                onChange={this.update("fname")}
-              />
+          <div className="personal-information">
+            <h5>Personal Information</h5>
+            <div className="field name">
+              <div className="label">First Name: </div>
+              <div className="value">{currentUser.fname}</div>
             </div>
 
-            <div className="account-name">
-              <strong>LAST NAME:</strong>
-              <input
-                type="text"
-                disabled={this.state.email === "demo" ? true : false}
-                value={this.state.lname}
-                onChange={this.update("lname")}
-              />
+            <div className="field name">
+              <div className="label">Last Name: </div>
+              <div className="value">{currentUser.lname}</div>
             </div>
 
-            <div className="account-email">
-              <strong>EMAIL:</strong>
-              {errors}
-              <input
-                type="text"
-                disabled={this.state.email === "demo" ? true : false}
-                value={this.state.email}
-                onChange={this.update("email")}
-              />
+            <div className="field email">
+              <div className="label">Email: </div>
+              <div className="value">{currentUser.email}</div>
             </div>
 
-            <button
-              className="acc-update"
-              onClick={() => this.props.updateUser(this.state)}
-            >
-              Update Info
-            </button>
+            <div className="field school">
+              <div className="label">Campus: </div>
+              <div className="value">{currentUser.enrolledSchool.name}</div>
+            </div>
+          </div>
+
+          <div className="subscription-information">
+            <h5>Meal Plan Information</h5>
+            <div className="field subscription">
+              <div className="label">Current Plan: </div>
+              <div className="value">{currentPlan.name}-per-Week Plan</div>
+            </div>
+
+            <div className="field subscription">
+              <div className="label">Meals Left: </div>
+              <div className="value">{currentUser.summary.mealCreditsLeft} Meal Credits</div>
+            </div>
+
+            <div className="field subscription">
+              <div className="label">Start Date: </div>
+              <div className="value">{currentUser.subscription.subscriptionStart}</div>
+            </div>
+
+            <div className="field subscription">
+              <div className="label">Renew Date: </div>
+              <div className="value">{currentUser.subscription.subscriptionEnd}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -116,12 +86,10 @@ class Account extends React.Component {
   }
 }
 
-const msp = ({entities:
-  {currentUser, menus, shops, schools, favorites, reservations},
-  session, errors, ui}) => {
-
- return {
-    currentUser: currentUser,
+const msp = ({entities, errors}) => {
+  return {
+    currentUser: entities.currentUser,
+    currentPlan: entities.plans[entities.currentUser.subscription.planId],
     errors: errors.users
   };
 };
