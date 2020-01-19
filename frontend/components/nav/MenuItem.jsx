@@ -47,7 +47,7 @@ class MenuItem extends React.Component {
         My Account
       </li>
     ) : (
-      <li className={"nav-menu-button miniText"} onClick={() => props.history.push("/signup")}>
+      <li className={"nav-menu-button miniText"} onClick={() => this.props.history.push("/signup")}>
         Finish Enrollment
       </li>
     )
