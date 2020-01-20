@@ -52,29 +52,11 @@ class SubscriptionSummary extends React.Component {
     return { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal }
   }
 
-  formatSubscriptionDates(){
-    let now = moment()
-    let launchDate = moment('2020-1-21')
-    let start_subscription, start_date, renew_date;
-
-    if (now.diff(launchDate, 'days') > 0){
-      start_subscription = now
-      start_date = now.format('MMMM Do, YYYY');
-      renew_date = now.add(28, 'days').format('MMMM Do, YYYY');
-    } else {
-      start_date = launchDate.format('MMMM Do, YYYY')
-      renew_date = launchDate.add(28, 'days').format('MMMM Do, YYYY');
-    }
-
-    return [ start_date, renew_date ]
-  }
-
   render() {
     let { currentUser, currentPlan, toggleUpdateForm, updateEmail,
           updateUserEmail, setStep, errors, clearErrors } = this.props;
 
     let { planPrice, promoCode, discount, adjustment, discountAmount, planTotal, tax, todayTotal } = this.calculateTotal()
-    // let [ start_date, renew_date ] = this.formatSubscriptionDates()
     let [ start_date, renew_date ] = [currentUser.subscription.subscriptionStart, currentUser.subscription.subscriptionEnd].map((date) => moment(date).format('MMMM Do, YYYY'))
     let buttonText = updateEmail ? 'Cancel' : 'Change';
     let additionalPromoInfo = adjustment == "Percent" ? `(${discount}% OFF)` : "";

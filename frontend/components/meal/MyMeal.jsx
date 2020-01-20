@@ -54,7 +54,6 @@ class MyMeal extends React.Component {
 
   async componentWillUnmount(){
     window.removeEventListener('resize', this.handleResize);
-    removeEventListener('scroll', this.showEmailCapture);
     clearTimeout(this.openEmailCapture);
   }
 
