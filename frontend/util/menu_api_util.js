@@ -9,7 +9,6 @@ export const fetchMenus = schoolId => {
 };
 
 export const createMenu = menuData => {
-  debugger
   return axios({
     method: "POST",
     url: `/api/menus`,

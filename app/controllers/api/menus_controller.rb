@@ -25,8 +25,8 @@ class Api::MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.offered_date = Date.parse(params[:offered_date])
-
-    if @menu.save
+    
+    if validate_menu(@menu) && @menu.save
       render json: ['success'], status: 200
     else
       render json: @menu.errors.full_messages, status: 422
@@ -41,6 +41,11 @@ class Api::MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:meal_id, :shop_id, :lunch, :dinner, :quantity_available)
+  end
+
+  def validate_menu(menu)
+    meal = Meal.find(menu.meal_id)
+    meal.shop_id == menu.shop_id
   end
 
 end

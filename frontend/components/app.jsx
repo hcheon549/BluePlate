@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import ReactGa from 'react-ga';
 
-import { AuthRoute, ProtectedRoute, AuthenticatedRoute } from "../util/route_util";
+import { AuthRoute, ProtectedRoute, AuthenticatedRoute, AdminRoute } from "../util/route_util";
 import { getCurrentUser } from "../actions/session_actions";
 import { fetchSchools } from '../actions/school_actions';
 import { fetchTimes } from '../actions/time_action';
@@ -85,7 +85,7 @@ class App extends React.Component {
               <ProtectedRoute exact path="/my-meals" component={MyMeal} />
 
               {/* Admin Pages */}
-              <Route exact path="/admin-menu" component={SetMenu} />
+              <AdminRoute exact path="/admin-menu" component={SetMenu} />
               {/* <Route exact path="/admin-order" component={} /> */}
 
 

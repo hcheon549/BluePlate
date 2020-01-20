@@ -43,7 +43,7 @@ class MenuItem extends React.Component {
     )
 
     let optionMenu = this.props.isMember ? (
-      <li className={"nav-menu-button miniText" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={() => this.props.history.push('/account')}>
+      <li className={"nav-menu-button miniText" + (location.pathname == '/account' ? " -active" : "")} onClick={() => this.props.history.push('/account')}>
         My Account
       </li>
     ) : (

@@ -36,7 +36,6 @@ class Api::ReservationsController < ApplicationController
 
     @reservation.pickup_code = generate_pickup_code
 
-    
     if @reservation.save
       adjust_attributes('create', @user, @reservation)
       ReservationMailer.order_confirmation(@user, @reservation).deliver_later(wait: 5.second)
@@ -44,8 +43,6 @@ class Api::ReservationsController < ApplicationController
     else
       render json: @reservation.errors.full_messages, status: 422
     end
-
-
   end
   
 
@@ -89,37 +86,20 @@ class Api::ReservationsController < ApplicationController
     meal = Meal.find(reservation.meal.id)
     now = Time.now
 
-    # print "User meal credits left:  "
-    # puts account_summary.meal_credits_left
-    # print "Menu quantity avaialble:  "
-    # puts menu.quantity_available
-    # print "Menu quantity ordered:   "
-    # puts menu.quantity_ordered
-    # print "Meal TOTAL number ordered:   "
-    # puts meal.total_number_ordered
-
     if type == 'create'
       account_summary.decrement!(:meal_credits_left)
       menu.decrement!(:quantity_available)
       menu.increment!(:quantity_ordered)
       meal.increment!(:total_number_ordered)
     elsif type == 'destroy'
-      if ((reservation.pickup_time.pickup_type == 0 && (now.hour <= 10 && now.min < 30)) || (reservation.pickup_time.pickup_type == 1 && (now.hour <= 16 && now.min < 30)))
+      if ((reservation.pickup_time.pickup_type == 0 && (now.hour < 10)) || (reservation.pickup_time.pickup_type == 1 && (now.hour < 16)))
         account_summary.increment!(:meal_credits_left)
+        menu.increment!(:quantity_available)
+        menu.decrement!(:quantity_ordered)
+        meal.increment!(:total_number_ordered)
       end
-      menu.increment!(:quantity_available)
-      menu.decrement!(:quantity_ordered)
-      meal.increment!(:total_number_ordered)
     end
 
-    # print "User meal credits left:  "
-    # puts account_summary.meal_credits_left
-    # print "Menu quantity avaialble:  "
-    # puts menu.quantity_available
-    # print "Menu quantity ordered:   "
-    # puts menu.quantity_ordered
-    # print "Meal TOTAL number ordered:   "
-    # puts meal.total_number_ordered
   end
 
   def generate_pickup_code
