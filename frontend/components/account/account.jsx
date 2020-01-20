@@ -13,7 +13,7 @@ class Account extends React.Component {
 
   render() {
     let { currentUser, currentPlan } = this.props;
-    console.log(currentPlan)
+
     return (
       <div className="account-page">
         <div className="account-top">

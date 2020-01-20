@@ -4,8 +4,12 @@ class Api::SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     @subscription.user_id = current_user.id
     @subscription.meal_credit = @subscription.plan.meals
-    @subscription.subscription_start = Date.today
-    @subscription.subscription_end = Date.new(2020, 5, 13)
+
+    start_date = Date.today
+    renew_date = calculate_renew_date(start_date, @subscription.plan)
+
+    @subscription.subscription_start = start_date
+    @subscription.subscription_end = renew_date
 
     if @subscription.save
       render :show
@@ -38,6 +42,26 @@ class Api::SubscriptionsController < ApplicationController
 
   def subscription_params
     params.require(:subscription).permit(:plan_id)
+  end
+
+  def calculate_renew_date(start_date, plan)
+    launch_date = Date.new(2020, 1, 21)
+    return start_date + 29 if start_date == launch_date
+
+    case plan.plan_type
+      when "semester"
+        renew_date = Date.new(2020, 5, 20)
+      when "4weeks"
+        renew_date = start_date + 28
+      when "2weeks"
+        renew_date = start_date + 14
+      when "test"
+        renew_date = start_date + 7
+      else
+        renew_date = start_date + 28
+    end
+
+    renew_date
   end
 
 end
