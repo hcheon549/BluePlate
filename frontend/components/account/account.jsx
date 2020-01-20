@@ -11,10 +11,6 @@ class Account extends React.Component {
     super(props);
   }
 
-  componentDidMount(){
-    // this.props.openClosedModal();
-  }
-
   render() {
     let { currentUser, currentPlan } = this.props;
     console.log(currentPlan)
