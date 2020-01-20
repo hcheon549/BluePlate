@@ -12,7 +12,7 @@ class Account extends React.Component {
   }
 
   componentDidMount(){
-    this.props.openClosedModal();
+    // this.props.openClosedModal();
   }
 
   render() {

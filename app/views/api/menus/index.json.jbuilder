@@ -1,7 +1,7 @@
 json.menus do
   @menus.each do |menu|
     json.set! menu.id do
-      json.extract! menu, :id, :offered_date, :lunch, :dinner, :quantity_available, :quantity_ordered
+      json.extract! menu, :id, :offered_date, :lunch, :dinner, :lunch_quantity_available, :dinner_quantity_available, :quantity_ordered
       # remove this line later
       json.extract! menu.meal, :name, :description, :price, :image_url
       

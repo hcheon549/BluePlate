@@ -88,14 +88,22 @@ class Api::ReservationsController < ApplicationController
 
     if type == 'create'
       account_summary.decrement!(:meal_credits_left)
-      menu.decrement!(:quantity_available)
+      if reservation.pickup_time.pickup_type == 0
+        menu.decrement!(:lunch_quantity_available)
+      else
+        menu.decrement!(:dinner_quantity_available)
+      end
       menu.increment!(:quantity_ordered)
       meal.increment!(:total_number_ordered)
     elsif type == 'destroy'
-      if ((reservation.pickup_time.pickup_type == 0 && (now.hour < 10)) || (reservation.pickup_time.pickup_type == 1 && (now.hour < 16)))
+      if ((reservation.pickup_time.pickup_type == 0 && (now.hour < 10)) || (reservation.pickup_time.pickup_type == 1 && (now.hour < 20)))
         account_summary.increment!(:meal_credits_left)
-        menu.increment!(:quantity_available)
-        menu.decrement!(:quantity_ordered)
+        if reservation.pickup_time.pickup_type == 0
+          menu.increment!(:lunch_quantity_available)
+        else
+          menu.increment!(:dinner_quantity_available)
+        end
+          menu.decrement!(:quantity_ordered)
         meal.increment!(:total_number_ordered)
       end
     end

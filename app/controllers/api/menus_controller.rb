@@ -40,7 +40,7 @@ class Api::MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:meal_id, :shop_id, :lunch, :dinner, :quantity_available)
+    params.require(:menu).permit(:meal_id, :shop_id, :lunch, :dinner, :lunch_quantity_available, :dinner_quantity_available)
   end
 
   def validate_menu(menu)

@@ -61,10 +61,34 @@ class MealIndexItem extends React.Component {
     let { menu, pickupTime, activeTab, todayReservations } = this.props;
     let { isPending, pickupTimeId } = this.state;
     let shop = menu.shop;
+    let soldOut = activeTab == 'lunch' ? (menu.lunchQuantityAvailable == 0) : (menu.dinnerQuantityAvailable == 0)
     let timeIntervals = pickupTime ? Object.values(pickupTime) : [];
     let actionText = (Object.values(todayReservations[activeTab]).length == 0 ? 'RESERVE' : 'UPDATE')
                     + (activeTab == 'lunch' ? ' LUNCH' : ' DINNER')
     let pickupTimeSelected = pickupTimeId !== null;
+
+    let button = soldOut ? (
+      <button
+        className={"reserve-btn time-not-selected"}
+        id={`reserve-button`}
+        disabled={true}
+      >
+        Sold Out
+      </button>
+    ) : (
+      <button
+        className={
+          (pickupTimeId === "")
+            ? "reserve-btn time-not-selected"
+            : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
+        }
+        onClick={this.handleClick}
+        id={`reserve-button`}
+        disabled={!pickupTimeSelected || isPending}
+      >
+        {!isPending && actionText}
+      </button>
+    )
 
     return (
       <div className="meal-box"
@@ -72,7 +96,7 @@ class MealIndexItem extends React.Component {
           onMouseLeave={() => this.handleHover()}
       >
 
-        <select className="select-time" onChange={this.update("pickupTimeId")} value={pickupTimeId}>
+        {!soldOut && <select className="select-time" onChange={this.update("pickupTimeId")} value={pickupTimeId}>
           <option hidden value={null}>
             Pickup Time
           </option>
@@ -83,29 +107,22 @@ class MealIndexItem extends React.Component {
               </option>
             );
           })}
-        </select>
+        </select>}
 
-        <button
-          className={
-            (pickupTimeId === "")
-              ? "reserve-btn time-not-selected"
-              : ("reserve-btn time-selected" + (isPending ? " -pending" : ""))
-          }
-          onClick={this.handleClick}
-          id={`reserve-button`}
-          disabled={!pickupTimeSelected || isPending}
-        >
-          {!isPending && actionText}
-        </button>
+        {button}
 
         <img alt="" src={menu.imageUrl} />
 
-        <div className="hidden-description">
+        {!soldOut && <div className="hidden-description">
           <ul>
             <li className="hidden-meal-name">{menu.name.toUpperCase()}</li>
             <li className="hidden-meal-desc">{menu.description}</li>
           </ul>
-        </div>
+        </div>}
+
+        {soldOut && <div className="soldout">
+          <li>Sold Out</li>
+        </div>}
 
         <div className="meal-box-description">
           <li className="tbd-item meal-name">{menu.name}</li>

@@ -8,7 +8,7 @@ json.all_reservations do
       end
 
       json.menu do
-        json.extract! res.menu, :id, :meal_id, :offered_date, :lunch, :dinner, :quantity_available, :quantity_ordered
+        json.extract! res.menu, :id, :meal_id, :offered_date, :lunch, :dinner, :lunch_quantity_available, :dinner_quantity_available, :quantity_ordered
       end
 
       json.pickupTime do
@@ -36,7 +36,7 @@ json.today_reservations do
       end
 
       json.menu do
-        json.extract! res.menu, :id, :meal_id, :offered_date, :lunch, :dinner, :quantity_available, :quantity_ordered
+        json.extract! res.menu, :id, :meal_id, :offered_date, :lunch, :dinner, :lunch_quantity_available, :dinner_quantity_available, :quantity_ordered
       end
 
       json.pickupTime do

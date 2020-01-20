@@ -7,7 +7,7 @@ json.reservation do
   end
 
   json.menu do
-    json.extract! @reservation.menu, :id, :meal_id, :offered_date, :lunch, :dinner, :quantity_available, :quantity_ordered
+    json.extract! @reservation.menu, :id, :meal_id, :offered_date, :lunch, :dinner, :lunch_quantity_available, :dinner_quantity_available, :quantity_ordered
   end
 
   json.pickupTime do

@@ -105,7 +105,6 @@ class SetMenu extends React.Component {
     let { currentShop, date, currentMeal, lunchQuant, dinnerQuant } = this.state
     let lunch = parseInt(lunchQuant) > 0;
     let dinner = parseInt(dinnerQuant) > 0;
-    let quantity_available = parseInt(lunchQuant) < parseInt(dinnerQuant) ? parseInt(lunchQuant) : parseInt(dinnerQuant)
     
     let menuData = {
       shop_id: parseInt(currentShop),
@@ -113,7 +112,8 @@ class SetMenu extends React.Component {
       meal_id: parseInt(currentMeal),
       lunch,
       dinner,
-      quantity_available
+      lunch_quantity_available: parseInt(lunchQuant),
+      dinner_quantity_available: parseInt(dinnerQuant)
     }
 
     let response = await this.props.createMenu(menuData);
