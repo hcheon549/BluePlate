@@ -9,7 +9,7 @@ import { fetchSchools } from '../../actions/school_actions';
 import { createMenu } from '../../actions/menu_actions';
 import LoadingIcon from "../meal/loading_icon";
 
-class SetMenu extends React.Component {
+class SetMenus extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +19,8 @@ class SetMenu extends React.Component {
       currentShop: (Object.values(this.props.shops).length > 0 ? Object.values(this.props.shops)[0].id : null),
       date: null,
       currentMeal: null,
-      lunchQuant: 20,
-      dinnerQuant: 20,
+      lunchQuant: 10,
+      dinnerQuant: 10,
     }
 
     this.markShopsDropdown = this.markShopsDropdown.bind(this);
@@ -225,4 +225,4 @@ const mdp = (dispatch) => {
 };
 };
 
-export default withRouter(connect(msp, mdp)(SetMenu));
+export default withRouter(connect(msp, mdp)(SetMenus));

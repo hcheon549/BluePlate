@@ -23,7 +23,7 @@ import StepJoin from "./stepJoin/StepJoin";
 import Navigation from "./nav/Navigation";
 import MobileMenuItems from './nav/MobileMenuItems';
 
-import SetMenu from './admin/SetMenu';
+import SetMenus from './admin/SetMenus';
 
 import Footer from "./footer/footer";
 import FAQLanding from './footer/FAQLanding';
@@ -85,7 +85,7 @@ class App extends React.Component {
               <ProtectedRoute exact path="/my-meals" component={MyMeal} />
 
               {/* Admin Pages */}
-              <AdminRoute exact path="/admin-menu" component={SetMenu} />
+              <AdminRoute exact path="/admin-menu" component={SetMenus} />
               {/* <Route exact path="/admin-order" component={} /> */}
 
 
