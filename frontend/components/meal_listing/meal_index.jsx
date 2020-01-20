@@ -57,7 +57,7 @@ class MealIndex extends React.Component {
         </div>
       );
     }
-
+    debugger
     return (
       <div className="meal-listing">
         {menus.map(menu => 

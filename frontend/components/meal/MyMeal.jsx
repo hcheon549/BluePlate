@@ -41,7 +41,7 @@ class MyMeal extends React.Component {
     this.setState({
       loading: false
     })
-    this.props.openClosedModal();
+    // this.props.openClosedModal();
   }
 
   async componentWillReceiveProps(nextProps) {

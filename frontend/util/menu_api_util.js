@@ -8,6 +8,15 @@ export const fetchMenus = schoolId => {
   });
 };
 
+export const createMenu = menuData => {
+  debugger
+  return axios({
+    method: "POST",
+    url: `/api/menus`,
+    data: menuData
+  })
+}
+
 export const mapUpdateMenus = data => {
   return axios({
     method: "GET",

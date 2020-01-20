@@ -1,0 +1,16 @@
+.admin{
+  max-width: 886px;
+  padding-top: 50px;
+  margin: auto;
+
+  .menuInput{
+    display: flex;
+    label{
+      font-weight: 800;
+      margin-right: 20px;
+    }
+  }
+  select{
+    width: 250px;
+  }
+}

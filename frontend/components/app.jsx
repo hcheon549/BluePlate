@@ -22,6 +22,9 @@ import HowItWorks from './HIW/HowItWorks'
 import StepJoin from "./stepJoin/StepJoin";
 import Navigation from "./nav/Navigation";
 import MobileMenuItems from './nav/MobileMenuItems';
+
+import SetMenu from './admin/SetMenu';
+
 import Footer from "./footer/footer";
 import FAQLanding from './footer/FAQLanding';
 import Terms from './footer/Terms';
@@ -68,7 +71,7 @@ class App extends React.Component {
             <Switch>
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
-              {/* <Route exact path="/all-meals" component={AllMeals} /> */}
+              <Route exact path="/all-meals" component={AllMeals} />
               <Route exact path="/how-it-works" component={HowItWorks} />
 
               {/* Auth Pages */}
@@ -80,6 +83,11 @@ class App extends React.Component {
               {/* Content Pages */}
               <ProtectedRoute exact path="/account" component={Account} />
               <ProtectedRoute exact path="/my-meals" component={MyMeal} />
+
+              {/* Admin Pages */}
+              <Route exact path="/admin-menu" component={SetMenu} />
+              {/* <Route exact path="/admin-order" component={} /> */}
+
 
               {/* Footer */}
               <Route exact path="/faq" component={FAQLanding} />

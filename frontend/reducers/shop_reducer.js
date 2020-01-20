@@ -1,7 +1,7 @@
 import {
   RECEIVE_ALL_MENUS,
   RECEIVE_SEARCH_MENUS,
-  RECEIVE_MENU_ERRORS
+  RECEIVE_MENU_ERRORS,
 } from '../actions/menu_actions';
 
 import {

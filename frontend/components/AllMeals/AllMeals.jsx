@@ -53,26 +53,27 @@ class AllMeals extends Component{
 
   render(){
     let shops = this.props.shops.map((shop, idx) => {
-      var meal = shop.meals[Math.floor(Math.random()*(shop.meals.length))];
-      let imageUrl = meal.imageUrl
-      return (
-        <div className="meal-box" key={idx} style={{margin: '20px'}}>
-          <img alt="" src={imageUrl} />
-          {/* <ImageSlider meals={shop.meals} /> */}
-
-          <div className="hidden-description">
-            <ul>
-              <li className="hidden-meal-name">{meal.name}</li>
-              <li className="hidden-meal-desc">{meal.description}</li>
-            </ul>
+      return shop.meals.map((meal, idx) => {
+        let imageUrl = meal.imageUrl
+        return (
+          <div className="meal-box" key={idx} style={{margin: '20px'}}>
+            <img alt="" src={imageUrl} />
+            {/* <ImageSlider meals={shop.meals} /> */}
+  
+            <div className="hidden-description">
+              <ul>
+                <li className="hidden-meal-name">{meal.name}</li>
+                <li className="hidden-meal-desc">{meal.description}</li>
+              </ul>
+            </div>
+  
+            <div className="meal-box-description">
+              <li className="tbd-item shop-name">{shop.name}</li>
+              <li className="tbd-item shop-address">{shop.address}</li>
+            </div>
           </div>
-
-          <div className="meal-box-description">
-            <li className="tbd-item shop-name">{shop.name}</li>
-            <li className="tbd-item shop-address">{shop.address}</li>
-          </div>
-        </div>
-      )
+        )
+      })
     })
 
     let content = this.state.loading ? (

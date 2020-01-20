@@ -439,18 +439,24 @@ ActiveRecord::Base.transaction do
       latitude: 40.500109, 
       longitude: -74.454945,
       school_id: rutgers.id,
+    },{
+      name: "R.U. Grill and Pizza",
+      address: "142 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.49929,
+      longitude: -74.45327,
+      school_id: rutgers.id,
+    },{
+      name: "Jimmy's Pizza & Grill",
+      address: "104 Easton Ave, New Brunswick, NJ 08901",
+      latitude: 40.498699,
+      longitude: -74.451660,
+      school_id: rutgers.id,
     }
     # ,{
     #   name: "King of Gyro",
     #   address: "105 Easton Ave, New Brunswick, NJ 08901",
     #   latitude: 40.49877,
     #   longitude: -74.45167,
-    #   school_id: rutgers.id,
-    # },{
-    #   name: "R.U. Grill and Pizza",
-    #   address: "142 Easton Ave, New Brunswick, NJ 08901",
-    #   latitude: 40.49929,
-    #   longitude: -74.45327,
     #   school_id: rutgers.id,
     # },{
     #   name: "Seed Burger",
@@ -472,31 +478,841 @@ end
 ActiveRecord::Base.transaction do
   Meal.destroy_all
 
-  # rutgers = School.find_by(name: "Rutgers University–New Brunswick")
+  rutgers = School.find_by(name: "Rutgers University–New Brunswick")
   # shops = Shop.all
 
-  # meals_for_today = []
-  # meals_for_tomorrow = []
+  ###############################################
+  ############## RUTGERS PRODUCTION #############
+  ###############################################
+
+  bagelnosh = Shop.find_by(name: 'Bagel Nosh')
+  bagelnoshmeal = [
+    {
+      shop_id: bagelnosh.id,
+      name: "Pepper Turkey",
+      description: "Pepper turkey, jack cheese, lettuce, tomatoes, hot pepper and mustard. Served on a bagel.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1020_pepper_turkey.jpg"
+    },{
+      shop_id: bagelnosh.id,
+      name: "GIMP",
+      description: "Grilled chicken, mozzarella cheese, lettuce, tomatoes, olive oil & vinegar. Served on a roll.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1020_gimp.jpg"
+    },{
+      shop_id: bagelnosh.id,
+      name: "Oven Roasted Chicken",
+      description: "Boars head sliced chicken, American cheese, bacon, lettuce, tomatoes, honey mustard. Served on a bagel.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1020_roasted_chick.jpg"
+    },{
+      shop_id: bagelnosh.id,
+      name: "Ham & Swiss Crunch",
+      description: "Grilled ham, swiss & cheddar cheese, lettuce, tomatoes, and mayo. Served on a garlic roll.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1020_ham_swiss.jpg"
+    },
+  ]
+  bagelnoshmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts bagelnosh.name + " created"
+
+  ###############################################
+
+  kbg = Shop.find_by(name: 'KBG Korean BBQ & Grill')
+  kbgmeal = [
+    {
+      shop_id: kbg.id,
+      name: "Bulgogi & White Rice Bowl",
+      description: "Bulgogi, white rice with your choice of 2 toppings (bean sprouts, kimchi, kimchi cucumbers, tomato, daikon carrots, fishcake, corn, pickled cucumbers, kale, japchae).",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1013_Bulgogi_White.jpg"
+    },{
+      shop_id: kbg.id,
+      name: "Chicken & Brown Rice",
+      description: "Marinated chicken, brown rice with your choice of 2 toppings (bean sprouts, kimchi, kimchi cucumbers, tomato, daikon carrots, fishcake, corn, pickled cucumbers, kale, japchae).",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1013_Chicken_Brown.jpg"
+    },{
+      shop_id: kbg.id,
+      name: "Bulgogi & Kimchi Fried Frice",
+      description: "Bulgogi, kimchi friend rice with your choice of 2 toppings (bean sprouts, kimchi, kimchi cucumbers, tomato, daikon carrots, fishcake, corn, pickled cucumbers, kale, japchae).",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1013_bulgogi_kimchi.jpg"
+    },{
+      shop_id: kbg.id,
+      name: "Spicy Pork & White Rice",
+      description: "Spicy pork, kimchi fried rice with your choice of 2 toppings (bean sprouts, kimchi, kimchi cucumbers, tomato, daikon carrots, fishcake, corn, pickled cucumbers, kale, japchae).",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1013_SpicyPork_White.jpg"
+    },{
+      shop_id: kbg.id,
+      name: "Spicy Pork & Kimchi Fried Rice",
+      description: "Spicy pork, kimchi fried rice with your choice of 2 toppings (bean sprouts, kimchi, kimchi cucumbers, tomato, daikon carrots, fishcake, corn, pickled cucumbers, kale, japchae).",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1013_SpicyPork_Kimchi.jpg"
+    }
+  ]
+  kbgmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts kbg.name + " created"
+
+  ###############################################
+  ###############################################
+
+  krispy = Shop.find_by(name: 'Krispy Pizza and Grill')
+  krispymeal = [
+    {
+      shop_id: krispy.id,
+      name: "1/2 Meatball Parm Hero & Fries",
+      description: "Meatballs, marinara sauce, mozzarella, toasted hero and french fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1031_meatball_fries.jpg"
+    },{
+      shop_id: krispy.id,
+      name: "1/2 Italian Hero and Fries",
+      description: "Ham, salami, capicola, provolone, lettuce, tomatoes, salt, pepper, oregano, olive oil & vinegar and french fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1031_italian_fries.jpg"
+    },{
+      shop_id: krispy.id,
+      name: "Chicken Parm Platter with Penne Pasta",
+      description: "Fried chicken, tomato sauce, mozzarela, over penne pasta",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1031_chicparm_penne.jpg"
+    },{
+      shop_id: krispy.id,
+      name: "Eggplant Parm Platter with Penne Pasta",
+      description: "Breaded eggplant, tomato sauce, mozzarella, over penne pasta.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1031_eggplant_parm.jpg"
+    },{
+      shop_id: krispy.id,
+      name: "Penne Alla Vodka with Italian Bread",
+      description: "Penne pasta tossed in our customer favorite vodka sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1031_pennevodka_bread.jpg"
+    },{
+      shop_id: krispy.id,
+      name: "1/2 Cheese Steak Hero and Fries",
+      description: "Steak, mozzarella, peppers, onions, french fries..",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1031_cheesesteak_fries.jpg"
+    }
+  ]
+  krispymeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts krispy.name + " created"
+
+  ###############################################
+  ###############################################
+
+  popeyes = Shop.find_by(name: 'Popeyes Louisiana Kitchen')
+  popeyesmeal = [
+    {
+      shop_id: popeyes.id,
+      name: "Two Chicken Pieces and a Biscuits with 1 Small Side ",
+      description: "Side options are french fries, mash potatoes, red beans, and coleslaw",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1030_chicken_sides.jpg"
+    }
+  ]
+  popeyesmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts popeyes.name + " created"
+  
+  ###############################################
+  ###############################################
+
+  douglas = Shop.find_by(name: 'Douglas Pizza & Grill')
+  douglasmeal = [
+    {
+      shop_id: douglas.id,
+      name: "Spaghetti Marinara and Meatballs with Garlic Knots",
+      description: "Spaghetti marinara and beef meatballs. Served with 2 garlic knots on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1022_meatball_spaghetti.jpg"
+    },{
+      shop_id: douglas.id,
+      name: "Beef Gyro Platter",
+      description: "Sliced beef gyro served over rice with salad and gyro sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1022_gyro_plattr.jpg"
+    },{
+      shop_id: douglas.id,
+      name: "Baked Ziti and Garlic Knots",
+      description: "Oven baked ziti pasta with tomato sauce and mozzarella cheese. Served with 2 garlic knots",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1022_baked_ziti.jpg"
+    },{
+      shop_id: douglas.id,
+      name: "Cheese Burger Deluxe and French Fries",
+      description: "Cheese Burger with lettuce, tomato, onions, ketchup, and mayo. Served with french fries on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1022_cheeseburger_fries.jpg"
+    },{
+      shop_id: douglas.id,
+      name: "Stuffed Shells and Garlic Knots",
+      description: "Four, oven baked mozzarella stuffed shells with marinara sauce. Served with 2 garlic knots on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1022_stuffed_shells.jpg"
+    },{
+      shop_id: douglas.id,
+      name: "Sausage Roll",
+      description: "Baked sausage and mozzarella roll. Served with marinara on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1022_sausage_roll.jpg"
+    },{
+      shop_id: douglas.id,
+      name: "Grilled Chicken Wrap with Coleslaw",
+      description: "Grilled chicken wrap with lettuce, tomato, onions, and mayo. Served with coleslaw on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1022_Chickwrap_coleslaw.jpg"
+    }
+  ]
+  douglasmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts douglas.name + " created"
 
 
   ###############################################
-  ######## RUTGERS REAL LIFE EXAMPLES ########
   ###############################################
 
-  # shops.each do | shop |
-  #   meal = {
-  #     shop_id: shop.id,
-  #     name: shop.name,
-  #     description: "This and that",
-  #     price: 8.99,
-  #     image_url: "https://blueplate-development.s3.amazonaws.com/seeds/queenstown_roast_beef_sandwich.jpeg"
-  #   }
-  #   Meal.create(meal)
-  #   puts shop.name + " created"
-  # end
+  campuspizza = Shop.find_by(name: 'Campus Pizza')
+  campuspizzameal = [
+    {
+      shop_id: campuspizza.id,
+      name: "Personal Cheese Pizza",
+      description: "Hand tossed, personal pizza with Philadelphia cheese.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1032_Personal_Pizza.jpg"
+    },{
+      shop_id: campuspizza.id,
+      name: "California Burger and Fries",
+      description: "California cheese burger with lettuce, tomatoes, mayo & ketchup. Served with french fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1032_California_Fries.jpg"
+    },{
+      shop_id: campuspizza.id,
+      name: "Stomboli with Green Peppers & Onions",
+      description: "Stomboli stuffed with mozzarella, green peppers, and onions.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1032_Stromboli.jpg"
+    },{
+      shop_id: campuspizza.id,
+      name: "Cheese Calzone with Maranara Sauce",
+      description: "Stuffed with riccota and mozzarella, onions, and green peppers. Served with maranara sauce on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1032_Calzone.jpg"
+    },{
+      shop_id: campuspizza.id,
+      name: "Chicken Parm Hero",
+      description: "Fried chicken breast on a toasted hero with maranara and melted mozzarella.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1032_Chicken_Parm.jpg"
+    }
+  ]
+  campuspizzameal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts campuspizza.name + " created"
+
+  ###############################################
+  ###############################################
+
+  jerseymikes = Shop.find_by(name: "Jersey Mike's Subs")
+  jerseymikesmeal = [
+    {
+      shop_id: jerseymikes.id,
+      name: "American Classic with Chips",
+      description: "Ham, provolone, lettuce, tomatoes, oil/vinegar, oregano, and salt. Served with chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1024_american_chips.jpg"
+    },{
+      shop_id: jerseymikes.id,
+      name: "Turkey Provolone with Chips",
+      description: "99% fat free turkey, provolone cheese, lettuce, tomatoes, oil/vinegar, oregano, and salt. Served with chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1024_turkey_chips.jpg"
+    },{
+      shop_id: jerseymikes.id,
+      name: "Stickball Special with Chips",
+      description: "Ham, salami, provolone cheese, lettuce, tomatoes, oil/vinegar, oregano, and salt. Served with chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1024_stickball_chips.jpg"
+    },{
+      shop_id: jerseymikes.id,
+      name: "Jersey Shore Favorite with Chips",
+      description: "Ham, capocollo, provolone cheese, lettuce, tomatoes, oil/vinegar, oregano, and salt. Served with chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1024_jerseyshore_chips.jpg"
+    },{
+      shop_id: jerseymikes.id,
+      name: "Veggie with Chips",
+      description: "Provolone, swiss, bell peppers, cucumbers, lettuce, tomatoes, oil/vinegar, oregano, and salt. Served with chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1024_veggie_chips.jpg"
+    },{
+      shop_id: jerseymikes.id,
+      name: "Super Sub with Chips",
+      description: "Ham, prosciutto, capacollo, provolone cheese, lettuce, tomatoes, oil/vinegar, oregano, and salt. Served with chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1024_supersub_chips.jpg"
+    }
+  ]
+  jerseymikesmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts jerseymikes.name + " created"
 
 
-  # puts "Meals Created"
+  ###############################################
+  ###############################################
+
+  knightsdeli = Shop.find_by(name: "Knight's Deli")
+  knightsdelimeal = [
+    {
+      shop_id: knightsdeli.id,
+      name: "Blazing Scarlet Sandwich and Chips",
+      description: "Blazing buffalo chicken, pepper jack cheese, lettuce, tomato, and spicy mustard. Includes a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1014_Blazing_Scarlet.jpg"
+    },{
+      shop_id: knightsdeli.id,
+      name: "Italian Sandwich and Chips",
+      description: "Ham, salami, provolone cheese, lettuce, tomato, and mayo. Includes a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1014_Italian.jpg"
+    },{
+      shop_id: knightsdeli.id,
+      name: "The Big East Sandwich and Chips",
+      description: "Ham, turkey, swiss cheese, lettuce, tomato, and mayo. Served with a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1014_Big_East.jpg"
+    },{
+      shop_id: knightsdeli.id,
+      name: "The Knight Sandwich and Chips",
+      description: "Turkey, roast beef, provolone cheese, lettuce, tomato, and spicy mustard. Served with a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1014_Knights_Sandwich.jpg"
+    }
+  ]
+  knightsdelimeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts knightsdeli.name + " created"
+
+  ###############################################
+  ###############################################
+
+  halalguys = Shop.find_by(name: "The Halal Guys")
+  halalguysmeal = [
+    {
+      shop_id: halalguys.id,
+      name: "Chicken & Falafel Plattr",
+      description: "Chicken, rice, lettuce, tomatoes, white sauce, hot sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1011_chicken_falafel.jpg"
+    },{
+      shop_id: halalguys.id,
+      name: "Falafel Plattr",
+      description: "Falafel, rice, lettuce, tomatoes, white sauce, hot sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1011_falafel_plattr.jpg"
+    },{
+      shop_id: halalguys.id,
+      name: "Chicken Sandwich",
+      description: "Chicken in a pita with lettuce, tomatoes, white sauce, hot sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1011_chicken_sandwich.jpg"
+    },{
+      shop_id: halalguys.id,
+      name: "Beef Gyro Sandwich",
+      description: "Beef in a pita with lettuce, tomatoes, white sauce, hot sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1011_beef_sandwich.jpg"
+    },{
+      shop_id: halalguys.id,
+      name: "Beef Plattr",
+      description: "Beef, rice, lettuce, tomatoes, white sauce, hot sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1011_beef_plattr.jpg"
+    },{
+      shop_id: halalguys.id,
+      name: "Chicken and Beef Plattr",
+      description: "Chicken, beef, rice, lettuce, tomatoes, white sauce, hot sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1011_beefchicken_plattr.jpg"
+    },{
+      shop_id: halalguys.id,
+      name: "Chicken Plattr",
+      description: "Chicken, rice, lettuce, tomatoes, white sauce, hot sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1011_chicken_plattr.jpg"
+    }
+  ]
+  halalguysmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts halalguys.name + " created"
+
+  ###############################################
+  ###############################################
+
+  burgerandpizza = Shop.find_by(name: "25 Burgers & Pizza")
+  burgerandpizzameal = [
+    {
+      shop_id: burgerandpizza.id,
+      name: "Personal Pepperoni Pizza",
+      description: "Pepperoni, mozzarella, tomato sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1017_Pepperoni_Pizza.jpg"
+    },{
+      shop_id: burgerandpizza.id,
+      name: "Cobb Salad & Garlic Knots",
+      description: "Lettuce, grape tomatoes, hard boiled eggs, bacon, blue cheese, side of garllic knots.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1017_CobbSalad.jpg"
+    },{
+      shop_id: burgerandpizza.id,
+      name: "Strawberry Salad & Garlic Knots",
+      description: "Mixed salad greens, slices strawberries, crumbled walnuts, feta cheese. Garlic knots on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1017_StrawberrySalad.jpg"
+    },{
+      shop_id: burgerandpizza.id,
+      name: "Greek Salad & Garlic Knots",
+      description: "Romaine, tomatoes, red onions, black olives, feta cheese. Garlic knots on the side. ",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1017_GreekSalad.jpg"
+    },{
+      shop_id: burgerandpizza.id,
+      name: "Margherita Personal Pizza",
+      description: "Personal pizza with tomato sauce, sliced mozzarella, basil.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1017_MargheritaPizza.jpg"
+    },{
+      shop_id: burgerandpizza.id,
+      name: "One Veggie and One Chicken Slice & a Can of Soda",
+      description: "Buffalo chicken, vegitable pizza",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1017_chicveggie_soda.jpg"
+    }
+  ]
+  burgerandpizzameal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts burgerandpizza.name + " created"
+
+  ###############################################
+  ###############################################
+
+  burgers25 = Shop.find_by(name: "25 Burgers")
+  burgers25meal = [
+    {
+      shop_id: burgers25.id,
+      name: "Classic Cheese Burger & Fries",
+      description: "Beef patty, American cheese, lettuce, tomatoes, mayo, ketchup, fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1016_cheeseburger_fries.jpg"
+    },{
+      shop_id: burgers25.id,
+      name: "Bacon Cheese Burger & Fries",
+      description: "Beef patty, bacon, American cheese, lettuce, tomatoes, mayo, ketchup, french fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1016_BaconBurger_Fries.jpg"
+    },{
+      shop_id: burgers25.id,
+      name: "6 Piece Wings & Fries",
+      description: "Breaded wings with french fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1016_Wings_Fries.jpg"
+    },{
+      shop_id: burgers25.id,
+      name: "Turkey Cheese & Cajun Fries",
+      description: "Turkey patty, swiss cheese, lettuce, mayo, cajun fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1016_turkeyburger_Fries.jpg"
+    },{
+      shop_id: burgers25.id,
+      name: "Crispy Chicken Burger & Fries",
+      description: "Breaded chicken patty, lettuce, tomatoes, mayo, french fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1016_CrispyChicken_Fries.jpg"
+    }
+  ]
+  burgers25meal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts burgers25.name + " created"
+
+  ###############################################
+  ###############################################
+
+  cambo = Shop.find_by(name: "Cambo Box")
+  cambomeal = [
+    {
+      shop_id: cambo.id,
+      name: "Lemongrass Chicken with Rice",
+      description: "Signature Lemongrass Chicken served with pickled veggies or corn.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1028_lemonchick_plattr.jpg"
+    },{
+      shop_id: cambo.id,
+      name: "Soy-Garlic Chicken with Rice",
+      description: "Our soy-garlic chicken served with pickled veggies or corn.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1028_soygarlic_chic.jpg"
+    },{
+      shop_id: cambo.id,
+      name: "Lemongrass Chicken Sandwich",
+      description: "Lemongrass Chicken Sandwich with Chili Mayo, Cilantro, Pickled Carrots.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1028_lemonchick_sandwich.jpg"
+    }
+  ]
+  cambomeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts cambo.name + " created"
+
+  ###############################################
+  ###############################################
+
+  jimmys = Shop.find_by(name: "Jimmy's Pizza & Grill")
+  jimmysmeal = [
+    {
+      shop_id: jimmys.id,
+      name: "Two Pepperoni Pizzas with a Can of Soda",
+      description: "Pepperoni, tomato sauce, mozzarella, and a can of soda.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1034_pepperoni_soda.jpg"
+    }
+  ]
+  jimmysmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts jimmys.name + " created"
+
+  ###############################################
+  ###############################################
+
+  kamfung = Shop.find_by(name: "Kam Fung")
+  kamfungmeal = [
+    {
+      shop_id: kamfung.id,
+      name: "Chicken Lo Mein",
+      description: "Chicken, noodle, carrot, celery, cabbage",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1018_chic_lomein.jpg"
+    },{
+      shop_id: kamfung.id,
+      name: "General Tso's with White Rice",
+      description: "Breaded chicken, General Tso's sauce and fried rice with onions, green onions",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1018_general_tsao.jpg"
+    },{
+      shop_id: kamfung.id,
+      name: "Chicken & Broccoli with White Rice",
+      description: "Chicken, broccoli, and white rice.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1018_chic_broccoli.jpg"
+    },{
+      shop_id: kamfung.id,
+      name: "Pork Fried Rice with an Egg Roll",
+      description: "Rice, pork, onion, scallion, egg roll",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1018_pork_friedrice.jpg"
+    }
+  ]
+  kamfungmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts kamfung.name + " created"
+
+  ###############################################
+  ###############################################
+
+  deliplaza = Shop.find_by(name: "Deli Plaza")
+  deliplazameal = [
+    {
+      shop_id: deliplaza.id,
+      name: "Salami & Cheese",
+      description: "Salami & American cheese on a roll",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1015_Salami_Cheese.jpg"
+    },{
+      shop_id: deliplaza.id,
+      name: "Tuna Salad Sandwich",
+      description: "Tuna salad with mayo and finely chopped carrots and celery. Served on a roll.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1015_Tunasalad_Sandwich.jpg"
+    },{
+      shop_id: deliplaza.id,
+      name: "Two PB&J's with Chocolate Milk",
+      description: "2 peanut butter and grape jelly toasted sandwiches with a bottle of chocolate milk.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1015_PBJ_Milk.jpg"
+    },{
+      shop_id: deliplaza.id,
+      name: "Ham & Cheese and Chips",
+      description: "Boars head ham & American cheese. Served with a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1015_Hamcheese_Chips.jpg"
+    },{
+      shop_id: deliplaza.id,
+      name: "BLT & Bag of Chip",
+      description: "Bacon, lettuce, & tomatoes on toast and a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1015_BLT_Chips.jpg"
+    }
+  ]
+  deliplazameal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts deliplaza.name + " created"
+
+  ###############################################
+  ###############################################
+
+  jerseysubs = Shop.find_by(name: "Jersey Subs")
+  jerseysubsmeal = [
+    {
+      shop_id: jerseysubs.id,
+      name: "Torpedo Ham and Cheese with Chips",
+      description: "Ham, provolone, lettuce, tomatoes, onions, oil & vinegar. Served with a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1021_ham_chips.jpg"
+    },{
+      shop_id: jerseysubs.id,
+      name: "Ham Salami Cheese Torpedo & Chips",
+      description: "Ham, salami, provolone, lettuce, tomatoes, oil/vinegar, oregano, and salt. Served with chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1021_hamsalami_chips.jpg"
+    },{
+      shop_id: jerseysubs.id,
+      name: "Torpedo Ham and Cheese with Chips",
+      description: "Ham, provolone, lettuce, tomatoes, onions, oil & vinegar. Served with a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1021_ham_chips.jpg"
+    },{
+      shop_id: jerseysubs.id,
+      name: "Torpedo Turkey & Can of Soda",
+      description: "Sliced turkey, provolone, lettuce, tomatoes, onions, oil/vinegar. Can of soda.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1021_turkey_soda.jpg"
+    },{
+      shop_id: jerseysubs.id,
+      name: "Torpedo Chicken Salad with Chips",
+      description: "Served with lettuce, tomatoes, onions, oil/vinegar, oregano and a bag of chips.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1021_chicsalad_sandwich.jpg"
+    },{
+      shop_id: jerseysubs.id,
+      name: "Caesar Salad",
+      description: "Romaine, croutons, tomatoes, parmesan, caesar dressing on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1021_caesar_salad.jpg"
+    }
+  ]
+  jerseysubsmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts jerseysubs.name + " created"
+
+  ###############################################
+  ###############################################
+
+  ramenstop = Shop.find_by(name: "Ramen Stop")
+  ramenstopmeal = [
+    {
+      shop_id: ramenstop.id,
+      name: "Garlic Tonkotsu Ramen",
+      description: "Pork bone stock; soy sauce seasoned, chasu pork belly, crushed garlic, wood ear mushrooms, cabbage and green onions.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1033_tonkatsu_ramen.jpg"
+    },{
+      shop_id: ramenstop.id,
+      name: "Chicken Teriyaki Donburi",
+      description: "Grilled teriyaki chicken with white rice, carrots, cabbage, green onions, and sesame seeds.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1033_chick_donburi.jpg"
+    }
+  ]
+  ramenstopmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts ramenstop.name + " created"
+
+  ###############################################
+  ###############################################
+
+  elevation = Shop.find_by(name: "Elevation Burger")
+  elevationmeal = [
+    {
+      shop_id: elevation.id,
+      name: "3 Chicken Tenders & Fries",
+      description: "Crispy organic chicken breast tenders and fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1012_Chictenders_fries.jpg"
+    },{
+      shop_id: elevation.id,
+      name: "Elevation Single & Fries",
+      description: "One organic beef patty served on a potato bun with a side of fries.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1012_singleburger_fries.jpg"
+    },{
+      shop_id: elevation.id,
+      name: "Elevation Burger",
+      description: "Two organic beef patties, cheddar cheese, lettuce, tomato, pickles and Elevation Sauce",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1012_elevation_burger.jpg"
+    },{
+      shop_id: elevation.id,
+      name: "Veggie Burger",
+      description: "A savory blend Veggie patty served on a potato bun of veggies & cheese.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1012_Veggie_burger.jpg"
+    },{
+      shop_id: elevation.id,
+      name: "Elevation Crispy Chicken Sandwich",
+      description: "Crispy organic chicken breast tenders, cheddar cheese, lettuce, tomato, pickles and Elevation Sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1012_crispychick_sandwich.jpg"
+    },{
+      shop_id: elevation.id,
+      name: "Elevation Grilled Chicken Sandwich",
+      description: "Grilled organic chicken breast tenders, cheddar cheese, lettuce, tomato, pickles and Elevation Sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1012_grilledchick_sand.jpg"
+    }
+  ]
+  elevationmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts elevation.name + " created"
+  
+  ###############################################
+  ###############################################
+
+  giovanneli = Shop.find_by(name: "Giovanneli's Pizza & Grill")
+  giovannelimeal = [
+    {
+      shop_id: giovanneli.id,
+      name: "Lamb Plattr",
+      description: "Grilled lamb, season rice, lettuce, tomatoes, red onions, pita bread. White sauce on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1026_lamb_plattr.jpg"
+    },{
+      shop_id: giovanneli.id,
+      name: "Chicken Caesar Salad",
+      description: "Grilled chicken, romaine, croutons. Caesar dressing on the side.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1026_chicken_caesar.jpg"
+    },{
+      shop_id: giovanneli.id,
+      name: "Two Slices of Buffalo Chicken and Soda",
+      description: "Buffalo chicken slices and a can of soda.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1026_buffalochicken_soda.jpg"
+    },{
+      shop_id: giovanneli.id,
+      name: "Cheese Steak Sandwich, Fries and Soda",
+      description: "Steak, peppers, onions, American cheese. Served with fries and a can of soda.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1026_cheesesteak_fries.jpg"
+    },{
+      shop_id: giovanneli.id,
+      name: "Two Cheese Slices and a Soda",
+      description: "Mozzarella slices with tomato sauce and a can of soda.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1026_cheeseslices_soda.jpg"
+    }
+  ]
+  giovannelimeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts giovanneli.name + " created"
+
+
+  ###############################################
+  ###############################################
+
+  knightsexpress = Shop.find_by(name: "Knights Express Pizza & Grill")
+  knightsexpressmeal = [
+    {
+      shop_id: knightsexpress.id,
+      name: "Fat Darrel",
+      description: "Chicken fingers, mozzarella sticks, french fries and marinara sauce.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1025_Fat_Darrel.jpg"
+    },{
+      shop_id: knightsexpress.id,
+      name: "Penne Vodka Pasta",
+      description: "Panne, tomato sauce, heavy cream, olive oil, parmasan cheese, garlic bread",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1025_Penne_Vodka.jpg"
+    },{
+      shop_id: knightsexpress.id,
+      name: "California Cheeseburger & Fries",
+      description: "Beef patty, lettus, tomato, red onion, american cheese, french fries",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1025_California_Cheeseburger.jpg"
+    },{
+      shop_id: knightsexpress.id,
+      name: "6 Buffalo Wings",
+      description: "chickn wings, hot sauce",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1025_Buffalo_Wings.jpg"
+    },{
+      shop_id: knightsexpress.id,
+      name: "Chicken over Rice Plattr",
+      description: "Chicken, rice, lettus, red onion, tomato, white sauce, red sauce, pita bread",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1025_Chicken_Plattr.jpg"
+    },{
+      shop_id: knightsexpress.id,
+      name: "2 Pepperoni Slices",
+      description: "Pepperoni, mozzarella cheese, tomato sauce",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1025_Pepperoni_Slices.jpg"
+    },{
+      shop_id: knightsexpress.id,
+      name: "Grilled Chicken Caesar Salad",
+      description: "Lettus, grilled chicken, croutons, carved parmasan cheese, caesar dressing.",
+      price: 0,
+      image_url: "https://blueplate-development.s3.amazonaws.com/production/1025_Chicken_Caesar.jpg"
+    }
+  ]
+  knightsexpressmeal.each do |meal|
+    Meal.create(meal)
+    puts meal[:name] + " created"
+  end
+  puts giovanneli.name + " created"
 
 end
 

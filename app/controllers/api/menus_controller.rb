@@ -22,10 +22,25 @@ class Api::MenusController < ApplicationController
     end
   end
 
+  def create
+    @menu = Menu.new(menu_params)
+    @menu.offered_date = Date.parse(params[:offered_date])
+
+    if @menu.save
+      render json: ['success'], status: 200
+    else
+      render json: @menu.errors.full_messages, status: 422
+    end
+  end
+
   # private
 
   def bounds
     JSON.parse(params[:bounds])
+  end
+
+  def menu_params
+    params.require(:menu).permit(:meal_id, :shop_id, :lunch, :dinner, :quantity_available)
   end
 
 end

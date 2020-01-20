@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_032600) do
+ActiveRecord::Schema.define(version: 2020_01_20_181957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 2020_01_19_032600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity_ordered", default: 0, null: false
+    t.integer "shop_id", null: false
+    t.index ["shop_id", "offered_date"], name: "index_menus_on_shop_id_and_offered_date", unique: true
   end
 
   create_table "pickup_times", force: :cascade do |t|

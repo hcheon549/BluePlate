@@ -17,10 +17,11 @@ Rails.application.routes.draw do
     resources :favorites, only: [:index, :create, :destroy]
     resources :subscriptions, only: [:create, :update]
     resources :account_summaries, only: [:create, :update]
-    resources :menus, only: [:index, :update]
+    resources :menus, only: [:index, :create, :update]
     resources :pickup_times, only: [:index]
     resources :reservations, only: [:index, :show, :create, :update, :destroy]
     resources :password_resets, only: [:create, :update, :edit]
+    resources :shops, only: [:index]
     resources :leads, only: [:create]
     resources :charges
 

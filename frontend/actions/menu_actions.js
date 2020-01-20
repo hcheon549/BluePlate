@@ -17,6 +17,10 @@ export const fetchMenus = schoolId => dispatch => {
   );
 };
 
+export const createMenu = menuData => dispatch => (
+  menuApiUtil.createMenu(menuData)
+)
+
 export const updateMapMenus = data => dispatch => {
   return menuApiUtil.mapUpdateMenus(data).then(
     payload => {
