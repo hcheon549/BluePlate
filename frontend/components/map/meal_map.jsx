@@ -44,11 +44,11 @@ class MealMap extends React.Component {
     this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
 
     // Not updating the shops when the map moves on the Landing Page
-    if (!this.props.landing){this.registerListeners();}
+    // if (!this.props.landing){this.registerListeners();}
   }
 
   componentDidUpdate(prevProps) {
-    this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
+    // this.MarkerManager.updateMarkers(this.props.shops, this.props.menus);
     this.MarkerManager.highlightMarker(this.props.marker);
 
     if (this.props.center) {
@@ -97,11 +97,11 @@ class MealMap extends React.Component {
     }
   }
 
-  registerListeners() {
-    //Not being used on Landing Page Map
-    google.maps.event.addListener(this.map, "dragend", this.updateBounds);
-    google.maps.event.addListener(this.map, "zoom_changed", this.updateBounds);
-  }
+  // registerListeners() {
+  //   //Not being used on Landing Page Map
+  //   google.maps.event.addListener(this.map, "dragend", this.updateBounds);
+  //   google.maps.event.addListener(this.map, "zoom_changed", this.updateBounds);
+  // }
 
   render() {
     return (

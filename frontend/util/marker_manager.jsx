@@ -51,9 +51,6 @@ export default class MarkerManager {
           <div class="info-win-name">
             ${shop.name}
           </div >
-          <div id="map-reserve" class="info-win-name info-win-reserve" onclick=${reserveFunction}>
-            RESERVE
-          </div >
         </div >
       </div >
       `;

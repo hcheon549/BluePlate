@@ -20,9 +20,9 @@ import TodayReservations from "../reservations/TodayReservations";
 const ADMIN_ACCOUNT = [
   "eric@blueplattr.com",
   "ben@blueplattr.com",
-  "support@blueplattr.com",
   "hello@blueplattr.com",
-  "echeon1122@gmail.com"
+  "echeon1122@gmail.com",
+  "hcheon549@gmail.com"
 ]
 
 class MyMeal extends React.Component {
@@ -49,7 +49,7 @@ class MyMeal extends React.Component {
     this.setState({
       loading: false
     })
-    if (!ADMIN_ACCOUNT.includes(currentUser.email)){
+    if (!ADMIN_ACCOUNT.includes(this.props.currentUser.email)){
       this.props.openClosedModal();
     }
   }

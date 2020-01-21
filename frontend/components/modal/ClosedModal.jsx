@@ -22,7 +22,7 @@ class ClosedModal extends React.Component {
           <img className="logo" src="https://blueplate-development.s3.amazonaws.com/BluePlattr_logo.png" alt="logo" />
           <h4>Welcome!</h4>
           <p><span className="miniText">
-            Every day, we open our kitchen at 9PM. That means you will be able to select your meals for tomorrow at 9PM tonight. Until then, keep calm and stay hungry.
+            Every day, we open our kitchen at 9PM. That means you will be able to select your lunch and dinner for tomorrow starting at 9 PM tonight. Until then, keep calm and stay hungry.
           </span></p>
           <button className='orange' type="submit" onClick={this.goBack}>Go to Home Page</button>
         </div>

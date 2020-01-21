@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 const ADMIN_ACCOUNT = [
   "eric@blueplattr.com",
   "ben@blueplattr.com",
-  "support@blueplattr.com",
   "hello@blueplattr.com",
   "echeon1122@gmail.com"
 ]
