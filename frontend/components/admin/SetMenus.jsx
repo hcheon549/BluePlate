@@ -110,6 +110,7 @@ class SetMenus extends React.Component {
               className="admin-dropdown"
               id="dropdown-button"
               onChange={this.update.bind(this, "currentShop")}
+              key={1}
             >
               <option hidden value={null}>
                 -- Please Select --
@@ -124,6 +125,7 @@ class SetMenus extends React.Component {
               className="admin-dropdown"
               id="dropdown-button"
               onChange={this.update.bind(this, "date")}
+              key={2}
             >
               <option hidden value={null}>
                 -- Please Select --
@@ -138,6 +140,7 @@ class SetMenus extends React.Component {
               className="admin-dropdown"
               id="dropdown-button"
               onChange={this.update.bind(this, "currentMeal")}
+              key={3}
             >
               <option hidden value={null}>
                 -- Please Select --
