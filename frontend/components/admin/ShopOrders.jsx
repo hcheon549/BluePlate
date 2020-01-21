@@ -10,6 +10,7 @@ class ShopOrders extends React.Component{
     return(
       <div>
         <li>{this.props.shop.name}</li>
+        <label>Total Orders:</label>{this.props.reservations.length}
       </div>
 );
   }
