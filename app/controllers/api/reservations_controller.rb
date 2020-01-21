@@ -16,8 +16,18 @@ class Api::ReservationsController < ApplicationController
     end
   end
 
-  def show
-
+  def send_orders
+    today = Date.today
+    if Time.now.hour > 21
+      today += 1
+    end
+    @reservations = Reservation.includes(:menu, :pickup_time, :meal, :user, meal: :shop).joins(:menu).where(menus: { offered_date: today })
+    
+    if @reservations
+      render :show
+    else
+      render json: ["No reservations found"], status: 404    
+    end
   end
 
   def create

@@ -1,22 +1,16 @@
 import React from "react";
-// import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 
-import { fetchMeals } from '../../actions/meal_actions';
-import { fetchSchools } from '../../actions/school_actions';
 import { createMenu } from '../../actions/menu_actions';
-import LoadingIcon from "../meal/loading_icon";
 
 class SetMenus extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       submitted: false,
-      schoolId: (Object.values(this.props.schools).length > 0 ? Object.values(this.props.schools)[0].id : null),
-      loading: true,
-      currentShop: (Object.values(this.props.shops).length > 0 ? Object.values(this.props.shops)[0].id : null),
+      currentShop: null,
       date: null,
       currentMeal: null,
       lunchQuant: 10,
@@ -30,40 +24,10 @@ class SetMenus extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async componentDidMount(){
-    if (!this.state.schoolId){
-      await this.props.fetchSchools()
-    } else {
-      await this.props.fetchMeals(this.state.schoolId)
-      this.setState({
-        loading: false,
-      })
-    }
-  }
-
-  async componentDidUpdate(prevProps, prevState){
-    if (prevProps.schools !== this.props.schools){
-      this.setState({
-        schoolId: Object.values(this.props.schools)[0].id
-      })
-    }
-    if (prevProps.shops !== this.props.shops){
-      this.setState({
-        currentShop: Object.values(this.props.shops)[0].id,
-      })
-    }
-    if ((!prevState.schoolId && this.state.schoolId) || (prevState.schoolId !== this.state.schoolId)){
-      await this.props.fetchMeals(this.state.schoolId)
-      this.setState({
-        loading: false
-      })
-    }
-  }
-
   makeDayDropdown(){
     let today = moment(new Date());
     let days = []
-    for (let i = 0; i < 7; i++){
+    for (let i = 0; i < 14; i++){
       days.push(today.format("dddd, M/D/YYYY"))
       today = moment(today).add(1, 'days');
     }
@@ -74,8 +38,13 @@ class SetMenus extends React.Component {
     ))
   }
 
-  markMealsDropdown(){
-    return this.props.shops[this.state.currentShop].meals.map((meal, idx) => (
+  markMealsDropdown(){    
+    if (!this.state.currentShop){
+      return null
+    }
+    const { currentShop } = this.state;
+
+    return this.props.shops[currentShop].meals.map((meal, idx) => (
       <option className="shoplist" value={meal.id} key={idx}>
         {meal.name}
       </option>)
@@ -129,14 +98,10 @@ class SetMenus extends React.Component {
   }
 
   render() {
-    if (this.state.loading){
-      return <LoadingIcon />
-    }
-
     let buttonText = this.state.submitted ? "Done" : "Submit";
 
     return (
-      <div className="admin">
+      <div className="setMenus">
         <form className="dailyMenu" onSubmit={this.handleSubmit}>
 
           <div className="menuInput" >
@@ -146,6 +111,9 @@ class SetMenus extends React.Component {
               id="dropdown-button"
               onChange={this.update.bind(this, "currentShop")}
             >
+              <option hidden value={null}>
+                -- Please Select --
+              </option>
               {this.markShopsDropdown()}
             </select>
           </div>
@@ -157,9 +125,9 @@ class SetMenus extends React.Component {
               id="dropdown-button"
               onChange={this.update.bind(this, "date")}
             >
-            <option hidden value={null}>
-              -- Please Select --
-            </option>
+              <option hidden value={null}>
+                -- Please Select --
+              </option>
               {this.makeDayDropdown()}
             </select>
           </div>
@@ -219,8 +187,6 @@ const msp = ({entities}) => {
 
 const mdp = (dispatch) => {
  return {
-  fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
-  fetchSchools: () => dispatch(fetchSchools()),
   createMenu: (menuData) => dispatch(createMenu(menuData))
 };
 };

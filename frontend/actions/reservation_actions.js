@@ -3,6 +3,7 @@ import * as reservationApiUtil from "../util/reservation_api_util";
 export const RECEIVE_RESERVATION = "RECEIVE_RESERVATION";
 export const REMOVE_RESERVATION = "REMOVE_RESERVATION";
 export const RECEIVE_RES_ERRORS = "RECEIVE_RES_ERRORS";
+export const SEND_RESERVATIONS = "SEND_RESERVATIONS";
 
 export const createReservation = res => dispatch => {
   return reservationApiUtil.createReservation(res).then(
@@ -29,6 +30,22 @@ export const deleteReservation = id => dispatch => {
     },
     errors => dispatch(receiveErrors(errors.response.data))
   );
+};
+
+export const sendReservations = () => dispatch => {
+  return reservationApiUtil.sendReservations().then(
+    payload => {
+      return dispatch(sendOrders(payload.data))
+    },
+    errors => dispatch(receiveErrors(errors.response.data))
+  )
+}
+
+const sendOrders = payload => {
+  return {
+    type: SEND_RESERVATIONS,
+    payload
+  };
 };
 
 const receiveReservation = payload => {

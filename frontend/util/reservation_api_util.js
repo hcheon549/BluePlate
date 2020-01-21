@@ -7,6 +7,13 @@ export const fetchReservations = () => {
   });
 };
 
+export const sendReservations = () => {
+  return axios({
+    method: "GET",
+    url: `/api/reservations/send`
+  })
+}
+
 export const createReservation = reservation => {
   return axios({
     method: "POST",
