@@ -31,7 +31,7 @@ class ReservationMailer < ApplicationMailer
     @meal = meal
     @date = format_date(Date.today)
     mails_to_send = shop_order.emails.concat(["eric@blueplattr.com", "ben@blueplattr.com"])
-    mail_subject = "[#{@date}] BluePlattr Order Summary"
+    mail_subject = "TEST EMAIL SENT FROM BLUEPLATTR [#{@date}] BluePlattr Order Summary"
     
     mails_to_send.each do | email |
       mail to: email, subject: mail_subject
