@@ -14,7 +14,7 @@ import {
 const pickupTimeClose = {
   lunch: {
     hour: 10,
-    minute: 30
+    minute: 0
   },
   dinner: {
     hour: 16,

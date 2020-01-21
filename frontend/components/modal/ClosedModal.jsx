@@ -20,9 +20,9 @@ class ClosedModal extends React.Component {
       >
         <div className="innerContent">
           <img className="logo" src="https://blueplate-development.s3.amazonaws.com/BluePlattr_logo.png" alt="logo" />
-          <h4>See you in the Spring semester...</h4>
+          <h4>Welcome!</h4>
           <p><span className="miniText">
-            Your plan sarts on the first day of spring 2020 semester. Preciesly speaking, that's January 21st, in which you can start selecting Lunch and Dinner for the 22nd. Until then, keep calm and stay hungry.
+            Every day, we open our kitchen at 9PM. That means you will be able to select your meals for tomorrow at 9PM tonight. Until then, keep calm and stay hungry.
           </span></p>
           <button className='orange' type="submit" onClick={this.goBack}>Go to Home Page</button>
         </div>

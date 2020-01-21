@@ -17,6 +17,14 @@ import Tab from './Tab'
 import Today from './Today'
 import TodayReservations from "../reservations/TodayReservations";
 
+const ADMIN_ACCOUNT = [
+  "eric@blueplattr.com",
+  "ben@blueplattr.com",
+  "support@blueplattr.com",
+  "hello@blueplattr.com",
+  "echeon1122@gmail.com"
+]
+
 class MyMeal extends React.Component {
   constructor(props){
     super(props)
@@ -41,7 +49,9 @@ class MyMeal extends React.Component {
     this.setState({
       loading: false
     })
-    // this.props.openClosedModal();
+    if (!ADMIN_ACCOUNT.includes(currentUser.email)){
+      this.props.openClosedModal();
+    }
   }
 
   async componentWillReceiveProps(nextProps) {
