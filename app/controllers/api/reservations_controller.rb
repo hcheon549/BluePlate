@@ -16,7 +16,7 @@ class Api::ReservationsController < ApplicationController
     end
   end
 
-  def send_orders
+  def get_reservations
     today = Date.today
     if Time.now.hour > 21
       today += 1
@@ -70,7 +70,6 @@ class Api::ReservationsController < ApplicationController
     else
       render json: @reservation.errors.full_messages, status: 422
     end
-
   end
 
   def destroy
@@ -82,6 +81,14 @@ class Api::ReservationsController < ApplicationController
       adjust_attributes('destroy', @user, @reservation)
       render :show
     end
+  end
+
+  def send_order
+    @shop = Shop.find(params[:id])
+    @pickup_time = PickupTime.all
+    @reservations = params[:reservations]
+    @meal = params[:meal]
+    ReservationMailer.send_order(@shop, @pickup_time, @reservations, @meal).deliver_now
   end
 
   private

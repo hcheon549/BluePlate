@@ -10,7 +10,7 @@ export const fetchReservations = () => {
 export const sendReservations = () => {
   return axios({
     method: "GET",
-    url: `/api/reservations/send`
+    url: `/api/reservations/getreservations`
   })
 }
 
@@ -48,3 +48,11 @@ export const deleteReservation = id => {
     url: `/api/reservations/${id}`
   });
 };
+
+export const sendOrder = data => {
+  return axios({
+    method: "POST",
+    url: `/api/reservations/sendorder/${data.shop_id}`,
+    data
+  })
+}

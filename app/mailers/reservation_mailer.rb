@@ -23,6 +23,16 @@ class ReservationMailer < ApplicationMailer
     mail to: @user.email, subject: mail_subject
   end
 
+  def send_order(shop, pickup_time, reservations, meal)
+    @shop = shop
+    @pickup_time = pickup_time
+    @reservations = reservations
+    @meal = meal
+    @date = format_date(Date.today)
+    mail_subject = "[#{@date}] BluePlattr Order Summary"
+    mail to: "eric@blueplattr.com", subject: mail_subject
+  end
+
   private
   def format_date(date)
     date.strftime("%m/%d/%Y")

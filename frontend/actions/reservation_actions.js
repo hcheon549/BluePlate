@@ -35,13 +35,21 @@ export const deleteReservation = id => dispatch => {
 export const sendReservations = () => dispatch => {
   return reservationApiUtil.sendReservations().then(
     payload => {
-      return dispatch(sendOrders(payload.data))
+      return dispatch(receiveReservationByShop(payload.data))
     },
     errors => dispatch(receiveErrors(errors.response.data))
   )
 }
 
-const sendOrders = payload => {
+export const sendOrder = (data) => dispatch => {
+  return reservationApiUtil.sendOrder(data)
+  // .then(
+  //   () => dispatch(sendOrderSuccess()),
+  //   (error) => dispatch(sendOrderError(error))
+  // )
+}
+
+const receiveReservationByShop = payload => {
   return {
     type: SEND_RESERVATIONS,
     payload

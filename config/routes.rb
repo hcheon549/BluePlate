@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     resources :menus, only: [:index, :create, :update]
     resources :pickup_times, only: [:index]
     resources :reservations, only: [:index, :create, :update, :destroy]
-    get 'reservations/send', to: 'reservations#send_orders'
+    get 'reservations/getreservations', to: 'reservations#get_reservations'
+    post 'reservations/sendorder/:id', to: 'reservations#send_order'
     resources :password_resets, only: [:create, :update, :edit]
     resources :shops, only: [:index]
     resources :leads, only: [:create]

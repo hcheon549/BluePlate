@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { sendReservations } from '../../actions/reservation_actions';
+import { sendReservations, sendOrder } from '../../actions/reservation_actions';
 
 import ShopOrders from './ShopOrders'
 
@@ -84,9 +84,14 @@ class SendOrders extends React.Component {
       let reservationsShop = reservations.filter((res) => {
         return res.shop.id == shop.id
       })
-      let menu = reservationsShop.length > 0 ? reservationsShop[0].menu : {}
-      
-      return <ShopOrders key={idx} shop={shop} reservations={reservationsShop} menu={menu} />
+      let meal = reservationsShop.length > 0 ? reservationsShop[0].meal : null
+      return <ShopOrders 
+              key={idx}
+              shop={shop}
+              reservations={reservationsShop}
+              meal={meal}
+              sendOrder={this.props.sendOrder}
+            />
     })
   }
 
@@ -98,7 +103,7 @@ class SendOrders extends React.Component {
     return (
       <div className="send-orders">
         <div className="orderStatus">
-          <h4>Order Status for {this.getMenuDate()}</h4>
+          <h5>Order Status for {this.getMenuDate()}</h5>
         </div>
         <ul>
           {this.listShops()}
@@ -116,7 +121,8 @@ const msp = ({ui}) => {
 
 const mdp = (dispatch) => {
  return {
-    fetchAllReservations: () => dispatch(sendReservations())
+    fetchAllReservations: () => dispatch(sendReservations()),
+    sendOrder: (data) => dispatch(sendOrder(data))
   };
 };
 
