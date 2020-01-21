@@ -1,7 +1,10 @@
 import React from "react";
 
+import SocialMedia from './SocialMedia';
+
 const Footer = (props) => (
   <div className="footer-container">
+    <SocialMedia />
     <ul className="footer-links">
       <li className="miniText" onClick={() => props.history.push('/faq')}>FAQs</li>
       <span />

@@ -51,6 +51,20 @@
   cursor: pointer;
 }
 
+.socialMedia{
+  max-width: 200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  ul{
+    margin-bottom: 30px;
+  }
+  i {
+    margin: auto 15px;
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 560px) {
   .footer-links{
     flex-direction: column;
