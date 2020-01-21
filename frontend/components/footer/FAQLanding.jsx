@@ -39,7 +39,7 @@ const Answers = [
       <li>1. 12 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
       <li>2. 9 Meals per week plan, $6.39 per meal, plus taxes and fees.</li>
       <li>3. 6 Meals per week plan, $6.69 per meal, plus taxes and fees.</li>
-      <li>3. 3 Meals per week plan, $6.99 per meal, plus taxes and fees.</li>
+      <li>4. 3 Meals per week plan, $6.99 per meal, plus taxes and fees.</li>
     </ol>
     <p>Please remember that your state and local taxes may applied.</p>
   </div>,
