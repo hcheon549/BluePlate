@@ -1,33 +1,45 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import moment from 'moment';
-import axios from "axios";
-
 
 import { sendReservations } from '../../actions/reservation_actions';
-import { fetchSchools } from '../../actions/school_actions';
-import { createMenu } from '../../actions/menu_actions';
+
+import ShopOrders from './ShopOrders'
 
 class SendOrders extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      loaded: false,
       shop: null
     }
     this.listShops = this.listShops.bind(this);
   }
 
-  componentDidMount(){
-    this.props.fetchAllReservations();
+  async componentDidMount(){
+    await this.props.fetchAllReservations();
+    this.setState({
+      loaded: true
+    })
   }
 
   listShops(){
     let shops = Object.values(this.props.shops)
-    return shops.map((shop, idx) => <li key={idx}>{shop.name}</li>)
+    let reservations = Object.values(this.props.reservations)
+
+    return shops.map((shop, idx) => {
+      let reservationsShop = reservations.filter((res) => {
+        res.shop.id = shop.id
+      })
+      return <ShopOrders key={idx} shop={shop} reseravtions={reservationsShop}/>
+    })
   }
 
   render() {
+    if (!this.state.loaded){
+      return <div />
+    }
+
     return (
       <div className="send-orders">
         <ul>
