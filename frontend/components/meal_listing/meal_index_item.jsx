@@ -50,7 +50,7 @@ class MealIndexItem extends React.Component {
     let {pickupTimeId} = this.state;
     let action = todayReservations[activeTab].id ? 'update' : 'reserve'
     let currentReservation = todayReservations[activeTab].id ? todayReservations[activeTab] : null;
-      
+
     this.trackAction(action)
     this.props.openReserveModal(
       { action, menu, shop, pickupTime, pickupTimeId, currentReservation }

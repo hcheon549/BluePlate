@@ -12,15 +12,15 @@ class ShopOrders extends React.Component{
     this.props.sendOrder({
       shop_id: this.props.shop.id,
       reservations: this.props.reservations,
-      meal: this.props.meal
+      meal: this.props.menu.meal
     })
   }
 
   render() {
-    let { shop, reservations, meal } = this.props
+    let { shop, reservations, menu } = this.props
     return(
       <div className="vendorList">
-        <li>{shop.name} - {meal ? meal.name : ""} <span>({reservations.length})</span></li>
+        <li>{shop.name} - {menu ? menu.meal.name : ""} <span>({reservations.length})</span></li>
         <button className="secondary" onClick={this.sendOrder}>Send Order</button>
       </div>
     );

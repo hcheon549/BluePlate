@@ -14,14 +14,14 @@ const TodayReservations = (props) => {
         <ReservationItem 
           type={"lunch"}
           hasMeal={hasLunch}
-          menu={todayReservations.lunch}
+          reservation={todayReservations.lunch}
           openReserveModal={openReserveModal}
           pickupTime={lunchTime}
         />
         <ReservationItem
           type={"dinner"}
           hasMeal={hasDinner}
-          menu={todayReservations.dinner}
+          reservation={todayReservations.dinner}
           openReserveModal={openReserveModal}
           pickupTime={dinnerTime}
         />

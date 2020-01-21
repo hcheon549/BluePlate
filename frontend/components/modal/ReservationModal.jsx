@@ -99,6 +99,7 @@ class ReservationModal extends React.Component {
       let updatedReservation = Object.assign({}, currentReservation);
       updatedReservation.menuId = menu.id;
       updatedReservation.pickupTimeId = parseInt(pickupTimeId);
+
       let updateResult = await updateReservation(updatedReservation)
       this.setState({
         isPending: false
@@ -222,7 +223,7 @@ class ReservationModal extends React.Component {
         className="reserve-modal animated fadeInDown"
         onClick={e => e.stopPropagation()}
       >
-        <img className="res-modal-img" src={menu.imageUrl} alt="" />
+        <img className="res-modal-img" src={menu.meal.imageUrl} alt="" />
         <div className="res-modal-right">
           <div onClick={closeModal} className="res-modal-x">
             &times;
@@ -230,8 +231,8 @@ class ReservationModal extends React.Component {
 
           <div className="content-container-modal">
             <div className="reservation-content-modal">
-              <li className="meal-name">{menu.name.toUpperCase()}</li>
-              <li className="meal-description">{menu.description}</li>
+              <li className="meal-name">{menu.meal.name.toUpperCase()}</li>
+              <li className="meal-description">{menu.meal.description}</li>
               <li className="shop-name">{shop.name}</li>
               <li className="shop-address">{shop.address}</li>
             </div>

@@ -16,6 +16,13 @@ export const createMenu = menuData => {
   })
 }
 
+export const fetchTodayMenus = () => {
+  return axios({
+    method: "GET",
+    url: `/api/todaymenus`
+  })
+}
+
 export const mapUpdateMenus = data => {
   return axios({
     method: "GET",

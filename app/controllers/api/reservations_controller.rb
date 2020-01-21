@@ -24,7 +24,7 @@ class Api::ReservationsController < ApplicationController
     @reservations = Reservation.includes(:menu, :pickup_time, :meal, :user, meal: :shop).joins(:menu).where(menus: { offered_date: today })
     
     if @reservations
-      render :show
+      render :reserve
     else
       render json: ["No reservations found"], status: 404    
     end

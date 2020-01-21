@@ -20,6 +20,7 @@ function Modal(props) {
   let isEmailCapture = (modal.type == 'emailCapture');
 
   let component;
+
   switch (modal.type) {
     case 'reserve':
       component =

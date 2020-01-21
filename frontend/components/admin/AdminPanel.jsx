@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { fetchMeals } from '../../actions/meal_actions';
 import { fetchSchools } from '../../actions/school_actions';
+import { fetchMenus } from '../../actions/menu_actions';
 
 import LoadingIcon from "../meal/loading_icon";
 import SetMenus from './SetMenus'
@@ -23,6 +24,7 @@ class AdminPanel extends React.Component {
   async componentDidMount(){
     await this.props.fetchSchools()
     await this.props.fetchMeals(this.state.schoolId)
+    await this.props.fetchMenus(this.state.schoolId)
     this.setState({
       loading: false,
     })
@@ -56,13 +58,15 @@ const msp = ({entities}) => {
     currentUser: entities.currentUser,
     shops: entities.shops,
     schools: entities.schools,
+    menus: entities.menus
   };
 };
 
 const mdp = (dispatch) => {
  return {
-  fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
   fetchSchools: () => dispatch(fetchSchools()),
+  fetchMeals: (schoolId) => dispatch(fetchMeals(schoolId)),
+  fetchMenus: (schoolId) => dispatch(fetchMenus(schoolId))
 };
 };
 

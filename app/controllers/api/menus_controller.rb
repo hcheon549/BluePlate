@@ -32,6 +32,17 @@ class Api::MenusController < ApplicationController
     end
   end
 
+  def today_menu
+    @today = Date.today
+    @tomorrow = @today + 1
+    
+    if Time.now.hour < 21
+      @menus = Menu.where(offered_date: @today).includes(:meal, :shop)
+    else
+      @menus = Menu.where(offered_date: @tomorrow).includes(:meal, :shop)
+    end
+  end
+
   # private
 
   def bounds

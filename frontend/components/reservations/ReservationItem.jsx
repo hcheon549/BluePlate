@@ -2,24 +2,25 @@ import React from "react";
 
 const ReservationItem = (props) => {
 
-  let { type, hasMeal, menu, pickupTime, openReserveModal } = props;
+  let { type, hasMeal, reservation, pickupTime, openReserveModal } = props;
   let imageUrl, content;
+
   let data = {
-    menu: menu.meal,
-    shop: menu.shop,
+    menu: {...reservation.menu, meal: {...reservation.meal}},
+    shop: reservation.shop,
     pickupTime: pickupTime,
-    pickupTimeId: menu.pickupTimeId,
-    currentReservation: menu
+    pickupTimeId: reservation.pickupTimeId,
+    currentReservation: reservation
   }
   
   if (hasMeal){
-    imageUrl = menu.meal.imageUrl;
+    imageUrl = reservation.meal.imageUrl;
     content = (
       <ul>
-        <li className="meal-name">{menu.meal.name}</li>
-        <li className="shop-name">{menu.shop.name}</li>
-        <li className="shop-address">{menu.shop.address}</li>
-        <li className="pickup-time">Pick up between {menu.pickupTime.start} and {menu.pickupTime.end}</li>
+        <li className="meal-name">{reservation.meal.name}</li>
+        <li className="shop-name">{reservation.shop.name}</li>
+        <li className="shop-address">{reservation.shop.address}</li>
+        <li className="pickup-time">Pick up between {reservation.pickupTime.start} and {reservation.pickupTime.end}</li>
         <li style={{display: 'flex', justifyContent: 'left'}}>
           <span onClick={() => openReserveModal({ action: 'update', ...data})}>Update</span>
           <span style={{marginLeft: '20px'}} onClick={() => openReserveModal({action: 'cancel', ...data})}>Cancel</span>

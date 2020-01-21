@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:create, :update]
     resources :account_summaries, only: [:create, :update]
     resources :menus, only: [:index, :create, :update]
+    get 'menus/todaymenus', to: 'menus#today_menus'
     resources :pickup_times, only: [:index]
     resources :reservations, only: [:index, :create, :update, :destroy]
     get 'reservations/getreservations', to: 'reservations#get_reservations'

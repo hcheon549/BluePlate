@@ -79,17 +79,18 @@ class SendOrders extends React.Component {
   listShops(){
     let shops = Object.values(this.props.shops)
     let reservations = Object.values(this.props.reservations)
+    let menus = Object.values(this.props.menus)
 
     return shops.map((shop, idx) => {
       let reservationsShop = reservations.filter((res) => {
         return res.shop.id == shop.id
       })
-      let meal = reservationsShop.length > 0 ? reservationsShop[0].meal : null
+      let menu = menus.filter(menu => menu.shop.id == shop.id)
       return <ShopOrders 
               key={idx}
               shop={shop}
               reservations={reservationsShop}
-              meal={meal}
+              menu={menu[0]}
               sendOrder={this.props.sendOrder}
             />
     })

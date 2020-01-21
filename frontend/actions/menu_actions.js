@@ -31,6 +31,14 @@ export const updateMapMenus = data => dispatch => {
   );
 };
 
+// export const fetchTodayMenu = () => dispatch => {
+//   return menuApiUtil.fetchTodayMenus().then(
+//     payload => {
+//       return dispatch(receiveTodayMenu(payload.data))
+//     }
+//   )
+// }
+
 const receiveShops = shops => {
   return {
     type: RECEIVE_ALL_SHOPS,
