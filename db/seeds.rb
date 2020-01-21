@@ -474,6 +474,284 @@ ActiveRecord::Base.transaction do
   puts "Shops created"
 end
 
+ActiveRecord::Base.transaction do
+  ShopOrder.destroy_all
+
+  ###############################################
+  ############## RUTGERS PRODUCTION #############
+  ###############################################
+
+  bagelnosh = Shop.find_by(name: 'Bagel Nosh')
+  bagelnoshmeal = {
+    shop_id: bagelnosh.id,
+    emails: ["bagelnoshnb@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(bagelnoshmeal)
+  puts bagelnosh.name + " created"
+
+  ################################################
+
+  kbg = Shop.find_by(name: 'KBG Korean BBQ & Grill')
+  kbgmeal = {
+    shop_id: kbg.id,
+    emails: ["jeya0666@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(kbgmeal)
+  puts kbg.name + " created"
+
+  ################################################
+
+  knightexpress = Shop.find_by(name: 'Knights Express Pizza & Grill')
+  knightexpressmeal = {
+    shop_id: knightexpress.id,
+    emails: ["abdelfouda@hotmail.com"],
+    fax: "7326400109",
+  }
+
+  ShopOrder.create(knightexpressmeal)
+  puts knightexpress.name + " created"
+
+  ################################################
+
+  burger25 = Shop.find_by(name: '25 Burgers')
+  burger25meal = {
+    shop_id: burger25.id,
+    emails: ["pawan25burger@gmail.com"],
+    fax: "7326265580",
+  }
+
+  ShopOrder.create(burger25meal)
+  puts burger25.name + " created"
+
+  ################################################
+
+  burgerpizza = Shop.find_by(name: '25 Burgers & Pizza')
+  burgerpizzameal = {
+    shop_id: burgerpizza.id,
+    emails: ["pawan25burger@gmail.com"],
+    fax: "7326265580",
+  }
+
+  ShopOrder.create(burgerpizzameal)
+  puts burgerpizza.name + " created"
+
+  ################################################
+
+  kamfung = Shop.find_by(name: 'Kam Fung')
+  kamfungmeal = {
+    shop_id: kamfung.id,
+    emails: ["93775919@qq.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(kamfungmeal)
+  puts kamfung.name + " created"
+
+  ################################################
+
+  campuspizza = Shop.find_by(name: 'Campus Pizza')
+  campuspizzameal = {
+    shop_id: campuspizza.id,
+    emails: ["madal18672@yahoo.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(campuspizzameal)
+  puts campuspizza.name + " created"
+
+  ################################################
+
+  jerseymikes = Shop.find_by(name: "Jersey Mike's Subs")
+  jerseymikesmeal = {
+    shop_id: jerseymikes.id,
+    emails: ["garrett.schall@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(jerseymikesmeal)
+  puts jerseymikes.name + " created"
+
+  ################################################
+
+  halalguys = Shop.find_by(name: "The Halal Guys")
+  halalguysmeal = {
+    shop_id: halalguys.id,
+    emails: ["emon@halalway.co","joe@halalway.co"],
+    fax: :null,
+  }
+
+  ShopOrder.create(halalguysmeal)
+  puts halalguys.name + " created"
+
+  ################################################
+
+  elevation = Shop.find_by(name: "Elevation Burger")
+  elevationmeal = {
+    shop_id: elevation.id,
+    emails: ["emon@halalway.co","ramey@halalway.co"],
+    fax: :null,
+  }
+
+  ShopOrder.create(elevationmeal)
+  puts elevation.name + " created"
+
+  ################################################
+
+
+  knightdeli = Shop.find_by(name: "Knight's Deli")
+  knightdelimeal = {
+    shop_id: knightdeli.id,
+    emails: ["ritesh331@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(knightdelimeal)
+  puts knightdeli.name + " created"
+
+  ################################################
+
+  douglas = Shop.find_by(name: "Douglas Pizza & Grill")
+  douglasmeal = {
+    shop_id: douglas.id,
+    emails: ["saidselim93@yahoo.com"],
+    fax: "7325140052",
+  }
+
+  ShopOrder.create(douglasmeal)
+  puts douglas.name + " created"
+
+  ################################################
+
+  deliplaza = Shop.find_by(name: "Deli Plaza")
+  deliplazameal = {
+    shop_id: deliplaza.id,
+    emails: ["deliplazanj@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(deliplazameal)
+  puts deliplaza.name + " created"
+
+  ################################################
+
+  jerseysubs = Shop.find_by(name: "Jersey Subs")
+  jerseysubsmeal = {
+    shop_id: jerseysubs.id,
+    emails: ["jerseysub380@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(jerseysubsmeal)
+  puts jerseysubs.name + " created"
+
+  ################################################
+
+
+  cambo = Shop.find_by(name: "Cambo Box")
+  cambomeal = {
+    shop_id: cambo.id,
+    emails: ["mekongrow@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(cambomeal)
+  puts cambo.name + " created"
+
+  ################################################
+
+
+  giovaneli = Shop.find_by(name: "Giovanneli's Pizza & Grill")
+  giovanelimeal = {
+    shop_id: giovaneli.id,
+    emails: ["shamzk2000@yahoo.com"],
+    fax: "7322201215",
+  }
+
+  ShopOrder.create(giovanelimeal)
+  puts giovaneli.name + " created"
+
+  ################################################
+
+
+  krispy = Shop.find_by(name: "Krispy Pizza and Grill")
+  krispymeal = {
+    shop_id: krispy.id,
+    emails: ["krispypizzarutgers@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(krispymeal)
+  puts krispy.name + " created"
+
+  ################################################
+
+  popeyes = Shop.find_by(name: "Popeyes Louisiana Kitchen")
+  popeyesmeal = {
+    shop_id: popeyes.id,
+    emails: ["tahseem.mehman@@gmail.com"],
+    fax: :null,
+  }
+
+  ShopOrder.create(popeyesmeal)
+  puts popeyes.name + " created"
+
+  ################################################
+
+  jimmys = Shop.find_by(name: "Jimmy's Pizza & Grill")
+  jimmysmeal = {
+    shop_id: jimmys.id,
+    emails: [],
+    fax: "7325140411",
+  }
+
+  ShopOrder.create(jimmysmeal)
+  puts jimmys.name + " created"
+
+  ################################################
+
+  ramenstop = Shop.find_by(name: "Ramen Stop")
+  ramenstopmeal = {
+    shop_id: ramenstop.id,
+    emails: ["info@ramenstop.us"],
+    fax: :null,
+  }
+
+  ShopOrder.create(ramenstopmeal)
+  puts ramenstop.name + " created"
+
+  ################################################
+
+
+  rugrill = Shop.find_by(name: "R.U. Grill and Pizza")
+  rugrillmeal = {
+    shop_id: rugrill.id,
+    emails: [],
+    fax: "7328281393",
+  }
+
+  ShopOrder.create(rugrillmeal)
+  puts rugrill.name + " created"
+
+  ################################################
+
+  muebies = Shop.find_by(name: "Nuebies Pizza")
+  muebiesmeal = {
+    shop_id: muebies.id,
+    emails: ["abdelkarimh22@gmail.com"],
+    fax: "7322148686",
+  }
+
+  ShopOrder.create(muebiesmeal)
+  puts muebies.name + " created"
+
+  ################################################
+
+
+end
 
 ActiveRecord::Base.transaction do
   Meal.destroy_all

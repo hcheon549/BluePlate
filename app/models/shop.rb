@@ -16,6 +16,7 @@ class Shop < ApplicationRecord
 
   has_many :meals
   has_many :favorites
+  has_one :shop_order
 
   def self.in_bounds(bounds)
     self.where("latitude < ?", bounds["northEast"]["lat"])

@@ -84,11 +84,12 @@ class Api::ReservationsController < ApplicationController
   end
 
   def send_order
-    @shop = Shop.find(params[:id])
+    @shop = Shop.includes(:shop_order).find(params[:id])
+    @shop_order = @shop.shop_order
     @pickup_time = PickupTime.all
     @reservations = params[:reservations]
     @meal = params[:meal]
-    ReservationMailer.send_order(@shop, @pickup_time, @reservations, @meal).deliver_now
+    ReservationMailer.send_order(@shop, @shop_order, @pickup_time, @reservations, @meal).deliver_now
   end
 
   private

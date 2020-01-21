@@ -23,14 +23,19 @@ class ReservationMailer < ApplicationMailer
     mail to: @user.email, subject: mail_subject
   end
 
-  def send_order(shop, pickup_time, reservations, meal)
+  def send_order(shop, shop_order, pickup_time, reservations, meal)
     @shop = shop
     @pickup_time = pickup_time
     @reservations = reservations
-    @meal = meal
+    # @meal = meal
+    @meal = { name: "Test Order"}
     @date = format_date(Date.today)
+    mails_to_send = shop_order.emails.concat(["eric@blueplattr.com", "ben@blueplattr.com"])
     mail_subject = "[#{@date}] BluePlattr Order Summary"
-    mail to: "eric@blueplattr.com", subject: mail_subject
+    
+    mails_to_send.each do | email |
+      mail to: email, subject: mail_subject
+    end
   end
 
   private
