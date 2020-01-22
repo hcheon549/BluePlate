@@ -36,12 +36,17 @@ class ShopOrders extends React.Component{
     let { pending } = this.state
 
     return(
-      <div className="vendorList">
-        <li>{shop.name} - {menu ? menu.meal.name : ""} <span>({reservations.length})</span></li>
-        <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
+      <tr className="vendorList">
+        <td>{shop.name}</td>
+        <td>{menu ? menu.meal.name : ""}</td>
+        <td>{reservations.length}</td>
+        <td>0</td>
+        <td>
+          <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
             {!pending && "Send Order"}
           </button>
-      </div>
+        </td>
+      </tr>
     );
   }
 }

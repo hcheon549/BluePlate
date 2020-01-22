@@ -29,7 +29,8 @@ class ReservationMailer < ApplicationMailer
     @reservations = reservations
     @meal = meal
     @date = format_date(Date.today)
-    mail_subject = "TEST EMAIL SENT FROM BLUEPLATTR [#{@date}] BluePlattr Order Summary"
+    debugger
+    mail_subject = "[#{@date}] BluePlattr Order Summary"
     mail to: email, subject: mail_subject
   end
 
