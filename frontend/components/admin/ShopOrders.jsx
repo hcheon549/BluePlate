@@ -3,25 +3,44 @@ import React from 'react';
 class ShopOrders extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+      pending: false
+    }
     this.sendOrder = this.sendOrder.bind(this);
   }
 
-  sendOrder(e){
+  async sendOrder(e){
     e.preventDefault();
+
+    this.setState({
+      pending: true
+    })
     
-    this.props.sendOrder({
+    let sendEmail = await this.props.sendOrder({
       shop_id: this.props.shop.id,
       reservations: this.props.reservations,
       meal: this.props.menu.meal
     })
+
+    console.log(sendEmail)
+
+    if(sendEmail){
+      this.setState({
+        pending: false
+      })
+    }
   }
 
   render() {
     let { shop, reservations, menu } = this.props
+    let { pending } = this.state
+
     return(
       <div className="vendorList">
         <li>{shop.name} - {menu ? menu.meal.name : ""} <span>({reservations.length})</span></li>
-        <button className="secondary" onClick={this.sendOrder}>Send Order</button>
+        <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
+            {!pending && "Send Order"}
+          </button>
       </div>
     );
   }

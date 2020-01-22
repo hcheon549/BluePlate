@@ -89,7 +89,10 @@ class Api::ReservationsController < ApplicationController
     @pickup_time = PickupTime.all
     @reservations = params[:reservations]
     @meal = params[:meal]
-    ReservationMailer.send_order(@shop, @shop_order, @pickup_time, @reservations, @meal).deliver_now
+    @emails = @shop_order.emails.concat(["eric@blueplattr.com", "ben@blueplattr.com", "support@blueplattr.com"])
+    @emails.each do | email |
+      ReservationMailer.send_order(@shop, email, @pickup_time, @reservations, @meal).deliver_now
+    end
   end
 
   private
