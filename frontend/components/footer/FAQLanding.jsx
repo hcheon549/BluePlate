@@ -34,7 +34,7 @@ const Answers = [
     <p>BluePlattr offers affordable, convenient, and flexible meal plan subscriptions giving users access to local restaurants on and around your campus. BluePlattr aims to provide you with a quick, simple, and convenient system for you to get amazing lunch and dinner meals every day. Users select their lunch and/or dinner in advance through the BluePlattr website, as early as the night before, and pick it up at the time of their choosing. Deciding what to eat on a tight schedule and budget has never been easier.</p>
   </div>,
   <div>
-    <p>BluePlattr offers three options every semester:</p>
+    <p>BluePlattr offers four options every semester:</p>
     <ol>
       <li>1. 12 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
       <li>2. 9 Meals per week plan, $6.39 per meal, plus taxes and fees.</li>
@@ -77,7 +77,7 @@ const Answers = [
     <p>Pick up times are in 15 minute intervals. This way, you know your meals will be made fresh just before you arrive, and ready to grab and go at your selected time. As we mentioned before, if you are running late, please contact your restaurant directly and let them know!</p>
   </div>,
   <div>
-    <p>Absolutely! The meal plan you select is for the number of meals per week and can be used for lunch and/or dinner. For example, if you selected the 4 meal plan, you can use it any way you see fit. Lunch and dinner on Saturday and Sunday? Go for it!</p>
+    <p>Absolutely! The meal plan you select is for the number of meals per week and can be used for lunch and/or dinner. For example, if you selected the meal plan, you can use it any way you see fit. Lunch and dinner on Saturday and Sunday? Go for it!</p>
   </div>,
   <div>
     <p>For now, users can only use one meal at a time for lunch and dinner. However, we do plan on implementing a system down the road where you can use your meal plan to select multiple meals for you and your friends.</p>
