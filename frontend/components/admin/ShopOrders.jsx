@@ -7,6 +7,13 @@ class ShopOrders extends React.Component{
       pending: false
     }
     this.sendOrder = this.sendOrder.bind(this);
+    this.lunchReservations = []
+    this.dinnerReservations = []
+    this.props.reservations.forEach((reservation) => {
+      reservation.pickupTime.pickupType == 0
+      ? this.lunchReservations.push(reservation)
+      : this.dinnerReservations.push(reservation)
+    })
   }
 
   async sendOrder(e){
@@ -32,15 +39,15 @@ class ShopOrders extends React.Component{
   }
 
   render() {
-    let { shop, reservations, menu } = this.props
+    let { shop, menu } = this.props
     let { pending } = this.state
 
     return(
       <tr className="vendorList">
         <td>{shop.name}</td>
         <td>{menu ? menu.meal.name : ""}</td>
-        <td>{reservations.length}</td>
-        <td>0</td>
+        <td>{this.lunchReservations.length}</td>
+        <td>{this.dinnerReservations.length}</td>
         <td>
           <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
             {!pending && "Send Order"}
