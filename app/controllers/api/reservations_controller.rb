@@ -35,7 +35,7 @@ class Api::ReservationsController < ApplicationController
     @user_summary = @user.account_summary
 
     if @user_summary.meal_credits_left < 1
-      render json: ["No Meals left!"], status: 422
+      return render json: ["No Meals left!"], status: 422
     end
 
     @reservation = Reservation.new(

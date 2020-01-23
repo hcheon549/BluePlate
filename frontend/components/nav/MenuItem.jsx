@@ -10,17 +10,12 @@ class MenuItem extends React.Component {
     super(props);
     this.state = {
       active: false,
-      disabled: false
     };
     this.handleLogout = this.handleLogout.bind(this);
   }
  
-  componentDidMount() {
-    this.setState({ disabled: false });
-  }
-
-  handleLogout() {
-    this.setState({ disabled: true }, () => this.props.logout());
+  async handleLogout() {
+    await this.props.logout()
     window.location.replace('/')
   }
 

@@ -12,14 +12,16 @@ class LandingMap extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      schoolId: (this.props.currentUser.schoolId || (Object.values(this.props.schools).length > 0 ? Object.values(this.props.schools)[0].id : null))
+      schoolId: (this.props.currentUser.schoolId || (Object.values(this.props.schools).length > 0 ? Object.values(this.props.schools)[0].id : null)),
+      loaded: false
     }
     this.update = this.update.bind(this);
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     if (this.state.schoolId){
-      this.props.fetchMenus(this.state.schoolId)
+      await this.props.fetchMenus(this.state.schoolId)
+      this.setState({loaded: true})
     }
   }
 
@@ -42,7 +44,7 @@ class LandingMap extends React.Component {
 
   render(){
     let { schools } = this.props
-  
+
     return (
       <section className="landingMap" id="landingMap">
         <div className="blueBackground" />
