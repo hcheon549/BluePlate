@@ -4,9 +4,12 @@ class ShopOrders extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      pending: false
+      pending: false,
+      successMessage: ''
     }
+    
     this.sendOrder = this.sendOrder.bind(this);
+    this.defineOrderType = this.defineOrderType.bind(this);
     this.lunchReservations = []
     this.dinnerReservations = []
     this.props.reservations.forEach((reservation) => {
@@ -16,24 +19,37 @@ class ShopOrders extends React.Component{
     })
   }
 
+  defineOrderType() {
+    let now = new Date()
+    let hour = now.getHours()
+
+    if (hour > 0 && hour < 15) {
+      return 0
+    } else {
+      return 1
+    }
+  }
+
   async sendOrder(e){
     e.preventDefault();
 
-    this.setState({
-      pending: true
-    })
-    
+    this.setState({ pending: true })
+    let orderType = this.defineOrderType();
+    let reservations = orderType == 0 ? this.lunchReservations : this.dinnerReservations;
+  
     let sendEmail = await this.props.sendOrder({
       shop_id: this.props.shop.id,
-      reservations: this.props.reservations,
-      meal: this.props.menu.meal
+      meal: this.props.menu.meal,
+      orderType,
+      reservations,
     })
 
     console.log(sendEmail)
 
     if(sendEmail){
       this.setState({
-        pending: false
+        pending: false,
+        successMessage: `Sent`
       })
     }
   }
@@ -41,6 +57,7 @@ class ShopOrders extends React.Component{
   render() {
     let { shop, menu } = this.props
     let { pending } = this.state
+    let buttonText = this.defineOrderType() == 0 ? 'Send Lunch Orders' : 'Send Dinner Orders'
 
     return(
       <tr className="vendorList">
@@ -50,8 +67,11 @@ class ShopOrders extends React.Component{
         <td>{this.dinnerReservations.length}</td>
         <td>
           <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
-            {!pending && "Send Order"}
+            {!pending && buttonText}
           </button>
+        </td>
+        <td>
+          {this.state.successMessage}
         </td>
       </tr>
     );

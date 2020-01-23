@@ -114,6 +114,7 @@ class SendOrders extends React.Component {
               <th>Lunch</th>
               <th>Dinner</th>
               <th>Action</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
