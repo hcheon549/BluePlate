@@ -3,26 +3,77 @@ import React from 'react';
 class ShopOrders extends React.Component{
   constructor(props) {
     super(props);
-    this.sendOrder = this.sendOrder.bind(this);
-  }
-
-  sendOrder(e){
-    e.preventDefault();
+    this.state = {
+      pending: false,
+      successMessage: ''
+    }
     
-    this.props.sendOrder({
-      shop_id: this.props.shop.id,
-      reservations: this.props.reservations,
-      meal: this.props.menu.meal
+    this.sendOrder = this.sendOrder.bind(this);
+    this.defineOrderType = this.defineOrderType.bind(this);
+    this.lunchReservations = []
+    this.dinnerReservations = []
+    this.props.reservations.forEach((reservation) => {
+      reservation.pickupTime.pickupType == 0
+      ? this.lunchReservations.push(reservation)
+      : this.dinnerReservations.push(reservation)
     })
   }
 
+  defineOrderType() {
+    let now = new Date()
+    let hour = now.getHours()
+
+    if (hour > 0 && hour < 15) {
+      return 0
+    } else {
+      return 1
+    }
+  }
+
+  async sendOrder(e){
+    e.preventDefault();
+
+    this.setState({ pending: true })
+    let orderType = this.defineOrderType();
+    let reservations = orderType == 0 ? this.lunchReservations : this.dinnerReservations;
+  
+    let sendEmail = await this.props.sendOrder({
+      shop_id: this.props.shop.id,
+      meal: this.props.menu.meal,
+      orderType,
+      reservations,
+    })
+
+    console.log(sendEmail)
+
+    if(sendEmail){
+      this.setState({
+        pending: false,
+        successMessage: `Sent`
+      })
+    }
+  }
+
   render() {
-    let { shop, reservations, menu } = this.props
+    let { shop, menu } = this.props
+    let { pending } = this.state
+    let buttonText = this.defineOrderType() == 0 ? 'Send Lunch Orders' : 'Send Dinner Orders'
+
     return(
-      <div className="vendorList">
-        <li>{shop.name} - {menu ? menu.meal.name : ""} <span>({reservations.length})</span></li>
-        <button className="secondary" onClick={this.sendOrder}>Send Order</button>
-      </div>
+      <tr className="vendorList">
+        <td>{shop.name}</td>
+        <td>{menu ? menu.meal.name : ""}</td>
+        <td>{this.lunchReservations.length}</td>
+        <td>{this.dinnerReservations.length}</td>
+        <td>
+          <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
+            {!pending && buttonText}
+          </button>
+        </td>
+        <td>
+          {this.state.successMessage}
+        </td>
+      </tr>
     );
   }
 }

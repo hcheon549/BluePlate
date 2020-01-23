@@ -87,9 +87,14 @@ class Api::ReservationsController < ApplicationController
     @shop = Shop.includes(:shop_order).find(params[:id])
     @shop_order = @shop.shop_order
     @pickup_time = PickupTime.all
+    @order_type = params[:orderType] == 0 ? 'Lunch' : 'Dinner'
     @reservations = params[:reservations]
     @meal = params[:meal]
-    ReservationMailer.send_order(@shop, @shop_order, @pickup_time, @reservations, @meal).deliver_now
+    @emails = @shop_order.emails.push("support@blueplattr.com")
+
+    @emails.each do | email |
+      ReservationMailer.send_order(@shop, email, @pickup_time, @reservations, @meal, @order_type).deliver_now
+    end
   end
 
   private

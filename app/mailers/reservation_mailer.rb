@@ -23,23 +23,25 @@ class ReservationMailer < ApplicationMailer
     mail to: @user.email, subject: mail_subject
   end
 
-  def send_order(shop, shop_order, pickup_time, reservations, meal)
+  def send_order(shop, email, pickup_time, reservations, meal, order_type)
     @shop = shop
     @pickup_time = pickup_time
     @reservations = reservations
-    # @meal = meal
     @meal = meal
-    @date = format_date(Date.today)
-    mails_to_send = shop_order.emails.concat(["eric@blueplattr.com", "ben@blueplattr.com"])
-    mail_subject = "TEST EMAIL SENT FROM BLUEPLATTR [#{@date}] BluePlattr Order Summary"
+    @order_type = order_type
     
-    mails_to_send.each do | email |
-      mail to: email, subject: mail_subject
-    end
+    @date = format_vendor_order_date(Date.today)
+
+    mail_subject = "[#{@date}] #{@shop.name} #{@order_type} Order Summary"
+    mail to: email, subject: mail_subject
   end
 
   private
   def format_date(date)
     date.strftime("%m/%d/%Y")
+  end
+
+  def format_vendor_order_date(date)
+    date.strftime("%B %d")
   end
 end

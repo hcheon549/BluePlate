@@ -106,9 +106,21 @@ class SendOrders extends React.Component {
         <div className="orderStatus">
           <h5>Order Status for {this.getMenuDate()}</h5>
         </div>
-        <ul>
-          {this.listShops()}
-        </ul>
+        <table>
+          <thead>
+            <tr className="vendorList">
+              <th>Vendor</th>
+              <th>Menu</th>
+              <th>Lunch</th>
+              <th>Dinner</th>
+              <th>Action</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.listShops()}
+          </tbody>
+        </table>
       </div>
     );
   }
