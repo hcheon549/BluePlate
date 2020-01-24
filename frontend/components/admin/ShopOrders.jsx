@@ -73,9 +73,9 @@ class ShopOrders extends React.Component{
         <td>{this.lunchReservations.length}</td>
         <td>{this.dinnerReservations.length}</td>
         <td>
-          <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
+          {menu && <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
             {!pending && buttonText}
-          </button>
+          </button>}
         </td>
         <td>
           {this.state.statusMessage}
