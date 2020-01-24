@@ -5,7 +5,7 @@ class ShopOrders extends React.Component{
     super(props);
     this.state = {
       pending: false,
-      successMessage: ''
+      statusMessage: ''
     }
     
     this.sendOrder = this.sendOrder.bind(this);
@@ -36,12 +36,14 @@ class ShopOrders extends React.Component{
     this.setState({ pending: true })
     let orderType = this.defineOrderType();
     let reservations = orderType == 0 ? this.lunchReservations : this.dinnerReservations;
-  
+    let pickupTime = orderType == 0 ? this.props.pickupTime.lunch : this.props.pickupTime.dinner;
+
     let sendEmail = await this.props.sendOrder({
       shop_id: this.props.shop.id,
       meal: this.props.menu.meal,
       orderType,
       reservations,
+      pickupTime
     })
 
     console.log(sendEmail)
@@ -49,7 +51,12 @@ class ShopOrders extends React.Component{
     if(sendEmail){
       this.setState({
         pending: false,
-        successMessage: `Sent`
+        statusMessage: `Sent`
+      }) 
+    } else {
+      this.setState({
+        pending: false,
+        statusMessage: 'Error'
       })
     }
   }
@@ -71,7 +78,7 @@ class ShopOrders extends React.Component{
           </button>
         </td>
         <td>
-          {this.state.successMessage}
+          {this.state.statusMessage}
         </td>
       </tr>
     );

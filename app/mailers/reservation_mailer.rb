@@ -29,7 +29,7 @@ class ReservationMailer < ApplicationMailer
     @reservations = reservations
     @meal = meal
     @order_type = order_type
-    
+    @orders_summary = format_order_detail(pickup_time, reservations)
     @date = format_vendor_order_date(Date.today)
 
     mail_subject = "[#{@date}] #{@shop.name} #{@order_type} Order Summary"
@@ -43,5 +43,20 @@ class ReservationMailer < ApplicationMailer
 
   def format_vendor_order_date(date)
     date.strftime("%B %d")
+  end
+
+  def format_order_detail(pickup_time, reservations)
+    orders_summary = pickup_time.values
+
+    orders_summary.each do | time |
+      time[:pickupCodes] = Array.new()
+      reservations.each do | reservation |
+        if reservation[:pickupTimeId] == time[:id]
+          time[:pickupCodes] << reservation[:pickupCode]
+        end
+      end
+    end
+
+    return orders_summary
   end
 end
