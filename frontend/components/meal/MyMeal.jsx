@@ -49,9 +49,6 @@ class MyMeal extends React.Component {
     this.setState({
       loading: false
     })
-    if (!ADMIN_ACCOUNT.includes(this.props.currentUser.email)){
-      this.props.openClosedModal();
-    }
   }
 
   async componentWillReceiveProps(nextProps) {

@@ -1,12 +1,19 @@
 <div>
-  <p><strong>Date:</strong> <%= @date %></p>
-  <p><strong>Menu:</strong> <%= @meal[:name] %></p>
-  <p><strong>Meal:</strong> <%= @order_type %></p>
-  <p><strong>Total Number of Orders:</strong> <%= @reservations.length %></p>
-
+  <div><strong>Date:</strong> <%= @date %></div>
+  <div><strong>Menu:</strong> <%= @meal[:name] %></div>
+  <div><strong>Meal:</strong> <%= @order_type %></div>
+  <div><strong>Description:</strong> <%= @meal[:description] %></div>
+  <div><strong>Total Number of Orders:</strong> <%= @reservations.length %></div>
+  <br/>
   <div>
-    <% @reservations.each do |reservation| %>
-      <%= reservation[:pickupCode] %><br/>
+    <% @orders_summary.each do |time| %>
+      <% unless time[:pickupCodes].empty? %>
+      <strong><%= time[:start] %> - <%= time[:end] %> (<%= time[:pickupCodes].length %>)</strong><br/>
+        <% time[:pickupCodes].each do | code | %>
+        <%= code %><br/>
+        <% end %>
+        <br/>
+      <% end %>
     <% end %>
   </div>
 </div>

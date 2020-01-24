@@ -90,6 +90,7 @@ class SendOrders extends React.Component {
               key={idx}
               shop={shop}
               reservations={reservationsShop}
+              pickupTime={this.props.pickupTime}
               menu={menu[0]}
               sendOrder={this.props.sendOrder}
             />
@@ -126,9 +127,10 @@ class SendOrders extends React.Component {
   }
 }
 
-const msp = ({ui}) => {
+const msp = ({entities, ui}) => {
   return {
-    reservations: ui.sendReservations
+    reservations: ui.sendReservations,
+    pickupTime: entities.pickupTime
   };
 };
 
