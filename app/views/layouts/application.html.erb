@@ -37,40 +37,43 @@
 
 <body>
 <!-- Load Facebook SDK for JavaScript -->
-  <div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        xfbml            : true,
-        version          : 'v5.0'
-      });
-    };
+  <% unless logged_in? %>
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v5.0'
+        });
+      };
 
-    (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-  <!-- Facebook customer chat code -->
-  <div class="fb-customerchat"
-    attribution=setup_tool
-    page_id="108123240683696"
-    theme_color="#0f346c">
-  </div>
+    <!-- Facebook customer chat code -->
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="108123240683696"
+      theme_color="#0f346c">
+    </div>
+  <% end %>
 
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
 
   <% if logged_in? %>
-      <script type="text/javascript">
-        window.currentUser =
-        <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
-      </script>
-    <% end %>
+    <script type="text/javascript">
+      window.currentUser =
+      <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+    </script>
+  <% end %>
 
   <!--
       This HTML file is a template.
