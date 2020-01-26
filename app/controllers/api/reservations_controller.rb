@@ -33,9 +33,12 @@ class Api::ReservationsController < ApplicationController
   def create
     @user = current_user
     @user_summary = @user.account_summary
+    @pickup_time_id = params[:reservation][:pickup_time_id]
 
     if @user_summary.meal_credits_left < 1
-      return render json: ["No Meals left!"], status: 422
+      return render json: ["No Meals left!"], status: 403
+    elsif !can_reserve(@pickup_time_id)
+      return render json: ["Cannot Make a Reservation"], status: 403
     end
 
     @reservation = Reservation.new(
@@ -58,6 +61,11 @@ class Api::ReservationsController < ApplicationController
 
   def update
     @reservation = current_user.reservations.find(params[:id])
+    @pickup_time_id = params[:reservation][:pickup_time_id]
+
+    if !can_reserve(@pickup_time_id)
+      return render json: ["Cannot Update the Reservation"], status: 403
+    end
 
     if @reservation.update_attributes(
       user_id: params[:reservation][:user_id],
@@ -102,6 +110,18 @@ class Api::ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :menu_id, :pickup_time_id)
+  end
+
+  def can_reserve(pickup_time_id)
+    reservation_type = PickupTime.find(params[:reservation][:pickup_time_id]).pickup_type
+
+    if reservation_type == 0
+      return Time.now.hour < 10
+    elsif reservation_type == 1
+      return Time.now.hour < 21
+    else
+      return false
+    end
   end
 
   def adjust_attributes(type, user, reservation)

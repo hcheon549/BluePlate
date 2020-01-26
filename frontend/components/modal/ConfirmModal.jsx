@@ -15,6 +15,14 @@ function ConfirmModal({ closeModal, data }) {
     header = 'Your order is cancelled'
     subhead = null;
     pickupCode = null;
+  } else if (data.action == 'create-error'){
+    header = 'Oops! The kitchen is closed.'
+    subhead = 'We will re-open the kitchen at 9 PM tonight!';
+    pickupCode = null;
+  } else if (data.action == 'update-error'){
+    header = 'Oops! The order has already been sent.'
+    subhead = 'The restaurant already received your order with the pick up time. Please, call the restaurant if there are any changes!';
+    pickupCode = null;
   } else {
     header = null
     subhead = null;
