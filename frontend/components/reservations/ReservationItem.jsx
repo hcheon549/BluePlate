@@ -6,7 +6,7 @@ const ReservationItem = (props) => {
   let { type, hasMeal, reservation, pickupTime, openReserveModal } = props;
   let imageUrl, content;
   let currentHour = moment().hour();
-  console.log(currentHour)
+
   let canUpdate = type == "lunch" ? (currentHour < 10) : (currentHour < 16)
 
   let data = {
