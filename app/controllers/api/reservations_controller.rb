@@ -37,8 +37,8 @@ class Api::ReservationsController < ApplicationController
 
     if @user_summary.meal_credits_left < 1
       return render json: ["No Meals left!"], status: 403
-    elsif !can_reserve(@pickup_time_id)
-      return render json: ["Cannot Make a Reservation"], status: 403
+    # elsif !can_reserve(@pickup_time_id)
+    #   return render json: ["Cannot Make a Reservation"], status: 403
     end
 
     @reservation = Reservation.new(
@@ -63,9 +63,9 @@ class Api::ReservationsController < ApplicationController
     @reservation = current_user.reservations.find(params[:id])
     @pickup_time_id = params[:reservation][:pickup_time_id]
 
-    if !can_reserve(@pickup_time_id)
-      return render json: ["Cannot Update the Reservation"], status: 403
-    end
+    # if !can_reserve(@pickup_time_id)
+    #   return render json: ["Cannot Update the Reservation"], status: 403
+    # end
 
     if @reservation.update_attributes(
       user_id: params[:reservation][:user_id],

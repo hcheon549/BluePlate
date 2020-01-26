@@ -89,7 +89,7 @@ class ReservationModal extends React.Component {
           code: reservationResult.reservation.pickupCode,
         })
       } else if (reservationResult.errors) {
-        openConfirmModal({ action: 'time-error',})
+        openConfirmModal({ action: 'create-error',})
       } 
       console.log(reservationResult)
     }
