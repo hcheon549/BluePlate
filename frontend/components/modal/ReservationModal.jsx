@@ -88,13 +88,12 @@ class ReservationModal extends React.Component {
           action,
           code: reservationResult.reservation.pickupCode,
         })
-      } 
+      } else {
+        console.log(reservationResult)
+      }
       // else if (reservationResult.errors) {
       //   openConfirmModal({ action: 'create-error',})
       // } 
-      else{
-        console.log(reservationResult)
-      }
     }
     
     else if (action == 'update' && currentReservation) {
@@ -113,13 +112,13 @@ class ReservationModal extends React.Component {
         })
         // this.openSwal(action)
         // closeModal();
-      } 
+      } else {
+        console.log(updateResult)
+      }
       // else if (updateResult.errors) {
       //   openConfirmModal({ action: 'update-error',})
       // }
-      else {
-        console.log(updateResult)
-      }
+      
     }
     
     else if (action == 'cancel' && currentReservation){
