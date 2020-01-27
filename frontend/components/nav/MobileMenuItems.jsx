@@ -17,11 +17,11 @@ class MobileMenuItems extends React.Component {
     this.props.history.push(path)
   }
 
-  handleLogout() {
+  async handleLogout() {
     if (this.props.burgerOpen){
       this.props.toggleBurger();
     }
-    this.props.logout();
+    await this.props.logout();
     window.location.replace('/');
   }
 
