@@ -8,7 +8,7 @@ import { createSubscription, updateSubscription } from "../../actions/subscripti
 import { updateAccountSummary } from '../../actions/account_summary_actions';
 import { fetchUser, updateUserMeals } from "../../actions/user_actions";
 
-const CURRENT_PLAN_OFFERED = "4weeks";
+const CURRENT_PLAN_OFFERED = "1week";
 class PlanForm extends React.Component{
   constructor(props){
     super(props)
@@ -84,7 +84,7 @@ class PlanForm extends React.Component{
           </div>
           <div className="line" />
           <div className="detail">
-            <p>4-Week Cycle</p>
+            <p>1-Week Trial</p>
             <p>Total {meals} meal credit</p>
             <p>Roll over to next cycle.</p>
           </div>

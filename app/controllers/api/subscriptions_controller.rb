@@ -45,9 +45,6 @@ class Api::SubscriptionsController < ApplicationController
   end
 
   def calculate_renew_date(start_date, plan)
-    launch_date = Date.new(2020, 1, 21)
-    return start_date + 29 if start_date == launch_date
-
     case plan.plan_type
       when "semester"
         renew_date = Date.new(2020, 5, 20)
@@ -55,8 +52,10 @@ class Api::SubscriptionsController < ApplicationController
         renew_date = start_date + 28
       when "2weeks"
         renew_date = start_date + 14
-      when "test"
+      when "1week"
         renew_date = start_date + 7
+      when "test"
+        renew_date = start_date + 1
       else
         renew_date = start_date + 28
     end
