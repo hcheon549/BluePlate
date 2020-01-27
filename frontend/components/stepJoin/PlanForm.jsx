@@ -84,9 +84,9 @@ class PlanForm extends React.Component{
           </div>
           <div className="line" />
           <div className="detail">
-            <p>1-Week Trial</p>
-            <p>Total {meals} meal credit</p>
-            <p>Roll over to next cycle.</p>
+            <p>1-Week Trial,</p>
+            <p>4-Week cycle renewal,</p>
+            <p>Unused credits roll over to next cycle.</p>
           </div>
           <button className={"secondary" + (spinit ? " -pending" : "")} onClick={this.selectPlan.bind(this, id)}>{!spinit && buttonText}</button>
         </li>

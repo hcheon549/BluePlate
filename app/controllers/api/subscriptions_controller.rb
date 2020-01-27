@@ -20,8 +20,14 @@ class Api::SubscriptionsController < ApplicationController
 
   def update
     @subscription = Subscription.find(params[:id])
+    @plan = Plan.find(params[:subscription][:plan_id])
+    @today = Date.today
 
-    if @subscription.update_attributes(plan_id: params[:subscription][:plan_id])
+    if @subscription.update_attributes(
+        plan_id: params[:subscription][:plan_id],
+        subscription_start: @today,
+        subscription_end: calculate_renew_date(@today, @plan)
+      )
       @subscription.meal_credit = @subscription.plan.meals
       render :show
     else

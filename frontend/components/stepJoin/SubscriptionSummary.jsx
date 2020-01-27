@@ -107,7 +107,7 @@ class SubscriptionSummary extends React.Component {
           <div className="divider" />
           <div className="infoSection -billing">
             <div className="checkout">
-              <p>Plan Price</p>
+              <p>Plan Price - ${(currentPlan.price / currentPlan.meals).toFixed(2)} per meal x {currentPlan.meals} meals</p>
             {/* </div>
             <div className="row -right"> */}
               <p>${planPrice.toFixed(2)}</p>
