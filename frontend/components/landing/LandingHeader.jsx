@@ -20,20 +20,22 @@ class LandingHeader extends React.Component {
   }
 
   render() {
-    let header = 'MEALPLAN FOR LESS THAN $6 PER MEAL',
-        subHeader = 'FIND OUT THE RESTAURANTS NEAR YOUR CAMPUS.',
-        buttonText = 'Get Started',
+    let { currentUser } = this.props
+    let header = currentUser.policyType == 'Member' ? <h3>WELCOME BACK, {currentUser.fname.toUpperCase()}!</h3> : <h3>LUNCH AND DINNER<br/>FOR LESS THAN $6</h3>,
+        subHeader = currentUser.policyType == 'Member' ? 'ORDER YOUR NEXT MEALS NOW.' : 'FIND OUT THE RESTAURANTS NEAR YOUR CAMPUS.',
+        buttonText = currentUser.policyType == 'Member' ? 'View Meals' : 'Get Started',
         altButtonText = 'See Restaurants',
-        browseLink = this.props.currentUser.policyType == 'Member' ? '/my-meals' : '/signup';
-
+        browseLink = currentUser.policyType == 'Member' ? '/my-meals' : '/signup';
+    console.log(currentUser)
     return (
       <section className="landingHeader">
         <div className="headerContent">
           <div className="mobileContent">
-            <h3>LUNCH AND DINNER<br/>FOR LESS THAN $6</h3>
+            {header}
             <p>{subHeader}</p>
             <div style={{display: "flex", justifyContent: 'center'}}>
               <button className='orange' type="submit" onClick={() => this.props.history.push(browseLink)}>{buttonText}</button>
+              {currentUser.policyType != 'Member' && 
               <button
                 className='orangeSecondary'
                 type="submit"
@@ -41,7 +43,7 @@ class LandingHeader extends React.Component {
                 onClick={this.scrollToMap}
               >
                 {altButtonText}
-              </button>
+              </button>}
             </div>
           </div>
         </div>
