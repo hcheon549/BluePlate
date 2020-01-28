@@ -57,7 +57,7 @@ class User < ApplicationRecord
 
   def send_password_reset
     self.password_reset_token = SecureRandom.urlsafe_base64
-    self.password_reset_sent_at = Time.now
+    self.password_reset_sent_at = Time.current.in_time_zone('EST')
     self.save!
     UserMailer.password_reset(self).deliver
   end

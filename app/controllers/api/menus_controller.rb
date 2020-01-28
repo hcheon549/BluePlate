@@ -4,11 +4,7 @@ class Api::MenusController < ApplicationController
     @today = Date.today
     @tomorrow = @today + 1
 
-    if Time.now.hour < 21
-      @menus = Menu.where(offered_date: @today).includes(:meal, :shop)
-    else
-      @menus = Menu.where(offered_date: @tomorrow).includes(:meal, :shop)
-    end
+    @menus = today_menu
 
     if @menus && @school
       @shops = params[:bounds] ? Shop.includes(:meals).in_bounds(bounds) : @school.shops.includes(:meals)
@@ -32,18 +28,20 @@ class Api::MenusController < ApplicationController
     end
   end
 
+  private
+  
   def today_menu
-    @today = Date.today
-    @tomorrow = @today + 1
-    
-    if Time.now.hour < 21
-      @menus = Menu.where(offered_date: @today).includes(:meal, :shop)
-    else
-      @menus = Menu.where(offered_date: @tomorrow).includes(:meal, :shop)
-    end
-  end
+    today = Date.today
+    tomorrow = today + 1
 
-  # private
+    if Time.current.in_time_zone('EST').hour < 21
+      menus = Menu.where(offered_date: today).includes(:meal, :shop)
+    else
+      menus = Menu.where(offered_date: tomorrow).includes(:meal, :shop)
+    end
+
+    return menus
+  end
 
   def bounds
     JSON.parse(params[:bounds])
