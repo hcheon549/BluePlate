@@ -22,7 +22,8 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    
+    @user.updated_at = Time.current.in_time_zone('EST')
+
     if @user.update_attributes(user_params)
       render :show
     else
@@ -32,6 +33,6 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :fname, :lname, :school_id)
+    params.require(:user).permit(:email, :password, :fname, :lname, :school_id, :updated_at)
   end
 end
