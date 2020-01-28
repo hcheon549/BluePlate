@@ -130,7 +130,7 @@ class Api::ReservationsController < ApplicationController
   def adjust_attributes(type, user, reservation, prev_reservation=nil)
     account_summary = AccountSummary.find(user.account_summary.id)
     menu = Menu.find(reservation.menu.id)
-    unless prev_reservation.nil? && (prev_reservation.id != reservation.id)
+    unless prev_reservation.nil?
       prev_meal = Meal.find(prev_reservation.meal.id)
       prev_menu = prev_reservation.menu
     end
@@ -146,7 +146,7 @@ class Api::ReservationsController < ApplicationController
       end
       menu.increment!(:quantity_ordered)
       meal.increment!(:total_number_ordered)
-    elsif (type == 'update') && (prev_reservation.id == reservation.id)
+    elsif type == 'update'
       if reservation.pickup_time.pickup_type == 0
         menu.decrement!(:lunch_quantity_available)
         prev_menu.increment!(:lunch_quantity_available)
