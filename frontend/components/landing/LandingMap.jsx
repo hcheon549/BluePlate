@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { getDate } from '../const';
 import { fetchSchools } from '../../actions/school_actions';
 import { fetchMenus } from '../../actions/menu_actions';
 
@@ -44,6 +45,7 @@ class LandingMap extends React.Component {
 
   render(){
     let { schools } = this.props
+    let date = getDate().toLowerCase();
 
     return (
       <section className="landingMap" id="landingMap">
@@ -63,8 +65,7 @@ class LandingMap extends React.Component {
               />
             </div>
           </div>
-          {/* <Link className="full-list miniText"to="/all-meals">See Full List</Link> */}
-
+          <Link className="full-list miniText"to="/today-menu">Check out {date}'s menu</Link>
 
           <div className="map">
             {this.state.schoolId && <MealMap

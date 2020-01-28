@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import { getDate } from '../const';
 import { logout } from '../../actions/session_actions';
 import { toggleBurger } from '../../actions/burger_actions'
 
@@ -37,7 +38,7 @@ class MobileMenuItems extends React.Component {
           My account
         </li>}
         {!this.props.isMember && <li className="mobile-menu-button" onClick={this.nextAction.bind(this, "/signup")}>
-          Finish Enrollment
+          Finish enrollment
         </li>}
         <li className="mobile-menu-button" onClick={this.handleLogout.bind(this)}>
           Log out
@@ -48,9 +49,9 @@ class MobileMenuItems extends React.Component {
         <li className={"mobile-menu-button" + (location.pathname == '/how-it-works' ? " -active" : "")} key='how-it-works' onClick={this.nextAction.bind(this, '/how-it-works')}>
           How it works
         </li>
-        {/* <li className={"mobile-menu-button" + (location.pathname == '/all-meals' ? " -active" : "")} key='all-meals' onClick={this.nextAction.bind(this, '/all-meals')}>
-          View meals
-        </li> */}
+        <li className={"mobile-menu-button" + (location.pathname == '/today-menu' ? " -active" : "")} key='today-menu' onClick={this.nextAction.bind(this, '/today-menu')}>
+          {getDate()}'s menu
+        </li>
         <li className={"mobile-menu-button" + (location.pathname == '/login' ? " -active" : "")} key='login' onClick={this.nextAction.bind(this, '/login')}>
           Log in
         </li>

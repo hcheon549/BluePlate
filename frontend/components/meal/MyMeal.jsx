@@ -17,14 +17,6 @@ import Tab from './Tab'
 import Today from './Today'
 import TodayReservations from "../reservations/TodayReservations";
 
-const ADMIN_ACCOUNT = [
-  "eric@blueplattr.com",
-  "ben@blueplattr.com",
-  "hello@blueplattr.com",
-  "echeon1122@gmail.com",
-  "hcheon549@gmail.com"
-]
-
 class MyMeal extends React.Component {
   constructor(props){
     super(props)

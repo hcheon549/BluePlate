@@ -71,7 +71,7 @@ class App extends React.Component {
             <Switch>
               {/* Landing Page */}
               <Route exact path="/" component={Landing} />
-              <Route exact path="/all-meals" component={AllMeals} />
+              <Route exact path="/today-menu" component={AllMeals} />
               <Route exact path="/how-it-works" component={HowItWorks} />
 
               {/* Auth Pages */}
