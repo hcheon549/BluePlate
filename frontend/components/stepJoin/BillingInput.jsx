@@ -70,35 +70,22 @@ class BillingInput extends React.Component{
       })
     } else {
       await this.updateUserName();
-      if (this.props.chargeAmount > 1 ){
-        let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
-        let charge = await this.props.createCharge({
-          stripeEmail: this.props.currentUser.email,
-          stripeToken: token.id,
-          customerId: this.props.currentUser.id,
-          customerName: token.card.name,
-          amount: this.props.chargeAmount,
-          description: this.props.currentPlan.name,
+      let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
+      let charge = await this.props.createCharge({
+        stripeEmail: this.props.currentUser.email,
+        stripeToken: token.id,
+        customerId: this.props.currentUser.id,
+        customerName: token.card.name,
+        amount: this.props.chargeAmount,
+        description: this.props.currentPlan.name,
+      })
+      if (charge.errors){
+        //FAILED CHARGE LOGIC
+        this.setState({
+          isPending: false,
+          errorMessage: [charge.errors.message]
         })
-        if (charge.errors){
-          //FAILED CHARGE LOGIC
-          this.setState({
-            isPending: false,
-            errorMessage: [charge.errors.message]
-          })
-        } else {
-          await this.props.joinMembership({
-            id: this.props.currentUser.summary_id || this.props.currentUser.summary.id,
-            policy_type: "Member",
-            total_meal_credits: this.props.currentPlan.meals,
-            meal_credits_left: this.props.currentPlan.meals
-          })
-          await this.props.fetchUser(this.props.currentUser.id)
-          this.setState({isPending: false})
-          this.props.history.push("/my-meals")
-        }
       } else {
-        // FREE ACCOUNT DONT NEED TO FILL IN THE CREDIT CARD FORM
         await this.props.joinMembership({
           id: this.props.currentUser.summary_id || this.props.currentUser.summary.id,
           policy_type: "Member",
@@ -162,7 +149,7 @@ class BillingInput extends React.Component{
   render(){
     let { isPending, errorMessage } = this.state;
     let buttonText = 'Submit';
-
+    console.log(Boolean(this.props.promo))
     return(
       <React.Fragment>
         <div className="sectionHeader" style={{marginBottom: '10px'}}>
@@ -246,6 +233,7 @@ class BillingInput extends React.Component{
 const mapStateToProps = (state) => {
   return {
     errors: state.errors.session,
+    promo: state.ui.promo
   };
 };
 
@@ -268,7 +256,7 @@ export default class BillingInputStripe extends React.Component{
   // add publishable key below
   render(){
     return(
-      <StripeProvider apiKey="pk_live_maUU7kWSgzoJ1UxXbwOvjEKO00Ze5SojIO">
+      <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
         <Elements>
           <BillingStipeForm {...this.props} />
         </Elements>
