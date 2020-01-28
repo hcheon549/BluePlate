@@ -13,7 +13,11 @@ class Api::PromosController < ApplicationController
     @promo = Promo.find_by(code: params[:code])
 
     if @promo
-      render :show
+      if @promo.quantity > 0
+       return render :show
+      else
+        return render json: ["Not Available Anymore"], status: 404
+      end
     else
       render json: ["Invalid Code"], status: 404
     end
