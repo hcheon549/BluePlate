@@ -79,17 +79,18 @@ class AllMeals extends Component{
         <LoadingIcon />
       </div>
     ) : (
-      <div className="meal-listing" style={{margin: '0 0 20px'}}>
+      <div className="meal-list" style={{margin: '0 0 20px'}}>
         {menus}
       </div>
     )
 
     return(
-      <section className="landingMap">
+      <section className="todaysMenu">
         <div className="content -siteWidth">
 
           <div className="sectionHeader">
             <h4>{date}'s BluePlattr Menu</h4>
+            <p>Your favorite local restaurants offering something different everyday.</p>
           </div>
           <div className="mapSelector">
             <p>I'm in: </p>

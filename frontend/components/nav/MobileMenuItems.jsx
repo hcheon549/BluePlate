@@ -49,7 +49,7 @@ class MobileMenuItems extends React.Component {
         <li className={"mobile-menu-button" + (location.pathname == '/how-it-works' ? " -active" : "")} key='how-it-works' onClick={this.nextAction.bind(this, '/how-it-works')}>
           How it works
         </li>
-        <li className={"mobile-menu-button" + (location.pathname == '/today-menu' ? " -active" : "")} key='today-menu' onClick={this.nextAction.bind(this, '/today-menu')}>
+        <li className={"mobile-menu-button" + (location.pathname == '/menu' ? " -active" : "")} key='menu' onClick={this.nextAction.bind(this, '/menu')}>
           {getDate()}'s menu
         </li>
         <li className={"mobile-menu-button" + (location.pathname == '/login' ? " -active" : "")} key='login' onClick={this.nextAction.bind(this, '/login')}>
