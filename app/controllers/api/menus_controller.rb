@@ -3,7 +3,7 @@ class Api::MenusController < ApplicationController
     @school = School.find_by(id: params[:id])
     @today = Date.today
     @tomorrow = @today + 1
-    
+
     if Time.now.hour < 21
       @menus = Menu.where(offered_date: @today).includes(:meal, :shop)
     else

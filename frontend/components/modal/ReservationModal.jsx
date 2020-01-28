@@ -80,20 +80,16 @@ class ReservationModal extends React.Component {
         pickupTimeId: parseInt(pickupTimeId)
       };
       let reservationResult = await createReservation(newReservation)
-      this.setState({
-        isPending: false
-      })  
+      this.setState({ isPending: false })  
       if (reservationResult.reservation) {
-        openConfirmModal({
-          action,
-          code: reservationResult.reservation.pickupCode,
-        })
+        openConfirmModal({ action, code: reservationResult.reservation.pickupCode })
+      } else if (reservationResult.errors && reservationResult.errors.message == 'No meals left') {
+        openConfirmModal({ action: 'no-meals',})
+      } else if (reservationResult.errors && reservationResult.errors.message == 'Cannot make a reservation') {
+        openConfirmModal({ action: 'create-error',})
       } else {
         console.log(reservationResult)
       }
-      // else if (reservationResult.errors) {
-      //   openConfirmModal({ action: 'create-error',})
-      // } 
     }
     
     else if (action == 'update' && currentReservation) {
@@ -102,36 +98,22 @@ class ReservationModal extends React.Component {
       updatedReservation.pickupTimeId = parseInt(pickupTimeId);
 
       let updateResult = await updateReservation(updatedReservation)
-      this.setState({
-        isPending: false
-      })  
+      this.setState({ isPending: false })  
       if (updateResult.reservation) {
-        openConfirmModal({
-          action,
-          code: updateResult.reservation.pickupCode,
-        })
-        // this.openSwal(action)
-        // closeModal();
+        openConfirmModal({ action, code: updateResult.reservation.pickupCode })
+      } else if (updateResult.errors && updateResult.errors.message == 'Cannot make a reservation') {
+        openConfirmModal({ action: 'update-error',})
       } else {
         console.log(updateResult)
       }
-      // else if (updateResult.errors) {
-      //   openConfirmModal({ action: 'update-error',})
-      // }
       
     }
     
     else if (action == 'cancel' && currentReservation){
       let cancellation = await deleteReservation(currentReservation.id)
-      this.setState({
-        isPending: false
-      })  
+      this.setState({ isPending: false })  
       if (cancellation.reservation) {
-        openConfirmModal({
-          action,
-        })
-        // this.openSwal(action)
-        // closeModal();
+        openConfirmModal({ action })
       } else {
         console.log(cancellation)
       }
