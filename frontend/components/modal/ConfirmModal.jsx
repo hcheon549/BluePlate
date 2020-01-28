@@ -2,7 +2,7 @@ import React from "react";
 
 function ConfirmModal({ closeModal, data }) {
   let header, subhead, pickupCode;
-
+  let actionText = 'Got it!'
   if (data.action == 'reserve'){
     header = 'Your order is reserved!';
     subhead = 'Here\'s the pick up code. We will also email you.';
@@ -23,6 +23,11 @@ function ConfirmModal({ closeModal, data }) {
     header = 'Oops! The order has already been sent.'
     subhead = 'The restaurant already received your order with the pick up time. Please, call the restaurant if there are any changes!';
     pickupCode = null;
+  } else if (data.action == 'no-meals'){
+    header = 'Wow! You\'ve already used all of your meal credits.'
+    subhead = 'But don\'t you worry. You can renew your plan now!';
+    pickupCode = null;
+    actionText = 'Renew now!'
   } else {
     header = null
     subhead = null;
@@ -43,7 +48,7 @@ function ConfirmModal({ closeModal, data }) {
           {pickupCode}
         </div>}
         <div onClick={closeModal} className="sounds-good">
-          Got it!
+          {actionText}
         </div>
       </div>
     </div>
