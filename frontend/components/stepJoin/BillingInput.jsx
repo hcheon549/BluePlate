@@ -14,6 +14,7 @@ import { clearErrors } from '../../actions/session_actions';
 import { createCharge } from '../../util/charge_api_util';
 import { fetchUser, updateUserName } from '../../actions/user_actions';
 import { joinMembership } from '../../actions/account_summary_actions';
+import { applyPromo } from '../../actions/promo_actions';
 
 
 class BillingInput extends React.Component{
@@ -62,6 +63,7 @@ class BillingInput extends React.Component{
     })
 
     let {fname, lname, zipCode} = this.state;
+    
     if (!fname || !lname || !zipCode){
       let message = this.state.errorMessage.concat(['A field cannot be blank']);
       this.setState({
@@ -92,6 +94,9 @@ class BillingInput extends React.Component{
           total_meal_credits: this.props.currentPlan.meals,
           meal_credits_left: this.props.currentPlan.meals
         })
+        if (this.props.promo){
+          this.props.applyPromo(this.props.promo)
+        }
         await this.props.fetchUser(this.props.currentUser.id)
         this.setState({isPending: false})
         this.props.history.push("/my-meals")
@@ -149,7 +154,7 @@ class BillingInput extends React.Component{
   render(){
     let { isPending, errorMessage } = this.state;
     let buttonText = 'Submit';
-    console.log(Boolean(this.props.promo))
+
     return(
       <React.Fragment>
         <div className="sectionHeader" style={{marginBottom: '10px'}}>
@@ -243,7 +248,8 @@ const mapDispatchToProps = dispatch => {
     joinMembership: (subscriptionData) => dispatch(joinMembership(subscriptionData)),
     clearErrors: () => dispatch(clearErrors()),
     createCharge: (data) => dispatch(createCharge(data)),
-    updateUserName: (user) => dispatch(updateUserName(user))
+    updateUserName: (user) => dispatch(updateUserName(user)),
+    applyPromo: (promoData) => dispatch(applyPromo(promoData))
   };
 };
 

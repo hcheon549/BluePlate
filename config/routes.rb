@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :schools, only: [:index]
     resources :plans, only: [:index]
     get 'promos/match', to: 'promos#match'
+    post 'promos/apply/:id', to: 'promos#apply'
     resources :promos, only: [:index]
     resources :favorites, only: [:index, :create, :destroy]
     resources :subscriptions, only: [:create, :update]
