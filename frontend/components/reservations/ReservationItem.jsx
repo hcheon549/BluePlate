@@ -8,7 +8,8 @@ const ReservationItem = (props) => {
   let currentHour = moment().hour();
 
   let canUpdate = type == "lunch" ? (currentHour < 10) : (currentHour < 16)
-
+  console.log(moment())
+  console.log(currentHour)
   let data = {
     menu: {...reservation.menu, meal: {...reservation.meal}},
     shop: reservation.shop,
