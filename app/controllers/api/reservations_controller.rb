@@ -3,7 +3,7 @@ class Api::ReservationsController < ApplicationController
     @reservations = Reservation.includes(:menu, :pickup_time, :meal, :user, meal: :shop).where(user_id: current_user.id)
     today = Date.today
 
-    if Time.current.in_time_zone('EST').hour > 21
+    if Time.now.hour > 21
       today += 1
     end
 
@@ -19,7 +19,7 @@ class Api::ReservationsController < ApplicationController
 
   def get_reservations
     today = Date.today
-    if Time.current.in_time_zone('EST').hour > 21
+    if Time.now.hour > 21
       today += 1
     end
     @reservations = Reservation.includes(:menu, :pickup_time, :meal, :user, meal: :shop).joins(:menu).where(menus: { offered_date: today })
@@ -119,9 +119,9 @@ class Api::ReservationsController < ApplicationController
     reservation_type = PickupTime.find(params[:reservation][:pickup_time_id]).pickup_type
 
     if reservation_type == 0
-      return Time.current.in_time_zone('EST').hour < 10
+      return Time.now.hour < 10
     elsif reservation_type == 1
-      return Time.current.in_time_zone('EST').hour < 21
+      return Time.now.hour < 21
     else
       return false
     end
@@ -135,7 +135,7 @@ class Api::ReservationsController < ApplicationController
       prev_menu = prev_reservation.menu
     end
     meal = Meal.find(reservation.meal.id)
-    now = Time.current.in_time_zone('EST')
+    now = Time.now
 
     if type == 'create'
       account_summary.decrement!(:meal_credits_left)

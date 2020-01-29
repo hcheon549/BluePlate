@@ -22,7 +22,6 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.updated_at = Time.current.in_time_zone('EST')
 
     if @user.update_attributes(user_params)
       render :show

@@ -34,7 +34,7 @@ class Api::MenusController < ApplicationController
     today = Date.today
     tomorrow = today + 1
 
-    if Time.current.in_time_zone('EST').hour < 21
+    if Time.now.hour < 21
       menus = Menu.where(offered_date: today).includes(:meal, :shop)
     else
       menus = Menu.where(offered_date: tomorrow).includes(:meal, :shop)
