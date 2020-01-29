@@ -4,7 +4,7 @@ class Api::LeadsController < ApplicationController
     @lead.time_now = Time.now
     @lead.time_current = Time.current.in_time_zone('EST')
     @lead.time_utc = Time.now.utc
-    @lead.time_utc_offset = Time.now.utc - 5.hours
+    @lead.time_utc_offset = TIME_NOW
 
     if @lead.save
       LeadMailer.new_lead(@lead).deliver_now
