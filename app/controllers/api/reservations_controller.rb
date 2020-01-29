@@ -35,7 +35,7 @@ class Api::ReservationsController < ApplicationController
     @user = current_user
     @user_summary = @user.account_summary
     @pickup_time_id = params[:reservation][:pickup_time_id]
-
+    debugger
     if @user_summary.meal_credits_left < 1
       return render json: { message: "No meals left" }, status: 403
     elsif !can_reserve(@pickup_time_id)
