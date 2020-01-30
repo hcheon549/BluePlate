@@ -24,11 +24,12 @@ class ApplicationController < ActionController::Base
     render json: ["Unauthorized"] unless logged_in?
   end
 
-  def time_now_est
-    Time.current.in_time_zone('Eastern Time (US & Canada)')
-  end
-
   def current_time
     Time.now.utc - 5.hours
+  end
+
+  def current_date
+    now = current_time
+    Date.new(now.year, now.month, now.day)
   end
 end

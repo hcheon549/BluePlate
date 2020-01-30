@@ -1,9 +1,8 @@
 class Api::LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params)
-    @lead.time_now = Time.current
-    @lead.time_current = current_time
-    @lead.time_utc_offset = time_now_est
+    @lead.time_now = current_time
+    @lead.time_current = current_date
 
     if @lead.save
       LeadMailer.new_lead(@lead).deliver_now

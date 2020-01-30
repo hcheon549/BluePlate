@@ -33,8 +33,10 @@ class Api::MenusController < ApplicationController
   def today_menu
     today = Date.today
     tomorrow = today + 1
+    now = current_time
 
-    if Time.now.hour < 21
+    # if Time.now.hour < 21
+    if now.hour < 21
       menus = Menu.where(offered_date: today).includes(:meal, :shop)
     else
       menus = Menu.where(offered_date: tomorrow).includes(:meal, :shop)
