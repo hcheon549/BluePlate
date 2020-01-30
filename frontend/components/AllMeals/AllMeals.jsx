@@ -54,24 +54,26 @@ class AllMeals extends Component{
 
   render(){
     let date = getDate();
-
-    let menus = this.props.menus.map((menu, idx) => {
-      return (
-        <div className="meal-box" key={idx} style={{margin: '20px'}}>
-          <img alt="" src={menu.imageUrl} />
-          <div className="hidden-description">
-            <ul>
-              <li className="hidden-meal-name">{menu.name}</li>
-              <li className="hidden-meal-desc">{menu.description}</li>
-            </ul>
+    debugger
+    let menus = this.props.menus
+      .filter(item => item.shop.showMenu)
+      .map((menu, idx) => {
+        return (
+          <div className="meal-box" key={idx} style={{margin: '20px'}}>
+            <img alt="" src={menu.imageUrl} />
+            <div className="hidden-description">
+              <ul>
+                <li className="hidden-meal-name">{menu.name}</li>
+                <li className="hidden-meal-desc">{menu.description}</li>
+              </ul>
+            </div>
+            <div className="meal-box-description">
+              <li className="tbd-item shop-name">{menu.shop.name}</li>
+              <li className="tbd-item shop-address">{menu.shop.address}</li>
+            </div>
           </div>
-          <div className="meal-box-description">
-            <li className="tbd-item shop-name">{menu.shop.name}</li>
-            <li className="tbd-item shop-address">{menu.shop.address}</li>
-          </div>
-        </div>
-      )
-    })
+        )
+      })
 
     let content = this.state.loading ? (
       <div>
