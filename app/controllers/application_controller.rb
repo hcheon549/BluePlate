@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
-  TIME_NOW = Time.now.utc - 5.hours
-  
   def current_user
     return nil unless session[:session_token]
     @current_user ||= User.find_by(session_token: session[:session_token])
@@ -26,4 +24,11 @@ class ApplicationController < ActionController::Base
     render json: ["Unauthorized"] unless logged_in?
   end
 
+  def time_now_est
+    Time.current.in_time_zone('Eastern Time (US & Canada)')
+  end
+
+  def current_time
+    Time.now.utc - 5.hours
+  end
 end
