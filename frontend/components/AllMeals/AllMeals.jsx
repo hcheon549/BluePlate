@@ -55,7 +55,7 @@ class AllMeals extends Component{
   render(){
     let date = getDate();
     let cta = 'Sign Up Now'
-    
+
     let menus = this.props.menus
       .filter(item => item.shop.showMenu)
       .map((menu, idx) => {
@@ -93,7 +93,7 @@ class AllMeals extends Component{
 
           <div className="sectionHeader">
             <h4>Taste of {date}'s Menu</h4>
-            <p style={{ maxWidth: '500px', margin: '0 auto 25px'}}>Your favorite local restaurants offer something different everyday. Get started and order from the full menu.</p>
+            <p style={{ maxWidth: '500px', margin: '0 auto 25px'}}>Your favorite local restaurants offer something different everyday. Sign up to order from the full menu.</p>
             <button
                 className='primary'
                 type="submit"
