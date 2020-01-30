@@ -54,7 +54,8 @@ class AllMeals extends Component{
 
   render(){
     let date = getDate();
-    debugger
+    let cta = 'Sign Up Now'
+    
     let menus = this.props.menus
       .filter(item => item.shop.showMenu)
       .map((menu, idx) => {
@@ -91,8 +92,15 @@ class AllMeals extends Component{
         <div className="content -siteWidth">
 
           <div className="sectionHeader">
-            <h4>{date}'s BluePlattr Menu</h4>
-            <p>Your favorite local restaurants offering something different everyday.</p>
+            <h4>Taste of {date}'s Menu</h4>
+            <p style={{ maxWidth: '500px', margin: '0 auto 25px'}}>Your favorite local restaurants offer something different everyday. Get started and order from the full menu.</p>
+            <button
+                className='primary'
+                type="submit"
+                onClick={() => this.props.history.push('/signup')}
+              >
+                {cta}
+              </button>
           </div>
           <div className="mapSelector">
             <p>I'm in: </p>
@@ -112,6 +120,7 @@ class AllMeals extends Component{
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.entities.currentUser,
     schools: state.entities.schools,
     shops: Object.values(state.entities.shops),
     menus: Object.values(state.entities.menus)
