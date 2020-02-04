@@ -65,23 +65,27 @@ class BillingInput extends React.Component{
     let {fname, lname, zipCode} = this.state;
     
     if (!fname || !lname || !zipCode){
-      let message = this.state.errorMessage.concat(['A field cannot be blank']);
+      let message = this.state.errorMessage.concat(['First name, last name, and the zip code fields cannot be blank']);
       this.setState({
         isPending: false,
         errorMessage: message
       })
     } else {
       await this.updateUserName();
-      let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
-      let charge = await this.props.createCharge({
-        stripeEmail: this.props.currentUser.email,
-        stripeToken: token.id,
-        customerId: this.props.currentUser.id,
-        customerName: token.card.name,
-        amount: this.props.chargeAmount,
-        description: this.props.currentPlan.name,
-      })
-      if (charge.errors){
+      let charge
+      if (this.props.chargeAmount > 0){
+        let { token } = await this.props.stripe.createToken({ name: fname + ' ' + lname, address_zip: zipCode})
+        charge = await this.props.createCharge({
+          stripeEmail: this.props.currentUser.email,
+          stripeToken: token.id,
+          customerId: this.props.currentUser.id,
+          customerName: token.card.name,
+          amount: this.props.chargeAmount,
+          description: this.props.currentPlan.name,
+        })
+      }
+      debugger
+      if (charge && charge.errors){
         //FAILED CHARGE LOGIC
         this.setState({
           isPending: false,
