@@ -36,6 +36,15 @@ class ReservationMailer < ApplicationMailer
     mail to: email, subject: mail_subject
   end
 
+  def notify_admin(user, reservation, title)
+    @user = user
+    @reservation = reservation
+    @title = title
+    @isCancel = title == "Reservation Canceled"
+    
+    mail to: 'support@blueplattr.com', subject: title
+  end
+
   private
   def format_date(date)
     date.strftime("%m/%d/%Y")

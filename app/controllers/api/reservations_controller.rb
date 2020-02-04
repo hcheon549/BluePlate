@@ -38,8 +38,8 @@ class Api::ReservationsController < ApplicationController
 
     if @user_summary.meal_credits_left < 1
       return render json: { message: "No meals left" }, status: 403
-    # elsif !can_reserve(@pickup_time_id)
-    #   return render json: { message: "Cannot make a reservation" }, status: 403
+    elsif !can_reserve(@pickup_time_id)
+      return render json: { message: "Cannot make a reservation" }, status: 403
     end
 
     @reservation = Reservation.new(
@@ -52,7 +52,8 @@ class Api::ReservationsController < ApplicationController
 
     if @reservation.save
       adjust_attributes('create', @user, @reservation)
-      ReservationMailer.order_confirmation(@user, @reservation).deliver_later(wait: 5.second)
+      ReservationMailer.order_confirmation(@user, @reservation).deliver_later(wait: 3.second)
+      ReservationMailer.notify_admin(@user, @reservation, 'New Reservation Created').deliver_later(wait: 2.second)
       render :show
     else
       render json: @reservation.errors.full_messages, status: 422
@@ -65,9 +66,9 @@ class Api::ReservationsController < ApplicationController
     @reservation = current_user.reservations.find(params[:id])
     @pickup_time_id = params[:reservation][:pickup_time_id]
   
-    # if !can_reserve(@pickup_time_id)
-    #   return render json: ["Cannot Update the Reservation"], status: 403
-    # end
+    if !can_reserve(@pickup_time_id)
+      return render json: ["Cannot Update the Reservation"], status: 403
+    end
 
     if @reservation.update_attributes(
       user_id: params[:reservation][:user_id],
@@ -76,7 +77,8 @@ class Api::ReservationsController < ApplicationController
       )
       @user = current_user
       adjust_attributes('update', @user, @reservation, @old_reservation)
-      ReservationMailer.update_confirmation(@user, @reservation).deliver_later(wait: 5.second)
+      ReservationMailer.update_confirmation(@user, @reservation).deliver_later(wait: 3.second)
+      ReservationMailer.notify_admin(@user, @reservation, 'Reservation Updated').deliver_later(wait: 2.second)
       render :show
     else
       render json: @reservation.errors.full_messages, status: 422
@@ -88,8 +90,9 @@ class Api::ReservationsController < ApplicationController
     @reservation = @user.reservations.find(params[:id])
 
     if @reservation.destroy
-      ReservationMailer.cancel_confirmation(@user, @reservation).deliver_now
       adjust_attributes('destroy', @user, @reservation)
+      ReservationMailer.cancel_confirmation(@user, @reservation).deliver_now
+      ReservationMailer.notify_admin(@user, @reservation, 'Reservation Canceled').deliver_now
       render :show
     end
   end
@@ -103,8 +106,8 @@ class Api::ReservationsController < ApplicationController
     @meal = params[:meal]
     @emails = @shop_order.emails.push("support@blueplattr.com")
 
-    @emails.each do | email |
-    # ["eric@blueplattr.com"].each do | email |
+    # @emails.each do | email |
+    ["support@blueplattr.com"].each do | email |
       ReservationMailer.send_order(@shop, email, @pickup_time, @reservations, @meal, @order_type).deliver_now
     end
   end

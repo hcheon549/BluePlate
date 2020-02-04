@@ -4,6 +4,7 @@ class Api::AccountSummariesController < ApplicationController
     @summary.policy_id = Policy.find_by(policy_type: "Visitor").id
 
     if @summary.save
+      UserMailer.notify_signup(@summary).deliver_later(wait: 1.second)
       render :show
     else
       render json: @summary.errors.full_messages, status: 422
@@ -25,6 +26,7 @@ class Api::AccountSummariesController < ApplicationController
       if wasLead && (@summary.policy_id == Policy.find_by(policy_id: 100).id)
         @user = @summary.user
         UserMailer.welcome_email(@user).deliver_later(wait: 5.second)
+        UserMailer.notify_member(@user).deliver_later(wait: 2.second)
       end
 
       render :show

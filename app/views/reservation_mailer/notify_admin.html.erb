@@ -1,0 +1,15 @@
+<div class="order">
+  <p><%= @title %></p>
+  
+  <p>Pick up code is</p>  
+  <div class="pickupCode">
+    <h3><%= @reservation.pickup_code %></h3>
+  </div>
+
+  <div class="orderSummary">
+    <p><strong>Name:</strong> <%= @user.fname %> <%= @user.lname %></p>
+    <p><strong>Restaurant:</strong> <%= @reservation.menu.shop.name %></p>
+    <p><strong>Menu:</strong> <%= @reservation.menu.meal.name %></p>
+    <p><strong>Pick Up Time: </strong> <%= @reservation.pickup_time.start %> - <%= @reservation.pickup_time.end %> .</p>
+  </div>
+</div>
