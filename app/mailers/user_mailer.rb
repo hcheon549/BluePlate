@@ -1,18 +1,11 @@
 class UserMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.password_reset.subject
-  #
-
   def notify_member(summary)
     @summary = summary
     mail to: 'eric@blueplattr.com', subject: "New Member!!"
   end
 
-  def notify_signup(user)
-    @user = user
+  def notify_signup(summary)
+    @user = summary.user
     mail to: 'eric@blueplattr.com', subject: "Lead Created"
   end
 
