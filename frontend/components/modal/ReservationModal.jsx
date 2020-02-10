@@ -4,12 +4,8 @@ import { connect } from "react-redux";
 import swal from 'sweetalert';
 
 import { openModal, closeModal } from "../../actions/modal_actions";
-
-import {
-  createReservation,
-  updateReservation,
-  deleteReservation,
-} from "../../actions/reservation_actions";
+import { fetchUser } from '../../actions/user_actions';
+import { createReservation, updateReservation, deleteReservation } from "../../actions/reservation_actions";
 
 const pickupTimeClose = {
   lunch: {
@@ -64,7 +60,7 @@ class ReservationModal extends React.Component {
 
   async handleReserve() {
     let { data: { action, menu, currentReservation }, currentUser, 
-          updateReservation, createReservation, deleteReservation, openConfirmModal, closeModal } = this.props;
+          updateReservation, createReservation, deleteReservation, openConfirmModal, closeModal, fetchUser } = this.props;
     let { pickupTimeId } = this.state
 
     this.setState({
@@ -82,6 +78,7 @@ class ReservationModal extends React.Component {
       let reservationResult = await createReservation(newReservation)
       this.setState({ isPending: false })  
       if (reservationResult.reservation) {
+        await fetchUser(currentUser.id);
         openConfirmModal({ action, code: reservationResult.reservation.pickupCode })
       } else if (reservationResult.errors && reservationResult.errors.message == 'No meals left') {
         openConfirmModal({ action: 'no-meals',})
@@ -100,6 +97,7 @@ class ReservationModal extends React.Component {
       let updateResult = await updateReservation(updatedReservation)
       this.setState({ isPending: false })  
       if (updateResult.reservation) {
+        await fetchUser(currentUser.id);
         openConfirmModal({ action, code: updateResult.reservation.pickupCode })
       } else if (updateResult.errors && updateResult.errors.message == 'Cannot make a reservation') {
         openConfirmModal({ action: 'update-error',})
@@ -113,6 +111,7 @@ class ReservationModal extends React.Component {
       let cancellation = await deleteReservation(currentReservation.id)
       this.setState({ isPending: false })  
       if (cancellation.reservation) {
+        await fetchUser(currentUser.id);
         openConfirmModal({ action })
       } else {
         console.log(cancellation)
@@ -241,6 +240,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
     openConfirmModal: (data) => dispatch(openModal({ type: 'confirm', data})),
     createReservation: (res) => dispatch(createReservation(res)),
     updateReservation: (res) => dispatch(updateReservation(res)),

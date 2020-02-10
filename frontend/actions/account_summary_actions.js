@@ -2,6 +2,18 @@ import * as accountSummaryApiUtil from "../util/account_summary_api_util";
 
 export const SET_POLICY_TYPE = "SET_POLICY_TYPE";
 export const RECEIVE_SUMMARY_ERRORS = 'RECEIVE_SUMMARY_ERRORS';
+export const GET_ACCOUNT_SUMMARY = 'GET_ACCOUNT_SUMMARY';
+
+export const showAccountSummary = userId => dispatch => {
+  return accountSummaryApiUtil.showAccountSummary(userId).then(
+    summaryS => {
+      return dispatch(getAccountSummary(summaryS.data))
+    },
+    errors => {
+      return dispatch(receiveErrors(errors.response.data))
+    }
+  )
+}
 
 export const createAccountSummary = userId => dispatch => {
   return accountSummaryApiUtil.createAccountSummary(userId).then(
@@ -35,6 +47,13 @@ export const joinMembership = summaryData => dispatch => {
     }
   );
 };
+
+const getAccountSummary = (data) => {
+  return {
+    type: GET_ACCOUNT_SUMMARY,
+    data,
+  }
+}
 
 export const setAccountSummary = (data, policy_type) => {
   return {

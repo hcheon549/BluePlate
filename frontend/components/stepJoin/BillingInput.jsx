@@ -84,6 +84,7 @@ class BillingInput extends React.Component{
           description: this.props.currentPlan.name,
         })
       }
+
       if (charge && charge.errors){
         //FAILED CHARGE LOGIC
         this.setState({

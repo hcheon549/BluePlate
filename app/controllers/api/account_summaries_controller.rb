@@ -1,9 +1,19 @@
 class Api::AccountSummariesController < ApplicationController
+  def show
+    @summary = AccountSummary.find_by(user_id: params[:id])
+
+    if @summary
+      render :show
+    else
+      render json: @summary.errors.full_messages, status: 422
+    end
+  end
+
   def create
     @summary = AccountSummary.new(summary_params)
     @summary.policy_id = Policy.find_by(policy_type: "Visitor").id
-
     if @summary.save
+      UserMailer.notify_signup(@summary).deliver_later(wait: 1.second)
       render :show
     else
       render json: @summary.errors.full_messages, status: 422
@@ -21,10 +31,11 @@ class Api::AccountSummariesController < ApplicationController
       total_meal_credits: params[:account_summary][:total_meal_credits] || @summary.total_meal_credits,
       meal_credits_left: params[:account_summary][:meal_credits_left] || @summary.meal_credits_left
       )
-      # Sending welcome email to a new user
       if wasLead && (@summary.policy_id == Policy.find_by(policy_id: 100).id)
         @user = @summary.user
         UserMailer.welcome_email(@user).deliver_later(wait: 5.second)
+        ### STRIPE is already notifying ###
+        # UserMailer.notify_member(@summary).deliver_later(wait: 2.second)
       end
 
       render :show
