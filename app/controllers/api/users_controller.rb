@@ -32,7 +32,6 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      debugger
       if !logged_in?
         login(@user)
       end

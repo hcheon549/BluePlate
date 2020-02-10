@@ -55,7 +55,7 @@ class AuthForm extends React.Component{
       }
     } else if (this.props.formType == 'Sign-Up'){ //SIGN UP LOGIC
       let res = await this.props.processJoinForm(user);
-      debugger
+
       // Creating a new user
       if (res.user && res.user.id && this.props.setStep){
         await this.props.createAccountSummary(res.user.id);
