@@ -1,4 +1,14 @@
 class Api::AccountSummariesController < ApplicationController
+  def show
+    @summary = AccountSummary.find_by(user_id: params[:id])
+
+    if @summary
+      render :show
+    else
+      render json: @summary.errors.full_messages, status: 422
+    end
+  end
+
   def create
     @summary = AccountSummary.new(summary_params)
     @summary.policy_id = Policy.find_by(policy_type: "Visitor").id

@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export const showAccountSummary = (userId) => {
+  return axios({
+    method: "GET",
+    url: `/api/account_summaries/${userId}`
+  })
+}
+
 export const createAccountSummary = (userId) => {
   return axios({
     method: "POST",
