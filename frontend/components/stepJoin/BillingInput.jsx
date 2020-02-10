@@ -106,7 +106,6 @@ class BillingInput extends React.Component{
           this.props.applyPromo(this.props.promo)
           joinData = {...joinData, resource_id: this.props.promo.id}
         }
-        debugger
         await writeAccountHistory(joinData)
         await this.props.fetchUser(this.props.currentUser.id)
         this.setState({isPending: false})

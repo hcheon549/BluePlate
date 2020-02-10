@@ -14,7 +14,10 @@ export const createAccountHistory = (data) => {
     data: {
       account_history: {
         user_id: data.userId,
-        action_type: data.action_type
+        action_type: data.action_type,
+        action_data: data.action_data || null,
+        resource_id: data.resource_id || null,
+        memo: data.memo || null
       }
     }
   });
