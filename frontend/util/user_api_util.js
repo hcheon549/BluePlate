@@ -36,6 +36,19 @@ export const updateUserEmail = userData => {
   });
 };
 
+export const updateUserPassword = user => {
+  console.log(user)
+  return axios({
+    method: "PATCH",
+    url: `/api/users/${user.id}`,
+    data: {
+      user: {
+        password: user.password,
+      }
+    }
+  })
+}
+
 export const updateUserName = userData => {
   return axios({
     method: "PATCH",

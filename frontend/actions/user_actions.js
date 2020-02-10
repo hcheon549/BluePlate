@@ -1,4 +1,5 @@
 import * as userApiUtil from "../util/user_api_util";
+import { receiveCurrentUser } from "./session_actions";
 
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
@@ -22,6 +23,18 @@ export const updateUser = user => dispatch => {
     errors => dispatch(receiveErrors(errors.response.data))
   );
 };
+
+export const updateUserPassword = user => dispatch => {
+  return userApiUtil.updateUserPassword(user).then(
+    userS => {
+      dispatch(receiveCurrentUser(userS.data));
+      return dispatch(receiveUser(userS.data));
+    },
+    errors => {
+      return dispatch(receiveErrors(errors.response.data))
+    }
+  )
+}
 
 export const updateUserEmail = userData => dispatch => {
   return userApiUtil.updateUserEmail(userData).then(

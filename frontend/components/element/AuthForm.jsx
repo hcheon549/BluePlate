@@ -8,7 +8,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { createAccount, clearErrors, login } from '../../actions/session_actions';
 import { createAccountSummary } from '../../actions/account_summary_actions'
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, updateUserPassword } from '../../actions/user_actions';
 
 
 class AuthForm extends React.Component{
@@ -55,11 +55,23 @@ class AuthForm extends React.Component{
       }
     } else if (this.props.formType == 'Sign-Up'){ //SIGN UP LOGIC
       let res = await this.props.processJoinForm(user);
-      if (res.user && this.props.setStep){
+      debugger
+      // Creating a new user
+      if (res.user && res.user.id && this.props.setStep){
         await this.props.createAccountSummary(res.user.id);
         await this.props.fetchUser(res.user.id);
         this.props.setStep('plan');
-      } else if (res.errors){
+      }
+      // Updating a user if this user is not a member
+      else if (res.user && res.user.existingId){
+        let updateUserData = Object.assign(user, {
+          id: res.user.existingId
+        })
+        await this.props.updateExistingUser(updateUserData)
+        await this.props.fetchUser(res.user.existingId)
+      } 
+      // Existing user is a member
+      else if (res.errors){
         this.setState({
           isPending: false,
           errorMessage: res.errors
@@ -183,6 +195,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchUser: (userId) => dispatch(fetchUser(userId)),
     processJoinForm: (user) => dispatch(createAccount(user)),
+    updateExistingUser: (user) => dispatch(updateUserPassword(user)),
     processLogIn: (user) => dispatch(login(user)),
     createAccountSummary: (userId) => dispatch(createAccountSummary(userId)),
     clearErrors: () => dispatch(clearErrors())

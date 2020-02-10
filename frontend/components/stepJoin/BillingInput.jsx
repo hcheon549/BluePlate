@@ -84,7 +84,6 @@ class BillingInput extends React.Component{
           description: this.props.currentPlan.name,
         })
       }
-      debugger
       if (charge && charge.errors){
         //FAILED CHARGE LOGIC
         this.setState({
@@ -266,7 +265,7 @@ export default class BillingInputStripe extends React.Component{
   // add publishable key below
   render(){
     return(
-      <StripeProvider apiKey="pk_live_maUU7kWSgzoJ1UxXbwOvjEKO00Ze5SojIO">
+      <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
         <Elements>
           <BillingStipeForm {...this.props} />
         </Elements>
