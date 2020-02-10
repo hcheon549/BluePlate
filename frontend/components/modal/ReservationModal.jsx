@@ -76,9 +76,9 @@ class ReservationModal extends React.Component {
         pickupTimeId: parseInt(pickupTimeId)
       };
       let reservationResult = await createReservation(newReservation)
-      this.setState({ isPending: false })  
       if (reservationResult.reservation) {
         await fetchUser(currentUser.id);
+        this.setState({ isPending: false })  
         openConfirmModal({ action, code: reservationResult.reservation.pickupCode })
       } else if (reservationResult.errors && reservationResult.errors.message == 'No meals left') {
         openConfirmModal({ action: 'no-meals',})
@@ -95,28 +95,28 @@ class ReservationModal extends React.Component {
       updatedReservation.pickupTimeId = parseInt(pickupTimeId);
 
       let updateResult = await updateReservation(updatedReservation)
-      this.setState({ isPending: false })  
       if (updateResult.reservation) {
         await fetchUser(currentUser.id);
+        this.setState({ isPending: false })  
         openConfirmModal({ action, code: updateResult.reservation.pickupCode })
       } else if (updateResult.errors && updateResult.errors.message == 'Cannot make a reservation') {
         openConfirmModal({ action: 'update-error',})
       } else {
         console.log(updateResult)
       }
-      
     }
     
     else if (action == 'cancel' && currentReservation){
       let cancellation = await deleteReservation(currentReservation.id)
-      this.setState({ isPending: false })  
       if (cancellation.reservation) {
         await fetchUser(currentUser.id);
+        this.setState({ isPending: false })  
         openConfirmModal({ action })
       } else {
         console.log(cancellation)
       }
     }
+    this.setState({ isPending: false })  
   };
 
   refundable(){
