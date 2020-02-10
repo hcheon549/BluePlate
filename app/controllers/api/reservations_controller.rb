@@ -108,8 +108,8 @@ class Api::ReservationsController < ApplicationController
     @meal = params[:meal]
     @emails = @shop_order.emails.push("support@blueplattr.com")
 
-    # @emails.each do | email |
-    ["support@blueplattr.com"].each do | email |
+    @emails.each do | email |
+    # ["support@blueplattr.com"].each do | email |
       ReservationMailer.send_order(@shop, email, @pickup_time, @reservations, @meal, @order_type).deliver_now
     end
   end
