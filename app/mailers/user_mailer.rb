@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
 
   def notify_signup(summary)
     @user = summary.user
-    mail to: 'eric@blueplattr.com', subject: "Lead Created"
+    mail to: 'eric@blueplattr.com', subject: "Account Created"
   end
 
   def welcome_email(user)
