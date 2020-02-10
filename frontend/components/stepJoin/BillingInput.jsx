@@ -15,7 +15,7 @@ import { createCharge } from '../../util/charge_api_util';
 import { fetchUser, updateUserName } from '../../actions/user_actions';
 import { joinMembership } from '../../actions/account_summary_actions';
 import { applyPromo } from '../../actions/promo_actions';
-
+import { writeAccountHistory } from '../../actions/account_history_actions';
 
 class BillingInput extends React.Component{
   constructor(props){
@@ -92,6 +92,10 @@ class BillingInput extends React.Component{
           errorMessage: [charge.errors.message]
         })
       } else {
+        let joinData = {
+          userId: this.props.currentUser.summary_id || this.props.currentUser.summary.id,
+          action_type: 'Become a member'
+        }
         await this.props.joinMembership({
           id: this.props.currentUser.summary_id || this.props.currentUser.summary.id,
           policy_type: "Member",
@@ -100,7 +104,10 @@ class BillingInput extends React.Component{
         })
         if (this.props.promo){
           this.props.applyPromo(this.props.promo)
+          joinData = {...joinData, resource_id: this.props.promo.id}
         }
+        debugger
+        await writeAccountHistory(joinData)
         await this.props.fetchUser(this.props.currentUser.id)
         this.setState({isPending: false})
         this.props.history.push("/my-meals")
@@ -266,7 +273,7 @@ export default class BillingInputStripe extends React.Component{
   // add publishable key below
   render(){
     return(
-      <StripeProvider apiKey="pk_live_maUU7kWSgzoJ1UxXbwOvjEKO00Ze5SojIO">
+      <StripeProvider apiKey="pk_test_oTMfaCSNQoyemWfMsr898SS4008zqZTALW">
         <Elements>
           <BillingStipeForm {...this.props} />
         </Elements>

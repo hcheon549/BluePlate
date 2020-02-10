@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:index, :create, :destroy]
     resources :subscriptions, only: [:create, :update]
     resources :account_summaries, only: [:show, :create, :update]
+    resources :account_histories, only: [:show, :create]
     resources :menus, only: [:index, :create, :update]
     get 'menus/todaymenus', to: 'menus#today_menus'
     resources :pickup_times, only: [:index]

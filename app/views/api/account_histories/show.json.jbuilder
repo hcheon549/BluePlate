@@ -1,0 +1,1 @@
+json.extract! @account_history, :id, :date, :user_id, :action_type, :action_data, :resource_id, :memo
