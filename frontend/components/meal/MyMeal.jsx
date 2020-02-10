@@ -124,8 +124,7 @@ class MyMeal extends React.Component {
       return <LoadingIcon />;
     }
     
-    // let isOpen = this.orderOpen()
-    let isOpen = true;
+    let isOpen = this.orderOpen()
     let mealType = this.state.activeTab.charAt(0).toUpperCase() + this.state.activeTab.slice(1)
 
     let orderTab = isOpen ? (
