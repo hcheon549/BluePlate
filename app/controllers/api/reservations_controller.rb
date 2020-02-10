@@ -3,7 +3,7 @@ class Api::ReservationsController < ApplicationController
     @reservations = Reservation.includes(:menu, :pickup_time, :meal, :user, meal: :shop).where(user_id: current_user.id)
     today = Date.today
 
-    if Time.now.hour > 21
+    if Time.now.hour >= 21
       today += 1
     end
 
@@ -35,10 +35,11 @@ class Api::ReservationsController < ApplicationController
     @user = current_user
     @user_summary = @user.account_summary
     @pickup_time_id = params[:reservation][:pickup_time_id]
+    @menu_id = params[:reservation][:menu_id]
 
     if @user_summary.meal_credits_left < 1
       return render json: { message: "No meals left" }, status: 403
-    elsif !can_reserve(@pickup_time_id)
+    elsif !can_reserve(@pickup_time_id, @menu_id)
       return render json: { message: "Cannot make a reservation" }, status: 403
     end
 
@@ -65,8 +66,9 @@ class Api::ReservationsController < ApplicationController
     @old_reservation = current_user.reservations.find(params[:id])
     @reservation = current_user.reservations.find(params[:id])
     @pickup_time_id = params[:reservation][:pickup_time_id]
-  
-    if !can_reserve(@pickup_time_id)
+    @menu_id = params[:reservation][:menu_id]
+
+    if !can_reserve(@pickup_time_id, @menu_id)
       return render json: ["Cannot Update the Reservation"], status: 403
     end
 
@@ -118,13 +120,13 @@ class Api::ReservationsController < ApplicationController
     params.require(:reservation).permit(:user_id, :menu_id, :pickup_time_id)
   end
 
-  def can_reserve(pickup_time_id)
-    reservation_type = PickupTime.find(params[:reservation][:pickup_time_id]).pickup_type
+  def can_reserve(pickup_time_id, menu_id)
+    reservation_type = PickupTime.find(pickup_time_id).pickup_type
 
     if reservation_type == 0
-      return Time.now.hour < 10
+      return Time.now.hour < 10 && is_for_today(menu_id)
     elsif reservation_type == 1
-      return Time.now.hour < 21
+      return Time.now.hour < 16 && is_for_today(menu_id)
     else
       return false
     end
@@ -133,6 +135,9 @@ class Api::ReservationsController < ApplicationController
   def adjust_attributes(type, user, reservation, prev_reservation=nil)
     account_summary = AccountSummary.find(user.account_summary.id)
     menu = Menu.find(reservation.menu.id)
+    is_for_today = is_for_today(menu.id)
+    meal_type = reservation.pickup_time.pickup_type
+
     unless prev_reservation.nil?
       prev_meal = Meal.find(prev_reservation.meal.id)
       prev_menu = prev_reservation.menu
@@ -140,17 +145,16 @@ class Api::ReservationsController < ApplicationController
     meal = Meal.find(reservation.meal.id)
     now = Time.now
 
+    ## UPDATE ATTRIBUTES FOR NEW RESERVATIONS
     if type == 'create'
       account_summary.decrement!(:meal_credits_left)
-      if reservation.pickup_time.pickup_type == 0
-        menu.decrement!(:lunch_quantity_available)
-      else
-        menu.decrement!(:dinner_quantity_available)
-      end
+      meal_type == 0 ? menu.decrement!(:lunch_quantity_available) : menu.decrement!(:dinner_quantity_available)
       menu.increment!(:quantity_ordered)
       meal.increment!(:total_number_ordered)
+
+    ## UPDATE ATTRIBUTES FOR EXISTING RESERVATIONS
     elsif type == 'update'
-      if reservation.pickup_time.pickup_type == 0
+      if meal_type == 0
         menu.decrement!(:lunch_quantity_available)
         prev_menu.increment!(:lunch_quantity_available)
       else
@@ -161,18 +165,20 @@ class Api::ReservationsController < ApplicationController
       prev_menu.decrement!(:quantity_ordered)
       meal.increment!(:total_number_ordered)
       prev_meal.decrement!(:total_number_ordered)
+    
+    ## UPDATE ATTRIBUTES FOR DELETING RESERVATIONS
     elsif type == 'destroy'
-      if ((reservation.pickup_time.pickup_type == 0 && (now.hour < 10)) || (reservation.pickup_time.pickup_type == 1 && (now.hour < 16)))
+      if ((meal_type == 0 && now.hour < 10 ) || (meal_type == 1 && now.hour < 16 )) && is_for_today
         account_summary.increment!(:meal_credits_left)
-        if reservation.pickup_time.pickup_type == 0
-          menu.increment!(:lunch_quantity_available)
-        else
-          menu.increment!(:dinner_quantity_available)
-        end
+        meal_type == 0 ? menu.increment!(:lunch_quantity_available) : menu.increment!(:dinner_quantity_available)
         menu.decrement!(:quantity_ordered)
         meal.decrement!(:total_number_ordered)
       end
     end
+  end
+
+  def is_for_today(menu_id)
+    Menu.find(menu_id).offered_date == Date.today
   end
 
   def generate_pickup_code
@@ -183,6 +189,6 @@ class Api::ReservationsController < ApplicationController
       new_code = rand(1000...9999)
     end
 
-    return new_code
+    new_code
   end
 end
