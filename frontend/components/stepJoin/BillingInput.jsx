@@ -163,7 +163,7 @@ class BillingInput extends React.Component{
 
   render(){
     let { isPending, errorMessage } = this.state;
-    let buttonText = 'Submit';
+    let buttonText = 'Purchase';
 
     return(
       <React.Fragment>
