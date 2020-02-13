@@ -1,4 +1,14 @@
 class Api::UsersController < ApplicationController
+  def index
+    @users = User.all
+
+    if @users
+      render :index
+    else
+      render @users.errors.full_messages, status: 422
+    end
+  end
+
   def create
     @user = User.new(user_params)
     @existing_user = User.find_by(email: params[:user][:email])
