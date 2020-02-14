@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export const getAllUsers = () => {
+  return axios({
+    method: "GET",
+    url: 'api/users'
+  })
+}
+
 export const getUser = userId => {
   return axios({
     method: "GET",

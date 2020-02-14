@@ -19,10 +19,10 @@ class AllUsers extends React.Component {
   }
 
   render() {
-    // if (!this.state.loaded){
-    //   return <div />
-    // }
-
+    if (!this.state.loaded){
+      return <div />
+    }
+    debugger
     return (
       <div className="allUsers">
         <h1>All Users</h1>
@@ -33,12 +33,13 @@ class AllUsers extends React.Component {
 
 const msp = ({entities, ui}) => {
   return {
+    allUsers: entities.accounts
   };
 };
 
 const mdp = (dispatch) => {
  return {
-    fetchAllMembers: () => dispatch(sendReservations()),
+  fetchAllUsers: () => dispatch(fetchAllUsers()),
   };
 };
 

@@ -23,7 +23,12 @@ if user.account_summary
 end
 
 if user.reservations
-  json.set! :reservations do
-    json.extract! user.reservations
+  json.reservations do 
+    json.array!(user.reservations) do |reservation|
+      json.id reservation.id
+      json.meal reservation.meal
+      json.pickupTime reservation.pickup_time
+      json.shop reservation.menu.shop
+    end
   end
 end
