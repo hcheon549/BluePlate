@@ -1,4 +1,4 @@
-json.extract! user, :id, :email, :fname, :lname, :school_id
+json.extract! user, :id, :email, :fname, :lname, :school_id, :created_at
 
 if user.policy
   json.extract! user.policy, :name, :description, :policy_type

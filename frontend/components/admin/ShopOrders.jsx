@@ -46,8 +46,6 @@ class ShopOrders extends React.Component{
       pickupTime
     })
 
-    console.log(sendEmail)
-
     if(sendEmail){
       this.setState({
         pending: false,

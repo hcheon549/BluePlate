@@ -45,21 +45,27 @@
     text-align: center;
     margin: auto;
   }
-  .vendorList{
-    margin-bottom: 20px;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
-    span{
-      font-weight: 800;
-    }
-    th{
-      text-align: center;
-      border-bottom: 1px solid $lightest-gray;
-    }
-    td{
-      text-align: center;
-      border-bottom: 1px solid $lightest-gray;
-    }
+}
+
+table{
+  border-spacing: 10px 0;
+}
+
+.vendorList{
+  margin-bottom: 20px;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  span{
+    font-weight: 800;
+  }
+  th{
+    text-align: center;
+    border-bottom: 1px solid $lightest-gray;
+    margin: 0 10px;
+  }
+  td{
+    text-align: center;
+    border-bottom: 1px solid $lightest-gray;
   }
 }
