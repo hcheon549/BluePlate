@@ -7,10 +7,10 @@
   <br/>
   <div>
     <% @orders_summary.each do |time| %>
-      <% unless time[:pickupCodes].empty? %>
-      <strong><%= time[:start] %> - <%= time[:end] %> (<%= time[:pickupCodes].length %>)</strong><br/>
-        <% time[:pickupCodes].each do | code | %>
-        <%= code %><br/>
+      <% unless time[:orders].empty? %>
+      <strong><%= time[:start] %> - <%= time[:end] %> (<%= time[:orders].length %>)</strong><br/>
+        <% time[:orders].each do | order | %>
+        <%= order.keys.first %> - <%= order[order.keys.first][:fname] %> <%= order[order.keys.first][:lname] %><br/>
         <% end %>
         <br/>
       <% end %>
