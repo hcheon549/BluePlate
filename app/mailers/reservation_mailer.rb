@@ -58,10 +58,10 @@ class ReservationMailer < ApplicationMailer
     orders_summary = pickup_time.values
 
     orders_summary.each do | time |
-      time[:pickupCodes] = Array.new()
+      time[:orders] = Array.new()
       reservations.each do | reservation |
         if reservation[:pickupTimeId] == time[:id]
-          time[:pickupCodes] << reservation[:pickupCode]
+          time[:orders] << { reservation[:pickupCode] => reservation[:user] }
         end
       end
     end
