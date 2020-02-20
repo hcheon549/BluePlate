@@ -39,8 +39,8 @@ class Api::ReservationsController < ApplicationController
 
     if @user_summary.meal_credits_left < 1
       return render json: { message: "No meals left" }, status: 403
-    elsif !can_reserve(@pickup_time_id, @menu_id)
-      return render json: { message: "Cannot make a reservation" }, status: 403
+    # elsif !can_reserve(@pickup_time_id, @menu_id)
+    #   return render json: { message: "Cannot make a reservation" }, status: 403
     end
 
     @reservation = Reservation.new(
