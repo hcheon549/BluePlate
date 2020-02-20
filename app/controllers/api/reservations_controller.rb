@@ -68,9 +68,9 @@ class Api::ReservationsController < ApplicationController
     @pickup_time_id = params[:reservation][:pickup_time_id]
     @menu_id = params[:reservation][:menu_id]
 
-    if !can_reserve(@pickup_time_id, @menu_id)
-      return render json: ["Cannot Update the Reservation"], status: 403
-    end
+    # if !can_reserve(@pickup_time_id, @menu_id)
+    #   return render json: ["Cannot Update the Reservation"], status: 403
+    # end
 
     if @reservation.update_attributes(
       user_id: params[:reservation][:user_id],
