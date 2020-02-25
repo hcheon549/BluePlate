@@ -69,3 +69,11 @@ table{
     border-bottom: 1px solid $lightest-gray;
   }
 }
+
+.reservationList{
+  background-color: $lightest-gray;
+  padding: 10px auto;
+  td{
+    text-align: center;
+  }
+}

@@ -63,22 +63,56 @@ class ShopOrders extends React.Component{
     let { shop, menu } = this.props
     let { pending } = this.state
     let buttonText = this.defineOrderType() == 0 ? 'Send Lunch Orders' : 'Send Dinner Orders'
+    
+    let lunchOrderDetails = this.lunchReservations.length > 0 ? (
+      this.lunchReservations.map((reservation, idx) => {
+        return (
+          <tr className="reservationList" key={idx}>
+            <td>{reservation.user.fname} {reservation.user.lname}</td>
+            <td>Code: {reservation.pickupCode}</td>
+            <td>{reservation.pickupTime.start}</td>
+            <td>{reservation.pickupTime.end}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        )
+      })
+    ) : null
+
+    let dinnerOrderDetails = this.dinnerReservations.length > 0 ? (
+      this.dinnerReservations.map((reservation, idx) => {
+        return (
+          <tr className="reservationList" key={idx}>
+            <td>{reservation.user.fname} {reservation.user.lname}</td>
+            <td>Code: {reservation.pickupCode}</td>
+            <td>{reservation.pickupTime.start}</td>
+            <td>{reservation.pickupTime.end}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        )
+      })
+    ) : null
 
     return(
-      <tr className="vendorList">
-        <td>{shop.name}</td>
-        <td>{menu ? menu.meal.name : ""}</td>
-        <td>{this.lunchReservations.length}</td>
-        <td>{this.dinnerReservations.length}</td>
-        <td>
-          <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
-            {!pending && buttonText}
-          </button>
-        </td>
-        <td>
-          {this.state.statusMessage}
-        </td>
-      </tr>
+      <>
+        <tr className="vendorList">
+          <td>{shop.name}</td>
+          <td>{menu ? menu.meal.name : ""}</td>
+          <td>{this.lunchReservations.length}</td>
+          <td>{this.dinnerReservations.length}</td>
+          <td>
+            <button className={("secondary") +  (pending ? " -pending" : "")} disabled={pending} onClick={this.sendOrder} >
+              {!pending && buttonText}
+            </button>
+          </td>
+          <td>
+            {this.state.statusMessage}
+          </td>
+        </tr>
+        {lunchOrderDetails}
+        {dinnerOrderDetails}
+      </>
     );
   }
 }
