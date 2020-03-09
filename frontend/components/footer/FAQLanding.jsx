@@ -4,7 +4,7 @@ import FAQ from './FAQ';
 
 const Questions = [
   'What is BluePlattr?',
-  'When does my BluePlattr subscription work?',
+  'How does my BluePlattr meal plan work?',
   'How much is the meal plan?',
   'Are there any additional charges at pick up?',
   'What do I get with my plan?',
