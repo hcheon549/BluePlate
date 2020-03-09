@@ -4,6 +4,7 @@ import FAQ from './FAQ';
 
 const Questions = [
   'What is BluePlattr?',
+  'When does my BluePlattr subscription work?',
   'How much is the meal plan?',
   'Are there any additional charges at pick up?',
   'What do I get with my plan?',
@@ -34,14 +35,19 @@ const Answers = [
     <p>BluePlattr offers affordable, convenient, and flexible meal plan subscriptions giving users access to local restaurants on and around your campus. BluePlattr aims to provide you with a quick, simple, and convenient system for you to get amazing lunch and dinner meals every day. Users select their lunch and/or dinner in advance through the BluePlattr website, as early as the night before, and pick it up at the time of their choosing. Deciding what to eat on a tight schedule and budget has never been easier.</p>
   </div>,
   <div>
+    <p>BluePlattr plans are on a 4-week (28 day) cycle.</p>
+    <p>After the first 1-week trial period, your account is automatically renewed to a 4-week cycle subscription of the same plan that you had chosen. All BluePlattr plans end on the last day of the semester. If you would like to change your plan before your next renewal date, please let us know by sending an email to support@blueplattr.com.</p>
+  </div>,
+  <div>
     <p>BluePlattr offers four options every semester:</p>
     <ol>
-      <li>1. 12 Meals per week plan, $5.99 per meal, plus taxes and fees.</li>
-      <li>2. 9 Meals per week plan, $6.39 per meal, plus taxes and fees.</li>
-      <li>3. 6 Meals per week plan, $6.69 per meal, plus taxes and fees.</li>
-      <li>4. 3 Meals per week plan, $6.99 per meal, plus taxes and fees.</li>
+      <li>1. 12-Meals-per-Week plan, $5.99 per meal, plus taxes and fees.</li>
+      <li>2. 9-Meals-per-Week plan, $6.39 per meal, plus taxes and fees.</li>
+      <li>3. 6-Meals-per-Week plan, $6.69 per meal, plus taxes and fees.</li>
+      <li>4. 3-Meals-per-Week plan, $6.99 per meal, plus taxes and fees.</li>
     </ol>
     <p>Please remember that your state and local taxes may applied.</p>
+    <p>For example, the total cost for a 3-Meals-per-Week plan for a 4-week cycle is $83.88  plus tax. ($6.99 per meal x 3 meals per week x 4 weeks)</p>
   </div>,
   <div>
     <p>Nope! But you are more than welcome to purchase any additional items such as your favorite sides or drinks directly with the restaurant.</p>
