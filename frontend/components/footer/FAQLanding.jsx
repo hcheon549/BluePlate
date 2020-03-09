@@ -92,11 +92,11 @@ const Answers = [
     <p>Unfortunately, no. At this moment, meals reserved on BluePlattr are for pick up only. As a fast-growing start-up, we are looking at innovative ideas of getting delicious meals into your hands in a more convenient and efficient way. If you have any ideas, feel free to contact us. Your suggestions are extremely valuable, and we will do our best to make our service better for all of you!</p>
   </div>,
   <div>
-    <p>Changes in your meal plan can be made during the first and second week of your academic term. If you make a change, the previous meals that you already ordered will be charged at the rate of the new plan you make a change to. The difference in rates for the previous meals will be reflected in the future transaction.</p>
+    <p>You can change your plan for the next cycle by simplying sending an email to support@blueplattr.com. Once received, we will make the changes accordingly and make sure that your plan is updated for the next cycle.</p>
   </div>,
   <div>
-    <p>The last day to cancel your plan without any conditions is the first week of the start of your plan. We want you to try our meal plan, but if you don’t think it’s the right plan for you, you may do so during that period.</p>
-    <p>If there are any changes in your student status with the university, we can make a change or cancellation to your plan with the proof of the changes in your status with the university. Please contact us for more details.</p>
+    <p>You can cancel your next cycle anytime during your current cycle. We want you to try our meal plan, but if you don’t think it’s the right plan for you, you may do so during that period. You can simply request for a cancellation request email to support@blueplattr.com. And we will remove your account from the next billing cycle.</p>
+    <p>If there are any changes in your student status with the university, we can make a change or cancellation to your plan with the proof of the changes in your status with the university. Please contact us to support@blueplattr.com for more details.</p>
   </div>,
   <div>
     <p>Please email us at support@blueplattr.com and we can help set up an account for your child(ren)!</p>
