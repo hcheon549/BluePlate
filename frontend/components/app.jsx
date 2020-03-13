@@ -22,6 +22,7 @@ import HowItWorks from './HIW/HowItWorks'
 import StepJoin from "./stepJoin/StepJoin";
 import Navigation from "./nav/Navigation";
 import MobileMenuItems from './nav/MobileMenuItems';
+import UpdatePage from './Update/UpdatePage';
 
 import AdminPanel from './admin/AdminPanel';
 
@@ -73,6 +74,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/menu" component={AllMeals} />
               <Route exact path="/how-it-works" component={HowItWorks} />
+              <Route exact path="/updates" component={UpdatePage} />
 
               {/* Auth Pages */}
               <AuthRoute exact path="/login" component={LoginPage} />

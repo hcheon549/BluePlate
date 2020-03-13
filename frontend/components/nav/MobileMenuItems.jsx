@@ -31,6 +31,9 @@ class MobileMenuItems extends React.Component {
     let navSelect = (this.props.loggedIn) 
     ? (
       <ul className="navMenu">
+        <li className={"mobile-menu-button" + (location.pathname == '/updates' ? " -active" : "")} onClick={this.nextAction.bind(this, '/updates')}>
+          COVID-19 Updates
+        </li>
         {this.props.isMember && <li className={"mobile-menu-button" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={this.nextAction.bind(this, '/my-meals')}>
           View meals
         </li>}
@@ -46,6 +49,9 @@ class MobileMenuItems extends React.Component {
       </ul>
     ) : (
       <ul className="navMenu">
+        <li className={"mobile-menu-button" + (location.pathname == '/updates' ? " -active" : "")} onClick={this.nextAction.bind(this, '/updates')}>
+          COVID-19 Updates
+        </li>
         <li className={"mobile-menu-button" + (location.pathname == '/how-it-works' ? " -active" : "")} key='how-it-works' onClick={this.nextAction.bind(this, '/how-it-works')}>
           How it works
         </li>

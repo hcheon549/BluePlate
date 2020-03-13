@@ -15,6 +15,9 @@ const NavLogin = (props) => {
 
   return (
     <ul className="navLogin">
+      <li className={"nav-menu-button miniText" + (location.pathname == '/updates' ? " -active" : "")} onClick={() => push('/updates')}>
+        COVID-19 Updates
+      </li>
       <li className={"nav-menu-button miniText" + (location.pathname == '/menu' ? " -active" : "")} key='all-meals' onClick={() => push('/menu')}>
         {date}'s menu
       </li>

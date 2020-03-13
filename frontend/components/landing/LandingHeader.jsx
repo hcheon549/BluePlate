@@ -22,7 +22,7 @@ class LandingHeader extends React.Component {
   render() {
     let { currentUser } = this.props
     let header = currentUser.policyType == 'Member' ? <h3>WELCOME BACK, {currentUser.fname.toUpperCase()}!</h3> : <h3>LUNCH AND DINNER<br/>FOR LESS THAN $6</h3>,
-        subHeader = currentUser.policyType == 'Member' ? 'ORDER YOUR NEXT MEALS NOW.' : 'FIND OUT THE RESTAURANTS NEAR YOUR CAMPUS.',
+        subHeader = currentUser.policyType == 'Member' ? 'ORDER YOUR NEXT MEALS NOW.' : 'DISCOVER THE RESTAURANTS NEAR YOUR CAMPUS.',
         buttonText = currentUser.policyType == 'Member' ? 'View Meals' : 'Get Started',
         altButtonText = 'See Restaurants',
         browseLink = currentUser.policyType == 'Member' ? '/my-meals' : '/signup';

@@ -49,6 +49,9 @@ class MenuItem extends React.Component {
 
     return (
       <ul className="navLogin">
+        <li className={"nav-menu-button miniText" + (location.pathname == '/updates' ? " -active" : "")} onClick={() => this.props.history.push('/updates')}>
+          COVID-19 Updates
+        </li>
         {this.props.isMember && <li className={"nav-menu-button miniText" + (location.pathname == '/my-meals' ? " -active" : "")} onClick={() => this.props.history.push('/my-meals')}>
           View meals
         </li>}
