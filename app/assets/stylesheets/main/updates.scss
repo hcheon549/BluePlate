@@ -1,0 +1,12 @@
+.updates{
+  text-align: left;
+  padding: 30px 0;
+  border-bottom: 1px solid gray;
+}
+.updates:first-of-type{
+  padding-top: 0;
+}
+.updates:last-of-type{
+  padding-bottom: 0;
+  border-bottom: none;
+}

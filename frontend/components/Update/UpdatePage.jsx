@@ -6,7 +6,13 @@ const UpdatePage = () => {
       <div className="pageHeader">
         <h3>Updates on COVID-19</h3>
       </div>
-      <div className="content terms">
+      <div className="content updates">
+        <p><em>Message posted on: March 17, 2020</em></p>
+        <p>At BluePlattr, the safety and well-being of the users, vendors, and our communities is always our priority. We are actively monitoring the coronavirus (COVID-19) situation and are taking steps to help keep our communities safe.</p>
+        <p>As the State of New Jersey had announced the mandatory closure of all non-essential retail businesses and a voluntary curfew of all residents after 8 P.M., <strong>we have decided to accept reservations of your dinner meals by 8 P.M. at the latest.</strong> This means that the original reservation windows from 8 P.M. to 9 P.M. will no longer be available until further notice.</p>
+        <p>Should you find yourself in need of assistance, please contact us by email at <a href="mailto:support@blueplattr.com">support@blueplattr.com.</a></p>
+      </div>
+      <div className="content updates">
         <p><em>Message posted on: March 13, 2020</em></p>
         <p>At BluePlattr, the health and well-being of our users, and communities is our top priority. We understand the concern and uncertainty you may be experiencing surrounding the coronavirus (COVID-19) and we are committed to being responsive to the needs of our users as the situation evolves.</p>
         <p>In order to address the University's recent announcement regarding the coronavirus, we have decided to <strong>extend everyone's subscription until the end of the semester.</strong> This means the following:</p>
@@ -18,7 +24,6 @@ const UpdatePage = () => {
         <p></p>
         <p>Should you find yourself in need of assistance, please contact us by email at <a href="mailto:support@blueplattr.com">support@blueplattr.com.</a></p>
         <p>As always, the health, safety, and well-being of our users and our communities is of paramount concern. We will continue to monitor this quickly evolving situation and are here to assist our users as needed.</p>
-        <p>I hope you and your family stay safe amid this global pandemic.</p>
       </div>
     </section>
   );
