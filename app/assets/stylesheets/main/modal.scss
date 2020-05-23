@@ -44,7 +44,11 @@
     box-sizing: border-box;
     .innerContent{
       margin: auto;
+      padding-top: 80px;
       box-sizing: border-box;
+      img{
+        width: 50%;
+      }
       button{
         width: inherit;
       }
